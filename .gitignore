@@ -1,1 +1,26 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+functions/aws-credentials.json
+# dependencies
+**/node_modules
+/.pnp
+.pnp.js
+*.p8
+**/*.js.map
+# testing
+/coverage
+
+# production
+/build
+
+# misc
 .DS_Store
+**/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.firebase/*
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

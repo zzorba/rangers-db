@@ -1,0 +1,625 @@
+fragment Card on rangers_card {
+  id
+  name
+  traits
+  equip
+  presence
+  token_id
+  token_count
+  harm
+  approach_conflict
+  approach_reason
+  approach_exploration
+  approach_connection
+  text
+  set_id
+  set_position
+  quantity
+  level
+  type_id
+  cost
+  aspect_id
+  progress
+}
+
+fragment CardText on rangers_card_text {
+  id
+  locale
+  name
+  traits
+  text
+}
+
+fragment CardSet on rangers_set {
+  id
+  name
+  type_id
+}
+
+fragment CardSetText on rangers_set_text {
+  id
+  locale
+  name
+}
+
+fragment CardSetType on rangers_set_type {
+  id
+  name
+}
+
+fragment CardSetTypeText on rangers_set_type_text {
+  id
+  locale
+  name
+}
+
+fragment CardToken on rangers_token {
+  id
+  name
+  plurals
+}
+
+fragment CardTokenText on rangers_token_text {
+  id
+  locale
+  name
+  plurals
+}
+
+fragment CardAspect on rangers_aspect {
+  id
+  name
+  short_name
+}
+
+
+fragment CardAspectText on rangers_aspect_text {
+  id
+  locale
+  name
+  short_name
+}
+
+fragment CardType on rangers_type {
+  id
+  name
+}
+
+fragment CardTypeText on rangers_type_text {
+  id
+  locale
+  name
+}
+
+
+fragment CardPack on rangers_pack {
+  id
+  name
+}
+
+fragment CardPackText on rangers_pack_text {
+  id
+  locale
+  name
+}
+
+query getCards {
+  rangers_card {
+    ...Card
+  }
+  rangers_card_text(
+    where: { locale: { _eq: "en" }}
+  ) {
+    ...CardText
+  }
+}
+
+query getMetadata {
+  rangers_aspect {
+    ...CardAspect
+  }
+  rangers_pack {
+    ...CardPack
+  }
+  rangers_set {
+    ...CardSet
+  }
+  rangers_set_type {
+    ...CardSetType
+  }
+  rangers_token {
+    ...CardToken
+  }
+  rangers_type {
+    ...CardType
+  }
+}
+
+query getTranslationData(
+  $locale: String!
+) {
+  rangers_aspect_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardAspectText
+  }
+  rangers_pack_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardPackText
+  }
+  rangers_set_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardSetText
+  }
+  rangers_set_type_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardSetTypeText
+  }
+  rangers_token_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardTokenText
+  }
+  rangers_type_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardTypeText
+  }
+}
+
+query getTranslations($locale: String!) {
+  rangers_card_text(where: {
+    locale: { _eq: $locale }
+  }) {
+    ...CardText
+  }
+}
+
+mutation upsertCard(
+  $id: String!,
+  $name: String,
+  $traits: String,
+  $equip: Int,
+  $presence: Int,
+  $token_id: String,
+  $token_count: Int,
+  $harm: Int,
+  $approach_conflict: Int,
+  $approach_reason: Int,
+  $approach_exploration: Int,
+  $approach_connection: Int,
+  $text: String,
+  $set_id: String,
+  $set_position: Int,
+  $quantity: Int,
+  $level: Int,
+  $type_id: String,
+  $cost: Int,
+  $aspect_id: String,
+  $progress: Int
+) {
+	insert_rangers_card_one(
+    object: {
+      id: $id
+      name: $name
+      traits: $traits
+      equip: $equip
+      presence: $presence
+      token_id: $token_id
+      token_count: $token_count
+      harm: $harm
+      approach_conflict: $approach_conflict
+      approach_reason: $approach_reason
+      approach_exploration: $approach_exploration
+      approach_connection: $approach_connection
+      text: $text
+      set_id: $set_id
+      set_position: $set_position
+      quantity: $quantity
+      level: $level
+      type_id: $type_id
+      cost: $cost
+      aspect_id: $aspect_id
+      progress: $progress
+    }
+    on_conflict: {
+      constraint: card_pkey
+      update_columns: [
+        id,
+        name,
+        traits,
+        equip,
+        presence,
+        token_id,
+        token_count,
+        harm,
+        approach_conflict,
+        approach_reason,
+        approach_exploration,
+        approach_connection,
+        text,
+        set_id,
+        set_position,
+        quantity,
+        level,
+        type_id,
+        cost,
+        aspect_id,
+        progress,
+      ]
+    }
+  ) {
+    id
+  }
+}
+
+mutation upsertCardSet(
+  $id: String!,
+  $name: String!,
+  $type_id: String
+) {
+  insert_rangers_set_one(
+    object: {
+      id: $id
+      name: $name
+      type_id: $type_id
+    }
+    on_conflict: {
+      constraint: set_pkey
+      update_columns: [
+        id,
+        name,
+        type_id
+      ]
+    }
+  ) {
+    ...CardSet
+  }
+}
+
+mutation upsertCardSetText(
+  $id: String!,
+  $locale: String!,
+  $name: String!
+) {
+  insert_rangers_set_text_one(
+    object: {
+      id: $id
+      locale: $locale
+      name: $name
+    }
+    on_conflict: {
+      constraint: set_text_pkey
+      update_columns: [
+        id,
+        name
+      ]
+    }
+  ) {
+    ...CardSetText
+  }
+}
+
+
+
+mutation upsertCardSetType(
+  $id: String!,
+  $name: String!
+) {
+  insert_rangers_set_type_one(
+    object: {
+      id: $id
+      name: $name
+    }
+    on_conflict: {
+      constraint: set_type_pkey
+      update_columns: [
+        id,
+        name
+      ]
+    }
+  ) {
+    ...CardSetType
+  }
+}
+
+mutation upsertCardSetTypeText(
+  $id: String!,
+  $locale: String!,
+  $name: String!
+) {
+  insert_rangers_set_type_text_one(
+    object: {
+      id: $id
+      locale: $locale
+      name: $name
+    }
+    on_conflict: {
+      constraint: set_type_text_pkey
+      update_columns: [
+        id,
+        name
+      ]
+    }
+  ) {
+    ...CardSetTypeText
+  }
+}
+
+
+query getLocaleText(
+  $locale: String!
+) {
+  rangers_card_text(
+    where: { locale: { _eq: $locale } }
+  ) {
+    ...CardText
+  }
+  rangers_pack_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardPackText
+  }
+  rangers_set_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardSetText
+  }
+  rangers_set_type_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardSetTypeText
+  }
+  rangers_token_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardTokenText
+  }
+  rangers_type_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardTypeText
+  }
+  rangers_aspect_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardAspectText
+  }
+}
+
+mutation upsertCardText(
+  $id: String!,
+  $locale: String!,
+  $name: String,
+  $traits: String,
+  $text: String
+) {
+	insert_rangers_card_text_one(
+    object: {
+      id: $id
+      locale: $locale
+      name: $name
+      text: $text
+      traits: $traits
+    }
+    on_conflict: {
+      constraint: card_text_pkey
+      update_columns: [
+        id,
+        locale,
+        name,
+        text,
+        traits
+      ]
+    }
+  ) {
+    id
+    locale
+  }
+}
+
+
+mutation upsertCardPack(
+  $id: String!,
+  $name: String!,
+  $position: Int!
+) {
+	insert_rangers_pack_one(
+    object: {
+      id: $id
+      name: $name
+      position: $position
+    }
+    on_conflict: {
+      constraint: pack_pkey
+      update_columns: [
+        id,
+        name,
+        position
+      ]
+    }
+  ) {
+    id
+    name
+    position
+  }
+}
+
+mutation upsertCardPackText(
+  $id: String!,
+  $locale: String!,
+  $name: String
+) {
+	insert_rangers_pack_text_one(
+    object: {
+      id: $id
+      locale: $locale
+      name: $name
+    }
+    on_conflict: {
+      constraint: pack_text_pkey
+      update_columns: [
+        id,
+        locale,
+        name
+      ]
+    }
+  ) {
+    id
+    locale
+    name
+  }
+}
+
+mutation upsertAspect(
+  $id: String!,
+  $name: String!,
+  $short_name: String!
+) {
+  insert_rangers_aspect_one(
+    object: {
+      id: $id
+      name: $name
+      short_name: $short_name
+    }
+    on_conflict: {
+      constraint: aspect_pkey
+      update_columns: [
+        name,
+        short_name
+      ]
+    }
+  ) {
+    id
+    name
+    short_name
+  }
+}
+
+mutation upsertAspectText(
+  $id: String!,
+  $locale: String!,
+  $name: String!,
+  $short_name: String!
+) {
+	insert_rangers_aspect_text_one(
+    object: {
+      id: $id
+      name: $name
+      short_name: $short_name
+      locale: $locale
+    }
+    on_conflict: {
+      constraint: aspect_text_pkey
+      update_columns: [
+        name,
+        short_name
+      ]
+    }
+  ) {
+    id
+    name
+    short_name
+  }
+}
+
+
+mutation upsertToken(
+  $id: String!,
+  $name: String!,
+  $plurals: String!
+) {
+  insert_rangers_token_one(
+    object: {
+      id: $id
+      name: $name
+      plurals: $plurals
+    }
+    on_conflict: {
+      constraint: token_pkey
+      update_columns: [
+        name,
+        plurals
+      ]
+    }
+  ) {
+    id
+    name
+    plurals
+  }
+}
+
+mutation upsertTokenText(
+  $id: String!,
+  $locale: String!,
+  $name: String!,
+  $plurals: String!
+) {
+	insert_rangers_token_text_one(
+    object: {
+      id: $id
+      name: $name
+      plurals: $plurals
+      locale: $locale
+    }
+    on_conflict: {
+      constraint: token_text_pkey
+      update_columns: [
+        name,
+        plurals
+      ]
+    }
+  ) {
+    id
+    name
+    plurals
+  }
+}
+
+mutation upsertCardType(
+  $id: String!,
+  $name: String!
+) {
+	insert_rangers_type_one(
+    object: {
+      id: $id
+      name: $name
+    }
+    on_conflict: {
+      constraint: type_pkey
+      update_columns: [
+        name
+      ]
+    }
+  ) {
+    id
+    name
+  }
+}
+
+mutation upsertCardTypeText(
+  $id: String!,
+  $locale: String!,
+  $name: String!
+) {
+	insert_rangers_type_text_one(
+    object: {
+      id: $id
+      name: $name
+      locale: $locale
+    }
+    on_conflict: {
+      constraint: type_text_pkey
+      update_columns: [
+        name
+      ]
+    }
+  ) {
+    id
+    name
+    locale
+  }
+}
