@@ -33,6 +33,7 @@ fragment CardText on rangers_card_text {
 fragment CardSet on rangers_set {
   id
   name
+  size
   type_id
 }
 
@@ -259,12 +260,14 @@ mutation upsertCard(
 mutation upsertCardSet(
   $id: String!,
   $name: String!,
-  $type_id: String
+  $type_id: String,
+  $size: Int,
 ) {
   insert_rangers_set_one(
     object: {
       id: $id
       name: $name
+      size: $size
       type_id: $type_id
     }
     on_conflict: {
@@ -272,6 +275,7 @@ mutation upsertCardSet(
       update_columns: [
         id,
         name,
+        size,
         type_id
       ]
     }

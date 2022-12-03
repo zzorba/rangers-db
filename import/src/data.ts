@@ -23,7 +23,7 @@ export const TABLES: { [key: string]: Table } = {
   },
   set: {
     collection: 'set',
-    fields: ['type_id'],
+    fields: ['type_id', 'size'],
     textFields: ['name'],
     foreignKeys: {
       type_id: 'set_type',

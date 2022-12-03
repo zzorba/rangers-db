@@ -1,0 +1,51 @@
+fragment Card on rangers_card_localized {
+  id
+  name
+  traits
+  equip
+  presence
+  token_id
+  token_name
+  token_plurals
+  token_count
+  harm
+  approach_conflict
+  approach_reason
+  approach_exploration
+  approach_connection
+  text
+  set_id
+  set_name
+  set_type_id
+  set_size
+  set_type_name
+  set_position
+  quantity
+  level
+  type_id
+  type_name
+  cost
+  aspect_id
+  aspect_name
+  aspect_short_name
+  progress
+}
+
+fragment Aspect on rangers_aspect_localized {
+  id
+  name
+  short_name
+}
+
+query getCards($locale: String!) {
+  rangers_card_localized(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...Card
+  }
+  rangers_aspect_localized(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...Aspect
+  }
+}

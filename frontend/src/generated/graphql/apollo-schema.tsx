@@ -1,11 +1,11 @@
-import { GraphQLClient } from 'graphql-request';
-import * as Dom from 'graphql-request/dist/types.dom';
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -18677,10 +18677,6 @@ export type Query_Root = {
   rangers_set_aggregate: Rangers_Set_Aggregate;
   /** fetch data from the table: "rangers.set" using primary key columns */
   rangers_set_by_pk?: Maybe<Rangers_Set>;
-  /** fetch data from the table: "rangers.set_localized" */
-  rangers_set_localized: Array<Rangers_Set_Localized>;
-  /** fetch aggregated fields from the table: "rangers.set_localized" */
-  rangers_set_localized_aggregate: Rangers_Set_Localized_Aggregate;
   /** fetch data from the table: "rangers.set_text" */
   rangers_set_text: Array<Rangers_Set_Text>;
   /** fetch aggregated fields from the table: "rangers.set_text" */
@@ -18693,10 +18689,6 @@ export type Query_Root = {
   rangers_set_type_aggregate: Rangers_Set_Type_Aggregate;
   /** fetch data from the table: "rangers.set_type" using primary key columns */
   rangers_set_type_by_pk?: Maybe<Rangers_Set_Type>;
-  /** fetch data from the table: "rangers.set_type_localized" */
-  rangers_set_type_localized: Array<Rangers_Set_Type_Localized>;
-  /** fetch aggregated fields from the table: "rangers.set_type_localized" */
-  rangers_set_type_localized_aggregate: Rangers_Set_Type_Localized_Aggregate;
   /** fetch data from the table: "rangers.set_type_text" */
   rangers_set_type_text: Array<Rangers_Set_Type_Text>;
   /** fetch aggregated fields from the table: "rangers.set_type_text" */
@@ -18709,10 +18701,6 @@ export type Query_Root = {
   rangers_token_aggregate: Rangers_Token_Aggregate;
   /** fetch data from the table: "rangers.token" using primary key columns */
   rangers_token_by_pk?: Maybe<Rangers_Token>;
-  /** fetch data from the table: "rangers.token_localized" */
-  rangers_token_localized: Array<Rangers_Token_Localized>;
-  /** fetch aggregated fields from the table: "rangers.token_localized" */
-  rangers_token_localized_aggregate: Rangers_Token_Localized_Aggregate;
   /** fetch data from the table: "rangers.token_text" */
   rangers_token_text: Array<Rangers_Token_Text>;
   /** fetch aggregated fields from the table: "rangers.token_text" */
@@ -18725,10 +18713,6 @@ export type Query_Root = {
   rangers_type_aggregate: Rangers_Type_Aggregate;
   /** fetch data from the table: "rangers.type" using primary key columns */
   rangers_type_by_pk?: Maybe<Rangers_Type>;
-  /** fetch data from the table: "rangers.type_localized" */
-  rangers_type_localized: Array<Rangers_Type_Localized>;
-  /** fetch aggregated fields from the table: "rangers.type_localized" */
-  rangers_type_localized_aggregate: Rangers_Type_Localized_Aggregate;
   /** fetch data from the table: "rangers.type_text" */
   rangers_type_text: Array<Rangers_Type_Text>;
   /** fetch aggregated fields from the table: "rangers.type_text" */
@@ -19873,24 +19857,6 @@ export type Query_RootRangers_Set_By_PkArgs = {
 };
 
 
-export type Query_RootRangers_Set_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
-};
-
-
-export type Query_RootRangers_Set_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
-};
-
-
 export type Query_RootRangers_Set_TextArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Set_Text_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -19935,24 +19901,6 @@ export type Query_RootRangers_Set_Type_AggregateArgs = {
 
 export type Query_RootRangers_Set_Type_By_PkArgs = {
   id: Scalars['String'];
-};
-
-
-export type Query_RootRangers_Set_Type_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Set_Type_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
-};
-
-
-export type Query_RootRangers_Set_Type_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Set_Type_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
 };
 
 
@@ -20003,24 +19951,6 @@ export type Query_RootRangers_Token_By_PkArgs = {
 };
 
 
-export type Query_RootRangers_Token_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Token_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
-export type Query_RootRangers_Token_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Token_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
 export type Query_RootRangers_Token_TextArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Token_Text_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -20065,24 +19995,6 @@ export type Query_RootRangers_Type_AggregateArgs = {
 
 export type Query_RootRangers_Type_By_PkArgs = {
   id: Scalars['String'];
-};
-
-
-export type Query_RootRangers_Type_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Type_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
-};
-
-
-export type Query_RootRangers_Type_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Type_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
 };
 
 
@@ -20942,6 +20854,7 @@ export type Rangers_Card_Localized = {
   set_id?: Maybe<Scalars['String']>;
   set_name?: Maybe<Scalars['String']>;
   set_position?: Maybe<Scalars['Int']>;
+  set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
@@ -20999,6 +20912,7 @@ export type Rangers_Card_Localized_Avg_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21030,6 +20944,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   set_id?: InputMaybe<String_Comparison_Exp>;
   set_name?: InputMaybe<String_Comparison_Exp>;
   set_position?: InputMaybe<Int_Comparison_Exp>;
+  set_size?: InputMaybe<Int_Comparison_Exp>;
   set_type_id?: InputMaybe<String_Comparison_Exp>;
   set_type_name?: InputMaybe<String_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
@@ -21068,6 +20983,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   set_id?: Maybe<Scalars['String']>;
   set_name?: Maybe<Scalars['String']>;
   set_position?: Maybe<Scalars['Int']>;
+  set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
@@ -21106,6 +21022,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   set_id?: Maybe<Scalars['String']>;
   set_name?: Maybe<Scalars['String']>;
   set_position?: Maybe<Scalars['Int']>;
+  set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
@@ -21143,6 +21060,7 @@ export type Rangers_Card_Localized_Order_By = {
   set_id?: InputMaybe<Order_By>;
   set_name?: InputMaybe<Order_By>;
   set_position?: InputMaybe<Order_By>;
+  set_size?: InputMaybe<Order_By>;
   set_type_id?: InputMaybe<Order_By>;
   set_type_name?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
@@ -21204,6 +21122,8 @@ export enum Rangers_Card_Localized_Select_Column {
   /** column name */
   SetPosition = 'set_position',
   /** column name */
+  SetSize = 'set_size',
+  /** column name */
   SetTypeId = 'set_type_id',
   /** column name */
   SetTypeName = 'set_type_name',
@@ -21240,6 +21160,7 @@ export type Rangers_Card_Localized_Stddev_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21258,6 +21179,7 @@ export type Rangers_Card_Localized_Stddev_Pop_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21276,6 +21198,7 @@ export type Rangers_Card_Localized_Stddev_Samp_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21312,6 +21235,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   set_id?: InputMaybe<Scalars['String']>;
   set_name?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
+  set_size?: InputMaybe<Scalars['Int']>;
   set_type_id?: InputMaybe<Scalars['String']>;
   set_type_name?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
@@ -21339,6 +21263,7 @@ export type Rangers_Card_Localized_Sum_Fields = {
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   set_position?: Maybe<Scalars['Int']>;
+  set_size?: Maybe<Scalars['Int']>;
   token_count?: Maybe<Scalars['Int']>;
 };
 
@@ -21357,6 +21282,7 @@ export type Rangers_Card_Localized_Var_Pop_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21375,6 +21301,7 @@ export type Rangers_Card_Localized_Var_Samp_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21393,6 +21320,7 @@ export type Rangers_Card_Localized_Variance_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -22688,118 +22616,6 @@ export type Rangers_Set_Insert_Input = {
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
-/** columns and relationships of "rangers.set_localized" */
-export type Rangers_Set_Localized = {
-  __typename?: 'rangers_set_localized';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  type_id?: Maybe<Scalars['String']>;
-  type_name?: Maybe<Scalars['String']>;
-};
-
-/** aggregated selection of "rangers.set_localized" */
-export type Rangers_Set_Localized_Aggregate = {
-  __typename?: 'rangers_set_localized_aggregate';
-  aggregate?: Maybe<Rangers_Set_Localized_Aggregate_Fields>;
-  nodes: Array<Rangers_Set_Localized>;
-};
-
-/** aggregate fields of "rangers.set_localized" */
-export type Rangers_Set_Localized_Aggregate_Fields = {
-  __typename?: 'rangers_set_localized_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Rangers_Set_Localized_Max_Fields>;
-  min?: Maybe<Rangers_Set_Localized_Min_Fields>;
-};
-
-
-/** aggregate fields of "rangers.set_localized" */
-export type Rangers_Set_Localized_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** Boolean expression to filter rows from the table "rangers.set_localized". All fields are combined with a logical 'AND'. */
-export type Rangers_Set_Localized_Bool_Exp = {
-  _and?: InputMaybe<Array<Rangers_Set_Localized_Bool_Exp>>;
-  _not?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
-  _or?: InputMaybe<Array<Rangers_Set_Localized_Bool_Exp>>;
-  id?: InputMaybe<String_Comparison_Exp>;
-  locale?: InputMaybe<String_Comparison_Exp>;
-  name?: InputMaybe<String_Comparison_Exp>;
-  real_name?: InputMaybe<String_Comparison_Exp>;
-  type_id?: InputMaybe<String_Comparison_Exp>;
-  type_name?: InputMaybe<String_Comparison_Exp>;
-};
-
-/** aggregate max on columns */
-export type Rangers_Set_Localized_Max_Fields = {
-  __typename?: 'rangers_set_localized_max_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  type_id?: Maybe<Scalars['String']>;
-  type_name?: Maybe<Scalars['String']>;
-};
-
-/** aggregate min on columns */
-export type Rangers_Set_Localized_Min_Fields = {
-  __typename?: 'rangers_set_localized_min_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  type_id?: Maybe<Scalars['String']>;
-  type_name?: Maybe<Scalars['String']>;
-};
-
-/** Ordering options when selecting data from "rangers.set_localized". */
-export type Rangers_Set_Localized_Order_By = {
-  id?: InputMaybe<Order_By>;
-  locale?: InputMaybe<Order_By>;
-  name?: InputMaybe<Order_By>;
-  real_name?: InputMaybe<Order_By>;
-  type_id?: InputMaybe<Order_By>;
-  type_name?: InputMaybe<Order_By>;
-};
-
-/** select columns of table "rangers.set_localized" */
-export enum Rangers_Set_Localized_Select_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Locale = 'locale',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  RealName = 'real_name',
-  /** column name */
-  TypeId = 'type_id',
-  /** column name */
-  TypeName = 'type_name'
-}
-
-/** Streaming cursor of the table "rangers_set_localized" */
-export type Rangers_Set_Localized_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Rangers_Set_Localized_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Rangers_Set_Localized_Stream_Cursor_Value_Input = {
-  id?: InputMaybe<Scalars['String']>;
-  locale?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  real_name?: InputMaybe<Scalars['String']>;
-  type_id?: InputMaybe<Scalars['String']>;
-  type_name?: InputMaybe<Scalars['String']>;
-};
-
 /** aggregate max on columns */
 export type Rangers_Set_Max_Fields = {
   __typename?: 'rangers_set_max_fields';
@@ -23191,102 +23007,6 @@ export type Rangers_Set_Type_Insert_Input = {
   translations?: InputMaybe<Rangers_Set_Type_Text_Arr_Rel_Insert_Input>;
 };
 
-/** columns and relationships of "rangers.set_type_localized" */
-export type Rangers_Set_Type_Localized = {
-  __typename?: 'rangers_set_type_localized';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-};
-
-/** aggregated selection of "rangers.set_type_localized" */
-export type Rangers_Set_Type_Localized_Aggregate = {
-  __typename?: 'rangers_set_type_localized_aggregate';
-  aggregate?: Maybe<Rangers_Set_Type_Localized_Aggregate_Fields>;
-  nodes: Array<Rangers_Set_Type_Localized>;
-};
-
-/** aggregate fields of "rangers.set_type_localized" */
-export type Rangers_Set_Type_Localized_Aggregate_Fields = {
-  __typename?: 'rangers_set_type_localized_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Rangers_Set_Type_Localized_Max_Fields>;
-  min?: Maybe<Rangers_Set_Type_Localized_Min_Fields>;
-};
-
-
-/** aggregate fields of "rangers.set_type_localized" */
-export type Rangers_Set_Type_Localized_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** Boolean expression to filter rows from the table "rangers.set_type_localized". All fields are combined with a logical 'AND'. */
-export type Rangers_Set_Type_Localized_Bool_Exp = {
-  _and?: InputMaybe<Array<Rangers_Set_Type_Localized_Bool_Exp>>;
-  _not?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
-  _or?: InputMaybe<Array<Rangers_Set_Type_Localized_Bool_Exp>>;
-  id?: InputMaybe<String_Comparison_Exp>;
-  locale?: InputMaybe<String_Comparison_Exp>;
-  name?: InputMaybe<String_Comparison_Exp>;
-  real_name?: InputMaybe<String_Comparison_Exp>;
-};
-
-/** aggregate max on columns */
-export type Rangers_Set_Type_Localized_Max_Fields = {
-  __typename?: 'rangers_set_type_localized_max_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-};
-
-/** aggregate min on columns */
-export type Rangers_Set_Type_Localized_Min_Fields = {
-  __typename?: 'rangers_set_type_localized_min_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-};
-
-/** Ordering options when selecting data from "rangers.set_type_localized". */
-export type Rangers_Set_Type_Localized_Order_By = {
-  id?: InputMaybe<Order_By>;
-  locale?: InputMaybe<Order_By>;
-  name?: InputMaybe<Order_By>;
-  real_name?: InputMaybe<Order_By>;
-};
-
-/** select columns of table "rangers.set_type_localized" */
-export enum Rangers_Set_Type_Localized_Select_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Locale = 'locale',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  RealName = 'real_name'
-}
-
-/** Streaming cursor of the table "rangers_set_type_localized" */
-export type Rangers_Set_Type_Localized_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Rangers_Set_Type_Localized_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Rangers_Set_Type_Localized_Stream_Cursor_Value_Input = {
-  id?: InputMaybe<Scalars['String']>;
-  locale?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  real_name?: InputMaybe<Scalars['String']>;
-};
-
 /** aggregate max on columns */
 export type Rangers_Set_Type_Max_Fields = {
   __typename?: 'rangers_set_type_max_fields';
@@ -23652,118 +23372,6 @@ export type Rangers_Token_Insert_Input = {
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
-/** columns and relationships of "rangers.token_localized" */
-export type Rangers_Token_Localized = {
-  __typename?: 'rangers_token_localized';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  plurals?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  real_plurals?: Maybe<Scalars['String']>;
-};
-
-/** aggregated selection of "rangers.token_localized" */
-export type Rangers_Token_Localized_Aggregate = {
-  __typename?: 'rangers_token_localized_aggregate';
-  aggregate?: Maybe<Rangers_Token_Localized_Aggregate_Fields>;
-  nodes: Array<Rangers_Token_Localized>;
-};
-
-/** aggregate fields of "rangers.token_localized" */
-export type Rangers_Token_Localized_Aggregate_Fields = {
-  __typename?: 'rangers_token_localized_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Rangers_Token_Localized_Max_Fields>;
-  min?: Maybe<Rangers_Token_Localized_Min_Fields>;
-};
-
-
-/** aggregate fields of "rangers.token_localized" */
-export type Rangers_Token_Localized_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** Boolean expression to filter rows from the table "rangers.token_localized". All fields are combined with a logical 'AND'. */
-export type Rangers_Token_Localized_Bool_Exp = {
-  _and?: InputMaybe<Array<Rangers_Token_Localized_Bool_Exp>>;
-  _not?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-  _or?: InputMaybe<Array<Rangers_Token_Localized_Bool_Exp>>;
-  id?: InputMaybe<String_Comparison_Exp>;
-  locale?: InputMaybe<String_Comparison_Exp>;
-  name?: InputMaybe<String_Comparison_Exp>;
-  plurals?: InputMaybe<String_Comparison_Exp>;
-  real_name?: InputMaybe<String_Comparison_Exp>;
-  real_plurals?: InputMaybe<String_Comparison_Exp>;
-};
-
-/** aggregate max on columns */
-export type Rangers_Token_Localized_Max_Fields = {
-  __typename?: 'rangers_token_localized_max_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  plurals?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  real_plurals?: Maybe<Scalars['String']>;
-};
-
-/** aggregate min on columns */
-export type Rangers_Token_Localized_Min_Fields = {
-  __typename?: 'rangers_token_localized_min_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  plurals?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  real_plurals?: Maybe<Scalars['String']>;
-};
-
-/** Ordering options when selecting data from "rangers.token_localized". */
-export type Rangers_Token_Localized_Order_By = {
-  id?: InputMaybe<Order_By>;
-  locale?: InputMaybe<Order_By>;
-  name?: InputMaybe<Order_By>;
-  plurals?: InputMaybe<Order_By>;
-  real_name?: InputMaybe<Order_By>;
-  real_plurals?: InputMaybe<Order_By>;
-};
-
-/** select columns of table "rangers.token_localized" */
-export enum Rangers_Token_Localized_Select_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Locale = 'locale',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  Plurals = 'plurals',
-  /** column name */
-  RealName = 'real_name',
-  /** column name */
-  RealPlurals = 'real_plurals'
-}
-
-/** Streaming cursor of the table "rangers_token_localized" */
-export type Rangers_Token_Localized_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Rangers_Token_Localized_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Rangers_Token_Localized_Stream_Cursor_Value_Input = {
-  id?: InputMaybe<Scalars['String']>;
-  locale?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  plurals?: InputMaybe<Scalars['String']>;
-  real_name?: InputMaybe<Scalars['String']>;
-  real_plurals?: InputMaybe<Scalars['String']>;
-};
-
 /** aggregate max on columns */
 export type Rangers_Token_Max_Fields = {
   __typename?: 'rangers_token_max_fields';
@@ -24086,102 +23694,6 @@ export type Rangers_Type_Insert_Input = {
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** columns and relationships of "rangers.type_localized" */
-export type Rangers_Type_Localized = {
-  __typename?: 'rangers_type_localized';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-};
-
-/** aggregated selection of "rangers.type_localized" */
-export type Rangers_Type_Localized_Aggregate = {
-  __typename?: 'rangers_type_localized_aggregate';
-  aggregate?: Maybe<Rangers_Type_Localized_Aggregate_Fields>;
-  nodes: Array<Rangers_Type_Localized>;
-};
-
-/** aggregate fields of "rangers.type_localized" */
-export type Rangers_Type_Localized_Aggregate_Fields = {
-  __typename?: 'rangers_type_localized_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Rangers_Type_Localized_Max_Fields>;
-  min?: Maybe<Rangers_Type_Localized_Min_Fields>;
-};
-
-
-/** aggregate fields of "rangers.type_localized" */
-export type Rangers_Type_Localized_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** Boolean expression to filter rows from the table "rangers.type_localized". All fields are combined with a logical 'AND'. */
-export type Rangers_Type_Localized_Bool_Exp = {
-  _and?: InputMaybe<Array<Rangers_Type_Localized_Bool_Exp>>;
-  _not?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
-  _or?: InputMaybe<Array<Rangers_Type_Localized_Bool_Exp>>;
-  id?: InputMaybe<String_Comparison_Exp>;
-  locale?: InputMaybe<String_Comparison_Exp>;
-  name?: InputMaybe<String_Comparison_Exp>;
-  real_name?: InputMaybe<String_Comparison_Exp>;
-};
-
-/** aggregate max on columns */
-export type Rangers_Type_Localized_Max_Fields = {
-  __typename?: 'rangers_type_localized_max_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-};
-
-/** aggregate min on columns */
-export type Rangers_Type_Localized_Min_Fields = {
-  __typename?: 'rangers_type_localized_min_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-};
-
-/** Ordering options when selecting data from "rangers.type_localized". */
-export type Rangers_Type_Localized_Order_By = {
-  id?: InputMaybe<Order_By>;
-  locale?: InputMaybe<Order_By>;
-  name?: InputMaybe<Order_By>;
-  real_name?: InputMaybe<Order_By>;
-};
-
-/** select columns of table "rangers.type_localized" */
-export enum Rangers_Type_Localized_Select_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Locale = 'locale',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  RealName = 'real_name'
-}
-
-/** Streaming cursor of the table "rangers_type_localized" */
-export type Rangers_Type_Localized_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Rangers_Type_Localized_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Rangers_Type_Localized_Stream_Cursor_Value_Input = {
-  id?: InputMaybe<Scalars['String']>;
-  locale?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  real_name?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -24804,12 +24316,6 @@ export type Subscription_Root = {
   rangers_set_aggregate: Rangers_Set_Aggregate;
   /** fetch data from the table: "rangers.set" using primary key columns */
   rangers_set_by_pk?: Maybe<Rangers_Set>;
-  /** fetch data from the table: "rangers.set_localized" */
-  rangers_set_localized: Array<Rangers_Set_Localized>;
-  /** fetch aggregated fields from the table: "rangers.set_localized" */
-  rangers_set_localized_aggregate: Rangers_Set_Localized_Aggregate;
-  /** fetch data from the table in a streaming manner: "rangers.set_localized" */
-  rangers_set_localized_stream: Array<Rangers_Set_Localized>;
   /** fetch data from the table in a streaming manner: "rangers.set" */
   rangers_set_stream: Array<Rangers_Set>;
   /** fetch data from the table: "rangers.set_text" */
@@ -24826,12 +24332,6 @@ export type Subscription_Root = {
   rangers_set_type_aggregate: Rangers_Set_Type_Aggregate;
   /** fetch data from the table: "rangers.set_type" using primary key columns */
   rangers_set_type_by_pk?: Maybe<Rangers_Set_Type>;
-  /** fetch data from the table: "rangers.set_type_localized" */
-  rangers_set_type_localized: Array<Rangers_Set_Type_Localized>;
-  /** fetch aggregated fields from the table: "rangers.set_type_localized" */
-  rangers_set_type_localized_aggregate: Rangers_Set_Type_Localized_Aggregate;
-  /** fetch data from the table in a streaming manner: "rangers.set_type_localized" */
-  rangers_set_type_localized_stream: Array<Rangers_Set_Type_Localized>;
   /** fetch data from the table in a streaming manner: "rangers.set_type" */
   rangers_set_type_stream: Array<Rangers_Set_Type>;
   /** fetch data from the table: "rangers.set_type_text" */
@@ -24848,12 +24348,6 @@ export type Subscription_Root = {
   rangers_token_aggregate: Rangers_Token_Aggregate;
   /** fetch data from the table: "rangers.token" using primary key columns */
   rangers_token_by_pk?: Maybe<Rangers_Token>;
-  /** fetch data from the table: "rangers.token_localized" */
-  rangers_token_localized: Array<Rangers_Token_Localized>;
-  /** fetch aggregated fields from the table: "rangers.token_localized" */
-  rangers_token_localized_aggregate: Rangers_Token_Localized_Aggregate;
-  /** fetch data from the table in a streaming manner: "rangers.token_localized" */
-  rangers_token_localized_stream: Array<Rangers_Token_Localized>;
   /** fetch data from the table in a streaming manner: "rangers.token" */
   rangers_token_stream: Array<Rangers_Token>;
   /** fetch data from the table: "rangers.token_text" */
@@ -24870,12 +24364,6 @@ export type Subscription_Root = {
   rangers_type_aggregate: Rangers_Type_Aggregate;
   /** fetch data from the table: "rangers.type" using primary key columns */
   rangers_type_by_pk?: Maybe<Rangers_Type>;
-  /** fetch data from the table: "rangers.type_localized" */
-  rangers_type_localized: Array<Rangers_Type_Localized>;
-  /** fetch aggregated fields from the table: "rangers.type_localized" */
-  rangers_type_localized_aggregate: Rangers_Type_Localized_Aggregate;
-  /** fetch data from the table in a streaming manner: "rangers.type_localized" */
-  rangers_type_localized_stream: Array<Rangers_Type_Localized>;
   /** fetch data from the table in a streaming manner: "rangers.type" */
   rangers_type_stream: Array<Rangers_Type>;
   /** fetch data from the table: "rangers.type_text" */
@@ -26371,31 +25859,6 @@ export type Subscription_RootRangers_Set_By_PkArgs = {
 };
 
 
-export type Subscription_RootRangers_Set_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Set_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Set_Localized_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Rangers_Set_Localized_Stream_Cursor_Input>>;
-  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
-};
-
-
 export type Subscription_RootRangers_Set_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Set_Stream_Cursor_Input>>;
@@ -26454,31 +25917,6 @@ export type Subscription_RootRangers_Set_Type_AggregateArgs = {
 
 export type Subscription_RootRangers_Set_Type_By_PkArgs = {
   id: Scalars['String'];
-};
-
-
-export type Subscription_RootRangers_Set_Type_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Set_Type_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Set_Type_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Set_Type_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Set_Type_Localized_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Rangers_Set_Type_Localized_Stream_Cursor_Input>>;
-  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
 };
 
 
@@ -26543,31 +25981,6 @@ export type Subscription_RootRangers_Token_By_PkArgs = {
 };
 
 
-export type Subscription_RootRangers_Token_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Token_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Token_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Token_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Token_Localized_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Rangers_Token_Localized_Stream_Cursor_Input>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
 export type Subscription_RootRangers_Token_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Token_Stream_Cursor_Input>>;
@@ -26626,31 +26039,6 @@ export type Subscription_RootRangers_Type_AggregateArgs = {
 
 export type Subscription_RootRangers_Type_By_PkArgs = {
   id: Scalars['String'];
-};
-
-
-export type Subscription_RootRangers_Type_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Type_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Type_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Type_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Type_Localized_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Rangers_Type_Localized_Stream_Cursor_Input>>;
-  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
 };
 
 
@@ -29008,220 +28396,27 @@ export type Users_Updates = {
   where: Users_Bool_Exp;
 };
 
-export type CardFragment = { __typename?: 'rangers_card', id: string, name: string, traits?: string | null | undefined, equip?: number | null | undefined, presence?: number | null | undefined, token_id?: string | null | undefined, token_count?: number | null | undefined, harm?: number | null | undefined, approach_conflict?: number | null | undefined, approach_reason?: number | null | undefined, approach_exploration?: number | null | undefined, approach_connection?: number | null | undefined, text?: string | null | undefined, set_id: string, set_position: number, quantity: number, level?: number | null | undefined, type_id?: string | null | undefined, cost?: number | null | undefined, aspect_id?: string | null | undefined, progress?: number | null | undefined };
+export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null };
 
-export type CardTextFragment = { __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined };
+export type AspectFragment = { __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null };
 
-export type CardSetFragment = { __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined };
-
-export type CardSetTextFragment = { __typename?: 'rangers_set_text', id: string, locale: string, name: string };
-
-export type CardSetTypeFragment = { __typename?: 'rangers_set_type', id: string, name: string };
-
-export type CardSetTypeTextFragment = { __typename?: 'rangers_set_type_text', id: string, locale: string, name: string };
-
-export type CardTokenFragment = { __typename?: 'rangers_token', id: string, name: string, plurals?: string | null | undefined };
-
-export type CardTokenTextFragment = { __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string };
-
-export type CardAspectFragment = { __typename?: 'rangers_aspect', id: string, name: string, short_name?: string | null | undefined };
-
-export type CardAspectTextFragment = { __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string };
-
-export type CardTypeFragment = { __typename?: 'rangers_type', id: string, name: string };
-
-export type CardTypeTextFragment = { __typename?: 'rangers_type_text', id: string, locale: string, name: string };
-
-export type CardPackFragment = { __typename?: 'rangers_pack', id: string, name: string };
-
-export type CardPackTextFragment = { __typename?: 'rangers_pack_text', id: string, locale: string, name: string };
-
-export type GetCardsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetCardsQuery = { __typename?: 'query_root', rangers_card: Array<{ __typename?: 'rangers_card', id: string, name: string, traits?: string | null | undefined, equip?: number | null | undefined, presence?: number | null | undefined, token_id?: string | null | undefined, token_count?: number | null | undefined, harm?: number | null | undefined, approach_conflict?: number | null | undefined, approach_reason?: number | null | undefined, approach_exploration?: number | null | undefined, approach_connection?: number | null | undefined, text?: string | null | undefined, set_id: string, set_position: number, quantity: number, level?: number | null | undefined, type_id?: string | null | undefined, cost?: number | null | undefined, aspect_id?: string | null | undefined, progress?: number | null | undefined }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined }> };
-
-export type GetMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetMetadataQuery = { __typename?: 'query_root', rangers_aspect: Array<{ __typename?: 'rangers_aspect', id: string, name: string, short_name?: string | null | undefined }>, rangers_pack: Array<{ __typename?: 'rangers_pack', id: string, name: string }>, rangers_set: Array<{ __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined }>, rangers_set_type: Array<{ __typename?: 'rangers_set_type', id: string, name: string }>, rangers_token: Array<{ __typename?: 'rangers_token', id: string, name: string, plurals?: string | null | undefined }>, rangers_type: Array<{ __typename?: 'rangers_type', id: string, name: string }> };
-
-export type GetTranslationDataQueryVariables = Exact<{
+export type GetCardsQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type GetTranslationDataQuery = { __typename?: 'query_root', rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }> };
-
-export type GetTranslationsQueryVariables = Exact<{
-  locale: Scalars['String'];
-}>;
-
-
-export type GetTranslationsQuery = { __typename?: 'query_root', rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined }> };
-
-export type UpsertCardMutationVariables = Exact<{
-  id: Scalars['String'];
-  name?: Maybe<Scalars['String']>;
-  traits?: Maybe<Scalars['String']>;
-  equip?: Maybe<Scalars['Int']>;
-  presence?: Maybe<Scalars['Int']>;
-  token_id?: Maybe<Scalars['String']>;
-  token_count?: Maybe<Scalars['Int']>;
-  harm?: Maybe<Scalars['Int']>;
-  approach_conflict?: Maybe<Scalars['Int']>;
-  approach_reason?: Maybe<Scalars['Int']>;
-  approach_exploration?: Maybe<Scalars['Int']>;
-  approach_connection?: Maybe<Scalars['Int']>;
-  text?: Maybe<Scalars['String']>;
-  set_id?: Maybe<Scalars['String']>;
-  set_position?: Maybe<Scalars['Int']>;
-  quantity?: Maybe<Scalars['Int']>;
-  level?: Maybe<Scalars['Int']>;
-  type_id?: Maybe<Scalars['String']>;
-  cost?: Maybe<Scalars['Int']>;
-  aspect_id?: Maybe<Scalars['String']>;
-  progress?: Maybe<Scalars['Int']>;
-}>;
-
-
-export type UpsertCardMutation = { __typename?: 'mutation_root', insert_rangers_card_one?: { __typename?: 'rangers_card', id: string } | null | undefined };
-
-export type UpsertCardSetMutationVariables = Exact<{
-  id: Scalars['String'];
-  name: Scalars['String'];
-  type_id?: Maybe<Scalars['String']>;
-  size?: Maybe<Scalars['Int']>;
-}>;
-
-
-export type UpsertCardSetMutation = { __typename?: 'mutation_root', insert_rangers_set_one?: { __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined } | null | undefined };
-
-export type UpsertCardSetTextMutationVariables = Exact<{
-  id: Scalars['String'];
-  locale: Scalars['String'];
-  name: Scalars['String'];
-}>;
-
-
-export type UpsertCardSetTextMutation = { __typename?: 'mutation_root', insert_rangers_set_text_one?: { __typename?: 'rangers_set_text', id: string, locale: string, name: string } | null | undefined };
-
-export type UpsertCardSetTypeMutationVariables = Exact<{
-  id: Scalars['String'];
-  name: Scalars['String'];
-}>;
-
-
-export type UpsertCardSetTypeMutation = { __typename?: 'mutation_root', insert_rangers_set_type_one?: { __typename?: 'rangers_set_type', id: string, name: string } | null | undefined };
-
-export type UpsertCardSetTypeTextMutationVariables = Exact<{
-  id: Scalars['String'];
-  locale: Scalars['String'];
-  name: Scalars['String'];
-}>;
-
-
-export type UpsertCardSetTypeTextMutation = { __typename?: 'mutation_root', insert_rangers_set_type_text_one?: { __typename?: 'rangers_set_type_text', id: string, locale: string, name: string } | null | undefined };
-
-export type GetLocaleTextQueryVariables = Exact<{
-  locale: Scalars['String'];
-}>;
-
-
-export type GetLocaleTextQuery = { __typename?: 'query_root', rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }> };
-
-export type UpsertCardTextMutationVariables = Exact<{
-  id: Scalars['String'];
-  locale: Scalars['String'];
-  name?: Maybe<Scalars['String']>;
-  traits?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-}>;
-
-
-export type UpsertCardTextMutation = { __typename?: 'mutation_root', insert_rangers_card_text_one?: { __typename?: 'rangers_card_text', id: string, locale: string } | null | undefined };
-
-export type UpsertCardPackMutationVariables = Exact<{
-  id: Scalars['String'];
-  name: Scalars['String'];
-  position: Scalars['Int'];
-}>;
-
-
-export type UpsertCardPackMutation = { __typename?: 'mutation_root', insert_rangers_pack_one?: { __typename?: 'rangers_pack', id: string, name: string, position?: number | null | undefined } | null | undefined };
-
-export type UpsertCardPackTextMutationVariables = Exact<{
-  id: Scalars['String'];
-  locale: Scalars['String'];
-  name?: Maybe<Scalars['String']>;
-}>;
-
-
-export type UpsertCardPackTextMutation = { __typename?: 'mutation_root', insert_rangers_pack_text_one?: { __typename?: 'rangers_pack_text', id: string, locale: string, name: string } | null | undefined };
-
-export type UpsertAspectMutationVariables = Exact<{
-  id: Scalars['String'];
-  name: Scalars['String'];
-  short_name: Scalars['String'];
-}>;
-
-
-export type UpsertAspectMutation = { __typename?: 'mutation_root', insert_rangers_aspect_one?: { __typename?: 'rangers_aspect', id: string, name: string, short_name?: string | null | undefined } | null | undefined };
-
-export type UpsertAspectTextMutationVariables = Exact<{
-  id: Scalars['String'];
-  locale: Scalars['String'];
-  name: Scalars['String'];
-  short_name: Scalars['String'];
-}>;
-
-
-export type UpsertAspectTextMutation = { __typename?: 'mutation_root', insert_rangers_aspect_text_one?: { __typename?: 'rangers_aspect_text', id: string, name: string, short_name: string } | null | undefined };
-
-export type UpsertTokenMutationVariables = Exact<{
-  id: Scalars['String'];
-  name: Scalars['String'];
-  plurals: Scalars['String'];
-}>;
-
-
-export type UpsertTokenMutation = { __typename?: 'mutation_root', insert_rangers_token_one?: { __typename?: 'rangers_token', id: string, name: string, plurals?: string | null | undefined } | null | undefined };
-
-export type UpsertTokenTextMutationVariables = Exact<{
-  id: Scalars['String'];
-  locale: Scalars['String'];
-  name: Scalars['String'];
-  plurals: Scalars['String'];
-}>;
-
-
-export type UpsertTokenTextMutation = { __typename?: 'mutation_root', insert_rangers_token_text_one?: { __typename?: 'rangers_token_text', id: string, name: string, plurals: string } | null | undefined };
-
-export type UpsertCardTypeMutationVariables = Exact<{
-  id: Scalars['String'];
-  name: Scalars['String'];
-}>;
-
-
-export type UpsertCardTypeMutation = { __typename?: 'mutation_root', insert_rangers_type_one?: { __typename?: 'rangers_type', id: string, name: string } | null | undefined };
-
-export type UpsertCardTypeTextMutationVariables = Exact<{
-  id: Scalars['String'];
-  locale: Scalars['String'];
-  name: Scalars['String'];
-}>;
-
-
-export type UpsertCardTypeTextMutation = { __typename?: 'mutation_root', insert_rangers_type_text_one?: { __typename?: 'rangers_type_text', id: string, name: string, locale: string } | null | undefined };
+export type GetCardsQuery = { __typename?: 'query_root', rangers_card_localized: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }>, rangers_aspect_localized: Array<{ __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null }> };
 
 export const CardFragmentDoc = gql`
-    fragment Card on rangers_card {
+    fragment Card on rangers_card_localized {
   id
   name
   traits
   equip
   presence
   token_id
+  token_name
+  token_plurals
   token_count
   harm
   approach_conflict
@@ -29230,435 +28425,68 @@ export const CardFragmentDoc = gql`
   approach_connection
   text
   set_id
+  set_name
+  set_type_id
+  set_size
+  set_type_name
   set_position
   quantity
   level
   type_id
+  type_name
   cost
   aspect_id
+  aspect_name
+  aspect_short_name
   progress
 }
     `;
-export const CardTextFragmentDoc = gql`
-    fragment CardText on rangers_card_text {
-  id
-  locale
-  name
-  traits
-  text
-}
-    `;
-export const CardSetFragmentDoc = gql`
-    fragment CardSet on rangers_set {
-  id
-  name
-  size
-  type_id
-}
-    `;
-export const CardSetTextFragmentDoc = gql`
-    fragment CardSetText on rangers_set_text {
-  id
-  locale
-  name
-}
-    `;
-export const CardSetTypeFragmentDoc = gql`
-    fragment CardSetType on rangers_set_type {
-  id
-  name
-}
-    `;
-export const CardSetTypeTextFragmentDoc = gql`
-    fragment CardSetTypeText on rangers_set_type_text {
-  id
-  locale
-  name
-}
-    `;
-export const CardTokenFragmentDoc = gql`
-    fragment CardToken on rangers_token {
-  id
-  name
-  plurals
-}
-    `;
-export const CardTokenTextFragmentDoc = gql`
-    fragment CardTokenText on rangers_token_text {
-  id
-  locale
-  name
-  plurals
-}
-    `;
-export const CardAspectFragmentDoc = gql`
-    fragment CardAspect on rangers_aspect {
+export const AspectFragmentDoc = gql`
+    fragment Aspect on rangers_aspect_localized {
   id
   name
   short_name
-}
-    `;
-export const CardAspectTextFragmentDoc = gql`
-    fragment CardAspectText on rangers_aspect_text {
-  id
-  locale
-  name
-  short_name
-}
-    `;
-export const CardTypeFragmentDoc = gql`
-    fragment CardType on rangers_type {
-  id
-  name
-}
-    `;
-export const CardTypeTextFragmentDoc = gql`
-    fragment CardTypeText on rangers_type_text {
-  id
-  locale
-  name
-}
-    `;
-export const CardPackFragmentDoc = gql`
-    fragment CardPack on rangers_pack {
-  id
-  name
-}
-    `;
-export const CardPackTextFragmentDoc = gql`
-    fragment CardPackText on rangers_pack_text {
-  id
-  locale
-  name
 }
     `;
 export const GetCardsDocument = gql`
-    query getCards {
-  rangers_card {
+    query getCards($locale: String!) {
+  rangers_card_localized(where: {locale: {_eq: $locale}}) {
     ...Card
   }
-  rangers_card_text(where: {locale: {_eq: "en"}}) {
-    ...CardText
+  rangers_aspect_localized(where: {locale: {_eq: $locale}}) {
+    ...Aspect
   }
 }
     ${CardFragmentDoc}
-${CardTextFragmentDoc}`;
-export const GetMetadataDocument = gql`
-    query getMetadata {
-  rangers_aspect {
-    ...CardAspect
-  }
-  rangers_pack {
-    ...CardPack
-  }
-  rangers_set {
-    ...CardSet
-  }
-  rangers_set_type {
-    ...CardSetType
-  }
-  rangers_token {
-    ...CardToken
-  }
-  rangers_type {
-    ...CardType
-  }
-}
-    ${CardAspectFragmentDoc}
-${CardPackFragmentDoc}
-${CardSetFragmentDoc}
-${CardSetTypeFragmentDoc}
-${CardTokenFragmentDoc}
-${CardTypeFragmentDoc}`;
-export const GetTranslationDataDocument = gql`
-    query getTranslationData($locale: String!) {
-  rangers_aspect_text(where: {locale: {_eq: $locale}}) {
-    ...CardAspectText
-  }
-  rangers_pack_text(where: {locale: {_eq: $locale}}) {
-    ...CardPackText
-  }
-  rangers_set_text(where: {locale: {_eq: $locale}}) {
-    ...CardSetText
-  }
-  rangers_set_type_text(where: {locale: {_eq: $locale}}) {
-    ...CardSetTypeText
-  }
-  rangers_token_text(where: {locale: {_eq: $locale}}) {
-    ...CardTokenText
-  }
-  rangers_type_text(where: {locale: {_eq: $locale}}) {
-    ...CardTypeText
-  }
-}
-    ${CardAspectTextFragmentDoc}
-${CardPackTextFragmentDoc}
-${CardSetTextFragmentDoc}
-${CardSetTypeTextFragmentDoc}
-${CardTokenTextFragmentDoc}
-${CardTypeTextFragmentDoc}`;
-export const GetTranslationsDocument = gql`
-    query getTranslations($locale: String!) {
-  rangers_card_text(where: {locale: {_eq: $locale}}) {
-    ...CardText
-  }
-}
-    ${CardTextFragmentDoc}`;
-export const UpsertCardDocument = gql`
-    mutation upsertCard($id: String!, $name: String, $traits: String, $equip: Int, $presence: Int, $token_id: String, $token_count: Int, $harm: Int, $approach_conflict: Int, $approach_reason: Int, $approach_exploration: Int, $approach_connection: Int, $text: String, $set_id: String, $set_position: Int, $quantity: Int, $level: Int, $type_id: String, $cost: Int, $aspect_id: String, $progress: Int) {
-  insert_rangers_card_one(
-    object: {id: $id, name: $name, traits: $traits, equip: $equip, presence: $presence, token_id: $token_id, token_count: $token_count, harm: $harm, approach_conflict: $approach_conflict, approach_reason: $approach_reason, approach_exploration: $approach_exploration, approach_connection: $approach_connection, text: $text, set_id: $set_id, set_position: $set_position, quantity: $quantity, level: $level, type_id: $type_id, cost: $cost, aspect_id: $aspect_id, progress: $progress}
-    on_conflict: {constraint: card_pkey, update_columns: [id, name, traits, equip, presence, token_id, token_count, harm, approach_conflict, approach_reason, approach_exploration, approach_connection, text, set_id, set_position, quantity, level, type_id, cost, aspect_id, progress]}
-  ) {
-    id
-  }
-}
-    `;
-export const UpsertCardSetDocument = gql`
-    mutation upsertCardSet($id: String!, $name: String!, $type_id: String, $size: Int) {
-  insert_rangers_set_one(
-    object: {id: $id, name: $name, size: $size, type_id: $type_id}
-    on_conflict: {constraint: set_pkey, update_columns: [id, name, size, type_id]}
-  ) {
-    ...CardSet
-  }
-}
-    ${CardSetFragmentDoc}`;
-export const UpsertCardSetTextDocument = gql`
-    mutation upsertCardSetText($id: String!, $locale: String!, $name: String!) {
-  insert_rangers_set_text_one(
-    object: {id: $id, locale: $locale, name: $name}
-    on_conflict: {constraint: set_text_pkey, update_columns: [id, name]}
-  ) {
-    ...CardSetText
-  }
-}
-    ${CardSetTextFragmentDoc}`;
-export const UpsertCardSetTypeDocument = gql`
-    mutation upsertCardSetType($id: String!, $name: String!) {
-  insert_rangers_set_type_one(
-    object: {id: $id, name: $name}
-    on_conflict: {constraint: set_type_pkey, update_columns: [id, name]}
-  ) {
-    ...CardSetType
-  }
-}
-    ${CardSetTypeFragmentDoc}`;
-export const UpsertCardSetTypeTextDocument = gql`
-    mutation upsertCardSetTypeText($id: String!, $locale: String!, $name: String!) {
-  insert_rangers_set_type_text_one(
-    object: {id: $id, locale: $locale, name: $name}
-    on_conflict: {constraint: set_type_text_pkey, update_columns: [id, name]}
-  ) {
-    ...CardSetTypeText
-  }
-}
-    ${CardSetTypeTextFragmentDoc}`;
-export const GetLocaleTextDocument = gql`
-    query getLocaleText($locale: String!) {
-  rangers_card_text(where: {locale: {_eq: $locale}}) {
-    ...CardText
-  }
-  rangers_pack_text(where: {locale: {_eq: $locale}}) {
-    ...CardPackText
-  }
-  rangers_set_text(where: {locale: {_eq: $locale}}) {
-    ...CardSetText
-  }
-  rangers_set_type_text(where: {locale: {_eq: $locale}}) {
-    ...CardSetTypeText
-  }
-  rangers_token_text(where: {locale: {_eq: $locale}}) {
-    ...CardTokenText
-  }
-  rangers_type_text(where: {locale: {_eq: $locale}}) {
-    ...CardTypeText
-  }
-  rangers_aspect_text(where: {locale: {_eq: $locale}}) {
-    ...CardAspectText
-  }
-}
-    ${CardTextFragmentDoc}
-${CardPackTextFragmentDoc}
-${CardSetTextFragmentDoc}
-${CardSetTypeTextFragmentDoc}
-${CardTokenTextFragmentDoc}
-${CardTypeTextFragmentDoc}
-${CardAspectTextFragmentDoc}`;
-export const UpsertCardTextDocument = gql`
-    mutation upsertCardText($id: String!, $locale: String!, $name: String, $traits: String, $text: String) {
-  insert_rangers_card_text_one(
-    object: {id: $id, locale: $locale, name: $name, text: $text, traits: $traits}
-    on_conflict: {constraint: card_text_pkey, update_columns: [id, locale, name, text, traits]}
-  ) {
-    id
-    locale
-  }
-}
-    `;
-export const UpsertCardPackDocument = gql`
-    mutation upsertCardPack($id: String!, $name: String!, $position: Int!) {
-  insert_rangers_pack_one(
-    object: {id: $id, name: $name, position: $position}
-    on_conflict: {constraint: pack_pkey, update_columns: [id, name, position]}
-  ) {
-    id
-    name
-    position
-  }
-}
-    `;
-export const UpsertCardPackTextDocument = gql`
-    mutation upsertCardPackText($id: String!, $locale: String!, $name: String) {
-  insert_rangers_pack_text_one(
-    object: {id: $id, locale: $locale, name: $name}
-    on_conflict: {constraint: pack_text_pkey, update_columns: [id, locale, name]}
-  ) {
-    id
-    locale
-    name
-  }
-}
-    `;
-export const UpsertAspectDocument = gql`
-    mutation upsertAspect($id: String!, $name: String!, $short_name: String!) {
-  insert_rangers_aspect_one(
-    object: {id: $id, name: $name, short_name: $short_name}
-    on_conflict: {constraint: aspect_pkey, update_columns: [name, short_name]}
-  ) {
-    id
-    name
-    short_name
-  }
-}
-    `;
-export const UpsertAspectTextDocument = gql`
-    mutation upsertAspectText($id: String!, $locale: String!, $name: String!, $short_name: String!) {
-  insert_rangers_aspect_text_one(
-    object: {id: $id, name: $name, short_name: $short_name, locale: $locale}
-    on_conflict: {constraint: aspect_text_pkey, update_columns: [name, short_name]}
-  ) {
-    id
-    name
-    short_name
-  }
-}
-    `;
-export const UpsertTokenDocument = gql`
-    mutation upsertToken($id: String!, $name: String!, $plurals: String!) {
-  insert_rangers_token_one(
-    object: {id: $id, name: $name, plurals: $plurals}
-    on_conflict: {constraint: token_pkey, update_columns: [name, plurals]}
-  ) {
-    id
-    name
-    plurals
-  }
-}
-    `;
-export const UpsertTokenTextDocument = gql`
-    mutation upsertTokenText($id: String!, $locale: String!, $name: String!, $plurals: String!) {
-  insert_rangers_token_text_one(
-    object: {id: $id, name: $name, plurals: $plurals, locale: $locale}
-    on_conflict: {constraint: token_text_pkey, update_columns: [name, plurals]}
-  ) {
-    id
-    name
-    plurals
-  }
-}
-    `;
-export const UpsertCardTypeDocument = gql`
-    mutation upsertCardType($id: String!, $name: String!) {
-  insert_rangers_type_one(
-    object: {id: $id, name: $name}
-    on_conflict: {constraint: type_pkey, update_columns: [name]}
-  ) {
-    id
-    name
-  }
-}
-    `;
-export const UpsertCardTypeTextDocument = gql`
-    mutation upsertCardTypeText($id: String!, $locale: String!, $name: String!) {
-  insert_rangers_type_text_one(
-    object: {id: $id, name: $name, locale: $locale}
-    on_conflict: {constraint: type_text_pkey, update_columns: [name]}
-  ) {
-    id
-    name
-    locale
-  }
-}
-    `;
+${AspectFragmentDoc}`;
 
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
-
-
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action();
-
-export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
-  return {
-    getCards(variables?: GetCardsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCardsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetCardsQuery>(GetCardsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCards');
-    },
-    getMetadata(variables?: GetMetadataQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetMetadataQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetMetadataQuery>(GetMetadataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getMetadata');
-    },
-    getTranslationData(variables: GetTranslationDataQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTranslationDataQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetTranslationDataQuery>(GetTranslationDataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTranslationData');
-    },
-    getTranslations(variables: GetTranslationsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTranslationsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetTranslationsQuery>(GetTranslationsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTranslations');
-    },
-    upsertCard(variables: UpsertCardMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardMutation>(UpsertCardDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCard');
-    },
-    upsertCardSet(variables: UpsertCardSetMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSetMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSetMutation>(UpsertCardSetDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSet');
-    },
-    upsertCardSetText(variables: UpsertCardSetTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSetTextMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSetTextMutation>(UpsertCardSetTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSetText');
-    },
-    upsertCardSetType(variables: UpsertCardSetTypeMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSetTypeMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSetTypeMutation>(UpsertCardSetTypeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSetType');
-    },
-    upsertCardSetTypeText(variables: UpsertCardSetTypeTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSetTypeTextMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSetTypeTextMutation>(UpsertCardSetTypeTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSetTypeText');
-    },
-    getLocaleText(variables: GetLocaleTextQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetLocaleTextQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetLocaleTextQuery>(GetLocaleTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getLocaleText');
-    },
-    upsertCardText(variables: UpsertCardTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardTextMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardTextMutation>(UpsertCardTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardText');
-    },
-    upsertCardPack(variables: UpsertCardPackMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardPackMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardPackMutation>(UpsertCardPackDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardPack');
-    },
-    upsertCardPackText(variables: UpsertCardPackTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardPackTextMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardPackTextMutation>(UpsertCardPackTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardPackText');
-    },
-    upsertAspect(variables: UpsertAspectMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertAspectMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertAspectMutation>(UpsertAspectDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertAspect');
-    },
-    upsertAspectText(variables: UpsertAspectTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertAspectTextMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertAspectTextMutation>(UpsertAspectTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertAspectText');
-    },
-    upsertToken(variables: UpsertTokenMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertTokenMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertTokenMutation>(UpsertTokenDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertToken');
-    },
-    upsertTokenText(variables: UpsertTokenTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertTokenTextMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertTokenTextMutation>(UpsertTokenTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertTokenText');
-    },
-    upsertCardType(variables: UpsertCardTypeMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardTypeMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardTypeMutation>(UpsertCardTypeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardType');
-    },
-    upsertCardTypeText(variables: UpsertCardTypeTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardTypeTextMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardTypeTextMutation>(UpsertCardTypeTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardTypeText');
-    }
-  };
-}
-export type Sdk = ReturnType<typeof getSdk>;
+/**
+ * __useGetCardsQuery__
+ *
+ * To run a query within a React component, call `useGetCardsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCardsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCardsQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetCardsQuery(baseOptions: Apollo.QueryHookOptions<GetCardsQuery, GetCardsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
+      }
+export function useGetCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCardsQuery, GetCardsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
+        }
+export type GetCardsQueryHookResult = ReturnType<typeof useGetCardsQuery>;
+export type GetCardsLazyQueryHookResult = ReturnType<typeof useGetCardsLazyQuery>;
+export type GetCardsQueryResult = Apollo.QueryResult<GetCardsQuery, GetCardsQueryVariables>;
 
       export interface PossibleTypesResultData {
         possibleTypes: {

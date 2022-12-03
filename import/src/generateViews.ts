@@ -22,6 +22,21 @@ forEach(TABLES, (schema, table) => {
             forEach(fkSchema.textFields, tField => {
               joinSelectClause += `, fk_${fk_table}.${tField} as ${fieldName}_${tField}\n`;
             });
+            forEach(fkSchema.fields, tField => {
+              joinSelectClause += `, fk_${fk_table}.${tField} as ${fieldName}_${tField}\n`;
+            });
+
+            forEach(fkSchema.foreignKeys, (fkFkTableName, fkField) => {
+              if (fkFkTableName) {
+                const cleanField = fkField.replace('_id', '');
+                const fkFkSchema = TABLES[fk_table];
+                if (fkFkSchema) {
+                  forEach(fkSchema.textFields, tField2 => {
+                    joinSelectClause += `, fk_${fk_table}.${cleanField}_${tField2} as ${fieldName}_${cleanField}_${tField2}\n`;
+                  });
+                }
+              }
+            })
           }
         }
       });
