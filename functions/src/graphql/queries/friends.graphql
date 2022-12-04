@@ -1,0 +1,79 @@
+query friendStatus($fromUserId:String!, $toUserId:String!) {
+  rangers_friend_status_by_pk(
+    user_id_a: $fromUserId
+  	user_id_b: $toUserId
+  ) {
+    status
+  }
+}
+
+mutation sendFriendRequest($fromUserId:String!, $toUserId:String!) {
+  insert_rangers_friend_status(
+    objects: [
+      {
+        user_id_a: $fromUserId
+        user_id_b: $toUserId
+        status: sent
+      },
+      {
+        user_id_a: $toUserId
+        user_id_b: $fromUserId
+        status: received
+      }
+    ]
+    on_conflict: {
+      constraint: friend_status_pkey
+      update_columns: [status]
+      where: {
+        status: { _neq: friend }
+      }
+    }
+  ) {
+    affected_rows
+  }
+}
+
+mutation acceptFriendRequest($fromUserId:String!, $toUserId:String!) {
+  insert_rangers_friend_status(
+    objects: [
+      {
+        user_id_a: $fromUserId
+        user_id_b: $toUserId
+        status: friend
+      },
+      {
+        user_id_a: $toUserId
+        user_id_b: $fromUserId
+        status: friend
+      }
+    ]
+    on_conflict: {
+      constraint: friend_status_pkey
+      update_columns: [status]
+      where: {
+        status: { _neq: friend }
+      }
+    }
+  ) {
+    affected_rows
+  }
+}
+
+mutation rejectFriendRequest($fromUserId:String!, $toUserId:String!) {
+  delete_rangers_friend_status(
+    where: {
+      _or: [
+        {
+          user_id_a: { _eq: $fromUserId }
+          user_id_b: { _eq: $toUserId }
+        },
+        {
+          user_id_a: { _eq: $toUserId }
+          user_id_b: { _eq: $fromUserId }
+        }
+      ]
+    }
+  ) {
+    affected_rows
+  }
+}

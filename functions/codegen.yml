@@ -1,0 +1,15 @@
+overwrite: true
+schema: 
+  - https://gapi.arkhamcards.com/v1/graphql:
+      headers:
+        content-type: "application/json"
+        x-hasura-admin-secret: "${MASTER_KEY}"
+documents: "src/graphql/queries/*.graphql"
+generates:
+  src/graphql/schema.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-graphql-request"
+      - "fragment-matcher"
+

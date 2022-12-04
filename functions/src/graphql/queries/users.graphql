@@ -1,0 +1,110 @@
+ mutation createUser($id: String!) {
+  insert_rangers_users_one(
+    object: {
+      id: $id
+    }
+    on_conflict: {
+      constraint: users_pkey
+      update_columns: []
+    }
+  ) {
+    id
+  }
+  insert_rangers_user_settings_one(
+    object: {
+      user_id: $id
+    }
+    on_conflict: {
+      constraint: user_settings_pkey
+      update_columns: []
+    }
+  ) {
+    user_id
+  }
+}
+
+query getUser(
+  $id: String!
+) {
+  rangers_users_by_pk(id: $id){
+    id
+    handle
+    normalized_handle
+  }
+}
+
+
+query getUserByHandle(
+  $handle: String!
+) {
+  rangers_users(
+    where: { handle: { _eq: $handle } }
+  ) {
+    id
+  }
+}
+
+query getUserByNormalizedHandle(
+  $normalizedHandle: String!
+) {
+  rangers_users(
+    where: { normalized_handle: { _eq: $normalizedHandle } }
+  ) {
+    id
+  }
+}
+
+query getProfile(
+  $id: String!
+) {
+  rangers_users_by_pk(id: $id) {
+    id
+  }
+}
+
+mutation deleteUser($id: String!) {
+  delete_rangers_users(where: {id: {_eq: $id}}) {
+    affected_rows
+  }
+}
+
+mutation updateHandle($userId:String!, $handle: String!, $normalizedHandle: String!) {
+  update_rangers_users_by_pk(
+    pk_columns: { id: $userId }
+    _set: {
+      handle: $handle,
+      normalized_handle: $normalizedHandle
+    }
+  ) {
+    id
+    handle
+    normalized_handle
+  }
+}
+
+query searchHandles(
+  $normalizedHandle: String!,
+  $normalizedHandleStart: String!,
+  $offset: Int
+) {
+  startMatch: rangers_users(
+    where: {
+			normalized_handle: { _ilike: $normalizedHandleStart }
+    }
+    limit: 20
+    offset: $offset
+  ) {
+    id
+    handle
+  }
+  looseMatch: rangers_users(
+    where: {
+			normalized_handle: { _ilike: $normalizedHandle }
+    }
+    limit: 20
+    offset: $offset
+  ) {
+    id
+    handle
+  }
+}

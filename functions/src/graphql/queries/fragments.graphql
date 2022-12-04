@@ -1,0 +1,4 @@
+fragment UserInfo on rangers_users {
+  id
+  handle
+}
