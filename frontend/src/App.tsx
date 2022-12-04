@@ -4,11 +4,11 @@ import { CachePersistor } from 'apollo3-cache-persist';
 import { ChakraProvider, Heading, Container, Text, Button } from '@chakra-ui/react'
 import { t } from 'ttag';
 
-import logo from './logo.svg';
 import './App.css';
 import { initClient } from './graphql/client';
 import CardList from './CardList';
 import theme from './theme';
+import { NavBar } from './components/NavBar';
 
 function App() {
   const [client, setClient] = useState<ApolloClient<NormalizedCacheObject>>();
@@ -27,14 +27,19 @@ function App() {
     window.location.reload();
   }, [persistor]);
   if (!client) {
-    return <div>Loading</div>;
+    return (
+      <ChakraProvider theme={theme}>
+        <NavBar />
+      </ChakraProvider>
+    );
   }
   return (
     <ChakraProvider theme={theme}>
       <ApolloProvider client={client}>
+        <NavBar />
         <Container maxW="container.lg">
           <Heading>{t`RangersDB`}</Heading>
-          <Text>This site is a WIP. Deckbuilding coming soon.</Text>
+          <Text>This site is a WIP. Deck building coming soon.</Text>
           <CardList />
         </Container>
         <Container as="footer" role="contentinfo" py={{ base: '12', md: '16' }}>

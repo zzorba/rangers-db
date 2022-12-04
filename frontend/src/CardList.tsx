@@ -16,7 +16,7 @@ function CardButtonRow({ card, showModal, aspects }: { card: CardFragment; aspec
   const onClick = useCallback(() => showModal(card), [card, showModal]);
 
   return (
-    <ListItem onClick={onClick}>
+    <ListItem cursor="pointer" onClick={onClick}>
       <CardRow card={card} aspects={aspects} />
     </ListItem>
   );

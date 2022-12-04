@@ -10,6 +10,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
+  Tooltip,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
 import { t } from 'ttag';
@@ -27,14 +28,24 @@ interface Props {
   aspects: AspectMap;
 }
 
-function AspectLevel({ card, aspects }: { card: CardFragment; aspects: AspectMap }) {
+function AspectLevel({ card, aspects, mini }: { card: CardFragment; aspects: AspectMap; mini?: boolean }) {
   const aspect = card.aspect_id && aspects[card.aspect_id];
   if (!aspect) {
     return null;
   }
+  if (mini) {
+    return (
+      <Box padding={0.5} paddingLeft={1} paddingRight={1} backgroundColor={aspect?.color}>
+        <Text color="#FFFFFF" fontWeight={900} fontSize="xs">
+          { !!card.level && card.level }&nbsp;
+          { aspect.short_name }
+        </Text>
+      </Box>
+    );
+  }
   return (
     <Box padding={1} paddingLeft={2} paddingRight={2} backgroundColor={aspect?.color}>
-      <Text color="#FFFFFF" fontWeight={900}>
+      <Text color="#FFFFFF" fontWeight={900} fontSize="m">
         { !!card.level && `${card.level} ` }
         {aspect.short_name}
       </Text>
@@ -74,9 +85,9 @@ function Cost({ cost, aspect }: { cost: number; aspect?: Aspect }) {
   return (
     <Box
       bg={aspect?.color}
-      padding={1}
-      paddingLeft={3}
-      paddingRight={3}
+      paddingTop={1}
+      minWidth={12}
+      minHeight={12}
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
@@ -92,7 +103,7 @@ function Cost({ cost, aspect }: { cost: number; aspect?: Aspect }) {
         {cost}
       </Text>
       { !!aspect && (
-        <Text color={aspect ? '#FFFFFF': '#000000'} lineHeight={0.8} fontWeight={600} fontSize="xs">
+        <Text textAlign="center" color={aspect ? '#FFFFFF': '#000000'} lineHeight={0.8} fontWeight={600} fontSize="xs">
           {aspect.short_name}
         </Text>
       ) }
@@ -100,27 +111,32 @@ function Cost({ cost, aspect }: { cost: number; aspect?: Aspect }) {
   );
 }
 
-function ApproachIcon({ type }: { type: 'conflict' | 'reason' | 'connection' | 'exploration'}) {
+function ApproachIcon({ type, mini }: { type: 'conflict' | 'reason' | 'connection' | 'exploration'; mini?: boolean}) {
   return (
-    <Flex borderRadius={4} padding={1} backgroundColor="#222222" direction="column" alignItems="center" justifyContent="center" marginLeft={1}>
-      <CoreIcon icon={type} size={24} color="#FFFFFF" />
+    <Flex borderRadius={4}
+      padding={mini ? 0.5 : 1}
+      paddingTop={mini ? 0.5 : 2}
+      paddingBottom={mini ? 0.5 : 2}
+      backgroundColor="#222222"
+      direction="column" alignItems="center" justifyContent="center" marginLeft={mini ? 0.5 : 1}>
+      <CoreIcon icon={type} size={mini ? 18 : 24} color="#FFFFFF" />
     </Flex>
   )
 }
-function ApproachIcons({ card }: { card: CardFragment }) {
+function ApproachIcons({ card, mini }: { card: CardFragment; mini?: boolean }) {
   return (
     <Flex direction="row">
-      { map(range(0, card.approach_conflict || 0), idx => <ApproachIcon type="conflict" key={idx} /> ) }
-      { map(range(0, card.approach_connection || 0), idx => <ApproachIcon type="connection" key={idx} /> ) }
-      { map(range(0, card.approach_exploration || 0), idx => <ApproachIcon type="exploration" key={idx} /> ) }
-      { map(range(0, card.approach_reason || 0), idx => <ApproachIcon type="reason" key={idx} /> ) }
+      { map(range(0, card.approach_conflict || 0), idx => <ApproachIcon type="conflict" key={idx} mini={mini} /> ) }
+      { map(range(0, card.approach_connection || 0), idx => <ApproachIcon type="connection" key={idx} mini={mini} /> ) }
+      { map(range(0, card.approach_exploration || 0), idx => <ApproachIcon type="exploration" key={idx} mini={mini} /> ) }
+      { map(range(0, card.approach_reason || 0), idx => <ApproachIcon type="reason" key={idx} mini={mini} /> ) }
     </Flex>
   );
 }
 
 function Tokens({ count, name, plurals, aspect }: { count: number; name: string; plurals: string; aspect: Aspect | undefined; }) {
   return (
-    <Box
+    <Flex
       bg={aspect?.color}
       padding={2}
       paddingTop={1}
@@ -129,7 +145,6 @@ function Tokens({ count, name, plurals, aspect }: { count: number; name: string;
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      maxH="4xl"
     >
       <Text
         color={aspect ? '#FFFFFF' : '#000000'}
@@ -145,26 +160,50 @@ function Tokens({ count, name, plurals, aspect }: { count: number; name: string;
           { getPlural('en', plurals, count) }
         </Text>
       ) }
-    </Box>
+    </Flex>
   );
 }
 
-function CardHeader({ card, aspects, flex }: Props & { flex?: number }) {
+function CardPresenceAndIcons({ card, mini }: { card: CardFragment; mini?: boolean }) {
+  return (
+    <Flex direction="row" flex={1} alignItems="flex-start" justifyContent="flex-end" backgroundClip="blue">
+      { !!card.presence && (
+        <Box padding={mini ? 0.5 : 1} paddingLeft={mini ? 2 : 3} paddingRight={mini ? 2 : 3} maxW={10} maxH={10} marginRight={1} marginLeft={3} backgroundColor="#622c52">
+          <Text color="#FFFFFF" fontSize={mini ? 'm' : 'xl'} fontWeight={900}>
+            {card.presence}
+          </Text>
+        </Box>
+      ) }
+      <ApproachIcons card={card} mini={mini} />
+    </Flex>
+  );
+}
+
+function CardHeader({ card, aspects, flex, miniLevel }: Props & { flex?: number; miniLevel?: boolean }) {
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
-    <Flex direction="row" flex={flex}>
-      { card.cost !== undefined && card.cost !== null && <Cost cost={card.cost} aspect={aspect} /> }
-      <Flex direction="column" flexGrow={1}>
-        <Text fontSize="xl" fontWeight={600}>{card.name}</Text>
-        <Flex direction="row">
-          <Text fontSize="xs" fontWeight={600}>
-            {card.type_name}&nbsp;
-          </Text>
-          { card.traits && <Text fontSize="xs" fontStyle="italic" fontWeight={600}>/ {card.traits}</Text> }
-          { !!card.equip && <Equip equip={card.equip} aspect={card.aspect_id || undefined} /> }
+    <Flex direction="row" flex={flex} alignItems="flex-start">
+      <Flex direction="row" flexGrow={1} alignItems="flex-start">
+        { card.cost !== undefined && card.cost !== null && <Cost cost={card.cost} aspect={aspect} /> }
+        <Flex direction="column">
+          <Text fontSize="xl" fontWeight={600} noOfLines={2}>{card.name}</Text>
+          <Flex direction="row">
+            <Text fontSize="xs" fontWeight={600} noOfLines={2}>
+              {card.type_name} {card.traits ? <i>/ {card.traits}</i> : ''}
+            </Text>
+            {  }
+            { !!card.equip && <Equip equip={card.equip} aspect={card.aspect_id || undefined} /> }
+          </Flex>
         </Flex>
       </Flex>
-      <ApproachIcons card={card} />
+      { miniLevel ? (
+        <Flex direction="column" alignItems="flex-end">
+          <CardPresenceAndIcons card={card} mini />
+          <Flex direction="row" justifyContent="flex-end" marginTop={1}>
+            <AspectLevel card={card} aspects={aspects} mini />
+          </Flex>
+        </Flex>
+      ) : <CardPresenceAndIcons card={card} /> }
     </Flex>
   );
 }
@@ -178,6 +217,13 @@ function CardBody({ card, aspects, padding }: Props & { padding?: number }) {
           { !!card.text && <CardText text={card.text} aspects={aspects} aspect={aspect} /> }
         </Flex>
         { card.token_name && card.token_plurals && <Tokens count={card.token_count || 0} name={card.token_name} plurals={card.token_plurals} aspect={aspect} /> }
+        { !!card.harm && (
+          <Box padding={1} paddingLeft={3} paddingRight={3} marginLeft={2} marginBottom={2} backgroundColor="#ad1b23">
+            <Text color="#FFFFFF" fontSize="xl" fontWeight={900} >
+              { card.harm }
+            </Text>
+          </Box>
+        ) }
       </Flex>
       <FooterInfo card={card} aspects={aspects} />
     </>
@@ -199,10 +245,7 @@ export default function Card({ card, aspects }: Props) {
 export function CardRow({ card, aspects }: Props) {
   return (
     <Flex direction="row" padding={2} flex={1} borderBottomWidth={0.5} borderColor="#BBBBBB">
-      <CardHeader card={card} aspects={aspects} flex={1} />
-      <Flex direction="column" justifyContent="flex-end" alignItems="flex-end" marginLeft={2}>
-        <AspectLevel card={card} aspects={aspects} />
-      </Flex>
+      <CardHeader card={card} aspects={aspects} flex={1} miniLevel />
     </Flex>
   );
 }
