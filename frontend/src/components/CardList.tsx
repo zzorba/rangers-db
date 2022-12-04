@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
 import { forEach, map, sortBy } from 'lodash';
-import { CardFragment, useGetCardsQuery } from './generated/graphql/apollo-schema';
-import { CardRow, useCardModal } from './components/Card';
-import { AspectMap } from './types/types';
-import { Container, Box, List, ListItem, Text } from '@chakra-ui/react';
+import { CardFragment, useGetCardsQuery } from '../generated/graphql/apollo-schema';
+import { CardRow, useCardModal } from './Card';
+import { AspectMap } from '../types/types';
+import { List, ListItem, Text } from '@chakra-ui/react';
 
 const ASPECT_COLORS: { [key: string]: string | undefined } = {
   AWA: '#306938',

@@ -1,0 +1,69 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+
+.equip {
+  width: 8px;
+  height: 8px;
+  margin-left: 3px;
+  background: #EEEEEE;
+  border-width: 0.25px;
+  border-color: #AAAAAA;
+}
+
+.AWA {
+  background: #306938;
+  border-color: #306938;
+}
+.FOC {
+  background: #1e2f64;
+  border-color: #1e2f64;}
+.FIT {
+  background: #811019;
+  border-color: #811019;
+}
+.SPI {
+  background: #da6e17;
+  border-color: #da6e17;
+}
+
+.card-text {
+  font-family: source-sans-pro, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+.card-text i {
+  color: #777777;
+  font-weight: 500;
+}
+.card-text b {
+  font-weight: 900;
+}
+.card-line {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}

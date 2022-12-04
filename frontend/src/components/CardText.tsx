@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import Parser from 'simple-text-parser';
-import { Aspect, AspectMap } from './types/types';
-import './CardText.css';
+import { Aspect, AspectMap } from '../types/types';
 import { Box } from '@chakra-ui/react';
 
 export default function CardText({ text, aspects, aspect }: { text: string; aspects: AspectMap; aspect: Aspect | undefined; }) {
@@ -14,7 +13,7 @@ export default function CardText({ text, aspects, aspect }: { text: string; aspe
         }
         return `<span class="core-${element}"></span>`;
       }
-    ).addRule(/\n/g, () => '<hr class="line"></hr>');
+    ).addRule(/\n/g, () => '<hr class="card-line"></hr>');
     return parser.render(text);
   }, [text, aspects]);
   return (

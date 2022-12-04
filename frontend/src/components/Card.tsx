@@ -10,22 +10,27 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  Tooltip,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
 import { t } from 'ttag';
 
-import CardText from '../CardText';
+import CardText from './CardText';
 import { CardFragment } from '../generated/graphql/apollo-schema';
 import { Aspect, AspectMap } from '../types/types';
 import { getPlural } from '../lib/lang';
 
-import './Card.css';
 import CoreIcon from '../icons/CoreIcon';
 
 interface Props {
   card: CardFragment;
   aspects: AspectMap;
+}
+
+function renderNumber(value: number) {
+  if (value === -2) {
+    return 'X';
+  }
+  return value;
 }
 
 function AspectLevel({ card, aspects, mini }: { card: CardFragment; aspects: AspectMap; mini?: boolean }) {
@@ -100,7 +105,7 @@ function Cost({ cost, aspect }: { cost: number; aspect?: Aspect }) {
         textAlign="center"
         lineHeight={1.1}
       >
-        {cost}
+        {renderNumber(cost)}
       </Text>
       { !!aspect && (
         <Text textAlign="center" color={aspect ? '#FFFFFF': '#000000'} lineHeight={0.8} fontWeight={600} fontSize="xs">
