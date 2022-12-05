@@ -15,6 +15,7 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import { map } from 'lodash';
 import {
   HamburgerIcon,
   CloseIcon,
@@ -24,17 +25,46 @@ import {
 import Router from 'next/router';
 import NextLink from 'next/link';
 import { useAuth } from '../lib/AuthContext';
-import { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
+import { useGetCardsQuery, useGetCardsUpdatedAtQuery } from '../generated/graphql/apollo-schema';
+import Banner from './Banner';
 
+function useCardNeedUpdate(): [boolean, () => void] {
+  const { data: cardData, refetch } = useGetCardsQuery({
+    variables: {
+      locale: 'en',
+    },
+    fetchPolicy: 'cache-only',
+  });
+  const { data: updatedData} = useGetCardsUpdatedAtQuery({
+    variables: {
+      locale: 'en',
+    },
+    fetchPolicy: 'network-only',
+  });
+  const forceRefresh = useCallback(() => {
+    refetch({
+      locale: 'en',
+    });
+  }, [refetch]);
+  return [
+    !!(cardData?.updated_at.length && updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at),
+    forceRefresh,
+  ];
+}
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const { authUser, signOut } = useAuth();
+  const [cardNeedUpdate, forceCardUpdate] = useCardNeedUpdate();
   const onSignOut = useCallback(() => {
     Router.push('/');
     signOut();
-  }, []);
-
+  }, [signOut]);
+  const navItems = useMemo(() => [
+    ...(authUser ? [{ label: 'Profile', href: '/profile' }] : []),
+    ...NAV_ITEMS,
+  ], [authUser]);
   return (
     <Box>
       <Flex
@@ -56,14 +86,14 @@ export default function WithSubnavigation() {
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
+            variant="ghost"
+            aria-label="Toggle Navigation"
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Link
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
+            fontFamily="heading"
             color={useColorModeValue('gray.800', 'white')}
             as={NextLink}
             href="/"
@@ -72,38 +102,25 @@ export default function WithSubnavigation() {
           </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav />
+            <DesktopNav navItems={navItems}/>
           </Flex>
         </Flex>
 
         <Stack
           flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
+          justify="flex-end"
+          direction="row"
           spacing={6}
         >
           { authUser ? (
-            <>
-              <Link
-                p={2}
-                as={NextLink}
-                href="/profile"
-                fontSize={'sm'}
-                fontWeight={500}
-                _hover={{
-                  textDecoration: 'none',
-                }}>
-                Profile
-              </Link>
-              <Button
-                fontSize={'sm'}
-                fontWeight={400}
-                variant={'link'}
-                onClick={onSignOut}
-              >
-                Sign Out
-              </Button>
-            </>
+            <Button
+              fontSize={'sm'}
+              fontWeight={400}
+              variant={'link'}
+              onClick={onSignOut}
+            >
+              Sign Out
+            </Button>
           ) : (
             <>
               <Button
@@ -120,11 +137,11 @@ export default function WithSubnavigation() {
                 fontSize={'sm'}
                 fontWeight={600}
                 color={'white'}
-                bg={'pink.400'}
+                bg={'blue.400'}
                 as={NextLink}
                 href="/register"
                 _hover={{
-                  bg: 'pink.300',
+                  bg: 'blue.600',
                 }}>
                 Sign Up
               </Button>
@@ -134,20 +151,27 @@ export default function WithSubnavigation() {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav navItems={navItems} />
       </Collapse>
+      { !!cardNeedUpdate && (
+        <Banner
+          title="New cards are available"
+          action="Update now"
+          onClick={forceCardUpdate}
+        />
+      )}
     </Box>
   );
 }
 
-const DesktopNav = () => {
+const DesktopNav = ({ navItems }: { navItems: NavItem[] } ) => {
+  const { authUser } = useAuth();
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
-
   return (
     <Stack direction={'row'} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
+      { map(navItems, (navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
@@ -222,13 +246,13 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   );
 };
 
-const MobileNav = () => {
+const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}>
-      {NAV_ITEMS.map((navItem) => (
+      {map(navItems, (navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
     </Stack>

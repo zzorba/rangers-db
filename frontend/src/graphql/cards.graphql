@@ -1,6 +1,7 @@
 fragment Card on rangers_card_localized {
   id
   name
+  real_traits
   traits
   equip
   presence
@@ -38,14 +39,61 @@ fragment Aspect on rangers_aspect_localized {
 }
 
 query getCards($locale: String!) {
-  rangers_card_localized(
+  cards: rangers_card_localized(
     where: { locale: { _eq: $locale }}
   ) {
     ...Card
   }
-  rangers_aspect_localized(
+  aspects: rangers_aspect_localized(
     where: { locale: { _eq: $locale }}
   ) {
     ...Aspect
+  }
+  updated_at: rangers_card_updated(
+    where: { locale: { _eq: $locale }}
+  ) {
+    updated_at
+  }
+}
+
+query getCard($locale: String!, $cid: String!) {
+  cards: rangers_card_localized(
+    where: {
+      locale: { _eq: $locale }
+      id: { _eq: $cid }
+    }
+  ) {
+    ...Card
+  }
+  aspects: rangers_aspect_localized(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...Aspect
+  }
+}
+
+query getCardsUpdatedAt($locale: String!) {
+  updated_at: rangers_card_updated(
+    where: { locale: { _eq: $locale }}
+  ) {
+    updated_at
+  }
+}
+
+fragment SetType on rangers_set_type_localized {
+  id
+  name
+  sets {
+    id
+    name
+  }
+}
+
+query getSets($locale: String!) {
+  sets: rangers_set_type_localized(
+    where: { locale: { _eq: $locale }}
+    order_by: { id: desc }
+  ) {
+    ...SetType
   }
 }

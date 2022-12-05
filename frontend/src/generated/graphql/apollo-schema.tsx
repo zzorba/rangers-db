@@ -14257,6 +14257,10 @@ export type Mutation_Root = {
   delete_rangers_card_text?: Maybe<Rangers_Card_Text_Mutation_Response>;
   /** delete single row from the table: "rangers.card_text" */
   delete_rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
+  /** delete data from the table: "rangers.deck" */
+  delete_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
+  /** delete single row from the table: "rangers.deck" */
+  delete_rangers_deck_by_pk?: Maybe<Rangers_Deck>;
   /** delete data from the table: "rangers.friend_status" */
   delete_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
   /** delete single row from the table: "rangers.friend_status" */
@@ -14509,6 +14513,10 @@ export type Mutation_Root = {
   insert_rangers_card_text?: Maybe<Rangers_Card_Text_Mutation_Response>;
   /** insert a single row into the table: "rangers.card_text" */
   insert_rangers_card_text_one?: Maybe<Rangers_Card_Text>;
+  /** insert data into the table: "rangers.deck" */
+  insert_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
+  /** insert a single row into the table: "rangers.deck" */
+  insert_rangers_deck_one?: Maybe<Rangers_Deck>;
   /** insert data into the table: "rangers.friend_status" */
   insert_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
   /** insert a single row into the table: "rangers.friend_status" */
@@ -14843,6 +14851,12 @@ export type Mutation_Root = {
   update_rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
   /** update multiples rows of table: "rangers.card_text" */
   update_rangers_card_text_many?: Maybe<Array<Maybe<Rangers_Card_Text_Mutation_Response>>>;
+  /** update data of the table: "rangers.deck" */
+  update_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
+  /** update single row of the table: "rangers.deck" */
+  update_rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** update multiples rows of table: "rangers.deck" */
+  update_rangers_deck_many?: Maybe<Array<Maybe<Rangers_Deck_Mutation_Response>>>;
   /** update data of the table: "rangers.friend_status" */
   update_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
   /** update single row of the table: "rangers.friend_status" */
@@ -15466,6 +15480,18 @@ export type Mutation_RootDelete_Rangers_Card_TextArgs = {
 export type Mutation_RootDelete_Rangers_Card_Text_By_PkArgs = {
   id: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_DeckArgs = {
+  where: Rangers_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Deck_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -16303,6 +16329,20 @@ export type Mutation_RootInsert_Rangers_Card_TextArgs = {
 export type Mutation_RootInsert_Rangers_Card_Text_OneArgs = {
   object: Rangers_Card_Text_Insert_Input;
   on_conflict?: InputMaybe<Rangers_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_DeckArgs = {
+  objects: Array<Rangers_Deck_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Deck_OneArgs = {
+  object: Rangers_Deck_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Deck_On_Conflict>;
 };
 
 
@@ -17541,6 +17581,38 @@ export type Mutation_RootUpdate_Rangers_Card_Text_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_Card_Text_ManyArgs = {
   updates: Array<Rangers_Card_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_DeckArgs = {
+  _append?: InputMaybe<Rangers_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Rangers_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Rangers_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Rangers_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Rangers_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Rangers_Deck_Prepend_Input>;
+  _set?: InputMaybe<Rangers_Deck_Set_Input>;
+  where: Rangers_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Deck_By_PkArgs = {
+  _append?: InputMaybe<Rangers_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Rangers_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Rangers_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Rangers_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Rangers_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Rangers_Deck_Prepend_Input>;
+  _set?: InputMaybe<Rangers_Deck_Set_Input>;
+  pk_columns: Rangers_Deck_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Deck_ManyArgs = {
+  updates: Array<Rangers_Deck_Updates>;
 };
 
 
@@ -18894,6 +18966,16 @@ export type Query_Root = {
   rangers_card_text_aggregate: Rangers_Card_Text_Aggregate;
   /** fetch data from the table: "rangers.card_text" using primary key columns */
   rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
+  /** fetch data from the table: "rangers.card_updated" */
+  rangers_card_updated: Array<Rangers_Card_Updated>;
+  /** fetch aggregated fields from the table: "rangers.card_updated" */
+  rangers_card_updated_aggregate: Rangers_Card_Updated_Aggregate;
+  /** fetch data from the table: "rangers.deck" */
+  rangers_deck: Array<Rangers_Deck>;
+  /** fetch aggregated fields from the table: "rangers.deck" */
+  rangers_deck_aggregate: Rangers_Deck_Aggregate;
+  /** fetch data from the table: "rangers.deck" using primary key columns */
+  rangers_deck_by_pk?: Maybe<Rangers_Deck>;
   /** fetch data from the table: "rangers.friend_status" */
   rangers_friend_status: Array<Rangers_Friend_Status>;
   /** fetch aggregated fields from the table: "rangers.friend_status" */
@@ -18930,6 +19012,10 @@ export type Query_Root = {
   rangers_set_aggregate: Rangers_Set_Aggregate;
   /** fetch data from the table: "rangers.set" using primary key columns */
   rangers_set_by_pk?: Maybe<Rangers_Set>;
+  /** fetch data from the table: "rangers.set_localized" */
+  rangers_set_localized: Array<Rangers_Set_Localized>;
+  /** fetch aggregated fields from the table: "rangers.set_localized" */
+  rangers_set_localized_aggregate: Rangers_Set_Localized_Aggregate;
   /** fetch data from the table: "rangers.set_text" */
   rangers_set_text: Array<Rangers_Set_Text>;
   /** fetch aggregated fields from the table: "rangers.set_text" */
@@ -18942,6 +19028,10 @@ export type Query_Root = {
   rangers_set_type_aggregate: Rangers_Set_Type_Aggregate;
   /** fetch data from the table: "rangers.set_type" using primary key columns */
   rangers_set_type_by_pk?: Maybe<Rangers_Set_Type>;
+  /** fetch data from the table: "rangers.set_type_localized" */
+  rangers_set_type_localized: Array<Rangers_Set_Type_Localized>;
+  /** fetch aggregated fields from the table: "rangers.set_type_localized" */
+  rangers_set_type_localized_aggregate: Rangers_Set_Type_Localized_Aggregate;
   /** fetch data from the table: "rangers.set_type_text" */
   rangers_set_type_text: Array<Rangers_Set_Type_Text>;
   /** fetch aggregated fields from the table: "rangers.set_type_text" */
@@ -18966,6 +19056,10 @@ export type Query_Root = {
   rangers_type_aggregate: Rangers_Type_Aggregate;
   /** fetch data from the table: "rangers.type" using primary key columns */
   rangers_type_by_pk?: Maybe<Rangers_Type>;
+  /** fetch data from the table: "rangers.type_localized" */
+  rangers_type_localized: Array<Rangers_Type_Localized>;
+  /** fetch aggregated fields from the table: "rangers.type_localized" */
+  rangers_type_localized_aggregate: Rangers_Type_Localized_Aggregate;
   /** fetch data from the table: "rangers.type_text" */
   rangers_type_text: Array<Rangers_Type_Text>;
   /** fetch aggregated fields from the table: "rangers.type_text" */
@@ -20029,6 +20123,47 @@ export type Query_RootRangers_Card_Text_By_PkArgs = {
 };
 
 
+export type Query_RootRangers_Card_UpdatedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Card_Updated_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type Query_RootRangers_Friend_StatusArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -20169,6 +20304,24 @@ export type Query_RootRangers_Set_By_PkArgs = {
 };
 
 
+export type Query_RootRangers_Set_LocalizedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Set_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+};
+
+
 export type Query_RootRangers_Set_TextArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Set_Text_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -20213,6 +20366,24 @@ export type Query_RootRangers_Set_Type_AggregateArgs = {
 
 export type Query_RootRangers_Set_Type_By_PkArgs = {
   id: Scalars['String'];
+};
+
+
+export type Query_RootRangers_Set_Type_LocalizedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Type_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Set_Type_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Type_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
 };
 
 
@@ -20307,6 +20478,24 @@ export type Query_RootRangers_Type_AggregateArgs = {
 
 export type Query_RootRangers_Type_By_PkArgs = {
   id: Scalars['String'];
+};
+
+
+export type Query_RootRangers_Type_LocalizedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Type_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Type_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Type_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
 };
 
 
@@ -20632,6 +20821,7 @@ export type Rangers_Aspect_Localized = {
   real_name?: Maybe<Scalars['String']>;
   real_short_name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregated selection of "rangers.aspect_localized" */
@@ -20667,6 +20857,7 @@ export type Rangers_Aspect_Localized_Bool_Exp = {
   real_name?: InputMaybe<String_Comparison_Exp>;
   real_short_name?: InputMaybe<String_Comparison_Exp>;
   short_name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -20678,6 +20869,7 @@ export type Rangers_Aspect_Localized_Max_Fields = {
   real_name?: Maybe<Scalars['String']>;
   real_short_name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
@@ -20689,6 +20881,7 @@ export type Rangers_Aspect_Localized_Min_Fields = {
   real_name?: Maybe<Scalars['String']>;
   real_short_name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** Ordering options when selecting data from "rangers.aspect_localized". */
@@ -20699,6 +20892,7 @@ export type Rangers_Aspect_Localized_Order_By = {
   real_name?: InputMaybe<Order_By>;
   real_short_name?: InputMaybe<Order_By>;
   short_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "rangers.aspect_localized" */
@@ -20714,7 +20908,9 @@ export enum Rangers_Aspect_Localized_Select_Column {
   /** column name */
   RealShortName = 'real_short_name',
   /** column name */
-  ShortName = 'short_name'
+  ShortName = 'short_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** Streaming cursor of the table "rangers_aspect_localized" */
@@ -20733,6 +20929,7 @@ export type Rangers_Aspect_Localized_Stream_Cursor_Value_Input = {
   real_name?: InputMaybe<Scalars['String']>;
   real_short_name?: InputMaybe<Scalars['String']>;
   short_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -21223,6 +21420,7 @@ export type Rangers_Card_Localized = {
   traits?: Maybe<Scalars['String']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregated selection of "rangers.card_localized" */
@@ -21313,6 +21511,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   traits?: InputMaybe<String_Comparison_Exp>;
   type_id?: InputMaybe<String_Comparison_Exp>;
   type_name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -21352,6 +21551,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   traits?: Maybe<Scalars['String']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
@@ -21391,6 +21591,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   traits?: Maybe<Scalars['String']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** Ordering options when selecting data from "rangers.card_localized". */
@@ -21429,6 +21630,7 @@ export type Rangers_Card_Localized_Order_By = {
   traits?: InputMaybe<Order_By>;
   type_id?: InputMaybe<Order_By>;
   type_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "rangers.card_localized" */
@@ -21500,7 +21702,9 @@ export enum Rangers_Card_Localized_Select_Column {
   /** column name */
   TypeId = 'type_id',
   /** column name */
-  TypeName = 'type_name'
+  TypeName = 'type_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** aggregate stddev on columns */
@@ -21604,6 +21808,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   traits?: InputMaybe<Scalars['String']>;
   type_id?: InputMaybe<Scalars['String']>;
   type_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate sum on columns */
@@ -22239,6 +22444,86 @@ export enum Rangers_Card_Update_Column {
   UpdatedAt = 'updated_at'
 }
 
+/** columns and relationships of "rangers.card_updated" */
+export type Rangers_Card_Updated = {
+  __typename?: 'rangers_card_updated';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "rangers.card_updated" */
+export type Rangers_Card_Updated_Aggregate = {
+  __typename?: 'rangers_card_updated_aggregate';
+  aggregate?: Maybe<Rangers_Card_Updated_Aggregate_Fields>;
+  nodes: Array<Rangers_Card_Updated>;
+};
+
+/** aggregate fields of "rangers.card_updated" */
+export type Rangers_Card_Updated_Aggregate_Fields = {
+  __typename?: 'rangers_card_updated_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Card_Updated_Max_Fields>;
+  min?: Maybe<Rangers_Card_Updated_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.card_updated" */
+export type Rangers_Card_Updated_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.card_updated". All fields are combined with a logical 'AND'. */
+export type Rangers_Card_Updated_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Card_Updated_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Card_Updated_Bool_Exp>>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Card_Updated_Max_Fields = {
+  __typename?: 'rangers_card_updated_max_fields';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Card_Updated_Min_Fields = {
+  __typename?: 'rangers_card_updated_min_fields';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** Ordering options when selecting data from "rangers.card_updated". */
+export type Rangers_Card_Updated_Order_By = {
+  locale?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.card_updated" */
+export enum Rangers_Card_Updated_Select_Column {
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** Streaming cursor of the table "rangers_card_updated" */
+export type Rangers_Card_Updated_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Card_Updated_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Card_Updated_Stream_Cursor_Value_Input = {
+  locale?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 export type Rangers_Card_Updates = {
   /** increments the numeric columns with given value of the filtered values */
   _inc?: InputMaybe<Rangers_Card_Inc_Input>;
@@ -22299,6 +22584,461 @@ export type Rangers_Card_Variance_Fields = {
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_Deck = {
+  __typename?: 'rangers_deck';
+  awa: Scalars['Int'];
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  fit: Scalars['Int'];
+  foc: Scalars['Int'];
+  id: Scalars['Int'];
+  meta: Scalars['jsonb'];
+  name: Scalars['String'];
+  /** An object relationship */
+  next_deck?: Maybe<Rangers_Deck>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  /** An object relationship */
+  previous_deck?: Maybe<Rangers_Deck>;
+  published?: Maybe<Scalars['Boolean']>;
+  slots: Scalars['jsonb'];
+  spi: Scalars['Int'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  /** An object relationship */
+  user: Rangers_Users;
+  user_id: Scalars['String'];
+};
+
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_DeckMetaArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_DeckSlotsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregated selection of "rangers.deck" */
+export type Rangers_Deck_Aggregate = {
+  __typename?: 'rangers_deck_aggregate';
+  aggregate?: Maybe<Rangers_Deck_Aggregate_Fields>;
+  nodes: Array<Rangers_Deck>;
+};
+
+/** aggregate fields of "rangers.deck" */
+export type Rangers_Deck_Aggregate_Fields = {
+  __typename?: 'rangers_deck_aggregate_fields';
+  avg?: Maybe<Rangers_Deck_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Deck_Max_Fields>;
+  min?: Maybe<Rangers_Deck_Min_Fields>;
+  stddev?: Maybe<Rangers_Deck_Stddev_Fields>;
+  stddev_pop?: Maybe<Rangers_Deck_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Rangers_Deck_Stddev_Samp_Fields>;
+  sum?: Maybe<Rangers_Deck_Sum_Fields>;
+  var_pop?: Maybe<Rangers_Deck_Var_Pop_Fields>;
+  var_samp?: Maybe<Rangers_Deck_Var_Samp_Fields>;
+  variance?: Maybe<Rangers_Deck_Variance_Fields>;
+};
+
+
+/** aggregate fields of "rangers.deck" */
+export type Rangers_Deck_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Rangers_Deck_Append_Input = {
+  meta?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** aggregate avg on columns */
+export type Rangers_Deck_Avg_Fields = {
+  __typename?: 'rangers_deck_avg_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.deck". All fields are combined with a logical 'AND'. */
+export type Rangers_Deck_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Deck_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Deck_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Deck_Bool_Exp>>;
+  awa?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  fit?: InputMaybe<Int_Comparison_Exp>;
+  foc?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  meta?: InputMaybe<Jsonb_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  next_deck?: InputMaybe<Rangers_Deck_Bool_Exp>;
+  next_deck_id?: InputMaybe<Int_Comparison_Exp>;
+  previous_deck?: InputMaybe<Rangers_Deck_Bool_Exp>;
+  published?: InputMaybe<Boolean_Comparison_Exp>;
+  slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  spi?: InputMaybe<Int_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user?: InputMaybe<Rangers_Users_Bool_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.deck" */
+export enum Rangers_Deck_Constraint {
+  /** unique or primary key constraint on columns "next_deck_id" */
+  DeckNextDeckIdKey = 'deck_next_deck_id_key',
+  /** unique or primary key constraint on columns "id" */
+  DeckPkey = 'deck_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Rangers_Deck_Delete_At_Path_Input = {
+  meta?: InputMaybe<Array<Scalars['String']>>;
+  slots?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Rangers_Deck_Delete_Elem_Input = {
+  meta?: InputMaybe<Scalars['Int']>;
+  slots?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Rangers_Deck_Delete_Key_Input = {
+  meta?: InputMaybe<Scalars['String']>;
+  slots?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for incrementing numeric columns in table "rangers.deck" */
+export type Rangers_Deck_Inc_Input = {
+  awa?: InputMaybe<Scalars['Int']>;
+  fit?: InputMaybe<Scalars['Int']>;
+  foc?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  spi?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "rangers.deck" */
+export type Rangers_Deck_Insert_Input = {
+  awa?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  fit?: InputMaybe<Scalars['Int']>;
+  foc?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck?: InputMaybe<Rangers_Deck_Obj_Rel_Insert_Input>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  previous_deck?: InputMaybe<Rangers_Deck_Obj_Rel_Insert_Input>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  spi?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Deck_Max_Fields = {
+  __typename?: 'rangers_deck_max_fields';
+  awa?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  fit?: Maybe<Scalars['Int']>;
+  foc?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  spi?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Deck_Min_Fields = {
+  __typename?: 'rangers_deck_min_fields';
+  awa?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  fit?: Maybe<Scalars['Int']>;
+  foc?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  spi?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.deck" */
+export type Rangers_Deck_Mutation_Response = {
+  __typename?: 'rangers_deck_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Deck>;
+};
+
+/** input type for inserting object relation for remote table "rangers.deck" */
+export type Rangers_Deck_Obj_Rel_Insert_Input = {
+  data: Rangers_Deck_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Rangers_Deck_On_Conflict>;
+};
+
+/** on_conflict condition type for table "rangers.deck" */
+export type Rangers_Deck_On_Conflict = {
+  constraint: Rangers_Deck_Constraint;
+  update_columns?: Array<Rangers_Deck_Update_Column>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.deck". */
+export type Rangers_Deck_Order_By = {
+  awa?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  fit?: InputMaybe<Order_By>;
+  foc?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  meta?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  next_deck?: InputMaybe<Rangers_Deck_Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
+  previous_deck?: InputMaybe<Rangers_Deck_Order_By>;
+  published?: InputMaybe<Order_By>;
+  slots?: InputMaybe<Order_By>;
+  spi?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user?: InputMaybe<Rangers_Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.deck */
+export type Rangers_Deck_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Rangers_Deck_Prepend_Input = {
+  meta?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "rangers.deck" */
+export enum Rangers_Deck_Select_Column {
+  /** column name */
+  Awa = 'awa',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Fit = 'fit',
+  /** column name */
+  Foc = 'foc',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  Published = 'published',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Spi = 'spi',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "rangers.deck" */
+export type Rangers_Deck_Set_Input = {
+  awa?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  fit?: InputMaybe<Scalars['Int']>;
+  foc?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  spi?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Rangers_Deck_Stddev_Fields = {
+  __typename?: 'rangers_deck_stddev_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Rangers_Deck_Stddev_Pop_Fields = {
+  __typename?: 'rangers_deck_stddev_pop_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Rangers_Deck_Stddev_Samp_Fields = {
+  __typename?: 'rangers_deck_stddev_samp_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "rangers_deck" */
+export type Rangers_Deck_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Deck_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Deck_Stream_Cursor_Value_Input = {
+  awa?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  fit?: InputMaybe<Scalars['Int']>;
+  foc?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  spi?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Rangers_Deck_Sum_Fields = {
+  __typename?: 'rangers_deck_sum_fields';
+  awa?: Maybe<Scalars['Int']>;
+  fit?: Maybe<Scalars['Int']>;
+  foc?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  spi?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "rangers.deck" */
+export enum Rangers_Deck_Update_Column {
+  /** column name */
+  Awa = 'awa',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Fit = 'fit',
+  /** column name */
+  Foc = 'foc',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  Published = 'published',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Spi = 'spi',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Rangers_Deck_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Rangers_Deck_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Rangers_Deck_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Rangers_Deck_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Rangers_Deck_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Rangers_Deck_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Rangers_Deck_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Deck_Set_Input>;
+  where: Rangers_Deck_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Rangers_Deck_Var_Pop_Fields = {
+  __typename?: 'rangers_deck_var_pop_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Rangers_Deck_Var_Samp_Fields = {
+  __typename?: 'rangers_deck_var_samp_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Rangers_Deck_Variance_Fields = {
+  __typename?: 'rangers_deck_variance_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "rangers.friend_status" */
@@ -23255,6 +23995,280 @@ export type Rangers_Set_Insert_Input = {
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
+/** columns and relationships of "rangers.set_localized" */
+export type Rangers_Set_Localized = {
+  __typename?: 'rangers_set_localized';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['Int']>;
+  type_id?: Maybe<Scalars['String']>;
+  type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "rangers.set_localized" */
+export type Rangers_Set_Localized_Aggregate = {
+  __typename?: 'rangers_set_localized_aggregate';
+  aggregate?: Maybe<Rangers_Set_Localized_Aggregate_Fields>;
+  nodes: Array<Rangers_Set_Localized>;
+};
+
+export type Rangers_Set_Localized_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Rangers_Set_Localized_Aggregate_Bool_Exp_Count>;
+};
+
+export type Rangers_Set_Localized_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "rangers.set_localized" */
+export type Rangers_Set_Localized_Aggregate_Fields = {
+  __typename?: 'rangers_set_localized_aggregate_fields';
+  avg?: Maybe<Rangers_Set_Localized_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Set_Localized_Max_Fields>;
+  min?: Maybe<Rangers_Set_Localized_Min_Fields>;
+  stddev?: Maybe<Rangers_Set_Localized_Stddev_Fields>;
+  stddev_pop?: Maybe<Rangers_Set_Localized_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Rangers_Set_Localized_Stddev_Samp_Fields>;
+  sum?: Maybe<Rangers_Set_Localized_Sum_Fields>;
+  var_pop?: Maybe<Rangers_Set_Localized_Var_Pop_Fields>;
+  var_samp?: Maybe<Rangers_Set_Localized_Var_Samp_Fields>;
+  variance?: Maybe<Rangers_Set_Localized_Variance_Fields>;
+};
+
+
+/** aggregate fields of "rangers.set_localized" */
+export type Rangers_Set_Localized_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Aggregate_Order_By = {
+  avg?: InputMaybe<Rangers_Set_Localized_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Rangers_Set_Localized_Max_Order_By>;
+  min?: InputMaybe<Rangers_Set_Localized_Min_Order_By>;
+  stddev?: InputMaybe<Rangers_Set_Localized_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Rangers_Set_Localized_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Rangers_Set_Localized_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Rangers_Set_Localized_Sum_Order_By>;
+  var_pop?: InputMaybe<Rangers_Set_Localized_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Rangers_Set_Localized_Var_Samp_Order_By>;
+  variance?: InputMaybe<Rangers_Set_Localized_Variance_Order_By>;
+};
+
+/** aggregate avg on columns */
+export type Rangers_Set_Localized_Avg_Fields = {
+  __typename?: 'rangers_set_localized_avg_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Avg_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.set_localized". All fields are combined with a logical 'AND'. */
+export type Rangers_Set_Localized_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Set_Localized_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Set_Localized_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  size?: InputMaybe<Int_Comparison_Exp>;
+  type_id?: InputMaybe<String_Comparison_Exp>;
+  type_name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Set_Localized_Max_Fields = {
+  __typename?: 'rangers_set_localized_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['Int']>;
+  type_id?: Maybe<Scalars['String']>;
+  type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  size?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
+  type_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Set_Localized_Min_Fields = {
+  __typename?: 'rangers_set_localized_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['Int']>;
+  type_id?: Maybe<Scalars['String']>;
+  type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  size?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
+  type_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** Ordering options when selecting data from "rangers.set_localized". */
+export type Rangers_Set_Localized_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  size?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
+  type_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.set_localized" */
+export enum Rangers_Set_Localized_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  Size = 'size',
+  /** column name */
+  TypeId = 'type_id',
+  /** column name */
+  TypeName = 'type_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** aggregate stddev on columns */
+export type Rangers_Set_Localized_Stddev_Fields = {
+  __typename?: 'rangers_set_localized_stddev_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Stddev_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Rangers_Set_Localized_Stddev_Pop_Fields = {
+  __typename?: 'rangers_set_localized_stddev_pop_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Stddev_Pop_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Rangers_Set_Localized_Stddev_Samp_Fields = {
+  __typename?: 'rangers_set_localized_stddev_samp_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Stddev_Samp_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "rangers_set_localized" */
+export type Rangers_Set_Localized_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Set_Localized_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Set_Localized_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  size?: InputMaybe<Scalars['Int']>;
+  type_id?: InputMaybe<Scalars['String']>;
+  type_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate sum on columns */
+export type Rangers_Set_Localized_Sum_Fields = {
+  __typename?: 'rangers_set_localized_sum_fields';
+  size?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Sum_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_pop on columns */
+export type Rangers_Set_Localized_Var_Pop_Fields = {
+  __typename?: 'rangers_set_localized_var_pop_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Var_Pop_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Rangers_Set_Localized_Var_Samp_Fields = {
+  __typename?: 'rangers_set_localized_var_samp_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Var_Samp_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Rangers_Set_Localized_Variance_Fields = {
+  __typename?: 'rangers_set_localized_variance_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Variance_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
 /** aggregate max on columns */
 export type Rangers_Set_Max_Fields = {
   __typename?: 'rangers_set_max_fields';
@@ -23578,6 +24592,7 @@ export type Rangers_Set_Type = {
   translations: Array<Rangers_Set_Type_Text>;
   /** An aggregate relationship */
   translations_aggregate: Rangers_Set_Type_Text_Aggregate;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 
@@ -23631,6 +24646,7 @@ export type Rangers_Set_Type_Bool_Exp = {
   name?: InputMaybe<String_Comparison_Exp>;
   translations?: InputMaybe<Rangers_Set_Type_Text_Bool_Exp>;
   translations_aggregate?: InputMaybe<Rangers_Set_Type_Text_Aggregate_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "rangers.set_type" */
@@ -23644,6 +24660,138 @@ export type Rangers_Set_Type_Insert_Input = {
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   translations?: InputMaybe<Rangers_Set_Type_Text_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** columns and relationships of "rangers.set_type_localized" */
+export type Rangers_Set_Type_Localized = {
+  __typename?: 'rangers_set_type_localized';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  sets: Array<Rangers_Set_Localized>;
+  /** An aggregate relationship */
+  sets_aggregate: Rangers_Set_Localized_Aggregate;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+
+/** columns and relationships of "rangers.set_type_localized" */
+export type Rangers_Set_Type_LocalizedSetsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.set_type_localized" */
+export type Rangers_Set_Type_LocalizedSets_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+};
+
+/** aggregated selection of "rangers.set_type_localized" */
+export type Rangers_Set_Type_Localized_Aggregate = {
+  __typename?: 'rangers_set_type_localized_aggregate';
+  aggregate?: Maybe<Rangers_Set_Type_Localized_Aggregate_Fields>;
+  nodes: Array<Rangers_Set_Type_Localized>;
+};
+
+/** aggregate fields of "rangers.set_type_localized" */
+export type Rangers_Set_Type_Localized_Aggregate_Fields = {
+  __typename?: 'rangers_set_type_localized_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Set_Type_Localized_Max_Fields>;
+  min?: Maybe<Rangers_Set_Type_Localized_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.set_type_localized" */
+export type Rangers_Set_Type_Localized_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.set_type_localized". All fields are combined with a logical 'AND'. */
+export type Rangers_Set_Type_Localized_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Set_Type_Localized_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Set_Type_Localized_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  sets?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+  sets_aggregate?: InputMaybe<Rangers_Set_Localized_Aggregate_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Set_Type_Localized_Max_Fields = {
+  __typename?: 'rangers_set_type_localized_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Set_Type_Localized_Min_Fields = {
+  __typename?: 'rangers_set_type_localized_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** Ordering options when selecting data from "rangers.set_type_localized". */
+export type Rangers_Set_Type_Localized_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  sets_aggregate?: InputMaybe<Rangers_Set_Localized_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.set_type_localized" */
+export enum Rangers_Set_Type_Localized_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** Streaming cursor of the table "rangers_set_type_localized" */
+export type Rangers_Set_Type_Localized_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Set_Type_Localized_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Set_Type_Localized_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -23651,6 +24799,7 @@ export type Rangers_Set_Type_Max_Fields = {
   __typename?: 'rangers_set_type_max_fields';
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
@@ -23658,6 +24807,7 @@ export type Rangers_Set_Type_Min_Fields = {
   __typename?: 'rangers_set_type_min_fields';
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** response of any mutation on the table "rangers.set_type" */
@@ -23681,6 +24831,7 @@ export type Rangers_Set_Type_Order_By = {
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   translations_aggregate?: InputMaybe<Rangers_Set_Type_Text_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: rangers.set_type */
@@ -23693,13 +24844,16 @@ export enum Rangers_Set_Type_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** input type for updating data in table "rangers.set_type" */
 export type Rangers_Set_Type_Set_Input = {
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** Streaming cursor of the table "rangers_set_type" */
@@ -23714,6 +24868,7 @@ export type Rangers_Set_Type_Stream_Cursor_Input = {
 export type Rangers_Set_Type_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** columns and relationships of "rangers.set_type_text" */
@@ -23722,6 +24877,7 @@ export type Rangers_Set_Type_Text = {
   id: Scalars['String'];
   locale: Scalars['String'];
   name: Scalars['String'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregated selection of "rangers.set_type_text" */
@@ -23779,6 +24935,7 @@ export type Rangers_Set_Type_Text_Bool_Exp = {
   id?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "rangers.set_type_text" */
@@ -23792,6 +24949,7 @@ export type Rangers_Set_Type_Text_Insert_Input = {
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -23800,6 +24958,7 @@ export type Rangers_Set_Type_Text_Max_Fields = {
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by max() on columns of table "rangers.set_type_text" */
@@ -23807,6 +24966,7 @@ export type Rangers_Set_Type_Text_Max_Order_By = {
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -23815,6 +24975,7 @@ export type Rangers_Set_Type_Text_Min_Fields = {
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by min() on columns of table "rangers.set_type_text" */
@@ -23822,6 +24983,7 @@ export type Rangers_Set_Type_Text_Min_Order_By = {
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "rangers.set_type_text" */
@@ -23845,6 +25007,7 @@ export type Rangers_Set_Type_Text_Order_By = {
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: rangers.set_type_text */
@@ -23860,7 +25023,9 @@ export enum Rangers_Set_Type_Text_Select_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** input type for updating data in table "rangers.set_type_text" */
@@ -23868,6 +25033,7 @@ export type Rangers_Set_Type_Text_Set_Input = {
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** Streaming cursor of the table "rangers_set_type_text" */
@@ -23883,6 +25049,7 @@ export type Rangers_Set_Type_Text_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** update columns of table "rangers.set_type_text" */
@@ -23892,7 +25059,9 @@ export enum Rangers_Set_Type_Text_Update_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 export type Rangers_Set_Type_Text_Updates = {
@@ -23906,7 +25075,9 @@ export enum Rangers_Set_Type_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 export type Rangers_Set_Type_Updates = {
@@ -24335,6 +25506,110 @@ export type Rangers_Type_Insert_Input = {
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
+/** columns and relationships of "rangers.type_localized" */
+export type Rangers_Type_Localized = {
+  __typename?: 'rangers_type_localized';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "rangers.type_localized" */
+export type Rangers_Type_Localized_Aggregate = {
+  __typename?: 'rangers_type_localized_aggregate';
+  aggregate?: Maybe<Rangers_Type_Localized_Aggregate_Fields>;
+  nodes: Array<Rangers_Type_Localized>;
+};
+
+/** aggregate fields of "rangers.type_localized" */
+export type Rangers_Type_Localized_Aggregate_Fields = {
+  __typename?: 'rangers_type_localized_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Type_Localized_Max_Fields>;
+  min?: Maybe<Rangers_Type_Localized_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.type_localized" */
+export type Rangers_Type_Localized_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.type_localized". All fields are combined with a logical 'AND'. */
+export type Rangers_Type_Localized_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Type_Localized_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Type_Localized_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Type_Localized_Max_Fields = {
+  __typename?: 'rangers_type_localized_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Type_Localized_Min_Fields = {
+  __typename?: 'rangers_type_localized_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** Ordering options when selecting data from "rangers.type_localized". */
+export type Rangers_Type_Localized_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.type_localized" */
+export enum Rangers_Type_Localized_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** Streaming cursor of the table "rangers_type_localized" */
+export type Rangers_Type_Localized_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Type_Localized_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Type_Localized_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate max on columns */
 export type Rangers_Type_Max_Fields = {
   __typename?: 'rangers_type_max_fields';
@@ -24656,6 +25931,13 @@ export type Rangers_User_Settings_Mutation_Response = {
   returning: Array<Rangers_User_Settings>;
 };
 
+/** input type for inserting object relation for remote table "rangers.user_settings" */
+export type Rangers_User_Settings_Obj_Rel_Insert_Input = {
+  data: Rangers_User_Settings_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Rangers_User_Settings_On_Conflict>;
+};
+
 /** on_conflict condition type for table "rangers.user_settings" */
 export type Rangers_User_Settings_On_Conflict = {
   constraint: Rangers_User_Settings_Constraint;
@@ -24723,6 +26005,8 @@ export type Rangers_Users = {
   handle?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   normalized_handle?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  settings?: Maybe<Rangers_User_Settings>;
   updated_at: Scalars['timestamptz'];
 };
 
@@ -24757,6 +26041,7 @@ export type Rangers_Users_Bool_Exp = {
   handle?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   normalized_handle?: InputMaybe<String_Comparison_Exp>;
+  settings?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -24774,6 +26059,7 @@ export type Rangers_Users_Insert_Input = {
   handle?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   normalized_handle?: InputMaybe<Scalars['String']>;
+  settings?: InputMaybe<Rangers_User_Settings_Obj_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
@@ -24806,6 +26092,13 @@ export type Rangers_Users_Mutation_Response = {
   returning: Array<Rangers_Users>;
 };
 
+/** input type for inserting object relation for remote table "rangers.users" */
+export type Rangers_Users_Obj_Rel_Insert_Input = {
+  data: Rangers_Users_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Rangers_Users_On_Conflict>;
+};
+
 /** on_conflict condition type for table "rangers.users" */
 export type Rangers_Users_On_Conflict = {
   constraint: Rangers_Users_Constraint;
@@ -24819,6 +26112,7 @@ export type Rangers_Users_Order_By = {
   handle?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   normalized_handle?: InputMaybe<Order_By>;
+  settings?: InputMaybe<Rangers_User_Settings_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -25227,6 +26521,20 @@ export type Subscription_Root = {
   rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
   /** fetch data from the table in a streaming manner: "rangers.card_text" */
   rangers_card_text_stream: Array<Rangers_Card_Text>;
+  /** fetch data from the table: "rangers.card_updated" */
+  rangers_card_updated: Array<Rangers_Card_Updated>;
+  /** fetch aggregated fields from the table: "rangers.card_updated" */
+  rangers_card_updated_aggregate: Rangers_Card_Updated_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.card_updated" */
+  rangers_card_updated_stream: Array<Rangers_Card_Updated>;
+  /** fetch data from the table: "rangers.deck" */
+  rangers_deck: Array<Rangers_Deck>;
+  /** fetch aggregated fields from the table: "rangers.deck" */
+  rangers_deck_aggregate: Rangers_Deck_Aggregate;
+  /** fetch data from the table: "rangers.deck" using primary key columns */
+  rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** fetch data from the table in a streaming manner: "rangers.deck" */
+  rangers_deck_stream: Array<Rangers_Deck>;
   /** fetch data from the table: "rangers.friend_status" */
   rangers_friend_status: Array<Rangers_Friend_Status>;
   /** fetch aggregated fields from the table: "rangers.friend_status" */
@@ -25273,6 +26581,12 @@ export type Subscription_Root = {
   rangers_set_aggregate: Rangers_Set_Aggregate;
   /** fetch data from the table: "rangers.set" using primary key columns */
   rangers_set_by_pk?: Maybe<Rangers_Set>;
+  /** fetch data from the table: "rangers.set_localized" */
+  rangers_set_localized: Array<Rangers_Set_Localized>;
+  /** fetch aggregated fields from the table: "rangers.set_localized" */
+  rangers_set_localized_aggregate: Rangers_Set_Localized_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.set_localized" */
+  rangers_set_localized_stream: Array<Rangers_Set_Localized>;
   /** fetch data from the table in a streaming manner: "rangers.set" */
   rangers_set_stream: Array<Rangers_Set>;
   /** fetch data from the table: "rangers.set_text" */
@@ -25289,6 +26603,12 @@ export type Subscription_Root = {
   rangers_set_type_aggregate: Rangers_Set_Type_Aggregate;
   /** fetch data from the table: "rangers.set_type" using primary key columns */
   rangers_set_type_by_pk?: Maybe<Rangers_Set_Type>;
+  /** fetch data from the table: "rangers.set_type_localized" */
+  rangers_set_type_localized: Array<Rangers_Set_Type_Localized>;
+  /** fetch aggregated fields from the table: "rangers.set_type_localized" */
+  rangers_set_type_localized_aggregate: Rangers_Set_Type_Localized_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.set_type_localized" */
+  rangers_set_type_localized_stream: Array<Rangers_Set_Type_Localized>;
   /** fetch data from the table in a streaming manner: "rangers.set_type" */
   rangers_set_type_stream: Array<Rangers_Set_Type>;
   /** fetch data from the table: "rangers.set_type_text" */
@@ -25321,6 +26641,12 @@ export type Subscription_Root = {
   rangers_type_aggregate: Rangers_Type_Aggregate;
   /** fetch data from the table: "rangers.type" using primary key columns */
   rangers_type_by_pk?: Maybe<Rangers_Type>;
+  /** fetch data from the table: "rangers.type_localized" */
+  rangers_type_localized: Array<Rangers_Type_Localized>;
+  /** fetch aggregated fields from the table: "rangers.type_localized" */
+  rangers_type_localized_aggregate: Rangers_Type_Localized_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.type_localized" */
+  rangers_type_localized_stream: Array<Rangers_Type_Localized>;
   /** fetch data from the table in a streaming manner: "rangers.type" */
   rangers_type_stream: Array<Rangers_Type>;
   /** fetch data from the table: "rangers.type_text" */
@@ -26718,6 +28044,61 @@ export type Subscription_RootRangers_Card_Text_StreamArgs = {
 };
 
 
+export type Subscription_RootRangers_Card_UpdatedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Card_Updated_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Card_Updated_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Card_Updated_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Subscription_RootRangers_Deck_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Deck_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
 export type Subscription_RootRangers_Friend_StatusArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -26893,6 +28274,31 @@ export type Subscription_RootRangers_Set_By_PkArgs = {
 };
 
 
+export type Subscription_RootRangers_Set_LocalizedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Set_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Set_Localized_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Set_Localized_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+};
+
+
 export type Subscription_RootRangers_Set_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Set_Stream_Cursor_Input>>;
@@ -26951,6 +28357,31 @@ export type Subscription_RootRangers_Set_Type_AggregateArgs = {
 
 export type Subscription_RootRangers_Set_Type_By_PkArgs = {
   id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Set_Type_LocalizedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Type_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Set_Type_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Type_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Type_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Set_Type_Localized_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Set_Type_Localized_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Set_Type_Localized_Bool_Exp>;
 };
 
 
@@ -27073,6 +28504,31 @@ export type Subscription_RootRangers_Type_AggregateArgs = {
 
 export type Subscription_RootRangers_Type_By_PkArgs = {
   id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Type_LocalizedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Type_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Type_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Type_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Type_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Type_Localized_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Type_Localized_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Type_Localized_Bool_Exp>;
 };
 
 
@@ -29490,7 +30946,7 @@ export type Users_Updates = {
   where: Users_Bool_Exp;
 };
 
-export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null };
+export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null };
 
 export type AspectFragment = { __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null };
 
@@ -29499,7 +30955,75 @@ export type GetCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCardsQuery = { __typename?: 'query_root', rangers_card_localized: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }>, rangers_aspect_localized: Array<{ __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null }> };
+export type GetCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }>, aspects: Array<{ __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+
+export type GetCardQueryVariables = Exact<{
+  locale: Scalars['String'];
+  cid: Scalars['String'];
+}>;
+
+
+export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }>, aspects: Array<{ __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null }> };
+
+export type GetCardsUpdatedAtQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type GetCardsUpdatedAtQuery = { __typename?: 'query_root', updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+
+export type SetTypeFragment = { __typename?: 'rangers_set_type_localized', id?: string | null, name?: string | null, sets: Array<{ __typename?: 'rangers_set_localized', id?: string | null, name?: string | null }> };
+
+export type GetSetsQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type GetSetsQuery = { __typename?: 'query_root', sets: Array<{ __typename?: 'rangers_set_type_localized', id?: string | null, name?: string | null, sets: Array<{ __typename?: 'rangers_set_localized', id?: string | null, name?: string | null }> }> };
+
+export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null };
+
+export type GetMyDecksQueryVariables = Exact<{
+  userId: Scalars['String'];
+  offset: Scalars['Int'];
+}>;
+
+
+export type GetMyDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null }> };
+
+export type GetDeckQueryVariables = Exact<{
+  deckId: Scalars['Int'];
+}>;
+
+
+export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, user: { __typename?: 'rangers_users', handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null } | null };
+
+export type CreateDeckMutationVariables = Exact<{
+  userId: Scalars['String'];
+  name: Scalars['String'];
+  foc: Scalars['Int'];
+  fit: Scalars['Int'];
+  awa: Scalars['Int'];
+  spi: Scalars['Int'];
+  meta: Scalars['jsonb'];
+}>;
+
+
+export type CreateDeckMutation = { __typename?: 'mutation_root', insert_rangers_deck_one?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null } | null };
+
+export type SaveDeckMutationVariables = Exact<{
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  foc: Scalars['Int'];
+  fit: Scalars['Int'];
+  awa: Scalars['Int'];
+  spi: Scalars['Int'];
+  meta: Scalars['jsonb'];
+  slots: Scalars['jsonb'];
+}>;
+
+
+export type SaveDeckMutation = { __typename?: 'mutation_root', update_rangers_deck_by_pk?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null } | null };
 
 export type GetProfileQueryVariables = Exact<{
   id: Scalars['String'];
@@ -29520,6 +31044,7 @@ export const CardFragmentDoc = gql`
     fragment Card on rangers_card_localized {
   id
   name
+  real_traits
   traits
   equip
   presence
@@ -29557,13 +31082,53 @@ export const AspectFragmentDoc = gql`
   short_name
 }
     `;
+export const SetTypeFragmentDoc = gql`
+    fragment SetType on rangers_set_type_localized {
+  id
+  name
+  sets {
+    id
+    name
+  }
+}
+    `;
+export const DeckFragmentDoc = gql`
+    fragment Deck on rangers_deck {
+  id
+  user_id
+  slots
+  name
+  description
+  awa
+  spi
+  fit
+  foc
+  created_at
+  updated_at
+  published
+  meta
+  previous_deck {
+    id
+    meta
+    slots
+  }
+  next_deck {
+    id
+    meta
+    slots
+  }
+}
+    `;
 export const GetCardsDocument = gql`
     query getCards($locale: String!) {
-  rangers_card_localized(where: {locale: {_eq: $locale}}) {
+  cards: rangers_card_localized(where: {locale: {_eq: $locale}}) {
     ...Card
   }
-  rangers_aspect_localized(where: {locale: {_eq: $locale}}) {
+  aspects: rangers_aspect_localized(where: {locale: {_eq: $locale}}) {
     ...Aspect
+  }
+  updated_at: rangers_card_updated(where: {locale: {_eq: $locale}}) {
+    updated_at
   }
 }
     ${CardFragmentDoc}
@@ -29596,6 +31161,282 @@ export function useGetCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
 export type GetCardsQueryHookResult = ReturnType<typeof useGetCardsQuery>;
 export type GetCardsLazyQueryHookResult = ReturnType<typeof useGetCardsLazyQuery>;
 export type GetCardsQueryResult = Apollo.QueryResult<GetCardsQuery, GetCardsQueryVariables>;
+export const GetCardDocument = gql`
+    query getCard($locale: String!, $cid: String!) {
+  cards: rangers_card_localized(where: {locale: {_eq: $locale}, id: {_eq: $cid}}) {
+    ...Card
+  }
+  aspects: rangers_aspect_localized(where: {locale: {_eq: $locale}}) {
+    ...Aspect
+  }
+}
+    ${CardFragmentDoc}
+${AspectFragmentDoc}`;
+
+/**
+ * __useGetCardQuery__
+ *
+ * To run a query within a React component, call `useGetCardQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCardQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCardQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *      cid: // value for 'cid'
+ *   },
+ * });
+ */
+export function useGetCardQuery(baseOptions: Apollo.QueryHookOptions<GetCardQuery, GetCardQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCardQuery, GetCardQueryVariables>(GetCardDocument, options);
+      }
+export function useGetCardLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCardQuery, GetCardQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCardQuery, GetCardQueryVariables>(GetCardDocument, options);
+        }
+export type GetCardQueryHookResult = ReturnType<typeof useGetCardQuery>;
+export type GetCardLazyQueryHookResult = ReturnType<typeof useGetCardLazyQuery>;
+export type GetCardQueryResult = Apollo.QueryResult<GetCardQuery, GetCardQueryVariables>;
+export const GetCardsUpdatedAtDocument = gql`
+    query getCardsUpdatedAt($locale: String!) {
+  updated_at: rangers_card_updated(where: {locale: {_eq: $locale}}) {
+    updated_at
+  }
+}
+    `;
+
+/**
+ * __useGetCardsUpdatedAtQuery__
+ *
+ * To run a query within a React component, call `useGetCardsUpdatedAtQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCardsUpdatedAtQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCardsUpdatedAtQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetCardsUpdatedAtQuery(baseOptions: Apollo.QueryHookOptions<GetCardsUpdatedAtQuery, GetCardsUpdatedAtQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCardsUpdatedAtQuery, GetCardsUpdatedAtQueryVariables>(GetCardsUpdatedAtDocument, options);
+      }
+export function useGetCardsUpdatedAtLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCardsUpdatedAtQuery, GetCardsUpdatedAtQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCardsUpdatedAtQuery, GetCardsUpdatedAtQueryVariables>(GetCardsUpdatedAtDocument, options);
+        }
+export type GetCardsUpdatedAtQueryHookResult = ReturnType<typeof useGetCardsUpdatedAtQuery>;
+export type GetCardsUpdatedAtLazyQueryHookResult = ReturnType<typeof useGetCardsUpdatedAtLazyQuery>;
+export type GetCardsUpdatedAtQueryResult = Apollo.QueryResult<GetCardsUpdatedAtQuery, GetCardsUpdatedAtQueryVariables>;
+export const GetSetsDocument = gql`
+    query getSets($locale: String!) {
+  sets: rangers_set_type_localized(
+    where: {locale: {_eq: $locale}}
+    order_by: {id: desc}
+  ) {
+    ...SetType
+  }
+}
+    ${SetTypeFragmentDoc}`;
+
+/**
+ * __useGetSetsQuery__
+ *
+ * To run a query within a React component, call `useGetSetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSetsQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetSetsQuery(baseOptions: Apollo.QueryHookOptions<GetSetsQuery, GetSetsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSetsQuery, GetSetsQueryVariables>(GetSetsDocument, options);
+      }
+export function useGetSetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSetsQuery, GetSetsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSetsQuery, GetSetsQueryVariables>(GetSetsDocument, options);
+        }
+export type GetSetsQueryHookResult = ReturnType<typeof useGetSetsQuery>;
+export type GetSetsLazyQueryHookResult = ReturnType<typeof useGetSetsLazyQuery>;
+export type GetSetsQueryResult = Apollo.QueryResult<GetSetsQuery, GetSetsQueryVariables>;
+export const GetMyDecksDocument = gql`
+    query getMyDecks($userId: String!, $offset: Int!) {
+  decks: rangers_deck(
+    where: {user_id: {_eq: $userId}, next_deck_id: {_is_null: true}}
+    order_by: {updated_at: desc}
+    limit: 25
+    offset: $offset
+  ) {
+    ...Deck
+  }
+}
+    ${DeckFragmentDoc}`;
+
+/**
+ * __useGetMyDecksQuery__
+ *
+ * To run a query within a React component, call `useGetMyDecksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMyDecksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMyDecksQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useGetMyDecksQuery(baseOptions: Apollo.QueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, options);
+      }
+export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, options);
+        }
+export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
+export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
+export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
+export const GetDeckDocument = gql`
+    query getDeck($deckId: Int!) {
+  deck: rangers_deck_by_pk(id: $deckId) {
+    ...Deck
+    user {
+      handle
+    }
+  }
+}
+    ${DeckFragmentDoc}`;
+
+/**
+ * __useGetDeckQuery__
+ *
+ * To run a query within a React component, call `useGetDeckQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDeckQuery({
+ *   variables: {
+ *      deckId: // value for 'deckId'
+ *   },
+ * });
+ */
+export function useGetDeckQuery(baseOptions: Apollo.QueryHookOptions<GetDeckQuery, GetDeckQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDeckQuery, GetDeckQueryVariables>(GetDeckDocument, options);
+      }
+export function useGetDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDeckQuery, GetDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDeckQuery, GetDeckQueryVariables>(GetDeckDocument, options);
+        }
+export type GetDeckQueryHookResult = ReturnType<typeof useGetDeckQuery>;
+export type GetDeckLazyQueryHookResult = ReturnType<typeof useGetDeckLazyQuery>;
+export type GetDeckQueryResult = Apollo.QueryResult<GetDeckQuery, GetDeckQueryVariables>;
+export const CreateDeckDocument = gql`
+    mutation createDeck($userId: String!, $name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!) {
+  insert_rangers_deck_one(
+    object: {user_id: $userId, name: $name, foc: $foc, fit: $fit, awa: $awa, spi: $spi, meta: $meta}
+  ) {
+    ...Deck
+  }
+}
+    ${DeckFragmentDoc}`;
+export type CreateDeckMutationFn = Apollo.MutationFunction<CreateDeckMutation, CreateDeckMutationVariables>;
+
+/**
+ * __useCreateDeckMutation__
+ *
+ * To run a mutation, you first call `useCreateDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createDeckMutation, { data, loading, error }] = useCreateDeckMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      name: // value for 'name'
+ *      foc: // value for 'foc'
+ *      fit: // value for 'fit'
+ *      awa: // value for 'awa'
+ *      spi: // value for 'spi'
+ *      meta: // value for 'meta'
+ *   },
+ * });
+ */
+export function useCreateDeckMutation(baseOptions?: Apollo.MutationHookOptions<CreateDeckMutation, CreateDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateDeckMutation, CreateDeckMutationVariables>(CreateDeckDocument, options);
+      }
+export type CreateDeckMutationHookResult = ReturnType<typeof useCreateDeckMutation>;
+export type CreateDeckMutationResult = Apollo.MutationResult<CreateDeckMutation>;
+export type CreateDeckMutationOptions = Apollo.BaseMutationOptions<CreateDeckMutation, CreateDeckMutationVariables>;
+export const SaveDeckDocument = gql`
+    mutation saveDeck($id: Int!, $name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!) {
+  update_rangers_deck_by_pk(
+    pk_columns: {id: $id}
+    _set: {name: $name, foc: $foc, fit: $fit, awa: $awa, spi: $spi, meta: $meta, slots: $slots}
+  ) {
+    ...Deck
+  }
+}
+    ${DeckFragmentDoc}`;
+export type SaveDeckMutationFn = Apollo.MutationFunction<SaveDeckMutation, SaveDeckMutationVariables>;
+
+/**
+ * __useSaveDeckMutation__
+ *
+ * To run a mutation, you first call `useSaveDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSaveDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [saveDeckMutation, { data, loading, error }] = useSaveDeckMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *      foc: // value for 'foc'
+ *      fit: // value for 'fit'
+ *      awa: // value for 'awa'
+ *      spi: // value for 'spi'
+ *      meta: // value for 'meta'
+ *      slots: // value for 'slots'
+ *   },
+ * });
+ */
+export function useSaveDeckMutation(baseOptions?: Apollo.MutationHookOptions<SaveDeckMutation, SaveDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SaveDeckMutation, SaveDeckMutationVariables>(SaveDeckDocument, options);
+      }
+export type SaveDeckMutationHookResult = ReturnType<typeof useSaveDeckMutation>;
+export type SaveDeckMutationResult = Apollo.MutationResult<SaveDeckMutation>;
+export type SaveDeckMutationOptions = Apollo.BaseMutationOptions<SaveDeckMutation, SaveDeckMutationVariables>;
 export const GetProfileDocument = gql`
     query getProfile($id: String!) {
   profile: rangers_users_by_pk(id: $id) {

@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
 import Parser from 'simple-text-parser';
-import { Aspect, AspectMap } from '../types/types';
+import { Aspect, AspectMap, AspectType } from '../types/types';
 import { Box } from '@chakra-ui/react';
 
-export default function CardText({ text, aspects, aspect }: { text: string; aspects: AspectMap; aspect: Aspect | undefined; }) {
+export default function CardText({ text, aspects, aspectId }: { text: string; aspects: AspectMap; aspectId: string | undefined | null; }) {
   const parsed = useMemo(() => {
     const parser = new Parser().addRule(
       /\[([^\]0-9]+)\]/gi,
       (tag, element) => {
         if (aspects[element]) {
-          return `<span style="color: ${aspects[element]?.color || '#000000'}; font-weight: 900; letter-spacing: 1px">${aspects[element]?.short_name}</span>`;
+          return `<span style="color: var(--chakra-colors-aspect-${element}); font-weight: 900; letter-spacing: 1px">${aspects[element]?.short_name}</span>`;
         }
         return `<span class="core-${element}"></span>`;
       }
@@ -17,7 +17,7 @@ export default function CardText({ text, aspects, aspect }: { text: string; aspe
     return parser.render(text);
   }, [text, aspects]);
   return (
-    <Box padding={2} borderLeftWidth={2} margin={1} borderLeftColor={aspect?.color || '#888888'}>
+    <Box padding={2} borderLeftWidth={2} margin={1} borderLeftColor={aspectId ? `aspect.${aspectId}` : 'gray.500'}>
       <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />
     </Box>
   );

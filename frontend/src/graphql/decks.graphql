@@ -1,0 +1,104 @@
+fragment Deck on rangers_deck {
+  id
+  user_id
+  slots
+  name
+  description
+  awa
+  spi
+  fit
+  foc
+  created_at
+  updated_at
+  published
+  meta
+  previous_deck {
+    id
+    meta
+    slots
+  }
+  next_deck {
+    id
+    meta
+    slots
+  }
+}
+
+query getMyDecks(
+  $userId: String!,
+  $offset: Int!
+) {
+  decks: rangers_deck(
+    where: {
+      user_id: { _eq: $userId }
+      next_deck_id: { _is_null: true }
+    }
+    order_by: { updated_at: desc }
+    limit: 25
+    offset: $offset
+  ) {
+    ...Deck
+  }
+}
+
+query getDeck(
+  $deckId: Int!
+) {
+  deck: rangers_deck_by_pk(id: $deckId) {
+    ...Deck
+    user {
+      handle
+    }
+  }
+}
+
+mutation createDeck(
+  $userId: String!,
+  $name: String!,
+  $foc: Int!,
+  $fit: Int!,
+  $awa: Int!,
+  $spi: Int!,
+  $meta: jsonb!
+) {
+  insert_rangers_deck_one(
+    object: {
+      user_id: $userId
+      name: $name
+      foc: $foc
+      fit: $fit
+      awa: $awa
+      spi: $spi
+      meta: $meta
+    }
+  ) {
+    ...Deck
+  }
+}
+
+
+mutation saveDeck(
+  $id: Int!,
+  $name: String!,
+  $foc: Int!,
+  $fit: Int!,
+  $awa: Int!,
+  $spi: Int!,
+  $meta: jsonb!,
+  $slots: jsonb!
+) {
+  update_rangers_deck_by_pk(
+    pk_columns: { id: $id }
+    _set: {
+      name: $name,
+      foc: $foc,
+      fit: $fit,
+      awa: $awa,
+      spi: $spi,
+      meta: $meta,
+      slots: $slots
+    }
+  ) {
+    ...Deck
+  }
+}

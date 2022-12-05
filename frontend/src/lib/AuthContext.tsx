@@ -1,12 +1,10 @@
-import { FirebaseApp } from 'firebase/app';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { createContext, useContext, Context } from 'react'
 import useFirebaseAuth, { FirebaseAuth } from './useFirebaseAuth';
 
 const AuthUserContext = createContext<FirebaseAuth>({
   authUser: undefined,
   loading: true,
-});
+} as FirebaseAuth);
 
 export function AuthUserProvider({ children }: { children: React.ReactNode }) {
   const auth = useFirebaseAuth();

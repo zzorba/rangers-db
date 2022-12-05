@@ -6,15 +6,18 @@ import { ChakraProvider } from '@chakra-ui/react';
 import theme from '../styles/theme';
 import { GraphqlProvider } from '../lib/GraphqlContext';
 import Layout from '../components/Layout';
+import { TranslationProvider } from '../lib/TranslationProvider';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <AuthUserProvider>
         <GraphqlProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <TranslationProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </TranslationProvider>
         </GraphqlProvider>
       </AuthUserProvider>
     </ChakraProvider>

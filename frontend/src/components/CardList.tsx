@@ -4,20 +4,16 @@ import { CardFragment, useGetCardsQuery } from '../generated/graphql/apollo-sche
 import { CardRow, useCardModal } from './Card';
 import { AspectMap } from '../types/types';
 import { List, ListItem, Text } from '@chakra-ui/react';
+import LoadingPage from './LoadingPage';
 
-const ASPECT_COLORS: { [key: string]: string | undefined } = {
-  AWA: '#306938',
-  FOC: '#1e2f64',
-  FIT: '#811019',
-  SPI: '#da6e17',
-};
-
-function CardButtonRow({ card, showModal, aspects }: { card: CardFragment; aspects: AspectMap; showModal: (card: CardFragment) => void }) {
+function CardButtonRow({ card, showModal, aspects, children }: { card: CardFragment; aspects: AspectMap; showModal: (card: CardFragment) => void; children?: React.ReactNode }) {
   const onClick = useCallback(() => showModal(card), [card, showModal]);
 
   return (
-    <ListItem cursor="pointer" onClick={onClick}>
-      <CardRow card={card} aspects={aspects} />
+    <ListItem>
+      <CardRow card={card} aspects={aspects} onClick={onClick}>
+        {children}
+      </CardRow>
     </ListItem>
   );
 }
@@ -50,46 +46,76 @@ export default function CardList() {
   });
   const aspects = useMemo(() => {
     const r: AspectMap = {};
-    forEach(data?.rangers_aspect_localized, a => {
+    forEach(data?.aspects, a => {
       if (a.id && a.name && a.short_name) {
         r[a.id] = {
           name: a.name,
           short_name: a.short_name,
-          color: ASPECT_COLORS[a.id] || '#000000',
         };
       };
     })
     return r;
-  }, [data?.rangers_aspect_localized]);
+  }, [data?.aspects]);
   const [showCard, modal] = useCardModal(aspects);
+  if (!data?.cards) {
+    return <LoadingPage />;
+  }
+  return (
+    <>
+      <SimpleCardList cards={data.cards} aspects={aspects} showCard={showCard} />
+      { modal }
+    </>
+  );
+}
+
+export function SimpleCardList({ cards, aspects, showCard, header = 'set', renderControl }: { cards?: CardFragment[]; aspects: AspectMap; showCard: (card: CardFragment) => void; header?: 'aspect' | 'set' | 'none'; renderControl?: (code: string) => React.ReactNode }) {
   const items = useMemo(() => {
-    const sorted = sortBy(data?.rangers_card_localized, card => card.id);
+    const sorted = sortBy(cards, card => card.id);
     const items: Item[] = [];
-    let header: string | undefined = undefined;
+    let currentHeader: string | undefined = undefined;
     forEach(sorted, card => {
-      if (card.set_name && card.set_name !== header) {
-        header = card.set_name;
-        items.push({
-          type: 'header',
-          title: header,
-        });
+      switch (header) {
+        case 'set':
+          if (card.set_name && card.set_name !== currentHeader) {
+            currentHeader = card.set_name;
+            items.push({
+              type: 'header',
+              title: currentHeader,
+            });
+          }
+          break;
+        case 'aspect':
+          if (card.aspect_name && card.aspect_name !== currentHeader) {
+            currentHeader = card.aspect_name;
+            items.push({
+              type: 'header',
+              title: currentHeader,
+            });
+          }
+          break;
+        case 'none':
+          break;
       }
+
       items.push({
         type: 'card',
         card,
       });
     });
     return items;
-  }, [data]);
+  }, [cards, header]);
+  if (!items.length) {
+    return <LoadingPage />;
+  }
   return (
-    <>
-      <List>
-        { map(items, item => item.type === 'card' ?
-          <CardButtonRow key={item.card.id} aspects={aspects} card={item.card} showModal={showCard} /> :
-          <CardHeader key={item.title} title={item.title} />
-        ) }
-      </List>
-      { modal }
-    </>
+    <List>
+      {}
+      { map(items, item => item.type === 'card' ?
+        <CardButtonRow key={item.card.id} aspects={aspects} card={item.card} showModal={showCard}>
+          { !!renderControl && !!item.card.id && renderControl(item.card.id)}
+        </CardButtonRow> :
+        <CardHeader key={item.title} title={item.title} />
+      ) }
+    </List>
   );
 }

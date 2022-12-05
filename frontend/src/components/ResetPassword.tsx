@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Router from 'next/router';
 import NextLink from 'next/link';
+import { t } from 'ttag';
 
 import { useAuth } from '../lib/AuthContext';
 import { Box, Button, Flex, FormControl, FormLabel, Input, Link } from '@chakra-ui/react';
@@ -31,7 +32,7 @@ export default function ResetPassword({ redirect }: { redirect: string | undefin
         </Button>
       </form>
       <Box>
-        Don't have an account? <Link as={NextLink} href={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link> now.
+        {t`Don't have an account?`} <Link as={NextLink} href={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link> now.
       </Box>
     </Flex>
   );

@@ -1,8 +1,10 @@
 import React from 'react';
-import { ChakraProvider, Heading, Container, Text, Box } from '@chakra-ui/react'
+import { Button, Text, Box } from '@chakra-ui/react'
 import { t } from 'ttag';
+import { useGraphql } from '../lib/GraphqlContext';
 
 export default function Footer() {
+  const { purge } = useGraphql();
   return (
     <Box
       as="footer"
@@ -25,6 +27,7 @@ export default function Footer() {
           {t`The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games.`}
         </Text>
       </Box>
+      <Button variant="ghost" onClick={purge}>Empty cache</Button>
     </Box>
   );
 }
