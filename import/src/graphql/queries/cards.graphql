@@ -22,6 +22,14 @@ fragment Card on rangers_card {
   progress
   back_card_id
   imagesrc
+  area_id
+  guide_entry
+  progress_fixed
+  flavor
+  locations
+  objective
+  illustrator
+  pack_id
 }
 
 fragment CardText on rangers_card_text {
@@ -30,6 +38,8 @@ fragment CardText on rangers_card_text {
   name
   traits
   text
+  flavor
+  objective
 }
 
 fragment CardSet on rangers_set {
@@ -98,6 +108,7 @@ fragment CardTypeText on rangers_type_text {
 fragment CardPack on rangers_pack {
   id
   name
+  position
 }
 
 fragment CardPackText on rangers_pack_text {
@@ -233,7 +244,7 @@ mutation upsertCard(
   $objective: String,
 
   $back_card_id: String
-  $imagesrc,
+  $imagesrc: String
 ) {
 	insert_rangers_card_one(
     object: {
