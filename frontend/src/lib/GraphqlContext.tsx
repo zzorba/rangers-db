@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { ApolloClient, ApolloProvider, NormalizedCacheObject } from '@apollo/client';
-import { Text } from '@chakra-ui/react';
 import { CachePersistor } from 'apollo3-cache-persist';
 import { initAnonClient, initAuthClient } from '../graphql/client';
 import { useAuth } from './AuthContext';

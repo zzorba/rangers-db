@@ -46,7 +46,7 @@ import { sumBy, filter, find, keys, union, omit, forEach, map, flatMap, uniq, pi
 import { CardsMap, CategoryTranslations, useCardsMap } from '../lib/hooks';
 import Card, { CardRow, ShowCard, useCardModal } from './Card';
 import ListHeader from './ListHeader';
-import { CopyIcon, EditIcon } from '@chakra-ui/icons';
+import { CopyIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { SimpleCardList } from './CardList';
 import Router from 'next/router';
 import CardCount, { CountControls, CountToggle } from './CardCount';
@@ -54,6 +54,7 @@ import DeckProblemComponent, { DeckProblemFormError } from './DeckProblemCompone
 import EditableTextInput from './EditableTextInput';
 import LoadingPage from './LoadingPage';
 import PageHeading from './PageHeading';
+import SolidButton from './SolidButton';
 
 interface Props {
   deck: DeckFragment;
@@ -82,6 +83,7 @@ interface ParsedDeck {
   problem: DeckError[] | undefined;
   roleProblems: DeckError[] | undefined;
   cards: Item[];
+  loading: boolean;
 }
 
 function DeckCardRow({ item, showCard }: { item: CardItem; showCard: (card: CardFragment, problem?: DeckCardError[]) => void }) {
@@ -359,6 +361,7 @@ function parseDeck(
     ]),
     roleProblems,
     cards: result,
+    loading: missingCards.length > 0,
   };
 }
 
@@ -411,20 +414,24 @@ export default function Deck({ deck, categoryTranslations, cards }: Props & { ca
           { authUser && (
             <Flex direction="row" paddingTop={2} paddingBottom={4}>
               { authUser.uid === deck.user_id ? (
-                <Button variant="solid" color="white" bg="blue.400" _hover={{ bg: 'blue.600' }} leftIcon={<EditIcon />} as={NextLink} href={`/decks/edit/${deck.id}`}>Edit</Button>
+                <SolidButton
+                  color="blue"
+                  leftIcon={<EditIcon />}
+                  as={NextLink}
+                  href={`/decks/edit/${deck.id}`}
+                >
+                  Edit
+                </SolidButton>
               ) : (
                 !deck.previous_deck && (
-                  <Button
-                    variant="solid"
-                    color="white"
-                    bg="orange.400"
-                    _hover={{ bg: 'orange.600' }}
+                  <SolidButton
+                    color="orange"
                     leftIcon={<CopyIcon />}
                     onClick={onCopyDeck}
                     isLoading={copying}
                   >
                     Copy
-                  </Button>
+                  </SolidButton>
                 )
               ) }
             </Flex>
@@ -552,20 +559,16 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
   const [showRole, roleModal] = useChooseRoleModal(parsedDeck.specialty, cards, setRole, parsedDeck.role?.id || undefined);
   const [aspectEditor, aspectError] = useAspectEditor(stats, setStats);
 
-  const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards, roleCards] = useMemo(() => {
+  const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards] = useMemo(() => {
     const pc: CardFragment[] = [];
     const bc: CardFragment[] = [];
     const sc: CardFragment[] = [];
     const oic: CardFragment[] = [];
-    const rc: CardFragment[] = [];
     forEach(values(cards), c => {
       if (!c) {
         return;
       }
       if (c.type_id === 'role') {
-        if (c.set_id === specialty) {
-          rc.push(c);
-        }
         return;
       }
       if (c.aspect_id) {
@@ -584,7 +587,7 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
       if (c.set_type_id === 'background') {
         if (c.set_id === background) {
           bc.push(c);
-        } else {
+        } else if (!c.real_traits || c.real_traits.indexOf('Expert') === -1) {
           oic.push(c);
         }
         return;
@@ -592,12 +595,12 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
       if (c.set_type_id === 'specialty') {
         if (c.set_id == specialty) {
           sc.push(c);
-        } else {
+        } else if (!c.real_traits || c.real_traits.indexOf('Expert') === -1) {
           oic.push(c);
         }
       }
     });
-    return [pc, bc, sc, oic, rc];
+    return [pc, bc, sc, oic];
   }, [cards, specialty, background, stats]);
   const [name, setName] = useState(deck.name);
 
@@ -630,7 +633,6 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
         ...(parsedDeck.problem || []),
         ...(parsedDeck.roleProblems || []),
       ], x => x) : undefined;
-    console.log(problem);
     const r = await saveDeck({
       variables: {
         id: deck.id,
@@ -671,12 +673,12 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
           />
           { !!hasEdits && (
             <ButtonGroup paddingBottom={2} paddingTop={2}>
-              <Button variant="solid" color="white" bg="blue.400" _hover={{ bg: "blue.600" }} onClick={saveChanges}>Save Changes</Button>
+              <SolidButton color="blue" onClick={saveChanges}>Save Changes</SolidButton>
               <Button as={NextLink} href={`/decks/view/${deck.id}`}>Discard Changes</Button>
             </ButtonGroup>
           ) }
           { !!saveError && <Text color="red" paddingTop={2} paddingBottom={4}>{saveError}</Text>}
-          { !!parsedDeck.problem && (
+          { !parsedDeck.loading && !!parsedDeck.problem && (
             <Box marginBottom={4}>
               <DeckProblemComponent errors={parsedDeck.problem} />
             </Box>
@@ -713,9 +715,17 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
           <List>
             {map(parsedDeck.cards, item => (
               item.type === 'header' ? (
-                <ListHeader key={item.title} title={item.title} problem={item.problem} />
+                <ListHeader
+                  key={item.title}
+                  title={item.title}
+                  problem={parsedDeck.loading ? undefined : item.problem}
+                />
               ) : (
-                <DeckCardRow item={item} key={item.card.id} showCard={showCard} />
+                <DeckCardRow
+                  item={item}
+                  key={item.card.id}
+                  showCard={showCard}
+                />
               )))}
           </List>
         </Box>
@@ -762,8 +772,11 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
                 />
               </TabPanel>
               <TabPanel>
-                <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+                <Text fontSize="md" color="gray.600" paddingBottom={1}>
                   Select 1 cards from any background of specialty as your outside interest.
+                </Text>
+                <Text fontSize="sm" color="gray.600" fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+                  Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.
                 </Text>
                 <SimpleCardList
                   cards={outsideInterestCards}
@@ -797,7 +810,6 @@ function DeckDescription({ deck, categoryTranslations, roleCards }: {
   const background: string | undefined = typeof deck.meta.background === 'string' ? deck.meta.background : undefined;
   const specialty: string | undefined = typeof deck.meta.specialty === 'string' ? deck.meta.specialty : undefined;
   const role: string | undefined = typeof deck.meta.role === 'string' ? deck.meta.role : undefined;
-
   const description = useMemo(() => {
     return filter([
       background && categoryTranslations.background?.options?.[background],
@@ -808,8 +820,14 @@ function DeckDescription({ deck, categoryTranslations, roleCards }: {
   return <Text>{description}</Text>
 }
 
-export function DeckRow({ deck, categoryTranslations, roleCards }: Props & { roleCards: CardsMap }) {
+export function DeckRow({ deck, categoryTranslations, roleCards, onDelete }: Props & {
+  roleCards: CardsMap;
+  onDelete: (deck: DeckFragment) => void;
+}) {
   const { authUser } = useAuth();
+  const doDelete = useCallback(() => {
+    onDelete(deck);
+  }, [onDelete, deck]);
   const problem = !!deck.meta.problem && Array.isArray(deck.meta.problem) ? (deck.meta.problem as DeckError[])  : undefined;
   return (
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor="gray.100" borderBottomWidth="1px">
@@ -826,11 +844,11 @@ export function DeckRow({ deck, categoryTranslations, roleCards }: Props & { rol
             <MiniAspect aspect="SPI" value={deck.spi} />
           </SimpleGrid>
           { authUser?.uid === deck.user_id && (
-            <Flex marginLeft={[2, "2em"]} direction="row" justifyContent="flex-start">
-              <IconButton aria-label={t`Edit`} icon={<EditIcon />} as={NextLink} href={`/decks/edit/${deck.id}`} />
-            </Flex>
+            <ButtonGroup marginLeft={[2, "2em"]}>
+              <IconButton aria-label={t`Edit`} color="gray.600" icon={<EditIcon />} as={NextLink} href={`/decks/edit/${deck.id}`} />
+              <IconButton aria-label={t`Delete`} color="red.400" icon={<DeleteIcon />} onClick={doDelete} />
+            </ButtonGroup>
           )}
-
         </Flex>
       </Flex>
       { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
@@ -1072,14 +1090,17 @@ export function useNewDeckModal(categoryTranslations: CategoryTranslations, role
           </form>
         </ModalBody>
         <ModalFooter>
-          { !!errorMessage && <Text color="red">{errorMessage} </Text>}
-          <Button
-            isLoading={submitting}
-            disabled={!!aspectError || !meta.background || !meta.specialty || !meta.role}
-            onClick={onCreateDeck}
-          >
-            Create
-          </Button>
+          <Flex direction="row" flex={1} justifyContent={errorMessage ? 'space-between' : 'flex-end'}>
+            { !!errorMessage && <Text color="red">{errorMessage} </Text>}
+            <SolidButton
+              color="blue"
+              isLoading={submitting}
+              disabled={!!aspectError || !meta.background || !meta.specialty || !meta.role}
+              onClick={onCreateDeck}
+            >
+              Create
+            </SolidButton>
+          </Flex>
         </ModalFooter>
       </ModalContent>
     </Modal>

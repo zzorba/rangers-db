@@ -7,14 +7,13 @@ import LoadingPage from '../../../components/LoadingPage';
 import { DeckEdit}  from '../../../components/Deck';
 import { useAuth } from '../../../lib/AuthContext';
 import Router from 'next/router';
-import PageHeading from '../../../components/PageHeading';
 
 export default function EditDeckPage() {
   useRequireAuth();
   const { authUser, loading: authLoading } = useAuth();
   const [deckId, isReady] = useRouterPathParam('did', parseInt, '/decks')
   const { data, loading } = useGetDeckQuery({
-    ssr: true,
+    ssr: false,
     variables: {
       deckId: deckId || 0,
     },

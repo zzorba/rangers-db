@@ -4,7 +4,6 @@ import { map } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckFragment } from '../generated/graphql/apollo-schema';
-import { useAuth } from '../lib/AuthContext';
 import { DeckRow } from './Deck';
 import { CardsMap, CategoryTranslations } from '../lib/hooks';
 import { Text } from '@chakra-ui/react';
@@ -13,10 +12,12 @@ export default function DeckList({
   categoryTranslations,
   roleCards,
   decks,
+  onDelete,
 }: {
   decks: DeckFragment[] | undefined;
   categoryTranslations: CategoryTranslations;
   roleCards: CardsMap;
+  onDelete: (deck: DeckFragment) => void;
 }) {
   if (!decks?.length) {
     return <Text>{t`You don't seem to have any decks.`}</Text>
@@ -29,6 +30,7 @@ export default function DeckList({
           deck={deck}
           categoryTranslations={categoryTranslations}
           roleCards={roleCards}
+          onDelete={onDelete}
         />
       )) }
     </List>

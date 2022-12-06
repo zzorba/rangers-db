@@ -4,7 +4,7 @@ import Router,{ useRouter } from 'next/router';
 import { t } from 'ttag';
 
 import { useAuth } from './AuthContext';
-import { AspectFragment, CardFragment, SetTypeFragment, useGetCardsQuery } from '../generated/graphql/apollo-schema';
+import { CardFragment, SetTypeFragment } from '../generated/graphql/apollo-schema';
 import { AspectMap, DeckCardError, DeckError } from '../types/types';
 
 export function useRequireAuth() {

@@ -1,26 +1,30 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { t } from 'ttag';
 import { Box, Button } from '@chakra-ui/react';
 import { useCardsMap, useCategoryTranslations, useRequireAuth } from '../../lib/hooks';
 import { useNewDeckModal } from '../../components/Deck';
 import DeckList from '../../components/DeckList';
-import { DeckFragment, useGetDecksPageDataQuery, useGetMyDecksLazyQuery, useGetMyDecksQuery, useGetMyDecksTotalQuery } from '../../generated/graphql/apollo-schema';
+import { DeckFragment, useDeleteDeckMutation, useGetDecksPageDataQuery, useGetMyDecksQuery, useGetMyDecksTotalQuery } from '../../generated/graphql/apollo-schema';
 import PageHeading from '../../components/PageHeading';
 import { useAuth } from '../../lib/AuthContext';
 import LoadingPage from '../../components/LoadingPage';
 import { Pagination, PaginationContainer, PaginationNext, PaginationPageGroup, PaginationPrevious, usePagination } from '@ajna/pagination';
 import { useApolloClient } from '@apollo/client';
+import { useDeleteDialog } from '../../components/DeleteDialog';
+
+
+function deleteDeckMessage(d: DeckFragment) {
+  return t`Are you sure you want to delete the '${d.name}' deck?`;
+}
 
 export default function DecksPage() {
   useRequireAuth();
   const { authUser } = useAuth();
-  const { data, loading } = useGetDecksPageDataQuery({
+  const { data } = useGetDecksPageDataQuery({
     variables: {
       locale: 'en',
     },
   });
-  const client = useApolloClient();
-
-
   const { data: totalDecks } = useGetMyDecksTotalQuery({
     variables: {
       userId: authUser?.uid || '',
@@ -67,20 +71,32 @@ export default function DecksPage() {
     }
     return [];
   }, [fetchMore, authUser]);
-
+  const [deleteCount, setDeleteCount] = useState(0);
   const [decks, setDecks] = useState<DeckFragment[] | undefined>();
-
   useEffect(() => {
     if (authUser) {
       fetchDecks(pageSize, offset).then((result) => {
         setDecks(result);
       });
     }
-  }, [authUser, fetchDecks, currentPage, pageSize, offset]);
+  }, [authUser, fetchDecks, currentPage, pageSize, offset, deleteCount]);
 
+  const [doDelete] = useDeleteDeckMutation();
+  const deleteDeck = useCallback(async(d: DeckFragment) => {
+    await doDelete({
+      variables: {
+        id: d.id,
+      },
+    });
+    setDeleteCount(deleteCount + 1)
+  }, [doDelete, deleteCount, setDeleteCount]);
+  const [onDelete, deleteDialog] = useDeleteDialog(
+    t`Delete deck?`,
+    deleteDeckMessage,
+    deleteDeck
+  );
   const categoryTranslations = useCategoryTranslations(data?.sets);
   const roleCards = useCardsMap(data?.roleCards);
-
   const [showNewDeck, newDeckModal] = useNewDeckModal(categoryTranslations, roleCards);
   const handlePageChange = (nextPage: number) => {
     setCurrentPage(nextPage);
@@ -101,6 +117,7 @@ export default function DecksPage() {
             decks={decks}
             categoryTranslations={categoryTranslations}
             roleCards={roleCards}
+            onDelete={onDelete}
           />
         ) }
         <Pagination
@@ -121,6 +138,7 @@ export default function DecksPage() {
         </Pagination>
       </Box>
       { newDeckModal }
+      { deleteDialog }
     </>
   );
 }

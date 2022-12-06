@@ -31873,7 +31873,7 @@ export type GetSetsQueryVariables = Exact<{
 
 export type GetSetsQuery = { __typename?: 'query_root', sets: Array<{ __typename?: 'rangers_set_type_localized', id?: string | null, name?: string | null, sets: Array<{ __typename?: 'rangers_set_localized', id?: string | null, name?: string | null }> }> };
 
-export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null };
+export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, user: { __typename?: 'rangers_users', handle?: string | null } };
 
 export type GetDecksPageDataQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -31889,7 +31889,7 @@ export type GetMyDecksQueryVariables = Exact<{
 }>;
 
 
-export type GetMyDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null }> };
+export type GetMyDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, user: { __typename?: 'rangers_users', handle?: string | null } }> };
 
 export type GetMyDecksTotalQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -31917,7 +31917,14 @@ export type CreateDeckMutationVariables = Exact<{
 }>;
 
 
-export type CreateDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null } | null };
+export type CreateDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, user: { __typename?: 'rangers_users', handle?: string | null } } | null };
+
+export type DeleteDeckMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type DeleteDeckMutation = { __typename?: 'mutation_root', delete_rangers_deck_by_pk?: { __typename?: 'rangers_deck', id: number } | null };
 
 export type SaveDeckMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -31931,7 +31938,7 @@ export type SaveDeckMutationVariables = Exact<{
 }>;
 
 
-export type SaveDeckMutation = { __typename?: 'mutation_root', update_rangers_deck_by_pk?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null } | null };
+export type SaveDeckMutation = { __typename?: 'mutation_root', update_rangers_deck_by_pk?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, user: { __typename?: 'rangers_users', handle?: string | null } } | null };
 
 export type GetProfileQueryVariables = Exact<{
   id: Scalars['String'];
@@ -32024,6 +32031,9 @@ export const DeckFragmentDoc = gql`
     id
     meta
     slots
+  }
+  user {
+    handle
   }
 }
     `;
@@ -32410,6 +32420,39 @@ export function useCreateDeckMutation(baseOptions?: Apollo.MutationHookOptions<C
 export type CreateDeckMutationHookResult = ReturnType<typeof useCreateDeckMutation>;
 export type CreateDeckMutationResult = Apollo.MutationResult<CreateDeckMutation>;
 export type CreateDeckMutationOptions = Apollo.BaseMutationOptions<CreateDeckMutation, CreateDeckMutationVariables>;
+export const DeleteDeckDocument = gql`
+    mutation deleteDeck($id: Int!) {
+  delete_rangers_deck_by_pk(id: $id) {
+    id
+  }
+}
+    `;
+export type DeleteDeckMutationFn = Apollo.MutationFunction<DeleteDeckMutation, DeleteDeckMutationVariables>;
+
+/**
+ * __useDeleteDeckMutation__
+ *
+ * To run a mutation, you first call `useDeleteDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteDeckMutation, { data, loading, error }] = useDeleteDeckMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteDeckMutation(baseOptions?: Apollo.MutationHookOptions<DeleteDeckMutation, DeleteDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteDeckMutation, DeleteDeckMutationVariables>(DeleteDeckDocument, options);
+      }
+export type DeleteDeckMutationHookResult = ReturnType<typeof useDeleteDeckMutation>;
+export type DeleteDeckMutationResult = Apollo.MutationResult<DeleteDeckMutation>;
+export type DeleteDeckMutationOptions = Apollo.BaseMutationOptions<DeleteDeckMutation, DeleteDeckMutationVariables>;
 export const SaveDeckDocument = gql`
     mutation saveDeck($id: Int!, $name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!) {
   update_rangers_deck_by_pk(

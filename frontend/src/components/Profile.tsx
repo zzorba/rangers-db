@@ -59,9 +59,6 @@ export default function Profile() {
   }, [authClient, authUser, setPrivateDecks])
   return (
     <>
-      <Heading marginTop="1em" marginBottom="0.5em">
-        Profile
-      </Heading>
       { loading ? <LoadingPage /> : (
         <Flex direction="column" m="2">
           <FormControl marginBottom="1em">

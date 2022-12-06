@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react';
 
 import { httpsCallable } from 'firebase/functions';
 import { firebaseFunctions } from './initFirebase';
-import { omit } from 'lodash';
 
 interface ErrorResponse {
   success: false;
