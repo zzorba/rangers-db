@@ -8,6 +8,8 @@ function tableName(t: string) {
   return `${process.env.DATABASE}.${t}`;
 }
 
+let localizedUpdatedClauses: string[] = [];
+let updatedClauses: string[] = [];
 forEach(TABLES, (schema, table) => {
   if (schema.textFields) {
     let joinClause = '';
@@ -57,6 +59,7 @@ forEach(TABLES, (schema, table) => {
         SELECT
           t.id as id,
           ${textFieldSelect}
+          GREATEST(t.updated_at, tt.updated_at) as updated_at,
           tt.locale as locale
           ${otherFieldSelect}
           ${joinSelectClause}
@@ -64,10 +67,37 @@ forEach(TABLES, (schema, table) => {
           ${joinClause}
       ;\n\n\n`
     );
+    localizedUpdatedClauses.push(
+      `(SELECT locale, MAX(updated_at) as updated_at FROM ${tableName(`${table}_localized`)} GROUP BY locale)\n`
+    );
+  } else {
+    updatedClauses.push(
+      `(SELECT MAX(updated_at) as updated_at FROM ${tableName(table)})\n`
+    );
   }
 });
 
-
+console.log(`DROP MATERIALIZED VIEW IF EXISTS ${tableName('card_updated')};`)
+if (updatedClauses.length) {
+  console.log(
+    `CREATE MATERIALIZED VIEW ${tableName('card_updated')} AS
+      SELECT locale, GREATEST(a.updated_at, b.updated_at)
+      FROM (
+        SELECT locale, MAX(updated_at) FROM (${ localizedUpdatedClauses.join(' UNION ')}) GROUP BY locale
+      ) a FULL JOIN (
+        SELECT MAX(updated_at) FROM (${updatedClauses.join(' UNION ALL ')})
+      ) b;
+  `);
+} else {
+  console.log(
+    `CREATE MATERIALIZED VIEW ${tableName('card_updated')} AS
+      SELECT locale, MAX(updated_at) as updated_at FROM (
+        ${ localizedUpdatedClauses.join(' UNION ALL ')}
+      ) t GROUP BY locale
+    ;`
+  );
+}
 forEach(TABLES, (table, name) => {
   console.log(`REFRESH MATERIALIZED VIEW ${tableName(`${name}_localized`)};`);
 });
+console.log(`REFRESH MATERIALIZED VIEW ${tableName('card_updated')};`)

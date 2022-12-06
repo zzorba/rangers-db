@@ -39,6 +39,16 @@ export const TABLES: { [key: string]: Table } = {
     fields: [],
     textFields: ['name'],
   },
+  area: {
+    collection: 'area',
+    fields: [],
+    textFields: ['name']
+  },
+  pack: {
+    collection: 'pack',
+    fields: ['position'],
+    textFields: ['name']
+  },
   card: {
     collection: 'card',
     fields: [
@@ -47,6 +57,7 @@ export const TABLES: { [key: string]: Table } = {
       'token_id',
       'token_count',
       'harm',
+      'progress',
       'approach_conflict',
       'approach_reason',
       'approach_exploration',
@@ -58,18 +69,29 @@ export const TABLES: { [key: string]: Table } = {
       'type_id',
       'cost',
       'aspect_id',
-      'progress',
+      'area_id',
+      'guide_entry',
+      'progress_fixed',
+      'locations',
+      'pack_id',
+      'illustrator',
+      'back_card_id',
+      'imagesrc',
     ],
     textFields: [
       'name',
       'traits',
       'text',
+      'flavor',
+      'objective'
     ],
     foreignKeys: {
       token_id: 'token',
       set_id: 'set',
       type_id: 'type',
-      aspect_id: 'aspect'
+      aspect_id: 'aspect',
+      area_id: 'area',
+      pack_id: 'pack',
     },
   },
 };
@@ -77,6 +99,22 @@ export const TABLES: { [key: string]: Table } = {
 
 
 export const METADATA = [
+  {
+    file: 'packs.json',
+    ...TABLES.pack,
+    getData: (data: GetMetadataQuery) => data.rangers_pack,
+    getLocale: (data: GetLocaleTextQuery) => data.rangers_pack_text,
+    upsert: client.upsertCardPack,
+    upsertText: client.upsertCardPackText,
+  },
+  {
+    file: 'areas.json',
+    ...TABLES.aspect,
+    getData: (data: GetMetadataQuery) => data.rangers_area,
+    getLocale: (data: GetLocaleTextQuery) => data.rangers_area_text,
+    upsert: client.upsertCardArea,
+    upsertText: client.upsertCardAreaText,
+  },
   {
     file: 'aspects.json',
     ...TABLES.aspect,

@@ -14241,6 +14241,14 @@ export type Mutation_Root = {
   delete_pack_name?: Maybe<Pack_Name_Mutation_Response>;
   /** delete single row from the table: "pack_name" */
   delete_pack_name_by_pk?: Maybe<Pack_Name>;
+  /** delete data from the table: "rangers.area" */
+  delete_rangers_area?: Maybe<Rangers_Area_Mutation_Response>;
+  /** delete single row from the table: "rangers.area" */
+  delete_rangers_area_by_pk?: Maybe<Rangers_Area>;
+  /** delete data from the table: "rangers.area_text" */
+  delete_rangers_area_text?: Maybe<Rangers_Area_Text_Mutation_Response>;
+  /** delete single row from the table: "rangers.area_text" */
+  delete_rangers_area_text_by_pk?: Maybe<Rangers_Area_Text>;
   /** delete data from the table: "rangers.aspect" */
   delete_rangers_aspect?: Maybe<Rangers_Aspect_Mutation_Response>;
   /** delete single row from the table: "rangers.aspect" */
@@ -14257,6 +14265,18 @@ export type Mutation_Root = {
   delete_rangers_card_text?: Maybe<Rangers_Card_Text_Mutation_Response>;
   /** delete single row from the table: "rangers.card_text" */
   delete_rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
+  /** delete data from the table: "rangers.deck" */
+  delete_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
+  /** delete single row from the table: "rangers.deck" */
+  delete_rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** delete data from the table: "rangers.friend_status" */
+  delete_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
+  /** delete single row from the table: "rangers.friend_status" */
+  delete_rangers_friend_status_by_pk?: Maybe<Rangers_Friend_Status>;
+  /** delete data from the table: "rangers.friend_status_type" */
+  delete_rangers_friend_status_type?: Maybe<Rangers_Friend_Status_Type_Mutation_Response>;
+  /** delete single row from the table: "rangers.friend_status_type" */
+  delete_rangers_friend_status_type_by_pk?: Maybe<Rangers_Friend_Status_Type>;
   /** delete data from the table: "rangers.locale" */
   delete_rangers_locale?: Maybe<Rangers_Locale_Mutation_Response>;
   /** delete single row from the table: "rangers.locale" */
@@ -14301,6 +14321,14 @@ export type Mutation_Root = {
   delete_rangers_type_text?: Maybe<Rangers_Type_Text_Mutation_Response>;
   /** delete single row from the table: "rangers.type_text" */
   delete_rangers_type_text_by_pk?: Maybe<Rangers_Type_Text>;
+  /** delete data from the table: "rangers.user_settings" */
+  delete_rangers_user_settings?: Maybe<Rangers_User_Settings_Mutation_Response>;
+  /** delete single row from the table: "rangers.user_settings" */
+  delete_rangers_user_settings_by_pk?: Maybe<Rangers_User_Settings>;
+  /** delete data from the table: "rangers.users" */
+  delete_rangers_users?: Maybe<Rangers_Users_Mutation_Response>;
+  /** delete single row from the table: "rangers.users" */
+  delete_rangers_users_by_pk?: Maybe<Rangers_Users>;
   /** delete data from the table: "taboo_set" */
   delete_taboo_set?: Maybe<Taboo_Set_Mutation_Response>;
   /** delete single row from the table: "taboo_set" */
@@ -14477,6 +14505,14 @@ export type Mutation_Root = {
   insert_pack_name_one?: Maybe<Pack_Name>;
   /** insert a single row into the table: "pack" */
   insert_pack_one?: Maybe<Pack>;
+  /** insert data into the table: "rangers.area" */
+  insert_rangers_area?: Maybe<Rangers_Area_Mutation_Response>;
+  /** insert a single row into the table: "rangers.area" */
+  insert_rangers_area_one?: Maybe<Rangers_Area>;
+  /** insert data into the table: "rangers.area_text" */
+  insert_rangers_area_text?: Maybe<Rangers_Area_Text_Mutation_Response>;
+  /** insert a single row into the table: "rangers.area_text" */
+  insert_rangers_area_text_one?: Maybe<Rangers_Area_Text>;
   /** insert data into the table: "rangers.aspect" */
   insert_rangers_aspect?: Maybe<Rangers_Aspect_Mutation_Response>;
   /** insert a single row into the table: "rangers.aspect" */
@@ -14493,6 +14529,18 @@ export type Mutation_Root = {
   insert_rangers_card_text?: Maybe<Rangers_Card_Text_Mutation_Response>;
   /** insert a single row into the table: "rangers.card_text" */
   insert_rangers_card_text_one?: Maybe<Rangers_Card_Text>;
+  /** insert data into the table: "rangers.deck" */
+  insert_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
+  /** insert a single row into the table: "rangers.deck" */
+  insert_rangers_deck_one?: Maybe<Rangers_Deck>;
+  /** insert data into the table: "rangers.friend_status" */
+  insert_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
+  /** insert a single row into the table: "rangers.friend_status" */
+  insert_rangers_friend_status_one?: Maybe<Rangers_Friend_Status>;
+  /** insert data into the table: "rangers.friend_status_type" */
+  insert_rangers_friend_status_type?: Maybe<Rangers_Friend_Status_Type_Mutation_Response>;
+  /** insert a single row into the table: "rangers.friend_status_type" */
+  insert_rangers_friend_status_type_one?: Maybe<Rangers_Friend_Status_Type>;
   /** insert data into the table: "rangers.locale" */
   insert_rangers_locale?: Maybe<Rangers_Locale_Mutation_Response>;
   /** insert a single row into the table: "rangers.locale" */
@@ -14537,6 +14585,14 @@ export type Mutation_Root = {
   insert_rangers_type_text?: Maybe<Rangers_Type_Text_Mutation_Response>;
   /** insert a single row into the table: "rangers.type_text" */
   insert_rangers_type_text_one?: Maybe<Rangers_Type_Text>;
+  /** insert data into the table: "rangers.user_settings" */
+  insert_rangers_user_settings?: Maybe<Rangers_User_Settings_Mutation_Response>;
+  /** insert a single row into the table: "rangers.user_settings" */
+  insert_rangers_user_settings_one?: Maybe<Rangers_User_Settings>;
+  /** insert data into the table: "rangers.users" */
+  insert_rangers_users?: Maybe<Rangers_Users_Mutation_Response>;
+  /** insert a single row into the table: "rangers.users" */
+  insert_rangers_users_one?: Maybe<Rangers_Users>;
   /** insert data into the table: "taboo_set" */
   insert_taboo_set?: Maybe<Taboo_Set_Mutation_Response>;
   /** insert a single row into the table: "taboo_set" */
@@ -14787,6 +14843,18 @@ export type Mutation_Root = {
   update_pack_name_by_pk?: Maybe<Pack_Name>;
   /** update multiples rows of table: "pack_name" */
   update_pack_name_many?: Maybe<Array<Maybe<Pack_Name_Mutation_Response>>>;
+  /** update data of the table: "rangers.area" */
+  update_rangers_area?: Maybe<Rangers_Area_Mutation_Response>;
+  /** update single row of the table: "rangers.area" */
+  update_rangers_area_by_pk?: Maybe<Rangers_Area>;
+  /** update multiples rows of table: "rangers.area" */
+  update_rangers_area_many?: Maybe<Array<Maybe<Rangers_Area_Mutation_Response>>>;
+  /** update data of the table: "rangers.area_text" */
+  update_rangers_area_text?: Maybe<Rangers_Area_Text_Mutation_Response>;
+  /** update single row of the table: "rangers.area_text" */
+  update_rangers_area_text_by_pk?: Maybe<Rangers_Area_Text>;
+  /** update multiples rows of table: "rangers.area_text" */
+  update_rangers_area_text_many?: Maybe<Array<Maybe<Rangers_Area_Text_Mutation_Response>>>;
   /** update data of the table: "rangers.aspect" */
   update_rangers_aspect?: Maybe<Rangers_Aspect_Mutation_Response>;
   /** update single row of the table: "rangers.aspect" */
@@ -14811,6 +14879,24 @@ export type Mutation_Root = {
   update_rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
   /** update multiples rows of table: "rangers.card_text" */
   update_rangers_card_text_many?: Maybe<Array<Maybe<Rangers_Card_Text_Mutation_Response>>>;
+  /** update data of the table: "rangers.deck" */
+  update_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
+  /** update single row of the table: "rangers.deck" */
+  update_rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** update multiples rows of table: "rangers.deck" */
+  update_rangers_deck_many?: Maybe<Array<Maybe<Rangers_Deck_Mutation_Response>>>;
+  /** update data of the table: "rangers.friend_status" */
+  update_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
+  /** update single row of the table: "rangers.friend_status" */
+  update_rangers_friend_status_by_pk?: Maybe<Rangers_Friend_Status>;
+  /** update multiples rows of table: "rangers.friend_status" */
+  update_rangers_friend_status_many?: Maybe<Array<Maybe<Rangers_Friend_Status_Mutation_Response>>>;
+  /** update data of the table: "rangers.friend_status_type" */
+  update_rangers_friend_status_type?: Maybe<Rangers_Friend_Status_Type_Mutation_Response>;
+  /** update single row of the table: "rangers.friend_status_type" */
+  update_rangers_friend_status_type_by_pk?: Maybe<Rangers_Friend_Status_Type>;
+  /** update multiples rows of table: "rangers.friend_status_type" */
+  update_rangers_friend_status_type_many?: Maybe<Array<Maybe<Rangers_Friend_Status_Type_Mutation_Response>>>;
   /** update data of the table: "rangers.locale" */
   update_rangers_locale?: Maybe<Rangers_Locale_Mutation_Response>;
   /** update single row of the table: "rangers.locale" */
@@ -14877,6 +14963,18 @@ export type Mutation_Root = {
   update_rangers_type_text_by_pk?: Maybe<Rangers_Type_Text>;
   /** update multiples rows of table: "rangers.type_text" */
   update_rangers_type_text_many?: Maybe<Array<Maybe<Rangers_Type_Text_Mutation_Response>>>;
+  /** update data of the table: "rangers.user_settings" */
+  update_rangers_user_settings?: Maybe<Rangers_User_Settings_Mutation_Response>;
+  /** update single row of the table: "rangers.user_settings" */
+  update_rangers_user_settings_by_pk?: Maybe<Rangers_User_Settings>;
+  /** update multiples rows of table: "rangers.user_settings" */
+  update_rangers_user_settings_many?: Maybe<Array<Maybe<Rangers_User_Settings_Mutation_Response>>>;
+  /** update data of the table: "rangers.users" */
+  update_rangers_users?: Maybe<Rangers_Users_Mutation_Response>;
+  /** update single row of the table: "rangers.users" */
+  update_rangers_users_by_pk?: Maybe<Rangers_Users>;
+  /** update multiples rows of table: "rangers.users" */
+  update_rangers_users_many?: Maybe<Array<Maybe<Rangers_Users_Mutation_Response>>>;
   /** update data of the table: "taboo_set" */
   update_taboo_set?: Maybe<Taboo_Set_Mutation_Response>;
   /** update single row of the table: "taboo_set" */
@@ -15364,6 +15462,31 @@ export type Mutation_RootDelete_Pack_Name_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Rangers_AreaArgs = {
+  where: Rangers_Area_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Area_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Area_TextArgs = {
+  where: Rangers_Area_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Area_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Rangers_AspectArgs = {
   where: Rangers_Aspect_Bool_Exp;
 };
@@ -15410,6 +15533,43 @@ export type Mutation_RootDelete_Rangers_Card_TextArgs = {
 export type Mutation_RootDelete_Rangers_Card_Text_By_PkArgs = {
   id: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_DeckArgs = {
+  where: Rangers_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Friend_StatusArgs = {
+  where: Rangers_Friend_Status_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Friend_Status_By_PkArgs = {
+  user_id_a: Scalars['String'];
+  user_id_b: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Friend_Status_TypeArgs = {
+  where: Rangers_Friend_Status_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Friend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -15547,6 +15707,30 @@ export type Mutation_RootDelete_Rangers_Type_TextArgs = {
 export type Mutation_RootDelete_Rangers_Type_Text_By_PkArgs = {
   id: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_User_SettingsArgs = {
+  where: Rangers_User_Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_User_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_UsersArgs = {
+  where: Rangers_Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Users_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -16146,6 +16330,34 @@ export type Mutation_RootInsert_Pack_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Rangers_AreaArgs = {
+  objects: Array<Rangers_Area_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Area_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Area_OneArgs = {
+  object: Rangers_Area_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Area_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Area_TextArgs = {
+  objects: Array<Rangers_Area_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Area_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Area_Text_OneArgs = {
+  object: Rangers_Area_Text_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Area_Text_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Rangers_AspectArgs = {
   objects: Array<Rangers_Aspect_Insert_Input>;
   on_conflict?: InputMaybe<Rangers_Aspect_On_Conflict>;
@@ -16198,6 +16410,48 @@ export type Mutation_RootInsert_Rangers_Card_TextArgs = {
 export type Mutation_RootInsert_Rangers_Card_Text_OneArgs = {
   object: Rangers_Card_Text_Insert_Input;
   on_conflict?: InputMaybe<Rangers_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_DeckArgs = {
+  objects: Array<Rangers_Deck_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Deck_OneArgs = {
+  object: Rangers_Deck_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Friend_StatusArgs = {
+  objects: Array<Rangers_Friend_Status_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Friend_Status_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Friend_Status_OneArgs = {
+  object: Rangers_Friend_Status_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Friend_Status_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Friend_Status_TypeArgs = {
+  objects: Array<Rangers_Friend_Status_Type_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Friend_Status_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Friend_Status_Type_OneArgs = {
+  object: Rangers_Friend_Status_Type_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Friend_Status_Type_On_Conflict>;
 };
 
 
@@ -16352,6 +16606,34 @@ export type Mutation_RootInsert_Rangers_Type_TextArgs = {
 export type Mutation_RootInsert_Rangers_Type_Text_OneArgs = {
   object: Rangers_Type_Text_Insert_Input;
   on_conflict?: InputMaybe<Rangers_Type_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_SettingsArgs = {
+  objects: Array<Rangers_User_Settings_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_User_Settings_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_Settings_OneArgs = {
+  object: Rangers_User_Settings_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_User_Settings_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_UsersArgs = {
+  objects: Array<Rangers_Users_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Users_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Users_OneArgs = {
+  object: Rangers_Users_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Users_On_Conflict>;
 };
 
 
@@ -17302,6 +17584,46 @@ export type Mutation_RootUpdate_Pack_Name_ManyArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Rangers_AreaArgs = {
+  _set?: InputMaybe<Rangers_Area_Set_Input>;
+  where: Rangers_Area_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_By_PkArgs = {
+  _set?: InputMaybe<Rangers_Area_Set_Input>;
+  pk_columns: Rangers_Area_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_ManyArgs = {
+  updates: Array<Rangers_Area_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_TextArgs = {
+  _set?: InputMaybe<Rangers_Area_Text_Set_Input>;
+  where: Rangers_Area_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_Text_By_PkArgs = {
+  _set?: InputMaybe<Rangers_Area_Text_Set_Input>;
+  pk_columns: Rangers_Area_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_Text_ManyArgs = {
+  updates: Array<Rangers_Area_Text_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Rangers_AspectArgs = {
   _set?: InputMaybe<Rangers_Aspect_Set_Input>;
   where: Rangers_Aspect_Bool_Exp;
@@ -17343,7 +17665,12 @@ export type Mutation_RootUpdate_Rangers_Aspect_Text_ManyArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_CardArgs = {
+  _append?: InputMaybe<Rangers_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Rangers_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Rangers_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Rangers_Card_Delete_Key_Input>;
   _inc?: InputMaybe<Rangers_Card_Inc_Input>;
+  _prepend?: InputMaybe<Rangers_Card_Prepend_Input>;
   _set?: InputMaybe<Rangers_Card_Set_Input>;
   where: Rangers_Card_Bool_Exp;
 };
@@ -17351,7 +17678,12 @@ export type Mutation_RootUpdate_Rangers_CardArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_Card_By_PkArgs = {
+  _append?: InputMaybe<Rangers_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Rangers_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Rangers_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Rangers_Card_Delete_Key_Input>;
   _inc?: InputMaybe<Rangers_Card_Inc_Input>;
+  _prepend?: InputMaybe<Rangers_Card_Prepend_Input>;
   _set?: InputMaybe<Rangers_Card_Set_Input>;
   pk_columns: Rangers_Card_Pk_Columns_Input;
 };
@@ -17380,6 +17712,78 @@ export type Mutation_RootUpdate_Rangers_Card_Text_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_Card_Text_ManyArgs = {
   updates: Array<Rangers_Card_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_DeckArgs = {
+  _append?: InputMaybe<Rangers_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Rangers_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Rangers_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Rangers_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Rangers_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Rangers_Deck_Prepend_Input>;
+  _set?: InputMaybe<Rangers_Deck_Set_Input>;
+  where: Rangers_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Deck_By_PkArgs = {
+  _append?: InputMaybe<Rangers_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Rangers_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Rangers_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Rangers_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Rangers_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Rangers_Deck_Prepend_Input>;
+  _set?: InputMaybe<Rangers_Deck_Set_Input>;
+  pk_columns: Rangers_Deck_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Deck_ManyArgs = {
+  updates: Array<Rangers_Deck_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Friend_StatusArgs = {
+  _set?: InputMaybe<Rangers_Friend_Status_Set_Input>;
+  where: Rangers_Friend_Status_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Friend_Status_By_PkArgs = {
+  _set?: InputMaybe<Rangers_Friend_Status_Set_Input>;
+  pk_columns: Rangers_Friend_Status_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Friend_Status_ManyArgs = {
+  updates: Array<Rangers_Friend_Status_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Friend_Status_TypeArgs = {
+  _set?: InputMaybe<Rangers_Friend_Status_Type_Set_Input>;
+  where: Rangers_Friend_Status_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Friend_Status_Type_By_PkArgs = {
+  _set?: InputMaybe<Rangers_Friend_Status_Type_Set_Input>;
+  pk_columns: Rangers_Friend_Status_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Friend_Status_Type_ManyArgs = {
+  updates: Array<Rangers_Friend_Status_Type_Updates>;
 };
 
 
@@ -17604,6 +18008,46 @@ export type Mutation_RootUpdate_Rangers_Type_Text_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_Type_Text_ManyArgs = {
   updates: Array<Rangers_Type_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_SettingsArgs = {
+  _set?: InputMaybe<Rangers_User_Settings_Set_Input>;
+  where: Rangers_User_Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Settings_By_PkArgs = {
+  _set?: InputMaybe<Rangers_User_Settings_Set_Input>;
+  pk_columns: Rangers_User_Settings_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Settings_ManyArgs = {
+  updates: Array<Rangers_User_Settings_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_UsersArgs = {
+  _set?: InputMaybe<Rangers_Users_Set_Input>;
+  where: Rangers_Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Users_By_PkArgs = {
+  _set?: InputMaybe<Rangers_Users_Set_Input>;
+  pk_columns: Rangers_Users_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Users_ManyArgs = {
+  updates: Array<Rangers_Users_Updates>;
 };
 
 
@@ -18621,6 +19065,18 @@ export type Query_Root = {
   pack_name_aggregate: Pack_Name_Aggregate;
   /** fetch data from the table: "pack_name" using primary key columns */
   pack_name_by_pk?: Maybe<Pack_Name>;
+  /** fetch data from the table: "rangers.area" */
+  rangers_area: Array<Rangers_Area>;
+  /** fetch aggregated fields from the table: "rangers.area" */
+  rangers_area_aggregate: Rangers_Area_Aggregate;
+  /** fetch data from the table: "rangers.area" using primary key columns */
+  rangers_area_by_pk?: Maybe<Rangers_Area>;
+  /** fetch data from the table: "rangers.area_text" */
+  rangers_area_text: Array<Rangers_Area_Text>;
+  /** fetch aggregated fields from the table: "rangers.area_text" */
+  rangers_area_text_aggregate: Rangers_Area_Text_Aggregate;
+  /** fetch data from the table: "rangers.area_text" using primary key columns */
+  rangers_area_text_by_pk?: Maybe<Rangers_Area_Text>;
   /** fetch data from the table: "rangers.aspect" */
   rangers_aspect: Array<Rangers_Aspect>;
   /** fetch aggregated fields from the table: "rangers.aspect" */
@@ -18653,6 +19109,28 @@ export type Query_Root = {
   rangers_card_text_aggregate: Rangers_Card_Text_Aggregate;
   /** fetch data from the table: "rangers.card_text" using primary key columns */
   rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
+  /** fetch data from the table: "rangers.card_updated" */
+  rangers_card_updated: Array<Rangers_Card_Updated>;
+  /** fetch aggregated fields from the table: "rangers.card_updated" */
+  rangers_card_updated_aggregate: Rangers_Card_Updated_Aggregate;
+  /** fetch data from the table: "rangers.deck" */
+  rangers_deck: Array<Rangers_Deck>;
+  /** fetch aggregated fields from the table: "rangers.deck" */
+  rangers_deck_aggregate: Rangers_Deck_Aggregate;
+  /** fetch data from the table: "rangers.deck" using primary key columns */
+  rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** fetch data from the table: "rangers.friend_status" */
+  rangers_friend_status: Array<Rangers_Friend_Status>;
+  /** fetch aggregated fields from the table: "rangers.friend_status" */
+  rangers_friend_status_aggregate: Rangers_Friend_Status_Aggregate;
+  /** fetch data from the table: "rangers.friend_status" using primary key columns */
+  rangers_friend_status_by_pk?: Maybe<Rangers_Friend_Status>;
+  /** fetch data from the table: "rangers.friend_status_type" */
+  rangers_friend_status_type: Array<Rangers_Friend_Status_Type>;
+  /** fetch aggregated fields from the table: "rangers.friend_status_type" */
+  rangers_friend_status_type_aggregate: Rangers_Friend_Status_Type_Aggregate;
+  /** fetch data from the table: "rangers.friend_status_type" using primary key columns */
+  rangers_friend_status_type_by_pk?: Maybe<Rangers_Friend_Status_Type>;
   /** fetch data from the table: "rangers.locale" */
   rangers_locale: Array<Rangers_Locale>;
   /** fetch aggregated fields from the table: "rangers.locale" */
@@ -18709,10 +19187,6 @@ export type Query_Root = {
   rangers_token_aggregate: Rangers_Token_Aggregate;
   /** fetch data from the table: "rangers.token" using primary key columns */
   rangers_token_by_pk?: Maybe<Rangers_Token>;
-  /** fetch data from the table: "rangers.token_localized" */
-  rangers_token_localized: Array<Rangers_Token_Localized>;
-  /** fetch aggregated fields from the table: "rangers.token_localized" */
-  rangers_token_localized_aggregate: Rangers_Token_Localized_Aggregate;
   /** fetch data from the table: "rangers.token_text" */
   rangers_token_text: Array<Rangers_Token_Text>;
   /** fetch aggregated fields from the table: "rangers.token_text" */
@@ -18735,6 +19209,18 @@ export type Query_Root = {
   rangers_type_text_aggregate: Rangers_Type_Text_Aggregate;
   /** fetch data from the table: "rangers.type_text" using primary key columns */
   rangers_type_text_by_pk?: Maybe<Rangers_Type_Text>;
+  /** fetch data from the table: "rangers.user_settings" */
+  rangers_user_settings: Array<Rangers_User_Settings>;
+  /** fetch aggregated fields from the table: "rangers.user_settings" */
+  rangers_user_settings_aggregate: Rangers_User_Settings_Aggregate;
+  /** fetch data from the table: "rangers.user_settings" using primary key columns */
+  rangers_user_settings_by_pk?: Maybe<Rangers_User_Settings>;
+  /** fetch data from the table: "rangers.users" */
+  rangers_users: Array<Rangers_Users>;
+  /** fetch aggregated fields from the table: "rangers.users" */
+  rangers_users_aggregate: Rangers_Users_Aggregate;
+  /** fetch data from the table: "rangers.users" using primary key columns */
+  rangers_users_by_pk?: Maybe<Rangers_Users>;
   /** fetch data from the table: "taboo_set" */
   taboo_set: Array<Taboo_Set>;
   /** fetch aggregated fields from the table: "taboo_set" */
@@ -19650,6 +20136,53 @@ export type Query_RootPack_Name_By_PkArgs = {
 };
 
 
+export type Query_RootRangers_AreaArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Area_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Area_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootRangers_Area_TextArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Text_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Area_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Text_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Area_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Query_RootRangers_AspectArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Aspect_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -19777,6 +20310,94 @@ export type Query_RootRangers_Card_Text_AggregateArgs = {
 export type Query_RootRangers_Card_Text_By_PkArgs = {
   id: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+export type Query_RootRangers_Card_UpdatedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Card_Updated_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Query_RootRangers_Friend_StatusArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Friend_Status_Order_By>>;
+  where?: InputMaybe<Rangers_Friend_Status_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Friend_Status_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Friend_Status_Order_By>>;
+  where?: InputMaybe<Rangers_Friend_Status_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Friend_Status_By_PkArgs = {
+  user_id_a: Scalars['String'];
+  user_id_b: Scalars['String'];
+};
+
+
+export type Query_RootRangers_Friend_Status_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Friend_Status_Type_Order_By>>;
+  where?: InputMaybe<Rangers_Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Friend_Status_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Friend_Status_Type_Order_By>>;
+  where?: InputMaybe<Rangers_Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Friend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -20003,24 +20624,6 @@ export type Query_RootRangers_Token_By_PkArgs = {
 };
 
 
-export type Query_RootRangers_Token_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Token_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
-export type Query_RootRangers_Token_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Token_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
 export type Query_RootRangers_Token_TextArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Token_Text_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -20107,6 +20710,52 @@ export type Query_RootRangers_Type_Text_AggregateArgs = {
 export type Query_RootRangers_Type_Text_By_PkArgs = {
   id: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+export type Query_RootRangers_User_SettingsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Settings_Order_By>>;
+  where?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_Settings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Settings_Order_By>>;
+  where?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+export type Query_RootRangers_UsersArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Users_Order_By>>;
+  where?: InputMaybe<Rangers_Users_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Users_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Users_Order_By>>;
+  where?: InputMaybe<Rangers_Users_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Users_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -20297,6 +20946,285 @@ export type Query_RootUsers_By_PkArgs = {
   id: Scalars['String'];
 };
 
+/** columns and relationships of "rangers.area" */
+export type Rangers_Area = {
+  __typename?: 'rangers_area';
+  id: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "rangers.area" */
+export type Rangers_Area_Aggregate = {
+  __typename?: 'rangers_area_aggregate';
+  aggregate?: Maybe<Rangers_Area_Aggregate_Fields>;
+  nodes: Array<Rangers_Area>;
+};
+
+/** aggregate fields of "rangers.area" */
+export type Rangers_Area_Aggregate_Fields = {
+  __typename?: 'rangers_area_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Area_Max_Fields>;
+  min?: Maybe<Rangers_Area_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.area" */
+export type Rangers_Area_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.area". All fields are combined with a logical 'AND'. */
+export type Rangers_Area_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Area_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Area_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Area_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.area" */
+export enum Rangers_Area_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  AreaPkey = 'area_pkey'
+}
+
+/** input type for inserting data into table "rangers.area" */
+export type Rangers_Area_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Area_Max_Fields = {
+  __typename?: 'rangers_area_max_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Area_Min_Fields = {
+  __typename?: 'rangers_area_min_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.area" */
+export type Rangers_Area_Mutation_Response = {
+  __typename?: 'rangers_area_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Area>;
+};
+
+/** on_conflict condition type for table "rangers.area" */
+export type Rangers_Area_On_Conflict = {
+  constraint: Rangers_Area_Constraint;
+  update_columns?: Array<Rangers_Area_Update_Column>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.area". */
+export type Rangers_Area_Order_By = {
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.area */
+export type Rangers_Area_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "rangers.area" */
+export enum Rangers_Area_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "rangers.area" */
+export type Rangers_Area_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_area" */
+export type Rangers_Area_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Area_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Area_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** columns and relationships of "rangers.area_text" */
+export type Rangers_Area_Text = {
+  __typename?: 'rangers_area_text';
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "rangers.area_text" */
+export type Rangers_Area_Text_Aggregate = {
+  __typename?: 'rangers_area_text_aggregate';
+  aggregate?: Maybe<Rangers_Area_Text_Aggregate_Fields>;
+  nodes: Array<Rangers_Area_Text>;
+};
+
+/** aggregate fields of "rangers.area_text" */
+export type Rangers_Area_Text_Aggregate_Fields = {
+  __typename?: 'rangers_area_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Area_Text_Max_Fields>;
+  min?: Maybe<Rangers_Area_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.area_text" */
+export type Rangers_Area_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.area_text". All fields are combined with a logical 'AND'. */
+export type Rangers_Area_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Area_Text_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Area_Text_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.area_text" */
+export enum Rangers_Area_Text_Constraint {
+  /** unique or primary key constraint on columns "locale", "id" */
+  AreaTextPkey = 'area_text_pkey'
+}
+
+/** input type for inserting data into table "rangers.area_text" */
+export type Rangers_Area_Text_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Area_Text_Max_Fields = {
+  __typename?: 'rangers_area_text_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Area_Text_Min_Fields = {
+  __typename?: 'rangers_area_text_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.area_text" */
+export type Rangers_Area_Text_Mutation_Response = {
+  __typename?: 'rangers_area_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Area_Text>;
+};
+
+/** on_conflict condition type for table "rangers.area_text" */
+export type Rangers_Area_Text_On_Conflict = {
+  constraint: Rangers_Area_Text_Constraint;
+  update_columns?: Array<Rangers_Area_Text_Update_Column>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.area_text". */
+export type Rangers_Area_Text_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.area_text */
+export type Rangers_Area_Text_Pk_Columns_Input = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "rangers.area_text" */
+export enum Rangers_Area_Text_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "rangers.area_text" */
+export type Rangers_Area_Text_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_area_text" */
+export type Rangers_Area_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Area_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Area_Text_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "rangers.area_text" */
+export enum Rangers_Area_Text_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Rangers_Area_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Area_Text_Set_Input>;
+  where: Rangers_Area_Text_Bool_Exp;
+};
+
+/** update columns of table "rangers.area" */
+export enum Rangers_Area_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name'
+}
+
+export type Rangers_Area_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Area_Set_Input>;
+  where: Rangers_Area_Bool_Exp;
+};
+
 /** columns and relationships of "rangers.aspect" */
 export type Rangers_Aspect = {
   __typename?: 'rangers_aspect';
@@ -20362,6 +21290,7 @@ export type Rangers_Aspect_Localized = {
   real_name?: Maybe<Scalars['String']>;
   real_short_name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregated selection of "rangers.aspect_localized" */
@@ -20397,6 +21326,7 @@ export type Rangers_Aspect_Localized_Bool_Exp = {
   real_name?: InputMaybe<String_Comparison_Exp>;
   real_short_name?: InputMaybe<String_Comparison_Exp>;
   short_name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -20408,6 +21338,7 @@ export type Rangers_Aspect_Localized_Max_Fields = {
   real_name?: Maybe<Scalars['String']>;
   real_short_name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
@@ -20419,6 +21350,7 @@ export type Rangers_Aspect_Localized_Min_Fields = {
   real_name?: Maybe<Scalars['String']>;
   real_short_name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** Ordering options when selecting data from "rangers.aspect_localized". */
@@ -20429,6 +21361,7 @@ export type Rangers_Aspect_Localized_Order_By = {
   real_name?: InputMaybe<Order_By>;
   real_short_name?: InputMaybe<Order_By>;
   short_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "rangers.aspect_localized" */
@@ -20444,7 +21377,9 @@ export enum Rangers_Aspect_Localized_Select_Column {
   /** column name */
   RealShortName = 'real_short_name',
   /** column name */
-  ShortName = 'short_name'
+  ShortName = 'short_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** Streaming cursor of the table "rangers_aspect_localized" */
@@ -20463,6 +21398,7 @@ export type Rangers_Aspect_Localized_Stream_Cursor_Value_Input = {
   real_name?: InputMaybe<Scalars['String']>;
   real_short_name?: InputMaybe<Scalars['String']>;
   short_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -20743,15 +21679,23 @@ export type Rangers_Card = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id: Scalars['String'];
+  illustrator?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
+  locations?: Maybe<Scalars['jsonb']>;
   name: Scalars['String'];
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
+  progress_fixed?: Maybe<Scalars['Boolean']>;
   quantity: Scalars['Int'];
   set_id: Scalars['String'];
   set_position: Scalars['Int'];
@@ -20765,6 +21709,12 @@ export type Rangers_Card = {
   translations_aggregate: Rangers_Card_Text_Aggregate;
   type_id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+
+/** columns and relationships of "rangers.card" */
+export type Rangers_CardLocationsArgs = {
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -20817,6 +21767,11 @@ export type Rangers_Card_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Rangers_Card_Append_Input = {
+  locations?: InputMaybe<Scalars['jsonb']>;
+};
+
 /** aggregate avg on columns */
 export type Rangers_Card_Avg_Fields = {
   __typename?: 'rangers_card_avg_fields';
@@ -20844,15 +21799,23 @@ export type Rangers_Card_Bool_Exp = {
   approach_connection?: InputMaybe<Int_Comparison_Exp>;
   approach_exploration?: InputMaybe<Int_Comparison_Exp>;
   approach_reason?: InputMaybe<Int_Comparison_Exp>;
+  area_id?: InputMaybe<String_Comparison_Exp>;
   aspect_id?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
   equip?: InputMaybe<Int_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  guide_entry?: InputMaybe<String_Comparison_Exp>;
   harm?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
   level?: InputMaybe<Int_Comparison_Exp>;
+  locations?: InputMaybe<Jsonb_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  objective?: InputMaybe<String_Comparison_Exp>;
+  pack_id?: InputMaybe<String_Comparison_Exp>;
   presence?: InputMaybe<Int_Comparison_Exp>;
   progress?: InputMaybe<Int_Comparison_Exp>;
+  progress_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
   set_id?: InputMaybe<String_Comparison_Exp>;
   set_position?: InputMaybe<Int_Comparison_Exp>;
@@ -20871,6 +21834,21 @@ export enum Rangers_Card_Constraint {
   /** unique or primary key constraint on columns "id" */
   CardPkey = 'card_pkey'
 }
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Rangers_Card_Delete_At_Path_Input = {
+  locations?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Rangers_Card_Delete_Elem_Input = {
+  locations?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Rangers_Card_Delete_Key_Input = {
+  locations?: InputMaybe<Scalars['String']>;
+};
 
 /** input type for incrementing numeric columns in table "rangers.card" */
 export type Rangers_Card_Inc_Input = {
@@ -20895,15 +21873,23 @@ export type Rangers_Card_Insert_Input = {
   approach_connection?: InputMaybe<Scalars['Int']>;
   approach_exploration?: InputMaybe<Scalars['Int']>;
   approach_reason?: InputMaybe<Scalars['Int']>;
+  area_id?: InputMaybe<Scalars['String']>;
   aspect_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  guide_entry?: InputMaybe<Scalars['String']>;
   harm?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
+  locations?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
   presence?: InputMaybe<Scalars['Int']>;
   progress?: InputMaybe<Scalars['Int']>;
+  progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
@@ -20942,6 +21928,7 @@ export type Rangers_Card_Localized = {
   set_id?: Maybe<Scalars['String']>;
   set_name?: Maybe<Scalars['String']>;
   set_position?: Maybe<Scalars['Int']>;
+  set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
@@ -20952,6 +21939,7 @@ export type Rangers_Card_Localized = {
   traits?: Maybe<Scalars['String']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregated selection of "rangers.card_localized" */
@@ -20999,6 +21987,7 @@ export type Rangers_Card_Localized_Avg_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21030,6 +22019,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   set_id?: InputMaybe<String_Comparison_Exp>;
   set_name?: InputMaybe<String_Comparison_Exp>;
   set_position?: InputMaybe<Int_Comparison_Exp>;
+  set_size?: InputMaybe<Int_Comparison_Exp>;
   set_type_id?: InputMaybe<String_Comparison_Exp>;
   set_type_name?: InputMaybe<String_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
@@ -21040,6 +22030,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   traits?: InputMaybe<String_Comparison_Exp>;
   type_id?: InputMaybe<String_Comparison_Exp>;
   type_name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -21068,6 +22059,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   set_id?: Maybe<Scalars['String']>;
   set_name?: Maybe<Scalars['String']>;
   set_position?: Maybe<Scalars['Int']>;
+  set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
@@ -21078,6 +22070,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   traits?: Maybe<Scalars['String']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
@@ -21106,6 +22099,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   set_id?: Maybe<Scalars['String']>;
   set_name?: Maybe<Scalars['String']>;
   set_position?: Maybe<Scalars['Int']>;
+  set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
@@ -21116,6 +22110,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   traits?: Maybe<Scalars['String']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** Ordering options when selecting data from "rangers.card_localized". */
@@ -21143,6 +22138,7 @@ export type Rangers_Card_Localized_Order_By = {
   set_id?: InputMaybe<Order_By>;
   set_name?: InputMaybe<Order_By>;
   set_position?: InputMaybe<Order_By>;
+  set_size?: InputMaybe<Order_By>;
   set_type_id?: InputMaybe<Order_By>;
   set_type_name?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
@@ -21153,6 +22149,7 @@ export type Rangers_Card_Localized_Order_By = {
   traits?: InputMaybe<Order_By>;
   type_id?: InputMaybe<Order_By>;
   type_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "rangers.card_localized" */
@@ -21204,6 +22201,8 @@ export enum Rangers_Card_Localized_Select_Column {
   /** column name */
   SetPosition = 'set_position',
   /** column name */
+  SetSize = 'set_size',
+  /** column name */
   SetTypeId = 'set_type_id',
   /** column name */
   SetTypeName = 'set_type_name',
@@ -21222,7 +22221,9 @@ export enum Rangers_Card_Localized_Select_Column {
   /** column name */
   TypeId = 'type_id',
   /** column name */
-  TypeName = 'type_name'
+  TypeName = 'type_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** aggregate stddev on columns */
@@ -21240,6 +22241,7 @@ export type Rangers_Card_Localized_Stddev_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21258,6 +22260,7 @@ export type Rangers_Card_Localized_Stddev_Pop_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21276,6 +22279,7 @@ export type Rangers_Card_Localized_Stddev_Samp_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21312,6 +22316,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   set_id?: InputMaybe<Scalars['String']>;
   set_name?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
+  set_size?: InputMaybe<Scalars['Int']>;
   set_type_id?: InputMaybe<Scalars['String']>;
   set_type_name?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
@@ -21322,6 +22327,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   traits?: InputMaybe<Scalars['String']>;
   type_id?: InputMaybe<Scalars['String']>;
   type_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate sum on columns */
@@ -21339,6 +22345,7 @@ export type Rangers_Card_Localized_Sum_Fields = {
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   set_position?: Maybe<Scalars['Int']>;
+  set_size?: Maybe<Scalars['Int']>;
   token_count?: Maybe<Scalars['Int']>;
 };
 
@@ -21357,6 +22364,7 @@ export type Rangers_Card_Localized_Var_Pop_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21375,6 +22383,7 @@ export type Rangers_Card_Localized_Var_Samp_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21393,6 +22402,7 @@ export type Rangers_Card_Localized_Variance_Fields = {
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
+  set_size?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
 };
 
@@ -21403,13 +22413,19 @@ export type Rangers_Card_Max_Fields = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
@@ -21430,13 +22446,19 @@ export type Rangers_Card_Min_Fields = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
@@ -21472,15 +22494,23 @@ export type Rangers_Card_Order_By = {
   approach_connection?: InputMaybe<Order_By>;
   approach_exploration?: InputMaybe<Order_By>;
   approach_reason?: InputMaybe<Order_By>;
+  area_id?: InputMaybe<Order_By>;
   aspect_id?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
   equip?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  guide_entry?: InputMaybe<Order_By>;
   harm?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
   level?: InputMaybe<Order_By>;
+  locations?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
+  pack_id?: InputMaybe<Order_By>;
   presence?: InputMaybe<Order_By>;
   progress?: InputMaybe<Order_By>;
+  progress_fixed?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
   set_id?: InputMaybe<Order_By>;
   set_position?: InputMaybe<Order_By>;
@@ -21498,6 +22528,11 @@ export type Rangers_Card_Pk_Columns_Input = {
   id: Scalars['String'];
 };
 
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Rangers_Card_Prepend_Input = {
+  locations?: InputMaybe<Scalars['jsonb']>;
+};
+
 /** select columns of table "rangers.card" */
 export enum Rangers_Card_Select_Column {
   /** column name */
@@ -21509,23 +22544,39 @@ export enum Rangers_Card_Select_Column {
   /** column name */
   ApproachReason = 'approach_reason',
   /** column name */
+  AreaId = 'area_id',
+  /** column name */
   AspectId = 'aspect_id',
   /** column name */
   Cost = 'cost',
   /** column name */
   Equip = 'equip',
   /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  GuideEntry = 'guide_entry',
+  /** column name */
   Harm = 'harm',
   /** column name */
   Id = 'id',
   /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
   Level = 'level',
   /** column name */
+  Locations = 'locations',
+  /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
+  /** column name */
+  PackId = 'pack_id',
   /** column name */
   Presence = 'presence',
   /** column name */
   Progress = 'progress',
+  /** column name */
+  ProgressFixed = 'progress_fixed',
   /** column name */
   Quantity = 'quantity',
   /** column name */
@@ -21552,15 +22603,23 @@ export type Rangers_Card_Set_Input = {
   approach_connection?: InputMaybe<Scalars['Int']>;
   approach_exploration?: InputMaybe<Scalars['Int']>;
   approach_reason?: InputMaybe<Scalars['Int']>;
+  area_id?: InputMaybe<Scalars['String']>;
   aspect_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  guide_entry?: InputMaybe<Scalars['String']>;
   harm?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
+  locations?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
   presence?: InputMaybe<Scalars['Int']>;
   progress?: InputMaybe<Scalars['Int']>;
+  progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
@@ -21640,15 +22699,23 @@ export type Rangers_Card_Stream_Cursor_Value_Input = {
   approach_connection?: InputMaybe<Scalars['Int']>;
   approach_exploration?: InputMaybe<Scalars['Int']>;
   approach_reason?: InputMaybe<Scalars['Int']>;
+  area_id?: InputMaybe<Scalars['String']>;
   aspect_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  guide_entry?: InputMaybe<Scalars['String']>;
   harm?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
+  locations?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
   presence?: InputMaybe<Scalars['Int']>;
   progress?: InputMaybe<Scalars['Int']>;
+  progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
@@ -21681,9 +22748,11 @@ export type Rangers_Card_Sum_Fields = {
 /** columns and relationships of "rangers.card_text" */
 export type Rangers_Card_Text = {
   __typename?: 'rangers_card_text';
+  flavor?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   locale: Scalars['String'];
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -21741,9 +22810,11 @@ export type Rangers_Card_Text_Bool_Exp = {
   _and?: InputMaybe<Array<Rangers_Card_Text_Bool_Exp>>;
   _not?: InputMaybe<Rangers_Card_Text_Bool_Exp>;
   _or?: InputMaybe<Array<Rangers_Card_Text_Bool_Exp>>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  objective?: InputMaybe<String_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   traits?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -21757,9 +22828,11 @@ export enum Rangers_Card_Text_Constraint {
 
 /** input type for inserting data into table "rangers.card_text" */
 export type Rangers_Card_Text_Insert_Input = {
+  flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -21768,9 +22841,11 @@ export type Rangers_Card_Text_Insert_Input = {
 /** aggregate max on columns */
 export type Rangers_Card_Text_Max_Fields = {
   __typename?: 'rangers_card_text_max_fields';
+  flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -21778,9 +22853,11 @@ export type Rangers_Card_Text_Max_Fields = {
 
 /** order by max() on columns of table "rangers.card_text" */
 export type Rangers_Card_Text_Max_Order_By = {
+  flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -21789,9 +22866,11 @@ export type Rangers_Card_Text_Max_Order_By = {
 /** aggregate min on columns */
 export type Rangers_Card_Text_Min_Fields = {
   __typename?: 'rangers_card_text_min_fields';
+  flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -21799,9 +22878,11 @@ export type Rangers_Card_Text_Min_Fields = {
 
 /** order by min() on columns of table "rangers.card_text" */
 export type Rangers_Card_Text_Min_Order_By = {
+  flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -21825,9 +22906,11 @@ export type Rangers_Card_Text_On_Conflict = {
 
 /** Ordering options when selecting data from "rangers.card_text". */
 export type Rangers_Card_Text_Order_By = {
+  flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -21842,11 +22925,15 @@ export type Rangers_Card_Text_Pk_Columns_Input = {
 /** select columns of table "rangers.card_text" */
 export enum Rangers_Card_Text_Select_Column {
   /** column name */
+  Flavor = 'flavor',
+  /** column name */
   Id = 'id',
   /** column name */
   Locale = 'locale',
   /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
   /** column name */
   Text = 'text',
   /** column name */
@@ -21857,9 +22944,11 @@ export enum Rangers_Card_Text_Select_Column {
 
 /** input type for updating data in table "rangers.card_text" */
 export type Rangers_Card_Text_Set_Input = {
+  flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -21875,9 +22964,11 @@ export type Rangers_Card_Text_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Rangers_Card_Text_Stream_Cursor_Value_Input = {
+  flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -21886,11 +22977,15 @@ export type Rangers_Card_Text_Stream_Cursor_Value_Input = {
 /** update columns of table "rangers.card_text" */
 export enum Rangers_Card_Text_Update_Column {
   /** column name */
+  Flavor = 'flavor',
+  /** column name */
   Id = 'id',
   /** column name */
   Locale = 'locale',
   /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
   /** column name */
   Text = 'text',
   /** column name */
@@ -21916,23 +23011,39 @@ export enum Rangers_Card_Update_Column {
   /** column name */
   ApproachReason = 'approach_reason',
   /** column name */
+  AreaId = 'area_id',
+  /** column name */
   AspectId = 'aspect_id',
   /** column name */
   Cost = 'cost',
   /** column name */
   Equip = 'equip',
   /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  GuideEntry = 'guide_entry',
+  /** column name */
   Harm = 'harm',
   /** column name */
   Id = 'id',
   /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
   Level = 'level',
   /** column name */
+  Locations = 'locations',
+  /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
+  /** column name */
+  PackId = 'pack_id',
   /** column name */
   Presence = 'presence',
   /** column name */
   Progress = 'progress',
+  /** column name */
+  ProgressFixed = 'progress_fixed',
   /** column name */
   Quantity = 'quantity',
   /** column name */
@@ -21953,9 +23064,99 @@ export enum Rangers_Card_Update_Column {
   UpdatedAt = 'updated_at'
 }
 
+/** columns and relationships of "rangers.card_updated" */
+export type Rangers_Card_Updated = {
+  __typename?: 'rangers_card_updated';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "rangers.card_updated" */
+export type Rangers_Card_Updated_Aggregate = {
+  __typename?: 'rangers_card_updated_aggregate';
+  aggregate?: Maybe<Rangers_Card_Updated_Aggregate_Fields>;
+  nodes: Array<Rangers_Card_Updated>;
+};
+
+/** aggregate fields of "rangers.card_updated" */
+export type Rangers_Card_Updated_Aggregate_Fields = {
+  __typename?: 'rangers_card_updated_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Card_Updated_Max_Fields>;
+  min?: Maybe<Rangers_Card_Updated_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.card_updated" */
+export type Rangers_Card_Updated_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.card_updated". All fields are combined with a logical 'AND'. */
+export type Rangers_Card_Updated_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Card_Updated_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Card_Updated_Bool_Exp>>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Card_Updated_Max_Fields = {
+  __typename?: 'rangers_card_updated_max_fields';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Card_Updated_Min_Fields = {
+  __typename?: 'rangers_card_updated_min_fields';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** Ordering options when selecting data from "rangers.card_updated". */
+export type Rangers_Card_Updated_Order_By = {
+  locale?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.card_updated" */
+export enum Rangers_Card_Updated_Select_Column {
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** Streaming cursor of the table "rangers_card_updated" */
+export type Rangers_Card_Updated_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Card_Updated_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Card_Updated_Stream_Cursor_Value_Input = {
+  locale?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 export type Rangers_Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Rangers_Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Rangers_Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Rangers_Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Rangers_Card_Delete_Key_Input>;
   /** increments the numeric columns with given value of the filtered values */
   _inc?: InputMaybe<Rangers_Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Rangers_Card_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Card_Set_Input>;
   where: Rangers_Card_Bool_Exp;
@@ -22013,6 +23214,742 @@ export type Rangers_Card_Variance_Fields = {
   quantity?: Maybe<Scalars['Float']>;
   set_position?: Maybe<Scalars['Float']>;
   token_count?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_Deck = {
+  __typename?: 'rangers_deck';
+  awa: Scalars['Int'];
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  fit: Scalars['Int'];
+  foc: Scalars['Int'];
+  id: Scalars['Int'];
+  meta: Scalars['jsonb'];
+  name: Scalars['String'];
+  /** An object relationship */
+  next_deck?: Maybe<Rangers_Deck>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  /** An object relationship */
+  previous_deck?: Maybe<Rangers_Deck>;
+  published?: Maybe<Scalars['Boolean']>;
+  slots: Scalars['jsonb'];
+  spi: Scalars['Int'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  /** An object relationship */
+  user: Rangers_Users;
+  user_id: Scalars['String'];
+};
+
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_DeckMetaArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_DeckSlotsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregated selection of "rangers.deck" */
+export type Rangers_Deck_Aggregate = {
+  __typename?: 'rangers_deck_aggregate';
+  aggregate?: Maybe<Rangers_Deck_Aggregate_Fields>;
+  nodes: Array<Rangers_Deck>;
+};
+
+/** aggregate fields of "rangers.deck" */
+export type Rangers_Deck_Aggregate_Fields = {
+  __typename?: 'rangers_deck_aggregate_fields';
+  avg?: Maybe<Rangers_Deck_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Deck_Max_Fields>;
+  min?: Maybe<Rangers_Deck_Min_Fields>;
+  stddev?: Maybe<Rangers_Deck_Stddev_Fields>;
+  stddev_pop?: Maybe<Rangers_Deck_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Rangers_Deck_Stddev_Samp_Fields>;
+  sum?: Maybe<Rangers_Deck_Sum_Fields>;
+  var_pop?: Maybe<Rangers_Deck_Var_Pop_Fields>;
+  var_samp?: Maybe<Rangers_Deck_Var_Samp_Fields>;
+  variance?: Maybe<Rangers_Deck_Variance_Fields>;
+};
+
+
+/** aggregate fields of "rangers.deck" */
+export type Rangers_Deck_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Rangers_Deck_Append_Input = {
+  meta?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** aggregate avg on columns */
+export type Rangers_Deck_Avg_Fields = {
+  __typename?: 'rangers_deck_avg_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.deck". All fields are combined with a logical 'AND'. */
+export type Rangers_Deck_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Deck_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Deck_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Deck_Bool_Exp>>;
+  awa?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  fit?: InputMaybe<Int_Comparison_Exp>;
+  foc?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  meta?: InputMaybe<Jsonb_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  next_deck?: InputMaybe<Rangers_Deck_Bool_Exp>;
+  next_deck_id?: InputMaybe<Int_Comparison_Exp>;
+  previous_deck?: InputMaybe<Rangers_Deck_Bool_Exp>;
+  published?: InputMaybe<Boolean_Comparison_Exp>;
+  slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  spi?: InputMaybe<Int_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user?: InputMaybe<Rangers_Users_Bool_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.deck" */
+export enum Rangers_Deck_Constraint {
+  /** unique or primary key constraint on columns "next_deck_id" */
+  DeckNextDeckIdKey = 'deck_next_deck_id_key',
+  /** unique or primary key constraint on columns "id" */
+  DeckPkey = 'deck_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Rangers_Deck_Delete_At_Path_Input = {
+  meta?: InputMaybe<Array<Scalars['String']>>;
+  slots?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Rangers_Deck_Delete_Elem_Input = {
+  meta?: InputMaybe<Scalars['Int']>;
+  slots?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Rangers_Deck_Delete_Key_Input = {
+  meta?: InputMaybe<Scalars['String']>;
+  slots?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for incrementing numeric columns in table "rangers.deck" */
+export type Rangers_Deck_Inc_Input = {
+  awa?: InputMaybe<Scalars['Int']>;
+  fit?: InputMaybe<Scalars['Int']>;
+  foc?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  spi?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "rangers.deck" */
+export type Rangers_Deck_Insert_Input = {
+  awa?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  fit?: InputMaybe<Scalars['Int']>;
+  foc?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck?: InputMaybe<Rangers_Deck_Obj_Rel_Insert_Input>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  previous_deck?: InputMaybe<Rangers_Deck_Obj_Rel_Insert_Input>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  spi?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Deck_Max_Fields = {
+  __typename?: 'rangers_deck_max_fields';
+  awa?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  fit?: Maybe<Scalars['Int']>;
+  foc?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  spi?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Deck_Min_Fields = {
+  __typename?: 'rangers_deck_min_fields';
+  awa?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  fit?: Maybe<Scalars['Int']>;
+  foc?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  spi?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.deck" */
+export type Rangers_Deck_Mutation_Response = {
+  __typename?: 'rangers_deck_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Deck>;
+};
+
+/** input type for inserting object relation for remote table "rangers.deck" */
+export type Rangers_Deck_Obj_Rel_Insert_Input = {
+  data: Rangers_Deck_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Rangers_Deck_On_Conflict>;
+};
+
+/** on_conflict condition type for table "rangers.deck" */
+export type Rangers_Deck_On_Conflict = {
+  constraint: Rangers_Deck_Constraint;
+  update_columns?: Array<Rangers_Deck_Update_Column>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.deck". */
+export type Rangers_Deck_Order_By = {
+  awa?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  fit?: InputMaybe<Order_By>;
+  foc?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  meta?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  next_deck?: InputMaybe<Rangers_Deck_Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
+  previous_deck?: InputMaybe<Rangers_Deck_Order_By>;
+  published?: InputMaybe<Order_By>;
+  slots?: InputMaybe<Order_By>;
+  spi?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user?: InputMaybe<Rangers_Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.deck */
+export type Rangers_Deck_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Rangers_Deck_Prepend_Input = {
+  meta?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "rangers.deck" */
+export enum Rangers_Deck_Select_Column {
+  /** column name */
+  Awa = 'awa',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Fit = 'fit',
+  /** column name */
+  Foc = 'foc',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  Published = 'published',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Spi = 'spi',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "rangers.deck" */
+export type Rangers_Deck_Set_Input = {
+  awa?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  fit?: InputMaybe<Scalars['Int']>;
+  foc?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  spi?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Rangers_Deck_Stddev_Fields = {
+  __typename?: 'rangers_deck_stddev_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Rangers_Deck_Stddev_Pop_Fields = {
+  __typename?: 'rangers_deck_stddev_pop_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Rangers_Deck_Stddev_Samp_Fields = {
+  __typename?: 'rangers_deck_stddev_samp_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "rangers_deck" */
+export type Rangers_Deck_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Deck_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Deck_Stream_Cursor_Value_Input = {
+  awa?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  fit?: InputMaybe<Scalars['Int']>;
+  foc?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  spi?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Rangers_Deck_Sum_Fields = {
+  __typename?: 'rangers_deck_sum_fields';
+  awa?: Maybe<Scalars['Int']>;
+  fit?: Maybe<Scalars['Int']>;
+  foc?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  spi?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "rangers.deck" */
+export enum Rangers_Deck_Update_Column {
+  /** column name */
+  Awa = 'awa',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Fit = 'fit',
+  /** column name */
+  Foc = 'foc',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  Published = 'published',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Spi = 'spi',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Rangers_Deck_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Rangers_Deck_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Rangers_Deck_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Rangers_Deck_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Rangers_Deck_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Rangers_Deck_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Rangers_Deck_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Deck_Set_Input>;
+  where: Rangers_Deck_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Rangers_Deck_Var_Pop_Fields = {
+  __typename?: 'rangers_deck_var_pop_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Rangers_Deck_Var_Samp_Fields = {
+  __typename?: 'rangers_deck_var_samp_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Rangers_Deck_Variance_Fields = {
+  __typename?: 'rangers_deck_variance_fields';
+  awa?: Maybe<Scalars['Float']>;
+  fit?: Maybe<Scalars['Float']>;
+  foc?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+  spi?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "rangers.friend_status" */
+export type Rangers_Friend_Status = {
+  __typename?: 'rangers_friend_status';
+  status: Rangers_Friend_Status_Type_Enum;
+  user_id_a: Scalars['String'];
+  user_id_b: Scalars['String'];
+};
+
+/** aggregated selection of "rangers.friend_status" */
+export type Rangers_Friend_Status_Aggregate = {
+  __typename?: 'rangers_friend_status_aggregate';
+  aggregate?: Maybe<Rangers_Friend_Status_Aggregate_Fields>;
+  nodes: Array<Rangers_Friend_Status>;
+};
+
+/** aggregate fields of "rangers.friend_status" */
+export type Rangers_Friend_Status_Aggregate_Fields = {
+  __typename?: 'rangers_friend_status_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Friend_Status_Max_Fields>;
+  min?: Maybe<Rangers_Friend_Status_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.friend_status" */
+export type Rangers_Friend_Status_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Friend_Status_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.friend_status". All fields are combined with a logical 'AND'. */
+export type Rangers_Friend_Status_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Friend_Status_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Friend_Status_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Friend_Status_Bool_Exp>>;
+  status?: InputMaybe<Rangers_Friend_Status_Type_Enum_Comparison_Exp>;
+  user_id_a?: InputMaybe<String_Comparison_Exp>;
+  user_id_b?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.friend_status" */
+export enum Rangers_Friend_Status_Constraint {
+  /** unique or primary key constraint on columns "user_id_a", "user_id_b" */
+  FriendStatusPkey = 'friend_status_pkey'
+}
+
+/** input type for inserting data into table "rangers.friend_status" */
+export type Rangers_Friend_Status_Insert_Input = {
+  status?: InputMaybe<Rangers_Friend_Status_Type_Enum>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Friend_Status_Max_Fields = {
+  __typename?: 'rangers_friend_status_max_fields';
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Friend_Status_Min_Fields = {
+  __typename?: 'rangers_friend_status_min_fields';
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.friend_status" */
+export type Rangers_Friend_Status_Mutation_Response = {
+  __typename?: 'rangers_friend_status_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Friend_Status>;
+};
+
+/** on_conflict condition type for table "rangers.friend_status" */
+export type Rangers_Friend_Status_On_Conflict = {
+  constraint: Rangers_Friend_Status_Constraint;
+  update_columns?: Array<Rangers_Friend_Status_Update_Column>;
+  where?: InputMaybe<Rangers_Friend_Status_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.friend_status". */
+export type Rangers_Friend_Status_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.friend_status */
+export type Rangers_Friend_Status_Pk_Columns_Input = {
+  user_id_a: Scalars['String'];
+  user_id_b: Scalars['String'];
+};
+
+/** select columns of table "rangers.friend_status" */
+export enum Rangers_Friend_Status_Select_Column {
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UserIdA = 'user_id_a',
+  /** column name */
+  UserIdB = 'user_id_b'
+}
+
+/** input type for updating data in table "rangers.friend_status" */
+export type Rangers_Friend_Status_Set_Input = {
+  status?: InputMaybe<Rangers_Friend_Status_Type_Enum>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_friend_status" */
+export type Rangers_Friend_Status_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Friend_Status_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Friend_Status_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Rangers_Friend_Status_Type_Enum>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** columns and relationships of "rangers.friend_status_type" */
+export type Rangers_Friend_Status_Type = {
+  __typename?: 'rangers_friend_status_type';
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "rangers.friend_status_type" */
+export type Rangers_Friend_Status_Type_Aggregate = {
+  __typename?: 'rangers_friend_status_type_aggregate';
+  aggregate?: Maybe<Rangers_Friend_Status_Type_Aggregate_Fields>;
+  nodes: Array<Rangers_Friend_Status_Type>;
+};
+
+/** aggregate fields of "rangers.friend_status_type" */
+export type Rangers_Friend_Status_Type_Aggregate_Fields = {
+  __typename?: 'rangers_friend_status_type_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Friend_Status_Type_Max_Fields>;
+  min?: Maybe<Rangers_Friend_Status_Type_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.friend_status_type" */
+export type Rangers_Friend_Status_Type_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Friend_Status_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.friend_status_type". All fields are combined with a logical 'AND'. */
+export type Rangers_Friend_Status_Type_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Friend_Status_Type_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Friend_Status_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Friend_Status_Type_Bool_Exp>>;
+  value?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.friend_status_type" */
+export enum Rangers_Friend_Status_Type_Constraint {
+  /** unique or primary key constraint on columns "value" */
+  FriendStatusTypePkey = 'friend_status_type_pkey'
+}
+
+export enum Rangers_Friend_Status_Type_Enum {
+  Friend = 'friend',
+  None = 'none',
+  Received = 'received',
+  Sent = 'sent'
+}
+
+/** Boolean expression to compare columns of type "rangers_friend_status_type_enum". All fields are combined with logical 'AND'. */
+export type Rangers_Friend_Status_Type_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Rangers_Friend_Status_Type_Enum>;
+  _in?: InputMaybe<Array<Rangers_Friend_Status_Type_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Rangers_Friend_Status_Type_Enum>;
+  _nin?: InputMaybe<Array<Rangers_Friend_Status_Type_Enum>>;
+};
+
+/** input type for inserting data into table "rangers.friend_status_type" */
+export type Rangers_Friend_Status_Type_Insert_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Friend_Status_Type_Max_Fields = {
+  __typename?: 'rangers_friend_status_type_max_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Friend_Status_Type_Min_Fields = {
+  __typename?: 'rangers_friend_status_type_min_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.friend_status_type" */
+export type Rangers_Friend_Status_Type_Mutation_Response = {
+  __typename?: 'rangers_friend_status_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Friend_Status_Type>;
+};
+
+/** on_conflict condition type for table "rangers.friend_status_type" */
+export type Rangers_Friend_Status_Type_On_Conflict = {
+  constraint: Rangers_Friend_Status_Type_Constraint;
+  update_columns?: Array<Rangers_Friend_Status_Type_Update_Column>;
+  where?: InputMaybe<Rangers_Friend_Status_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.friend_status_type". */
+export type Rangers_Friend_Status_Type_Order_By = {
+  value?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.friend_status_type */
+export type Rangers_Friend_Status_Type_Pk_Columns_Input = {
+  value: Scalars['String'];
+};
+
+/** select columns of table "rangers.friend_status_type" */
+export enum Rangers_Friend_Status_Type_Select_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "rangers.friend_status_type" */
+export type Rangers_Friend_Status_Type_Set_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_friend_status_type" */
+export type Rangers_Friend_Status_Type_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Friend_Status_Type_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Friend_Status_Type_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "rangers.friend_status_type" */
+export enum Rangers_Friend_Status_Type_Update_Column {
+  /** column name */
+  Value = 'value'
+}
+
+export type Rangers_Friend_Status_Type_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Friend_Status_Type_Set_Input>;
+  where: Rangers_Friend_Status_Type_Bool_Exp;
+};
+
+/** update columns of table "rangers.friend_status" */
+export enum Rangers_Friend_Status_Update_Column {
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UserIdA = 'user_id_a',
+  /** column name */
+  UserIdB = 'user_id_b'
+}
+
+export type Rangers_Friend_Status_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Friend_Status_Set_Input>;
+  where: Rangers_Friend_Status_Bool_Exp;
 };
 
 /** columns and relationships of "rangers.locale" */
@@ -22695,8 +24632,10 @@ export type Rangers_Set_Localized = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['Int']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregated selection of "rangers.set_localized" */
@@ -22706,12 +24645,31 @@ export type Rangers_Set_Localized_Aggregate = {
   nodes: Array<Rangers_Set_Localized>;
 };
 
+export type Rangers_Set_Localized_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Rangers_Set_Localized_Aggregate_Bool_Exp_Count>;
+};
+
+export type Rangers_Set_Localized_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "rangers.set_localized" */
 export type Rangers_Set_Localized_Aggregate_Fields = {
   __typename?: 'rangers_set_localized_aggregate_fields';
+  avg?: Maybe<Rangers_Set_Localized_Avg_Fields>;
   count: Scalars['Int'];
   max?: Maybe<Rangers_Set_Localized_Max_Fields>;
   min?: Maybe<Rangers_Set_Localized_Min_Fields>;
+  stddev?: Maybe<Rangers_Set_Localized_Stddev_Fields>;
+  stddev_pop?: Maybe<Rangers_Set_Localized_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Rangers_Set_Localized_Stddev_Samp_Fields>;
+  sum?: Maybe<Rangers_Set_Localized_Sum_Fields>;
+  var_pop?: Maybe<Rangers_Set_Localized_Var_Pop_Fields>;
+  var_samp?: Maybe<Rangers_Set_Localized_Var_Samp_Fields>;
+  variance?: Maybe<Rangers_Set_Localized_Variance_Fields>;
 };
 
 
@@ -22719,6 +24677,32 @@ export type Rangers_Set_Localized_Aggregate_Fields = {
 export type Rangers_Set_Localized_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
   distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Aggregate_Order_By = {
+  avg?: InputMaybe<Rangers_Set_Localized_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Rangers_Set_Localized_Max_Order_By>;
+  min?: InputMaybe<Rangers_Set_Localized_Min_Order_By>;
+  stddev?: InputMaybe<Rangers_Set_Localized_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Rangers_Set_Localized_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Rangers_Set_Localized_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Rangers_Set_Localized_Sum_Order_By>;
+  var_pop?: InputMaybe<Rangers_Set_Localized_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Rangers_Set_Localized_Var_Samp_Order_By>;
+  variance?: InputMaybe<Rangers_Set_Localized_Variance_Order_By>;
+};
+
+/** aggregate avg on columns */
+export type Rangers_Set_Localized_Avg_Fields = {
+  __typename?: 'rangers_set_localized_avg_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Avg_Order_By = {
+  size?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "rangers.set_localized". All fields are combined with a logical 'AND'. */
@@ -22730,8 +24714,10 @@ export type Rangers_Set_Localized_Bool_Exp = {
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
+  size?: InputMaybe<Int_Comparison_Exp>;
   type_id?: InputMaybe<String_Comparison_Exp>;
   type_name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -22741,8 +24727,22 @@ export type Rangers_Set_Localized_Max_Fields = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['Int']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  size?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
+  type_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -22752,8 +24752,22 @@ export type Rangers_Set_Localized_Min_Fields = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['Int']>;
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  size?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
+  type_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** Ordering options when selecting data from "rangers.set_localized". */
@@ -22762,8 +24776,10 @@ export type Rangers_Set_Localized_Order_By = {
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
+  size?: InputMaybe<Order_By>;
   type_id?: InputMaybe<Order_By>;
   type_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "rangers.set_localized" */
@@ -22777,10 +24793,47 @@ export enum Rangers_Set_Localized_Select_Column {
   /** column name */
   RealName = 'real_name',
   /** column name */
+  Size = 'size',
+  /** column name */
   TypeId = 'type_id',
   /** column name */
-  TypeName = 'type_name'
+  TypeName = 'type_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
+
+/** aggregate stddev on columns */
+export type Rangers_Set_Localized_Stddev_Fields = {
+  __typename?: 'rangers_set_localized_stddev_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Stddev_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Rangers_Set_Localized_Stddev_Pop_Fields = {
+  __typename?: 'rangers_set_localized_stddev_pop_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Stddev_Pop_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Rangers_Set_Localized_Stddev_Samp_Fields = {
+  __typename?: 'rangers_set_localized_stddev_samp_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Stddev_Samp_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
 
 /** Streaming cursor of the table "rangers_set_localized" */
 export type Rangers_Set_Localized_Stream_Cursor_Input = {
@@ -22796,8 +24849,54 @@ export type Rangers_Set_Localized_Stream_Cursor_Value_Input = {
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   real_name?: InputMaybe<Scalars['String']>;
+  size?: InputMaybe<Scalars['Int']>;
   type_id?: InputMaybe<Scalars['String']>;
   type_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate sum on columns */
+export type Rangers_Set_Localized_Sum_Fields = {
+  __typename?: 'rangers_set_localized_sum_fields';
+  size?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Sum_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_pop on columns */
+export type Rangers_Set_Localized_Var_Pop_Fields = {
+  __typename?: 'rangers_set_localized_var_pop_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Var_Pop_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Rangers_Set_Localized_Var_Samp_Fields = {
+  __typename?: 'rangers_set_localized_var_samp_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Var_Samp_Order_By = {
+  size?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Rangers_Set_Localized_Variance_Fields = {
+  __typename?: 'rangers_set_localized_variance_fields';
+  size?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "rangers.set_localized" */
+export type Rangers_Set_Localized_Variance_Order_By = {
+  size?: InputMaybe<Order_By>;
 };
 
 /** aggregate max on columns */
@@ -23123,6 +25222,7 @@ export type Rangers_Set_Type = {
   translations: Array<Rangers_Set_Type_Text>;
   /** An aggregate relationship */
   translations_aggregate: Rangers_Set_Type_Text_Aggregate;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 
@@ -23176,6 +25276,7 @@ export type Rangers_Set_Type_Bool_Exp = {
   name?: InputMaybe<String_Comparison_Exp>;
   translations?: InputMaybe<Rangers_Set_Type_Text_Bool_Exp>;
   translations_aggregate?: InputMaybe<Rangers_Set_Type_Text_Aggregate_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "rangers.set_type" */
@@ -23189,6 +25290,7 @@ export type Rangers_Set_Type_Insert_Input = {
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   translations?: InputMaybe<Rangers_Set_Type_Text_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** columns and relationships of "rangers.set_type_localized" */
@@ -23198,6 +25300,31 @@ export type Rangers_Set_Type_Localized = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  sets: Array<Rangers_Set_Localized>;
+  /** An aggregate relationship */
+  sets_aggregate: Rangers_Set_Localized_Aggregate;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+
+/** columns and relationships of "rangers.set_type_localized" */
+export type Rangers_Set_Type_LocalizedSetsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.set_type_localized" */
+export type Rangers_Set_Type_LocalizedSets_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Set_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Set_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
 };
 
 /** aggregated selection of "rangers.set_type_localized" */
@@ -23231,6 +25358,9 @@ export type Rangers_Set_Type_Localized_Bool_Exp = {
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
+  sets?: InputMaybe<Rangers_Set_Localized_Bool_Exp>;
+  sets_aggregate?: InputMaybe<Rangers_Set_Localized_Aggregate_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -23240,6 +25370,7 @@ export type Rangers_Set_Type_Localized_Max_Fields = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
@@ -23249,6 +25380,7 @@ export type Rangers_Set_Type_Localized_Min_Fields = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** Ordering options when selecting data from "rangers.set_type_localized". */
@@ -23257,6 +25389,8 @@ export type Rangers_Set_Type_Localized_Order_By = {
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
+  sets_aggregate?: InputMaybe<Rangers_Set_Localized_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "rangers.set_type_localized" */
@@ -23268,7 +25402,9 @@ export enum Rangers_Set_Type_Localized_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  RealName = 'real_name'
+  RealName = 'real_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** Streaming cursor of the table "rangers_set_type_localized" */
@@ -23285,6 +25421,7 @@ export type Rangers_Set_Type_Localized_Stream_Cursor_Value_Input = {
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   real_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -23292,6 +25429,7 @@ export type Rangers_Set_Type_Max_Fields = {
   __typename?: 'rangers_set_type_max_fields';
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
@@ -23299,6 +25437,7 @@ export type Rangers_Set_Type_Min_Fields = {
   __typename?: 'rangers_set_type_min_fields';
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** response of any mutation on the table "rangers.set_type" */
@@ -23322,6 +25461,7 @@ export type Rangers_Set_Type_Order_By = {
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   translations_aggregate?: InputMaybe<Rangers_Set_Type_Text_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: rangers.set_type */
@@ -23334,13 +25474,16 @@ export enum Rangers_Set_Type_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** input type for updating data in table "rangers.set_type" */
 export type Rangers_Set_Type_Set_Input = {
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** Streaming cursor of the table "rangers_set_type" */
@@ -23355,6 +25498,7 @@ export type Rangers_Set_Type_Stream_Cursor_Input = {
 export type Rangers_Set_Type_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** columns and relationships of "rangers.set_type_text" */
@@ -23363,6 +25507,7 @@ export type Rangers_Set_Type_Text = {
   id: Scalars['String'];
   locale: Scalars['String'];
   name: Scalars['String'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregated selection of "rangers.set_type_text" */
@@ -23420,6 +25565,7 @@ export type Rangers_Set_Type_Text_Bool_Exp = {
   id?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "rangers.set_type_text" */
@@ -23433,6 +25579,7 @@ export type Rangers_Set_Type_Text_Insert_Input = {
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -23441,6 +25588,7 @@ export type Rangers_Set_Type_Text_Max_Fields = {
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by max() on columns of table "rangers.set_type_text" */
@@ -23448,6 +25596,7 @@ export type Rangers_Set_Type_Text_Max_Order_By = {
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -23456,6 +25605,7 @@ export type Rangers_Set_Type_Text_Min_Fields = {
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by min() on columns of table "rangers.set_type_text" */
@@ -23463,6 +25613,7 @@ export type Rangers_Set_Type_Text_Min_Order_By = {
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "rangers.set_type_text" */
@@ -23486,6 +25637,7 @@ export type Rangers_Set_Type_Text_Order_By = {
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: rangers.set_type_text */
@@ -23501,7 +25653,9 @@ export enum Rangers_Set_Type_Text_Select_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** input type for updating data in table "rangers.set_type_text" */
@@ -23509,6 +25663,7 @@ export type Rangers_Set_Type_Text_Set_Input = {
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** Streaming cursor of the table "rangers_set_type_text" */
@@ -23524,6 +25679,7 @@ export type Rangers_Set_Type_Text_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** update columns of table "rangers.set_type_text" */
@@ -23533,7 +25689,9 @@ export enum Rangers_Set_Type_Text_Update_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 export type Rangers_Set_Type_Text_Updates = {
@@ -23547,7 +25705,9 @@ export enum Rangers_Set_Type_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 export type Rangers_Set_Type_Updates = {
@@ -23650,118 +25810,6 @@ export type Rangers_Token_Insert_Input = {
   name?: InputMaybe<Scalars['String']>;
   plurals?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** columns and relationships of "rangers.token_localized" */
-export type Rangers_Token_Localized = {
-  __typename?: 'rangers_token_localized';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  plurals?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  real_plurals?: Maybe<Scalars['String']>;
-};
-
-/** aggregated selection of "rangers.token_localized" */
-export type Rangers_Token_Localized_Aggregate = {
-  __typename?: 'rangers_token_localized_aggregate';
-  aggregate?: Maybe<Rangers_Token_Localized_Aggregate_Fields>;
-  nodes: Array<Rangers_Token_Localized>;
-};
-
-/** aggregate fields of "rangers.token_localized" */
-export type Rangers_Token_Localized_Aggregate_Fields = {
-  __typename?: 'rangers_token_localized_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Rangers_Token_Localized_Max_Fields>;
-  min?: Maybe<Rangers_Token_Localized_Min_Fields>;
-};
-
-
-/** aggregate fields of "rangers.token_localized" */
-export type Rangers_Token_Localized_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** Boolean expression to filter rows from the table "rangers.token_localized". All fields are combined with a logical 'AND'. */
-export type Rangers_Token_Localized_Bool_Exp = {
-  _and?: InputMaybe<Array<Rangers_Token_Localized_Bool_Exp>>;
-  _not?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-  _or?: InputMaybe<Array<Rangers_Token_Localized_Bool_Exp>>;
-  id?: InputMaybe<String_Comparison_Exp>;
-  locale?: InputMaybe<String_Comparison_Exp>;
-  name?: InputMaybe<String_Comparison_Exp>;
-  plurals?: InputMaybe<String_Comparison_Exp>;
-  real_name?: InputMaybe<String_Comparison_Exp>;
-  real_plurals?: InputMaybe<String_Comparison_Exp>;
-};
-
-/** aggregate max on columns */
-export type Rangers_Token_Localized_Max_Fields = {
-  __typename?: 'rangers_token_localized_max_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  plurals?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  real_plurals?: Maybe<Scalars['String']>;
-};
-
-/** aggregate min on columns */
-export type Rangers_Token_Localized_Min_Fields = {
-  __typename?: 'rangers_token_localized_min_fields';
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  plurals?: Maybe<Scalars['String']>;
-  real_name?: Maybe<Scalars['String']>;
-  real_plurals?: Maybe<Scalars['String']>;
-};
-
-/** Ordering options when selecting data from "rangers.token_localized". */
-export type Rangers_Token_Localized_Order_By = {
-  id?: InputMaybe<Order_By>;
-  locale?: InputMaybe<Order_By>;
-  name?: InputMaybe<Order_By>;
-  plurals?: InputMaybe<Order_By>;
-  real_name?: InputMaybe<Order_By>;
-  real_plurals?: InputMaybe<Order_By>;
-};
-
-/** select columns of table "rangers.token_localized" */
-export enum Rangers_Token_Localized_Select_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Locale = 'locale',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  Plurals = 'plurals',
-  /** column name */
-  RealName = 'real_name',
-  /** column name */
-  RealPlurals = 'real_plurals'
-}
-
-/** Streaming cursor of the table "rangers_token_localized" */
-export type Rangers_Token_Localized_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Rangers_Token_Localized_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Rangers_Token_Localized_Stream_Cursor_Value_Input = {
-  id?: InputMaybe<Scalars['String']>;
-  locale?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  plurals?: InputMaybe<Scalars['String']>;
-  real_name?: InputMaybe<Scalars['String']>;
-  real_plurals?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -24095,6 +26143,7 @@ export type Rangers_Type_Localized = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregated selection of "rangers.type_localized" */
@@ -24128,6 +26177,7 @@ export type Rangers_Type_Localized_Bool_Exp = {
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -24137,6 +26187,7 @@ export type Rangers_Type_Localized_Max_Fields = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** aggregate min on columns */
@@ -24146,6 +26197,7 @@ export type Rangers_Type_Localized_Min_Fields = {
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** Ordering options when selecting data from "rangers.type_localized". */
@@ -24154,6 +26206,7 @@ export type Rangers_Type_Localized_Order_By = {
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "rangers.type_localized" */
@@ -24165,7 +26218,9 @@ export enum Rangers_Type_Localized_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  RealName = 'real_name'
+  RealName = 'real_name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** Streaming cursor of the table "rangers_type_localized" */
@@ -24182,6 +26237,7 @@ export type Rangers_Type_Localized_Stream_Cursor_Value_Input = {
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   real_name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -24432,6 +26488,327 @@ export type Rangers_Type_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Type_Set_Input>;
   where: Rangers_Type_Bool_Exp;
+};
+
+/** columns and relationships of "rangers.user_settings" */
+export type Rangers_User_Settings = {
+  __typename?: 'rangers_user_settings';
+  private_decks: Scalars['Boolean'];
+  user_id: Scalars['String'];
+};
+
+/** aggregated selection of "rangers.user_settings" */
+export type Rangers_User_Settings_Aggregate = {
+  __typename?: 'rangers_user_settings_aggregate';
+  aggregate?: Maybe<Rangers_User_Settings_Aggregate_Fields>;
+  nodes: Array<Rangers_User_Settings>;
+};
+
+/** aggregate fields of "rangers.user_settings" */
+export type Rangers_User_Settings_Aggregate_Fields = {
+  __typename?: 'rangers_user_settings_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_User_Settings_Max_Fields>;
+  min?: Maybe<Rangers_User_Settings_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.user_settings" */
+export type Rangers_User_Settings_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_User_Settings_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.user_settings". All fields are combined with a logical 'AND'. */
+export type Rangers_User_Settings_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_User_Settings_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_User_Settings_Bool_Exp>>;
+  private_decks?: InputMaybe<Boolean_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.user_settings" */
+export enum Rangers_User_Settings_Constraint {
+  /** unique or primary key constraint on columns "user_id" */
+  UserSettingsPkey = 'user_settings_pkey'
+}
+
+/** input type for inserting data into table "rangers.user_settings" */
+export type Rangers_User_Settings_Insert_Input = {
+  private_decks?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_User_Settings_Max_Fields = {
+  __typename?: 'rangers_user_settings_max_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_User_Settings_Min_Fields = {
+  __typename?: 'rangers_user_settings_min_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.user_settings" */
+export type Rangers_User_Settings_Mutation_Response = {
+  __typename?: 'rangers_user_settings_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_User_Settings>;
+};
+
+/** input type for inserting object relation for remote table "rangers.user_settings" */
+export type Rangers_User_Settings_Obj_Rel_Insert_Input = {
+  data: Rangers_User_Settings_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Rangers_User_Settings_On_Conflict>;
+};
+
+/** on_conflict condition type for table "rangers.user_settings" */
+export type Rangers_User_Settings_On_Conflict = {
+  constraint: Rangers_User_Settings_Constraint;
+  update_columns?: Array<Rangers_User_Settings_Update_Column>;
+  where?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.user_settings". */
+export type Rangers_User_Settings_Order_By = {
+  private_decks?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.user_settings */
+export type Rangers_User_Settings_Pk_Columns_Input = {
+  user_id: Scalars['String'];
+};
+
+/** select columns of table "rangers.user_settings" */
+export enum Rangers_User_Settings_Select_Column {
+  /** column name */
+  PrivateDecks = 'private_decks',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "rangers.user_settings" */
+export type Rangers_User_Settings_Set_Input = {
+  private_decks?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_user_settings" */
+export type Rangers_User_Settings_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_User_Settings_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_User_Settings_Stream_Cursor_Value_Input = {
+  private_decks?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "rangers.user_settings" */
+export enum Rangers_User_Settings_Update_Column {
+  /** column name */
+  PrivateDecks = 'private_decks',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Rangers_User_Settings_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_User_Settings_Set_Input>;
+  where: Rangers_User_Settings_Bool_Exp;
+};
+
+/** columns and relationships of "rangers.users" */
+export type Rangers_Users = {
+  __typename?: 'rangers_users';
+  created_at: Scalars['timestamptz'];
+  handle?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  normalized_handle?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  settings?: Maybe<Rangers_User_Settings>;
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "rangers.users" */
+export type Rangers_Users_Aggregate = {
+  __typename?: 'rangers_users_aggregate';
+  aggregate?: Maybe<Rangers_Users_Aggregate_Fields>;
+  nodes: Array<Rangers_Users>;
+};
+
+/** aggregate fields of "rangers.users" */
+export type Rangers_Users_Aggregate_Fields = {
+  __typename?: 'rangers_users_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Users_Max_Fields>;
+  min?: Maybe<Rangers_Users_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.users" */
+export type Rangers_Users_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Users_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.users". All fields are combined with a logical 'AND'. */
+export type Rangers_Users_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Users_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Users_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Users_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  handle?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  normalized_handle?: InputMaybe<String_Comparison_Exp>;
+  settings?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.users" */
+export enum Rangers_Users_Constraint {
+  /** unique or primary key constraint on columns "normalized_handle" */
+  UsersNormalizedHandleKey = 'users_normalized_handle_key',
+  /** unique or primary key constraint on columns "id" */
+  UsersPkey = 'users_pkey'
+}
+
+/** input type for inserting data into table "rangers.users" */
+export type Rangers_Users_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
+  settings?: InputMaybe<Rangers_User_Settings_Obj_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Users_Max_Fields = {
+  __typename?: 'rangers_users_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  handle?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  normalized_handle?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Users_Min_Fields = {
+  __typename?: 'rangers_users_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  handle?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  normalized_handle?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "rangers.users" */
+export type Rangers_Users_Mutation_Response = {
+  __typename?: 'rangers_users_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Users>;
+};
+
+/** input type for inserting object relation for remote table "rangers.users" */
+export type Rangers_Users_Obj_Rel_Insert_Input = {
+  data: Rangers_Users_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Rangers_Users_On_Conflict>;
+};
+
+/** on_conflict condition type for table "rangers.users" */
+export type Rangers_Users_On_Conflict = {
+  constraint: Rangers_Users_Constraint;
+  update_columns?: Array<Rangers_Users_Update_Column>;
+  where?: InputMaybe<Rangers_Users_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.users". */
+export type Rangers_Users_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  handle?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  normalized_handle?: InputMaybe<Order_By>;
+  settings?: InputMaybe<Rangers_User_Settings_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.users */
+export type Rangers_Users_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "rangers.users" */
+export enum Rangers_Users_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Handle = 'handle',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  NormalizedHandle = 'normalized_handle',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "rangers.users" */
+export type Rangers_Users_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "rangers_users" */
+export type Rangers_Users_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Users_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Users_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "rangers.users" */
+export enum Rangers_Users_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Handle = 'handle',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  NormalizedHandle = 'normalized_handle',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Rangers_Users_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Users_Set_Input>;
+  where: Rangers_Users_Bool_Exp;
 };
 
 export type Subscription_Root = {
@@ -24730,6 +27107,22 @@ export type Subscription_Root = {
   pack_name_stream: Array<Pack_Name>;
   /** fetch data from the table in a streaming manner: "pack" */
   pack_stream: Array<Pack>;
+  /** fetch data from the table: "rangers.area" */
+  rangers_area: Array<Rangers_Area>;
+  /** fetch aggregated fields from the table: "rangers.area" */
+  rangers_area_aggregate: Rangers_Area_Aggregate;
+  /** fetch data from the table: "rangers.area" using primary key columns */
+  rangers_area_by_pk?: Maybe<Rangers_Area>;
+  /** fetch data from the table in a streaming manner: "rangers.area" */
+  rangers_area_stream: Array<Rangers_Area>;
+  /** fetch data from the table: "rangers.area_text" */
+  rangers_area_text: Array<Rangers_Area_Text>;
+  /** fetch aggregated fields from the table: "rangers.area_text" */
+  rangers_area_text_aggregate: Rangers_Area_Text_Aggregate;
+  /** fetch data from the table: "rangers.area_text" using primary key columns */
+  rangers_area_text_by_pk?: Maybe<Rangers_Area_Text>;
+  /** fetch data from the table in a streaming manner: "rangers.area_text" */
+  rangers_area_text_stream: Array<Rangers_Area_Text>;
   /** fetch data from the table: "rangers.aspect" */
   rangers_aspect: Array<Rangers_Aspect>;
   /** fetch aggregated fields from the table: "rangers.aspect" */
@@ -24774,6 +27167,36 @@ export type Subscription_Root = {
   rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
   /** fetch data from the table in a streaming manner: "rangers.card_text" */
   rangers_card_text_stream: Array<Rangers_Card_Text>;
+  /** fetch data from the table: "rangers.card_updated" */
+  rangers_card_updated: Array<Rangers_Card_Updated>;
+  /** fetch aggregated fields from the table: "rangers.card_updated" */
+  rangers_card_updated_aggregate: Rangers_Card_Updated_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.card_updated" */
+  rangers_card_updated_stream: Array<Rangers_Card_Updated>;
+  /** fetch data from the table: "rangers.deck" */
+  rangers_deck: Array<Rangers_Deck>;
+  /** fetch aggregated fields from the table: "rangers.deck" */
+  rangers_deck_aggregate: Rangers_Deck_Aggregate;
+  /** fetch data from the table: "rangers.deck" using primary key columns */
+  rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** fetch data from the table in a streaming manner: "rangers.deck" */
+  rangers_deck_stream: Array<Rangers_Deck>;
+  /** fetch data from the table: "rangers.friend_status" */
+  rangers_friend_status: Array<Rangers_Friend_Status>;
+  /** fetch aggregated fields from the table: "rangers.friend_status" */
+  rangers_friend_status_aggregate: Rangers_Friend_Status_Aggregate;
+  /** fetch data from the table: "rangers.friend_status" using primary key columns */
+  rangers_friend_status_by_pk?: Maybe<Rangers_Friend_Status>;
+  /** fetch data from the table in a streaming manner: "rangers.friend_status" */
+  rangers_friend_status_stream: Array<Rangers_Friend_Status>;
+  /** fetch data from the table: "rangers.friend_status_type" */
+  rangers_friend_status_type: Array<Rangers_Friend_Status_Type>;
+  /** fetch aggregated fields from the table: "rangers.friend_status_type" */
+  rangers_friend_status_type_aggregate: Rangers_Friend_Status_Type_Aggregate;
+  /** fetch data from the table: "rangers.friend_status_type" using primary key columns */
+  rangers_friend_status_type_by_pk?: Maybe<Rangers_Friend_Status_Type>;
+  /** fetch data from the table in a streaming manner: "rangers.friend_status_type" */
+  rangers_friend_status_type_stream: Array<Rangers_Friend_Status_Type>;
   /** fetch data from the table: "rangers.locale" */
   rangers_locale: Array<Rangers_Locale>;
   /** fetch aggregated fields from the table: "rangers.locale" */
@@ -24848,12 +27271,6 @@ export type Subscription_Root = {
   rangers_token_aggregate: Rangers_Token_Aggregate;
   /** fetch data from the table: "rangers.token" using primary key columns */
   rangers_token_by_pk?: Maybe<Rangers_Token>;
-  /** fetch data from the table: "rangers.token_localized" */
-  rangers_token_localized: Array<Rangers_Token_Localized>;
-  /** fetch aggregated fields from the table: "rangers.token_localized" */
-  rangers_token_localized_aggregate: Rangers_Token_Localized_Aggregate;
-  /** fetch data from the table in a streaming manner: "rangers.token_localized" */
-  rangers_token_localized_stream: Array<Rangers_Token_Localized>;
   /** fetch data from the table in a streaming manner: "rangers.token" */
   rangers_token_stream: Array<Rangers_Token>;
   /** fetch data from the table: "rangers.token_text" */
@@ -24886,6 +27303,22 @@ export type Subscription_Root = {
   rangers_type_text_by_pk?: Maybe<Rangers_Type_Text>;
   /** fetch data from the table in a streaming manner: "rangers.type_text" */
   rangers_type_text_stream: Array<Rangers_Type_Text>;
+  /** fetch data from the table: "rangers.user_settings" */
+  rangers_user_settings: Array<Rangers_User_Settings>;
+  /** fetch aggregated fields from the table: "rangers.user_settings" */
+  rangers_user_settings_aggregate: Rangers_User_Settings_Aggregate;
+  /** fetch data from the table: "rangers.user_settings" using primary key columns */
+  rangers_user_settings_by_pk?: Maybe<Rangers_User_Settings>;
+  /** fetch data from the table in a streaming manner: "rangers.user_settings" */
+  rangers_user_settings_stream: Array<Rangers_User_Settings>;
+  /** fetch data from the table: "rangers.users" */
+  rangers_users: Array<Rangers_Users>;
+  /** fetch aggregated fields from the table: "rangers.users" */
+  rangers_users_aggregate: Rangers_Users_Aggregate;
+  /** fetch data from the table: "rangers.users" using primary key columns */
+  rangers_users_by_pk?: Maybe<Rangers_Users>;
+  /** fetch data from the table in a streaming manner: "rangers.users" */
+  rangers_users_stream: Array<Rangers_Users>;
   /** fetch data from the table: "taboo_set" */
   taboo_set: Array<Taboo_Set>;
   /** fetch aggregated fields from the table: "taboo_set" */
@@ -26085,6 +28518,67 @@ export type Subscription_RootPack_StreamArgs = {
 };
 
 
+export type Subscription_RootRangers_AreaArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Area_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Area_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_TextArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Text_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Text_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Area_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Area_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
 export type Subscription_RootRangers_AspectArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Aspect_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -26254,6 +28748,122 @@ export type Subscription_RootRangers_Card_Text_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Card_Text_Stream_Cursor_Input>>;
   where?: InputMaybe<Rangers_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Card_UpdatedArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Card_Updated_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Card_Updated_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Card_Updated_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Subscription_RootRangers_Deck_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Deck_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Friend_StatusArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Friend_Status_Order_By>>;
+  where?: InputMaybe<Rangers_Friend_Status_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Friend_Status_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Friend_Status_Order_By>>;
+  where?: InputMaybe<Rangers_Friend_Status_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Friend_Status_By_PkArgs = {
+  user_id_a: Scalars['String'];
+  user_id_b: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Friend_Status_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Friend_Status_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Friend_Status_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Friend_Status_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Friend_Status_Type_Order_By>>;
+  where?: InputMaybe<Rangers_Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Friend_Status_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Friend_Status_Type_Order_By>>;
+  where?: InputMaybe<Rangers_Friend_Status_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Friend_Status_Type_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Friend_Status_Type_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Friend_Status_Type_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Friend_Status_Type_Bool_Exp>;
 };
 
 
@@ -26543,31 +29153,6 @@ export type Subscription_RootRangers_Token_By_PkArgs = {
 };
 
 
-export type Subscription_RootRangers_Token_LocalizedArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Token_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Token_Localized_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Rangers_Token_Localized_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Rangers_Token_Localized_Order_By>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
-export type Subscription_RootRangers_Token_Localized_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Rangers_Token_Localized_Stream_Cursor_Input>>;
-  where?: InputMaybe<Rangers_Token_Localized_Bool_Exp>;
-};
-
-
 export type Subscription_RootRangers_Token_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Token_Stream_Cursor_Input>>;
@@ -26689,6 +29274,66 @@ export type Subscription_RootRangers_Type_Text_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Type_Text_Stream_Cursor_Input>>;
   where?: InputMaybe<Rangers_Type_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_SettingsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Settings_Order_By>>;
+  where?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Settings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Settings_Order_By>>;
+  where?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_User_Settings_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_User_Settings_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_UsersArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Users_Order_By>>;
+  where?: InputMaybe<Rangers_Users_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Users_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Users_Order_By>>;
+  where?: InputMaybe<Rangers_Users_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Users_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Users_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Users_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Users_Bool_Exp>;
 };
 
 
@@ -29036,6 +31681,10 @@ export type CardPackFragment = { __typename?: 'rangers_pack', id: string, name: 
 
 export type CardPackTextFragment = { __typename?: 'rangers_pack_text', id: string, locale: string, name: string };
 
+export type CardAreaFragment = { __typename?: 'rangers_area', id: string, name: string };
+
+export type CardAreaTextFragment = { __typename?: 'rangers_area_text', id: string, locale: string, name: string };
+
 export type GetCardsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -29044,14 +31693,14 @@ export type GetCardsQuery = { __typename?: 'query_root', rangers_card: Array<{ _
 export type GetMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMetadataQuery = { __typename?: 'query_root', rangers_aspect: Array<{ __typename?: 'rangers_aspect', id: string, name: string, short_name?: string | null | undefined }>, rangers_pack: Array<{ __typename?: 'rangers_pack', id: string, name: string }>, rangers_set: Array<{ __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined }>, rangers_set_type: Array<{ __typename?: 'rangers_set_type', id: string, name: string }>, rangers_token: Array<{ __typename?: 'rangers_token', id: string, name: string, plurals?: string | null | undefined }>, rangers_type: Array<{ __typename?: 'rangers_type', id: string, name: string }> };
+export type GetMetadataQuery = { __typename?: 'query_root', rangers_area: Array<{ __typename?: 'rangers_area', id: string, name: string }>, rangers_aspect: Array<{ __typename?: 'rangers_aspect', id: string, name: string, short_name?: string | null | undefined }>, rangers_pack: Array<{ __typename?: 'rangers_pack', id: string, name: string }>, rangers_set: Array<{ __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined }>, rangers_set_type: Array<{ __typename?: 'rangers_set_type', id: string, name: string }>, rangers_token: Array<{ __typename?: 'rangers_token', id: string, name: string, plurals?: string | null | undefined }>, rangers_type: Array<{ __typename?: 'rangers_type', id: string, name: string }> };
 
 export type GetTranslationDataQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type GetTranslationDataQuery = { __typename?: 'query_root', rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }> };
+export type GetTranslationDataQuery = { __typename?: 'query_root', rangers_area_text: Array<{ __typename?: 'rangers_area_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }> };
 
 export type GetTranslationsQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -29082,6 +31731,14 @@ export type UpsertCardMutationVariables = Exact<{
   cost?: Maybe<Scalars['Int']>;
   aspect_id?: Maybe<Scalars['String']>;
   progress?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
+  progress_fixed?: Maybe<Scalars['Boolean']>;
+  locations?: Maybe<Scalars['jsonb']>;
+  pack_id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -29106,6 +31763,23 @@ export type UpsertCardSetTextMutationVariables = Exact<{
 
 export type UpsertCardSetTextMutation = { __typename?: 'mutation_root', insert_rangers_set_text_one?: { __typename?: 'rangers_set_text', id: string, locale: string, name: string } | null | undefined };
 
+export type UpsertCardAreaMutationVariables = Exact<{
+  id: Scalars['String'];
+  name: Scalars['String'];
+}>;
+
+
+export type UpsertCardAreaMutation = { __typename?: 'mutation_root', insert_rangers_area_one?: { __typename?: 'rangers_area', id: string, name: string } | null | undefined };
+
+export type UpsertCardAreaTextMutationVariables = Exact<{
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+}>;
+
+
+export type UpsertCardAreaTextMutation = { __typename?: 'mutation_root', insert_rangers_area_text_one?: { __typename?: 'rangers_area_text', id: string, locale: string, name: string } | null | undefined };
+
 export type UpsertCardSetTypeMutationVariables = Exact<{
   id: Scalars['String'];
   name: Scalars['String'];
@@ -29128,7 +31802,7 @@ export type GetLocaleTextQueryVariables = Exact<{
 }>;
 
 
-export type GetLocaleTextQuery = { __typename?: 'query_root', rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }> };
+export type GetLocaleTextQuery = { __typename?: 'query_root', rangers_area_text: Array<{ __typename?: 'rangers_area_text', id: string, locale: string, name: string }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }> };
 
 export type UpsertCardTextMutationVariables = Exact<{
   id: Scalars['String'];
@@ -29136,6 +31810,8 @@ export type UpsertCardTextMutationVariables = Exact<{
   name?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -29332,6 +32008,19 @@ export const CardPackTextFragmentDoc = gql`
   name
 }
     `;
+export const CardAreaFragmentDoc = gql`
+    fragment CardArea on rangers_area {
+  id
+  name
+}
+    `;
+export const CardAreaTextFragmentDoc = gql`
+    fragment CardAreaText on rangers_area_text {
+  id
+  locale
+  name
+}
+    `;
 export const GetCardsDocument = gql`
     query getCards {
   rangers_card {
@@ -29345,6 +32034,9 @@ export const GetCardsDocument = gql`
 ${CardTextFragmentDoc}`;
 export const GetMetadataDocument = gql`
     query getMetadata {
+  rangers_area {
+    ...CardArea
+  }
   rangers_aspect {
     ...CardAspect
   }
@@ -29364,7 +32056,8 @@ export const GetMetadataDocument = gql`
     ...CardType
   }
 }
-    ${CardAspectFragmentDoc}
+    ${CardAreaFragmentDoc}
+${CardAspectFragmentDoc}
 ${CardPackFragmentDoc}
 ${CardSetFragmentDoc}
 ${CardSetTypeFragmentDoc}
@@ -29372,6 +32065,9 @@ ${CardTokenFragmentDoc}
 ${CardTypeFragmentDoc}`;
 export const GetTranslationDataDocument = gql`
     query getTranslationData($locale: String!) {
+  rangers_area_text(where: {locale: {_eq: $locale}}) {
+    ...CardAreaText
+  }
   rangers_aspect_text(where: {locale: {_eq: $locale}}) {
     ...CardAspectText
   }
@@ -29391,7 +32087,8 @@ export const GetTranslationDataDocument = gql`
     ...CardTypeText
   }
 }
-    ${CardAspectTextFragmentDoc}
+    ${CardAreaTextFragmentDoc}
+${CardAspectTextFragmentDoc}
 ${CardPackTextFragmentDoc}
 ${CardSetTextFragmentDoc}
 ${CardSetTypeTextFragmentDoc}
@@ -29405,10 +32102,10 @@ export const GetTranslationsDocument = gql`
 }
     ${CardTextFragmentDoc}`;
 export const UpsertCardDocument = gql`
-    mutation upsertCard($id: String!, $name: String, $traits: String, $equip: Int, $presence: Int, $token_id: String, $token_count: Int, $harm: Int, $approach_conflict: Int, $approach_reason: Int, $approach_exploration: Int, $approach_connection: Int, $text: String, $set_id: String, $set_position: Int, $quantity: Int, $level: Int, $type_id: String, $cost: Int, $aspect_id: String, $progress: Int) {
+    mutation upsertCard($id: String!, $name: String, $traits: String, $equip: Int, $presence: Int, $token_id: String, $token_count: Int, $harm: Int, $approach_conflict: Int, $approach_reason: Int, $approach_exploration: Int, $approach_connection: Int, $text: String, $set_id: String, $set_position: Int, $quantity: Int, $level: Int, $type_id: String, $cost: Int, $aspect_id: String, $progress: Int, $area_id: String, $guide_entry: String, $progress_fixed: Boolean, $locations: jsonb, $pack_id: String, $illustrator: String, $flavor: String, $objective: String) {
   insert_rangers_card_one(
-    object: {id: $id, name: $name, traits: $traits, equip: $equip, presence: $presence, token_id: $token_id, token_count: $token_count, harm: $harm, approach_conflict: $approach_conflict, approach_reason: $approach_reason, approach_exploration: $approach_exploration, approach_connection: $approach_connection, text: $text, set_id: $set_id, set_position: $set_position, quantity: $quantity, level: $level, type_id: $type_id, cost: $cost, aspect_id: $aspect_id, progress: $progress}
-    on_conflict: {constraint: card_pkey, update_columns: [id, name, traits, equip, presence, token_id, token_count, harm, approach_conflict, approach_reason, approach_exploration, approach_connection, text, set_id, set_position, quantity, level, type_id, cost, aspect_id, progress]}
+    object: {id: $id, name: $name, traits: $traits, equip: $equip, presence: $presence, token_id: $token_id, token_count: $token_count, harm: $harm, approach_conflict: $approach_conflict, approach_reason: $approach_reason, approach_exploration: $approach_exploration, approach_connection: $approach_connection, text: $text, set_id: $set_id, set_position: $set_position, quantity: $quantity, level: $level, type_id: $type_id, cost: $cost, aspect_id: $aspect_id, progress: $progress, area_id: $area_id, guide_entry: $guide_entry, progress_fixed: $progress_fixed, locations: $locations, pack_id: $pack_id, illustrator: $illustrator, flavor: $flavor, objective: $objective}
+    on_conflict: {constraint: card_pkey, update_columns: [id, name, traits, equip, presence, token_id, token_count, harm, approach_conflict, approach_reason, approach_exploration, approach_connection, text, set_id, set_position, quantity, level, type_id, cost, aspect_id, progress, area_id, guide_entry, progress_fixed, locations, pack_id, illustrator, flavor, objective]}
   ) {
     id
   }
@@ -29434,6 +32131,26 @@ export const UpsertCardSetTextDocument = gql`
   }
 }
     ${CardSetTextFragmentDoc}`;
+export const UpsertCardAreaDocument = gql`
+    mutation upsertCardArea($id: String!, $name: String!) {
+  insert_rangers_area_one(
+    object: {id: $id, name: $name}
+    on_conflict: {constraint: area_pkey, update_columns: [id, name]}
+  ) {
+    ...CardArea
+  }
+}
+    ${CardAreaFragmentDoc}`;
+export const UpsertCardAreaTextDocument = gql`
+    mutation upsertCardAreaText($id: String!, $locale: String!, $name: String!) {
+  insert_rangers_area_text_one(
+    object: {id: $id, locale: $locale, name: $name}
+    on_conflict: {constraint: area_text_pkey, update_columns: [id, name]}
+  ) {
+    ...CardAreaText
+  }
+}
+    ${CardAreaTextFragmentDoc}`;
 export const UpsertCardSetTypeDocument = gql`
     mutation upsertCardSetType($id: String!, $name: String!) {
   insert_rangers_set_type_one(
@@ -29456,6 +32173,9 @@ export const UpsertCardSetTypeTextDocument = gql`
     ${CardSetTypeTextFragmentDoc}`;
 export const GetLocaleTextDocument = gql`
     query getLocaleText($locale: String!) {
+  rangers_area_text(where: {locale: {_eq: $locale}}) {
+    ...CardAreaText
+  }
   rangers_card_text(where: {locale: {_eq: $locale}}) {
     ...CardText
   }
@@ -29478,7 +32198,8 @@ export const GetLocaleTextDocument = gql`
     ...CardAspectText
   }
 }
-    ${CardTextFragmentDoc}
+    ${CardAreaTextFragmentDoc}
+${CardTextFragmentDoc}
 ${CardPackTextFragmentDoc}
 ${CardSetTextFragmentDoc}
 ${CardSetTypeTextFragmentDoc}
@@ -29486,10 +32207,10 @@ ${CardTokenTextFragmentDoc}
 ${CardTypeTextFragmentDoc}
 ${CardAspectTextFragmentDoc}`;
 export const UpsertCardTextDocument = gql`
-    mutation upsertCardText($id: String!, $locale: String!, $name: String, $traits: String, $text: String) {
+    mutation upsertCardText($id: String!, $locale: String!, $name: String, $traits: String, $text: String, $flavor: String, $objective: String) {
   insert_rangers_card_text_one(
-    object: {id: $id, locale: $locale, name: $name, text: $text, traits: $traits}
-    on_conflict: {constraint: card_text_pkey, update_columns: [id, locale, name, text, traits]}
+    object: {id: $id, locale: $locale, name: $name, text: $text, traits: $traits, flavor: $flavor, objective: $objective}
+    on_conflict: {constraint: card_text_pkey, update_columns: [id, locale, name, text, traits, flavor, objective]}
   ) {
     id
     locale
@@ -29619,6 +32340,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     upsertCardSetText(variables: UpsertCardSetTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSetTextMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSetTextMutation>(UpsertCardSetTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSetText');
+    },
+    upsertCardArea(variables: UpsertCardAreaMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardAreaMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardAreaMutation>(UpsertCardAreaDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardArea');
+    },
+    upsertCardAreaText(variables: UpsertCardAreaTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardAreaTextMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardAreaTextMutation>(UpsertCardAreaTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardAreaText');
     },
     upsertCardSetType(variables: UpsertCardSetTypeMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSetTypeMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSetTypeMutation>(UpsertCardSetTypeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSetType');

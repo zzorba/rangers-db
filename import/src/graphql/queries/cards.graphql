@@ -20,6 +20,8 @@ fragment Card on rangers_card {
   cost
   aspect_id
   progress
+  back_card_id
+  imagesrc
 }
 
 fragment CardText on rangers_card_text {
@@ -104,6 +106,17 @@ fragment CardPackText on rangers_pack_text {
   name
 }
 
+fragment CardArea on rangers_area {
+  id
+  name
+}
+
+fragment CardAreaText on rangers_area_text {
+  id
+  locale
+  name
+}
+
 query getCards {
   rangers_card {
     ...Card
@@ -116,6 +129,9 @@ query getCards {
 }
 
 query getMetadata {
+  rangers_area {
+    ...CardArea
+  }
   rangers_aspect {
     ...CardAspect
   }
@@ -139,6 +155,11 @@ query getMetadata {
 query getTranslationData(
   $locale: String!
 ) {
+  rangers_area_text(
+    where: { locale: { _eq: $locale }}
+  ){
+    ...CardAreaText
+  }
   rangers_aspect_text(
     where: { locale: { _eq: $locale }}
   ) {
@@ -200,7 +221,19 @@ mutation upsertCard(
   $type_id: String,
   $cost: Int,
   $aspect_id: String,
-  $progress: Int
+  $progress: Int,
+
+  $area_id: String,
+  $guide_entry: String,
+  $progress_fixed: Boolean,
+  $locations: jsonb,
+  $pack_id: String,
+  $illustrator: String,
+  $flavor: String,
+  $objective: String,
+
+  $back_card_id: String
+  $imagesrc,
 ) {
 	insert_rangers_card_one(
     object: {
@@ -225,6 +258,17 @@ mutation upsertCard(
       cost: $cost
       aspect_id: $aspect_id
       progress: $progress
+
+      area_id: $area_id
+      guide_entry: $guide_entry
+      progress_fixed: $progress_fixed
+      locations: $locations
+      pack_id: $pack_id
+      illustrator: $illustrator
+      flavor: $flavor
+      objective: $objective
+      back_card_id: $back_card_id
+      imagesrc: $imagesrc
     }
     on_conflict: {
       constraint: card_pkey
@@ -250,6 +294,16 @@ mutation upsertCard(
         cost,
         aspect_id,
         progress,
+        area_id,
+        guide_entry,
+        progress_fixed,
+        locations,
+        pack_id,
+        illustrator,
+        flavor,
+        objective,
+        back_card_id,
+        imagesrc
       ]
     }
   ) {
@@ -309,6 +363,50 @@ mutation upsertCardSetText(
 
 
 
+mutation upsertCardArea(
+  $id: String!,
+  $name: String!
+) {
+  insert_rangers_area_one(
+    object: {
+      id: $id
+      name: $name
+    }
+    on_conflict: {
+      constraint: area_pkey
+      update_columns: [
+        id,
+        name
+      ]
+    }
+  ) {
+    ...CardArea
+  }
+}
+
+mutation upsertCardAreaText(
+  $id: String!,
+  $locale: String!,
+  $name: String!
+) {
+  insert_rangers_area_text_one(
+    object: {
+      id: $id
+      locale: $locale
+      name: $name
+    }
+    on_conflict: {
+      constraint: area_text_pkey
+      update_columns: [
+        id,
+        name
+      ]
+    }
+  ) {
+    ...CardAreaText
+  }
+}
+
 mutation upsertCardSetType(
   $id: String!,
   $name: String!
@@ -357,6 +455,11 @@ mutation upsertCardSetTypeText(
 query getLocaleText(
   $locale: String!
 ) {
+  rangers_area_text(
+    where: { locale: { _eq: $locale } }
+  ) {
+    ...CardAreaText
+  }
   rangers_card_text(
     where: { locale: { _eq: $locale } }
   ) {
@@ -399,7 +502,9 @@ mutation upsertCardText(
   $locale: String!,
   $name: String,
   $traits: String,
-  $text: String
+  $text: String,
+  $flavor: String,
+  $objective: String
 ) {
 	insert_rangers_card_text_one(
     object: {
@@ -408,6 +513,8 @@ mutation upsertCardText(
       name: $name
       text: $text
       traits: $traits
+      flavor: $flavor
+      objective: $objective
     }
     on_conflict: {
       constraint: card_text_pkey
@@ -416,7 +523,9 @@ mutation upsertCardText(
         locale,
         name,
         text,
-        traits
+        traits,
+        flavor,
+        objective
       ]
     }
   ) {
