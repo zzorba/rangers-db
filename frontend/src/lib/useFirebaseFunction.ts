@@ -23,7 +23,6 @@ export default function useFirebaseFunction<T, R>(name: string): [
     setError(undefined);
     const f = httpsCallable<T, R & GenericResponse>(firebaseFunctions, name);
     try {
-      console.log(`calling ${name}`)
       const result = await f(t);
       if (!result.data.success) {
         setError(result.data.error);

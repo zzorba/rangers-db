@@ -6,6 +6,7 @@ function EditableControls() {
   const {
     isEditing,
     getSubmitButtonProps,
+    getEditButtonProps,
     getCancelButtonProps,
   } = useEditableControls()
 
@@ -15,6 +16,19 @@ function EditableControls() {
       <IconButton aria-label="Cancel" icon={<CloseIcon />} {...getCancelButtonProps()} />
     </ButtonGroup>
   ) : null;
+}
+function EditablePreviewWithEditButton() {
+  const {
+    isEditing,
+    getEditButtonProps,
+  } = useEditableControls()
+
+  return (
+    <Flex direction="row">
+      <EditablePreview />
+      { !isEditing && <IconButton marginLeft="2em" aria-label="Edit" icon={<EditIcon />} {...getEditButtonProps()} /> }
+    </Flex>
+  )
 }
 export default function EditableTextInput({ value, onChange }: { value: string; onChange: (value: string) => void;}) {
   return (
@@ -26,9 +40,7 @@ export default function EditableTextInput({ value, onChange }: { value: string; 
       selectAllOnFocus={false}
       onSubmit={(updated) => onChange(updated)}
     >
-      <Tooltip label="Click to edit">
-        <EditablePreview />
-      </Tooltip>
+      <EditablePreviewWithEditButton />
       <Flex direction="row">
         <Input as={EditableInput} />
         <EditableControls />

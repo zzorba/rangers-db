@@ -6,12 +6,12 @@ import { AspectMap } from '../types/types';
 import { List, ListItem, Text } from '@chakra-ui/react';
 import LoadingPage from './LoadingPage';
 
-function CardButtonRow({ card, showModal, aspects, children }: { card: CardFragment; aspects: AspectMap; showModal: (card: CardFragment) => void; children?: React.ReactNode }) {
+function CardButtonRow({ card, showModal, children }: { card: CardFragment; showModal: (card: CardFragment) => void; children?: React.ReactNode }) {
   const onClick = useCallback(() => showModal(card), [card, showModal]);
 
   return (
     <ListItem>
-      <CardRow card={card} aspects={aspects} onClick={onClick}>
+      <CardRow card={card} onClick={onClick}>
         {children}
       </CardRow>
     </ListItem>
@@ -44,31 +44,19 @@ export default function CardList() {
       locale: 'en',
     },
   });
-  const aspects = useMemo(() => {
-    const r: AspectMap = {};
-    forEach(data?.aspects, a => {
-      if (a.id && a.name && a.short_name) {
-        r[a.id] = {
-          name: a.name,
-          short_name: a.short_name,
-        };
-      };
-    })
-    return r;
-  }, [data?.aspects]);
-  const [showCard, modal] = useCardModal(aspects);
+  const [showCard, modal] = useCardModal();
   if (!data?.cards) {
     return <LoadingPage />;
   }
   return (
     <>
-      <SimpleCardList cards={data.cards} aspects={aspects} showCard={showCard} />
+      <SimpleCardList cards={data.cards} showCard={showCard} />
       { modal }
     </>
   );
 }
 
-export function SimpleCardList({ cards, aspects, showCard, header = 'set', renderControl }: { cards?: CardFragment[]; aspects: AspectMap; showCard: (card: CardFragment) => void; header?: 'aspect' | 'set' | 'none'; renderControl?: (code: string) => React.ReactNode }) {
+export function SimpleCardList({ cards, showCard, header = 'set', renderControl }: { cards?: CardFragment[]; showCard: (card: CardFragment) => void; header?: 'aspect' | 'set' | 'none'; renderControl?: (code: string) => React.ReactNode }) {
   const items = useMemo(() => {
     const sorted = sortBy(cards, card => card.id);
     const items: Item[] = [];
@@ -111,7 +99,7 @@ export function SimpleCardList({ cards, aspects, showCard, header = 'set', rende
     <List>
       {}
       { map(items, item => item.type === 'card' ?
-        <CardButtonRow key={item.card.id} aspects={aspects} card={item.card} showModal={showCard}>
+        <CardButtonRow key={item.card.id} card={item.card} showModal={showCard}>
           { !!renderControl && !!item.card.id && renderControl(item.card.id)}
         </CardButtonRow> :
         <CardHeader key={item.title} title={item.title} />

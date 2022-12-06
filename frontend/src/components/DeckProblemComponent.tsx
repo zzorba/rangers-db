@@ -1,16 +1,18 @@
 import React from 'react';
 import { List, ListItem, Flex, Tooltip, Text, FormErrorMessage } from '@chakra-ui/react';
 import { WarningIcon } from '@chakra-ui/icons'
-import { map, take } from 'lodash';
+import { map, take, drop } from 'lodash';
+import { ngettext, msgid } from 'ttag';
 
 import { DeckCardError, DeckError } from '../types/types';
 import { useTranslations } from '../lib/TranslationProvider';
 
-export default function DeckProblemComponent({ errors, card, limit }: { errors: DeckError[] | undefined; card?: boolean; limit?: number }) {
+export default function DeckProblemComponent({ errors, card, limit, summarizeOthers }: { errors: DeckError[] | undefined; card?: boolean; limit?: number; summarizeOthers?: boolean }) {
   const { deckErrors, cardErrors } = useTranslations();
   if (!errors?.length) {
     return null;
   }
+  const otherErrorCount = errors.length - (limit || 0);
   return (
     <List>
       {map(limit ? take(errors, limit) : errors, error => (
@@ -19,6 +21,16 @@ export default function DeckProblemComponent({ errors, card, limit }: { errors: 
             <WarningIcon color="red" />
             <Text marginLeft={2} color="red">{(!!card && cardErrors[error as DeckCardError]) || deckErrors[error]}</Text>
           </Flex>
+          { summarizeOthers && !!limit && errors.length > limit && (
+              <Flex direction="row">
+                <WarningIcon color="transparent" />
+                <Tooltip placement="bottom-start" bg="red" label={map(drop(errors, limit), e => deckErrors[error]).join('\n') }>
+                  <Text marginLeft={2} color="red">
+                    {ngettext(msgid`+ ${otherErrorCount} more problem`, `+ ${otherErrorCount} more problems`, otherErrorCount) }
+                  </Text>
+                </Tooltip>
+              </Flex>
+          ) }
         </ListItem>
       ))}
     </List>

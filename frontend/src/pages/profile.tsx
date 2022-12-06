@@ -3,18 +3,15 @@ import Head from 'next/head';
 import { Container } from '@chakra-ui/react';
 import { useRequireAuth } from '../lib/hooks';
 import Profile from '../components/Profile';
+import PageHeading from '../components/PageHeading';
 
 function ProfilePage() {
   useRequireAuth();
   return (
-    <>
-      <Head>
-        <title>Profile - RangersDB</title>
-      </Head>
-      <Container maxW="container.md" minH="lg">
-        <Profile />
-      </Container>
-    </>
+    <Container maxW="container.md" minH="lg">
+      <PageHeading title="Profile" />
+      <Profile />
+    </Container>
   );
 }
 

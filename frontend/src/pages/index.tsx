@@ -6,7 +6,7 @@ import NextLink from 'next/link';
 export default function Home() {
   return (
     <>
-     <Head>
+      <Head>
         <title>RangersDB</title>
       </Head>
       <Container minH="lg">

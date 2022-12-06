@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
 import Parser from 'simple-text-parser';
-import { Aspect, AspectMap, AspectType } from '../types/types';
 import { Box } from '@chakra-ui/react';
+import { useTranslations } from '../lib/TranslationProvider';
 
-export default function CardText({ text, aspects, aspectId }: { text: string; aspects: AspectMap; aspectId: string | undefined | null; }) {
+export default function CardText({ text, aspectId, noPadding }: { text: string; aspectId: string | undefined | null; noPadding?: boolean }) {
+  const { aspects } = useTranslations();
   const parsed = useMemo(() => {
     const parser = new Parser().addRule(
       /\[([^\]0-9]+)\]/gi,
@@ -16,6 +17,9 @@ export default function CardText({ text, aspects, aspectId }: { text: string; as
     ).addRule(/\n/g, () => '<hr class="card-line"></hr>');
     return parser.render(text);
   }, [text, aspects]);
+  if (noPadding) {
+    return <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />;
+  }
   return (
     <Box padding={2} borderLeftWidth={2} margin={1} borderLeftColor={aspectId ? `aspect.${aspectId}` : 'gray.500'}>
       <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />

@@ -35,7 +35,7 @@ export default function Login({ redirect }: { redirect: string | undefined }) {
             autoComplete="email"
           />
         </FormControl>
-        <FormControl isRequired>
+        <FormControl isRequired marginTop="1em">
           <FormLabel htmlFor="password">{t`Password`}</FormLabel>
           <Input
             type="password"

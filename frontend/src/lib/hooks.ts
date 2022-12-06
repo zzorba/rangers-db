@@ -28,7 +28,6 @@ export function useRequireAuth() {
 export function usePostLoginRedirect(): string | undefined {
   const { authUser, loading } = useAuth();
   const router = useRouter();
-  console.log(router.query, router.isReady);
   const redirect = useMemo(() => {
     const redirect = router.query['redirect'];
     if (redirect) {
@@ -42,7 +41,6 @@ export function usePostLoginRedirect(): string | undefined {
   }, [router]);
   useEffect(() => {
     if (!loading && authUser) {
-      console.log(redirect);
       if (redirect && redirect.startsWith('/')) {
         Router.push(redirect);
       } else {
@@ -51,21 +49,6 @@ export function usePostLoginRedirect(): string | undefined {
     }
   }, [loading, authUser, redirect]);
   return redirect;
-}
-
-export function useAspectMap(aspects?: AspectFragment[]): AspectMap {
-  return useMemo(() => {
-    const r: AspectMap = {};
-    forEach(aspects, a => {
-      if (a.id && a.name && a.short_name) {
-        r[a.id] = {
-          name: a.name,
-          short_name: a.short_name,
-        };
-      };
-    })
-    return r;
-  }, [aspects]);
 }
 
 export interface CategoryTranslation {
@@ -148,6 +131,7 @@ export function getDeckErrors(): DeckErrorTranslations {
     specialty: t`Not enough specialty cards.`,
     too_many_specialty: t`Too many cards of the chosen specialty.`,
     role: t`You must choose a role card.`,
+    outside_interest: t`Not enough outside interest cards.`,
     invalid_background: t`Contains too many cards that do not match your chosen background.`,
     invalid_specialty: t`Contains too many cards that do not match your chosen background.`,
     invalid_role: t`Your role card does not match your chosen specialty.`,
@@ -163,6 +147,27 @@ export function getDeckCardErrors(): DeckCardErrorTranslations {
     invalid_role: t`This role card does not match your chosen specialty.`,
     invalid_aspect_levels: t`This card's aspect requirement is not satisfied by your chosen aspects.`,
     invalid_outside_interest: t`Outside interest cards cannot have the Expert trait.`,
+  };
+}
+
+export function getAspectMap(): AspectMap {
+  return {
+    AWA: {
+      name: t`Awareness`,
+      short_name: t`AWA`,
+    },
+    FOC: {
+      name: t`Focus`,
+      short_name: t`FOC`,
+    },
+    FIT: {
+      name: t`Fitness`,
+      short_name: t`Fit`,
+    },
+    SPI: {
+      name: t`Spirit`,
+      short_name: t`SPI`,
+    },
   };
 }
 export function useDeckErrors(): DeckErrorTranslations  {

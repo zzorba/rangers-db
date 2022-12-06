@@ -1,13 +1,16 @@
 import React, { createContext, useContext, useMemo } from 'react'
-import { DeckCardErrorTranslations, DeckErrorTranslations, getDeckCardErrors, getDeckErrors, useDeckErrors } from './hooks';
+import { AspectMap } from '../types/types';
+import { DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getDeckCardErrors, getDeckErrors, useDeckErrors } from './hooks';
 
 interface TranslationContextType {
   deckErrors: DeckErrorTranslations;
   cardErrors: DeckCardErrorTranslations;
+  aspects: AspectMap;
 }
 const TranslationContext = createContext<TranslationContextType>({
   deckErrors: getDeckErrors(),
   cardErrors: getDeckCardErrors(),
+  aspects: getAspectMap(),
 });
 
 export function TranslationProvider({ children }: { children: React.ReactNode }) {
@@ -15,6 +18,7 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
     return {
       deckErrors: getDeckErrors(),
       cardErrors: getDeckCardErrors(),
+      aspects: getAspectMap(),
     };
   }, []);
   return (

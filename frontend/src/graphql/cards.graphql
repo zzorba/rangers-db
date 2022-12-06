@@ -44,15 +44,20 @@ query getCards($locale: String!) {
   ) {
     ...Card
   }
-  aspects: rangers_aspect_localized(
-    where: { locale: { _eq: $locale }}
-  ) {
-    ...Aspect
-  }
   updated_at: rangers_card_updated(
     where: { locale: { _eq: $locale }}
   ) {
     updated_at
+  }
+}
+
+
+query getRoleCards($locale: String!) {
+  cards: rangers_card_localized(
+    where: {
+      locale: { _eq: $locale }}
+  ) {
+    ...Card
   }
 }
 
@@ -64,11 +69,6 @@ query getCard($locale: String!, $cid: String!) {
     }
   ) {
     ...Card
-  }
-  aspects: rangers_aspect_localized(
-    where: { locale: { _eq: $locale }}
-  ) {
-    ...Aspect
   }
 }
 

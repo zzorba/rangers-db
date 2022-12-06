@@ -6,14 +6,17 @@ import { Slots } from '../types/types';
 export default function CardCount({ count, marginLeft }: { count: number, marginLeft?: number }) {
   return (
     <Box fontFamily="mono"
-      borderRadius={8}
-      borderWidth={1}
-      backgroundColor="gray.100"
+      borderRadius="md"
+      borderWidth="1px"
+      bg="gray.600"
       borderColor="gray.300"
+      color="white"
       padding={2}
       marginLeft={marginLeft}
+      px={2}
+      py={3}
     >
-      <Text fontSize="lg">×{count}</Text>
+      ×{count}
     </Box>
   );
 }
@@ -39,8 +42,9 @@ export function RadioCardCount(props: UseRadioProps & { children: React.ReactNod
         _focus={{
           boxShadow: 'outline',
         }}
-        px={5}
+        px={4}
         py={3}
+        marginBottom={0}
       >
         {props.children}
       </Box>

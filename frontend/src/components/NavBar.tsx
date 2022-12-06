@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Spinner,
 } from '@chakra-ui/react';
 import { map } from 'lodash';
 import {
@@ -55,7 +56,7 @@ function useCardNeedUpdate(): [boolean, () => void] {
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
-  const { authUser, signOut } = useAuth();
+  const { authUser, loading, signOut } = useAuth();
   const [cardNeedUpdate, forceCardUpdate] = useCardNeedUpdate();
   const onSignOut = useCallback(() => {
     Router.push('/');
@@ -106,48 +107,52 @@ export default function WithSubnavigation() {
           </Flex>
         </Flex>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify="flex-end"
-          direction="row"
-          spacing={6}
-        >
-          { authUser ? (
-            <Button
-              fontSize={'sm'}
-              fontWeight={400}
-              variant={'link'}
-              onClick={onSignOut}
-            >
-              Sign Out
-            </Button>
-          ) : (
-            <>
+        { loading ? (
+          <Spinner size="sm" />
+        ) : (
+          <Stack
+            flex={{ base: 1, md: 0 }}
+            justify="flex-end"
+            direction="row"
+            spacing={6}
+          >
+            { authUser ? (
               <Button
                 fontSize={'sm'}
                 fontWeight={400}
                 variant={'link'}
-                as={NextLink}
-                href="/login"
+                onClick={onSignOut}
               >
-                Sign In
+                Sign Out
               </Button>
-              <Button
-                display={{ base: 'none', md: 'inline-flex' }}
-                fontSize={'sm'}
-                fontWeight={600}
-                color={'white'}
-                bg={'blue.400'}
-                as={NextLink}
-                href="/register"
-                _hover={{
-                  bg: 'blue.600',
-                }}>
-                Sign Up
-              </Button>
-            </>
-          )}
-        </Stack>
+            ) : (
+              <>
+                <Button
+                  fontSize={'sm'}
+                  fontWeight={400}
+                  variant={'link'}
+                  as={NextLink}
+                  href="/login"
+                >
+                  Sign In
+                </Button>
+                <Button
+                  display={{ base: 'none', md: 'inline-flex' }}
+                  fontSize={'sm'}
+                  fontWeight={600}
+                  color={'white'}
+                  bg={'blue.400'}
+                  as={NextLink}
+                  href="/register"
+                  _hover={{
+                    bg: 'blue.600',
+                  }}>
+                  Sign Up
+                </Button>
+              </>
+            )}
+          </Stack>
+        ) }
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -322,7 +327,11 @@ const NAV_ITEMS: Array<NavItem> = [
     href: '/cards',
   },
   {
-    label: 'Decks',
+    label: 'My Decks',
     href: '/decks',
+  },
+  {
+    label: 'Decks',
+    href: '/decks/search',
   },
 ];

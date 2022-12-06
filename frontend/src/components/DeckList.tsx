@@ -1,37 +1,36 @@
 import React from 'react';
-import { List, ListItem } from '@chakra-ui/react';
-import NextLink from 'next/link';
+import { List } from '@chakra-ui/react';
 import { map } from 'lodash';
+import { t } from 'ttag';
 
-import { useGetMyDecksQuery } from '../generated/graphql/apollo-schema';
+import { DeckFragment } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
-import LoadingPage from './LoadingPage';
 import { DeckRow } from './Deck';
-import { CategoryTranslations } from '../lib/hooks';
+import { CardsMap, CategoryTranslations } from '../lib/hooks';
+import { Text } from '@chakra-ui/react';
 
-export default function DeckList({ categoryTranslations }: { categoryTranslations: CategoryTranslations }) {
-  const { authUser } = useAuth();
-  const { data } = useGetMyDecksQuery({
-    variables: {
-      userId: authUser?.uid || '',
-      offset: 0,
-    },
-    skip: !authUser,
-  });
-
-  if (!data?.decks.length) {
-    return <LoadingPage />;
+export default function DeckList({
+  categoryTranslations,
+  roleCards,
+  decks,
+}: {
+  decks: DeckFragment[] | undefined;
+  categoryTranslations: CategoryTranslations;
+  roleCards: CardsMap;
+}) {
+  if (!decks?.length) {
+    return <Text>{t`You don't seem to have any decks.`}</Text>
   }
   return (
-    <>
-      <List>
-        {}
-        { map(data.decks, deck => (
-          <ListItem as={NextLink} href={`/decks/view/${deck.id}`} key={deck.id}>
-            <DeckRow deck={deck} categoryTranslations={categoryTranslations} />
-          </ListItem>
-        )) }
-      </List>
-    </>
+    <List>
+      { map(decks, deck => (
+        <DeckRow
+          key={deck.id}
+          deck={deck}
+          categoryTranslations={categoryTranslations}
+          roleCards={roleCards}
+        />
+      )) }
+    </List>
   );
 }

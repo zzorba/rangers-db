@@ -31,7 +31,7 @@ export function GraphqlProvider({ children }: { children: React.ReactNode }) {
       setAnonPurge(anonPurge);
     }, console.error);
   }, []);
-  const { authUser } = useAuth();
+  const { authUser, loading } = useAuth();
   useEffect(() => {
     if (authUser) {
       initAuthClient(authUser).then(([cachePersistor, client]) => {
@@ -44,7 +44,7 @@ export function GraphqlProvider({ children }: { children: React.ReactNode }) {
     authPersistor?.purge();
     anonPurge?.();
   }, [authPersistor, anonPurge]);
-  if (!anonClient) {
+  if (!anonClient || loading || (authUser && !authClient)) {
     return <LoadingPage />;
   }
   return (

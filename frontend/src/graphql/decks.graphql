@@ -24,8 +24,28 @@ fragment Deck on rangers_deck {
   }
 }
 
+
+query getDecksPageData(
+  $locale: String
+) {
+  sets: rangers_set_type_localized(
+    where: { locale: { _eq: $locale }}
+    order_by: { id: desc }
+  ) {
+    ...SetType
+  }
+  roleCards: rangers_card_localized(
+    where: {
+      locale: { _eq: $locale }}
+  ) {
+    ...Card
+  }
+
+}
+
 query getMyDecks(
   $userId: String!,
+  $limit: Int!,
   $offset: Int!
 ) {
   decks: rangers_deck(
@@ -33,11 +53,23 @@ query getMyDecks(
       user_id: { _eq: $userId }
       next_deck_id: { _is_null: true }
     }
-    order_by: { updated_at: desc }
-    limit: 25
+    order_by: { updated_at: desc, id: asc }
+    limit: $limit
     offset: $offset
   ) {
     ...Deck
+  }
+}
+
+query getMyDecksTotal(
+  $userId: String!
+) {
+  total: rangers_deck_aggregate(
+    where: { user_id: { _eq: $userId }}
+  ) {
+    aggregate {
+      count
+    }
   }
 }
 
@@ -59,9 +91,10 @@ mutation createDeck(
   $fit: Int!,
   $awa: Int!,
   $spi: Int!,
-  $meta: jsonb!
+  $meta: jsonb!,
+  $slots: jsonb!,
 ) {
-  insert_rangers_deck_one(
+  deck: insert_rangers_deck_one(
     object: {
       user_id: $userId
       name: $name
@@ -70,6 +103,7 @@ mutation createDeck(
       awa: $awa
       spi: $spi
       meta: $meta
+      slots: $slots
     }
   ) {
     ...Deck

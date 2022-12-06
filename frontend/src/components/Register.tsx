@@ -36,7 +36,7 @@ function Register({ redirect }: { redirect: string | undefined }) {
             autoComplete="email"
           />
         </FormControl>
-        <FormControl isRequired>
+        <FormControl isRequired marginTop="1em">
           <FormLabel>Password</FormLabel>
           <Input
             type="password"

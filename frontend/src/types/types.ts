@@ -52,5 +52,6 @@ export type DeckError =
   'too_many_specialty' |
   'role' |
   'invalid_outside_interest' |
+  'outside_interest' |
   'too_many_outside_interest' |
   DeckCardError;

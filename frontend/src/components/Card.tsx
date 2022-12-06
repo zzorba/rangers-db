@@ -28,10 +28,10 @@ import { getPlural } from '../lib/lang';
 import CoreIcon from '../icons/CoreIcon';
 import CardCount, { CountControls } from './CardCount';
 import DeckProblemComponent, { DeckCardProblemTooltip } from './DeckProblemComponent';
+import { useTranslations } from '../lib/TranslationProvider';
 
 interface Props {
   card: CardFragment;
-  aspects: AspectMap;
 }
 
 function renderNumber(value: number) {
@@ -41,7 +41,8 @@ function renderNumber(value: number) {
   return value;
 }
 
-function AspectLevel({ card, aspects, mini }: { card: CardFragment; aspects: AspectMap; mini?: boolean }) {
+function AspectLevel({ card, mini }: { card: CardFragment; mini?: boolean }) {
+  const { aspects} = useTranslations();
   const aspect = card.aspect_id && aspects[card.aspect_id];
   if (!aspect) {
     return null;
@@ -65,12 +66,12 @@ function AspectLevel({ card, aspects, mini }: { card: CardFragment; aspects: Asp
     </Box>
   );
 }
-function FooterInfo({ card, aspects, count }: { card: CardFragment; aspects: AspectMap; count?: number }) {
+function FooterInfo({ card, count }: { card: CardFragment; count?: number }) {
   return (
     <Flex direction="row" justifyContent={count ? 'space-between' : 'flex-end'} alignItems="flex-end">
       { !!count && <CardCount count={count} /> }
       <Flex direction="row" justifyContent="flex-end" maxH="2em">
-        <AspectLevel aspects={aspects} card={card} />
+        <AspectLevel card={card} />
         <Box padding={1} paddingLeft={2} paddingRight={2} backgroundColor="#888888" flexDirection="column">
           <Text fontSize="s" color="#EEEEEE" fontWeight={400}>
             { card.set_name } - {t`${card.set_position} of ${card.set_size}`}
@@ -197,7 +198,8 @@ function CardPresenceAndIcons({ card, mini }: { card: CardFragment; mini?: boole
   );
 }
 
-const CardHeader = ({ card, aspects, flex, miniLevel, problem, includeSet }: Props & { flex?: number; miniLevel?: boolean; problem?: DeckCardError[]; includeSet?: boolean }) => {
+const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }: Props & { flex?: number; miniLevel?: boolean; problem?: DeckCardError[]; includeSet?: boolean; includeText?: boolean }) => {
+  const { aspects } = useTranslations();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
     <Flex direction="row" flex={flex} alignItems="flex-start">
@@ -208,11 +210,17 @@ const CardHeader = ({ card, aspects, flex, miniLevel, problem, includeSet }: Pro
             <Text fontSize="xl" fontWeight={600} textDecorationLine={problem ? 'line-through' : undefined} noOfLines={2}>{card.name}</Text>
           </DeckCardProblemTooltip>
           <Flex direction="row">
-            <Text fontSize="xs" fontWeight={600} noOfLines={2} paddingRight={2}>
-              {card.type_name}{card.traits ? <i> / {card.traits}</i> : ''}
-              { includeSet && card.type_id === 'role' ? ` - ${card.set_name} Specialty` : ''}
-            </Text>
-            { !!card.equip && <Equip equip={card.equip} aspect={card.aspect_id || undefined} /> }
+            { includeText && card.text ? (
+              <CardText noPadding text={card.text} aspectId={card.aspect_id} />
+            ) : (
+              <>
+                <Text fontSize="xs" fontWeight={600} noOfLines={2} paddingRight={2}>
+                  {card.type_name}{card.traits ? <i> / {card.traits}</i> : ''}
+                  { includeSet && card.type_id === 'role' ? ` - ${card.set_name} Specialty` : ''}
+                </Text>
+                { !!card.equip && <Equip equip={card.equip} aspect={card.aspect_id || undefined} /> }
+              </>
+            ) }
           </Flex>
         </Flex>
       </Flex>
@@ -220,7 +228,7 @@ const CardHeader = ({ card, aspects, flex, miniLevel, problem, includeSet }: Pro
         <Flex direction="column" alignItems="flex-end">
           <CardPresenceAndIcons card={card} mini />
           <Flex direction="row" justifyContent="flex-end" marginTop={1}>
-            <AspectLevel card={card} aspects={aspects} mini />
+            <AspectLevel card={card} mini />
           </Flex>
         </Flex>
       ) : <CardPresenceAndIcons card={card} /> }
@@ -228,14 +236,15 @@ const CardHeader = ({ card, aspects, flex, miniLevel, problem, includeSet }: Pro
   );
 };
 
-function CardBody({ card, aspects, padding, problem, count }: Props & { padding?: number; problem?: DeckError[]; count?: number }) {
+function CardBody({ card, padding, problem, count }: Props & { padding?: number; problem?: DeckError[]; count?: number }) {
+  const { aspects } = useTranslations();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
     <>
       <DeckProblemComponent card errors={problem} limit={1} />
       <Flex direction="row" alignItems="flex-end" padding={padding}>
         <Flex direction="column" flex={1}>
-          { !!card.text && <CardText text={card.text} aspects={aspects} aspectId={card.aspect_id} /> }
+          { !!card.text && <CardText text={card.text} aspectId={card.aspect_id} /> }
         </Flex>
         { card.token_name && card.token_plurals && (
           <Tokens
@@ -254,27 +263,27 @@ function CardBody({ card, aspects, padding, problem, count }: Props & { padding?
           </Box>
         ) }
       </Flex>
-      <FooterInfo card={card} aspects={aspects} count={count} />
+      <FooterInfo card={card} count={count} />
     </>
   );
 }
 
-export default function Card({ card, aspects }: Props) {
+export default function Card({ card }: Props) {
   return (
     <Box borderWidth={1} margin={2} borderColor={card.aspect_id ? `aspect.${card.aspect_id}` : '#222222'}>
       <Box padding={2}>
-        <CardHeader card={card} aspects={aspects} />
+        <CardHeader card={card} />
       </Box>
-      <CardBody card={card} aspects={aspects} padding={2} />
+      <CardBody card={card} padding={2} />
     </Box>
   );
 }
 
-export function CardRow({ card, aspects, problem, children, onClick, includeSet }: Props & { children?: React.ReactNode; problem?: DeckCardError[]; includeSet?: boolean; onClick?: () => void }) {
+export function CardRow({ card, problem, children, onClick, includeSet, includeText, last }: Props & { children?: React.ReactNode; problem?: DeckCardError[]; includeSet?: boolean; onClick?: () => void; includeText?: boolean; last?: boolean }) {
   return (
-    <Flex direction="row" padding={2} flex={1} alignItems="flex-start" borderBottomWidth={0.5} borderColor="#BBBBBB">
+    <Flex direction="row" padding={2} flex={1} alignItems="flex-start" borderBottomWidth={last ? undefined : 0.5} borderColor="#BBBBBB">
       <Flex direction="row" flex={1} onClick={onClick} cursor={onClick ? 'pointer' : undefined}>
-        <CardHeader card={card} aspects={aspects} flex={1} miniLevel problem={problem} includeSet={includeSet} />
+        <CardHeader card={card} flex={1} miniLevel problem={problem} includeSet={includeSet} includeText={includeText} />
       </Flex>
       { children }
     </Flex>
@@ -282,7 +291,7 @@ export function CardRow({ card, aspects, problem, children, onClick, includeSet 
 }
 
 export type ShowCard = (card: CardFragment, problem?: DeckCardError[]) => void;
-export function useCardModal(aspects: AspectMap, slots?: Slots, setSlots?: (code: string, count: number) => void, countMode?: 'noah'): [
+export function useCardModal(slots?: Slots, setSlots?: (code: string, count: number) => void, countMode?: 'noah'): [
   ShowCard,
   React.ReactNode,
 ] {
@@ -302,13 +311,13 @@ export function useCardModal(aspects: AspectMap, slots?: Slots, setSlots?: (code
       <ModalContent>
         <ModalHeader>
           <Box paddingRight={8}>
-            { !!card && <CardHeader card={card} aspects={aspects} problem={problem} /> }
+            { !!card && <CardHeader card={card} problem={problem} /> }
           </Box>
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Box paddingBottom={2}>
-            {!!card && <CardBody card={card} aspects={aspects} problem={problem} count={setSlots ? undefined : count}/> }
+            {!!card && <CardBody card={card} problem={problem} count={setSlots ? undefined : count}/> }
           </Box>
         </ModalBody>
         { !!setSlots && !!card?.id && !!slots && (

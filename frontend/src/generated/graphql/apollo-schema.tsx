@@ -14241,6 +14241,14 @@ export type Mutation_Root = {
   delete_pack_name?: Maybe<Pack_Name_Mutation_Response>;
   /** delete single row from the table: "pack_name" */
   delete_pack_name_by_pk?: Maybe<Pack_Name>;
+  /** delete data from the table: "rangers.area" */
+  delete_rangers_area?: Maybe<Rangers_Area_Mutation_Response>;
+  /** delete single row from the table: "rangers.area" */
+  delete_rangers_area_by_pk?: Maybe<Rangers_Area>;
+  /** delete data from the table: "rangers.area_text" */
+  delete_rangers_area_text?: Maybe<Rangers_Area_Text_Mutation_Response>;
+  /** delete single row from the table: "rangers.area_text" */
+  delete_rangers_area_text_by_pk?: Maybe<Rangers_Area_Text>;
   /** delete data from the table: "rangers.aspect" */
   delete_rangers_aspect?: Maybe<Rangers_Aspect_Mutation_Response>;
   /** delete single row from the table: "rangers.aspect" */
@@ -14497,6 +14505,14 @@ export type Mutation_Root = {
   insert_pack_name_one?: Maybe<Pack_Name>;
   /** insert a single row into the table: "pack" */
   insert_pack_one?: Maybe<Pack>;
+  /** insert data into the table: "rangers.area" */
+  insert_rangers_area?: Maybe<Rangers_Area_Mutation_Response>;
+  /** insert a single row into the table: "rangers.area" */
+  insert_rangers_area_one?: Maybe<Rangers_Area>;
+  /** insert data into the table: "rangers.area_text" */
+  insert_rangers_area_text?: Maybe<Rangers_Area_Text_Mutation_Response>;
+  /** insert a single row into the table: "rangers.area_text" */
+  insert_rangers_area_text_one?: Maybe<Rangers_Area_Text>;
   /** insert data into the table: "rangers.aspect" */
   insert_rangers_aspect?: Maybe<Rangers_Aspect_Mutation_Response>;
   /** insert a single row into the table: "rangers.aspect" */
@@ -14827,6 +14843,18 @@ export type Mutation_Root = {
   update_pack_name_by_pk?: Maybe<Pack_Name>;
   /** update multiples rows of table: "pack_name" */
   update_pack_name_many?: Maybe<Array<Maybe<Pack_Name_Mutation_Response>>>;
+  /** update data of the table: "rangers.area" */
+  update_rangers_area?: Maybe<Rangers_Area_Mutation_Response>;
+  /** update single row of the table: "rangers.area" */
+  update_rangers_area_by_pk?: Maybe<Rangers_Area>;
+  /** update multiples rows of table: "rangers.area" */
+  update_rangers_area_many?: Maybe<Array<Maybe<Rangers_Area_Mutation_Response>>>;
+  /** update data of the table: "rangers.area_text" */
+  update_rangers_area_text?: Maybe<Rangers_Area_Text_Mutation_Response>;
+  /** update single row of the table: "rangers.area_text" */
+  update_rangers_area_text_by_pk?: Maybe<Rangers_Area_Text>;
+  /** update multiples rows of table: "rangers.area_text" */
+  update_rangers_area_text_many?: Maybe<Array<Maybe<Rangers_Area_Text_Mutation_Response>>>;
   /** update data of the table: "rangers.aspect" */
   update_rangers_aspect?: Maybe<Rangers_Aspect_Mutation_Response>;
   /** update single row of the table: "rangers.aspect" */
@@ -15429,6 +15457,31 @@ export type Mutation_RootDelete_Pack_NameArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Pack_Name_By_PkArgs = {
   code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_AreaArgs = {
+  where: Rangers_Area_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Area_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Area_TextArgs = {
+  where: Rangers_Area_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Area_Text_By_PkArgs = {
+  id: Scalars['String'];
   locale: Scalars['String'];
 };
 
@@ -16273,6 +16326,34 @@ export type Mutation_RootInsert_Pack_Name_OneArgs = {
 export type Mutation_RootInsert_Pack_OneArgs = {
   object: Pack_Insert_Input;
   on_conflict?: InputMaybe<Pack_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_AreaArgs = {
+  objects: Array<Rangers_Area_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Area_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Area_OneArgs = {
+  object: Rangers_Area_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Area_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Area_TextArgs = {
+  objects: Array<Rangers_Area_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Area_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Area_Text_OneArgs = {
+  object: Rangers_Area_Text_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Area_Text_On_Conflict>;
 };
 
 
@@ -17503,6 +17584,46 @@ export type Mutation_RootUpdate_Pack_Name_ManyArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Rangers_AreaArgs = {
+  _set?: InputMaybe<Rangers_Area_Set_Input>;
+  where: Rangers_Area_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_By_PkArgs = {
+  _set?: InputMaybe<Rangers_Area_Set_Input>;
+  pk_columns: Rangers_Area_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_ManyArgs = {
+  updates: Array<Rangers_Area_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_TextArgs = {
+  _set?: InputMaybe<Rangers_Area_Text_Set_Input>;
+  where: Rangers_Area_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_Text_By_PkArgs = {
+  _set?: InputMaybe<Rangers_Area_Text_Set_Input>;
+  pk_columns: Rangers_Area_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Area_Text_ManyArgs = {
+  updates: Array<Rangers_Area_Text_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Rangers_AspectArgs = {
   _set?: InputMaybe<Rangers_Aspect_Set_Input>;
   where: Rangers_Aspect_Bool_Exp;
@@ -17544,7 +17665,12 @@ export type Mutation_RootUpdate_Rangers_Aspect_Text_ManyArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_CardArgs = {
+  _append?: InputMaybe<Rangers_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Rangers_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Rangers_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Rangers_Card_Delete_Key_Input>;
   _inc?: InputMaybe<Rangers_Card_Inc_Input>;
+  _prepend?: InputMaybe<Rangers_Card_Prepend_Input>;
   _set?: InputMaybe<Rangers_Card_Set_Input>;
   where: Rangers_Card_Bool_Exp;
 };
@@ -17552,7 +17678,12 @@ export type Mutation_RootUpdate_Rangers_CardArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_Card_By_PkArgs = {
+  _append?: InputMaybe<Rangers_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Rangers_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Rangers_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Rangers_Card_Delete_Key_Input>;
   _inc?: InputMaybe<Rangers_Card_Inc_Input>;
+  _prepend?: InputMaybe<Rangers_Card_Prepend_Input>;
   _set?: InputMaybe<Rangers_Card_Set_Input>;
   pk_columns: Rangers_Card_Pk_Columns_Input;
 };
@@ -18934,6 +19065,18 @@ export type Query_Root = {
   pack_name_aggregate: Pack_Name_Aggregate;
   /** fetch data from the table: "pack_name" using primary key columns */
   pack_name_by_pk?: Maybe<Pack_Name>;
+  /** fetch data from the table: "rangers.area" */
+  rangers_area: Array<Rangers_Area>;
+  /** fetch aggregated fields from the table: "rangers.area" */
+  rangers_area_aggregate: Rangers_Area_Aggregate;
+  /** fetch data from the table: "rangers.area" using primary key columns */
+  rangers_area_by_pk?: Maybe<Rangers_Area>;
+  /** fetch data from the table: "rangers.area_text" */
+  rangers_area_text: Array<Rangers_Area_Text>;
+  /** fetch aggregated fields from the table: "rangers.area_text" */
+  rangers_area_text_aggregate: Rangers_Area_Text_Aggregate;
+  /** fetch data from the table: "rangers.area_text" using primary key columns */
+  rangers_area_text_by_pk?: Maybe<Rangers_Area_Text>;
   /** fetch data from the table: "rangers.aspect" */
   rangers_aspect: Array<Rangers_Aspect>;
   /** fetch aggregated fields from the table: "rangers.aspect" */
@@ -19993,6 +20136,53 @@ export type Query_RootPack_Name_By_PkArgs = {
 };
 
 
+export type Query_RootRangers_AreaArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Area_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Area_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootRangers_Area_TextArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Text_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Area_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Text_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Area_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Query_RootRangers_AspectArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Aspect_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -20756,6 +20946,309 @@ export type Query_RootUsers_By_PkArgs = {
   id: Scalars['String'];
 };
 
+/** columns and relationships of "rangers.area" */
+export type Rangers_Area = {
+  __typename?: 'rangers_area';
+  id: Scalars['String'];
+  name: Scalars['String'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "rangers.area" */
+export type Rangers_Area_Aggregate = {
+  __typename?: 'rangers_area_aggregate';
+  aggregate?: Maybe<Rangers_Area_Aggregate_Fields>;
+  nodes: Array<Rangers_Area>;
+};
+
+/** aggregate fields of "rangers.area" */
+export type Rangers_Area_Aggregate_Fields = {
+  __typename?: 'rangers_area_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Area_Max_Fields>;
+  min?: Maybe<Rangers_Area_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.area" */
+export type Rangers_Area_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.area". All fields are combined with a logical 'AND'. */
+export type Rangers_Area_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Area_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Area_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Area_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.area" */
+export enum Rangers_Area_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  AreaPkey = 'area_pkey'
+}
+
+/** input type for inserting data into table "rangers.area" */
+export type Rangers_Area_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Area_Max_Fields = {
+  __typename?: 'rangers_area_max_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Area_Min_Fields = {
+  __typename?: 'rangers_area_min_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "rangers.area" */
+export type Rangers_Area_Mutation_Response = {
+  __typename?: 'rangers_area_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Area>;
+};
+
+/** on_conflict condition type for table "rangers.area" */
+export type Rangers_Area_On_Conflict = {
+  constraint: Rangers_Area_Constraint;
+  update_columns?: Array<Rangers_Area_Update_Column>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.area". */
+export type Rangers_Area_Order_By = {
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.area */
+export type Rangers_Area_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "rangers.area" */
+export enum Rangers_Area_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "rangers.area" */
+export type Rangers_Area_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "rangers_area" */
+export type Rangers_Area_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Area_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Area_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** columns and relationships of "rangers.area_text" */
+export type Rangers_Area_Text = {
+  __typename?: 'rangers_area_text';
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "rangers.area_text" */
+export type Rangers_Area_Text_Aggregate = {
+  __typename?: 'rangers_area_text_aggregate';
+  aggregate?: Maybe<Rangers_Area_Text_Aggregate_Fields>;
+  nodes: Array<Rangers_Area_Text>;
+};
+
+/** aggregate fields of "rangers.area_text" */
+export type Rangers_Area_Text_Aggregate_Fields = {
+  __typename?: 'rangers_area_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Area_Text_Max_Fields>;
+  min?: Maybe<Rangers_Area_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.area_text" */
+export type Rangers_Area_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.area_text". All fields are combined with a logical 'AND'. */
+export type Rangers_Area_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Area_Text_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Area_Text_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.area_text" */
+export enum Rangers_Area_Text_Constraint {
+  /** unique or primary key constraint on columns "locale", "id" */
+  AreaTextPkey = 'area_text_pkey'
+}
+
+/** input type for inserting data into table "rangers.area_text" */
+export type Rangers_Area_Text_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Area_Text_Max_Fields = {
+  __typename?: 'rangers_area_text_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Area_Text_Min_Fields = {
+  __typename?: 'rangers_area_text_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "rangers.area_text" */
+export type Rangers_Area_Text_Mutation_Response = {
+  __typename?: 'rangers_area_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Area_Text>;
+};
+
+/** on_conflict condition type for table "rangers.area_text" */
+export type Rangers_Area_Text_On_Conflict = {
+  constraint: Rangers_Area_Text_Constraint;
+  update_columns?: Array<Rangers_Area_Text_Update_Column>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.area_text". */
+export type Rangers_Area_Text_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.area_text */
+export type Rangers_Area_Text_Pk_Columns_Input = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "rangers.area_text" */
+export enum Rangers_Area_Text_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "rangers.area_text" */
+export type Rangers_Area_Text_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "rangers_area_text" */
+export type Rangers_Area_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Area_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Area_Text_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "rangers.area_text" */
+export enum Rangers_Area_Text_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Rangers_Area_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Area_Text_Set_Input>;
+  where: Rangers_Area_Text_Bool_Exp;
+};
+
+/** update columns of table "rangers.area" */
+export enum Rangers_Area_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Rangers_Area_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Area_Set_Input>;
+  where: Rangers_Area_Bool_Exp;
+};
+
 /** columns and relationships of "rangers.aspect" */
 export type Rangers_Aspect = {
   __typename?: 'rangers_aspect';
@@ -21210,15 +21703,25 @@ export type Rangers_Card = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
+  back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id: Scalars['String'];
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
+  locations?: Maybe<Scalars['jsonb']>;
   name: Scalars['String'];
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
+  progress_fixed?: Maybe<Scalars['Boolean']>;
   quantity: Scalars['Int'];
   set_id: Scalars['String'];
   set_position: Scalars['Int'];
@@ -21232,6 +21735,12 @@ export type Rangers_Card = {
   translations_aggregate: Rangers_Card_Text_Aggregate;
   type_id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+
+/** columns and relationships of "rangers.card" */
+export type Rangers_CardLocationsArgs = {
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -21284,6 +21793,11 @@ export type Rangers_Card_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Rangers_Card_Append_Input = {
+  locations?: InputMaybe<Scalars['jsonb']>;
+};
+
 /** aggregate avg on columns */
 export type Rangers_Card_Avg_Fields = {
   __typename?: 'rangers_card_avg_fields';
@@ -21311,15 +21825,25 @@ export type Rangers_Card_Bool_Exp = {
   approach_connection?: InputMaybe<Int_Comparison_Exp>;
   approach_exploration?: InputMaybe<Int_Comparison_Exp>;
   approach_reason?: InputMaybe<Int_Comparison_Exp>;
+  area_id?: InputMaybe<String_Comparison_Exp>;
   aspect_id?: InputMaybe<String_Comparison_Exp>;
+  back_card_id?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
   equip?: InputMaybe<Int_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  guide_entry?: InputMaybe<String_Comparison_Exp>;
   harm?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
   level?: InputMaybe<Int_Comparison_Exp>;
+  locations?: InputMaybe<Jsonb_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  objective?: InputMaybe<String_Comparison_Exp>;
+  pack_id?: InputMaybe<String_Comparison_Exp>;
   presence?: InputMaybe<Int_Comparison_Exp>;
   progress?: InputMaybe<Int_Comparison_Exp>;
+  progress_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
   set_id?: InputMaybe<String_Comparison_Exp>;
   set_position?: InputMaybe<Int_Comparison_Exp>;
@@ -21338,6 +21862,21 @@ export enum Rangers_Card_Constraint {
   /** unique or primary key constraint on columns "id" */
   CardPkey = 'card_pkey'
 }
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Rangers_Card_Delete_At_Path_Input = {
+  locations?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Rangers_Card_Delete_Elem_Input = {
+  locations?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Rangers_Card_Delete_Key_Input = {
+  locations?: InputMaybe<Scalars['String']>;
+};
 
 /** input type for incrementing numeric columns in table "rangers.card" */
 export type Rangers_Card_Inc_Input = {
@@ -21362,15 +21901,25 @@ export type Rangers_Card_Insert_Input = {
   approach_connection?: InputMaybe<Scalars['Int']>;
   approach_exploration?: InputMaybe<Scalars['Int']>;
   approach_reason?: InputMaybe<Scalars['Int']>;
+  area_id?: InputMaybe<Scalars['String']>;
   aspect_id?: InputMaybe<Scalars['String']>;
+  back_card_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  guide_entry?: InputMaybe<Scalars['String']>;
   harm?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
+  locations?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
   presence?: InputMaybe<Scalars['Int']>;
   progress?: InputMaybe<Scalars['Int']>;
+  progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
@@ -21390,20 +21939,35 @@ export type Rangers_Card_Localized = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
+  area_name?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
   aspect_name?: Maybe<Scalars['String']>;
   aspect_short_name?: Maybe<Scalars['String']>;
+  back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
+  locations?: Maybe<Scalars['jsonb']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
+  pack_name?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
+  progress_fixed?: Maybe<Scalars['Boolean']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   set_id?: Maybe<Scalars['String']>;
@@ -21421,6 +21985,12 @@ export type Rangers_Card_Localized = {
   type_id?: Maybe<Scalars['String']>;
   type_name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+
+/** columns and relationships of "rangers.card_localized" */
+export type Rangers_Card_LocalizedLocationsArgs = {
+  path?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregated selection of "rangers.card_localized" */
@@ -21464,6 +22034,7 @@ export type Rangers_Card_Localized_Avg_Fields = {
   equip?: Maybe<Scalars['Float']>;
   harm?: Maybe<Scalars['Float']>;
   level?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   presence?: Maybe<Scalars['Float']>;
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
@@ -21481,20 +22052,35 @@ export type Rangers_Card_Localized_Bool_Exp = {
   approach_connection?: InputMaybe<Int_Comparison_Exp>;
   approach_exploration?: InputMaybe<Int_Comparison_Exp>;
   approach_reason?: InputMaybe<Int_Comparison_Exp>;
+  area_id?: InputMaybe<String_Comparison_Exp>;
+  area_name?: InputMaybe<String_Comparison_Exp>;
   aspect_id?: InputMaybe<String_Comparison_Exp>;
   aspect_name?: InputMaybe<String_Comparison_Exp>;
   aspect_short_name?: InputMaybe<String_Comparison_Exp>;
+  back_card_id?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
   equip?: InputMaybe<Int_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  guide_entry?: InputMaybe<String_Comparison_Exp>;
   harm?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
   level?: InputMaybe<Int_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
+  locations?: InputMaybe<Jsonb_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  objective?: InputMaybe<String_Comparison_Exp>;
+  pack_id?: InputMaybe<String_Comparison_Exp>;
+  pack_name?: InputMaybe<String_Comparison_Exp>;
+  pack_position?: InputMaybe<Int_Comparison_Exp>;
   presence?: InputMaybe<Int_Comparison_Exp>;
   progress?: InputMaybe<Int_Comparison_Exp>;
+  progress_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
+  real_flavor?: InputMaybe<String_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
+  real_objective?: InputMaybe<String_Comparison_Exp>;
   real_text?: InputMaybe<String_Comparison_Exp>;
   real_traits?: InputMaybe<String_Comparison_Exp>;
   set_id?: InputMaybe<String_Comparison_Exp>;
@@ -21521,20 +22107,33 @@ export type Rangers_Card_Localized_Max_Fields = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
+  area_name?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
   aspect_name?: Maybe<Scalars['String']>;
   aspect_short_name?: Maybe<Scalars['String']>;
+  back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
+  pack_name?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   set_id?: Maybe<Scalars['String']>;
@@ -21561,20 +22160,33 @@ export type Rangers_Card_Localized_Min_Fields = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
+  area_name?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
   aspect_name?: Maybe<Scalars['String']>;
   aspect_short_name?: Maybe<Scalars['String']>;
+  back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
+  pack_name?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_flavor?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
+  real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   set_id?: Maybe<Scalars['String']>;
@@ -21600,20 +22212,35 @@ export type Rangers_Card_Localized_Order_By = {
   approach_connection?: InputMaybe<Order_By>;
   approach_exploration?: InputMaybe<Order_By>;
   approach_reason?: InputMaybe<Order_By>;
+  area_id?: InputMaybe<Order_By>;
+  area_name?: InputMaybe<Order_By>;
   aspect_id?: InputMaybe<Order_By>;
   aspect_name?: InputMaybe<Order_By>;
   aspect_short_name?: InputMaybe<Order_By>;
+  back_card_id?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
   equip?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  guide_entry?: InputMaybe<Order_By>;
   harm?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
   level?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
+  locations?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
+  pack_id?: InputMaybe<Order_By>;
+  pack_name?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
   presence?: InputMaybe<Order_By>;
   progress?: InputMaybe<Order_By>;
+  progress_fixed?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
+  real_flavor?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
+  real_objective?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
   set_id?: InputMaybe<Order_By>;
@@ -21644,33 +22271,63 @@ export enum Rangers_Card_Localized_Select_Column {
   /** column name */
   ApproachReason = 'approach_reason',
   /** column name */
+  AreaId = 'area_id',
+  /** column name */
+  AreaName = 'area_name',
+  /** column name */
   AspectId = 'aspect_id',
   /** column name */
   AspectName = 'aspect_name',
   /** column name */
   AspectShortName = 'aspect_short_name',
   /** column name */
+  BackCardId = 'back_card_id',
+  /** column name */
   Cost = 'cost',
   /** column name */
   Equip = 'equip',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  GuideEntry = 'guide_entry',
   /** column name */
   Harm = 'harm',
   /** column name */
   Id = 'id',
   /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
   Level = 'level',
   /** column name */
   Locale = 'locale',
   /** column name */
+  Locations = 'locations',
+  /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
+  /** column name */
+  PackId = 'pack_id',
+  /** column name */
+  PackName = 'pack_name',
+  /** column name */
+  PackPosition = 'pack_position',
   /** column name */
   Presence = 'presence',
   /** column name */
   Progress = 'progress',
   /** column name */
+  ProgressFixed = 'progress_fixed',
+  /** column name */
   Quantity = 'quantity',
   /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
   RealName = 'real_name',
+  /** column name */
+  RealObjective = 'real_objective',
   /** column name */
   RealText = 'real_text',
   /** column name */
@@ -21718,6 +22375,7 @@ export type Rangers_Card_Localized_Stddev_Fields = {
   equip?: Maybe<Scalars['Float']>;
   harm?: Maybe<Scalars['Float']>;
   level?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   presence?: Maybe<Scalars['Float']>;
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
@@ -21737,6 +22395,7 @@ export type Rangers_Card_Localized_Stddev_Pop_Fields = {
   equip?: Maybe<Scalars['Float']>;
   harm?: Maybe<Scalars['Float']>;
   level?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   presence?: Maybe<Scalars['Float']>;
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
@@ -21756,6 +22415,7 @@ export type Rangers_Card_Localized_Stddev_Samp_Fields = {
   equip?: Maybe<Scalars['Float']>;
   harm?: Maybe<Scalars['Float']>;
   level?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   presence?: Maybe<Scalars['Float']>;
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
@@ -21778,20 +22438,35 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   approach_connection?: InputMaybe<Scalars['Int']>;
   approach_exploration?: InputMaybe<Scalars['Int']>;
   approach_reason?: InputMaybe<Scalars['Int']>;
+  area_id?: InputMaybe<Scalars['String']>;
+  area_name?: InputMaybe<Scalars['String']>;
   aspect_id?: InputMaybe<Scalars['String']>;
   aspect_name?: InputMaybe<Scalars['String']>;
   aspect_short_name?: InputMaybe<Scalars['String']>;
+  back_card_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  guide_entry?: InputMaybe<Scalars['String']>;
   harm?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  locations?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
+  pack_name?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
   presence?: InputMaybe<Scalars['Int']>;
   progress?: InputMaybe<Scalars['Int']>;
+  progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
   real_name?: InputMaybe<Scalars['String']>;
+  real_objective?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
   real_traits?: InputMaybe<Scalars['String']>;
   set_id?: InputMaybe<Scalars['String']>;
@@ -21822,6 +22497,7 @@ export type Rangers_Card_Localized_Sum_Fields = {
   equip?: Maybe<Scalars['Int']>;
   harm?: Maybe<Scalars['Int']>;
   level?: Maybe<Scalars['Int']>;
+  pack_position?: Maybe<Scalars['Int']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
@@ -21841,6 +22517,7 @@ export type Rangers_Card_Localized_Var_Pop_Fields = {
   equip?: Maybe<Scalars['Float']>;
   harm?: Maybe<Scalars['Float']>;
   level?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   presence?: Maybe<Scalars['Float']>;
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
@@ -21860,6 +22537,7 @@ export type Rangers_Card_Localized_Var_Samp_Fields = {
   equip?: Maybe<Scalars['Float']>;
   harm?: Maybe<Scalars['Float']>;
   level?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   presence?: Maybe<Scalars['Float']>;
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
@@ -21879,6 +22557,7 @@ export type Rangers_Card_Localized_Variance_Fields = {
   equip?: Maybe<Scalars['Float']>;
   harm?: Maybe<Scalars['Float']>;
   level?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
   presence?: Maybe<Scalars['Float']>;
   progress?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
@@ -21894,13 +22573,21 @@ export type Rangers_Card_Max_Fields = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
+  back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
@@ -21921,13 +22608,21 @@ export type Rangers_Card_Min_Fields = {
   approach_connection?: Maybe<Scalars['Int']>;
   approach_exploration?: Maybe<Scalars['Int']>;
   approach_reason?: Maybe<Scalars['Int']>;
+  area_id?: Maybe<Scalars['String']>;
   aspect_id?: Maybe<Scalars['String']>;
+  back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
+  flavor?: Maybe<Scalars['String']>;
+  guide_entry?: Maybe<Scalars['String']>;
   harm?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
@@ -21963,15 +22658,25 @@ export type Rangers_Card_Order_By = {
   approach_connection?: InputMaybe<Order_By>;
   approach_exploration?: InputMaybe<Order_By>;
   approach_reason?: InputMaybe<Order_By>;
+  area_id?: InputMaybe<Order_By>;
   aspect_id?: InputMaybe<Order_By>;
+  back_card_id?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
   equip?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  guide_entry?: InputMaybe<Order_By>;
   harm?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
   level?: InputMaybe<Order_By>;
+  locations?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
+  pack_id?: InputMaybe<Order_By>;
   presence?: InputMaybe<Order_By>;
   progress?: InputMaybe<Order_By>;
+  progress_fixed?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
   set_id?: InputMaybe<Order_By>;
   set_position?: InputMaybe<Order_By>;
@@ -21989,6 +22694,11 @@ export type Rangers_Card_Pk_Columns_Input = {
   id: Scalars['String'];
 };
 
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Rangers_Card_Prepend_Input = {
+  locations?: InputMaybe<Scalars['jsonb']>;
+};
+
 /** select columns of table "rangers.card" */
 export enum Rangers_Card_Select_Column {
   /** column name */
@@ -22000,23 +22710,43 @@ export enum Rangers_Card_Select_Column {
   /** column name */
   ApproachReason = 'approach_reason',
   /** column name */
+  AreaId = 'area_id',
+  /** column name */
   AspectId = 'aspect_id',
+  /** column name */
+  BackCardId = 'back_card_id',
   /** column name */
   Cost = 'cost',
   /** column name */
   Equip = 'equip',
   /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  GuideEntry = 'guide_entry',
+  /** column name */
   Harm = 'harm',
   /** column name */
   Id = 'id',
   /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
   Level = 'level',
   /** column name */
+  Locations = 'locations',
+  /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
+  /** column name */
+  PackId = 'pack_id',
   /** column name */
   Presence = 'presence',
   /** column name */
   Progress = 'progress',
+  /** column name */
+  ProgressFixed = 'progress_fixed',
   /** column name */
   Quantity = 'quantity',
   /** column name */
@@ -22043,15 +22773,25 @@ export type Rangers_Card_Set_Input = {
   approach_connection?: InputMaybe<Scalars['Int']>;
   approach_exploration?: InputMaybe<Scalars['Int']>;
   approach_reason?: InputMaybe<Scalars['Int']>;
+  area_id?: InputMaybe<Scalars['String']>;
   aspect_id?: InputMaybe<Scalars['String']>;
+  back_card_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  guide_entry?: InputMaybe<Scalars['String']>;
   harm?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
+  locations?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
   presence?: InputMaybe<Scalars['Int']>;
   progress?: InputMaybe<Scalars['Int']>;
+  progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
@@ -22131,15 +22871,25 @@ export type Rangers_Card_Stream_Cursor_Value_Input = {
   approach_connection?: InputMaybe<Scalars['Int']>;
   approach_exploration?: InputMaybe<Scalars['Int']>;
   approach_reason?: InputMaybe<Scalars['Int']>;
+  area_id?: InputMaybe<Scalars['String']>;
   aspect_id?: InputMaybe<Scalars['String']>;
+  back_card_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  guide_entry?: InputMaybe<Scalars['String']>;
   harm?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
+  locations?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
   presence?: InputMaybe<Scalars['Int']>;
   progress?: InputMaybe<Scalars['Int']>;
+  progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
@@ -22172,9 +22922,11 @@ export type Rangers_Card_Sum_Fields = {
 /** columns and relationships of "rangers.card_text" */
 export type Rangers_Card_Text = {
   __typename?: 'rangers_card_text';
+  flavor?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   locale: Scalars['String'];
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -22232,9 +22984,11 @@ export type Rangers_Card_Text_Bool_Exp = {
   _and?: InputMaybe<Array<Rangers_Card_Text_Bool_Exp>>;
   _not?: InputMaybe<Rangers_Card_Text_Bool_Exp>;
   _or?: InputMaybe<Array<Rangers_Card_Text_Bool_Exp>>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  objective?: InputMaybe<String_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   traits?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -22248,9 +23002,11 @@ export enum Rangers_Card_Text_Constraint {
 
 /** input type for inserting data into table "rangers.card_text" */
 export type Rangers_Card_Text_Insert_Input = {
+  flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -22259,9 +23015,11 @@ export type Rangers_Card_Text_Insert_Input = {
 /** aggregate max on columns */
 export type Rangers_Card_Text_Max_Fields = {
   __typename?: 'rangers_card_text_max_fields';
+  flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -22269,9 +23027,11 @@ export type Rangers_Card_Text_Max_Fields = {
 
 /** order by max() on columns of table "rangers.card_text" */
 export type Rangers_Card_Text_Max_Order_By = {
+  flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -22280,9 +23040,11 @@ export type Rangers_Card_Text_Max_Order_By = {
 /** aggregate min on columns */
 export type Rangers_Card_Text_Min_Fields = {
   __typename?: 'rangers_card_text_min_fields';
+  flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  objective?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -22290,9 +23052,11 @@ export type Rangers_Card_Text_Min_Fields = {
 
 /** order by min() on columns of table "rangers.card_text" */
 export type Rangers_Card_Text_Min_Order_By = {
+  flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -22316,9 +23080,11 @@ export type Rangers_Card_Text_On_Conflict = {
 
 /** Ordering options when selecting data from "rangers.card_text". */
 export type Rangers_Card_Text_Order_By = {
+  flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  objective?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -22333,11 +23099,15 @@ export type Rangers_Card_Text_Pk_Columns_Input = {
 /** select columns of table "rangers.card_text" */
 export enum Rangers_Card_Text_Select_Column {
   /** column name */
+  Flavor = 'flavor',
+  /** column name */
   Id = 'id',
   /** column name */
   Locale = 'locale',
   /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
   /** column name */
   Text = 'text',
   /** column name */
@@ -22348,9 +23118,11 @@ export enum Rangers_Card_Text_Select_Column {
 
 /** input type for updating data in table "rangers.card_text" */
 export type Rangers_Card_Text_Set_Input = {
+  flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -22366,9 +23138,11 @@ export type Rangers_Card_Text_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Rangers_Card_Text_Stream_Cursor_Value_Input = {
+  flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  objective?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -22377,11 +23151,15 @@ export type Rangers_Card_Text_Stream_Cursor_Value_Input = {
 /** update columns of table "rangers.card_text" */
 export enum Rangers_Card_Text_Update_Column {
   /** column name */
+  Flavor = 'flavor',
+  /** column name */
   Id = 'id',
   /** column name */
   Locale = 'locale',
   /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
   /** column name */
   Text = 'text',
   /** column name */
@@ -22407,23 +23185,43 @@ export enum Rangers_Card_Update_Column {
   /** column name */
   ApproachReason = 'approach_reason',
   /** column name */
+  AreaId = 'area_id',
+  /** column name */
   AspectId = 'aspect_id',
+  /** column name */
+  BackCardId = 'back_card_id',
   /** column name */
   Cost = 'cost',
   /** column name */
   Equip = 'equip',
   /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  GuideEntry = 'guide_entry',
+  /** column name */
   Harm = 'harm',
   /** column name */
   Id = 'id',
   /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
   Level = 'level',
   /** column name */
+  Locations = 'locations',
+  /** column name */
   Name = 'name',
+  /** column name */
+  Objective = 'objective',
+  /** column name */
+  PackId = 'pack_id',
   /** column name */
   Presence = 'presence',
   /** column name */
   Progress = 'progress',
+  /** column name */
+  ProgressFixed = 'progress_fixed',
   /** column name */
   Quantity = 'quantity',
   /** column name */
@@ -22525,8 +23323,18 @@ export type Rangers_Card_Updated_Stream_Cursor_Value_Input = {
 };
 
 export type Rangers_Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Rangers_Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Rangers_Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Rangers_Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Rangers_Card_Delete_Key_Input>;
   /** increments the numeric columns with given value of the filtered values */
   _inc?: InputMaybe<Rangers_Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Rangers_Card_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Card_Set_Input>;
   where: Rangers_Card_Bool_Exp;
@@ -26477,6 +27285,22 @@ export type Subscription_Root = {
   pack_name_stream: Array<Pack_Name>;
   /** fetch data from the table in a streaming manner: "pack" */
   pack_stream: Array<Pack>;
+  /** fetch data from the table: "rangers.area" */
+  rangers_area: Array<Rangers_Area>;
+  /** fetch aggregated fields from the table: "rangers.area" */
+  rangers_area_aggregate: Rangers_Area_Aggregate;
+  /** fetch data from the table: "rangers.area" using primary key columns */
+  rangers_area_by_pk?: Maybe<Rangers_Area>;
+  /** fetch data from the table in a streaming manner: "rangers.area" */
+  rangers_area_stream: Array<Rangers_Area>;
+  /** fetch data from the table: "rangers.area_text" */
+  rangers_area_text: Array<Rangers_Area_Text>;
+  /** fetch aggregated fields from the table: "rangers.area_text" */
+  rangers_area_text_aggregate: Rangers_Area_Text_Aggregate;
+  /** fetch data from the table: "rangers.area_text" using primary key columns */
+  rangers_area_text_by_pk?: Maybe<Rangers_Area_Text>;
+  /** fetch data from the table in a streaming manner: "rangers.area_text" */
+  rangers_area_text_stream: Array<Rangers_Area_Text>;
   /** fetch data from the table: "rangers.aspect" */
   rangers_aspect: Array<Rangers_Aspect>;
   /** fetch aggregated fields from the table: "rangers.aspect" */
@@ -27869,6 +28693,67 @@ export type Subscription_RootPack_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Pack_Stream_Cursor_Input>>;
   where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_AreaArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Area_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Area_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Area_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_TextArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Text_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Area_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Area_Text_Order_By>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Area_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Area_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Area_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Area_Text_Bool_Exp>;
 };
 
 
@@ -30955,7 +31840,14 @@ export type GetCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }>, aspects: Array<{ __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+export type GetCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+
+export type GetRoleCardsQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }> };
 
 export type GetCardQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -30963,7 +31855,7 @@ export type GetCardQueryVariables = Exact<{
 }>;
 
 
-export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }>, aspects: Array<{ __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null }> };
+export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }> };
 
 export type GetCardsUpdatedAtQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -30983,13 +31875,28 @@ export type GetSetsQuery = { __typename?: 'query_root', sets: Array<{ __typename
 
 export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null };
 
+export type GetDecksPageDataQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetDecksPageDataQuery = { __typename?: 'query_root', sets: Array<{ __typename?: 'rangers_set_type_localized', id?: string | null, name?: string | null, sets: Array<{ __typename?: 'rangers_set_localized', id?: string | null, name?: string | null }> }>, roleCards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }> };
+
 export type GetMyDecksQueryVariables = Exact<{
   userId: Scalars['String'];
+  limit: Scalars['Int'];
   offset: Scalars['Int'];
 }>;
 
 
 export type GetMyDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null }> };
+
+export type GetMyDecksTotalQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetMyDecksTotalQuery = { __typename?: 'query_root', total: { __typename?: 'rangers_deck_aggregate', aggregate?: { __typename?: 'rangers_deck_aggregate_fields', count: number } | null } };
 
 export type GetDeckQueryVariables = Exact<{
   deckId: Scalars['Int'];
@@ -31006,10 +31913,11 @@ export type CreateDeckMutationVariables = Exact<{
   awa: Scalars['Int'];
   spi: Scalars['Int'];
   meta: Scalars['jsonb'];
+  slots: Scalars['jsonb'];
 }>;
 
 
-export type CreateDeckMutation = { __typename?: 'mutation_root', insert_rangers_deck_one?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null } | null };
+export type CreateDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null } | null };
 
 export type SaveDeckMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -31124,15 +32032,11 @@ export const GetCardsDocument = gql`
   cards: rangers_card_localized(where: {locale: {_eq: $locale}}) {
     ...Card
   }
-  aspects: rangers_aspect_localized(where: {locale: {_eq: $locale}}) {
-    ...Aspect
-  }
   updated_at: rangers_card_updated(where: {locale: {_eq: $locale}}) {
     updated_at
   }
 }
-    ${CardFragmentDoc}
-${AspectFragmentDoc}`;
+    ${CardFragmentDoc}`;
 
 /**
  * __useGetCardsQuery__
@@ -31161,17 +32065,48 @@ export function useGetCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
 export type GetCardsQueryHookResult = ReturnType<typeof useGetCardsQuery>;
 export type GetCardsLazyQueryHookResult = ReturnType<typeof useGetCardsLazyQuery>;
 export type GetCardsQueryResult = Apollo.QueryResult<GetCardsQuery, GetCardsQueryVariables>;
+export const GetRoleCardsDocument = gql`
+    query getRoleCards($locale: String!) {
+  cards: rangers_card_localized(where: {locale: {_eq: $locale}}) {
+    ...Card
+  }
+}
+    ${CardFragmentDoc}`;
+
+/**
+ * __useGetRoleCardsQuery__
+ *
+ * To run a query within a React component, call `useGetRoleCardsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRoleCardsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetRoleCardsQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetRoleCardsQuery(baseOptions: Apollo.QueryHookOptions<GetRoleCardsQuery, GetRoleCardsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetRoleCardsQuery, GetRoleCardsQueryVariables>(GetRoleCardsDocument, options);
+      }
+export function useGetRoleCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRoleCardsQuery, GetRoleCardsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetRoleCardsQuery, GetRoleCardsQueryVariables>(GetRoleCardsDocument, options);
+        }
+export type GetRoleCardsQueryHookResult = ReturnType<typeof useGetRoleCardsQuery>;
+export type GetRoleCardsLazyQueryHookResult = ReturnType<typeof useGetRoleCardsLazyQuery>;
+export type GetRoleCardsQueryResult = Apollo.QueryResult<GetRoleCardsQuery, GetRoleCardsQueryVariables>;
 export const GetCardDocument = gql`
     query getCard($locale: String!, $cid: String!) {
   cards: rangers_card_localized(where: {locale: {_eq: $locale}, id: {_eq: $cid}}) {
     ...Card
   }
-  aspects: rangers_aspect_localized(where: {locale: {_eq: $locale}}) {
-    ...Aspect
-  }
 }
-    ${CardFragmentDoc}
-${AspectFragmentDoc}`;
+    ${CardFragmentDoc}`;
 
 /**
  * __useGetCardQuery__
@@ -31274,12 +32209,54 @@ export function useGetSetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetSetsQueryHookResult = ReturnType<typeof useGetSetsQuery>;
 export type GetSetsLazyQueryHookResult = ReturnType<typeof useGetSetsLazyQuery>;
 export type GetSetsQueryResult = Apollo.QueryResult<GetSetsQuery, GetSetsQueryVariables>;
+export const GetDecksPageDataDocument = gql`
+    query getDecksPageData($locale: String) {
+  sets: rangers_set_type_localized(
+    where: {locale: {_eq: $locale}}
+    order_by: {id: desc}
+  ) {
+    ...SetType
+  }
+  roleCards: rangers_card_localized(where: {locale: {_eq: $locale}}) {
+    ...Card
+  }
+}
+    ${SetTypeFragmentDoc}
+${CardFragmentDoc}`;
+
+/**
+ * __useGetDecksPageDataQuery__
+ *
+ * To run a query within a React component, call `useGetDecksPageDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDecksPageDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDecksPageDataQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetDecksPageDataQuery(baseOptions?: Apollo.QueryHookOptions<GetDecksPageDataQuery, GetDecksPageDataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDecksPageDataQuery, GetDecksPageDataQueryVariables>(GetDecksPageDataDocument, options);
+      }
+export function useGetDecksPageDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDecksPageDataQuery, GetDecksPageDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDecksPageDataQuery, GetDecksPageDataQueryVariables>(GetDecksPageDataDocument, options);
+        }
+export type GetDecksPageDataQueryHookResult = ReturnType<typeof useGetDecksPageDataQuery>;
+export type GetDecksPageDataLazyQueryHookResult = ReturnType<typeof useGetDecksPageDataLazyQuery>;
+export type GetDecksPageDataQueryResult = Apollo.QueryResult<GetDecksPageDataQuery, GetDecksPageDataQueryVariables>;
 export const GetMyDecksDocument = gql`
-    query getMyDecks($userId: String!, $offset: Int!) {
+    query getMyDecks($userId: String!, $limit: Int!, $offset: Int!) {
   decks: rangers_deck(
     where: {user_id: {_eq: $userId}, next_deck_id: {_is_null: true}}
-    order_by: {updated_at: desc}
-    limit: 25
+    order_by: {updated_at: desc, id: asc}
+    limit: $limit
     offset: $offset
   ) {
     ...Deck
@@ -31300,6 +32277,7 @@ export const GetMyDecksDocument = gql`
  * const { data, loading, error } = useGetMyDecksQuery({
  *   variables: {
  *      userId: // value for 'userId'
+ *      limit: // value for 'limit'
  *      offset: // value for 'offset'
  *   },
  * });
@@ -31315,6 +32293,43 @@ export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
 export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
 export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
+export const GetMyDecksTotalDocument = gql`
+    query getMyDecksTotal($userId: String!) {
+  total: rangers_deck_aggregate(where: {user_id: {_eq: $userId}}) {
+    aggregate {
+      count
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetMyDecksTotalQuery__
+ *
+ * To run a query within a React component, call `useGetMyDecksTotalQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMyDecksTotalQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMyDecksTotalQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetMyDecksTotalQuery(baseOptions: Apollo.QueryHookOptions<GetMyDecksTotalQuery, GetMyDecksTotalQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMyDecksTotalQuery, GetMyDecksTotalQueryVariables>(GetMyDecksTotalDocument, options);
+      }
+export function useGetMyDecksTotalLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyDecksTotalQuery, GetMyDecksTotalQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMyDecksTotalQuery, GetMyDecksTotalQueryVariables>(GetMyDecksTotalDocument, options);
+        }
+export type GetMyDecksTotalQueryHookResult = ReturnType<typeof useGetMyDecksTotalQuery>;
+export type GetMyDecksTotalLazyQueryHookResult = ReturnType<typeof useGetMyDecksTotalLazyQuery>;
+export type GetMyDecksTotalQueryResult = Apollo.QueryResult<GetMyDecksTotalQuery, GetMyDecksTotalQueryVariables>;
 export const GetDeckDocument = gql`
     query getDeck($deckId: Int!) {
   deck: rangers_deck_by_pk(id: $deckId) {
@@ -31354,9 +32369,9 @@ export type GetDeckQueryHookResult = ReturnType<typeof useGetDeckQuery>;
 export type GetDeckLazyQueryHookResult = ReturnType<typeof useGetDeckLazyQuery>;
 export type GetDeckQueryResult = Apollo.QueryResult<GetDeckQuery, GetDeckQueryVariables>;
 export const CreateDeckDocument = gql`
-    mutation createDeck($userId: String!, $name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!) {
-  insert_rangers_deck_one(
-    object: {user_id: $userId, name: $name, foc: $foc, fit: $fit, awa: $awa, spi: $spi, meta: $meta}
+    mutation createDeck($userId: String!, $name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!) {
+  deck: insert_rangers_deck_one(
+    object: {user_id: $userId, name: $name, foc: $foc, fit: $fit, awa: $awa, spi: $spi, meta: $meta, slots: $slots}
   ) {
     ...Deck
   }
@@ -31384,6 +32399,7 @@ export type CreateDeckMutationFn = Apollo.MutationFunction<CreateDeckMutation, C
  *      awa: // value for 'awa'
  *      spi: // value for 'spi'
  *      meta: // value for 'meta'
+ *      slots: // value for 'slots'
  *   },
  * });
  */

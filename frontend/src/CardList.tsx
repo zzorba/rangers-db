@@ -2,16 +2,14 @@ import React, { useCallback, useMemo } from 'react';
 import { forEach, map, sortBy } from 'lodash';
 import { CardFragment, useGetCardsQuery } from './generated/graphql/apollo-schema';
 import { CardRow, useCardModal } from './components/Card';
-import { AspectMap } from './types/types';
 import { List, ListItem } from '@chakra-ui/react';
-import { useAspectMap } from './lib/hooks';
 import ListHeader from './components/ListHeader';
 
-function CardButtonRow({ card, showModal, aspects }: { card: CardFragment; aspects: AspectMap; showModal: (card: CardFragment) => void }) {
+function CardButtonRow({ card, showModal }: { card: CardFragment; showModal: (card: CardFragment) => void }) {
   const onClick = useCallback(() => showModal(card), [card, showModal]);
   return (
     <ListItem>
-      <CardRow card={card} aspects={aspects} onClick={onClick} />
+      <CardRow card={card} onClick={onClick} />
     </ListItem>
   );
 }
@@ -35,8 +33,7 @@ export default function CardList() {
     },
     initialFetchPolicy: 'network-only',
   });
-  const aspects = useAspectMap(data?.aspects);
-  const [showCard, modal] = useCardModal(aspects);
+  const [showCard, modal] = useCardModal();
   const items = useMemo(() => {
     const sorted = sortBy(data?.cards, card => card.id);
     const items: Item[] = [];
@@ -56,12 +53,11 @@ export default function CardList() {
     });
     return items;
   }, [data]);
-  console.log(loading, data?.cards);
   return (
     <>
       <List>
         { map(items, item => item.type === 'card' ?
-          <CardButtonRow key={item.card.id} aspects={aspects} card={item.card} showModal={showCard} /> :
+          <CardButtonRow key={item.card.id} card={item.card} showModal={showCard} /> :
           <ListHeader key={item.title} title={item.title} />
         ) }
       </List>
