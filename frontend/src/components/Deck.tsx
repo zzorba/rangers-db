@@ -55,6 +55,7 @@ import EditableTextInput from './EditableTextInput';
 import LoadingPage from './LoadingPage';
 import PageHeading from './PageHeading';
 import SolidButton from './SolidButton';
+import { useTranslations } from '../lib/TranslationProvider';
 
 interface Props {
   deck: DeckFragment;
@@ -457,9 +458,9 @@ export default function Deck({ deck, categoryTranslations, cards }: Props & { ca
         ) }
         <Flex direction="row" maxW="24rem" marginTop={2}>
           <AspectCounter aspect={AWA} count={deck.awa} />
+          <AspectCounter aspect={SPI} count={deck.spi} />
           <AspectCounter aspect={FIT} count={deck.fit} />
           <AspectCounter aspect={FOC} count={deck.foc} />
-          <AspectCounter aspect={SPI} count={deck.spi} />
         </Flex>
         { hasCards ? (
           <List>
@@ -795,9 +796,11 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
 }
 
 function MiniAspect({ value, aspect }: { value: number; aspect: string }) {
+  const { aspects } = useTranslations();
   return (
-    <Box bg={`aspect.${aspect}`} padding={[1,1,2]} paddingLeft={[3,3,4]} paddingRight={[3,3,4]}>
-      <Text color="white" fontWeight={900}>{value}</Text>
+    <Box bg={`aspect.${aspect}`} flexDirection="column" alignItems="center" padding={2} >
+      <Text color="white" textAlign="center" fontWeight={900} lineHeight={1.1}>{value}</Text>
+      <Text color="white" textAlign="center" fontSize="xs" lineHeight={1} fontWeight={200} letterSpacing={0.1}>{aspects[aspect]?.short_name}</Text>
     </Box>
   );
 }
@@ -832,19 +835,19 @@ export function DeckRow({ deck, categoryTranslations, roleCards, onDelete }: Pro
   return (
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor="gray.100" borderBottomWidth="1px">
       <Flex direction="row">
-        <Flex flex={[2, 2]} direction="column" as={NextLink} href={`/decks/view/${deck.id}`}>
+        <Flex flex={[1.2, 1.25, 1.5, 2]} direction="column" as={NextLink} href={`/decks/view/${deck.id}`}>
           <Text fontSize="xl">{deck.name}</Text>
           <DeckDescription deck={deck} categoryTranslations={categoryTranslations} roleCards={roleCards} />
         </Flex>
-        <Flex marginLeft={[1,2]} flex={1} direction="row" alignItems="flex-start" justifyContent="space-between">
+        <Flex marginLeft={[1, 1, 2]} flex={1} direction="row" alignItems="flex-start" justifyContent="space-between">
           <SimpleGrid columns={[2, 2, 4]}>
             <MiniAspect aspect="AWA" value={deck.awa} />
+            <MiniAspect aspect="SPI" value={deck.spi} />
             <MiniAspect aspect="FIT" value={deck.fit} />
             <MiniAspect aspect="FOC" value={deck.foc} />
-            <MiniAspect aspect="SPI" value={deck.spi} />
           </SimpleGrid>
           { authUser?.uid === deck.user_id && (
-            <ButtonGroup marginLeft={[2, "2em"]}>
+            <ButtonGroup marginLeft={[1, 2, "2em"]}>
               <IconButton aria-label={t`Edit`} color="gray.600" icon={<EditIcon />} as={NextLink} href={`/decks/edit/${deck.id}`} />
               <IconButton aria-label={t`Delete`} color="red.400" icon={<DeleteIcon />} onClick={doDelete} />
             </ButtonGroup>
@@ -908,9 +911,9 @@ function useAspectEditor(stats: AspectStats, setStats: (stats: AspectStats) => v
       <FormLabel>Aspects</FormLabel>
       <Flex direction="row">
         <AspectCounter aspect={AWA} count={stats.awa} onChange={setAwa} />
+        <AspectCounter aspect={SPI} count={stats.spi} onChange={setSpi} />
         <AspectCounter aspect={FIT} count={stats.fit} onChange={setFit} />
         <AspectCounter aspect={FOC} count={stats.foc} onChange={setFoc} />
-        <AspectCounter aspect={SPI} count={stats.spi} onChange={setSpi} />
       </Flex>
       { !!aspectError && <Text color="red">{aspectError}</Text> }
     </Flex>,
