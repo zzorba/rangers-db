@@ -20,7 +20,10 @@ export const addAdmin = functions.https.onCall((data, context) => {
   const email = data.email;
   return grantModeratorRole(email).then(() => {
     return {
-      result: `Request fulfilled! ${email} is now a moderator.`,
+      success: true,
+      data: {
+        message: `Request fulfilled! ${email} is now a moderator.`,
+      }
     };
   });
 });

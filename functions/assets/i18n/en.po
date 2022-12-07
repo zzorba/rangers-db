@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-01-02 13:44-0500\n"
+"PO-Revision-Date: 2021-01-02 13:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"mime-version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"x-generator: Poedit 2.4.2\n"
+"x-poedit-basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+msgid "Request not authorized. User must be signed in."
+msgstr ""
+
+msgid "Minimum search size is 2 characters."
+msgstr ""
+
+msgid "Sorry, this handle has already been taken."
+msgstr ""

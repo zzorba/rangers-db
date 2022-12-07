@@ -1,6 +1,6 @@
 overwrite: true
-schema: 
-  - https://gapi.arkhamcards.com/v1/graphql:
+schema:
+  - https://gapi.rangersdb.com/v1/graphql:
       headers:
         content-type: "application/json"
         x-hasura-admin-secret: "${MASTER_KEY}"

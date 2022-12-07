@@ -166,32 +166,46 @@ export const searchUsers = onCallAuth(async (data: SearchUsersData, context) => 
     };
   }
   const normalizedSearch = normalizeHandle(data.search);
-  const results = await client.searchHandles({
-    normalizedHandle: `%${normalizedSearch}%`,
-    normalizedHandleStart: `${normalizedSearch}%`,
-    offset: data.offset
-  });
-  const users: { id: string; handle: string | undefined }[] = [];
-  forEach(results.startMatch, (user) => {
-    users.push({
-      id: user.id,
-      handle: user.handle || undefined,
+  try {
+    const results = await client.searchHandles({
+      normalizedHandle: `%${normalizedSearch}%`,
+      normalizedHandleStart: `${normalizedSearch}%`,
+      offset: data.offset
     });
-  });
-  const alreadyFound = new Set(map(users, u => u.id));
-  const fuzzyUsers: { id: string; handle: string | undefined }[] = [];
-  forEach(results.looseMatch, (user) => {
-    if (!alreadyFound.has(user.id)) {
-      fuzzyUsers.push({
+    const users: { id: string; handle: string | undefined }[] = [];
+    forEach(results.startMatch, (user) => {
+      users.push({
         id: user.id,
         handle: user.handle || undefined,
       });
-    }
-  });
+    });
+    const alreadyFound = new Set(map(users, u => u.id));
+    const fuzzyUsers: { id: string; handle: string | undefined }[] = [];
+    forEach(results.looseMatch, (user) => {
+      if (!alreadyFound.has(user.id)) {
+        fuzzyUsers.push({
+          id: user.id,
+          handle: user.handle || undefined,
+        });
+      }
+    });
 
-  return {
-    users,
-    fuzzyUsers,
-    hasMore: users.length === 20,
-  };
+    return {
+      success: true,
+      data: {
+        users,
+        fuzzyUsers,
+        hasMore: users.length === 20,
+      },
+    };
+  } catch (e) {
+    if (e instanceof Error) {
+      return {
+        error: e.message,
+      };
+    }
+    return {
+      error: 'Unknown error',
+    };
+  }
 });
