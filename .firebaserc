@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "rangers-db"
-  }
+  },
+  "targets": {
+    "rangers-db": {
+      "hosting": {
+        "static": [
+          "static-rangers-db"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
