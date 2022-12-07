@@ -7,22 +7,24 @@ interface ErrorResponse {
   success: false;
   error: string;
 }
-interface SuccessResponse {
+interface SuccessResponse<R> {
   success: true;
+  data: R;
   error: undefined;
 }
-type GenericResponse = ErrorResponse | SuccessResponse;
+type GenericResponse<R> = ErrorResponse | SuccessResponse<R>;
 
-export default function useFirebaseFunction<T, R>(name: string): [
-  (t: T) => Promise<R | undefined>,
+export default function useFirebaseFunction<T, R={}>(name: string): [
+  (t: T) => Promise<GenericResponse<R>>,
   String | undefined,
 ] {
   const [error, setError] = useState<string | undefined>();
-  const doFunction = useCallback(async (t: T): Promise<R | undefined> => {
+  const doFunction = useCallback(async (t: T): Promise<GenericResponse<R>> => {
     setError(undefined);
-    const f = httpsCallable<T, R & GenericResponse>(firebaseFunctions, name);
+    const f = httpsCallable<T, GenericResponse<R>>(firebaseFunctions, name);
     try {
       const result = await f(t);
+      console.log(`Raw results: ${JSON.stringify(result)}`)
       if (!result.data.success) {
         setError(result.data.error);
       }
@@ -32,7 +34,10 @@ export default function useFirebaseFunction<T, R>(name: string): [
       if (e instanceof Error) {
         setError(e.message)
       }
-      return undefined;
+      return {
+        success: false,
+        error: e instanceof Error ? e.message : 'Unknown error',
+      };
     }
   }, [setError, name]);
   return [doFunction, error];

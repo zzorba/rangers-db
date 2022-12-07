@@ -10,25 +10,21 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  Tooltip,
   ModalFooter,
-  Button,
-  RadioGroup,
-  useRadioGroup,
-  Tag,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
 import { t } from 'ttag';
 
 import CardText from './CardText';
 import { CardFragment } from '../generated/graphql/apollo-schema';
-import { Aspect, AspectMap, DeckCardError, DeckError, Slots } from '../types/types';
+import { Aspect, DeckCardError, DeckError, Slots } from '../types/types';
 import { getPlural } from '../lib/lang';
-
 import CoreIcon from '../icons/CoreIcon';
 import CardCount, { CountControls } from './CardCount';
 import DeckProblemComponent, { DeckCardProblemTooltip } from './DeckProblemComponent';
 import { useTranslations } from '../lib/TranslationProvider';
+import CardImage, { RoleImage } from './CardImage';
 
 interface Props {
   card: CardFragment;
@@ -204,7 +200,11 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
   return (
     <Flex direction="row" flex={flex} alignItems="flex-start">
       <Flex direction="row" flexGrow={1} alignItems="flex-start">
-        <Cost cost={card.cost} aspectId={card.aspect_id} aspect={aspect} />
+        { card.type_id === 'role' && card.imagesrc ? (
+          <RoleImage name={card.name} url={card.imagesrc} />
+        ) : (
+          <Cost cost={card.cost} aspectId={card.aspect_id} aspect={aspect} />
+        ) }
         <Flex direction="column">
           <DeckCardProblemTooltip errors={problem}>
             <Text fontSize="xl" fontWeight={600} textDecorationLine={problem ? 'line-through' : undefined} noOfLines={2}>{card.name}</Text>
@@ -236,35 +236,38 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
   );
 };
 
-function CardBody({ card, padding, problem, count }: Props & { padding?: number; problem?: DeckError[]; count?: number }) {
+function CardBody({ card, padding, problem, count, detail }: Props & { padding?: number; problem?: DeckError[]; count?: number; detail?: boolean }) {
   const { aspects } = useTranslations();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
-    <>
-      <DeckProblemComponent card errors={problem} limit={1} />
-      <Flex direction="row" alignItems="flex-end" padding={padding}>
-        <Flex direction="column" flex={1}>
-          { !!card.text && <CardText text={card.text} aspectId={card.aspect_id} /> }
+    <Flex direction="row">
+      { !!card.imagesrc && <CardImage title={card.name || 'Card'} size={detail ? 'large' : 'small'} url={card.imagesrc} /> }
+      <Flex direction="column">
+        <DeckProblemComponent card errors={problem} limit={1} />
+        <Flex direction="row" alignItems="flex-end" padding={padding}>
+          <Flex direction="column" flex={1}>
+            { !!card.text && <CardText text={card.text} flavor={card.flavor} aspectId={card.aspect_id} /> }
+          </Flex>
+          { card.token_name && card.token_plurals && (
+            <Tokens
+              count={card.token_count || 0}
+              name={card.token_name}
+              plurals={card.token_plurals}
+              aspect={aspect}
+              aspectId={card.aspect_id}
+            />
+          ) }
+          { !!card.harm && (
+            <Box padding={1} paddingLeft={3} paddingRight={3} marginLeft={2} marginBottom={2} backgroundColor="#ad1b23">
+              <Text color="#FFFFFF" fontSize="xl" fontWeight={900} >
+                { card.harm }
+              </Text>
+            </Box>
+          ) }
         </Flex>
-        { card.token_name && card.token_plurals && (
-          <Tokens
-            count={card.token_count || 0}
-            name={card.token_name}
-            plurals={card.token_plurals}
-            aspect={aspect}
-            aspectId={card.aspect_id}
-          />
-        ) }
-        { !!card.harm && (
-          <Box padding={1} paddingLeft={3} paddingRight={3} marginLeft={2} marginBottom={2} backgroundColor="#ad1b23">
-            <Text color="#FFFFFF" fontSize="xl" fontWeight={900} >
-              { card.harm }
-            </Text>
-          </Box>
-        ) }
+        <FooterInfo card={card} count={count} />
       </Flex>
-      <FooterInfo card={card} count={count} />
-    </>
+    </Flex>
   );
 }
 
@@ -274,7 +277,7 @@ export default function Card({ card }: Props) {
       <Box padding={2}>
         <CardHeader card={card} />
       </Box>
-      <CardBody card={card} padding={2} />
+      <CardBody card={card} padding={2} detail />
     </Box>
   );
 }

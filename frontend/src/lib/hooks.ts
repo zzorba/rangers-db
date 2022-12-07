@@ -162,7 +162,7 @@ export function getAspectMap(): AspectMap {
     },
     FIT: {
       name: t`Fitness`,
-      short_name: t`Fit`,
+      short_name: t`FIT`,
     },
     SPI: {
       name: t`Spirit`,

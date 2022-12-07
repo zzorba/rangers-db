@@ -1,12 +1,9 @@
-import React, { useEffect, useMemo } from 'react';
-import Head from 'next/head'
+import React from 'react';
 import { Box } from '@chakra-ui/react'
-import { useGetCardsQuery, useGetDeckQuery, useGetSetsQuery } from '../../../generated/graphql/apollo-schema';
-import { find } from 'lodash';
-import { useCardsMap, useCategoryTranslations, useRouterPathParam } from '../../../lib/hooks';
-import LoadingPage from '../../../components/LoadingPage';
-import Deck from '../../../components/Deck';
-import PageHeading from '../../../components/PageHeading';
+import { useGetCardsQuery, useGetDeckQuery, useGetSetsQuery } from '../../../../generated/graphql/apollo-schema';
+import { useCardsMap, useCategoryTranslations, useRouterPathParam } from '../../../../lib/hooks';
+import LoadingPage from '../../../../components/LoadingPage';
+import Deck from '../../../../components/Deck';
 
 export default function ViewDeckPage() {
   const [deckId, isReady] = useRouterPathParam('did', parseInt, '/decks')

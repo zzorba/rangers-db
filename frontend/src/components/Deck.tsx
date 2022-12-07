@@ -29,22 +29,19 @@ import {
   TabPanel,
   SimpleGrid,
   ButtonGroup,
-  CardBody,
   RadioGroup,
   FormErrorMessage,
   Spinner,
-  Tr,
-  Td,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { t } from 'ttag';
-import { CardFragment, DeckFragment, useCreateDeckMutation, useGetRoleCardsLazyQuery, useGetRoleCardsQuery, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckFragment, useCreateDeckMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
-import { AspectMap, AspectStats, AWA, DeckCardError, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
+import { AspectStats, AWA, DeckCardError, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { sumBy, filter, find, keys, union, omit, forEach, map, flatMap, uniq, pick, values, sortBy } from 'lodash';
-import { CardsMap, CategoryTranslations, useCardsMap } from '../lib/hooks';
-import Card, { CardRow, ShowCard, useCardModal } from './Card';
+import { CardsMap, CategoryTranslations } from '../lib/hooks';
+import { CardRow, ShowCard, useCardModal } from './Card';
 import ListHeader from './ListHeader';
 import { CopyIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { SimpleCardList } from './CardList';
@@ -52,10 +49,10 @@ import Router from 'next/router';
 import CardCount, { CountControls, CountToggle } from './CardCount';
 import DeckProblemComponent, { DeckProblemFormError } from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
-import LoadingPage from './LoadingPage';
 import PageHeading from './PageHeading';
 import SolidButton from './SolidButton';
 import { useTranslations } from '../lib/TranslationProvider';
+import { RoleImage } from './CardImage';
 
 interface Props {
   deck: DeckFragment;
@@ -413,8 +410,8 @@ export default function Deck({ deck, categoryTranslations, cards }: Props & { ca
       <Box>
         <PageHeading title={deck?.name || 'Deck'}>
           { authUser && (
-            <Flex direction="row" paddingTop={2} paddingBottom={4}>
-              { authUser.uid === deck.user_id ? (
+            <ButtonGroup paddingTop={2} paddingBottom={4}>
+              { authUser.uid === deck.user_id && (
                 <SolidButton
                   color="blue"
                   leftIcon={<EditIcon />}
@@ -423,19 +420,18 @@ export default function Deck({ deck, categoryTranslations, cards }: Props & { ca
                 >
                   Edit
                 </SolidButton>
-              ) : (
-                !deck.previous_deck && (
-                  <SolidButton
-                    color="orange"
-                    leftIcon={<CopyIcon />}
-                    onClick={onCopyDeck}
-                    isLoading={copying}
-                  >
-                    Copy
-                  </SolidButton>
-                )
               ) }
-            </Flex>
+              { !deck.previous_deck && (
+                <SolidButton
+                  color="orange"
+                  leftIcon={<CopyIcon />}
+                  onClick={onCopyDeck}
+                  isLoading={copying}
+                >
+                  Copy
+                </SolidButton>
+              ) }
+            </ButtonGroup>
           ) }
         </PageHeading>
         <DeckDescription deck={deck} categoryTranslations={categoryTranslations} />
@@ -670,6 +666,7 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
         <Box>
           <EditableTextInput
             value={name}
+            fontSize="2xl"
             onChange={setName}
           />
           { !!hasEdits && (
@@ -703,7 +700,6 @@ export function DeckEdit({ deck, categoryTranslations, cards }: Props & { cards:
                 Choose role
               </Input>
               ) }
-            <FormErrorMessage>Foo</FormErrorMessage>
           </FormControl>
           { deck.previous_deck ? (
             <Flex direction="row" marginTop={2}>
@@ -832,12 +828,18 @@ export function DeckRow({ deck, categoryTranslations, roleCards, onDelete }: Pro
     onDelete(deck);
   }, [onDelete, deck]);
   const problem = !!deck.meta.problem && Array.isArray(deck.meta.problem) ? (deck.meta.problem as DeckError[])  : undefined;
+  const role = useMemo(() => {
+    return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
+  }, [deck.meta, roleCards]);
   return (
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor="gray.100" borderBottomWidth="1px">
       <Flex direction="row">
-        <Flex flex={[1.2, 1.25, 1.5, 2]} direction="column" as={NextLink} href={`/decks/view/${deck.id}`}>
-          <Text fontSize="xl">{deck.name}</Text>
-          <DeckDescription deck={deck} categoryTranslations={categoryTranslations} roleCards={roleCards} />
+        <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="center" as={NextLink} href={`/decks/view/${deck.id}`}>
+          { !!role && !!role.imagesrc && <RoleImage name={role.name} url={role.imagesrc} /> }
+          <Flex direction="column">
+            <Text fontSize="xl">{deck.name}</Text>
+            <DeckDescription deck={deck} categoryTranslations={categoryTranslations} roleCards={roleCards} />
+          </Flex>
         </Flex>
         <Flex marginLeft={[1, 1, 2]} flex={1} direction="row" alignItems="flex-start" justifyContent="space-between">
           <SimpleGrid columns={[2, 2, 4]}>

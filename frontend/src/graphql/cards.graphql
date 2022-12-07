@@ -23,6 +23,7 @@ fragment Card on rangers_card_localized {
   set_position
   quantity
   level
+  flavor
   type_id
   type_name
   cost
@@ -30,6 +31,7 @@ fragment Card on rangers_card_localized {
   aspect_name
   aspect_short_name
   progress
+  imagesrc
 }
 
 fragment Aspect on rangers_aspect_localized {

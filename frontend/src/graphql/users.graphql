@@ -1,13 +1,4 @@
-query getProfile($id: String!) {
-  profile: rangers_users_by_pk(id: $id) {
-    id
-    handle
-  }
-  settings: rangers_user_settings_by_pk(user_id: $id) {
-    user_id
-    private_decks
-  }
-}
+
 
 mutation setPrivateDecks($userId: String!, $privateDecks: Boolean!) {
   update_rangers_user_settings_by_pk(

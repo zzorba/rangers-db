@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "i18n-extract-en": "ttag update assets/i18n/en.po src/components/* src/lib/* src/pages/**/*, src/styles/* src/types/*",
+    "i18n-extract-it": "ttag update assets/i18n/it.po src/components/* src/lib/* src/pages/**/*, src/styles/* src/types/*",
+    "i18n-extract-de": "ttag update assets/i18n/de.po src/components/* src/lib/* src/pages/**/*, src/styles/* src/types/*",
     "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
@@ -48,6 +51,7 @@
     "@graphql-codegen/typescript-graphql-files-modules": "2.2.1",
     "@graphql-codegen/typescript-graphql-request": "4.5.8",
     "@graphql-codegen/typescript-operations": "2.5.8",
-    "@graphql-codegen/typescript-react-apollo": "3.3.7"
+    "@graphql-codegen/typescript-react-apollo": "3.3.7",
+    "ttag-cli": "^1.10.5"
   }
 }

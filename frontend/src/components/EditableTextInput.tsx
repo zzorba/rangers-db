@@ -1,5 +1,5 @@
-import React from 'react';
-import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react';
+import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip, ResponsiveValue, EditableProps, useStatStyles } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
 
 function EditableControls() {
@@ -30,15 +30,31 @@ function EditablePreviewWithEditButton() {
     </Flex>
   )
 }
-export default function EditableTextInput({ value, onChange }: { value: string; onChange: (value: string) => void;}) {
+export default function EditableTextInput({
+  value,
+  placeholder,
+  onChange,
+  ...otherProps
+}: Omit<EditableProps, 'textAlign' | 'defaultValue' | 'isPreviewFocusable' | 'color' | 'placeholder' | 'selectAllOnFocus' | 'onSubmit'> & {
+  value: string;
+  placeholder?: string;
+  onChange: (value: string) => void;
+}) {
+  const [liveValue, setLiveValue] = useState(value);
+  useEffect(() => {
+    setLiveValue(value);
+  }, [value]);
   return (
     <Editable
       textAlign='left'
-      defaultValue={value}
-      fontSize='2xl'
+      value={liveValue}
+      placeholder={placeholder}
+      onChange={setLiveValue}
       isPreviewFocusable
+      color={!value ? 'gray.500' : undefined}
       selectAllOnFocus={false}
       onSubmit={(updated) => onChange(updated)}
+      {...otherProps}
     >
       <EditablePreviewWithEditButton />
       <Flex direction="row">

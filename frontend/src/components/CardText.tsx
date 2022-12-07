@@ -3,7 +3,7 @@ import Parser from 'simple-text-parser';
 import { Box } from '@chakra-ui/react';
 import { useTranslations } from '../lib/TranslationProvider';
 
-export default function CardText({ text, aspectId, noPadding }: { text: string; aspectId: string | undefined | null; noPadding?: boolean }) {
+export default function CardText({ text, flavor, aspectId, noPadding }: { text: string; flavor?: string | null, aspectId: string | undefined | null; noPadding?: boolean }) {
   const { aspects } = useTranslations();
   const parsed = useMemo(() => {
     const parser = new Parser().addRule(
@@ -15,8 +15,8 @@ export default function CardText({ text, aspectId, noPadding }: { text: string; 
         return `<span class="core-${element}"></span>`;
       }
     ).addRule(/\n/g, () => '<hr class="card-line"></hr>');
-    return parser.render(text);
-  }, [text, aspects]);
+    return parser.render(flavor ? `${text}\n<i>${flavor}</i>` : text);
+  }, [text, flavor, aspects]);
   if (noPadding) {
     return <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />;
   }

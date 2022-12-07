@@ -1,0 +1,33 @@
+fragment UserInfo on rangers_users {
+  id
+  handle
+}
+
+fragment UserProfile on rangers_users {
+  id
+  handle
+  friends {
+    user {
+      ...UserInfo
+    }
+  }
+  sent_requests {
+    user {
+      ...UserInfo
+    }
+  }
+  received_requests {
+    user {
+      ...UserInfo
+    }
+  }
+}
+query getProfile($id: String!) {
+  profile: rangers_users_by_pk(id: $id) {
+    ...UserProfile
+  }
+  settings: rangers_user_settings_by_pk(user_id: $id) {
+    user_id
+    private_decks
+  }
+}

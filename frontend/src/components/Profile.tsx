@@ -4,21 +4,19 @@ import {
   Input,
   FormControl,
   FormLabel,
-  Button,
+  Text,
+  Spinner,
   FormErrorMessage,
-  Heading,
 } from '@chakra-ui/react';
-import { httpsCallable } from 'firebase/functions';
-import { firebaseFunctions } from '../lib/initFirebase';
-import NextLink from 'next/link';
-import Router from 'next/router';
 import { useAuth } from '../lib/AuthContext';
 import { useGraphql } from '../lib/GraphqlContext';
 import { useGetProfileQuery, useSetPrivateDecksMutation } from '../generated/graphql/apollo-schema';
 import useFirebaseFunction from '../lib/useFirebaseFunction';
 import LoadingPage from './LoadingPage';
 import DynamicCheckbox from './DynamicCheckbox';
-import { setPriority } from 'os';
+import FriendRequestsComponent from './FriendRequests';
+import EditableTextInput from './EditableTextInput';
+import SolidButton from './SolidButton';
 
 export default function Profile() {
   const [handle, setHandle] = useState('');
@@ -34,7 +32,7 @@ export default function Profile() {
     fetchPolicy: 'no-cache',
   });
 
-  const [doSetHandle, setHandleError] = useFirebaseFunction<{ handle: string }, { success: boolean }>('social-updateHandle');
+  const [doSetHandle, setHandleError] = useFirebaseFunction<{ handle: string }>('social-updateHandle');
   const submitHandle = useCallback(async () => {
     const r = await doSetHandle({ handle });
     if (r?.success) {
@@ -45,8 +43,7 @@ export default function Profile() {
     if (data?.profile?.handle) {
       setHandle(data.profile.handle);
     }
-  }, [data, setHandle]);
-
+  }, [data?.profile, setHandle]);
   const [setPrivateDecks] = useSetPrivateDecksMutation();
   const onPrivateDecksChange = useCallback(async(value: boolean) => {
     await setPrivateDecks({
@@ -57,6 +54,13 @@ export default function Profile() {
       },
     });
   }, [authClient, authUser, setPrivateDecks])
+  const refreshProfile = useCallback(() => {
+    if (authUser) {
+      refetch({
+        id: authUser.uid,
+      });
+    };
+  }, [refetch, authUser]);
   return (
     <>
       { loading ? <LoadingPage /> : (
@@ -75,20 +79,22 @@ export default function Profile() {
               submitHandle();
             }}
           >
-            <Flex direction="row" alignItems="flex-end" >
-              <FormControl>
-                <FormLabel htmlFor="handle">Handle</FormLabel>
+            <FormControl>
+              <FormLabel htmlFor="handle">Handle</FormLabel>
+              <Flex direction="row">
                 <Input
+                  name="handle"
                   value={handle}
                   onChange={e => setHandle(e.target.value)}
-                  placeholder="Handle"
+                  placeholder="Choose handle"
+                  borderColor={setHandleError ? 'red' : undefined}
                 />
-                { !!setHandleError && <FormErrorMessage>{setHandleError}</FormErrorMessage> }
-              </FormControl>
-              { (data?.profile?.handle || '') !== handle && (
-                <Button marginLeft={2} onClick={submitHandle}>Save</Button>
-              )}
-            </Flex>
+                { (data?.profile?.handle || '') !== handle && (
+                  <SolidButton color="blue" marginLeft={2} onClick={submitHandle}>Save</SolidButton>
+                )}
+              </Flex>
+              { !!setHandleError && <Text color="red">{setHandleError}</Text> }
+            </FormControl>
           </form>
           <FormControl marginTop="1em">
             <FormLabel htmlFor="handle">Settings</FormLabel>
@@ -99,6 +105,12 @@ export default function Profile() {
               Allow people to view my decks
             </DynamicCheckbox>
           </FormControl>
+          { !!authUser && !!data?.profile &&  (
+            <FriendRequestsComponent
+              profile={data.profile}
+              refreshProfile={refreshProfile}
+            />
+          ) }
         </Flex>
       )}
     </>

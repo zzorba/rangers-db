@@ -14,6 +14,7 @@ export type Scalars = {
   Int: number;
   Float: number;
   bigint: any;
+  float8: any;
   jsonb: any;
   timestamp: any;
   timestamptz: any;
@@ -9994,6 +9995,19 @@ export type Faq_Updates = {
   where: Faq_Bool_Exp;
 };
 
+/** Boolean expression to compare columns of type "float8". All fields are combined with logical 'AND'. */
+export type Float8_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['float8']>;
+  _gt?: InputMaybe<Scalars['float8']>;
+  _gte?: InputMaybe<Scalars['float8']>;
+  _in?: InputMaybe<Array<Scalars['float8']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['float8']>;
+  _lte?: InputMaybe<Scalars['float8']>;
+  _neq?: InputMaybe<Scalars['float8']>;
+  _nin?: InputMaybe<Array<Scalars['float8']>>;
+};
+
 /** columns and relationships of "friend_status" */
 export type Friend_Status = {
   __typename?: 'friend_status';
@@ -14269,6 +14283,10 @@ export type Mutation_Root = {
   delete_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
   /** delete single row from the table: "rangers.deck" */
   delete_rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** delete data from the table: "rangers.deck_like" */
+  delete_rangers_deck_like?: Maybe<Rangers_Deck_Like_Mutation_Response>;
+  /** delete single row from the table: "rangers.deck_like" */
+  delete_rangers_deck_like_by_pk?: Maybe<Rangers_Deck_Like>;
   /** delete data from the table: "rangers.friend_status" */
   delete_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
   /** delete single row from the table: "rangers.friend_status" */
@@ -14321,6 +14339,16 @@ export type Mutation_Root = {
   delete_rangers_type_text?: Maybe<Rangers_Type_Text_Mutation_Response>;
   /** delete single row from the table: "rangers.type_text" */
   delete_rangers_type_text_by_pk?: Maybe<Rangers_Type_Text>;
+  /** delete data from the table: "rangers.user_friends" */
+  delete_rangers_user_friends?: Maybe<Rangers_User_Friends_Mutation_Response>;
+  /** delete data from the table: "rangers.user_received_friend_requests" */
+  delete_rangers_user_received_friend_requests?: Maybe<Rangers_User_Received_Friend_Requests_Mutation_Response>;
+  /** delete data from the table: "rangers.user_role" */
+  delete_rangers_user_role?: Maybe<Rangers_User_Role_Mutation_Response>;
+  /** delete single row from the table: "rangers.user_role" */
+  delete_rangers_user_role_by_pk?: Maybe<Rangers_User_Role>;
+  /** delete data from the table: "rangers.user_sent_friend_requests" */
+  delete_rangers_user_sent_friend_requests?: Maybe<Rangers_User_Sent_Friend_Requests_Mutation_Response>;
   /** delete data from the table: "rangers.user_settings" */
   delete_rangers_user_settings?: Maybe<Rangers_User_Settings_Mutation_Response>;
   /** delete single row from the table: "rangers.user_settings" */
@@ -14531,6 +14559,10 @@ export type Mutation_Root = {
   insert_rangers_card_text_one?: Maybe<Rangers_Card_Text>;
   /** insert data into the table: "rangers.deck" */
   insert_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
+  /** insert data into the table: "rangers.deck_like" */
+  insert_rangers_deck_like?: Maybe<Rangers_Deck_Like_Mutation_Response>;
+  /** insert a single row into the table: "rangers.deck_like" */
+  insert_rangers_deck_like_one?: Maybe<Rangers_Deck_Like>;
   /** insert a single row into the table: "rangers.deck" */
   insert_rangers_deck_one?: Maybe<Rangers_Deck>;
   /** insert data into the table: "rangers.friend_status" */
@@ -14585,6 +14617,22 @@ export type Mutation_Root = {
   insert_rangers_type_text?: Maybe<Rangers_Type_Text_Mutation_Response>;
   /** insert a single row into the table: "rangers.type_text" */
   insert_rangers_type_text_one?: Maybe<Rangers_Type_Text>;
+  /** insert data into the table: "rangers.user_friends" */
+  insert_rangers_user_friends?: Maybe<Rangers_User_Friends_Mutation_Response>;
+  /** insert a single row into the table: "rangers.user_friends" */
+  insert_rangers_user_friends_one?: Maybe<Rangers_User_Friends>;
+  /** insert data into the table: "rangers.user_received_friend_requests" */
+  insert_rangers_user_received_friend_requests?: Maybe<Rangers_User_Received_Friend_Requests_Mutation_Response>;
+  /** insert a single row into the table: "rangers.user_received_friend_requests" */
+  insert_rangers_user_received_friend_requests_one?: Maybe<Rangers_User_Received_Friend_Requests>;
+  /** insert data into the table: "rangers.user_role" */
+  insert_rangers_user_role?: Maybe<Rangers_User_Role_Mutation_Response>;
+  /** insert a single row into the table: "rangers.user_role" */
+  insert_rangers_user_role_one?: Maybe<Rangers_User_Role>;
+  /** insert data into the table: "rangers.user_sent_friend_requests" */
+  insert_rangers_user_sent_friend_requests?: Maybe<Rangers_User_Sent_Friend_Requests_Mutation_Response>;
+  /** insert a single row into the table: "rangers.user_sent_friend_requests" */
+  insert_rangers_user_sent_friend_requests_one?: Maybe<Rangers_User_Sent_Friend_Requests>;
   /** insert data into the table: "rangers.user_settings" */
   insert_rangers_user_settings?: Maybe<Rangers_User_Settings_Mutation_Response>;
   /** insert a single row into the table: "rangers.user_settings" */
@@ -14883,6 +14931,12 @@ export type Mutation_Root = {
   update_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
   /** update single row of the table: "rangers.deck" */
   update_rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** update data of the table: "rangers.deck_like" */
+  update_rangers_deck_like?: Maybe<Rangers_Deck_Like_Mutation_Response>;
+  /** update single row of the table: "rangers.deck_like" */
+  update_rangers_deck_like_by_pk?: Maybe<Rangers_Deck_Like>;
+  /** update multiples rows of table: "rangers.deck_like" */
+  update_rangers_deck_like_many?: Maybe<Array<Maybe<Rangers_Deck_Like_Mutation_Response>>>;
   /** update multiples rows of table: "rangers.deck" */
   update_rangers_deck_many?: Maybe<Array<Maybe<Rangers_Deck_Mutation_Response>>>;
   /** update data of the table: "rangers.friend_status" */
@@ -14963,6 +15017,24 @@ export type Mutation_Root = {
   update_rangers_type_text_by_pk?: Maybe<Rangers_Type_Text>;
   /** update multiples rows of table: "rangers.type_text" */
   update_rangers_type_text_many?: Maybe<Array<Maybe<Rangers_Type_Text_Mutation_Response>>>;
+  /** update data of the table: "rangers.user_friends" */
+  update_rangers_user_friends?: Maybe<Rangers_User_Friends_Mutation_Response>;
+  /** update multiples rows of table: "rangers.user_friends" */
+  update_rangers_user_friends_many?: Maybe<Array<Maybe<Rangers_User_Friends_Mutation_Response>>>;
+  /** update data of the table: "rangers.user_received_friend_requests" */
+  update_rangers_user_received_friend_requests?: Maybe<Rangers_User_Received_Friend_Requests_Mutation_Response>;
+  /** update multiples rows of table: "rangers.user_received_friend_requests" */
+  update_rangers_user_received_friend_requests_many?: Maybe<Array<Maybe<Rangers_User_Received_Friend_Requests_Mutation_Response>>>;
+  /** update data of the table: "rangers.user_role" */
+  update_rangers_user_role?: Maybe<Rangers_User_Role_Mutation_Response>;
+  /** update single row of the table: "rangers.user_role" */
+  update_rangers_user_role_by_pk?: Maybe<Rangers_User_Role>;
+  /** update multiples rows of table: "rangers.user_role" */
+  update_rangers_user_role_many?: Maybe<Array<Maybe<Rangers_User_Role_Mutation_Response>>>;
+  /** update data of the table: "rangers.user_sent_friend_requests" */
+  update_rangers_user_sent_friend_requests?: Maybe<Rangers_User_Sent_Friend_Requests_Mutation_Response>;
+  /** update multiples rows of table: "rangers.user_sent_friend_requests" */
+  update_rangers_user_sent_friend_requests_many?: Maybe<Array<Maybe<Rangers_User_Sent_Friend_Requests_Mutation_Response>>>;
   /** update data of the table: "rangers.user_settings" */
   update_rangers_user_settings?: Maybe<Rangers_User_Settings_Mutation_Response>;
   /** update single row of the table: "rangers.user_settings" */
@@ -15549,6 +15621,19 @@ export type Mutation_RootDelete_Rangers_Deck_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Rangers_Deck_LikeArgs = {
+  where: Rangers_Deck_Like_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Deck_Like_By_PkArgs = {
+  deck_id: Scalars['Int'];
+  user_id: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Rangers_Friend_StatusArgs = {
   where: Rangers_Friend_Status_Bool_Exp;
 };
@@ -15707,6 +15792,36 @@ export type Mutation_RootDelete_Rangers_Type_TextArgs = {
 export type Mutation_RootDelete_Rangers_Type_Text_By_PkArgs = {
   id: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_User_FriendsArgs = {
+  where: Rangers_User_Friends_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_User_Received_Friend_RequestsArgs = {
+  where: Rangers_User_Received_Friend_Requests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_User_RoleArgs = {
+  where: Rangers_User_Role_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_User_Role_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_User_Sent_Friend_RequestsArgs = {
+  where: Rangers_User_Sent_Friend_Requests_Bool_Exp;
 };
 
 
@@ -16421,6 +16536,20 @@ export type Mutation_RootInsert_Rangers_DeckArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Rangers_Deck_LikeArgs = {
+  objects: Array<Rangers_Deck_Like_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Deck_Like_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Deck_Like_OneArgs = {
+  object: Rangers_Deck_Like_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Deck_Like_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Rangers_Deck_OneArgs = {
   object: Rangers_Deck_Insert_Input;
   on_conflict?: InputMaybe<Rangers_Deck_On_Conflict>;
@@ -16606,6 +16735,56 @@ export type Mutation_RootInsert_Rangers_Type_TextArgs = {
 export type Mutation_RootInsert_Rangers_Type_Text_OneArgs = {
   object: Rangers_Type_Text_Insert_Input;
   on_conflict?: InputMaybe<Rangers_Type_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_FriendsArgs = {
+  objects: Array<Rangers_User_Friends_Insert_Input>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_Friends_OneArgs = {
+  object: Rangers_User_Friends_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_Received_Friend_RequestsArgs = {
+  objects: Array<Rangers_User_Received_Friend_Requests_Insert_Input>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_Received_Friend_Requests_OneArgs = {
+  object: Rangers_User_Received_Friend_Requests_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_RoleArgs = {
+  objects: Array<Rangers_User_Role_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_User_Role_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_Role_OneArgs = {
+  object: Rangers_User_Role_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_User_Role_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_Sent_Friend_RequestsArgs = {
+  objects: Array<Rangers_User_Sent_Friend_Requests_Insert_Input>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_User_Sent_Friend_Requests_OneArgs = {
+  object: Rangers_User_Sent_Friend_Requests_Insert_Input;
 };
 
 
@@ -17742,6 +17921,28 @@ export type Mutation_RootUpdate_Rangers_Deck_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Rangers_Deck_LikeArgs = {
+  _inc?: InputMaybe<Rangers_Deck_Like_Inc_Input>;
+  _set?: InputMaybe<Rangers_Deck_Like_Set_Input>;
+  where: Rangers_Deck_Like_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Deck_Like_By_PkArgs = {
+  _inc?: InputMaybe<Rangers_Deck_Like_Inc_Input>;
+  _set?: InputMaybe<Rangers_Deck_Like_Set_Input>;
+  pk_columns: Rangers_Deck_Like_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Deck_Like_ManyArgs = {
+  updates: Array<Rangers_Deck_Like_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Rangers_Deck_ManyArgs = {
   updates: Array<Rangers_Deck_Updates>;
 };
@@ -18008,6 +18209,65 @@ export type Mutation_RootUpdate_Rangers_Type_Text_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_Type_Text_ManyArgs = {
   updates: Array<Rangers_Type_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_FriendsArgs = {
+  _set?: InputMaybe<Rangers_User_Friends_Set_Input>;
+  where: Rangers_User_Friends_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Friends_ManyArgs = {
+  updates: Array<Rangers_User_Friends_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Received_Friend_RequestsArgs = {
+  _set?: InputMaybe<Rangers_User_Received_Friend_Requests_Set_Input>;
+  where: Rangers_User_Received_Friend_Requests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Received_Friend_Requests_ManyArgs = {
+  updates: Array<Rangers_User_Received_Friend_Requests_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_RoleArgs = {
+  _set?: InputMaybe<Rangers_User_Role_Set_Input>;
+  where: Rangers_User_Role_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Role_By_PkArgs = {
+  _set?: InputMaybe<Rangers_User_Role_Set_Input>;
+  pk_columns: Rangers_User_Role_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Role_ManyArgs = {
+  updates: Array<Rangers_User_Role_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Sent_Friend_RequestsArgs = {
+  _set?: InputMaybe<Rangers_User_Sent_Friend_Requests_Set_Input>;
+  where: Rangers_User_Sent_Friend_Requests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_User_Sent_Friend_Requests_ManyArgs = {
+  updates: Array<Rangers_User_Sent_Friend_Requests_Updates>;
 };
 
 
@@ -19119,6 +19379,16 @@ export type Query_Root = {
   rangers_deck_aggregate: Rangers_Deck_Aggregate;
   /** fetch data from the table: "rangers.deck" using primary key columns */
   rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** fetch data from the table: "rangers.deck_like" */
+  rangers_deck_like: Array<Rangers_Deck_Like>;
+  /** fetch aggregated fields from the table: "rangers.deck_like" */
+  rangers_deck_like_aggregate: Rangers_Deck_Like_Aggregate;
+  /** fetch data from the table: "rangers.deck_like" using primary key columns */
+  rangers_deck_like_by_pk?: Maybe<Rangers_Deck_Like>;
+  /** fetch data from the table: "rangers.deck_rank" */
+  rangers_deck_rank: Array<Rangers_Deck_Rank>;
+  /** fetch aggregated fields from the table: "rangers.deck_rank" */
+  rangers_deck_rank_aggregate: Rangers_Deck_Rank_Aggregate;
   /** fetch data from the table: "rangers.friend_status" */
   rangers_friend_status: Array<Rangers_Friend_Status>;
   /** fetch aggregated fields from the table: "rangers.friend_status" */
@@ -19209,6 +19479,24 @@ export type Query_Root = {
   rangers_type_text_aggregate: Rangers_Type_Text_Aggregate;
   /** fetch data from the table: "rangers.type_text" using primary key columns */
   rangers_type_text_by_pk?: Maybe<Rangers_Type_Text>;
+  /** fetch data from the table: "rangers.user_friends" */
+  rangers_user_friends: Array<Rangers_User_Friends>;
+  /** fetch aggregated fields from the table: "rangers.user_friends" */
+  rangers_user_friends_aggregate: Rangers_User_Friends_Aggregate;
+  /** fetch data from the table: "rangers.user_received_friend_requests" */
+  rangers_user_received_friend_requests: Array<Rangers_User_Received_Friend_Requests>;
+  /** fetch aggregated fields from the table: "rangers.user_received_friend_requests" */
+  rangers_user_received_friend_requests_aggregate: Rangers_User_Received_Friend_Requests_Aggregate;
+  /** fetch data from the table: "rangers.user_role" */
+  rangers_user_role: Array<Rangers_User_Role>;
+  /** fetch aggregated fields from the table: "rangers.user_role" */
+  rangers_user_role_aggregate: Rangers_User_Role_Aggregate;
+  /** fetch data from the table: "rangers.user_role" using primary key columns */
+  rangers_user_role_by_pk?: Maybe<Rangers_User_Role>;
+  /** fetch data from the table: "rangers.user_sent_friend_requests" */
+  rangers_user_sent_friend_requests: Array<Rangers_User_Sent_Friend_Requests>;
+  /** fetch aggregated fields from the table: "rangers.user_sent_friend_requests" */
+  rangers_user_sent_friend_requests_aggregate: Rangers_User_Sent_Friend_Requests_Aggregate;
   /** fetch data from the table: "rangers.user_settings" */
   rangers_user_settings: Array<Rangers_User_Settings>;
   /** fetch aggregated fields from the table: "rangers.user_settings" */
@@ -20354,6 +20642,48 @@ export type Query_RootRangers_Deck_By_PkArgs = {
 };
 
 
+export type Query_RootRangers_Deck_LikeArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Like_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Like_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Like_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Deck_Like_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Like_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Like_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Like_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Deck_Like_By_PkArgs = {
+  deck_id: Scalars['Int'];
+  user_id: Scalars['String'];
+};
+
+
+export type Query_RootRangers_Deck_RankArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Rank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Rank_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Rank_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Deck_Rank_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Rank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Rank_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Rank_Bool_Exp>;
+};
+
+
 export type Query_RootRangers_Friend_StatusArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Friend_Status_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -20710,6 +21040,83 @@ export type Query_RootRangers_Type_Text_AggregateArgs = {
 export type Query_RootRangers_Type_Text_By_PkArgs = {
   id: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+export type Query_RootRangers_User_FriendsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Friends_Order_By>>;
+  where?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_Friends_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Friends_Order_By>>;
+  where?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_Received_Friend_RequestsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_Received_Friend_Requests_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_RoleArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Role_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Role_Order_By>>;
+  where?: InputMaybe<Rangers_User_Role_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_Role_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Role_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Role_Order_By>>;
+  where?: InputMaybe<Rangers_User_Role_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_Role_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootRangers_User_Sent_Friend_RequestsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_User_Sent_Friend_Requests_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 
@@ -23411,6 +23818,8 @@ export type Rangers_Deck = {
   /** An object relationship */
   previous_deck?: Maybe<Rangers_Deck>;
   published?: Maybe<Scalars['Boolean']>;
+  /** An object relationship */
+  rank?: Maybe<Rangers_Deck_Rank>;
   slots: Scalars['jsonb'];
   spi: Scalars['Int'];
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -23495,6 +23904,7 @@ export type Rangers_Deck_Bool_Exp = {
   next_deck_id?: InputMaybe<Int_Comparison_Exp>;
   previous_deck?: InputMaybe<Rangers_Deck_Bool_Exp>;
   published?: InputMaybe<Boolean_Comparison_Exp>;
+  rank?: InputMaybe<Rangers_Deck_Rank_Bool_Exp>;
   slots?: InputMaybe<Jsonb_Comparison_Exp>;
   spi?: InputMaybe<Int_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -23552,11 +23962,231 @@ export type Rangers_Deck_Insert_Input = {
   next_deck_id?: InputMaybe<Scalars['Int']>;
   previous_deck?: InputMaybe<Rangers_Deck_Obj_Rel_Insert_Input>;
   published?: InputMaybe<Scalars['Boolean']>;
+  rank?: InputMaybe<Rangers_Deck_Rank_Obj_Rel_Insert_Input>;
   slots?: InputMaybe<Scalars['jsonb']>;
   spi?: InputMaybe<Scalars['Int']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
   user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** columns and relationships of "rangers.deck_like" */
+export type Rangers_Deck_Like = {
+  __typename?: 'rangers_deck_like';
+  created_at: Scalars['timestamptz'];
+  deck_id: Scalars['Int'];
+  liked: Scalars['Boolean'];
+  user_id: Scalars['String'];
+};
+
+/** aggregated selection of "rangers.deck_like" */
+export type Rangers_Deck_Like_Aggregate = {
+  __typename?: 'rangers_deck_like_aggregate';
+  aggregate?: Maybe<Rangers_Deck_Like_Aggregate_Fields>;
+  nodes: Array<Rangers_Deck_Like>;
+};
+
+/** aggregate fields of "rangers.deck_like" */
+export type Rangers_Deck_Like_Aggregate_Fields = {
+  __typename?: 'rangers_deck_like_aggregate_fields';
+  avg?: Maybe<Rangers_Deck_Like_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Deck_Like_Max_Fields>;
+  min?: Maybe<Rangers_Deck_Like_Min_Fields>;
+  stddev?: Maybe<Rangers_Deck_Like_Stddev_Fields>;
+  stddev_pop?: Maybe<Rangers_Deck_Like_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Rangers_Deck_Like_Stddev_Samp_Fields>;
+  sum?: Maybe<Rangers_Deck_Like_Sum_Fields>;
+  var_pop?: Maybe<Rangers_Deck_Like_Var_Pop_Fields>;
+  var_samp?: Maybe<Rangers_Deck_Like_Var_Samp_Fields>;
+  variance?: Maybe<Rangers_Deck_Like_Variance_Fields>;
+};
+
+
+/** aggregate fields of "rangers.deck_like" */
+export type Rangers_Deck_Like_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Deck_Like_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Rangers_Deck_Like_Avg_Fields = {
+  __typename?: 'rangers_deck_like_avg_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.deck_like". All fields are combined with a logical 'AND'. */
+export type Rangers_Deck_Like_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Deck_Like_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Deck_Like_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Deck_Like_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  deck_id?: InputMaybe<Int_Comparison_Exp>;
+  liked?: InputMaybe<Boolean_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.deck_like" */
+export enum Rangers_Deck_Like_Constraint {
+  /** unique or primary key constraint on columns "user_id", "deck_id" */
+  DeckLikesPkey = 'deck_likes_pkey'
+}
+
+/** input type for incrementing numeric columns in table "rangers.deck_like" */
+export type Rangers_Deck_Like_Inc_Input = {
+  deck_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "rangers.deck_like" */
+export type Rangers_Deck_Like_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  liked?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Deck_Like_Max_Fields = {
+  __typename?: 'rangers_deck_like_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Deck_Like_Min_Fields = {
+  __typename?: 'rangers_deck_like_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.deck_like" */
+export type Rangers_Deck_Like_Mutation_Response = {
+  __typename?: 'rangers_deck_like_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Deck_Like>;
+};
+
+/** on_conflict condition type for table "rangers.deck_like" */
+export type Rangers_Deck_Like_On_Conflict = {
+  constraint: Rangers_Deck_Like_Constraint;
+  update_columns?: Array<Rangers_Deck_Like_Update_Column>;
+  where?: InputMaybe<Rangers_Deck_Like_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.deck_like". */
+export type Rangers_Deck_Like_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  liked?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.deck_like */
+export type Rangers_Deck_Like_Pk_Columns_Input = {
+  deck_id: Scalars['Int'];
+  user_id: Scalars['String'];
+};
+
+/** select columns of table "rangers.deck_like" */
+export enum Rangers_Deck_Like_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  Liked = 'liked',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "rangers.deck_like" */
+export type Rangers_Deck_Like_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  liked?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Rangers_Deck_Like_Stddev_Fields = {
+  __typename?: 'rangers_deck_like_stddev_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Rangers_Deck_Like_Stddev_Pop_Fields = {
+  __typename?: 'rangers_deck_like_stddev_pop_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Rangers_Deck_Like_Stddev_Samp_Fields = {
+  __typename?: 'rangers_deck_like_stddev_samp_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "rangers_deck_like" */
+export type Rangers_Deck_Like_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Deck_Like_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Deck_Like_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  liked?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Rangers_Deck_Like_Sum_Fields = {
+  __typename?: 'rangers_deck_like_sum_fields';
+  deck_id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "rangers.deck_like" */
+export enum Rangers_Deck_Like_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  Liked = 'liked',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Rangers_Deck_Like_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Rangers_Deck_Like_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Deck_Like_Set_Input>;
+  where: Rangers_Deck_Like_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Rangers_Deck_Like_Var_Pop_Fields = {
+  __typename?: 'rangers_deck_like_var_pop_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Rangers_Deck_Like_Var_Samp_Fields = {
+  __typename?: 'rangers_deck_like_var_samp_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Rangers_Deck_Like_Variance_Fields = {
+  __typename?: 'rangers_deck_like_variance_fields';
+  deck_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate max on columns */
@@ -23628,6 +24258,7 @@ export type Rangers_Deck_Order_By = {
   next_deck_id?: InputMaybe<Order_By>;
   previous_deck?: InputMaybe<Rangers_Deck_Order_By>;
   published?: InputMaybe<Order_By>;
+  rank?: InputMaybe<Rangers_Deck_Rank_Order_By>;
   slots?: InputMaybe<Order_By>;
   spi?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -23644,6 +24275,166 @@ export type Rangers_Deck_Pk_Columns_Input = {
 export type Rangers_Deck_Prepend_Input = {
   meta?: InputMaybe<Scalars['jsonb']>;
   slots?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** columns and relationships of "rangers.deck_rank" */
+export type Rangers_Deck_Rank = {
+  __typename?: 'rangers_deck_rank';
+  /** An object relationship */
+  deck?: Maybe<Rangers_Deck>;
+  id?: Maybe<Scalars['Int']>;
+  score?: Maybe<Scalars['float8']>;
+};
+
+/** aggregated selection of "rangers.deck_rank" */
+export type Rangers_Deck_Rank_Aggregate = {
+  __typename?: 'rangers_deck_rank_aggregate';
+  aggregate?: Maybe<Rangers_Deck_Rank_Aggregate_Fields>;
+  nodes: Array<Rangers_Deck_Rank>;
+};
+
+/** aggregate fields of "rangers.deck_rank" */
+export type Rangers_Deck_Rank_Aggregate_Fields = {
+  __typename?: 'rangers_deck_rank_aggregate_fields';
+  avg?: Maybe<Rangers_Deck_Rank_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Deck_Rank_Max_Fields>;
+  min?: Maybe<Rangers_Deck_Rank_Min_Fields>;
+  stddev?: Maybe<Rangers_Deck_Rank_Stddev_Fields>;
+  stddev_pop?: Maybe<Rangers_Deck_Rank_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Rangers_Deck_Rank_Stddev_Samp_Fields>;
+  sum?: Maybe<Rangers_Deck_Rank_Sum_Fields>;
+  var_pop?: Maybe<Rangers_Deck_Rank_Var_Pop_Fields>;
+  var_samp?: Maybe<Rangers_Deck_Rank_Var_Samp_Fields>;
+  variance?: Maybe<Rangers_Deck_Rank_Variance_Fields>;
+};
+
+
+/** aggregate fields of "rangers.deck_rank" */
+export type Rangers_Deck_Rank_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Deck_Rank_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Rangers_Deck_Rank_Avg_Fields = {
+  __typename?: 'rangers_deck_rank_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+  score?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.deck_rank". All fields are combined with a logical 'AND'. */
+export type Rangers_Deck_Rank_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Deck_Rank_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Deck_Rank_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Deck_Rank_Bool_Exp>>;
+  deck?: InputMaybe<Rangers_Deck_Bool_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  score?: InputMaybe<Float8_Comparison_Exp>;
+};
+
+/** input type for inserting data into table "rangers.deck_rank" */
+export type Rangers_Deck_Rank_Insert_Input = {
+  deck?: InputMaybe<Rangers_Deck_Obj_Rel_Insert_Input>;
+  id?: InputMaybe<Scalars['Int']>;
+  score?: InputMaybe<Scalars['float8']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Deck_Rank_Max_Fields = {
+  __typename?: 'rangers_deck_rank_max_fields';
+  id?: Maybe<Scalars['Int']>;
+  score?: Maybe<Scalars['float8']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Deck_Rank_Min_Fields = {
+  __typename?: 'rangers_deck_rank_min_fields';
+  id?: Maybe<Scalars['Int']>;
+  score?: Maybe<Scalars['float8']>;
+};
+
+/** input type for inserting object relation for remote table "rangers.deck_rank" */
+export type Rangers_Deck_Rank_Obj_Rel_Insert_Input = {
+  data: Rangers_Deck_Rank_Insert_Input;
+};
+
+/** Ordering options when selecting data from "rangers.deck_rank". */
+export type Rangers_Deck_Rank_Order_By = {
+  deck?: InputMaybe<Rangers_Deck_Order_By>;
+  id?: InputMaybe<Order_By>;
+  score?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.deck_rank" */
+export enum Rangers_Deck_Rank_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Score = 'score'
+}
+
+/** aggregate stddev on columns */
+export type Rangers_Deck_Rank_Stddev_Fields = {
+  __typename?: 'rangers_deck_rank_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+  score?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Rangers_Deck_Rank_Stddev_Pop_Fields = {
+  __typename?: 'rangers_deck_rank_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+  score?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Rangers_Deck_Rank_Stddev_Samp_Fields = {
+  __typename?: 'rangers_deck_rank_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+  score?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "rangers_deck_rank" */
+export type Rangers_Deck_Rank_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Deck_Rank_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Deck_Rank_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['Int']>;
+  score?: InputMaybe<Scalars['float8']>;
+};
+
+/** aggregate sum on columns */
+export type Rangers_Deck_Rank_Sum_Fields = {
+  __typename?: 'rangers_deck_rank_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+  score?: Maybe<Scalars['float8']>;
+};
+
+/** aggregate var_pop on columns */
+export type Rangers_Deck_Rank_Var_Pop_Fields = {
+  __typename?: 'rangers_deck_rank_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+  score?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Rangers_Deck_Rank_Var_Samp_Fields = {
+  __typename?: 'rangers_deck_rank_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+  score?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Rangers_Deck_Rank_Variance_Fields = {
+  __typename?: 'rangers_deck_rank_variance_fields';
+  id?: Maybe<Scalars['Float']>;
+  score?: Maybe<Scalars['Float']>;
 };
 
 /** select columns of table "rangers.deck" */
@@ -26668,6 +27459,618 @@ export type Rangers_Type_Updates = {
   where: Rangers_Type_Bool_Exp;
 };
 
+/** columns and relationships of "rangers.user_friends" */
+export type Rangers_User_Friends = {
+  __typename?: 'rangers_user_friends';
+  status?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  user?: Maybe<Rangers_Users>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "rangers.user_friends" */
+export type Rangers_User_Friends_Aggregate = {
+  __typename?: 'rangers_user_friends_aggregate';
+  aggregate?: Maybe<Rangers_User_Friends_Aggregate_Fields>;
+  nodes: Array<Rangers_User_Friends>;
+};
+
+export type Rangers_User_Friends_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Rangers_User_Friends_Aggregate_Bool_Exp_Count>;
+};
+
+export type Rangers_User_Friends_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Rangers_User_Friends_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "rangers.user_friends" */
+export type Rangers_User_Friends_Aggregate_Fields = {
+  __typename?: 'rangers_user_friends_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_User_Friends_Max_Fields>;
+  min?: Maybe<Rangers_User_Friends_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.user_friends" */
+export type Rangers_User_Friends_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_User_Friends_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "rangers.user_friends" */
+export type Rangers_User_Friends_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Rangers_User_Friends_Max_Order_By>;
+  min?: InputMaybe<Rangers_User_Friends_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "rangers.user_friends" */
+export type Rangers_User_Friends_Arr_Rel_Insert_Input = {
+  data: Array<Rangers_User_Friends_Insert_Input>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.user_friends". All fields are combined with a logical 'AND'. */
+export type Rangers_User_Friends_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_User_Friends_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_User_Friends_Bool_Exp>>;
+  status?: InputMaybe<String_Comparison_Exp>;
+  user?: InputMaybe<Rangers_Users_Bool_Exp>;
+  user_id_a?: InputMaybe<String_Comparison_Exp>;
+  user_id_b?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** input type for inserting data into table "rangers.user_friends" */
+export type Rangers_User_Friends_Insert_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_User_Friends_Max_Fields = {
+  __typename?: 'rangers_user_friends_max_fields';
+  status?: Maybe<Scalars['String']>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "rangers.user_friends" */
+export type Rangers_User_Friends_Max_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Rangers_User_Friends_Min_Fields = {
+  __typename?: 'rangers_user_friends_min_fields';
+  status?: Maybe<Scalars['String']>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "rangers.user_friends" */
+export type Rangers_User_Friends_Min_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "rangers.user_friends" */
+export type Rangers_User_Friends_Mutation_Response = {
+  __typename?: 'rangers_user_friends_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_User_Friends>;
+};
+
+/** Ordering options when selecting data from "rangers.user_friends". */
+export type Rangers_User_Friends_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user?: InputMaybe<Rangers_Users_Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.user_friends" */
+export enum Rangers_User_Friends_Select_Column {
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UserIdA = 'user_id_a',
+  /** column name */
+  UserIdB = 'user_id_b'
+}
+
+/** input type for updating data in table "rangers.user_friends" */
+export type Rangers_User_Friends_Set_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_user_friends" */
+export type Rangers_User_Friends_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_User_Friends_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_User_Friends_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type Rangers_User_Friends_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_User_Friends_Set_Input>;
+  where: Rangers_User_Friends_Bool_Exp;
+};
+
+/** columns and relationships of "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests = {
+  __typename?: 'rangers_user_received_friend_requests';
+  status?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  user?: Maybe<Rangers_Users>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Aggregate = {
+  __typename?: 'rangers_user_received_friend_requests_aggregate';
+  aggregate?: Maybe<Rangers_User_Received_Friend_Requests_Aggregate_Fields>;
+  nodes: Array<Rangers_User_Received_Friend_Requests>;
+};
+
+export type Rangers_User_Received_Friend_Requests_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Rangers_User_Received_Friend_Requests_Aggregate_Bool_Exp_Count>;
+};
+
+export type Rangers_User_Received_Friend_Requests_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Aggregate_Fields = {
+  __typename?: 'rangers_user_received_friend_requests_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_User_Received_Friend_Requests_Max_Fields>;
+  min?: Maybe<Rangers_User_Received_Friend_Requests_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Rangers_User_Received_Friend_Requests_Max_Order_By>;
+  min?: InputMaybe<Rangers_User_Received_Friend_Requests_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Arr_Rel_Insert_Input = {
+  data: Array<Rangers_User_Received_Friend_Requests_Insert_Input>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.user_received_friend_requests". All fields are combined with a logical 'AND'. */
+export type Rangers_User_Received_Friend_Requests_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Bool_Exp>>;
+  status?: InputMaybe<String_Comparison_Exp>;
+  user?: InputMaybe<Rangers_Users_Bool_Exp>;
+  user_id_a?: InputMaybe<String_Comparison_Exp>;
+  user_id_b?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** input type for inserting data into table "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Insert_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_User_Received_Friend_Requests_Max_Fields = {
+  __typename?: 'rangers_user_received_friend_requests_max_fields';
+  status?: Maybe<Scalars['String']>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Max_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Rangers_User_Received_Friend_Requests_Min_Fields = {
+  __typename?: 'rangers_user_received_friend_requests_min_fields';
+  status?: Maybe<Scalars['String']>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Min_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Mutation_Response = {
+  __typename?: 'rangers_user_received_friend_requests_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_User_Received_Friend_Requests>;
+};
+
+/** Ordering options when selecting data from "rangers.user_received_friend_requests". */
+export type Rangers_User_Received_Friend_Requests_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user?: InputMaybe<Rangers_Users_Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.user_received_friend_requests" */
+export enum Rangers_User_Received_Friend_Requests_Select_Column {
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UserIdA = 'user_id_a',
+  /** column name */
+  UserIdB = 'user_id_b'
+}
+
+/** input type for updating data in table "rangers.user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Set_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_user_received_friend_requests" */
+export type Rangers_User_Received_Friend_Requests_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_User_Received_Friend_Requests_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_User_Received_Friend_Requests_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type Rangers_User_Received_Friend_Requests_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_User_Received_Friend_Requests_Set_Input>;
+  where: Rangers_User_Received_Friend_Requests_Bool_Exp;
+};
+
+/** columns and relationships of "rangers.user_role" */
+export type Rangers_User_Role = {
+  __typename?: 'rangers_user_role';
+  id: Scalars['String'];
+};
+
+/** aggregated selection of "rangers.user_role" */
+export type Rangers_User_Role_Aggregate = {
+  __typename?: 'rangers_user_role_aggregate';
+  aggregate?: Maybe<Rangers_User_Role_Aggregate_Fields>;
+  nodes: Array<Rangers_User_Role>;
+};
+
+/** aggregate fields of "rangers.user_role" */
+export type Rangers_User_Role_Aggregate_Fields = {
+  __typename?: 'rangers_user_role_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_User_Role_Max_Fields>;
+  min?: Maybe<Rangers_User_Role_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.user_role" */
+export type Rangers_User_Role_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_User_Role_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.user_role". All fields are combined with a logical 'AND'. */
+export type Rangers_User_Role_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_User_Role_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_User_Role_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_User_Role_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.user_role" */
+export enum Rangers_User_Role_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  UserRolePkey = 'user_role_pkey'
+}
+
+export enum Rangers_User_Role_Enum {
+  Admin = 'admin',
+  Moderator = 'moderator'
+}
+
+/** Boolean expression to compare columns of type "rangers_user_role_enum". All fields are combined with logical 'AND'. */
+export type Rangers_User_Role_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Rangers_User_Role_Enum>;
+  _in?: InputMaybe<Array<Rangers_User_Role_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Rangers_User_Role_Enum>;
+  _nin?: InputMaybe<Array<Rangers_User_Role_Enum>>;
+};
+
+/** input type for inserting data into table "rangers.user_role" */
+export type Rangers_User_Role_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_User_Role_Max_Fields = {
+  __typename?: 'rangers_user_role_max_fields';
+  id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_User_Role_Min_Fields = {
+  __typename?: 'rangers_user_role_min_fields';
+  id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.user_role" */
+export type Rangers_User_Role_Mutation_Response = {
+  __typename?: 'rangers_user_role_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_User_Role>;
+};
+
+/** on_conflict condition type for table "rangers.user_role" */
+export type Rangers_User_Role_On_Conflict = {
+  constraint: Rangers_User_Role_Constraint;
+  update_columns?: Array<Rangers_User_Role_Update_Column>;
+  where?: InputMaybe<Rangers_User_Role_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.user_role". */
+export type Rangers_User_Role_Order_By = {
+  id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.user_role */
+export type Rangers_User_Role_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "rangers.user_role" */
+export enum Rangers_User_Role_Select_Column {
+  /** column name */
+  Id = 'id'
+}
+
+/** input type for updating data in table "rangers.user_role" */
+export type Rangers_User_Role_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_user_role" */
+export type Rangers_User_Role_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_User_Role_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_User_Role_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "rangers.user_role" */
+export enum Rangers_User_Role_Update_Column {
+  /** column name */
+  Id = 'id'
+}
+
+export type Rangers_User_Role_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_User_Role_Set_Input>;
+  where: Rangers_User_Role_Bool_Exp;
+};
+
+/** columns and relationships of "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests = {
+  __typename?: 'rangers_user_sent_friend_requests';
+  status?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  user?: Maybe<Rangers_Users>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Aggregate = {
+  __typename?: 'rangers_user_sent_friend_requests_aggregate';
+  aggregate?: Maybe<Rangers_User_Sent_Friend_Requests_Aggregate_Fields>;
+  nodes: Array<Rangers_User_Sent_Friend_Requests>;
+};
+
+export type Rangers_User_Sent_Friend_Requests_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Rangers_User_Sent_Friend_Requests_Aggregate_Bool_Exp_Count>;
+};
+
+export type Rangers_User_Sent_Friend_Requests_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Aggregate_Fields = {
+  __typename?: 'rangers_user_sent_friend_requests_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_User_Sent_Friend_Requests_Max_Fields>;
+  min?: Maybe<Rangers_User_Sent_Friend_Requests_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Rangers_User_Sent_Friend_Requests_Max_Order_By>;
+  min?: InputMaybe<Rangers_User_Sent_Friend_Requests_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Arr_Rel_Insert_Input = {
+  data: Array<Rangers_User_Sent_Friend_Requests_Insert_Input>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.user_sent_friend_requests". All fields are combined with a logical 'AND'. */
+export type Rangers_User_Sent_Friend_Requests_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Bool_Exp>>;
+  status?: InputMaybe<String_Comparison_Exp>;
+  user?: InputMaybe<Rangers_Users_Bool_Exp>;
+  user_id_a?: InputMaybe<String_Comparison_Exp>;
+  user_id_b?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** input type for inserting data into table "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Insert_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_User_Sent_Friend_Requests_Max_Fields = {
+  __typename?: 'rangers_user_sent_friend_requests_max_fields';
+  status?: Maybe<Scalars['String']>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Max_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Rangers_User_Sent_Friend_Requests_Min_Fields = {
+  __typename?: 'rangers_user_sent_friend_requests_min_fields';
+  status?: Maybe<Scalars['String']>;
+  user_id_a?: Maybe<Scalars['String']>;
+  user_id_b?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Min_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Mutation_Response = {
+  __typename?: 'rangers_user_sent_friend_requests_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_User_Sent_Friend_Requests>;
+};
+
+/** Ordering options when selecting data from "rangers.user_sent_friend_requests". */
+export type Rangers_User_Sent_Friend_Requests_Order_By = {
+  status?: InputMaybe<Order_By>;
+  user?: InputMaybe<Rangers_Users_Order_By>;
+  user_id_a?: InputMaybe<Order_By>;
+  user_id_b?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "rangers.user_sent_friend_requests" */
+export enum Rangers_User_Sent_Friend_Requests_Select_Column {
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UserIdA = 'user_id_a',
+  /** column name */
+  UserIdB = 'user_id_b'
+}
+
+/** input type for updating data in table "rangers.user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Set_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_user_sent_friend_requests" */
+export type Rangers_User_Sent_Friend_Requests_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_User_Sent_Friend_Requests_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_User_Sent_Friend_Requests_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type Rangers_User_Sent_Friend_Requests_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_User_Sent_Friend_Requests_Set_Input>;
+  where: Rangers_User_Sent_Friend_Requests_Bool_Exp;
+};
+
 /** columns and relationships of "rangers.user_settings" */
 export type Rangers_User_Settings = {
   __typename?: 'rangers_user_settings';
@@ -26810,12 +28213,85 @@ export type Rangers_User_Settings_Updates = {
 export type Rangers_Users = {
   __typename?: 'rangers_users';
   created_at: Scalars['timestamptz'];
+  /** An array relationship */
+  friends: Array<Rangers_User_Friends>;
+  /** An aggregate relationship */
+  friends_aggregate: Rangers_User_Friends_Aggregate;
   handle?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   normalized_handle?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  received_requests: Array<Rangers_User_Received_Friend_Requests>;
+  /** An aggregate relationship */
+  received_requests_aggregate: Rangers_User_Received_Friend_Requests_Aggregate;
+  role?: Maybe<Rangers_User_Role_Enum>;
+  /** An array relationship */
+  sent_requests: Array<Rangers_User_Sent_Friend_Requests>;
+  /** An aggregate relationship */
+  sent_requests_aggregate: Rangers_User_Sent_Friend_Requests_Aggregate;
   /** An object relationship */
   settings?: Maybe<Rangers_User_Settings>;
   updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "rangers.users" */
+export type Rangers_UsersFriendsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Friends_Order_By>>;
+  where?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.users" */
+export type Rangers_UsersFriends_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Friends_Order_By>>;
+  where?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.users" */
+export type Rangers_UsersReceived_RequestsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.users" */
+export type Rangers_UsersReceived_Requests_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.users" */
+export type Rangers_UsersSent_RequestsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.users" */
+export type Rangers_UsersSent_Requests_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 /** aggregated selection of "rangers.users" */
@@ -26846,9 +28322,16 @@ export type Rangers_Users_Bool_Exp = {
   _not?: InputMaybe<Rangers_Users_Bool_Exp>;
   _or?: InputMaybe<Array<Rangers_Users_Bool_Exp>>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  friends?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+  friends_aggregate?: InputMaybe<Rangers_User_Friends_Aggregate_Bool_Exp>;
   handle?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   normalized_handle?: InputMaybe<String_Comparison_Exp>;
+  received_requests?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+  received_requests_aggregate?: InputMaybe<Rangers_User_Received_Friend_Requests_Aggregate_Bool_Exp>;
+  role?: InputMaybe<Rangers_User_Role_Enum_Comparison_Exp>;
+  sent_requests?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
+  sent_requests_aggregate?: InputMaybe<Rangers_User_Sent_Friend_Requests_Aggregate_Bool_Exp>;
   settings?: InputMaybe<Rangers_User_Settings_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
@@ -26864,9 +28347,13 @@ export enum Rangers_Users_Constraint {
 /** input type for inserting data into table "rangers.users" */
 export type Rangers_Users_Insert_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  friends?: InputMaybe<Rangers_User_Friends_Arr_Rel_Insert_Input>;
   handle?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   normalized_handle?: InputMaybe<Scalars['String']>;
+  received_requests?: InputMaybe<Rangers_User_Received_Friend_Requests_Arr_Rel_Insert_Input>;
+  role?: InputMaybe<Rangers_User_Role_Enum>;
+  sent_requests?: InputMaybe<Rangers_User_Sent_Friend_Requests_Arr_Rel_Insert_Input>;
   settings?: InputMaybe<Rangers_User_Settings_Obj_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
@@ -26917,9 +28404,13 @@ export type Rangers_Users_On_Conflict = {
 /** Ordering options when selecting data from "rangers.users". */
 export type Rangers_Users_Order_By = {
   created_at?: InputMaybe<Order_By>;
+  friends_aggregate?: InputMaybe<Rangers_User_Friends_Aggregate_Order_By>;
   handle?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   normalized_handle?: InputMaybe<Order_By>;
+  received_requests_aggregate?: InputMaybe<Rangers_User_Received_Friend_Requests_Aggregate_Order_By>;
+  role?: InputMaybe<Order_By>;
+  sent_requests_aggregate?: InputMaybe<Rangers_User_Sent_Friend_Requests_Aggregate_Order_By>;
   settings?: InputMaybe<Rangers_User_Settings_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -26940,6 +28431,8 @@ export enum Rangers_Users_Select_Column {
   /** column name */
   NormalizedHandle = 'normalized_handle',
   /** column name */
+  Role = 'role',
+  /** column name */
   UpdatedAt = 'updated_at'
 }
 
@@ -26949,6 +28442,7 @@ export type Rangers_Users_Set_Input = {
   handle?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   normalized_handle?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Rangers_User_Role_Enum>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
@@ -26966,6 +28460,7 @@ export type Rangers_Users_Stream_Cursor_Value_Input = {
   handle?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   normalized_handle?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Rangers_User_Role_Enum>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
@@ -26979,6 +28474,8 @@ export enum Rangers_Users_Update_Column {
   Id = 'id',
   /** column name */
   NormalizedHandle = 'normalized_handle',
+  /** column name */
+  Role = 'role',
   /** column name */
   UpdatedAt = 'updated_at'
 }
@@ -27357,6 +28854,20 @@ export type Subscription_Root = {
   rangers_deck_aggregate: Rangers_Deck_Aggregate;
   /** fetch data from the table: "rangers.deck" using primary key columns */
   rangers_deck_by_pk?: Maybe<Rangers_Deck>;
+  /** fetch data from the table: "rangers.deck_like" */
+  rangers_deck_like: Array<Rangers_Deck_Like>;
+  /** fetch aggregated fields from the table: "rangers.deck_like" */
+  rangers_deck_like_aggregate: Rangers_Deck_Like_Aggregate;
+  /** fetch data from the table: "rangers.deck_like" using primary key columns */
+  rangers_deck_like_by_pk?: Maybe<Rangers_Deck_Like>;
+  /** fetch data from the table in a streaming manner: "rangers.deck_like" */
+  rangers_deck_like_stream: Array<Rangers_Deck_Like>;
+  /** fetch data from the table: "rangers.deck_rank" */
+  rangers_deck_rank: Array<Rangers_Deck_Rank>;
+  /** fetch aggregated fields from the table: "rangers.deck_rank" */
+  rangers_deck_rank_aggregate: Rangers_Deck_Rank_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.deck_rank" */
+  rangers_deck_rank_stream: Array<Rangers_Deck_Rank>;
   /** fetch data from the table in a streaming manner: "rangers.deck" */
   rangers_deck_stream: Array<Rangers_Deck>;
   /** fetch data from the table: "rangers.friend_status" */
@@ -27481,6 +28992,32 @@ export type Subscription_Root = {
   rangers_type_text_by_pk?: Maybe<Rangers_Type_Text>;
   /** fetch data from the table in a streaming manner: "rangers.type_text" */
   rangers_type_text_stream: Array<Rangers_Type_Text>;
+  /** fetch data from the table: "rangers.user_friends" */
+  rangers_user_friends: Array<Rangers_User_Friends>;
+  /** fetch aggregated fields from the table: "rangers.user_friends" */
+  rangers_user_friends_aggregate: Rangers_User_Friends_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.user_friends" */
+  rangers_user_friends_stream: Array<Rangers_User_Friends>;
+  /** fetch data from the table: "rangers.user_received_friend_requests" */
+  rangers_user_received_friend_requests: Array<Rangers_User_Received_Friend_Requests>;
+  /** fetch aggregated fields from the table: "rangers.user_received_friend_requests" */
+  rangers_user_received_friend_requests_aggregate: Rangers_User_Received_Friend_Requests_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.user_received_friend_requests" */
+  rangers_user_received_friend_requests_stream: Array<Rangers_User_Received_Friend_Requests>;
+  /** fetch data from the table: "rangers.user_role" */
+  rangers_user_role: Array<Rangers_User_Role>;
+  /** fetch aggregated fields from the table: "rangers.user_role" */
+  rangers_user_role_aggregate: Rangers_User_Role_Aggregate;
+  /** fetch data from the table: "rangers.user_role" using primary key columns */
+  rangers_user_role_by_pk?: Maybe<Rangers_User_Role>;
+  /** fetch data from the table in a streaming manner: "rangers.user_role" */
+  rangers_user_role_stream: Array<Rangers_User_Role>;
+  /** fetch data from the table: "rangers.user_sent_friend_requests" */
+  rangers_user_sent_friend_requests: Array<Rangers_User_Sent_Friend_Requests>;
+  /** fetch aggregated fields from the table: "rangers.user_sent_friend_requests" */
+  rangers_user_sent_friend_requests_aggregate: Rangers_User_Sent_Friend_Requests_Aggregate;
+  /** fetch data from the table in a streaming manner: "rangers.user_sent_friend_requests" */
+  rangers_user_sent_friend_requests_stream: Array<Rangers_User_Sent_Friend_Requests>;
   /** fetch data from the table: "rangers.user_settings" */
   rangers_user_settings: Array<Rangers_User_Settings>;
   /** fetch aggregated fields from the table: "rangers.user_settings" */
@@ -28977,6 +30514,62 @@ export type Subscription_RootRangers_Deck_By_PkArgs = {
 };
 
 
+export type Subscription_RootRangers_Deck_LikeArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Like_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Like_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Like_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_Like_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Like_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Like_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Like_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_Like_By_PkArgs = {
+  deck_id: Scalars['Int'];
+  user_id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Deck_Like_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Deck_Like_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Deck_Like_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_RankArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Rank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Rank_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Rank_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_Rank_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Rank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Rank_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Rank_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Deck_Rank_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Deck_Rank_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Deck_Rank_Bool_Exp>;
+};
+
+
 export type Subscription_RootRangers_Deck_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Deck_Stream_Cursor_Input>>;
@@ -29452,6 +31045,111 @@ export type Subscription_RootRangers_Type_Text_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Type_Text_Stream_Cursor_Input>>;
   where?: InputMaybe<Rangers_Type_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_FriendsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Friends_Order_By>>;
+  where?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Friends_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Friends_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Friends_Order_By>>;
+  where?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Friends_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_User_Friends_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_User_Friends_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Received_Friend_RequestsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Received_Friend_Requests_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Received_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Received_Friend_Requests_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_User_Received_Friend_Requests_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_RoleArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Role_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Role_Order_By>>;
+  where?: InputMaybe<Rangers_User_Role_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Role_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Role_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Role_Order_By>>;
+  where?: InputMaybe<Rangers_User_Role_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Role_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_User_Role_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_User_Role_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_User_Role_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Sent_Friend_RequestsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Sent_Friend_Requests_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_User_Sent_Friend_Requests_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_User_Sent_Friend_Requests_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_User_Sent_Friend_Requests_Bool_Exp>;
 };
 
 
@@ -31831,7 +33529,7 @@ export type Users_Updates = {
   where: Users_Bool_Exp;
 };
 
-export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null };
+export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null };
 
 export type AspectFragment = { __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null };
 
@@ -31840,14 +33538,14 @@ export type GetCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+export type GetCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
 
 export type GetRoleCardsQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }> };
+export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null }> };
 
 export type GetCardQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -31855,7 +33553,7 @@ export type GetCardQueryVariables = Exact<{
 }>;
 
 
-export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }> };
+export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null }> };
 
 export type GetCardsUpdatedAtQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -31880,7 +33578,7 @@ export type GetDecksPageDataQueryVariables = Exact<{
 }>;
 
 
-export type GetDecksPageDataQuery = { __typename?: 'query_root', sets: Array<{ __typename?: 'rangers_set_type_localized', id?: string | null, name?: string | null, sets: Array<{ __typename?: 'rangers_set_localized', id?: string | null, name?: string | null }> }>, roleCards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null }> };
+export type GetDecksPageDataQuery = { __typename?: 'query_root', sets: Array<{ __typename?: 'rangers_set_type_localized', id?: string | null, name?: string | null, sets: Array<{ __typename?: 'rangers_set_localized', id?: string | null, name?: string | null }> }>, roleCards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null }> };
 
 export type GetMyDecksQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -31940,12 +33638,16 @@ export type SaveDeckMutationVariables = Exact<{
 
 export type SaveDeckMutation = { __typename?: 'mutation_root', update_rangers_deck_by_pk?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any } | null, user: { __typename?: 'rangers_users', handle?: string | null } } | null };
 
+export type UserInfoFragment = { __typename?: 'rangers_users', id: string, handle?: string | null };
+
+export type UserProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
+
 export type GetProfileQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-export type GetProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null, settings?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean } | null };
+export type GetProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null, settings?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean } | null };
 
 export type SetPrivateDecksMutationVariables = Exact<{
   userId: Scalars['String'];
@@ -31981,6 +33683,7 @@ export const CardFragmentDoc = gql`
   set_position
   quantity
   level
+  flavor
   type_id
   type_name
   cost
@@ -31988,6 +33691,7 @@ export const CardFragmentDoc = gql`
   aspect_name
   aspect_short_name
   progress
+  imagesrc
 }
     `;
 export const AspectFragmentDoc = gql`
@@ -32037,6 +33741,33 @@ export const DeckFragmentDoc = gql`
   }
 }
     `;
+export const UserInfoFragmentDoc = gql`
+    fragment UserInfo on rangers_users {
+  id
+  handle
+}
+    `;
+export const UserProfileFragmentDoc = gql`
+    fragment UserProfile on rangers_users {
+  id
+  handle
+  friends {
+    user {
+      ...UserInfo
+    }
+  }
+  sent_requests {
+    user {
+      ...UserInfo
+    }
+  }
+  received_requests {
+    user {
+      ...UserInfo
+    }
+  }
+}
+    ${UserInfoFragmentDoc}`;
 export const GetCardsDocument = gql`
     query getCards($locale: String!) {
   cards: rangers_card_localized(where: {locale: {_eq: $locale}}) {
@@ -32499,15 +34230,14 @@ export type SaveDeckMutationOptions = Apollo.BaseMutationOptions<SaveDeckMutatio
 export const GetProfileDocument = gql`
     query getProfile($id: String!) {
   profile: rangers_users_by_pk(id: $id) {
-    id
-    handle
+    ...UserProfile
   }
   settings: rangers_user_settings_by_pk(user_id: $id) {
     user_id
     private_decks
   }
 }
-    `;
+    ${UserProfileFragmentDoc}`;
 
 /**
  * __useGetProfileQuery__
