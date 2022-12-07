@@ -13,8 +13,10 @@ import { METADATA, CARD_DATA } from './data';
 
 const readDir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
+const accessFile = promisify(fs.access);
 
-
+const BASE_IMAGE_DIR = `${process.env.BASE_IMAGE_DIR || ''}/card/`;
+const BASE_IMAGE_URL = `${process.env.BASE_IMAGE_URL || ''}/card/`;
 function cleanNulls(obj: {[key: string]: any }): any {
   const r: { [key: string]: any } = {};
   forEach(obj, (value, key) => {
@@ -106,10 +108,19 @@ async function importMetadata() {
       if (pack.indexOf('.json') === -1) {
         continue;
       }
+      const pack_id = packs[i];
       const data = await readBasicFile(`${BASE_DIR}/packs/${packs[i]}/${pack}`);
       console.log(`Processing cards: ${pack}`);
       for (let k = 0; k < data.length; k++) {
         const card = data[k];
+        card.pack_id = pack_id;
+        try {
+          const path = `${pack_id}/${card.id}.jpeg`;
+          await accessFile(`${BASE_IMAGE_DIR}${path}`, fs.constants.F_OK);
+          card.imagesrc = `${BASE_IMAGE_URL}${path}`;
+        } catch (e) {
+          false && console.log(`Could not find image for ${card.id}`);
+        }
         const existing = find(cards.rangers_card, c => c.id === card.id);
         if (!existing || !deepEqual(
           safePick(existing, allFields),
