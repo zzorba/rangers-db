@@ -6,6 +6,7 @@ import Card from '../../components/Card';
 import { useRouterPathParam } from '../../lib/hooks';
 import LoadingPage from '../../components/LoadingPage';
 import PageHeading from '../../components/PageHeading';
+import Head from 'next/head';
 
 export default function CardPage() {
   const [cardId, isReady] = useRouterPathParam<string>('cid', identity, '/cards')
@@ -21,15 +22,21 @@ export default function CardPage() {
   const card = (cardData?.cards.length && cardData.cards[0]) || undefined;
   return (
     <>
-      <PageHeading title={card?.name || 'Card'} />
+      { !!card && (
+        <Head>
+          <title>{card.name} - RangersDB</title>
+          <meta property="og:title" content={`${card.name} - RangersDB`} />
+          <meta property="og:description" content={card.text || ''} />
+        </Head>
+      )}
       <Box
-          maxW="64rem"
-          marginX="auto"
-          py={{ base: "3rem", lg: "4rem" }}
-          px={{ base: "1rem", lg: "0" }}
-        >
-          { card ? <Card card={card} /> : <LoadingPage /> }
-        </Box>
+        maxW="64rem"
+        marginX="auto"
+        py={{ base: "3rem", lg: "4rem" }}
+        px={{ base: "1rem", lg: "0" }}
+      >
+        { card ? <Card card={card} /> : <LoadingPage /> }
+      </Box>
     </>
   );
 }
