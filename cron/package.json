@@ -1,0 +1,29 @@
+{
+  "name": "migrations",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "update_ranks": "ts-node src/updateDeckRanks.ts"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "lodash": "4.17.21",
+    "node-fetch": "2",
+    "pg": "^8.8.0",
+    "webhook-discord": "3.7.8"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.177",
+    "@types/node-fetch": "^2.6.2",
+    "@types/pg": "^8.6.5",
+    "fs": "0.0.1-security",
+    "s3-upload-static": "0.1.0",
+    "ts-node": "10.4.0",
+    "tslint": "5.20.1",
+    "typescript": "4.5.2"
+  },
+  "private": true
+}
