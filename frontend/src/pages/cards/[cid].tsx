@@ -1,12 +1,13 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react'
-import { useGetCardQuery } from '../../generated/graphql/apollo-schema';
 import { identity } from 'lodash';
+import Head from 'next/head';
+import { t } from '@lingui/macro';
+
+import { useGetCardQuery } from '../../generated/graphql/apollo-schema';
 import Card from '../../components/Card';
 import { useRouterPathParam } from '../../lib/hooks';
 import LoadingPage from '../../components/LoadingPage';
-import PageHeading from '../../components/PageHeading';
-import Head from 'next/head';
 import { useLocale } from '../../lib/TranslationProvider';
 
 export default function CardPage() {
@@ -26,8 +27,8 @@ export default function CardPage() {
     <>
       { !!card && (
         <Head>
-          <title>{card.name} - RangersDB</title>
-          <meta property="og:title" content={`${card.name} - RangersDB`} />
+          <title>{card.name} - {t`RangersDB`}</title>
+          <meta property="og:title" content={`${card.name} - ${t`RangersDB`}`} />
           <meta property="og:description" content={card.text || ''} />
         </Head>
       )}

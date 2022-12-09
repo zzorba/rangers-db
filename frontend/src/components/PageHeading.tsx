@@ -1,12 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
+import { t } from '@lingui/macro';
 import { Box, Flex, Heading } from '@chakra-ui/react';
 
 export default function PageHeading({ title, children }: { title: string; children?: React.ReactNode }) {
   return (
     <>
       <Head>
-        <title>{title} - RangersDB</title>
+        <title>{title} - {t`RangersDB`}</title>
       </Head>
       <Box paddingTop="2rem" paddingBottom="2em">
         { children ? (

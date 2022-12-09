@@ -292,6 +292,11 @@ msgid "Pseudo"
 msgstr "Pseudo"
 
 #: src/components/NavBar.tsx:158
+#: src/components/PageHeading.tsx:10
+#: src/pages/cards/[cid].tsx:30
+#: src/pages/cards/[cid].tsx:31
+#: src/pages/decks/view/[did]/index.tsx:35
+#: src/pages/index.tsx:12
 msgid "RangersDB"
 msgstr "RangersDB"
 

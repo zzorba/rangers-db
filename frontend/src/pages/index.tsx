@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       <Head>
-        <title>RangersDB</title>
+        <title>{t`RangersDB`}</title>
       </Head>
       <Container minH="lg">
         <Box

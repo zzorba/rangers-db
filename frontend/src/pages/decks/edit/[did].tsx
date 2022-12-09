@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head'
+import { t } from '@lingui/macro';
 import { Box } from '@chakra-ui/react'
+import Router from 'next/router';
+
 import { useGetCardsQuery, useGetDeckQuery } from '../../../generated/graphql/apollo-schema';
 import { useCardsMap, useRequireAuth, useRouterPathParam } from '../../../lib/hooks';
 import LoadingPage from '../../../components/LoadingPage';
 import DeckEdit  from '../../../components/DeckEdit';
 import { useAuth } from '../../../lib/AuthContext';
-import Router from 'next/router';
 import { useLocale } from '../../../lib/TranslationProvider';
 
 export default function EditDeckPage() {
@@ -43,7 +45,7 @@ export default function EditDeckPage() {
   return (
     <>
       <Head>
-        <title>{deck?.name || 'Deck'} - RangersDB</title>
+        <title>{deck?.name || t`Deck`}} - {t`RangersDB`}</title>
       </Head>
       <Box
         maxW="64rem"

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react'
+import { t } from '@lingui/macro';
+import Head from 'next/head';
+
 import { useGetCardsQuery, useGetDeckQuery } from '../../../../generated/graphql/apollo-schema';
 import { useCardsMap, useRouterPathParam } from '../../../../lib/hooks';
 import LoadingPage from '../../../../components/LoadingPage';
 import Deck from '../../../../components/Deck';
-import Head from 'next/head';
 import { useLocale } from '../../../../lib/TranslationProvider';
 
 export default function ViewDeckPage() {
@@ -30,7 +32,7 @@ export default function ViewDeckPage() {
   return (
     <>
      <Head>
-        <title>{deck?.name || 'Deck'} - RangersDB</title>
+        <title>{deck?.name || 'Deck'} - {t`RangersDB`}</title>
       </Head>
       <Box
         maxW="64rem"
