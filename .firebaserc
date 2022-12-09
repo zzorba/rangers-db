@@ -7,9 +7,6 @@
       "hosting": {
         "static": [
           "static-rangers-db"
-        ],
-        "rangers-db": [
-          "rangers-db"
         ]
       }
     }

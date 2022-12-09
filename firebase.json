@@ -15,15 +15,6 @@
           "destination": "/index.html"
         }
       ]
-    },
-    {
-      "target": "rangers-db",
-      "source": "frontend",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ]
     }
   ],
   "functions": {
