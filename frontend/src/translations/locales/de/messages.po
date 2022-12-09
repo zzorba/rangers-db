@@ -1,22 +1,22 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-12-08 09:55-0500\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: @lingui/cli\n"
-"Language: de\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-08 09:55-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: src/components/AspectCounter.tsx:13
 #: src/lib/hooks.ts:157
 msgid "AWA"
-msgstr ""
+msgstr "WAH"
 
 #: src/components/FriendRequests.tsx:115
 msgid "Accept"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: src/lib/hooks.ts:156
 msgid "Awareness"
-msgstr ""
+msgstr "Wahrnehmung"
 
 #: src/components/Deck.tsx:308
 msgid "Background"
@@ -92,6 +92,10 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
+#: src/pages/decks/edit/[did].tsx:48
+msgid "Deck"
+msgstr ""
+
 #: src/pages/decks/search.tsx:14
 msgid "Deck search"
 msgstr ""
@@ -137,20 +141,20 @@ msgstr ""
 #: src/components/AspectCounter.tsx:14
 #: src/lib/hooks.ts:165
 msgid "FIT"
-msgstr ""
+msgstr "FIT"
 
 #: src/components/AspectCounter.tsx:15
 #: src/lib/hooks.ts:161
 msgid "FOC"
-msgstr ""
+msgstr "RUH"
 
 #: src/lib/hooks.ts:164
 msgid "Fitness"
-msgstr ""
+msgstr "Fitness"
 
 #: src/lib/hooks.ts:160
 msgid "Focus"
-msgstr ""
+msgstr "Ruhe"
 
 #: src/components/Login.tsx:51
 msgid "Forgot Password"
@@ -295,6 +299,7 @@ msgstr ""
 #: src/components/PageHeading.tsx:10
 #: src/pages/cards/[cid].tsx:30
 #: src/pages/cards/[cid].tsx:31
+#: src/pages/decks/edit/[did].tsx:48
 #: src/pages/decks/view/[did]/index.tsx:35
 #: src/pages/index.tsx:12
 msgid "RangersDB"
@@ -330,7 +335,7 @@ msgstr ""
 #: src/components/AspectCounter.tsx:16
 #: src/lib/hooks.ts:169
 msgid "SPI"
-msgstr ""
+msgstr "SOV"
 
 #: src/pages/decks/search.tsx:16
 msgid "Searching decks that have been shared with the community is still under construction."
@@ -366,7 +371,7 @@ msgstr ""
 
 #: src/lib/hooks.ts:168
 msgid "Spirit"
-msgstr ""
+msgstr "Souveränität"
 
 #: src/components/EditableTextInput.tsx:16
 msgid "Submit"
@@ -487,22 +492,6 @@ msgstr ""
 #: src/lib/hooks.ts:137
 msgid "Your role card does not match your chosen specialty."
 msgstr ""
-
-#: src/components/AspectCounter.tsx:13
-#~ msgid "awa"
-#~ msgstr ""
-
-#: src/components/AspectCounter.tsx:14
-#~ msgid "fit"
-#~ msgstr ""
-
-#: src/components/AspectCounter.tsx:15
-#~ msgid "foc"
-#~ msgstr ""
-
-#: src/components/AspectCounter.tsx:16
-#~ msgid "spi"
-#~ msgstr ""
 
 #: src/components/Card.tsx:73
 msgid "{0} of {1}"

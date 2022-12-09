@@ -92,6 +92,10 @@ msgstr "Copy"
 msgid "Create"
 msgstr "Create"
 
+#: src/pages/decks/edit/[did].tsx:48
+msgid "Deck"
+msgstr "Deck"
+
 #: src/pages/decks/search.tsx:14
 msgid "Deck search"
 msgstr "Deck search"
@@ -295,6 +299,7 @@ msgstr "Pseudo"
 #: src/components/PageHeading.tsx:10
 #: src/pages/cards/[cid].tsx:30
 #: src/pages/cards/[cid].tsx:31
+#: src/pages/decks/edit/[did].tsx:48
 #: src/pages/decks/view/[did]/index.tsx:35
 #: src/pages/index.tsx:12
 msgid "RangersDB"
