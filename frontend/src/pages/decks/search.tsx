@@ -1,5 +1,6 @@
 import { Box, Text } from '@chakra-ui/react';
 import React from 'react';
+import { t } from '@lingui/macro';
 import PageHeading from '../../components/PageHeading';
 
 export default function Search() {
@@ -10,12 +11,12 @@ export default function Search() {
       py={{ base: "3rem", lg: "4rem" }}
       px={{ base: "1rem", lg: "0" }}
     >
-      <PageHeading title="Decks" />
+      <PageHeading title={t`Deck search`} />
       <Text>
-        Searching decks that have been shared with the community is still under construction.
+        {t`Searching decks that have been shared with the community is still under construction.`}
       </Text>
       <Text>
-        However, you can share links to your individual decks to inspire others.
+        {t`However, you can share links to your individual decks to inspire others.`}
       </Text>
     </Box>
   );

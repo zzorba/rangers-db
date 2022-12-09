@@ -170,7 +170,3 @@ export function getAspectMap(): AspectMap {
     },
   };
 }
-
-export function useDeckErrors(): DeckErrorTranslations  {
-  return useMemo(() => getDeckErrors(), []);
-}

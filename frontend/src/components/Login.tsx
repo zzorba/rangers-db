@@ -29,7 +29,7 @@ export default function Login({ redirect }: { redirect: string | undefined }) {
           <Input
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="E-mail Address"
+            placeholder={t`E-mail Address`}
             type="email"
             autoComplete="email"
           />
@@ -40,7 +40,7 @@ export default function Login({ redirect }: { redirect: string | undefined }) {
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder={t`Password`}
             autoComplete="current-password"
           />
         </FormControl>

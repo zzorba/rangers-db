@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
+import { t } from '@lingui/macro';
 
 import CardList from '../../components/CardList';
 import PageHeading from '../../components/PageHeading';
@@ -12,7 +13,7 @@ export default function CardsPage() {
       py={{ base: "3rem", lg: "4rem" }}
       px={{ base: "1rem", lg: "0" }}
     >
-      <PageHeading title="Cards" />
+      <PageHeading title={t`Cards`} />
       <CardList />
     </Box>
   );

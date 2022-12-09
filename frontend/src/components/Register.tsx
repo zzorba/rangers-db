@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Flex,
   Box,
@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useAuth } from '../lib/AuthContext';
+import { Trans, t } from '@lingui/macro';
 
 function Register({ redirect }: { redirect: string | undefined }) {
   const [email, setEmail] = useState('');
@@ -27,32 +28,32 @@ function Register({ redirect }: { redirect: string | undefined }) {
         }}
       >
         <FormControl isRequired>
-          <FormLabel>Email</FormLabel>
+          <FormLabel>{t`Email`}</FormLabel>
           <Input
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="E-mail Address"
+            placeholder={t`E-mail Address`}
             type="email"
             autoComplete="email"
           />
         </FormControl>
         <FormControl isRequired marginTop="1em">
-          <FormLabel>Password</FormLabel>
+          <FormLabel>{t`Password`}</FormLabel>
           <Input
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder={t`Password`}
             autoComplete="current-password"
             minLength={6}
           />
         </FormControl>
         <Button w="100%" my="2" type="submit">
-          Register
+          {t`Register`}
         </Button>
       </form>
       <Box>
-        Already have an account? <Link as={NextLink} href={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link> now.
+        <Trans>Already have an account? <Link as={NextLink} href={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link> now.</Trans>
       </Box>
     </Flex>
   );

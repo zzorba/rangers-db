@@ -109,8 +109,8 @@ export default function DecksPage() {
         py={{ base: "3rem", lg: "4rem" }}
         px={{ base: "1rem", lg: "0" }}
       >
-        <PageHeading title="My Decks">
-          { !!authUser && <Button onClick={showNewDeck}>New deck</Button> }
+        <PageHeading title={t`My Decks`}>
+          { !!authUser && <Button onClick={showNewDeck}>{t`New deck`}</Button> }
         </PageHeading>
         { isDisabled || !decks ? <LoadingPage /> : (
           <DeckList
@@ -127,11 +127,11 @@ export default function DecksPage() {
         >
           <PaginationContainer align="center" justify="space-between" w="full" p={4}>
             <PaginationPrevious>
-              Previous
+              {t`Previous`}
             </PaginationPrevious>
             <PaginationPageGroup isInline align="center" />
             <PaginationNext>
-              Next
+              {t`Next`}
             </PaginationNext>
           </PaginationContainer>
         </Pagination>

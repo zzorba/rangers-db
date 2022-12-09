@@ -464,7 +464,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                     as={NextLink}
                     href={`/decks/edit/${deck.id}`}
                   >
-                    Edit
+                    {t`Edit`}
                   </SolidButton>
                 ) }
                 { !deck.previous_deck && (
@@ -474,7 +474,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                     onClick={onCopyDeck}
                     isLoading={copying}
                   >
-                    Copy
+                    {t`Copy`}
                   </SolidButton>
                 ) }
               </ButtonGroup>
@@ -490,7 +490,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
             {
               specialty && categories.specialty ?
               categories.specialty.options[specialty] :
-              'Not set'
+              t`Not set`
             }
           </Text>
         ) }
@@ -519,8 +519,14 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
 function MiniAspect({ value, aspect }: { value: number; aspect: string }) {
   const { aspects } = useLocale();
   return (
-    <AspectRatio width={['30px', '40px']} ratio={1}>
-      <Box bg={`aspect.${aspect}`} flexDirection="column" alignItems="center">
+    <AspectRatio width={['30px', '44px', '50px']} ratio={1}>
+      <Box bg={`aspect.${aspect}`} flexDirection="column" alignItems="center" position="relative">
+        <Flex direction="column" alignItems="center" justifyContent="center" position="absolute" top="0" left="0" height="100%" width="100%" >
+          <AspectRatio width="90%" ratio={1}>
+            <CoreIcon icon={`${aspect.toLowerCase()}_chakra`} size={50} color="#FFFFFF66" />
+          </AspectRatio>
+        </Flex>
+
         <Text color="white" textAlign="center" fontWeight={900} lineHeight={1.1}>{value}</Text>
         <Text color="white" textAlign="center" fontSize={['3xs', '2xs', 'xs']} lineHeight={1} fontWeight={200} letterSpacing={0.1}>{aspects[aspect]?.short_name}</Text>
       </Box>

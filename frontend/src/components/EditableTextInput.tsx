@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { t } from '@lingui/macro';
 import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip, ResponsiveValue, EditableProps, useStatStyles } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
 
@@ -12,8 +13,8 @@ function EditableControls() {
 
   return isEditing ? (
     <ButtonGroup justifyContent='center' size='sm' marginLeft={2}>
-      <IconButton aria-label="Submit" icon={<CheckIcon />} {...getSubmitButtonProps()} />
-      <IconButton aria-label="Cancel" icon={<CloseIcon />} {...getCancelButtonProps()} />
+      <IconButton aria-label={t`Submit`} icon={<CheckIcon />} {...getSubmitButtonProps()} />
+      <IconButton aria-label={t`Cancel`} icon={<CloseIcon />} {...getCancelButtonProps()} />
     </ButtonGroup>
   ) : null;
 }
@@ -26,7 +27,7 @@ function EditablePreviewWithEditButton() {
   return (
     <Flex direction="row">
       <EditablePreview />
-      { !isEditing && <IconButton marginLeft="2em" aria-label="Edit" icon={<EditIcon />} {...getEditButtonProps()} /> }
+      { !isEditing && <IconButton marginLeft="2em" aria-label={t`Edit`} icon={<EditIcon />} {...getEditButtonProps()} /> }
     </Flex>
   )
 }
