@@ -3,15 +3,20 @@
     "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
+    "esModuleInterop": true,
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
     "target": "es2017",
     "useUnknownInCatchVariables": false
   },
+  "typeRoots": ["./types", "./node_modules/@types"],
   "compileOnSave": true,
   "include": [
     "src",
     "assets"
+  ],
+  "exclude": [
+    "types"
   ]
 }

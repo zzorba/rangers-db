@@ -30,6 +30,8 @@ fragment Card on rangers_card {
   objective
   illustrator
   pack_id
+  deck_limit
+  position
 }
 
 fragment CardText on rangers_card_text {
@@ -233,7 +235,8 @@ mutation upsertCard(
   $cost: Int,
   $aspect_id: String,
   $progress: Int,
-
+  $deck_limit: Int,
+  $position: Int,
   $area_id: String,
   $guide_entry: String,
   $progress_fixed: Boolean,
@@ -269,7 +272,8 @@ mutation upsertCard(
       cost: $cost
       aspect_id: $aspect_id
       progress: $progress
-
+      deck_limit: $deck_limit
+      position: $position
       area_id: $area_id
       guide_entry: $guide_entry
       progress_fixed: $progress_fixed
@@ -314,7 +318,9 @@ mutation upsertCard(
         flavor,
         objective,
         back_card_id,
-        imagesrc
+        imagesrc,
+        deck_limit,
+        position,
       ]
     }
   ) {

@@ -1,7 +1,9 @@
 import * as fs from 'fs';
 import * as dotenv from 'dotenv';
 import { promisify } from 'util';
-import { forEach, find, pick, concat } from 'lodash';
+// @ts-ignore
+import pseudoizer from 'pseudoizer';
+import { forEach, find, pick, concat, keys } from 'lodash';
 
 dotenv.config();
 
@@ -9,11 +11,13 @@ import client from './graphql/client';
 
 import deepEqual = require('deep-equal');
 
-import { METADATA, CARD_DATA } from './data';
+import { METADATA, CARD_DATA, LOCALES } from './data';
+import { getOrCreateCleanPoFile, itemMessageId, makePoItem } from './poUtil';
 
 const readDir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
 const accessFile = promisify(fs.access);
+
 
 const BASE_IMAGE_DIR = `${process.env.BASE_IMAGE_DIR || ''}/card/`;
 const BASE_IMAGE_URL = `${process.env.BASE_IMAGE_URL || ''}/card/`;
@@ -69,6 +73,7 @@ async function importMetadata() {
 
     for (let j = 0; j < data.length; j++) {
       const current = data[j];
+      const id = current.id;
       const existingData: any = find(existing, (e: any) => e.id === current.id) as any;
       if (!existingData || !deepEqual(
           safePick(existingData, allFields),
@@ -83,15 +88,39 @@ async function importMetadata() {
 
       if (textFields?.length) {
         const translation = find(translations, (t: any) => t.id === current.id);
+        const theText = safePick(current, textFields);
         if (!translation || !deepEqual(
           safePick(translation, textFields),
-          safePick(current, textFields),
+          theText,
         )) {
           console.log(`\tUpdating ${current.id} text`);
           await upsertText({
             id: current.id,
             locale: 'en',
-            ...safePick(current, textFields),
+            ...theText,
+          } as any);
+        }
+
+        for (let k = 0; k < LOCALES.length; k++) {
+          const locale = LOCALES[k];
+          const [allPoEntries] = await getOrCreateCleanPoFile(`${BASE_DIR}/i18n/${locale}/${file.replace('.json', '.po')}`, locale, true);
+          const theTranslation = { ...theText };
+          forEach(keys(theText), field => {
+            if (theText[field]) {
+              const item = makePoItem(id, field, theText[field]);
+              if (locale === 'pseudo') {
+                theTranslation[field] = pseudoizer.pseudoize(theText[field]);
+              } else {
+                if (allPoEntries[itemMessageId(item)]?.msgstr.length) {
+                  theTranslation[field] = allPoEntries[itemMessageId(item)].msgstr[0];
+                }
+              }
+            }
+          });
+          await upsertText({
+            id: current.id,
+            locale: locale,
+            ...theTranslation,
           } as any);
         }
       }
@@ -113,9 +142,10 @@ async function importMetadata() {
       console.log(`Processing cards: ${pack}`);
       for (let k = 0; k < data.length; k++) {
         const card = data[k];
+        const id = card.id;
         card.pack_id = pack_id;
         try {
-          const path = `${pack_id}/${card.id}.jpeg`;
+          const path = `${pack_id}/${card.id}.jpg`;
           await accessFile(`${BASE_IMAGE_DIR}${path}`, fs.constants.F_OK);
           card.imagesrc = `${BASE_IMAGE_URL}${path}`;
         } catch (e) {
@@ -133,18 +163,40 @@ async function importMetadata() {
           } as any);
         }
         if (CARD_DATA.textFields) {
+          const theText = safePick(card, CARD_DATA.textFields);
           const translation = find(cards.rangers_card_text, c => c.id === card.id);
-          if (translation) {
-            if (deepEqual(safePick(existing, CARD_DATA.textFields), safePick(card, CARD_DATA.textFields))) {
-              continue;
-            }
+          if (!translation || !deepEqual(safePick(existing, CARD_DATA.textFields), theText)) {
+            console.log(`\tUpdating ${card.id} text`);
+            await client.upsertCardText({
+              id: card.id,
+              locale: 'en',
+              ...theText,
+            } as any);
           }
-          console.log(`\tUpdating ${card.id} text`);
-          await client.upsertCardText({
-            id: card.id,
-            locale: 'en',
-            ...safePick(card, CARD_DATA.textFields),
-          } as any);
+          for (let n = 0; n < LOCALES.length; n++) {
+            const locale = LOCALES[n];
+            const [allPoEntries] = await getOrCreateCleanPoFile(`${BASE_DIR}/i18n/${locale}/packs/${packs[i]}/${pack.replace('.json', '.po')}`, locale, true);
+            const theTranslation = { ...theText };
+            forEach(keys(theText), field => {
+              if (theText[field]) {
+                const item = makePoItem(id, field, theText[field]);
+                if (locale === 'pseudo') {
+                  if (field !== 'text') {
+                    theTranslation[field] = pseudoizer.pseudoize(theText[field]);
+                  }
+                } else {
+                  if (allPoEntries[itemMessageId(item)]?.msgstr.length) {
+                    theTranslation[field] = allPoEntries[itemMessageId(item)].msgstr[0];
+                  }
+                }
+              }
+            });
+            await client.upsertCardText({
+              id,
+              locale: locale,
+              ...theTranslation,
+            } as any);
+          }
         }
       }
     }

@@ -1,6 +1,8 @@
 import client from './graphql/client';
 import { GetLocaleTextQuery, GetMetadataQuery } from './graphql/schema';
 
+export const LOCALES = ['de', 'it', 'pseudo'];
+
 export interface Table {
   collection: string;
   fields: string[];
@@ -77,6 +79,8 @@ export const TABLES: { [key: string]: Table } = {
       'illustrator',
       'back_card_id',
       'imagesrc',
+      'position',
+      'deck_limit',
     ],
     textFields: [
       'name',
