@@ -8,8 +8,7 @@ import {
   FormLabel,
   Link,
 } from '@chakra-ui/react';
-import { t } from 'ttag';
-import Router from 'next/router';
+import { t } from '@lingui/macro';
 import NextLink from 'next/link';
 import { useAuth } from '../lib/AuthContext';
 

@@ -12,9 +12,10 @@ import {
   ModalCloseButton,
   ModalFooter,
   SimpleGrid,
+  AspectRatio,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 
 import CardText from './CardText';
 import { CardFragment } from '../generated/graphql/apollo-schema';
@@ -23,7 +24,7 @@ import { getPlural } from '../lib/lang';
 import CoreIcon from '../icons/CoreIcon';
 import CardCount, { CountControls } from './CardCount';
 import DeckProblemComponent, { DeckCardProblemTooltip } from './DeckProblemComponent';
-import { useTranslations } from '../lib/TranslationProvider';
+import { useLocale } from '../lib/TranslationProvider';
 import CardImage, { RoleImage } from './CardImage';
 
 interface Props {
@@ -38,7 +39,7 @@ function renderNumber(value: number) {
 }
 
 function AspectLevel({ card, mini }: { card: CardFragment; mini?: boolean }) {
-  const { aspects} = useTranslations();
+  const { aspects} = useLocale();
   const aspect = card.aspect_id && aspects[card.aspect_id];
   if (!aspect) {
     return null;
@@ -62,11 +63,10 @@ function AspectLevel({ card, mini }: { card: CardFragment; mini?: boolean }) {
     </Box>
   );
 }
-function FooterInfo({ card, count }: { card: CardFragment; count?: number }) {
+function FooterInfo({ card }: { card: CardFragment }) {
   return (
-    <Flex direction="row" justifyContent={count ? 'space-between' : 'flex-end'} alignItems="flex-end">
-      { !!count && <CardCount count={count} /> }
-      <Flex direction="row" justifyContent="flex-end" maxH="2em">
+    <Flex direction="row" justifyContent="flex-start" alignItems="flex-end">
+      <Flex direction="row" justifyContent="flex-end" maxH="2em" flex={1}>
         <AspectLevel card={card} />
         <Box padding={1} paddingLeft={2} paddingRight={2} backgroundColor="#888888" flexDirection="column">
           <Text fontSize="s" color="#EEEEEE" fontWeight={400}>
@@ -87,7 +87,7 @@ function Equip({ equip, aspect }: { equip: number; aspect?: string }) {
       { map(range(0, equip), idx => (
         <div className={`equip ${aspect}`} key={idx} />
       )) }
-      { map(range(equip, 6), idx => (
+      { map(range(equip, 5), idx => (
         <div className="equip" key={idx} />
       )) }
     </Flex>
@@ -95,6 +95,7 @@ function Equip({ equip, aspect }: { equip: number; aspect?: string }) {
 }
 
 function Cost({ cost, aspectId, aspect }: { cost: number | null | undefined; aspectId: string | null | undefined; aspect?: Aspect }) {
+  const hasCost = cost !== null && cost !== undefined;
   return (
     <Box
       bg={aspectId ? `aspect.${aspectId}` : `gray.200`}
@@ -102,26 +103,36 @@ function Cost({ cost, aspectId, aspect }: { cost: number | null | undefined; asp
       minWidth={12}
       minHeight={12}
       flexDirection="column"
-      justifyContent="center"
+      justifyContent={hasCost ? 'center' : 'flex-end'}
       alignItems="center"
       marginRight={2}
+      position="relative"
     >
-      { !!aspect && (
-        <Text
-          color={aspect ? 'white' : 'black'}
-          fontSize="2xl"
-          fontWeight={900}
-          textAlign="center"
-          lineHeight={1.1}
-        >
-          { cost !== null && cost !== undefined ? renderNumber(cost) : '-' }
-        </Text>
+      { !!aspectId && (
+        <Flex direction="column" alignItems="center" justifyContent="center" position="absolute" top="0" left="0" height="100%" width="100%" >
+          <AspectRatio width="90%" ratio={1}>
+            <CoreIcon icon={`${aspectId.toLowerCase()}_chakra`} size={50} color={hasCost ? '#FFFFFF66' : '#FFFFFF99' } />
+          </AspectRatio>
+        </Flex>
       ) }
-      { !!aspect && (
-        <Text textAlign="center" color={aspect ? 'white': 'black'} lineHeight={0.8} fontWeight={600} fontSize="xs">
-          {aspect.short_name}
-        </Text>
-      ) }
+      <Flex direction="column" justifyContent="center" alignItems="center" flex={1} minHeight={12}>
+        { !!aspect && cost !== null && cost !== undefined && (
+          <Text
+            color={aspect ? 'white' : 'black'}
+            fontSize="2xl"
+            fontWeight={900}
+            textAlign="center"
+            lineHeight={1.1}
+          >
+            { renderNumber(cost) }
+          </Text>
+        ) }
+        { !!aspect && (
+          <Text textAlign="center" color={aspect ? 'white': 'black'} lineHeight={0.8} fontWeight={600} fontSize="xs">
+            {aspect.short_name}
+          </Text>
+        ) }
+      </Flex>
     </Box>
   );
 }
@@ -195,7 +206,7 @@ function CardPresenceAndIcons({ card, mini }: { card: CardFragment; mini?: boole
 }
 
 const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }: Props & { flex?: number; miniLevel?: boolean; problem?: DeckCardError[]; includeSet?: boolean; includeText?: boolean }) => {
-  const { aspects } = useTranslations();
+  const { aspects } = useLocale();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
     <Flex direction="row" flex={flex} alignItems="flex-start">
@@ -237,16 +248,15 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
 };
 
 function CardBody({ card, padding, problem, count, detail }: Props & { padding?: number; problem?: DeckError[]; count?: number; detail?: boolean }) {
-  const { aspects } = useTranslations();
+  const { aspects } = useLocale();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
     <Flex direction="row">
-      { !!card.imagesrc && <CardImage title={card.name || 'Card'} size={detail ? 'large' : 'small'} url={card.imagesrc} /> }
-      <Flex direction="column">
+      <Flex direction="column" flex={1}>
         <DeckProblemComponent card errors={problem} limit={1} />
-        <Flex direction="row" alignItems="flex-end" padding={padding}>
+        <Flex direction="row" alignItems="flex-start" padding={padding} flex={1}>
           <Flex direction="column" flex={1}>
-            { !!card.text && <CardText text={card.text} flavor={card.flavor} aspectId={card.aspect_id} /> }
+            { !!(card.text || card.flavor) && <CardText text={card.text} flavor={card.flavor} aspectId={card.aspect_id} /> }
           </Flex>
           { card.token_name && card.token_plurals && (
             <Tokens
@@ -265,9 +275,13 @@ function CardBody({ card, padding, problem, count, detail }: Props & { padding?:
             </Box>
           ) }
         </Flex>
-        <FooterInfo card={card} count={count} />
+        <FooterInfo card={card} />
       </Flex>
-    </Flex>
+      <Flex direction="column" alignItems="flex-end" justifyContent="space-between">
+        { !!card.imagesrc && <Box paddingLeft={2}><CardImage title={card.name || 'Card'} size={detail ? 'large' : 'small'} url={card.imagesrc} /></Box> }
+        { !!count && <CardCount count={count} /> }
+      </Flex>
+  </Flex>
   );
 }
 
@@ -311,7 +325,7 @@ export function useCardModal(slots?: Slots, setSlots?: (code: string, count: num
     showModal,
     <Modal key="modal" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent maxW="700px" maxH="700px">
         <ModalHeader>
           <Box paddingRight={8}>
             { !!card && <CardHeader card={card} problem={problem} /> }
@@ -324,7 +338,7 @@ export function useCardModal(slots?: Slots, setSlots?: (code: string, count: num
           </Box>
         </ModalBody>
         { !!setSlots && !!card?.id && !!slots && (
-          <ModalFooter justifyContent="flex-start">
+          <ModalFooter justifyContent="flex-end">
             <CountControls onClose={onClose} slots={slots} setSlots={setSlots} code={card.id} countMode={countMode} />
           </ModalFooter>
         ) }

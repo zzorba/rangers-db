@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Router from 'next/router';
+import React, { useState } from 'react';
 import NextLink from 'next/link';
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 
 import { useAuth } from '../lib/AuthContext';
 import { Box, Button, Flex, FormControl, FormLabel, Input, Link } from '@chakra-ui/react';

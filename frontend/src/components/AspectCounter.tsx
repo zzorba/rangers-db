@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { AspectRatio, Box, Flex, Text } from '@chakra-ui/react';
 import {
   ChevronUpIcon,
   ChevronDownIcon,
 } from '@chakra-ui/icons';
-import { t } from 'ttag';
+import { t } from '@lingui/macro'
 import { AspectType, AWA, FIT, FOC, SPI } from '../types/types';
+import CoreIcon from '../icons/CoreIcon';
 
 export default function AspectCounter({ aspect, onChange, count }: { aspect: AspectType; onChange?: (value: number) => void; count: number }) {
   const trans = {
@@ -27,7 +28,12 @@ export default function AspectCounter({ aspect, onChange, count }: { aspect: Asp
   const decEnabled = !!onChange && count > 1;
   const incEnabled = !!onChange && count < 4;
   return (
-    <Flex background={`aspect.${aspect}`} flex={0.25} direction="column" alignItems="center" >
+    <Flex background={`aspect.${aspect}`} flex={0.25} direction="column" alignItems="center" position="relative">
+      <Flex pointerEvents="none" direction="column" alignItems="center" justifyContent="center" position="absolute" top="0" left="0" height="100%" width="100%" >
+        <AspectRatio width={onChange ? '75%' : '90%'} ratio={1}>
+          <CoreIcon icon={`${aspect.toLowerCase()}_chakra`} size={50} color="#FFFFFF33" />
+        </AspectRatio>
+      </Flex>
       <Box onClick={onInc} cursor={incEnabled ? 'pointer' : undefined} paddingLeft={6} paddingRight={6} paddingTop={1}>
         <ChevronUpIcon color={incEnabled ? 'white' : 'transparent'} />
       </Box>

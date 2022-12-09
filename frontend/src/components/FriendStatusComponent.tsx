@@ -1,8 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 
 import { Friend_Status_Type_Enum, UserProfileFragment } from '../generated/graphql/apollo-schema';
-import SolidButton from './SolidButton';
 import { find } from 'lodash';
 import useFirebaseFunction from '../lib/useFirebaseFunction';
 import SubmitButton from './SubmitButton';

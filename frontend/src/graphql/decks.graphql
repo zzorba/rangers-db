@@ -31,19 +31,12 @@ fragment Deck on rangers_deck {
 query getDecksPageData(
   $locale: String
 ) {
-  sets: rangers_set_type_localized(
-    where: { locale: { _eq: $locale }}
-    order_by: { id: desc }
-  ) {
-    ...SetType
-  }
   roleCards: rangers_card_localized(
     where: {
       locale: { _eq: $locale }}
   ) {
     ...Card
   }
-
 }
 
 query getMyDecks(

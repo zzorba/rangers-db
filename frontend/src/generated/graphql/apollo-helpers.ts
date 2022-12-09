@@ -4538,7 +4538,7 @@ export type rangers_aspect_text_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_cardKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locations' | 'name' | 'objective' | 'pack_id' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'translations' | 'translations_aggregate' | 'type_id' | 'updated_at' | rangers_cardKeySpecifier)[];
+export type rangers_cardKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locations' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'translations' | 'translations_aggregate' | 'type_id' | 'updated_at' | rangers_cardKeySpecifier)[];
 export type rangers_cardFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4548,6 +4548,7 @@ export type rangers_cardFieldPolicy = {
 	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4560,6 +4561,7 @@ export type rangers_cardFieldPolicy = {
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress_fixed?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4594,23 +4596,25 @@ export type rangers_card_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_avg_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_avg_fieldsKeySpecifier)[];
+export type rangers_card_avg_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_avg_fieldsKeySpecifier)[];
 export type rangers_card_avg_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localizedKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'locations' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localizedKeySpecifier)[];
+export type rangers_card_localizedKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'locations' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localizedKeySpecifier)[];
 export type rangers_card_localizedFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4623,6 +4627,7 @@ export type rangers_card_localizedFieldPolicy = {
 	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4638,6 +4643,7 @@ export type rangers_card_localizedFieldPolicy = {
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress_fixed?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4682,17 +4688,19 @@ export type rangers_card_localized_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_avg_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_avg_fieldsKeySpecifier)[];
+export type rangers_card_localized_avg_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_avg_fieldsKeySpecifier)[];
 export type rangers_card_localized_avg_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4700,7 +4708,7 @@ export type rangers_card_localized_avg_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_max_fieldsKeySpecifier)[];
+export type rangers_card_localized_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_max_fieldsKeySpecifier)[];
 export type rangers_card_localized_max_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4713,6 +4721,7 @@ export type rangers_card_localized_max_fieldsFieldPolicy = {
 	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4727,6 +4736,7 @@ export type rangers_card_localized_max_fieldsFieldPolicy = {
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4751,7 +4761,7 @@ export type rangers_card_localized_max_fieldsFieldPolicy = {
 	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_min_fieldsKeySpecifier)[];
+export type rangers_card_localized_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_min_fieldsKeySpecifier)[];
 export type rangers_card_localized_min_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4764,6 +4774,7 @@ export type rangers_card_localized_min_fieldsFieldPolicy = {
 	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4778,6 +4789,7 @@ export type rangers_card_localized_min_fieldsFieldPolicy = {
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4802,17 +4814,19 @@ export type rangers_card_localized_min_fieldsFieldPolicy = {
 	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_stddev_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_fieldsKeySpecifier)[];
+export type rangers_card_localized_stddev_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_fieldsKeySpecifier)[];
 export type rangers_card_localized_stddev_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4820,17 +4834,19 @@ export type rangers_card_localized_stddev_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_stddev_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_card_localized_stddev_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_pop_fieldsKeySpecifier)[];
 export type rangers_card_localized_stddev_pop_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4838,17 +4854,19 @@ export type rangers_card_localized_stddev_pop_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_stddev_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_card_localized_stddev_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_samp_fieldsKeySpecifier)[];
 export type rangers_card_localized_stddev_samp_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4856,17 +4874,19 @@ export type rangers_card_localized_stddev_samp_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_sum_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_sum_fieldsKeySpecifier)[];
+export type rangers_card_localized_sum_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_sum_fieldsKeySpecifier)[];
 export type rangers_card_localized_sum_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4874,17 +4894,19 @@ export type rangers_card_localized_sum_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_var_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_var_pop_fieldsKeySpecifier)[];
+export type rangers_card_localized_var_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_var_pop_fieldsKeySpecifier)[];
 export type rangers_card_localized_var_pop_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4892,17 +4914,19 @@ export type rangers_card_localized_var_pop_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_var_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_var_samp_fieldsKeySpecifier)[];
+export type rangers_card_localized_var_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_var_samp_fieldsKeySpecifier)[];
 export type rangers_card_localized_var_samp_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4910,17 +4934,19 @@ export type rangers_card_localized_var_samp_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_variance_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'pack_position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_variance_fieldsKeySpecifier)[];
+export type rangers_card_localized_variance_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_variance_fieldsKeySpecifier)[];
 export type rangers_card_localized_variance_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4928,7 +4954,7 @@ export type rangers_card_localized_variance_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'name' | 'objective' | 'pack_id' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_max_fieldsKeySpecifier)[];
+export type rangers_card_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_max_fieldsKeySpecifier)[];
 export type rangers_card_max_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4938,6 +4964,7 @@ export type rangers_card_max_fieldsFieldPolicy = {
 	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4949,6 +4976,7 @@ export type rangers_card_max_fieldsFieldPolicy = {
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4961,7 +4989,7 @@ export type rangers_card_max_fieldsFieldPolicy = {
 	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'name' | 'objective' | 'pack_id' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_min_fieldsKeySpecifier)[];
+export type rangers_card_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_min_fieldsKeySpecifier)[];
 export type rangers_card_min_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4971,6 +4999,7 @@ export type rangers_card_min_fieldsFieldPolicy = {
 	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4982,6 +5011,7 @@ export type rangers_card_min_fieldsFieldPolicy = {
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4999,64 +5029,72 @@ export type rangers_card_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_stddev_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_fieldsKeySpecifier)[];
+export type rangers_card_stddev_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_fieldsKeySpecifier)[];
 export type rangers_card_stddev_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_stddev_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_card_stddev_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_pop_fieldsKeySpecifier)[];
 export type rangers_card_stddev_pop_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_stddev_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_card_stddev_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_samp_fieldsKeySpecifier)[];
 export type rangers_card_stddev_samp_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_sum_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_sum_fieldsKeySpecifier)[];
+export type rangers_card_sum_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_sum_fieldsKeySpecifier)[];
 export type rangers_card_sum_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5138,55 +5176,61 @@ export type rangers_card_updated_min_fieldsFieldPolicy = {
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_var_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_var_pop_fieldsKeySpecifier)[];
+export type rangers_card_var_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_var_pop_fieldsKeySpecifier)[];
 export type rangers_card_var_pop_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_var_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_var_samp_fieldsKeySpecifier)[];
+export type rangers_card_var_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_var_samp_fieldsKeySpecifier)[];
 export type rangers_card_var_samp_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_variance_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'equip' | 'harm' | 'level' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_variance_fieldsKeySpecifier)[];
+export type rangers_card_variance_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_variance_fieldsKeySpecifier)[];
 export type rangers_card_variance_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	harm?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deckKeySpecifier = ('awa' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'previous_deck' | 'published' | 'rank' | 'slots' | 'spi' | 'updated_at' | 'user' | 'user_id' | rangers_deckKeySpecifier)[];
+export type rangers_deckKeySpecifier = ('awa' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'liked_by_user' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'previous_deck' | 'published' | 'rank' | 'slots' | 'spi' | 'updated_at' | 'user' | 'user_id' | rangers_deckKeySpecifier)[];
 export type rangers_deckFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5194,6 +5238,7 @@ export type rangers_deckFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	liked_by_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	meta?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5235,9 +5280,10 @@ export type rangers_deck_avg_fieldsFieldPolicy = {
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_likeKeySpecifier = ('created_at' | 'deck_id' | 'liked' | 'user_id' | rangers_deck_likeKeySpecifier)[];
+export type rangers_deck_likeKeySpecifier = ('created_at' | 'deck' | 'deck_id' | 'liked' | 'user_id' | rangers_deck_likeKeySpecifier)[];
 export type rangers_deck_likeFieldPolicy = {
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	liked?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id?: FieldPolicy<any> | FieldReadFunction<any>

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { List, ListItem, IconButton, ButtonGroup, Text, Flex } from '@chakra-ui/react';
 import { flatMap, map } from 'lodash';
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 import ListHeader from './ListHeader';

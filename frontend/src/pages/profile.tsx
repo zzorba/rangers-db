@@ -5,6 +5,7 @@ import { useRequireAuth } from '../lib/hooks';
 import Profile from '../components/Profile';
 import PageHeading from '../components/PageHeading';
 
+
 function ProfilePage() {
   useRequireAuth();
   return (
@@ -14,5 +15,6 @@ function ProfilePage() {
     </Container>
   );
 }
+
 
 export default ProfilePage;

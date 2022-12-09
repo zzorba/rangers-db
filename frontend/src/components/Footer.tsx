@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text, Box } from '@chakra-ui/react'
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 import { useGraphql } from '../lib/GraphqlContext';
 
 export default function Footer() {

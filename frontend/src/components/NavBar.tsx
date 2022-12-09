@@ -17,43 +17,102 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 import { map } from 'lodash';
+import { t } from '@lingui/macro';
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import { useAuth } from '../lib/AuthContext';
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGetCardsQuery, useGetCardsUpdatedAtQuery } from '../generated/graphql/apollo-schema';
 import Banner from './Banner';
+import { LOCALES } from '../lib/Lingui';
+import { AuthUser } from '../lib/useFirebaseAuth';
+import { useLocale } from '../lib/TranslationProvider';
 
+function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
+  return useMemo(() => [
+    ...(authUser ? [{ label: t`Profile`, href: '/profile' }] : []),
+    {
+      label: t`Cards`,
+      href: '/cards',
+    },
+    {
+      label: t`My Decks`,
+      href: '/decks',
+    },
+    {
+      label: t`Decks`,
+      href: '/decks/search',
+    },
+  ], [authUser]);
+}
 function useCardNeedUpdate(): [boolean, () => void] {
+  const { locale } = useLocale();
   const { data: cardData, refetch } = useGetCardsQuery({
     variables: {
-      locale: 'en',
+      locale,
     },
     fetchPolicy: 'cache-only',
   });
   const { data: updatedData} = useGetCardsUpdatedAtQuery({
     variables: {
-      locale: 'en',
+      locale,
     },
     fetchPolicy: 'network-only',
   });
   const forceRefresh = useCallback(() => {
     refetch({
-      locale: 'en',
+      locale,
     });
-  }, [refetch]);
+  }, [refetch, locale]);
   return [
     !!(cardData?.updated_at.length && updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at),
     forceRefresh,
   ];
 }
 
+export function LanguageSwitcher() {
+  const router = useRouter();
+  const [locale, setLocale] = useState<LOCALES>(
+    router.locale!.split('-')[0] as LOCALES
+  );
+
+  const languages: { [key: string]: string } = {
+    en: t`English`,
+    de: t`German`,
+    it: t`Italian`,
+  }
+
+  // enable 'pseudo' locale only for development environment
+  if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') {
+    languages['pseudo'] = t`Pseudo`
+  }
+
+  useEffect(() => {
+    router.push(router.pathname, router.pathname, { locale })
+    // eslint-disable-next-line
+  }, [locale])
+
+  return (
+    <select
+      value={locale}
+      onChange={(evt) => setLocale(evt.target.value as LOCALES)}
+    >
+      {Object.keys(languages).map((locale) => {
+        return (
+          <option value={locale} key={locale}>
+            {languages[locale as unknown as LOCALES]}
+          </option>
+        )
+      })}
+    </select>
+  );
+}
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const { authUser, loading, signOut } = useAuth();
@@ -62,10 +121,7 @@ export default function WithSubnavigation() {
     Router.push('/');
     signOut();
   }, [signOut]);
-  const navItems = useMemo(() => [
-    ...(authUser ? [{ label: 'Profile', href: '/profile' }] : []),
-    ...NAV_ITEMS,
-  ], [authUser]);
+  const navItems = useNavItems(authUser);
   return (
     <Box>
       <Flex
@@ -88,7 +144,7 @@ export default function WithSubnavigation() {
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
             variant="ghost"
-            aria-label="Toggle Navigation"
+            aria-label={t`Toggle Navigation`}
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
@@ -99,7 +155,7 @@ export default function WithSubnavigation() {
             as={NextLink}
             href="/"
           >
-            RangersDB
+            {t`RangersDB`}
           </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -123,7 +179,7 @@ export default function WithSubnavigation() {
                 variant={'link'}
                 onClick={onSignOut}
               >
-                Sign Out
+                {t`Sign Out`}
               </Button>
             ) : (
               <>
@@ -134,7 +190,7 @@ export default function WithSubnavigation() {
                   as={NextLink}
                   href="/login"
                 >
-                  Sign In
+                  {t`Sign In`}
                 </Button>
                 <Button
                   display={{ base: 'none', md: 'inline-flex' }}
@@ -147,21 +203,20 @@ export default function WithSubnavigation() {
                   _hover={{
                     bg: 'blue.600',
                   }}>
-                  Sign Up
+                 {t`Sign Up`}
                 </Button>
               </>
             )}
           </Stack>
         ) }
       </Flex>
-
       <Collapse in={isOpen} animateOpacity>
         <MobileNav navItems={navItems} />
       </Collapse>
       { !!cardNeedUpdate && (
         <Banner
-          title="New cards are available"
-          action="Update now"
+          title={t`New cards are available`}
+          action={t`Update now`}
           onClick={forceCardUpdate}
         />
       )}
@@ -320,18 +375,3 @@ interface NavItem {
   children?: Array<NavItem>;
   href?: string;
 }
-
-const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: 'Cards',
-    href: '/cards',
-  },
-  {
-    label: 'My Decks',
-    href: '/decks',
-  },
-  {
-    label: 'Decks',
-    href: '/decks/search',
-  },
-];

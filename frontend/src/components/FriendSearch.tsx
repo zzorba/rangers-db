@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import { FormControl, Text, Flex, IconButton, Input, useDisclosure, Spinner, List, ListItem, FormErrorMessage } from '@chakra-ui/react';
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 import useFirebaseFunction from '../lib/useFirebaseFunction';
 import { SearchIcon } from '@chakra-ui/icons';
 import { map } from 'lodash';

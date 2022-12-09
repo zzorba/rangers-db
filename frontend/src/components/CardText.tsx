@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
 import Parser from 'simple-text-parser';
+import { filter } from 'lodash';
 import { Box } from '@chakra-ui/react';
-import { useTranslations } from '../lib/TranslationProvider';
+import { useLocale } from '../lib/TranslationProvider';
 
-export default function CardText({ text, flavor, aspectId, noPadding }: { text: string; flavor?: string | null, aspectId: string | undefined | null; noPadding?: boolean }) {
-  const { aspects } = useTranslations();
-  const parsed = useMemo(() => {
+export function useIconedText(text: string | undefined | null, flavor?: string | undefined | null) {
+  const { aspects } = useLocale();
+  return useMemo(() => {
     const parser = new Parser().addRule(
       /\[([^\]0-9]+)\]/gi,
       (tag, element) => {
@@ -15,8 +16,12 @@ export default function CardText({ text, flavor, aspectId, noPadding }: { text: 
         return `<span class="core-${element}"></span>`;
       }
     ).addRule(/\n/g, () => '<hr class="card-line"></hr>');
-    return parser.render(flavor ? `${text}\n<i>${flavor}</i>` : text);
+    return parser.render(filter([text, flavor ? `<i>${flavor}</i>` : undefined], x => !!x).join('\n'));
   }, [text, flavor, aspects]);
+}
+
+export default function CardText({ text, flavor, aspectId, noPadding }: { text: string | undefined | null; flavor?: string | undefined | null, aspectId: string | undefined | null; noPadding?: boolean }) {
+  const parsed = useIconedText(text, flavor);
   if (noPadding) {
     return <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />;
   }

@@ -4,6 +4,7 @@ import { Container, Heading, Text } from '@chakra-ui/react';
 import { usePostLoginRedirect } from '../lib/hooks';
 import PageHeading from '../components/PageHeading';
 
+
 function RegisterPage() {
   const redirect = usePostLoginRedirect();
   return (
@@ -19,5 +20,6 @@ function RegisterPage() {
     </Container>
   );
 }
+
 
 export default RegisterPage;

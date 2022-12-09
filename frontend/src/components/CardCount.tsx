@@ -3,14 +3,18 @@ import { Box, Flex, Text, useRadio, useRadioGroup, UseRadioProps } from '@chakra
 import { map } from 'lodash';
 import { Slots } from '../types/types';
 
-export default function CardCount({ count, marginLeft }: { count: number, marginLeft?: number }) {
+export default function CardCount({
+  count,
+  marginLeft,
+  light,
+}: { count: number, marginLeft?: number; light?: boolean }) {
   return (
     <Box fontFamily="mono"
       borderRadius="md"
       borderWidth="1px"
-      bg="gray.600"
+      bg={`gray.${light ? 100 : 600}`}
       borderColor="gray.300"
-      color="white"
+      color={light ? 'gray.800' : 'white'}
       padding={2}
       marginLeft={marginLeft}
       px={2}
@@ -26,7 +30,7 @@ export function RadioCardCount(props: UseRadioProps & { children: React.ReactNod
   const input = getInputProps()
   const checkbox = getCheckboxProps()
   return (
-    <Box as='label' marginRight={2}>
+    <Box as='label' marginLeft={2}>
       <input {...input} />
       <Box
         {...checkbox}

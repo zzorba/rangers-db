@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { forEach } from 'lodash';
 import Router,{ useRouter } from 'next/router';
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
 import { CardFragment, SetTypeFragment } from '../generated/graphql/apollo-schema';
@@ -170,6 +170,7 @@ export function getAspectMap(): AspectMap {
     },
   };
 }
+
 export function useDeckErrors(): DeckErrorTranslations  {
   return useMemo(() => getDeckErrors(), []);
 }

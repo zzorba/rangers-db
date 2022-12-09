@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from '@chakra-ui/react';
 import { map } from 'lodash';
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 
 import { DeckFragment } from '../generated/graphql/apollo-schema';
 import { DeckRow } from './Deck';
@@ -9,13 +9,11 @@ import { CardsMap, CategoryTranslations } from '../lib/hooks';
 import { Text } from '@chakra-ui/react';
 
 export default function DeckList({
-  categoryTranslations,
   roleCards,
   decks,
   onDelete,
 }: {
   decks: DeckFragment[] | undefined;
-  categoryTranslations: CategoryTranslations;
   roleCards: CardsMap;
   onDelete: (deck: DeckFragment) => void;
 }) {
@@ -28,7 +26,6 @@ export default function DeckList({
         <DeckRow
           key={deck.id}
           deck={deck}
-          categoryTranslations={categoryTranslations}
           roleCards={roleCards}
           onDelete={onDelete}
         />

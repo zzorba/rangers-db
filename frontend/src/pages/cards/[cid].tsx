@@ -7,13 +7,15 @@ import { useRouterPathParam } from '../../lib/hooks';
 import LoadingPage from '../../components/LoadingPage';
 import PageHeading from '../../components/PageHeading';
 import Head from 'next/head';
+import { useLocale } from '../../lib/TranslationProvider';
 
 export default function CardPage() {
   const [cardId, isReady] = useRouterPathParam<string>('cid', identity, '/cards')
+  const { locale } = useLocale();
   const { data: cardData, loading } = useGetCardQuery({
     ssr: true,
     variables: {
-      locale: 'en',
+      locale,
       cid: cardId || '',
     },
     skip: !isReady || !cardId,
@@ -40,3 +42,4 @@ export default function CardPage() {
     </>
   );
 }
+

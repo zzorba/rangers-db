@@ -8,3 +8,5 @@ export default function ViewIndex() {
   }, []);
   return <LoadingPage />;
 }
+
+

@@ -4,6 +4,7 @@ import { CardFragment, useGetCardsQuery } from '../generated/graphql/apollo-sche
 import { CardRow, useCardModal } from './Card';
 import { List, ListItem, Text } from '@chakra-ui/react';
 import LoadingPage from './LoadingPage';
+import { useLocale } from '../lib/TranslationProvider';
 
 function CardButtonRow({ card, showModal, children }: { card: CardFragment; showModal: (card: CardFragment) => void; children?: React.ReactNode }) {
   const onClick = useCallback(() => showModal(card), [card, showModal]);
@@ -38,9 +39,10 @@ interface HeaderItem {
 type Item = CardItem | HeaderItem;
 
 export default function CardList() {
+  const { locale } = useLocale();
   const { data } = useGetCardsQuery({
     variables: {
-      locale: 'en',
+      locale,
     },
   });
   const [showCard, modal] = useCardModal();
@@ -49,7 +51,7 @@ export default function CardList() {
   }
   return (
     <>
-      <SimpleCardList cards={data.cards} showCard={showCard} />
+      <SimpleCardList cards={data?.cards} showCard={showCard} />
       { modal }
     </>
   );
@@ -57,7 +59,7 @@ export default function CardList() {
 
 export function SimpleCardList({ cards, showCard, header = 'set', renderControl }: { cards?: CardFragment[]; showCard: (card: CardFragment) => void; header?: 'aspect' | 'set' | 'none'; renderControl?: (code: string) => React.ReactNode }) {
   const items = useMemo(() => {
-    const sorted = sortBy(cards, card => card.id);
+    const sorted = sortBy(cards, card => card.position);
     const items: Item[] = [];
     let currentHeader: string | undefined = undefined;
     forEach(sorted, card => {

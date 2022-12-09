@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { t } from 'ttag';
+import { t } from '@lingui/macro';
 import { Box, Button } from '@chakra-ui/react';
-import { useCardsMap, useCategoryTranslations, useRequireAuth } from '../../lib/hooks';
-import { useNewDeckModal } from '../../components/Deck';
+import { useCardsMap, useRequireAuth } from '../../lib/hooks';
+import { useNewDeckModal } from '../../components/DeckEdit';
 import DeckList from '../../components/DeckList';
 import { DeckFragment, useDeleteDeckMutation, useGetDecksPageDataQuery, useGetMyDecksQuery, useGetMyDecksTotalQuery } from '../../generated/graphql/apollo-schema';
 import PageHeading from '../../components/PageHeading';
 import { useAuth } from '../../lib/AuthContext';
 import LoadingPage from '../../components/LoadingPage';
 import { Pagination, PaginationContainer, PaginationNext, PaginationPageGroup, PaginationPrevious, usePagination } from '@ajna/pagination';
-import { useApolloClient } from '@apollo/client';
 import { useDeleteDialog } from '../../components/DeleteDialog';
+import { useLocale } from '../../lib/TranslationProvider';
 
 
 function deleteDeckMessage(d: DeckFragment) {
@@ -19,10 +19,11 @@ function deleteDeckMessage(d: DeckFragment) {
 
 export default function DecksPage() {
   useRequireAuth();
+  const { locale } = useLocale();
   const { authUser } = useAuth();
   const { data } = useGetDecksPageDataQuery({
     variables: {
-      locale: 'en',
+      locale,
     },
   });
   const { data: totalDecks } = useGetMyDecksTotalQuery({
@@ -95,9 +96,8 @@ export default function DecksPage() {
     deleteDeckMessage,
     deleteDeck
   );
-  const categoryTranslations = useCategoryTranslations(data?.sets);
   const roleCards = useCardsMap(data?.roleCards);
-  const [showNewDeck, newDeckModal] = useNewDeckModal(categoryTranslations, roleCards);
+  const [showNewDeck, newDeckModal] = useNewDeckModal(roleCards);
   const handlePageChange = (nextPage: number) => {
     setCurrentPage(nextPage);
   };
@@ -115,7 +115,6 @@ export default function DecksPage() {
         { isDisabled || !decks ? <LoadingPage /> : (
           <DeckList
             decks={decks}
-            categoryTranslations={categoryTranslations}
             roleCards={roleCards}
             onDelete={onDelete}
           />
@@ -142,3 +141,5 @@ export default function DecksPage() {
     </>
   );
 }
+
+

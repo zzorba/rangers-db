@@ -1,0 +1,305 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2022-12-08 09:55-0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: it\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/components/AspectCounter.tsx:13
+msgid "AWA"
+msgstr ""
+
+#: src/components/FriendRequests.tsx:115
+msgid "Accept"
+msgstr ""
+
+#: src/components/Profile.tsx:104
+msgid "Allow people to view my decks"
+msgstr ""
+
+#: src/pages/decks/index.tsx:17
+msgid "Are you sure you want to delete the '{0}' deck?"
+msgstr ""
+
+#: src/pages/index.tsx:26
+msgid "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
+msgstr ""
+
+#: src/components/Deck.tsx:305
+msgid "Background"
+msgstr ""
+
+#: src/components/Deck.tsx:305
+msgid "Background: {backgroundName}"
+msgstr ""
+
+#: src/components/FriendStatusComponent.tsx:63
+msgid "Cancel Friend Request"
+msgstr ""
+
+#: src/components/FriendStatusComponent.tsx:69
+msgid "Cancel Friendship"
+msgstr ""
+
+#: src/components/NavBar.tsx:40
+msgid "Cards"
+msgstr ""
+
+#: src/components/FriendStatusComponent.tsx:57
+msgid "Confirm Friend"
+msgstr ""
+
+#: src/components/NavBar.tsx:48
+msgid "Decks"
+msgstr ""
+
+#: src/components/Deck.tsx:576
+msgid "Delete"
+msgstr ""
+
+#: src/pages/decks/index.tsx:94
+msgid "Delete deck?"
+msgstr ""
+
+#: src/components/Login.tsx:53
+#: src/components/ResetPassword.tsx:34
+msgid "Don't have an account?"
+msgstr ""
+
+#: src/components/Deck.tsx:575
+msgid "Edit"
+msgstr ""
+
+#: src/components/Login.tsx:28
+#: src/components/Profile.tsx:68
+msgid "Email"
+msgstr ""
+
+#: src/components/NavBar.tsx:84
+msgid "English"
+msgstr ""
+
+#: src/components/AspectCounter.tsx:14
+msgid "FIT"
+msgstr ""
+
+#: src/components/AspectCounter.tsx:15
+msgid "FOC"
+msgstr ""
+
+#: src/components/Login.tsx:51
+msgid "Forgot Password"
+msgstr ""
+
+#: src/components/FriendRequests.tsx:111
+msgid "Friend Requests"
+msgstr ""
+
+#: src/components/FriendRequests.tsx:138
+msgid "Friends"
+msgstr ""
+
+#: src/components/NavBar.tsx:85
+msgid "German"
+msgstr ""
+
+#: src/components/Profile.tsx:82
+msgid "Handle"
+msgstr ""
+
+#: src/components/NavBar.tsx:86
+msgid "Italian"
+msgstr ""
+
+#: src/components/Login.tsx:48
+msgid "Login"
+msgstr ""
+
+#: src/components/NavBar.tsx:44
+msgid "My Decks"
+msgstr ""
+
+#: src/components/NavBar.tsx:216
+msgid "New cards are available"
+msgstr ""
+
+#: src/components/DeckEdit.tsx:150
+msgid "One aspect must be set to 1."
+msgstr ""
+
+#: src/components/DeckEdit.tsx:157
+msgid "One aspect must be set to 3."
+msgstr ""
+
+#: src/components/Deck.tsx:364
+msgid "One of the chosen background cards is counting towards outside interest."
+msgstr ""
+
+#: src/components/Deck.tsx:371
+msgid "One of the chosen specialty cards is counting towards outside interest."
+msgstr ""
+
+#: src/components/DeckEdit.tsx:152
+msgid "Only one aspect can be set to 1."
+msgstr ""
+
+#: src/components/DeckEdit.tsx:159
+msgid "Only one aspect can be set to 3."
+msgstr ""
+
+#: src/components/Deck.tsx:329
+msgid "Other"
+msgstr ""
+
+#: src/components/Deck.tsx:320
+msgid "Outside Interest"
+msgstr ""
+
+#: src/components/Login.tsx:38
+msgid "Password"
+msgstr ""
+
+#: src/components/FriendRequests.tsx:128
+msgid "Pending Requests"
+msgstr ""
+
+#: src/components/Deck.tsx:297
+msgid "Personality"
+msgstr ""
+
+#: src/components/NavBar.tsx:38
+msgid "Profile"
+msgstr ""
+
+#: src/components/NavBar.tsx:91
+msgid "Pseudo"
+msgstr ""
+
+#: src/components/NavBar.tsx:155
+msgid "RangersDB"
+msgstr ""
+
+#: src/components/Login.tsx:53
+msgid "Register"
+msgstr ""
+
+#: src/components/FriendRequests.tsx:120
+msgid "Reject"
+msgstr ""
+
+#: src/components/FriendSearch.tsx:28
+msgid "Request friend"
+msgstr ""
+
+#: src/components/FriendRequests.tsx:131
+#: src/components/FriendRequests.tsx:141
+msgid "Revoke"
+msgstr ""
+
+#: src/components/AspectCounter.tsx:16
+msgid "SPI"
+msgstr ""
+
+#: src/components/FriendStatusComponent.tsx:51
+msgid "Send Friend Request"
+msgstr ""
+
+#: src/components/Profile.tsx:99
+msgid "Settings"
+msgstr ""
+
+#: src/components/NavBar.tsx:190
+msgid "Sign In"
+msgstr ""
+
+#: src/components/NavBar.tsx:179
+msgid "Sign Out"
+msgstr ""
+
+#: src/components/NavBar.tsx:203
+msgid "Sign Up"
+msgstr ""
+
+#: src/components/Deck.tsx:313
+msgid "Specialty"
+msgstr ""
+
+#: src/components/Deck.tsx:313
+msgid "Specialty: {specialtyName}"
+msgstr ""
+
+#: src/components/Footer.tsx:27
+msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
+msgstr ""
+
+#: src/pages/index.tsx:29
+msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
+msgstr ""
+
+#: src/pages/index.tsx:23
+msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
+msgstr ""
+
+#: src/components/NavBar.tsx:144
+msgid "Toggle Navigation"
+msgstr ""
+
+#: src/components/DeckEdit.tsx:162
+msgid "Two aspects must be set to 2."
+msgstr ""
+
+#: src/components/NavBar.tsx:217
+msgid "Update now"
+msgstr ""
+
+#: src/pages/index.tsx:21
+msgid "Welcome to RangersDB"
+msgstr ""
+
+#: src/components/DeckList.tsx:21
+msgid "You don't seem to have any decks."
+msgstr ""
+
+#: src/components/DeckEdit.tsx:548
+msgid "You must choose a background."
+msgstr ""
+
+#: src/components/DeckEdit.tsx:554
+msgid "You must choose a role."
+msgstr ""
+
+#: src/components/DeckEdit.tsx:551
+msgid "You must choose a specialty."
+msgstr ""
+
+#: src/components/AspectCounter.tsx:13
+#~ msgid "awa"
+#~ msgstr ""
+
+#: src/components/AspectCounter.tsx:14
+#~ msgid "fit"
+#~ msgstr ""
+
+#: src/components/AspectCounter.tsx:15
+#~ msgid "foc"
+#~ msgstr ""
+
+#: src/components/AspectCounter.tsx:16
+#~ msgid "spi"
+#~ msgstr ""
+
+#: src/components/Card.tsx:73
+msgid "{0} of {1}"
+msgstr ""
+
+#: src/components/DeckProblemComponent.tsx:29
+msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
+msgstr ""

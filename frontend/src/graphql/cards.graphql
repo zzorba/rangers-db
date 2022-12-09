@@ -32,6 +32,8 @@ fragment Card on rangers_card_localized {
   aspect_short_name
   progress
   imagesrc
+  position
+  deck_limit
 }
 
 fragment Aspect on rangers_aspect_localized {
@@ -91,7 +93,7 @@ fragment SetType on rangers_set_type_localized {
   }
 }
 
-query getSets($locale: String!) {
+query getSetNames($locale: String!) {
   sets: rangers_set_type_localized(
     where: { locale: { _eq: $locale }}
     order_by: { id: desc }

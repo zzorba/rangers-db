@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'core';
-  src:  url('fonts/core.eot?g1ohoi');
-  src:  url('fonts/core.eot?g1ohoi#iefix') format('embedded-opentype'),
-    url('fonts/core.ttf?g1ohoi') format('truetype'),
-    url('fonts/core.woff?g1ohoi') format('woff'),
-    url('fonts/core.svg?g1ohoi#core') format('svg');
+  src:  url('fonts/core.eot?mvr1rt');
+  src:  url('fonts/core.eot?mvr1rt#iefix') format('embedded-opentype'),
+    url('fonts/core.ttf?mvr1rt') format('truetype'),
+    url('fonts/core.woff?mvr1rt') format('woff'),
+    url('fonts/core.svg?mvr1rt#core') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -66,4 +66,16 @@
 }
 .core-mountain:before {
   content: "\e90d";
+}
+.core-spi_chakra:before {
+  content: "\e90e";
+}
+.core-foc_chakra:before {
+  content: "\e90f";
+}
+.core-fit_chakra:before {
+  content: "\e910";
+}
+.core-awa_chakra:before {
+  content: "\e911";
 }

@@ -11,7 +11,6 @@ export default function PageHeading({ title, children }: { title: string; childr
       <Box paddingTop="2rem" paddingBottom="2em">
         { children ? (
           <Flex direction="row" justifyContent="space-between">
-
             <Heading>{title}</Heading>
             {children}
           </Flex>

@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head'
 import { Box } from '@chakra-ui/react'
-import { useGetCardsQuery, useGetDeckQuery, useGetSetsQuery } from '../../../generated/graphql/apollo-schema';
-import { useCardsMap, useCategoryTranslations, useRequireAuth, useRouterPathParam } from '../../../lib/hooks';
+import { useGetCardsQuery, useGetDeckQuery } from '../../../generated/graphql/apollo-schema';
+import { useCardsMap, useRequireAuth, useRouterPathParam } from '../../../lib/hooks';
 import LoadingPage from '../../../components/LoadingPage';
-import { DeckEdit}  from '../../../components/Deck';
+import DeckEdit  from '../../../components/DeckEdit';
 import { useAuth } from '../../../lib/AuthContext';
 import Router from 'next/router';
+import { useLocale } from '../../../lib/TranslationProvider';
 
 export default function EditDeckPage() {
   useRequireAuth();
@@ -19,19 +20,14 @@ export default function EditDeckPage() {
     },
     skip: !isReady || !deckId,
   });
+  const { locale } = useLocale();
   const { data: cardsData } = useGetCardsQuery({
     variables: {
-      locale: 'en'
+      locale,
     },
   });
   const cards = useCardsMap(cardsData?.cards);
   const deck = data?.deck;
-  const { data: setData } = useGetSetsQuery({
-    variables: {
-      locale: 'en',
-    },
-  });
-  const categoryTranslations = useCategoryTranslations(setData?.sets);
   useEffect(() => {
     if (loading) {
       return;
@@ -55,8 +51,10 @@ export default function EditDeckPage() {
         py={{ base: "3rem", lg: "4rem" }}
         px={{ base: "1rem", lg: "0" }}
       >
-        { deck ? <DeckEdit deck={deck} categoryTranslations={categoryTranslations} cards={cards} /> : <LoadingPage /> }
+        { deck ? <DeckEdit deck={deck} cards={cards} /> : <LoadingPage /> }
       </Box>
     </>
   );
 }
+
+

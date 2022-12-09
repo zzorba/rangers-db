@@ -5,9 +5,8 @@ import {
   FormControl,
   FormLabel,
   Text,
-  Spinner,
-  FormErrorMessage,
 } from '@chakra-ui/react';
+import { t } from '@lingui/macro';
 import { useAuth } from '../lib/AuthContext';
 import { useGraphql } from '../lib/GraphqlContext';
 import { useGetProfileQuery, useSetPrivateDecksMutation } from '../generated/graphql/apollo-schema';
@@ -66,7 +65,7 @@ export default function Profile() {
       { loading ? <LoadingPage /> : (
         <Flex direction="column" m="2">
           <FormControl marginBottom="1em">
-            <FormLabel htmlFor="email">Email</FormLabel>
+            <FormLabel htmlFor="email">{t`Email`}</FormLabel>
             <Input
               disabled
               value={authUser?.email}
@@ -80,7 +79,7 @@ export default function Profile() {
             }}
           >
             <FormControl>
-              <FormLabel htmlFor="handle">Handle</FormLabel>
+              <FormLabel htmlFor="handle">{t`Handle`}</FormLabel>
               <Flex direction="row">
                 <Input
                   name="handle"
@@ -97,12 +96,12 @@ export default function Profile() {
             </FormControl>
           </form>
           <FormControl marginTop="1em">
-            <FormLabel htmlFor="handle">Settings</FormLabel>
+            <FormLabel htmlFor="handle">{t`Settings`}</FormLabel>
             <DynamicCheckbox
               isChecked={!data?.settings?.private_decks}
               onChange={onPrivateDecksChange}
             >
-              Allow people to view my decks
+              {t`Allow people to view my decks`}
             </DynamicCheckbox>
           </FormControl>
           { !!authUser && !!data?.profile &&  (
