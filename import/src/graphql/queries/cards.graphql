@@ -203,6 +203,11 @@ query getTranslationData(
   ) {
     ...CardTypeText
   }
+  rangers_card_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardText
+  }
 }
 
 query getTranslations($locale: String!) {

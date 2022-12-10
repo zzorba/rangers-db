@@ -13,6 +13,7 @@ import deepEqual = require('deep-equal');
 
 import { METADATA, CARD_DATA, LOCALES } from './data';
 import { getOrCreateCleanPoFile, itemMessageId, makePoItem } from './poUtil';
+import { GetLocaleTextQuery } from './graphql/schema';
 
 const readDir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
@@ -55,6 +56,10 @@ async function importMetadata() {
   const response = await client.getMetadata();
   const files = METADATA;
   const englishLocale = await client.getLocaleText({ locale: 'en' });
+  const localeText: { [locale: string]: GetLocaleTextQuery } = {};
+  for (let i = 0; i < LOCALES.length; i++) {
+    localeText[LOCALES[i]] = await client.getLocaleText({ locale: LOCALES[i] });
+  }
   for (let i = 0; i < files.length; i++) {
     const {
       file,
@@ -117,11 +122,20 @@ async function importMetadata() {
               }
             }
           });
-          await upsertText({
-            id: current.id,
-            locale: locale,
-            ...theTranslation,
-          } as any);
+          const existingTranslation = find(
+            getLocale(localeText[locale]),
+            (t: any) => t.id === current.id);
+          if (!existingTranslation || !deepEqual(
+            safePick(existingTranslation, textFields),
+            theTranslation,
+          )) {
+            console.log(`\tUpdating ${current.id} ${locale}.text`);
+            await upsertText({
+              id: current.id,
+              locale: locale,
+              ...theTranslation,
+            } as any);
+          }
         }
       }
     }
@@ -191,11 +205,19 @@ async function importMetadata() {
                 }
               }
             });
-            await client.upsertCardText({
-              id,
-              locale: locale,
-              ...theTranslation,
-            } as any);
+
+            const existingTranslation = find(localeText[locale].rangers_card_text, c => c.id === card.id);
+            if (!existingTranslation || !deepEqual(
+              safePick(existingTranslation, CARD_DATA.textFields),
+              theTranslation,
+            )) {
+              console.log(`\tUpdating ${card.id} ${locale}.text`);
+              await client.upsertCardText({
+                id,
+                locale: locale,
+                ...theTranslation,
+              } as any);
+            }
           }
         }
       }
