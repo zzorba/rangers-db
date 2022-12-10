@@ -325,7 +325,7 @@ export function useCardModal(slots?: Slots, setSlots?: (code: string, count: num
     showModal,
     <Modal key="modal" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent maxW="700px" maxH="700px">
+      <ModalContent maxW={['90%', '90%', '90%', '800px']} maxH="700px">
         <ModalHeader>
           <Box paddingRight={8}>
             { !!card && <CardHeader card={card} problem={problem} /> }

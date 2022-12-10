@@ -11,7 +11,7 @@ export function useIconedText(text: string | undefined | null, flavor?: string |
       /\[([^\]0-9]+)\]/gi,
       (tag, element) => {
         if (aspects[element]) {
-          return `<span style="color: var(--chakra-colors-aspect-${element}); font-weight: 900; letter-spacing: 1px">${aspects[element]?.short_name}</span>`;
+          return `<span style="color: var(--chakra-colors-aspect-${element}); font-weight: 900; letter-spacing: -0.5px">${aspects[element]?.short_name}</span>`;
         }
         return `<span class="core-${element}"></span>`;
       }

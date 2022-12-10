@@ -53,14 +53,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-let translation: any | null = null;
-
 MyApp.getInitialProps = async(appContext: AppContext) => {
   const original = App.getInitialProps(appContext);
-  if (!translation) {
-    const locale = appContext.ctx.locale || 'en';
-    translation = await getTranslation(locale);
-  }
+  const locale = appContext.ctx.locale || 'en';
+  const translation = await getTranslation(locale);
   return {
     ...original,
     pageProps: {
