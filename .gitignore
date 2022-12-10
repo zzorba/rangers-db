@@ -24,6 +24,7 @@ functions/lib/*
 .env.test.local
 .env.production.local
 .firebase/*
+.idea
 
 npm-debug.log*
 yarn-debug.log*
