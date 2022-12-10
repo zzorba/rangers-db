@@ -157,7 +157,6 @@ export default function WithSubnavigation() {
           >
             {t`RangersDB`}
           </Link>
-
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav navItems={navItems}/>
           </Flex>

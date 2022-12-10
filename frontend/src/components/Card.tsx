@@ -251,10 +251,10 @@ function CardBody({ card, padding, problem, count, detail }: Props & { padding?:
   const { aspects } = useLocale();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
-    <Flex direction="row">
+    <Flex direction={['column', 'column', 'row']} >
       <Flex direction="column" flex={1}>
         <DeckProblemComponent card errors={problem} limit={1} />
-        <Flex direction="row" alignItems="flex-start" padding={padding} flex={1}>
+        <Flex direction="row" alignItems="flex-start" padding={padding}>
           <Flex direction="column" flex={1}>
             { !!(card.text || card.flavor) && <CardText text={card.text} flavor={card.flavor} aspectId={card.aspect_id} /> }
           </Flex>
@@ -275,11 +275,19 @@ function CardBody({ card, padding, problem, count, detail }: Props & { padding?:
             </Box>
           ) }
         </Flex>
-        <FooterInfo card={card} />
+
+        { !!detail && (
+          <Flex direction="column" flex={1} alignItems="flex-start" justifyContent="flex-end" margin={2}>
+            <FooterInfo card={card} />
+          </Flex>
+        )}
       </Flex>
-      <Flex direction="column" alignItems="flex-end" justifyContent="space-between">
-        { !!card.imagesrc && <Box paddingLeft={2}><CardImage title={card.name || 'Card'} size={detail ? 'large' : 'small'} url={card.imagesrc} /></Box> }
-        { !!count && <CardCount count={count} /> }
+      <Flex direction="column" alignItems="flex-start" justifyContent="space-between">
+        { !!card.imagesrc && (
+          <Box margin={2} marginLeft={detail ? 2 : [0, 0, 2]}>
+            <CardImage title={card.name || 'Card'} size={detail ? 'large' : 'small'} url={card.imagesrc} />
+          </Box>
+        ) }
       </Flex>
   </Flex>
   );
@@ -325,23 +333,25 @@ export function useCardModal(slots?: Slots, setSlots?: (code: string, count: num
     showModal,
     <Modal key="modal" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent maxW={['90%', '90%', '90%', '800px']} maxH="700px">
+      <ModalContent maxW={['90%', '90%', '90%', '800px']}>
         <ModalHeader>
           <Box paddingRight={8}>
             { !!card && <CardHeader card={card} problem={problem} /> }
           </Box>
         </ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
+        <ModalBody overflowY="scroll">
           <Box paddingBottom={2}>
             {!!card && <CardBody card={card} problem={problem} count={setSlots ? undefined : count}/> }
           </Box>
         </ModalBody>
-        { !!setSlots && !!card?.id && !!slots && (
-          <ModalFooter justifyContent="flex-end">
-            <CountControls onClose={onClose} slots={slots} setSlots={setSlots} code={card.id} countMode={countMode} />
-          </ModalFooter>
-        ) }
+        <ModalFooter justifyContent="space-between">
+          { !!card && <FooterInfo card={card} /> }
+          { !!card?.id && !!slots && (
+            !!setSlots ? <CountControls onClose={onClose} slots={slots} setSlots={setSlots} code={card.id} countMode={countMode} /> :
+            <CardCount count={count} />
+          ) }
+        </ModalFooter>
       </ModalContent>
     </Modal>
   ];
