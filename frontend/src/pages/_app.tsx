@@ -18,23 +18,13 @@ initTranslation(i18n)
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const locale = router.locale || router.defaultLocale;
-  const firstRender = useRef(true);
-  if (firstRender.current && locale && pageProps?.translation) {
-    // load the translations for the locale
-    i18n.load(locale, pageProps.translation);
-    i18n.activate(locale);
-    // render only once
-    firstRender.current = false;
-  }
+  const locale = router.locale || router.defaultLocale || 'en';
   useEffect(() => {
-    if (pageProps?.translation && locale) {
-      i18n.load(locale, pageProps.translation);
+    getTranslation(locale).then(translation => {
+      i18n.load(locale, translation);
       i18n.activate(locale);
-      firstRender.current = false;
-
-    }
-  }, [locale, pageProps?.translation])
+    });
+  }, [locale])
 
   return (
     <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
@@ -53,15 +43,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-MyApp.getInitialProps = async(appContext: AppContext) => {
-  const original = App.getInitialProps(appContext);
-  const locale = appContext.ctx.locale || 'en';
-  const translation = await getTranslation(locale);
-  return {
-    ...original,
-    pageProps: {
-      translation,
-    },
-  };
-}
 export default MyApp;

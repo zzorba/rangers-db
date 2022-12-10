@@ -1,8 +1,5 @@
 import type { I18n } from '@lingui/core'
-import { GetStaticProps, GetStaticPropsContext } from 'next';
 import { en, de, it } from 'make-plural/plurals'
-import { omit } from 'lodash';
-import { ReactComponentElement } from 'react';
 
 export type LOCALES = 'en' | 'de' | 'it' | 'pseudo';
 //anounce which locales we are going to use and connect them to approprite plural rules
