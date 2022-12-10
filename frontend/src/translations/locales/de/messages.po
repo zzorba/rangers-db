@@ -20,23 +20,23 @@ msgstr "WAH"
 
 #: src/components/FriendRequests.tsx:115
 msgid "Accept"
-msgstr ""
+msgstr "Annehmen"
 
 #: src/components/Profile.tsx:104
 msgid "Allow people to view my decks"
-msgstr ""
+msgstr "Anderen erlauben meine Decks anzusehen"
 
 #: src/components/Register.tsx:56
 msgid "Already have an account? <0>Login</0> now."
-msgstr ""
+msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 
 #: src/pages/decks/index.tsx:17
 msgid "Are you sure you want to delete the '{0}' deck?"
-msgstr ""
+msgstr "Bist du sicher, dass du das '{0}' Deck löschen möchtest?"
 
 #: src/pages/index.tsx:26
 msgid "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
-msgstr ""
+msgstr "Da diese Webseite noch sehr neu ist, können Features in nächster Zeit hinzugefügt oder wieder entfernt werden, und die gesamte Seite wird voraussichtlich wegen Wartungen hin und wieder offline gehen. Daten könnten dabei <0>verloren gehen</0>."
 
 #: src/lib/hooks.ts:156
 msgid "Awareness"
@@ -44,99 +44,105 @@ msgstr "Wahrnehmung"
 
 #: src/components/Deck.tsx:308
 msgid "Background"
-msgstr ""
+msgstr "Vorgeschichte"
 
 #: src/components/Deck.tsx:308
 msgid "Background: {backgroundName}"
-msgstr ""
+msgstr "Vorgeschichte: {backgroundName}"
 
 #: src/components/EditableTextInput.tsx:17
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: src/components/FriendStatusComponent.tsx:63
 msgid "Cancel Friend Request"
-msgstr ""
+msgstr "Freundschaftsanfrage zurücknehmen"
+
+
 
 #: src/components/FriendStatusComponent.tsx:69
 msgid "Cancel Friendship"
-msgstr ""
+msgstr "Freundschaft beenden"
+
 
 #: src/components/NavBar.tsx:41
 #: src/pages/cards/index.tsx:16
 msgid "Cards"
-msgstr ""
+msgstr "Karten"
+
 
 #: src/components/DeckEdit.tsx:104
 msgid "Choose {0}"
-msgstr ""
+msgstr "Wähle {0}"
+
 
 #: src/lib/hooks.ts:121
 msgid "Chosen aspects are invalid."
-msgstr ""
+msgstr "Gewählte Aspekte sind nicht zulässig."
 
 #: src/components/FriendStatusComponent.tsx:57
 msgid "Confirm Friend"
-msgstr ""
+msgstr "Freundschaft bestätigen"
+
 
 #: src/lib/hooks.ts:135
 #: src/lib/hooks.ts:136
 msgid "Contains too many cards that do not match your chosen background."
-msgstr ""
+msgstr "Enthält zu viele Karten, die nicht zur gewählten Vorgeschichte passen."
 
 #: src/components/Deck.tsx:477
 msgid "Copy"
-msgstr ""
+msgstr "Kopieren"
 
 #: src/components/DeckEdit.tsx:618
 msgid "Create"
-msgstr ""
+msgstr "Erstellen"
 
 #: src/pages/decks/edit/[did].tsx:48
 msgid "Deck"
-msgstr ""
+msgstr "Deck"
 
 #: src/pages/decks/search.tsx:14
 msgid "Deck search"
-msgstr ""
+msgstr "Deck-Suche"
 
 #: src/components/NavBar.tsx:49
 msgid "Decks"
-msgstr ""
+msgstr "Decks"
 
 #: src/components/Deck.tsx:588
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: src/pages/decks/index.tsx:95
 msgid "Delete deck?"
-msgstr ""
+msgstr "Deck löschen?"
 
 #: src/components/Login.tsx:53
 #: src/components/ResetPassword.tsx:34
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Hast du noch keinen Account?"
 
 #: src/components/Login.tsx:32
 #: src/components/Register.tsx:35
 msgid "E-mail Address"
-msgstr ""
+msgstr "E-Mail-Adresse"
 
 #: src/components/Deck.tsx:467
 #: src/components/Deck.tsx:587
 #: src/components/EditableTextInput.tsx:30
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: src/components/Login.tsx:28
 #: src/components/Profile.tsx:68
 #: src/components/Register.tsx:31
 msgid "Email"
-msgstr ""
+msgstr "E-Mail"
 
 #: src/components/NavBar.tsx:86
 msgid "English"
-msgstr ""
+msgstr "Englisch"
 
 #: src/components/AspectCounter.tsx:14
 #: src/lib/hooks.ts:165
@@ -158,142 +164,142 @@ msgstr "Ruhe"
 
 #: src/components/Login.tsx:51
 msgid "Forgot Password"
-msgstr ""
+msgstr "Passwort vergessen"
 
 #: src/components/FriendRequests.tsx:111
 msgid "Friend Requests"
-msgstr ""
+msgstr "Freundschaftsanfragen"
 
 #: src/components/FriendRequests.tsx:138
 msgid "Friends"
-msgstr ""
+msgstr "Freunde"
 
 #: src/components/NavBar.tsx:87
 msgid "German"
-msgstr ""
+msgstr "Deutsch"
 
 #: src/components/Profile.tsx:82
 msgid "Handle"
-msgstr ""
+msgstr "Anzeigename"
 
 #: src/pages/decks/search.tsx:19
 msgid "However, you can share links to your individual decks to inspire others."
-msgstr ""
+msgstr "Jedoch kannst du Links zu deinen einzelnen Decks teilen, um andere zu inspirieren."
 
 #: src/components/NavBar.tsx:88
 msgid "Italian"
-msgstr ""
+msgstr "Italienisch"
 
 #: src/components/Login.tsx:48
 #: src/pages/login.tsx:14
 msgid "Login"
-msgstr ""
+msgstr "Anmeldung"
 
 #: src/components/NavBar.tsx:45
 #: src/pages/decks/index.tsx:112
 msgid "My Decks"
-msgstr ""
+msgstr "Meine Decks"
 
 #: src/components/DeckEdit.tsx:582
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: src/components/NavBar.tsx:218
 msgid "New cards are available"
-msgstr ""
+msgstr "Neue Karten sind verfügbar"
 
 #: src/components/DeckEdit.tsx:572
 #: src/pages/decks/index.tsx:113
 msgid "New deck"
-msgstr ""
+msgstr "Neues Deck"
 
 #: src/pages/decks/index.tsx:134
 msgid "Next"
-msgstr ""
+msgstr "Nächste Seite"
 
 #: src/lib/hooks.ts:129
 msgid "Not enough background cards."
-msgstr ""
+msgstr "Nicht genug Vorgeschichte-Karten."
 
 #: src/lib/hooks.ts:134
 msgid "Not enough outside interest cards."
-msgstr ""
+msgstr "Nicht genug Hobby-Karten."
 
 #: src/lib/hooks.ts:124
 msgid "Not enough personality cards."
-msgstr ""
+msgstr "Nicht genug Eigenarten-Karten."
 
 #: src/lib/hooks.ts:131
 msgid "Not enough specialty cards."
-msgstr ""
+msgstr "Nicht genug Expertise-Karten."
 
 #: src/components/Deck.tsx:493
 msgid "Not set"
-msgstr ""
+msgstr "Nicht festgelegt"
 
 #: src/components/DeckEdit.tsx:151
 msgid "One aspect must be set to 1."
-msgstr ""
+msgstr "Ein Aspekt muss auf 1 gesetzt werden."
 
 #: src/components/DeckEdit.tsx:158
 msgid "One aspect must be set to 3."
-msgstr ""
+msgstr "Ein Aspekt muss auf 3 gesetzt werden."
 
 #: src/components/Deck.tsx:367
 msgid "One of the chosen background cards is counting towards outside interest."
-msgstr ""
+msgstr "Eine der ausgewählten Vorgeschichte-Karten zählt als Hobby."
 
 #: src/components/Deck.tsx:374
 msgid "One of the chosen specialty cards is counting towards outside interest."
-msgstr ""
+msgstr "Eine der ausgewählten Expertise-Karten zählt als Hobby."
 
 #: src/components/DeckEdit.tsx:153
 msgid "Only one aspect can be set to 1."
-msgstr ""
+msgstr "Nur ein Aspekt kann auf 1 gesetzt werden."
 
 #: src/components/DeckEdit.tsx:160
 msgid "Only one aspect can be set to 3."
-msgstr ""
+msgstr "Nur ein Aspekt kann auf 3 gesetzt werden."
 
 #: src/components/Deck.tsx:332
 msgid "Other"
-msgstr ""
+msgstr "Andere"
 
 #: src/components/Deck.tsx:323
 msgid "Outside Interest"
-msgstr ""
+msgstr "Hobby"
 
 #: src/lib/hooks.ts:149
 msgid "Outside interest cards cannot have the Expert trait."
-msgstr ""
+msgstr "Hobby-Karten können nicht das Merkmal Experte haben."
 
 #: src/components/Login.tsx:38
 #: src/components/Login.tsx:43
 #: src/components/Register.tsx:41
 #: src/components/Register.tsx:46
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: src/components/FriendRequests.tsx:128
 msgid "Pending Requests"
-msgstr ""
+msgstr "Ausstehende Freundschaftsanfragen"
 
 #: src/components/Deck.tsx:300
 msgid "Personality"
-msgstr ""
+msgstr "Eigenarten"
 
 #: src/pages/decks/index.tsx:130
 msgid "Previous"
-msgstr ""
+msgstr "Vorherige Seite"
 
 #: src/components/NavBar.tsx:39
 #: src/pages/profile.tsx:13
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: src/components/NavBar.tsx:93
 msgid "Pseudo"
-msgstr ""
+msgstr "Pseudonym"
 
 #: src/components/NavBar.tsx:158
 #: src/components/PageHeading.tsx:10
@@ -303,34 +309,34 @@ msgstr ""
 #: src/pages/decks/view/[did]/index.tsx:35
 #: src/pages/index.tsx:12
 msgid "RangersDB"
-msgstr ""
+msgstr "RangersDB"
 
 #: src/pages/register.tsx:16
 msgid "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
-msgstr ""
+msgstr "RangersDB befindet sich noch im Aufbau, weshalb viele Funktionen in der nächsten Zeit hinzugefügt oder entfernt werden könnten."
 
 #: src/components/Login.tsx:53
 #: src/components/Register.tsx:52
 #: src/pages/register.tsx:14
 msgid "Register"
-msgstr ""
+msgstr "Registrieren"
 
 #: src/components/FriendRequests.tsx:120
 msgid "Reject"
-msgstr ""
+msgstr "Ablehnen"
 
 #: src/components/FriendSearch.tsx:28
 msgid "Request friend"
-msgstr ""
+msgstr "Freundschaftsanfrage senden"
 
 #: src/components/FriendRequests.tsx:131
 #: src/components/FriendRequests.tsx:141
 msgid "Revoke"
-msgstr ""
+msgstr "Zurücknehmen"
 
 #: src/components/DeckEdit.tsx:597
 msgid "Role"
-msgstr ""
+msgstr "Berufung"
 
 #: src/components/AspectCounter.tsx:16
 #: src/lib/hooks.ts:169
@@ -339,35 +345,35 @@ msgstr "SOV"
 
 #: src/pages/decks/search.tsx:16
 msgid "Searching decks that have been shared with the community is still under construction."
-msgstr ""
+msgstr "Die Suche von mit der Community geteilten Decks befindet sich noch im Aufbau."
 
 #: src/components/FriendStatusComponent.tsx:51
 msgid "Send Friend Request"
-msgstr ""
+msgstr "Freundschaftsanfrage senden"
 
 #: src/components/Profile.tsx:99
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: src/components/NavBar.tsx:193
 msgid "Sign In"
-msgstr ""
+msgstr "Einloggen"
 
 #: src/components/NavBar.tsx:182
 msgid "Sign Out"
-msgstr ""
+msgstr "Ausloggen"
 
 #: src/components/NavBar.tsx:206
 msgid "Sign Up"
-msgstr ""
+msgstr "Registrieren"
 
 #: src/components/Deck.tsx:316
 msgid "Specialty"
-msgstr ""
+msgstr "Expertise"
 
 #: src/components/Deck.tsx:316
 msgid "Specialty: {specialtyName}"
-msgstr ""
+msgstr "Expertise: {specialtyName}"
 
 #: src/lib/hooks.ts:168
 msgid "Spirit"
@@ -375,128 +381,128 @@ msgstr "Souveränität"
 
 #: src/components/EditableTextInput.tsx:16
 msgid "Submit"
-msgstr ""
+msgstr "Veröffentlichen"
 
 #: src/components/Footer.tsx:27
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
-msgstr ""
+msgstr "Die auf dieser Seite dargestellten Informationen über Earthborne Rangers, sowohl schriftlich als auch graphisch, unterliegen den Urheberrechten von Earthborne Games. Diese Website wird nicht von gestellt, befürwortet, unterstützt von, oder ist in irgendeiner Weise zugehörig zu Earthborne Rangers."
 
 #: src/pages/register.tsx:19
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
-msgstr ""
+msgstr "Die Webseite wird voraussichtlich wegen Wartungen in der nächsten Zeit hin und wieder offline gehen. Daten könnten dabei <0>verloren gehen</0>."
 
 #: src/lib/hooks.ts:145
 msgid "There are too many cards with this card's name in your deck."
-msgstr ""
+msgstr "Es sind zu viele Karten mit diesem Namen in deinem Deck."
 
 #: src/lib/hooks.ts:140
 msgid "There are too many outside interest cards in the deck."
-msgstr ""
+msgstr "Es sind zu viele Hobby-Karten in deinem Deck."
 
 #: src/pages/index.tsx:29
 msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
-msgstr ""
+msgstr "Die Webseite sollte sich jedoch schnell stabilisieren, und ich werde diese Notiz entfernen, sobald ich mit dem Stand der Dinge zufrieden bin."
 
 #: src/lib/hooks.ts:148
 msgid "This card's aspect requirement is not satisfied by your chosen aspects."
-msgstr ""
+msgstr "Die Aspekt-Voraussetzung dieser Karte wird von deinen gewählten Aspekten nicht erfüllt."
 
 #: src/lib/hooks.ts:147
 msgid "This role card does not match your chosen specialty."
-msgstr ""
+msgstr "Diese Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 
 #: src/pages/index.tsx:23
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
-msgstr ""
+msgstr "Diese Webseite befindet sich noch in der Bearbeitung, aber du kannst die Liste der <0>veröffentlichten Karten</0> einsehen, dich <1>registrieren</1> und mit dem Bau von <2>Decks</2> anfangen."
 
 #: src/components/NavBar.tsx:147
 msgid "Toggle Navigation"
-msgstr ""
+msgstr "XXXX"
 
 #: src/lib/hooks.ts:125
 msgid "Too many AWA personality cards."
-msgstr ""
+msgstr "Zu viele WAH-Eigenarten-Karten."
 
 #: src/lib/hooks.ts:128
 msgid "Too many FIT personality cards."
-msgstr ""
+msgstr "Zu viele FIT-Eigenarten-Karten."
 
 #: src/lib/hooks.ts:127
 msgid "Too many FOC personality cards."
-msgstr ""
+msgstr "Zu viele RUH-Eigenarten-Karten."
 
 #: src/lib/hooks.ts:126
 msgid "Too many SPI personality cards."
-msgstr ""
+msgstr "Zu viele SOV-Eigenarten-Karten."
 
 #: src/lib/hooks.ts:130
 msgid "Too many cards of the chosen background."
-msgstr ""
+msgstr "Zu viele Karten der gewählten Vorgeschichte."
 
 #: src/lib/hooks.ts:132
 msgid "Too many cards of the chosen specialty."
-msgstr ""
+msgstr "Zu viele Karten der gewählten Expertise."
 
 #: src/lib/hooks.ts:122
 msgid "Too many cards with the same name."
-msgstr ""
+msgstr "Zu viele Karten des gleichen Namens."
 
 #: src/components/DeckEdit.tsx:163
 msgid "Two aspects must be set to 2."
-msgstr ""
+msgstr "Zwei Aspekte müssen auf 2 gesetzt werden."
 
 #: src/components/NavBar.tsx:219
 msgid "Update now"
-msgstr ""
+msgstr "Jetzt bearbeiten"
 
 #: src/pages/index.tsx:21
 msgid "Welcome to RangersDB"
-msgstr ""
+msgstr "Willkommen auf RangersDB"
 
 #: src/lib/hooks.ts:146
 msgid "When starting a campaign, you must include two of each card in your deck."
-msgstr ""
+msgstr "Beim Kampagnenstart muss dein Deck zwei Kopien jeder Karte beinhalten."
 
 #: src/components/DeckList.tsx:21
 msgid "You don't seem to have any decks."
-msgstr ""
+msgstr "Du hast scheinbar keine Decks."
 
 #: src/components/DeckEdit.tsx:556
 msgid "You must choose a background."
-msgstr ""
+msgstr "Du musst eine Vorgeschichte auswählen."
 
 #: src/lib/hooks.ts:133
 msgid "You must choose a role card."
-msgstr ""
+msgstr "Du musst eine Berufungs-Karte auswählen."
 
 #: src/components/DeckEdit.tsx:562
 msgid "You must choose a role."
-msgstr ""
+msgstr "Du musst eine Berufung auswählen."
 
 #: src/components/DeckEdit.tsx:559
 msgid "You must choose a specialty."
-msgstr ""
+msgstr "Du musst eine Expertise auswählen."
 
 #: src/lib/hooks.ts:123
 msgid "You must include two of each card in your starting deck."
-msgstr ""
+msgstr "Dein Startdeck muss zwei Kopien jeder Karte beinhalten."
 
 #: src/lib/hooks.ts:138
 msgid "Your deck contains cards with aspect requirements that are not allowed."
-msgstr ""
+msgstr "Dein Deck beinhaltet Karten mit Aspekt-Voraussetzungen die nicht erlaubt sind."
 
 #: src/lib/hooks.ts:139
 msgid "Your outside interest card cannot have the Expert trait."
-msgstr ""
+msgstr "Deine Hobby-Karte kann nicht das Experte-Merkmal haben."
 
 #: src/lib/hooks.ts:137
 msgid "Your role card does not match your chosen specialty."
-msgstr ""
+msgstr "Deine Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 
 #: src/components/Card.tsx:73
 msgid "{0} of {1}"
-msgstr ""
+msgstr "{0} / {1}"
 
 #: src/components/DeckProblemComponent.tsx:29
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
-msgstr ""
+msgstr "XXXX"
