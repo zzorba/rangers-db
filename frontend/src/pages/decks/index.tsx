@@ -125,7 +125,7 @@ export default function DecksPage() {
           pagesCount={pagesCount}
           onPageChange={handlePageChange}
         >
-          <PaginationContainer align="center" justify="space-between" w="full" p={4}>
+          <PaginationContainer align="center" justify="space-between" w="full" paddingTop={4} paddingBottom={4}>
             <PaginationPrevious>
               {t`Previous`}
             </PaginationPrevious>
