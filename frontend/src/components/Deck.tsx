@@ -13,14 +13,15 @@ import {
   TextProps,
   AspectRatio,
   useBreakpointValue,
+  Link,
 } from '@chakra-ui/react';
-import { CopyIcon, DeleteIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
+import { ArrowUpIcon, CopyIcon, DeleteIcon, EditIcon, InfoIcon, PlusSquareIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
 import NextLink from 'next/link';
 import { filter, forEach, map, flatMap, uniq, pick, values } from 'lodash';
 import { t } from "@lingui/macro"
 
-import { CardFragment, DeckFragment, useCreateDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckFragment, useCreateDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckCardError, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
@@ -409,6 +410,8 @@ function ChosenRole({ role, showCard }: { role: CardFragment; showCard: ShowCard
     />
   );
 }
+
+const SHOW_UPGRADE = false;
 export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
   const { authUser } = useAuth();
   const { categories } = useLocale();
@@ -416,10 +419,32 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
   const specialty: string | undefined = typeof deck.meta.specialty === 'string' ? deck.meta.specialty : undefined;
   const hasCards = useMemo(() => values(cards).length > 0, [cards]);
   const parsedDeck = useMemo(() => parseDeck(deck, deck.meta, deck.slots, cards, categories, deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots']) : undefined), [deck, cards, categories]);
+  const [upgradeDeck] = useUpgradeDeckMutation();
+  const [upgrading, setUpgrading] = useState(false);
+  const onUpgradeDeck = useCallback(async() => {
+    if (authUser) {
+      setUpgrading(true);
+      const result = await upgradeDeck({
+        variables: {
+          deckId: deck.id,
+        },
+      });
+      setUpgrading(false);
+      if (result.errors?.length) {
+        // TODO: handle error
+      } else {
+        if (result.data?.deck?.next_deck_id) {
+          Router.push(`/decks/edit/${result.data.deck.next_deck_id}`);
+        }
+      }
+    }
+  }, [upgradeDeck, setUpgrading]);
+
   const [createDeck] = useCreateDeckMutation();
   const [copying, setCopying] = useState(false);
   const onCopyDeck = useCallback(async() => {
     if (authUser) {
+      setCopying(true);
       const result = await createDeck({
         variables: {
           userId: authUser?.uid,
@@ -454,10 +479,22 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                   <CoreIcon icon="ranger" size={18}/>&nbsp;{deck.user.handle}
                 </Text>
               ) }
+              { (!!deck.previous_deck || !!deck.next_deck) && (
+                <Flex direction="column">
+                  <Text textDecorationLine="underline">{t`Progress`}</Text>
+                  <Text>{`Current: Day ${deck.version}`}</Text>
+                  { !!deck.previous_deck && (
+                    <Link as={NextLink} href={`/decks/view/${deck.previous_deck.id}`}>{t`Previous day (${deck.previous_deck.version})`}</Link>
+                  )}
+                  { !!deck.next_deck && (
+                    <Link as={NextLink} href={`/decks/view/${deck.next_deck.id}`}>{t`Next day (${deck.next_deck.version})`}</Link>
+                  )}
+                </Flex>
+              )}
             </Flex>
             { authUser && (
               <ButtonGroup paddingTop={2} paddingBottom={4}>
-                { authUser.uid === deck.user_id && (
+                { authUser.uid === deck.user_id && !deck.next_deck && (
                   <SolidButton
                     color="blue"
                     leftIcon={<EditIcon />}
@@ -465,6 +502,16 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                     href={`/decks/edit/${deck.id}`}
                   >
                     {t`Edit`}
+                  </SolidButton>
+                ) }
+                { authUser.uid === deck.user_id && !deck.next_deck && SHOW_UPGRADE && (
+                  <SolidButton
+                    color="yellow"
+                    leftIcon={<ArrowUpIcon />}
+                    onClick={onUpgradeDeck}
+                    isLoading={upgrading}
+                  >
+                    {t`Camp`}
                   </SolidButton>
                 ) }
                 { !deck.previous_deck && (

@@ -30,7 +30,7 @@ export default function AspectCounter({ aspect, onChange, count }: { aspect: Asp
   return (
     <Flex background={`aspect.${aspect}`} flex={0.25} direction="column" alignItems="center" position="relative">
       <Flex pointerEvents="none" direction="column" alignItems="center" justifyContent="center" position="absolute" top="0" left="0" height="100%" width="100%" >
-        <AspectRatio width={onChange ? '75%' : '90%'} ratio={1}>
+        <AspectRatio width={onChange ? '75%' : '70%'} ratio={1}>
           <CoreIcon icon={`${aspect.toLowerCase()}_chakra`} size={50} color="#FFFFFF33" />
         </AspectRatio>
       </Flex>

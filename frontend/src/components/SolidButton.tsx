@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from '@chakra-ui/react';
 import React from 'react';
 
-export type SolidButtonColor = 'blue' | 'orange' | 'gray' | 'red';
+export type SolidButtonColor = 'blue' | 'yellow' | 'orange' | 'gray' | 'red';
 export default function SolidButton({ color, ...props }: ButtonProps & { color: SolidButtonColor; href?: string }) {
   return (
     <Button

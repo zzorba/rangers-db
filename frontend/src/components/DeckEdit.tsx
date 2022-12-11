@@ -39,7 +39,7 @@ import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap } from '../lib/hooks';
-import { CardRow, useCardModal } from './Card';
+import { CardRow, ShowCard, useCardModal } from './Card';
 import { SimpleCardList } from './CardList';
 import { CountControls, CountToggle } from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
@@ -212,43 +212,12 @@ function useChooseRoleModal(
   ];
 }
 
-export default function DeckEdit({ deck, cards }: Props) {
-  const [stats, setStats] = useState<AspectStats>(pick(deck, ['awa', 'fit', 'foc', 'spi']));
-  const [slots, setSlots] = useState<Slots>(deck.slots || {});
-  const updateSlots = useCallback((code: string, count: number) => {
-    const newSlots = { ...slots };
-    if (!count) {
-      delete newSlots[code];
-      setSlots(newSlots);
-    } else {
-      newSlots[code] = count;
-      setSlots(newSlots);
-    }
-  }, [slots, setSlots]);
-  const [showCard, cardModal] = useCardModal(slots, updateSlots, !deck.previous_deck ? 'noah' : undefined);
-  const [meta, setMeta] = useState<DeckMeta>(deck.meta || {});
-  const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
-  const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
-  const { categories } = useLocale();
-  const parsedDeck = useMemo(() => {
-    return parseDeck(
-      stats,
-      meta,
-      slots,
-      cards,
-      categories,
-      deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots']) : undefined
+function BaseDeckbuildingTabs({ cards, stats, background, specialty, showCard, slots, updateSlots }: { cards: CardsMap; stats: AspectStats; background: string | undefined; specialty: string | undefined; showCard: ShowCard; slots: Slots; updateSlots: (code: string, count: number) => void }) {
+  const renderControl = useCallback((code: string) => {
+    return (
+      <CountControls code={code} slots={slots} setSlots={updateSlots} />
     );
-  }, [stats, deck.previous_deck, categories, meta, slots, cards]);
-  const setRole = useCallback((role: string) => {
-    setMeta({
-      ...meta,
-      role,
-    });
-  }, [meta, setMeta]);
-  const [showRole, roleModal] = useChooseRoleModal(parsedDeck.specialty, cards, setRole, parsedDeck.role?.id || undefined);
-  const [aspectEditor, aspectError] = useAspectEditor(stats, setStats);
-
+  }, [slots, updateSlots]);
   const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards] = useMemo(() => {
     const pc: CardFragment[] = [];
     const bc: CardFragment[] = [];
@@ -292,6 +261,122 @@ export default function DeckEdit({ deck, cards }: Props) {
     });
     return [pc, bc, sc, oic];
   }, [cards, specialty, background, stats]);
+  return (
+    <Tabs>
+      <TabList overflowX="scroll" overflowY="hidden">
+        <Tab>{t`Personality`}</Tab>
+        <Tab>{t`Background`}</Tab>
+        <Tab>{t`Specialty`}</Tab>
+        <Tab>{t`Outside Interest`}</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>
+          <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+            {t`Select 4 different personality cards, 1 from each aspect.`}
+          </Text>
+          <SimpleCardList
+            cards={personalityCards}
+            showCard={showCard}
+            header="none"
+            renderControl={renderControl}
+          />
+        </TabPanel>
+        <TabPanel>
+          <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+            {t`Select 5 different cards from your chosen background.`}
+          </Text>
+          <SimpleCardList
+            cards={backgroundCards}
+            showCard={showCard}
+            header="aspect"
+            renderControl={renderControl}
+          />
+        </TabPanel>
+        <TabPanel>
+          <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+            {t`Select 5 different cards from your chosen specialty.`}
+          </Text>
+          <SimpleCardList
+            cards={specialtyCards}
+            showCard={showCard}
+            header="aspect"
+            renderControl={renderControl}
+          />
+        </TabPanel>
+        <TabPanel>
+          <Text fontSize="md" color="gray.600" paddingBottom={1}>
+            {t`Select 1 cards from any background of specialty as your outside interest.`}
+          </Text>
+          <Text fontSize="sm" color="gray.600" fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+            {t`Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.`}
+          </Text>
+          <SimpleCardList
+            cards={outsideInterestCards}
+            showCard={showCard}
+            renderControl={renderControl}
+          />
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  );
+}
+
+function UpgradeDeckbuildingTabs({ }: { showCard: ShowCard }) {
+  return (
+    <Tabs>
+      <TabList overflowX="scroll" overflowY="hidden">
+        <Tab>{t`Unlocked rewards`}</Tab>
+        <Tab>{t`Displaced cards`}</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>
+          <Text>Rewards you unlock will go here.</Text>
+        </TabPanel>
+        <TabPanel>
+          <Text>Cards you take out of your deck will go here.</Text>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  );
+}
+
+export default function DeckEdit({ deck, cards }: Props) {
+  const [stats, setStats] = useState<AspectStats>(pick(deck, ['awa', 'fit', 'foc', 'spi']));
+  const [slots, setSlots] = useState<Slots>(deck.slots || {});
+  const updateSlots = useCallback((code: string, count: number) => {
+    const newSlots = { ...slots };
+    if (!count) {
+      delete newSlots[code];
+      setSlots(newSlots);
+    } else {
+      newSlots[code] = count;
+      setSlots(newSlots);
+    }
+  }, [slots, setSlots]);
+  const [showCard, cardModal] = useCardModal(slots, updateSlots, !deck.previous_deck ? 'noah' : undefined);
+  const [meta, setMeta] = useState<DeckMeta>(deck.meta || {});
+  const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
+  const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
+  const { categories } = useLocale();
+  const parsedDeck = useMemo(() => {
+    return parseDeck(
+      stats,
+      meta,
+      slots,
+      cards,
+      categories,
+      deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots']) : undefined
+    );
+  }, [stats, deck.previous_deck, categories, meta, slots, cards]);
+  const setRole = useCallback((role: string) => {
+    setMeta({
+      ...meta,
+      role,
+    });
+  }, [meta, setMeta]);
+  const [showRole, roleModal] = useChooseRoleModal(parsedDeck.specialty, cards, setRole, parsedDeck.role?.id || undefined);
+  const [aspectEditor, aspectError] = useAspectEditor(stats, setStats);
+
   const [name, setName] = useState(deck.name);
 
   const hasEdits: boolean = useMemo(() => {
@@ -396,9 +481,9 @@ export default function DeckEdit({ deck, cards }: Props) {
           { deck.previous_deck ? (
             <Flex direction="row" marginTop={2}>
               <AspectCounter aspect={AWA} count={deck.awa} />
+              <AspectCounter aspect={SPI} count={deck.spi} />
               <AspectCounter aspect={FIT} count={deck.fit} />
               <AspectCounter aspect={FOC} count={deck.foc} />
-              <AspectCounter aspect={SPI} count={deck.spi} />
             </Flex>
           ) : <Box maxW="md">{aspectEditor}</Box> }
           <List>
@@ -408,62 +493,19 @@ export default function DeckEdit({ deck, cards }: Props) {
           </List>
         </Box>
         <Box>
-          <Tabs>
-            <TabList overflowX="scroll" overflowY="hidden">
-              <Tab>Personality</Tab>
-              <Tab>Background</Tab>
-              <Tab>Specialty</Tab>
-              <Tab>Outside Interest</Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
-                  Select 4 different personality cards, 1 from each aspect.
-                </Text>
-                <SimpleCardList
-                  cards={personalityCards}
-                  showCard={showCard}
-                  header="none"
-                  renderControl={renderControl}
-                />
-              </TabPanel>
-              <TabPanel>
-                <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
-                  Select 5 different cards from your chosen background.
-                </Text>
-                <SimpleCardList
-                  cards={backgroundCards}
-                  showCard={showCard}
-                  header="aspect"
-                  renderControl={renderControl}
-                />
-              </TabPanel>
-              <TabPanel>
-                <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
-                  Select 5 different cards from your chosen specialty.
-                </Text>
-                <SimpleCardList
-                  cards={specialtyCards}
-                  showCard={showCard}
-                  header="aspect"
-                  renderControl={renderControl}
-                />
-              </TabPanel>
-              <TabPanel>
-                <Text fontSize="md" color="gray.600" paddingBottom={1}>
-                  Select 1 cards from any background of specialty as your outside interest.
-                </Text>
-                <Text fontSize="sm" color="gray.600" fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
-                  Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.
-                </Text>
-                <SimpleCardList
-                  cards={outsideInterestCards}
-                  showCard={showCard}
-                  renderControl={renderControl}
-                />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+          { !deck.previous_deck ? (
+            <BaseDeckbuildingTabs
+              cards={cards}
+              background={background}
+              specialty={specialty}
+              stats={stats}
+              slots={slots}
+              updateSlots={updateSlots}
+              showCard={showCard}
+            />
+          ) : (
+            <UpgradeDeckbuildingTabs showCard={showCard} />
+          )}
         </Box>
       </SimpleGrid>
       { cardModal }

@@ -42,13 +42,18 @@ msgstr "As the site is still very young, features might be added or removed duri
 msgid "Awareness"
 msgstr "Awareness"
 
-#: src/components/Deck.tsx:308
+#: src/components/Deck.tsx:309
+#: src/components/DeckEdit.tsx:268
 msgid "Background"
 msgstr "Background"
 
-#: src/components/Deck.tsx:308
+#: src/components/Deck.tsx:309
 msgid "Background: {backgroundName}"
 msgstr "Background: {backgroundName}"
+
+#: src/components/Deck.tsx:514
+msgid "Camp"
+msgstr "Camp"
 
 #: src/components/EditableTextInput.tsx:17
 msgid "Cancel"
@@ -84,15 +89,15 @@ msgstr "Confirm Friend"
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Contains too many cards that do not match your chosen background."
 
-#: src/components/Deck.tsx:477
+#: src/components/Deck.tsx:524
 msgid "Copy"
 msgstr "Copy"
 
-#: src/components/DeckEdit.tsx:618
+#: src/components/DeckEdit.tsx:660
 msgid "Create"
 msgstr "Create"
 
-#: src/pages/decks/edit/[did].tsx:48
+#: src/pages/decks/edit/[did].tsx:52
 msgid "Deck"
 msgstr "Deck"
 
@@ -104,13 +109,17 @@ msgstr "Deck search"
 msgid "Decks"
 msgstr "Decks"
 
-#: src/components/Deck.tsx:588
+#: src/components/Deck.tsx:635
 msgid "Delete"
 msgstr "Delete"
 
 #: src/pages/decks/index.tsx:95
 msgid "Delete deck?"
 msgstr "Delete deck?"
+
+#: src/components/DeckEdit.tsx:329
+msgid "Displaced cards"
+msgstr "Displaced cards"
 
 #: src/components/Login.tsx:53
 #: src/components/ResetPassword.tsx:34
@@ -122,8 +131,8 @@ msgstr "Don't have an account?"
 msgid "E-mail Address"
 msgstr "E-mail Address"
 
-#: src/components/Deck.tsx:467
-#: src/components/Deck.tsx:587
+#: src/components/Deck.tsx:504
+#: src/components/Deck.tsx:634
 #: src/components/EditableTextInput.tsx:30
 msgid "Edit"
 msgstr "Edit"
@@ -194,15 +203,15 @@ msgstr "Login"
 msgid "My Decks"
 msgstr "My Decks"
 
-#: src/components/DeckEdit.tsx:582
+#: src/components/DeckEdit.tsx:624
 msgid "Name"
 msgstr "Name"
 
-#: src/components/NavBar.tsx:218
+#: src/components/NavBar.tsx:217
 msgid "New cards are available"
 msgstr "New cards are available"
 
-#: src/components/DeckEdit.tsx:572
+#: src/components/DeckEdit.tsx:614
 #: src/pages/decks/index.tsx:113
 msgid "New deck"
 msgstr "New deck"
@@ -210,6 +219,10 @@ msgstr "New deck"
 #: src/pages/decks/index.tsx:134
 msgid "Next"
 msgstr "Next"
+
+#: src/components/Deck.tsx:490
+msgid "Next day ({0})"
+msgstr "Next day ({0})"
 
 #: src/lib/hooks.ts:129
 msgid "Not enough background cards."
@@ -227,9 +240,13 @@ msgstr "Not enough personality cards."
 msgid "Not enough specialty cards."
 msgstr "Not enough specialty cards."
 
-#: src/components/Deck.tsx:493
+#: src/components/Deck.tsx:540
 msgid "Not set"
 msgstr "Not set"
+
+#: src/components/DeckEdit.tsx:311
+msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
+msgstr "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
 
 #: src/components/DeckEdit.tsx:151
 msgid "One aspect must be set to 1."
@@ -239,11 +256,11 @@ msgstr "One aspect must be set to 1."
 msgid "One aspect must be set to 3."
 msgstr "One aspect must be set to 3."
 
-#: src/components/Deck.tsx:367
+#: src/components/Deck.tsx:368
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "One of the chosen background cards is counting towards outside interest."
 
-#: src/components/Deck.tsx:374
+#: src/components/Deck.tsx:375
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "One of the chosen specialty cards is counting towards outside interest."
 
@@ -255,11 +272,12 @@ msgstr "Only one aspect can be set to 1."
 msgid "Only one aspect can be set to 3."
 msgstr "Only one aspect can be set to 3."
 
-#: src/components/Deck.tsx:332
+#: src/components/Deck.tsx:333
 msgid "Other"
 msgstr "Other"
 
-#: src/components/Deck.tsx:323
+#: src/components/Deck.tsx:324
+#: src/components/DeckEdit.tsx:270
 msgid "Outside Interest"
 msgstr "Outside Interest"
 
@@ -278,7 +296,8 @@ msgstr "Password"
 msgid "Pending Requests"
 msgstr "Pending Requests"
 
-#: src/components/Deck.tsx:300
+#: src/components/Deck.tsx:301
+#: src/components/DeckEdit.tsx:267
 msgid "Personality"
 msgstr "Personality"
 
@@ -286,10 +305,18 @@ msgstr "Personality"
 msgid "Previous"
 msgstr "Previous"
 
+#: src/components/Deck.tsx:487
+msgid "Previous day ({0})"
+msgstr "Previous day ({0})"
+
 #: src/components/NavBar.tsx:39
 #: src/pages/profile.tsx:13
 msgid "Profile"
 msgstr "Profile"
+
+#: src/components/Deck.tsx:484
+msgid "Progress"
+msgstr "Progress"
 
 #: src/components/NavBar.tsx:93
 msgid "Pseudo"
@@ -299,7 +326,7 @@ msgstr "Pseudo"
 #: src/components/PageHeading.tsx:10
 #: src/pages/cards/[cid].tsx:30
 #: src/pages/cards/[cid].tsx:31
-#: src/pages/decks/edit/[did].tsx:48
+#: src/pages/decks/edit/[did].tsx:52
 #: src/pages/decks/view/[did]/index.tsx:35
 #: src/pages/index.tsx:12
 msgid "RangersDB"
@@ -328,7 +355,7 @@ msgstr "Request friend"
 msgid "Revoke"
 msgstr "Revoke"
 
-#: src/components/DeckEdit.tsx:597
+#: src/components/DeckEdit.tsx:639
 msgid "Role"
 msgstr "Role"
 
@@ -341,6 +368,22 @@ msgstr "SPI"
 msgid "Searching decks that have been shared with the community is still under construction."
 msgstr "Searching decks that have been shared with the community is still under construction."
 
+#: src/components/DeckEdit.tsx:308
+msgid "Select 1 cards from any background of specialty as your outside interest."
+msgstr "Select 1 cards from any background of specialty as your outside interest."
+
+#: src/components/DeckEdit.tsx:275
+msgid "Select 4 different personality cards, 1 from each aspect."
+msgstr "Select 4 different personality cards, 1 from each aspect."
+
+#: src/components/DeckEdit.tsx:286
+msgid "Select 5 different cards from your chosen background."
+msgstr "Select 5 different cards from your chosen background."
+
+#: src/components/DeckEdit.tsx:297
+msgid "Select 5 different cards from your chosen specialty."
+msgstr "Select 5 different cards from your chosen specialty."
+
 #: src/components/FriendStatusComponent.tsx:51
 msgid "Send Friend Request"
 msgstr "Send Friend Request"
@@ -349,23 +392,24 @@ msgstr "Send Friend Request"
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/NavBar.tsx:193
+#: src/components/NavBar.tsx:192
 msgid "Sign In"
 msgstr "Sign In"
 
-#: src/components/NavBar.tsx:182
+#: src/components/NavBar.tsx:181
 msgid "Sign Out"
 msgstr "Sign Out"
 
-#: src/components/NavBar.tsx:206
+#: src/components/NavBar.tsx:205
 msgid "Sign Up"
 msgstr "Sign Up"
 
-#: src/components/Deck.tsx:316
+#: src/components/Deck.tsx:317
+#: src/components/DeckEdit.tsx:269
 msgid "Specialty"
 msgstr "Specialty"
 
-#: src/components/Deck.tsx:316
+#: src/components/Deck.tsx:317
 msgid "Specialty: {specialtyName}"
 msgstr "Specialty: {specialtyName}"
 
@@ -445,9 +489,17 @@ msgstr "Too many cards with the same name."
 msgid "Two aspects must be set to 2."
 msgstr "Two aspects must be set to 2."
 
-#: src/components/NavBar.tsx:219
+#: src/components/DeckEdit.tsx:328
+msgid "Unlocked rewards"
+msgstr "Unlocked rewards"
+
+#: src/components/NavBar.tsx:218
 msgid "Update now"
 msgstr "Update now"
+
+#: src/components/Deck.tsx:512
+#~ msgid "Upgrade"
+#~ msgstr "Upgrade"
 
 #: src/pages/index.tsx:21
 msgid "Welcome to RangersDB"
@@ -461,7 +513,7 @@ msgstr "When starting a campaign, you must include two of each card in your deck
 msgid "You don't seem to have any decks."
 msgstr "You don't seem to have any decks."
 
-#: src/components/DeckEdit.tsx:556
+#: src/components/DeckEdit.tsx:598
 msgid "You must choose a background."
 msgstr "You must choose a background."
 
@@ -469,11 +521,11 @@ msgstr "You must choose a background."
 msgid "You must choose a role card."
 msgstr "You must choose a role card."
 
-#: src/components/DeckEdit.tsx:562
+#: src/components/DeckEdit.tsx:604
 msgid "You must choose a role."
 msgstr "You must choose a role."
 
-#: src/components/DeckEdit.tsx:559
+#: src/components/DeckEdit.tsx:601
 msgid "You must choose a specialty."
 msgstr "You must choose a specialty."
 

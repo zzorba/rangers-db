@@ -2,6 +2,8 @@ fragment Deck on rangers_deck {
   id
   user_id
   slots
+  side_slots
+  version
   name
   description
   awa
@@ -16,11 +18,15 @@ fragment Deck on rangers_deck {
     id
     meta
     slots
+    side_slots
+    version
   }
   next_deck {
     id
     meta
     slots
+    side_slots
+    version
   }
   user {
     handle
@@ -36,6 +42,16 @@ query getDecksPageData(
       locale: { _eq: $locale }}
   ) {
     ...Card
+  }
+}
+
+mutation upgradeDeck(
+  $deckId: Int!
+) {
+  deck: rangers_upgrade_deck(args: {
+    deck_id: $deckId
+  }) {
+    next_deck_id
   }
 }
 

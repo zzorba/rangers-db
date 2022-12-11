@@ -34,7 +34,11 @@ export default function EditDeckPage() {
     if (loading) {
       return;
     }
-    if (data?.deck && !authLoading && (!authUser || data.deck.user_id !== authUser.uid)) {
+    if (data?.deck && !authLoading && (
+      !authUser ||
+      data.deck.user_id !== authUser.uid ||
+      !!data.deck.next_deck
+    )) {
       Router.push(`/decks/view/${deckId}`);
       return;
     }
