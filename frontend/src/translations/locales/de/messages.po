@@ -347,7 +347,7 @@ msgstr "Registrieren"
 
 #: src/components/Login.tsx:53
 msgid "Register now"
-msgstr "Jetzt registrieren"
+msgstr "Jetzt registrieren:"
 
 #: src/components/FriendRequests.tsx:120
 msgid "Reject"
