@@ -38,6 +38,14 @@ msgstr ""
 msgid "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
 msgstr ""
 
+#: src/components/DeckEdit.tsx:169
+#~ msgid "Aspect"
+#~ msgstr ""
+
+#: src/components/DeckEdit.tsx:169
+msgid "Aspects"
+msgstr ""
+
 #: src/lib/hooks.ts:156
 msgid "Awareness"
 msgstr ""
@@ -336,10 +344,13 @@ msgstr ""
 msgid "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
 msgstr ""
 
-#: src/components/Login.tsx:53
 #: src/components/Register.tsx:52
 #: src/pages/register.tsx:14
 msgid "Register"
+msgstr ""
+
+#: src/components/Login.tsx:53
+msgid "Register now"
 msgstr ""
 
 #: src/components/FriendRequests.tsx:120
@@ -355,6 +366,7 @@ msgstr ""
 msgid "Revoke"
 msgstr ""
 
+#: src/components/DeckEdit.tsx:469
 #: src/components/DeckEdit.tsx:639
 msgid "Role"
 msgstr ""

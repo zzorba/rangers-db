@@ -38,6 +38,14 @@ msgstr "Are you sure you want to delete the '{0}' deck?"
 msgid "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
 msgstr "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
 
+#: src/components/DeckEdit.tsx:169
+#~ msgid "Aspect"
+#~ msgstr "Aspect"
+
+#: src/components/DeckEdit.tsx:169
+msgid "Aspects"
+msgstr "Aspects"
+
 #: src/lib/hooks.ts:156
 msgid "Awareness"
 msgstr "Awareness"
@@ -336,11 +344,14 @@ msgstr "RangersDB"
 msgid "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
 msgstr "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
 
-#: src/components/Login.tsx:53
 #: src/components/Register.tsx:52
 #: src/pages/register.tsx:14
 msgid "Register"
 msgstr "Register"
+
+#: src/components/Login.tsx:53
+msgid "Register now"
+msgstr "Register now"
 
 #: src/components/FriendRequests.tsx:120
 msgid "Reject"
@@ -355,6 +366,7 @@ msgstr "Request friend"
 msgid "Revoke"
 msgstr "Revoke"
 
+#: src/components/DeckEdit.tsx:469
 #: src/components/DeckEdit.tsx:639
 msgid "Role"
 msgstr "Role"

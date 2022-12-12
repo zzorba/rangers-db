@@ -166,7 +166,7 @@ function useAspectEditor(stats: AspectStats, setStats: (stats: AspectStats) => v
   }, [stats]);
   return [
     <Flex direction="column" key="aspects" marginBottom={3}>
-      <FormLabel>Aspects</FormLabel>
+      <FormLabel>{t`Aspects`}</FormLabel>
       <Flex direction="row">
         <AspectCounter aspect={AWA} count={stats.awa} onChange={setAwa} />
         <AspectCounter aspect={SPI} count={stats.spi} onChange={setSpi} />
@@ -466,7 +466,7 @@ export default function DeckEdit({ deck, cards }: Props) {
             hideLabels
           />
           <FormControl>
-            <FormLabel>Role</FormLabel>
+            <FormLabel>{t`Role`}</FormLabel>
             <DeckProblemComponent limit={1} errors={parsedDeck.roleProblems} />
             { parsedDeck.role ? (
               <Box _hover={{ bg: "gray.50" }} cursor="pointer" onClick={showRole}>
