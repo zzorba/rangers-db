@@ -1,38 +1,4 @@
-fragment Deck on rangers_deck {
-  id
-  user_id
-  slots
-  side_slots
-  version
-  name
-  description
-  awa
-  spi
-  fit
-  foc
-  created_at
-  updated_at
-  published
-  meta
-  previous_deck {
-    id
-    meta
-    slots
-    side_slots
-    version
-  }
-  next_deck {
-    id
-    meta
-    slots
-    side_slots
-    version
-  }
-  user {
-    handle
-  }
-}
-
+# import Deck from 'fragments.graphql'
 
 query getDecksPageData(
   $locale: String
@@ -49,7 +15,8 @@ mutation upgradeDeck(
   $deckId: Int!
 ) {
   deck: rangers_upgrade_deck(args: {
-    deck_id: $deckId
+    deck_id: $deckId,
+    upgrade_data: {}
   }) {
     next_deck_id
   }
@@ -97,7 +64,6 @@ query getDeck(
 }
 
 mutation createDeck(
-  $userId: String!,
   $name: String!,
   $foc: Int!,
   $fit: Int!,
@@ -108,7 +74,6 @@ mutation createDeck(
 ) {
   deck: insert_rangers_deck_one(
     object: {
-      user_id: $userId
       name: $name
       foc: $foc
       fit: $fit

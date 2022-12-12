@@ -438,7 +438,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
         }
       }
     }
-  }, [upgradeDeck, setUpgrading]);
+  }, [authUser, deck.id, upgradeDeck, setUpgrading]);
 
   const [createDeck] = useCreateDeckMutation();
   const [copying, setCopying] = useState(false);
@@ -447,7 +447,6 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
       setCopying(true);
       const result = await createDeck({
         variables: {
-          userId: authUser?.uid,
           name: `${deck.name} (Copy)`,
           foc: deck.foc,
           fit: deck.fit,

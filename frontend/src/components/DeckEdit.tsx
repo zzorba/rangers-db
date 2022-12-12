@@ -558,7 +558,6 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
     ];
     const result = await createDeck({
       variables: {
-        userId: authUser?.uid,
         name: deckName,
         ...stats,
         meta: {

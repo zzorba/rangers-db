@@ -30,7 +30,7 @@ msgstr ""
 msgid "Already have an account? <0>Login</0> now."
 msgstr ""
 
-#: src/pages/decks/index.tsx:17
+#: src/pages/decks/index.tsx:19
 msgid "Are you sure you want to delete the '{0}' deck?"
 msgstr ""
 
@@ -59,8 +59,12 @@ msgstr ""
 msgid "Background: {backgroundName}"
 msgstr ""
 
-#: src/components/Deck.tsx:514
+#: src/components/Deck.tsx:513
 msgid "Camp"
+msgstr ""
+
+#: src/pages/campaigns/index.tsx:52
+msgid "Campaigns"
 msgstr ""
 
 #: src/components/EditableTextInput.tsx:17
@@ -75,7 +79,7 @@ msgstr ""
 msgid "Cancel Friendship"
 msgstr ""
 
-#: src/components/NavBar.tsx:41
+#: src/components/NavBar.tsx:50
 #: src/pages/cards/index.tsx:16
 msgid "Cards"
 msgstr ""
@@ -97,11 +101,12 @@ msgstr ""
 msgid "Contains too many cards that do not match your chosen background."
 msgstr ""
 
-#: src/components/Deck.tsx:524
+#: src/components/Deck.tsx:523
 msgid "Copy"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:660
+#: src/components/Campaign.tsx:67
+#: src/components/DeckEdit.tsx:659
 msgid "Create"
 msgstr ""
 
@@ -113,15 +118,15 @@ msgstr ""
 msgid "Deck search"
 msgstr ""
 
-#: src/components/NavBar.tsx:49
+#: src/components/NavBar.tsx:54
 msgid "Decks"
 msgstr ""
 
-#: src/components/Deck.tsx:635
+#: src/components/Deck.tsx:634
 msgid "Delete"
 msgstr ""
 
-#: src/pages/decks/index.tsx:95
+#: src/pages/decks/index.tsx:71
 msgid "Delete deck?"
 msgstr ""
 
@@ -139,8 +144,8 @@ msgstr ""
 msgid "E-mail Address"
 msgstr ""
 
-#: src/components/Deck.tsx:504
-#: src/components/Deck.tsx:634
+#: src/components/Deck.tsx:503
+#: src/components/Deck.tsx:633
 #: src/components/EditableTextInput.tsx:30
 msgid "Edit"
 msgstr ""
@@ -151,7 +156,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: src/components/NavBar.tsx:86
+#: src/components/NavBar.tsx:91
 msgid "English"
 msgstr ""
 
@@ -185,7 +190,7 @@ msgstr ""
 msgid "Friends"
 msgstr ""
 
-#: src/components/NavBar.tsx:87
+#: src/components/NavBar.tsx:92
 msgid "German"
 msgstr ""
 
@@ -197,7 +202,7 @@ msgstr ""
 msgid "However, you can share links to your individual decks to inspire others."
 msgstr ""
 
-#: src/components/NavBar.tsx:88
+#: src/components/NavBar.tsx:93
 msgid "Italian"
 msgstr ""
 
@@ -206,29 +211,37 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: src/components/NavBar.tsx:45
-#: src/pages/decks/index.tsx:112
+#: src/components/NavBar.tsx:46
+msgid "My Campaigns"
+msgstr ""
+
+#: src/components/NavBar.tsx:42
+#: src/pages/decks/index.tsx:85
 msgid "My Decks"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:624
+#: src/components/DeckEdit.tsx:623
 msgid "Name"
 msgstr ""
 
-#: src/components/NavBar.tsx:217
+#: src/components/Campaign.tsx:53
+msgid "New campaign"
+msgstr ""
+
+#: src/components/NavBar.tsx:222
 msgid "New cards are available"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:614
-#: src/pages/decks/index.tsx:113
+#: src/components/DeckEdit.tsx:613
+#: src/pages/decks/index.tsx:86
 msgid "New deck"
 msgstr ""
 
-#: src/pages/decks/index.tsx:134
+#: src/components/PaginationWrapper.tsx:66
 msgid "Next"
 msgstr ""
 
-#: src/components/Deck.tsx:490
+#: src/components/Deck.tsx:489
 msgid "Next day ({0})"
 msgstr ""
 
@@ -248,7 +261,7 @@ msgstr ""
 msgid "Not enough specialty cards."
 msgstr ""
 
-#: src/components/Deck.tsx:540
+#: src/components/Deck.tsx:539
 msgid "Not set"
 msgstr ""
 
@@ -309,28 +322,28 @@ msgstr ""
 msgid "Personality"
 msgstr ""
 
-#: src/pages/decks/index.tsx:130
+#: src/components/PaginationWrapper.tsx:62
 msgid "Previous"
 msgstr ""
 
-#: src/components/Deck.tsx:487
+#: src/components/Deck.tsx:486
 msgid "Previous day ({0})"
 msgstr ""
 
-#: src/components/NavBar.tsx:39
+#: src/components/NavBar.tsx:40
 #: src/pages/profile.tsx:13
 msgid "Profile"
 msgstr ""
 
-#: src/components/Deck.tsx:484
+#: src/components/Deck.tsx:483
 msgid "Progress"
 msgstr ""
 
-#: src/components/NavBar.tsx:93
+#: src/components/NavBar.tsx:98
 msgid "Pseudo"
 msgstr ""
 
-#: src/components/NavBar.tsx:158
+#: src/components/NavBar.tsx:163
 #: src/components/PageHeading.tsx:10
 #: src/pages/cards/[cid].tsx:30
 #: src/pages/cards/[cid].tsx:31
@@ -367,7 +380,7 @@ msgid "Revoke"
 msgstr ""
 
 #: src/components/DeckEdit.tsx:469
-#: src/components/DeckEdit.tsx:639
+#: src/components/DeckEdit.tsx:638
 msgid "Role"
 msgstr ""
 
@@ -404,15 +417,15 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/components/NavBar.tsx:192
+#: src/components/NavBar.tsx:197
 msgid "Sign In"
 msgstr ""
 
-#: src/components/NavBar.tsx:181
+#: src/components/NavBar.tsx:186
 msgid "Sign Out"
 msgstr ""
 
-#: src/components/NavBar.tsx:205
+#: src/components/NavBar.tsx:210
 msgid "Sign Up"
 msgstr ""
 
@@ -465,7 +478,7 @@ msgstr ""
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr ""
 
-#: src/components/NavBar.tsx:147
+#: src/components/NavBar.tsx:152
 msgid "Toggle Navigation"
 msgstr ""
 
@@ -505,7 +518,7 @@ msgstr ""
 msgid "Unlocked rewards"
 msgstr ""
 
-#: src/components/NavBar.tsx:218
+#: src/components/NavBar.tsx:223
 msgid "Update now"
 msgstr ""
 
@@ -525,7 +538,7 @@ msgstr ""
 msgid "You don't seem to have any decks."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:598
+#: src/components/DeckEdit.tsx:597
 msgid "You must choose a background."
 msgstr ""
 
@@ -533,11 +546,11 @@ msgstr ""
 msgid "You must choose a role card."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:604
+#: src/components/DeckEdit.tsx:603
 msgid "You must choose a role."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:601
+#: src/components/DeckEdit.tsx:600
 msgid "You must choose a specialty."
 msgstr ""
 

@@ -30,7 +30,7 @@ msgstr "Anderen erlauben meine Decks anzusehen"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 
-#: src/pages/decks/index.tsx:17
+#: src/pages/decks/index.tsx:19
 msgid "Are you sure you want to delete the '{0}' deck?"
 msgstr "Bist du sicher, dass du das '{0}' Deck löschen möchtest?"
 
@@ -55,9 +55,13 @@ msgstr "Vorgeschichte"
 msgid "Background: {backgroundName}"
 msgstr "Vorgeschichte: {backgroundName}"
 
-#: src/components/Deck.tsx:514
+#: src/components/Deck.tsx:513
 msgid "Camp"
 msgstr "Nachtlager"
+
+#: src/pages/campaigns/index.tsx:52
+msgid "Campaigns"
+msgstr ""
 
 #: src/components/EditableTextInput.tsx:17
 msgid "Cancel"
@@ -71,7 +75,7 @@ msgstr "Freundschaftsanfrage zurücknehmen"
 msgid "Cancel Friendship"
 msgstr "Freundschaft beenden"
 
-#: src/components/NavBar.tsx:41
+#: src/components/NavBar.tsx:50
 #: src/pages/cards/index.tsx:16
 msgid "Cards"
 msgstr "Karten"
@@ -93,11 +97,12 @@ msgstr "Freundschaft bestätigen"
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Enthält zu viele Karten, die nicht zur gewählten Vorgeschichte passen."
 
-#: src/components/Deck.tsx:524
+#: src/components/Deck.tsx:523
 msgid "Copy"
 msgstr "Kopieren"
 
-#: src/components/DeckEdit.tsx:660
+#: src/components/Campaign.tsx:67
+#: src/components/DeckEdit.tsx:659
 msgid "Create"
 msgstr "Erstellen"
 
@@ -109,15 +114,15 @@ msgstr "Deck"
 msgid "Deck search"
 msgstr "Decks suchen"
 
-#: src/components/NavBar.tsx:49
+#: src/components/NavBar.tsx:54
 msgid "Decks"
 msgstr "Decks"
 
-#: src/components/Deck.tsx:635
+#: src/components/Deck.tsx:634
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/pages/decks/index.tsx:95
+#: src/pages/decks/index.tsx:71
 msgid "Delete deck?"
 msgstr "Deck löschen?"
 
@@ -135,8 +140,8 @@ msgstr "Hast du noch keinen Account?"
 msgid "E-mail Address"
 msgstr "E-Mail-Adresse"
 
-#: src/components/Deck.tsx:504
-#: src/components/Deck.tsx:634
+#: src/components/Deck.tsx:503
+#: src/components/Deck.tsx:633
 #: src/components/EditableTextInput.tsx:30
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -147,7 +152,7 @@ msgstr "Bearbeiten"
 msgid "Email"
 msgstr "E-Mail"
 
-#: src/components/NavBar.tsx:86
+#: src/components/NavBar.tsx:91
 msgid "English"
 msgstr "Englisch"
 
@@ -181,7 +186,7 @@ msgstr "Freundschaftsanfragen"
 msgid "Friends"
 msgstr "Freunde"
 
-#: src/components/NavBar.tsx:87
+#: src/components/NavBar.tsx:92
 msgid "German"
 msgstr "Deutsch"
 
@@ -193,7 +198,7 @@ msgstr "Anzeigename"
 msgid "However, you can share links to your individual decks to inspire others."
 msgstr "Du kannst aber schon Links zu deinen eigenen Decks teilen, um  andere zu inspirieren."
 
-#: src/components/NavBar.tsx:88
+#: src/components/NavBar.tsx:93
 msgid "Italian"
 msgstr "Italienisch"
 
@@ -202,29 +207,37 @@ msgstr "Italienisch"
 msgid "Login"
 msgstr "Anmeldung"
 
-#: src/components/NavBar.tsx:45
-#: src/pages/decks/index.tsx:112
+#: src/components/NavBar.tsx:46
+msgid "My Campaigns"
+msgstr ""
+
+#: src/components/NavBar.tsx:42
+#: src/pages/decks/index.tsx:85
 msgid "My Decks"
 msgstr "Meine Decks"
 
-#: src/components/DeckEdit.tsx:624
+#: src/components/DeckEdit.tsx:623
 msgid "Name"
 msgstr "Name"
 
-#: src/components/NavBar.tsx:217
+#: src/components/Campaign.tsx:53
+msgid "New campaign"
+msgstr ""
+
+#: src/components/NavBar.tsx:222
 msgid "New cards are available"
 msgstr "Neue Karten sind verfügbar"
 
-#: src/components/DeckEdit.tsx:614
-#: src/pages/decks/index.tsx:113
+#: src/components/DeckEdit.tsx:613
+#: src/pages/decks/index.tsx:86
 msgid "New deck"
 msgstr "Neues Deck"
 
-#: src/pages/decks/index.tsx:134
+#: src/components/PaginationWrapper.tsx:66
 msgid "Next"
 msgstr "Nächste Seite"
 
-#: src/components/Deck.tsx:490
+#: src/components/Deck.tsx:489
 msgid "Next day ({0})"
 msgstr "Nächster Tag ({0})"
 
@@ -244,7 +257,7 @@ msgstr "Nicht genug Eigenarten-Karten."
 msgid "Not enough specialty cards."
 msgstr "Nicht genug Expertise-Karten."
 
-#: src/components/Deck.tsx:540
+#: src/components/Deck.tsx:539
 msgid "Not set"
 msgstr "Nicht festgelegt"
 
@@ -305,28 +318,28 @@ msgstr "Ausstehende Freundschaftsanfragen"
 msgid "Personality"
 msgstr "Eigenarten"
 
-#: src/pages/decks/index.tsx:130
+#: src/components/PaginationWrapper.tsx:62
 msgid "Previous"
 msgstr "Vorherige Seite"
 
-#: src/components/Deck.tsx:487
+#: src/components/Deck.tsx:486
 msgid "Previous day ({0})"
 msgstr "Vorheriger Tag ({0})"
 
-#: src/components/NavBar.tsx:39
+#: src/components/NavBar.tsx:40
 #: src/pages/profile.tsx:13
 msgid "Profile"
 msgstr "Profil"
 
-#: src/components/Deck.tsx:484
+#: src/components/Deck.tsx:483
 msgid "Progress"
 msgstr "Fortschritt"
 
-#: src/components/NavBar.tsx:93
+#: src/components/NavBar.tsx:98
 msgid "Pseudo"
 msgstr "Pseudonym"
 
-#: src/components/NavBar.tsx:158
+#: src/components/NavBar.tsx:163
 #: src/components/PageHeading.tsx:10
 #: src/pages/cards/[cid].tsx:30
 #: src/pages/cards/[cid].tsx:31
@@ -363,7 +376,7 @@ msgid "Revoke"
 msgstr "Zurücknehmen"
 
 #: src/components/DeckEdit.tsx:469
-#: src/components/DeckEdit.tsx:639
+#: src/components/DeckEdit.tsx:638
 msgid "Role"
 msgstr "Berufung"
 
@@ -400,15 +413,15 @@ msgstr "Freundschaftsanfrage senden"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/components/NavBar.tsx:192
+#: src/components/NavBar.tsx:197
 msgid "Sign In"
 msgstr "Einloggen"
 
-#: src/components/NavBar.tsx:181
+#: src/components/NavBar.tsx:186
 msgid "Sign Out"
 msgstr "Ausloggen"
 
-#: src/components/NavBar.tsx:205
+#: src/components/NavBar.tsx:210
 msgid "Sign Up"
 msgstr "Registrieren"
 
@@ -461,7 +474,7 @@ msgstr "Diese Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr "Diese Webseite befindet sich noch im Aufbau, aber du kannst bereits die Liste <0>veröffentlichter Karten</0> einsehen, dich <1>registrieren</1> und mit dem <2>Deck-Bau</2> anfangen."
 
-#: src/components/NavBar.tsx:147
+#: src/components/NavBar.tsx:152
 msgid "Toggle Navigation"
 msgstr "Navigation umschalten"
 
@@ -501,7 +514,7 @@ msgstr "Zwei Aspekte müssen auf 2 gesetzt werden."
 msgid "Unlocked rewards"
 msgstr "Freigeschaltete Belohnungen"
 
-#: src/components/NavBar.tsx:218
+#: src/components/NavBar.tsx:223
 msgid "Update now"
 msgstr "Jetzt bearbeiten"
 
@@ -517,7 +530,7 @@ msgstr "Beim Kampagnenstart muss dein Deck zwei Kopien jeder Karte beinhalten."
 msgid "You don't seem to have any decks."
 msgstr "Du hast scheinbar keine Decks."
 
-#: src/components/DeckEdit.tsx:598
+#: src/components/DeckEdit.tsx:597
 msgid "You must choose a background."
 msgstr "Du musst eine Vorgeschichte wählen."
 
@@ -525,11 +538,11 @@ msgstr "Du musst eine Vorgeschichte wählen."
 msgid "You must choose a role card."
 msgstr "Du musst eine Berufungs-Karte wählen."
 
-#: src/components/DeckEdit.tsx:604
+#: src/components/DeckEdit.tsx:603
 msgid "You must choose a role."
 msgstr "Du musst eine Berufung wählen."
 
-#: src/components/DeckEdit.tsx:601
+#: src/components/DeckEdit.tsx:600
 msgid "You must choose a specialty."
 msgstr "Du musst eine Expertise wählen."
 

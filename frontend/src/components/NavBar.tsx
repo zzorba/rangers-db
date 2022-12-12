@@ -34,16 +34,21 @@ import { LOCALES } from '../lib/Lingui';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { useLocale } from '../lib/TranslationProvider';
 
+const SHOW_CAMPAIGNS = false;
 function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
   return useMemo(() => [
     ...(authUser ? [{ label: t`Profile`, href: '/profile' }] : []),
     {
-      label: t`Cards`,
-      href: '/cards',
-    },
-    {
       label: t`My Decks`,
       href: '/decks',
+    },
+    ...(SHOW_CAMPAIGNS ? [{
+      label: t`My Campaigns`,
+      href: '/campaigns',
+    }] : []),
+    {
+      label: t`Cards`,
+      href: '/cards',
     },
     {
       label: t`Decks`,

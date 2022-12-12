@@ -1,0 +1,44 @@
+# import Campaign from 'fragments.graphql'
+
+query getMyCampaigns(
+  $userId: String!,
+  $limit: Int!,
+  $offset: Int!
+) {
+  user: rangers_users_by_pk(id: $userId) {
+    campaigns(
+      order_by: { updated_at: desc, campaign_id: asc }
+      limit: $limit
+      offset: $offset
+    ) {
+      campaign {
+			  ...Campaign
+      }
+    }
+  }
+}
+
+query getMyCampaignsTotal(
+  $userId: String!
+) {
+  user: rangers_users_by_pk(id: $userId) {
+    campaigns_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+}
+
+
+mutation createCampaign(
+  $name: String!,
+) {
+  campaign: insert_rangers_campaign_one(
+    object: {
+      name: $name
+    }
+  ) {
+    ...Campaign
+  }
+}

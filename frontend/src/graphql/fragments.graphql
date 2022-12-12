@@ -1,0 +1,56 @@
+
+fragment Campaign on rangers_campaign {
+  id
+  name
+  rewards
+  latest_decks {
+    deck {
+      ...Deck
+    }
+    user {
+      id
+      handle
+    }
+  }
+  users {
+    user {
+      id
+      handle
+    }
+  }
+}
+
+fragment Deck on rangers_deck {
+  id
+  user_id
+  slots
+  side_slots
+  version
+  name
+  description
+  awa
+  spi
+  fit
+  foc
+  created_at
+  updated_at
+  published
+  meta
+  previous_deck {
+    id
+    meta
+    slots
+    side_slots
+    version
+  }
+  next_deck {
+    id
+    meta
+    slots
+    side_slots
+    version
+  }
+  user {
+    handle
+  }
+}
