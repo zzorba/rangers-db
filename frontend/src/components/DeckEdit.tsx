@@ -215,7 +215,7 @@ function useChooseRoleModal(
 function BaseDeckbuildingTabs({ cards, stats, background, specialty, showCard, slots, updateSlots }: { cards: CardsMap; stats: AspectStats; background: string | undefined; specialty: string | undefined; showCard: ShowCard; slots: Slots; updateSlots: (code: string, count: number) => void }) {
   const renderControl = useCallback((code: string) => {
     return (
-      <CountControls code={code} slots={slots} setSlots={updateSlots} />
+      <CountControls code={code} slots={slots} setSlots={updateSlots} countMode="noah" />
     );
   }, [slots, updateSlots]);
   const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards] = useMemo(() => {
