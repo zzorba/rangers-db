@@ -50,7 +50,7 @@ export default function Login({ redirect }: { redirect: string | undefined }) {
       </form>
       <Link as={NextLink} href="/reset-password">{t`Forgot Password`}</Link>
       <Box>
-        {t`Don't have an account?`} <Link as={NextLink} href={redirect ? `/register?redirect=${redirect}` : '/register'}>{t`Register`}</Link> now.
+        {t`Don't have an account?`} <Link as={NextLink} href={redirect ? `/register?redirect=${redirect}` : '/register'}>{t`Register now`}</Link>.
       </Box>
     </Flex>
   );
