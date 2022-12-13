@@ -84,6 +84,10 @@ msgstr ""
 msgid "Cards"
 msgstr ""
 
+#: src/components/Profile.tsx:88
+msgid "Choose handle"
+msgstr ""
+
 #: src/components/DeckEdit.tsx:104
 msgid "Choose {0}"
 msgstr ""
@@ -130,6 +134,10 @@ msgstr ""
 msgid "Delete deck?"
 msgstr ""
 
+#: src/components/DeckEdit.tsx:453
+msgid "Discard Changes"
+msgstr ""
+
 #: src/components/DeckEdit.tsx:329
 msgid "Displaced cards"
 msgstr ""
@@ -152,6 +160,7 @@ msgstr ""
 
 #: src/components/Login.tsx:28
 #: src/components/Profile.tsx:68
+#: src/components/Profile.tsx:72
 #: src/components/Register.tsx:31
 msgid "Email"
 msgstr ""
@@ -168,6 +177,10 @@ msgstr ""
 #: src/components/AspectCounter.tsx:15
 #: src/lib/hooks.ts:161
 msgid "FOC"
+msgstr ""
+
+#: src/components/FriendSearch.tsx:53
+msgid "Find new friends"
 msgstr ""
 
 #: src/lib/hooks.ts:164
@@ -243,6 +256,10 @@ msgstr ""
 
 #: src/components/Deck.tsx:489
 msgid "Next day ({0})"
+msgstr ""
+
+#: src/components/FriendSearch.tsx:78
+msgid "No results"
 msgstr ""
 
 #: src/lib/hooks.ts:129
@@ -387,6 +404,14 @@ msgstr ""
 #: src/components/AspectCounter.tsx:16
 #: src/lib/hooks.ts:169
 msgid "SPI"
+msgstr ""
+
+#: src/components/Profile.tsx:92
+msgid "Save"
+msgstr ""
+
+#: src/components/DeckEdit.tsx:452
+msgid "Save Changes"
 msgstr ""
 
 #: src/pages/decks/search.tsx:16

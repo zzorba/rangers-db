@@ -84,6 +84,10 @@ msgstr "Cancel Friendship"
 msgid "Cards"
 msgstr "Cards"
 
+#: src/components/Profile.tsx:88
+msgid "Choose handle"
+msgstr "Choose handle"
+
 #: src/components/DeckEdit.tsx:104
 msgid "Choose {0}"
 msgstr "Choose {0}"
@@ -130,6 +134,10 @@ msgstr "Delete"
 msgid "Delete deck?"
 msgstr "Delete deck?"
 
+#: src/components/DeckEdit.tsx:453
+msgid "Discard Changes"
+msgstr "Discard Changes"
+
 #: src/components/DeckEdit.tsx:329
 msgid "Displaced cards"
 msgstr "Displaced cards"
@@ -152,6 +160,7 @@ msgstr "Edit"
 
 #: src/components/Login.tsx:28
 #: src/components/Profile.tsx:68
+#: src/components/Profile.tsx:72
 #: src/components/Register.tsx:31
 msgid "Email"
 msgstr "Email"
@@ -169,6 +178,10 @@ msgstr "FIT"
 #: src/lib/hooks.ts:161
 msgid "FOC"
 msgstr "FOC"
+
+#: src/components/FriendSearch.tsx:53
+msgid "Find new friends"
+msgstr "Find new friends"
 
 #: src/lib/hooks.ts:164
 msgid "Fitness"
@@ -244,6 +257,10 @@ msgstr "Next"
 #: src/components/Deck.tsx:489
 msgid "Next day ({0})"
 msgstr "Next day ({0})"
+
+#: src/components/FriendSearch.tsx:78
+msgid "No results"
+msgstr "No results"
 
 #: src/lib/hooks.ts:129
 msgid "Not enough background cards."
@@ -388,6 +405,14 @@ msgstr "Role"
 #: src/lib/hooks.ts:169
 msgid "SPI"
 msgstr "SPI"
+
+#: src/components/Profile.tsx:92
+msgid "Save"
+msgstr "Save"
+
+#: src/components/DeckEdit.tsx:452
+msgid "Save Changes"
+msgstr "Save Changes"
 
 #: src/pages/decks/search.tsx:16
 msgid "Searching decks that have been shared with the community is still under construction."

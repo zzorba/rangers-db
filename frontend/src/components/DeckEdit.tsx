@@ -449,8 +449,8 @@ export default function DeckEdit({ deck, cards }: Props) {
           />
           { !!hasEdits && (
             <ButtonGroup paddingBottom={2} paddingTop={2}>
-              <SolidButton color="blue" onClick={saveChanges}>Save Changes</SolidButton>
-              <Button as={NextLink} href={`/decks/view/${deck.id}`}>Discard Changes</Button>
+              <SolidButton color="blue" onClick={saveChanges}>{t`Save Changes`}</SolidButton>
+              <Button as={NextLink} href={`/decks/view/${deck.id}`}>{t`Discard Changes`}</Button>
             </ButtonGroup>
           ) }
           { !!saveError && <Text color="red" paddingTop={2} paddingBottom={4}>{saveError}</Text>}
