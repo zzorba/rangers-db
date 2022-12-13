@@ -8,6 +8,78 @@ function tableName(t: string) {
   return `${process.env.DATABASE}.${t}`;
 }
 
+console.log(`
+  CREATE OR REPLACE FUNCTION ${tableName('upgrade_deck')}(deck_id integer, upgrade_data json)
+  RETURNS ${tableName('deck')}
+  LANGUAGE plpgsql
+  AS $function$
+    DECLARE
+      result ${tableName('deck')};
+      current_user_id text;
+      deck_user_id text;
+    BEGIN
+      SELECT current_setting('hasura.user') :: json ->> 'x-hasura-user-id' INTO current_user_id;
+      SELECT d.user_id FROM ${tableName('deck')} d WHERE d.id = deck_id INTO deck_user_id;
+      IF current_user_id <> deck_user_id THEN
+          RAISE EXCEPTION 'You can only upgrade your own deck.' USING ERRCODE=22000;
+      END IF;
+
+      WITH
+          base_deck as (
+            SELECT
+              d.*,
+              nextval(pg_get_serial_sequence('${tableName('deck')}', 'id')) new_deck_id
+            FROM ${tableName('deck')} d
+            WHERE
+              d.id = deck_id AND
+              d.user_id = (current_setting('hasura.user') :: json ->> 'x-hasura-user-id') AND
+              d.next_deck_id is null
+          ),
+          inserted as (
+            insert into ${tableName('deck')} (
+              id, user_id, meta, slots, side_slots, description, name, awa, spi, fit, foc, version, upgrade
+            )
+            SELECT bd.new_deck_id, bd.user_id, bd.meta, bd.slots, bd.side_slots, bd.description, bd.name, bd.awa, bd.spi, bd.fit, bd.foc, bd.version + 1, upgrade_data
+            FROM base_deck bd
+          )
+      UPDATE ${tableName('deck')} d
+      SET next_deck_id = bd.new_deck_id
+      FROM base_deck bd
+      WHERE bd.id = d.id
+      RETURNING * into result;
+
+      IF NOT FOUND THEN
+        RAISE EXCEPTION 'Cannot upgrade deck' USING ERRCODE=22000;
+      END IF;
+      return result;
+    END
+  $function$\n\n\n`
+);
+
+console.log(`
+  CREATE OR REPLACE VIEW ${tableName('latest_deck')} AS
+  SELECT
+    id as deck_id,
+    campaign_id,
+    user_id
+  FROM ${tableName('deck')}
+  WHERE next_deck_id is null;\n\n\n
+`);
+
+console.log(`
+  CREATE OR REPLACE VIEW ${tableName('user_campaign')} AS
+    SELECT
+      campaign_access.user_id,
+      campaign_access.campaign_id
+    FROM
+      ${tableName('campaign_access')}
+  UNION
+    SELECT
+      campaign.user_id,
+      campaign.id
+    FROM
+      ${tableName('campaign')};\n\n\n`)
+
 let localizedUpdatedClauses: string[] = [];
 let updatedClauses: string[] = [];
 forEach(TABLES, (schema, table) => {
