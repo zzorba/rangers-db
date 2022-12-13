@@ -50,7 +50,7 @@ export default function FriendSearch({ sendFriendRequest }: { sendFriendRequest:
       }}>
         <FormControl marginTop={2}>
           <Flex direction="row">
-            <Input placeholder='Find new friends' value={search} onChange={(e) => setSearch(e.target.value)} onSubmit={doSearch} />
+            <Input placeholder={t`Find new friends`} value={search} onChange={(e) => setSearch(e.target.value)} onSubmit={doSearch} />
             { !!search && <IconButton marginLeft={2} aria-label='Search' onClick={doSearch} icon={<SearchIcon />} />}
           </Flex>
           { !!searchError && <Text color="red">{searchError}</Text> }
@@ -75,7 +75,7 @@ export default function FriendSearch({ sendFriendRequest }: { sendFriendRequest:
               )) }
             </>
           ) : (
-            <ListItem paddingTop={2} paddingBottom={2}><Text>No results</Text></ListItem>
+            <ListItem paddingTop={2} paddingBottom={2}><Text>{t`No results`}</Text></ListItem>
         ))}
       </List>
     </Flex>

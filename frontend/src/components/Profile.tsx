@@ -69,7 +69,7 @@ export default function Profile() {
             <Input
               disabled
               value={authUser?.email}
-              placeholder="Email"
+              placeholder={t`Email`}
             />
           </FormControl>
           <form
@@ -85,11 +85,11 @@ export default function Profile() {
                   name="handle"
                   value={handle}
                   onChange={e => setHandle(e.target.value)}
-                  placeholder="Choose handle"
+                  placeholder={t`Choose handle`}
                   borderColor={setHandleError ? 'red' : undefined}
                 />
                 { (data?.profile?.handle || '') !== handle && (
-                  <SolidButton color="blue" marginLeft={2} onClick={submitHandle}>Save</SolidButton>
+                  <SolidButton color="blue" marginLeft={2} onClick={submitHandle}>{t`Save`}</SolidButton>
                 )}
               </Flex>
               { !!setHandleError && <Text color="red">{setHandleError}</Text> }
