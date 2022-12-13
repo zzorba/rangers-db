@@ -81,6 +81,7 @@ export const TABLES: { [key: string]: Table } = {
       'imagesrc',
       'position',
       'deck_limit',
+      'spoiler',
     ],
     textFields: [
       'name',

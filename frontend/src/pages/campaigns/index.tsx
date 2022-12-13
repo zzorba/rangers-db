@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { flatMap } from 'lodash';
 
@@ -9,7 +9,7 @@ import { Campaign, CampaignFragment, useGetMyCampaignsQuery, useGetMyCampaignsTo
 import { useAuth } from '../../lib/AuthContext';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
-import { CampaignList } from '../../components/Campaign';
+import { CampaignList, useNewCampaignModal } from '../../components/Campaign';
 
 export default function CampaignsList() {
   useRequireAuth();
@@ -42,24 +42,31 @@ export default function CampaignsList() {
     }
     return [];
   }, [fetchMore]);
+  const [showNewCampaign, newCampaignModal] = useNewCampaignModal();
   return (
-    <Box
-      maxW="64rem"
-      marginX="auto"
-      py={{ base: "3rem", lg: "4rem" }}
-      px={{ base: "1rem", lg: "0" }}
-    >
-      <PageHeading title={t`Campaigns`} />
-      <PaginationWrapper
-        total={totalCampaigns?.user?.campaigns_aggregate.aggregate?.count}
-        fetchData={fetchCampaigns}
+    <>
+      <Box
+        maxW="64rem"
+        marginX="auto"
+        py={{ base: "3rem", lg: "4rem" }}
+        px={{ base: "1rem", lg: "0" }}
       >
-        { (campaigns: CampaignFragment[]) => (
-            <CampaignList
-              campaigns={campaigns}
-            />
-        ) }
-      </PaginationWrapper>
-    </Box>
+        <PageHeading title={t`Campaigns`}>
+          <Button onClick={showNewCampaign}>{t`New campaign`}</Button>
+
+        </PageHeading>
+        <PaginationWrapper
+          total={totalCampaigns?.user?.campaigns_aggregate.aggregate?.count}
+          fetchData={fetchCampaigns}
+        >
+          { (campaigns: CampaignFragment[]) => (
+              <CampaignList
+                campaigns={campaigns}
+              />
+          ) }
+        </PaginationWrapper>
+      </Box>
+      { newCampaignModal }
+    </>
   );
 }

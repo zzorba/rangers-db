@@ -229,7 +229,6 @@ export default function WithSubnavigation() {
 }
 
 const DesktopNav = ({ navItems }: { navItems: NavItem[] } ) => {
-  const { authUser } = useAuth();
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
@@ -282,6 +281,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       href={href}
       role={'group'}
       display={'block'}
+      as={NextLink}
       p={2}
       rounded={'md'}
       _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
@@ -336,7 +336,8 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         align={'center'}
         _hover={{
           textDecoration: 'none',
-        }}>
+        }}
+      >
         <Text
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}>
@@ -352,7 +353,6 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           />
         )}
       </Flex>
-
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
           mt={2}
@@ -360,13 +360,13 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           borderLeft={1}
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.700')}
-          align={'start'}>
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Link>
-            ))}
+          align={'start'}
+        >
+          { children && children.map((child) => (
+            <Link key={child.label} py={2} href={child.href} as={NextLink}>
+              {child.label}
+            </Link>
+          ))}
         </Stack>
       </Collapse>
     </Stack>

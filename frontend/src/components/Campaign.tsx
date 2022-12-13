@@ -1,45 +1,129 @@
-import { Box, Flex, Heading, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
+import { Box, Text, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import React, { useCallback, useState } from 'react';
-import { CampaignFragment, useCreateCampaignMutation } from '../generated/graphql/apollo-schema';
+import { CampaignFragment, useAddFriendToCampaignMutation, useCreateCampaignMutation, useGetProfileQuery } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
-import { t } from '@lingui/macro';
+import { select, t } from '@lingui/macro';
 import SolidButton from './SolidButton';
+import FriendChooser from './FriendChooser';
+import { uniq, filter, map } from 'lodash';
+import NextLink from 'next/link';
+import Router from 'next/router';
 
-export function CampaignList({ }: { campaigns: CampaignFragment[]}) {
+
+function CampaignRow({ campaign }: { campaign: CampaignFragment }) {
+  return (
+    <ListItem as={NextLink} href={`/campaigns/${campaign.id}`}>
+      <Text>{campaign.name}</Text>
+    </ListItem>
+  );
+}
+export function CampaignList({ campaigns, }: { campaigns: CampaignFragment[]}) {
   return (
     <List>
-      <ListItem>Campaigns go here</ListItem>
+      { map(campaigns, c => <CampaignRow key={c.id} campaign={c} />) }
     </List>
   )
 }
 
+export default function CampaignDetail({ campaign }: { campaign: CampaignFragment }) {
+  return (
+    <>
+      <Text>{campaign.name}</Text>
+    </>
+  )
+}
 
-const SHOW_ASPECTS = false;
+export function useEditCampaignAccessModal(campaign: CampaignFragment): [() => void, React.ReactNode] {
+  const { authUser } = useAuth();
+  const { data, refetch } = useGetProfileQuery({
+    variables: {
+      id: authUser?.uid || '',
+    },
+    skip: !authUser,
+  });
+
+  const refreshProfile = useCallback(() => {
+    if (authUser) {
+      refetch({
+        id: authUser.uid,
+      });
+    };
+  }, [refetch, authUser]);
+}
+
 export function useNewCampaignModal(): [() => void, React.ReactNode] {
   const { authUser } = useAuth();
   const [name, setName] = useState('');
+  const { data, refetch } = useGetProfileQuery({
+    variables: {
+      id: authUser?.uid || '',
+    },
+    skip: !authUser,
+  });
+
+  const refreshProfile = useCallback(() => {
+    if (authUser) {
+      refetch({
+        id: authUser.uid,
+      });
+    };
+  }, [refetch, authUser]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [createDeck] = useCreateCampaignMutation();
+  const [createCampaign] = useCreateCampaignMutation();
+  const [addFriendToCampaign] = useAddFriendToCampaignMutation();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | undefined>();
+  const [selectedFriends, setSelectedFriends] = useState<string[]>([]);
+  const onAdd = useCallback(async(id: string) => {
+    setSelectedFriends(uniq([
+      ...selectedFriends,
+      id,
+    ]));
+    return undefined;
+  }, [selectedFriends, setSelectedFriends]);
+  const onRemove = useCallback(async(id: string) => {
+    setSelectedFriends(filter(selectedFriends, f => f !== id));
+    return undefined;
+  }, [selectedFriends, setSelectedFriends]);
   const onCreateCampaign = useCallback(async() => {
     if (!authUser) {
       return;
     }
     setSubmitting(true);
     setError(undefined);
-    const result = await createDeck({
+    const result = await createCampaign({
       variables: {
         name,
       },
     });
-    setSubmitting(false);
     if (result.errors?.length) {
       setError(result.errors[0].message);
-    } else {
-      onClose();
+      setSubmitting(false);
+      return;
     }
-  }, [createDeck, onClose, authUser, name]);
+    if (!result.data?.campaign) {
+      setError(t`Unable to create campaign at this time.`);
+      setSubmitting(false);
+      return;
+    }
+    const campaignId = result.data.campaign.id;
+    for (let i = 0; i < selectedFriends.length; i++) {
+      const userId = selectedFriends[i];
+      const fResult = await addFriendToCampaign({
+        variables: {
+          userId,
+          campaignId,
+        },
+      });
+      if (fResult.errors?.length) {
+        setError(fResult.errors[0].message);
+        setSubmitting(false);
+      }
+    }
+    setSubmitting(false);
+    Router.push(`/campaigns/${campaignId}`);
+    onClose();
+  }, [createCampaign, selectedFriends, onClose, authUser, name]);
   const showModal = useCallback(() => {
     onOpen();
   }, [onOpen]);
@@ -55,13 +139,34 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
+          <form onSubmit={e => {
+            e.preventDefault();
+            onCreateCampaign();
+          }}>
+            <FormControl marginBottom={4}>
+              <FormLabel>{t`Name`}</FormLabel>
+              <Input
+                type="name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+            </FormControl>
+            <FriendChooser
+              profile={data?.profile || undefined}
+              selection={selectedFriends}
+              add={onAdd}
+              refreshProfile={refreshProfile}
+              remove={onRemove}
+              title={t`Players`}
+            />
+          </form>
         </ModalBody>
         <ModalFooter>
           <Flex direction="row" flex={1} justifyContent="flex-end">
             <SolidButton
               color="blue"
               isLoading={submitting}
-              disabled={!!name}
+              disabled={!name}
               onClick={onCreateCampaign}
             >
               {t`Create`}

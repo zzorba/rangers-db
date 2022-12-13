@@ -56,7 +56,7 @@ a {
   font-style: normal;
   font-weight: 500;
 }
-.card-text i {
+.card-text i.card-flavor {
   color: #888888;
   font-weight: 500;
 }

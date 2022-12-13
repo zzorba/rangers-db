@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import { List, ListItem, IconButton, ButtonGroup, Text, Flex } from '@chakra-ui/react';
-import { flatMap, map } from 'lodash';
+import { filter, flatMap, map } from 'lodash';
 import { t } from '@lingui/macro';
-import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import { CheckIcon, CloseIcon, PlusSquareIcon } from '@chakra-ui/icons';
 
 import ListHeader from './ListHeader';
 import { UserInfoFragment, UserProfileFragment } from '../generated/graphql/apollo-schema';
@@ -12,19 +12,26 @@ import FriendSearch from './FriendSearch';
 
 interface Props {
   profile?: UserProfileFragment;
+  removeIds?: string[];
   refreshProfile: () => void;
+  friendActions?: FriendAction[];
 }
 
 export interface FriendAction {
   title: string;
-  icon: 'check' | 'remove';
+  icon: 'check' | 'remove' | 'add';
   onPress: (userId: string) => void;
 }
 
 function FriendActionButton({ userId, action: { onPress, title, icon } }: { userId: string; action: FriendAction }) {
   const onClick = useCallback(() => onPress(userId), [onPress, userId]);
+  const icons = {
+    check: <CheckIcon />,
+    remove: <CloseIcon />,
+    add: <PlusSquareIcon />,
+  }
   return (
-    <IconButton aria-label={title} onClick={onClick} icon={ icon === 'check' ? <CheckIcon /> : <CloseIcon /> } />
+    <IconButton aria-label={title} onClick={onClick} icon={icons[icon]} />
   );
 }
 
@@ -46,25 +53,38 @@ export function FriendLine({ user, actions }: { user: BasicUser | UserInfoFragme
   );
 }
 
-function FriendSection({ users, title, actions, children }: {
+function FriendSection({ users, title, actions, removeIds, children }: {
   users: UserInfoFragment[];
   title: string;
   actions: FriendAction[];
+  removeIds?: string[];
   children?: React.ReactNode;
 }) {
-  if (!users.length && !children) {
+  const theUsers = useMemo(() => {
+    if (!removeIds) {
+      return users;
+    }
+    const removeSet = new Set(removeIds);
+    return filter(users, u => !removeSet.has(u.id));
+  }, [users, removeIds]);
+  if (!theUsers.length && !children) {
     return null;
   }
   return (
     <List>
       <ListHeader title={title} />
-      { map(users, user => <FriendLine key={user.id} user={user} actions={actions} />) }
+      { map(theUsers, user => <FriendLine key={user.id} user={user} actions={actions} />) }
       { children }
     </List>
   )
 }
 
-export default function FriendRequestsComponent({ profile, refreshProfile }: Props) {
+export default function FriendRequestsComponent({
+  profile,
+  refreshProfile,
+  removeIds,
+  friendActions,
+}: Props) {
   const [updateFriendRequest, error] = useFirebaseFunction('social-updateFriendRequest');
   const onSubmit = useCallback(async (userId: string, action: 'request' | 'revoke') => {
     await updateFriendRequest({ userId, action });
@@ -73,10 +93,10 @@ export default function FriendRequestsComponent({ profile, refreshProfile }: Pro
   }, [updateFriendRequest, refreshProfile]);
   const sendFriendRequest = useCallback((userId: string) => {
     return onSubmit(userId, 'request');
-  }, [onSubmit])
+  }, [onSubmit]);
   const revokeFriendRequest = useCallback((userId: string) => {
     return onSubmit(userId, 'revoke');
-  }, [onSubmit])
+  }, [onSubmit]);
   const [receivedRequests, sentRequests, friends] = useMemo(() => {
     if (!profile || !profile.friends) {
       return [[], [], [], []];
@@ -137,7 +157,8 @@ export default function FriendRequestsComponent({ profile, refreshProfile }: Pro
         key="friends"
         title={t`Friends`}
         users={friends}
-        actions={[{
+        removeIds={removeIds}
+        actions={friendActions || [{
           title: t`Revoke`,
           onPress: revokeFriendRequest,
           icon: 'remove',

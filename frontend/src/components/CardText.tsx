@@ -16,7 +16,9 @@ export function useIconedText(text: string | undefined | null, flavor?: string |
         return `<span class="core-${element}"></span>`;
       }
     ).addRule(/\n/g, () => '<hr class="card-line"></hr>');
-    return parser.render(filter([text, flavor ? `<i>${flavor}</i>` : undefined], x => !!x).join('\n'));
+    const cleanText = text ? text.replace(/<f>/g, '<i class="card-flavor">').replace(/<\/f>/g, '</i>') : undefined;
+    return parser.render(
+      filter([cleanText, flavor ? `<i class="card-flavor">${flavor}</i>` : undefined], x => !!x).join('\n'));
   }, [text, flavor, aspects]);
 }
 

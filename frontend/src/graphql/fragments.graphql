@@ -2,6 +2,10 @@
 fragment Campaign on rangers_campaign {
   id
   name
+  current_location
+  current_path_terrain
+  missions
+  events
   rewards
   latest_decks {
     deck {

@@ -18,7 +18,9 @@ export async function initAnonClient(forceNew?: boolean): Promise<[ApolloClient<
         trigger: 'background',
       });
       await newPersistor.restore();
-      ANON_PURGE = () => newPersistor.purge();
+      ANON_PURGE = async() => {
+        await newPersistor.purge();
+      };
     }
     ANON_CLIENT = new ApolloClient({
       ssrMode: isServer,

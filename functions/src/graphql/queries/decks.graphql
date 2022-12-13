@@ -1,0 +1,39 @@
+fragment Deck on rangers_deck {
+  id
+  user_id
+  slots
+  name
+  description
+  awa
+  spi
+  fit
+  foc
+  created_at
+  updated_at
+  published
+  meta
+  previous_deck {
+    id
+    meta
+    slots
+  }
+  next_deck {
+    id
+    meta
+    slots
+  }
+  user {
+    handle
+  }
+}
+
+
+mutation upgradeDeck(
+  $deckId: Int!
+) {
+  deck: rangers_upgrade_deck(args: {
+    deck_id: $deckId
+  }) {
+    id
+  }
+}

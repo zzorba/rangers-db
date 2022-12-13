@@ -30,6 +30,13 @@ query getMyCampaignsTotal(
   }
 }
 
+query getCampaign(
+  $campaignId: Int!
+) {
+  campaign:rangers_campaign_by_pk(id: $campaignId) {
+    ...Campaign
+  }
+}
 
 mutation createCampaign(
   $name: String!,
@@ -40,5 +47,24 @@ mutation createCampaign(
     }
   ) {
     ...Campaign
+  }
+}
+
+mutation addFriendToCampaign(
+  $campaignId: Int!,
+  $userId: String!
+) {
+  insert_rangers_campaign_access_one(
+    object: {
+      campaign_id: $campaignId,
+      user_id: $userId
+    }
+    on_conflict: {
+      constraint: campaign_access_pkey
+      update_columns: [campaign_id, user_id]
+    }
+  ) {
+    user_id
+    campaign_id
   }
 }

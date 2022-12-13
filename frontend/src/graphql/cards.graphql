@@ -44,7 +44,17 @@ fragment Aspect on rangers_aspect_localized {
 
 query getCards($locale: String!) {
   cards: rangers_card_localized(
-    where: { locale: { _eq: $locale }}
+    where: {
+      locale: { _eq: $locale }
+      _or: [
+        {
+          spoiler: { _eq: false }
+        },
+        {
+          spoiler: { _is_null: true }
+        }
+      ]
+    }
   ) {
     ...Card
   }
@@ -78,7 +88,9 @@ query getCard($locale: String!, $cid: String!) {
 
 query getCardsUpdatedAt($locale: String!) {
   updated_at: rangers_card_updated(
-    where: { locale: { _eq: $locale }}
+    where: {
+      locale: { _eq: $locale }
+    }
   ) {
     updated_at
   }
@@ -95,7 +107,10 @@ fragment SetType on rangers_set_type_localized {
 
 query getSetNames($locale: String!) {
   sets: rangers_set_type_localized(
-    where: { locale: { _eq: $locale }}
+    where: {
+      locale: { _eq: $locale }
+
+    }
     order_by: { id: desc }
   ) {
     ...SetType
