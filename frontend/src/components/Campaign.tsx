@@ -49,6 +49,26 @@ export function useEditCampaignAccessModal(campaign: CampaignFragment): [() => v
       });
     };
   }, [refetch, authUser]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return [
+    onOpen,
+    <Modal key="access" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`New campaign`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+        </ModalBody>
+        <ModalFooter>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ];
 }
 
 export function useNewCampaignModal(): [() => void, React.ReactNode] {
@@ -123,13 +143,13 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     setSubmitting(false);
     Router.push(`/campaigns/${campaignId}`);
     onClose();
-  }, [createCampaign, selectedFriends, onClose, authUser, name]);
+  }, [createCampaign, addFriendToCampaign, selectedFriends, onClose, authUser, name]);
   const showModal = useCallback(() => {
     onOpen();
   }, [onOpen]);
   return [
     showModal,
-    <Modal key="modal" isOpen={isOpen} onClose={onClose}>
+    <Modal key="campaign" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
