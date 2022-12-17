@@ -21,12 +21,17 @@ export default function CardImage({ title, size, url }: { title: string; size: '
 }
 
 const CARD_WIDTH = 140;
-export function RoleImage({ name, url }: { name: string | undefined | null; url: string }) {
+export function RoleImage({ name, url, large }: {
+  name: string | undefined | null;
+  url: string;
+  large?: boolean;
+}) {
+  const size = large ? '80px' : '50px';
   return (
     <Box
-      width="50px"
-      minWidth="50px"
-      height="50px"
+      width={size}
+      minWidth={size}
+      height={size}
       marginRight={2}
       position="relative"
       overflow="hidden"

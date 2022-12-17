@@ -65,11 +65,27 @@ query getCards($locale: String!) {
   }
 }
 
+query getAllCards($locale: String!) {
+  cards: rangers_card_localized(
+    where: {
+      locale: { _eq: $locale }
+    }
+  ) {
+    ...Card
+  }
+  updated_at: rangers_card_updated(
+    where: { locale: { _eq: $locale }}
+  ) {
+    updated_at
+  }
+}
 
 query getRoleCards($locale: String!) {
   cards: rangers_card_localized(
     where: {
-      locale: { _eq: $locale }}
+      locale: { _eq: $locale }
+      type_id: { _eq: "role" }
+    }
   ) {
     ...Card
   }

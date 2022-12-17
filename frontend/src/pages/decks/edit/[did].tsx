@@ -4,7 +4,7 @@ import { t } from '@lingui/macro';
 import { Box } from '@chakra-ui/react'
 import Router from 'next/router';
 
-import { useGetCardsQuery, useGetDeckQuery } from '../../../generated/graphql/apollo-schema';
+import { useGetAllCardsQuery, useGetCardsQuery, useGetDeckQuery } from '../../../generated/graphql/apollo-schema';
 import { useCardsMap, useRequireAuth, useRouterPathParam } from '../../../lib/hooks';
 import LoadingPage from '../../../components/LoadingPage';
 import DeckEdit  from '../../../components/DeckEdit';
@@ -23,7 +23,7 @@ export default function EditDeckPage() {
     skip: !isReady || !deckId,
   });
   const { locale } = useLocale();
-  const { data: cardsData } = useGetCardsQuery({
+  const { data: cardsData } = useGetAllCardsQuery({
     variables: {
       locale,
     },

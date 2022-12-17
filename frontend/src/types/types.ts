@@ -54,4 +54,6 @@ export type DeckError =
   'invalid_outside_interest' |
   'outside_interest' |
   'too_many_outside_interest' |
+  'too_many_cards' |
+  'too_few_cards' |
   DeckCardError;

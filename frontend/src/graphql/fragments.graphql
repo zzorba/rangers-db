@@ -1,25 +1,29 @@
+fragment UserInfo on rangers_users {
+  id
+  handle
+}
 
 fragment Campaign on rangers_campaign {
   id
   name
+  day
   current_location
   current_path_terrain
   missions
   events
   rewards
+  calendar
   latest_decks {
     deck {
       ...Deck
     }
     user {
-      id
-      handle
+      ...UserInfo
     }
   }
-  users {
+  access {
     user {
-      id
-      handle
+      ...UserInfo
     }
   }
 }
@@ -55,6 +59,29 @@ fragment Deck on rangers_deck {
     version
   }
   user {
-    handle
+    ...UserInfo
+  }
+}
+
+fragment DeckWithCampaign on rangers_deck {
+  ...Deck
+  campaign {
+    id
+    name
+  }
+}
+
+fragment DeckWithFullCampaign on rangers_deck {
+  ...Deck
+  campaign {
+    id
+    name
+    rewards
+    latest_decks {
+      deck {
+        id
+        slots
+      }
+    }
   }
 }

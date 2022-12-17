@@ -1,15 +1,6 @@
 # import Deck from 'fragments.graphql'
-
-query getDecksPageData(
-  $locale: String
-) {
-  roleCards: rangers_card_localized(
-    where: {
-      locale: { _eq: $locale }}
-  ) {
-    ...Card
-  }
-}
+# import DeckWithCampaign from 'fragments.graphql'
+# import DeckWithFullCampaign from 'fragments.graphql'
 
 mutation upgradeDeck(
   $deckId: Int!
@@ -19,6 +10,66 @@ mutation upgradeDeck(
     upgrade_data: {}
   }) {
     next_deck_id
+  }
+}
+
+mutation setDeckCampaign(
+  $deckId: Int!,
+  $campaignId: Int!
+) {
+  campaign: rangers_set_campaign_deck(args: {
+    deck_id: $deckId,
+    new_campaign_id: $campaignId
+  }) {
+    id
+  }
+}
+
+mutation removeDeckCampaign(
+  $deckId: Int!,
+  $campaignId: Int!
+) {
+  campaign: rangers_remove_campaign_deck(args: {
+    deck_id: $deckId
+    old_campaign_id: $campaignId
+  }) {
+    id
+  }
+}
+
+
+query getMyCampaignDecks(
+  $userId: String!,
+  $limit: Int!,
+  $offset: Int!
+) {
+  decks: rangers_deck(
+    where: {
+      user_id: { _eq: $userId }
+      next_deck_id: { _is_null: true }
+      campaign_id: { _is_null: true }
+    }
+    order_by: { updated_at: desc, id: asc }
+    limit: $limit
+    offset: $offset
+  ) {
+    ...Deck
+  }
+}
+
+query getMyCampaignDecksTotal(
+  $userId: String!
+) {
+  total: rangers_deck_aggregate(
+    where: {
+      user_id: { _eq: $userId }
+      next_deck_id: { _is_null: true }
+      campaign_id: { _is_null: true }
+    }
+  ) {
+    aggregate {
+      count
+    }
   }
 }
 
@@ -36,7 +87,7 @@ query getMyDecks(
     limit: $limit
     offset: $offset
   ) {
-    ...Deck
+    ...DeckWithCampaign
   }
 }
 
@@ -44,7 +95,10 @@ query getMyDecksTotal(
   $userId: String!
 ) {
   total: rangers_deck_aggregate(
-    where: { user_id: { _eq: $userId }}
+    where: {
+      user_id: { _eq: $userId }
+      next_deck_id: { _is_null: true }
+    }
   ) {
     aggregate {
       count
@@ -56,7 +110,7 @@ query getDeck(
   $deckId: Int!
 ) {
   deck: rangers_deck_by_pk(id: $deckId) {
-    ...Deck
+    ...DeckWithFullCampaign
     user {
       handle
     }
@@ -103,7 +157,8 @@ mutation saveDeck(
   $awa: Int!,
   $spi: Int!,
   $meta: jsonb!,
-  $slots: jsonb!
+  $slots: jsonb!,
+  $sideSlots: jsonb!
 ) {
   update_rangers_deck_by_pk(
     pk_columns: { id: $id }
@@ -115,6 +170,7 @@ mutation saveDeck(
       spi: $spi,
       meta: $meta,
       slots: $slots
+      side_slots: $sideSlots,
     }
   ) {
     ...Deck

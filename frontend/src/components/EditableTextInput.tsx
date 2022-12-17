@@ -7,37 +7,42 @@ function EditableControls() {
   const {
     isEditing,
     getSubmitButtonProps,
-    getEditButtonProps,
     getCancelButtonProps,
   } = useEditableControls()
-
-  return isEditing ? (
+  if (!isEditing) {
+    return null;
+  }
+  return (
     <ButtonGroup justifyContent='center' size='sm' marginLeft={2}>
       <IconButton aria-label={t`Submit`} icon={<CheckIcon />} {...getSubmitButtonProps()} />
       <IconButton aria-label={t`Cancel`} icon={<CloseIcon />} {...getCancelButtonProps()} />
     </ButtonGroup>
-  ) : null;
+  );
 }
-function EditablePreviewWithEditButton() {
+function EditablePreviewWithEditButton({ hideEditButton }: { hideEditButton: boolean | undefined }) {
   const {
     isEditing,
     getEditButtonProps,
-  } = useEditableControls()
+  } = useEditableControls();
 
   return (
     <Flex direction="row">
-      <EditablePreview />
-      { !isEditing && <IconButton marginLeft="2em" aria-label={t`Edit`} icon={<EditIcon />} {...getEditButtonProps()} /> }
+      <EditablePreview backgroundColor={isEditing ? 'white' : undefined} />
+      { !isEditing && !hideEditButton && <IconButton marginLeft="2em" aria-label={t`Edit`} icon={<EditIcon />} {...getEditButtonProps()} /> }
     </Flex>
-  )
+  );
 }
 export default function EditableTextInput({
   value,
   placeholder,
   onChange,
+  hideEditButton,
+  disabled,
   ...otherProps
 }: Omit<EditableProps, 'textAlign' | 'defaultValue' | 'isPreviewFocusable' | 'color' | 'placeholder' | 'selectAllOnFocus' | 'onSubmit'> & {
   value: string;
+  disabled?: boolean;
+  hideEditButton?: boolean;
   placeholder?: string;
   onChange: (value: string) => void;
 }) {
@@ -50,16 +55,20 @@ export default function EditableTextInput({
       textAlign='left'
       value={liveValue}
       placeholder={placeholder}
+      disabled={disabled}
       onChange={setLiveValue}
       isPreviewFocusable
       color={!value ? 'gray.500' : undefined}
       selectAllOnFocus={false}
+      _focus={{
+        backgroundColor: 'white',
+      }}
       onSubmit={(updated) => onChange(updated)}
       {...otherProps}
     >
-      <EditablePreviewWithEditButton />
+      <EditablePreviewWithEditButton hideEditButton={hideEditButton} />
       <Flex direction="row">
-        <Input as={EditableInput} />
+        <Input backgroundColor="white" as={EditableInput} />
         <EditableControls />
       </Flex>
     </Editable>

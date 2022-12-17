@@ -1,10 +1,12 @@
-import React, { useCallback, useMemo } from 'react';
-import { forEach, map, sortBy } from 'lodash';
+import React, { useCallback, useMemo, useState } from 'react';
+import { filter, flatMap, forEach, map, sortBy } from 'lodash';
+import { t } from '@lingui/macro';
 import { CardFragment, useGetCardsQuery } from '../generated/graphql/apollo-schema';
 import { CardRow, useCardModal } from './Card';
-import { List, ListItem, Text } from '@chakra-ui/react';
+import { Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure } from '@chakra-ui/react';
 import LoadingPage from './LoadingPage';
 import { useLocale } from '../lib/TranslationProvider';
+import ListHeader from './ListHeader';
 
 function CardButtonRow({ card, showModal, children }: { card: CardFragment; showModal: (card: CardFragment) => void; children?: React.ReactNode }) {
   const onClick = useCallback(() => showModal(card), [card, showModal]);
@@ -57,7 +59,14 @@ export default function CardList() {
   );
 }
 
-export function SimpleCardList({ cards, showCard, header = 'set', renderControl }: { cards?: CardFragment[]; showCard: (card: CardFragment) => void; header?: 'aspect' | 'set' | 'none'; renderControl?: (code: string) => React.ReactNode }) {
+interface SimpleCardListProps {
+  cards?: CardFragment[];
+  showCard: (card: CardFragment) => void;
+  header?: 'aspect' | 'set' | 'none';
+  renderControl?: (card: CardFragment) => React.ReactNode;
+  emptyText?: string;
+}
+export function SimpleCardList({ cards, showCard, header = 'set', renderControl, emptyText }: SimpleCardListProps) {
   const items = useMemo(() => {
     const sorted = sortBy(cards, card => card.position);
     const items: Item[] = [];
@@ -94,17 +103,93 @@ export function SimpleCardList({ cards, showCard, header = 'set', renderControl 
     return items;
   }, [cards, header]);
   if (!items.length) {
+    if (emptyText) {
+      return (
+        <List>
+          <ListItem padding={2}>
+            <Text>{emptyText}</Text>
+          </ListItem>
+        </List>
+      )
+    }
     return <LoadingPage />;
   }
   return (
     <List>
-      {}
       { map(items, item => item.type === 'card' ?
         <CardButtonRow key={item.card.id} card={item.card} showModal={showCard}>
-          { !!renderControl && !!item.card.id && renderControl(item.card.id)}
+          { !!renderControl && !!item.card.id && renderControl(item.card)}
         </CardButtonRow> :
         <CardHeader key={item.title} title={item.title} />
       ) }
+    </List>
+  );
+}
+
+
+
+export function SpoilerCardList({
+  cards,
+  unlocked,
+  showCard,
+  renderControl,
+  upsellText,
+}: {
+  unlocked?: string[];
+  cards: CardFragment[] | undefined;
+  showCard: (card: CardFragment) => void;
+  renderControl?: (card: CardFragment) => React.ReactNode;
+  upsellText?: string;
+}) {
+  const { locale } = useLocale();
+  const [search, setSearch] = useState('');
+  const { isOpen: showAll, onOpen: onShow, onClose: onHide } = useDisclosure();
+  const unlockedCards = useMemo(() => {
+    const unlockedSet = new Set(unlocked);
+    return filter(cards, c => !!c.id && unlockedSet.has(c.id));
+  }, [unlocked, cards]);
+  const visibleCards = useMemo(() => {
+    const lowerSearch = search.toLocaleLowerCase(locale);
+    return filter(cards, c => !!showAll || !!(
+      c.name && search.length >= 2 && c.name.toLocaleLowerCase(locale).indexOf(lowerSearch) !== -1)
+    );
+  }, [cards, search, showAll, locale]);
+  return (
+    <List>
+      <ListHeader title={t`Available`} />
+      { !upsellText && (
+        <ListItem padding={2}>
+          <Text>{upsellText}</Text>
+        </ListItem>
+      ) }
+      { map(unlockedCards, c => (
+        <CardButtonRow key={c.id} card={c} showModal={showCard}>
+          { renderControl && renderControl(c) }
+        </CardButtonRow>
+      )) }
+      <ListHeader title={t`All`} />
+      <ListItem padding={2}>
+        <form onSubmit={e => {
+          e.preventDefault();
+        }}>
+          <Flex direction="row">
+            <Input
+              type="search"
+              value={search}
+              placeholder={t`Search by name`}
+              onChange={e => setSearch(e.target.value)}
+            />
+            <ButtonGroup marginLeft={2}>
+              <Button onClick={showAll ? onHide : onShow}>{showAll ? t`Hide spoilers` : t`Show all` }</Button>
+            </ButtonGroup>
+          </Flex>
+        </form>
+      </ListItem>
+      { map(visibleCards, c => (
+        <CardButtonRow key={c.id} card={c} showModal={showCard}>
+          { renderControl && renderControl(c) }
+        </CardButtonRow>
+      )) }
     </List>
   );
 }

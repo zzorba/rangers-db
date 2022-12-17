@@ -4,12 +4,13 @@ import { t } from '@lingui/macro';
 import { flatMap } from 'lodash';
 
 import PageHeading from '../../components/PageHeading';
-import { useRequireAuth } from '../../lib/hooks';
-import { Campaign, CampaignFragment, useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery } from '../../generated/graphql/apollo-schema';
+import { useCardsMap, useRequireAuth } from '../../lib/hooks';
+import { Campaign, CampaignFragment, useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
 import { useAuth } from '../../lib/AuthContext';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
 import { CampaignList, useNewCampaignModal } from '../../components/Campaign';
+import { useLocale } from '../../lib/TranslationProvider';
 
 export default function CampaignsList() {
   useRequireAuth();
@@ -42,6 +43,14 @@ export default function CampaignsList() {
     }
     return [];
   }, [fetchMore]);
+  const { locale } = useLocale();
+  const { data } = useGetRoleCardsQuery({
+    variables: {
+      locale,
+    },
+  });
+  const roleCards = useCardsMap(data?.cards);
+
   const [showNewCampaign, newCampaignModal] = useNewCampaignModal();
   return (
     <>
@@ -60,9 +69,10 @@ export default function CampaignsList() {
           fetchData={fetchCampaigns}
         >
           { (campaigns: CampaignFragment[]) => (
-              <CampaignList
-                campaigns={campaigns}
-              />
+            <CampaignList
+              campaigns={campaigns}
+              roleCards={roleCards}
+            />
           ) }
         </PaginationWrapper>
       </Box>

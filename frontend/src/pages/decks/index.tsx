@@ -1,15 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { t } from '@lingui/macro';
 import { Box, Button } from '@chakra-ui/react';
 import { useCardsMap, useRequireAuth } from '../../lib/hooks';
 import { useNewDeckModal } from '../../components/DeckEdit';
 import DeckList from '../../components/DeckList';
-import { DeckFragment, useDeleteDeckMutation, useGetDecksPageDataQuery, useGetMyDecksQuery, useGetMyDecksTotalQuery } from '../../generated/graphql/apollo-schema';
+import { DeckFragment, DeckWithCampaignFragment, useDeleteDeckMutation, useGetMyDecksQuery, useGetMyDecksTotalQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
 import PageHeading from '../../components/PageHeading';
 import { useAuth } from '../../lib/AuthContext';
-import LoadingPage from '../../components/LoadingPage';
-import { Pagination, PaginationContainer, PaginationNext, PaginationPageGroup, PaginationPrevious, usePagination } from '@ajna/pagination';
-import { useDeleteDialog } from '../../components/DeleteDialog';
+import useDeleteDialog from '../../components/useDeleteDialog';
 import { useLocale } from '../../lib/TranslationProvider';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
@@ -23,7 +21,7 @@ export default function DecksPage() {
   useRequireAuth();
   const { locale } = useLocale();
   const { authUser } = useAuth();
-  const { data } = useGetDecksPageDataQuery({
+  const { data } = useGetRoleCardsQuery({
     variables: {
       locale,
     },
@@ -72,7 +70,7 @@ export default function DecksPage() {
     deleteDeckMessage,
     deleteDeck
   );
-  const roleCards = useCardsMap(data?.roleCards);
+  const roleCards = useCardsMap(data?.cards);
   const [showNewDeck, newDeckModal] = useNewDeckModal(roleCards);
   return (
     <>
@@ -90,12 +88,12 @@ export default function DecksPage() {
           fetchData={fetchDecks}
           deleteCount={deleteCount}
         >
-          { (decks: DeckFragment[]) => (
-             <DeckList
-             decks={decks}
-             roleCards={roleCards}
-             onDelete={onDelete}
-           />
+          { (decks: DeckWithCampaignFragment[]) => (
+            <DeckList
+              decks={decks}
+              roleCards={roleCards}
+              onDelete={onDelete}
+            />
           ) }
         </PaginationWrapper>
       </Box>
