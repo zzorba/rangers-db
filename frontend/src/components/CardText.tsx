@@ -4,10 +4,19 @@ import { filter } from 'lodash';
 import { Box } from '@chakra-ui/react';
 import { useLocale } from '../lib/TranslationProvider';
 
-export function useIconedText(text: string | undefined | null, flavor?: string | undefined | null) {
+export function useIconedText(
+  text: string | undefined | null,
+  aspectId: string | null | undefined = 'NEUTRAL',
+  flavor?: string | undefined | null
+): string {
   const { aspects } = useLocale();
   return useMemo(() => {
     const parser = new Parser().addRule(
+      /\[\[(.*?)\]\]/gi,
+      (tag, element) => {
+        return `<span style="text-shadow: 0 0 2px var(--chakra-colors-aspect-${aspectId});">${element}</span>`;
+      }
+    ).addRule(
       /\[([^\]0-9]+)\]/gi,
       (tag, element) => {
         if (aspects[element]) {
@@ -19,11 +28,11 @@ export function useIconedText(text: string | undefined | null, flavor?: string |
     const cleanText = text ? text.replace(/<f>/g, '<i class="card-flavor">').replace(/<\/f>/g, '</i>') : undefined;
     return parser.render(
       filter([cleanText, flavor ? `<i class="card-flavor">${flavor}</i>` : undefined], x => !!x).join('\n'));
-  }, [text, flavor, aspects]);
+  }, [text, aspectId, flavor, aspects]);
 }
 
 export default function CardText({ text, flavor, aspectId, noPadding }: { text: string | undefined | null; flavor?: string | undefined | null, aspectId: string | undefined | null; noPadding?: boolean }) {
-  const parsed = useIconedText(text, flavor);
+  const parsed = useIconedText(text, aspectId, flavor);
   if (noPadding) {
     return <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />;
   }

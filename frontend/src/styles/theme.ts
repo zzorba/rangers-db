@@ -11,6 +11,7 @@ const theme = extendTheme({
       FOC: '#1e2f64',
       FIT: '#811019',
       SPI: '#da6e17',
+      NEUTRAL: '#888888',
     },
   },
 });

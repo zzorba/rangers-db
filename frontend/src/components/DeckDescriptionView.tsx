@@ -5,7 +5,6 @@ import DOMPurify from 'dompurify';
 import { useIconedText } from './CardText';
 
 
-
 export default function DeckDescriptionView({ description }: { description: string }) {
   const sanitized = useMemo(() => DOMPurify.sanitize(marked(description)), [description]);
   const iconized = useIconedText(sanitized);
