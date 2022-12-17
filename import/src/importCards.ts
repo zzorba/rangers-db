@@ -191,8 +191,21 @@ async function importMetadata() {
             const locale = LOCALES[n];
             const [allPoEntries] = await getOrCreateCleanPoFile(`${BASE_DIR}/i18n/${locale}/packs/${packs[i]}/${pack.replace('.json', '.po')}`, locale, true);
             const theTranslation = { ...theText };
+
+            let localeImageSrc: string | undefined = undefined;
+            try {
+              const path = `${pack_id}_${locale}/${card.id}.jpg`;
+              await accessFile(`${BASE_IMAGE_DIR}${path}`, fs.constants.F_OK);
+              localeImageSrc = `${BASE_IMAGE_URL}${path}`;
+            } catch (e) {
+              false && console.log(`Could not find image for ${card.id}`);
+            }
             forEach(keys(theText), field => {
-              if (theText[field]) {
+              if (field === 'imagesrc') {
+                if (localeImageSrc) {
+                  theTranslation[field] = localeImageSrc;
+                }
+              } else if (theText[field]) {
                 const item = makePoItem(id, field, theText[field]);
                 if (locale === 'pseudo') {
                   if (field !== 'text') {

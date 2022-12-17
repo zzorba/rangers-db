@@ -78,7 +78,6 @@ export const TABLES: { [key: string]: Table } = {
       'pack_id',
       'illustrator',
       'back_card_id',
-      'imagesrc',
       'position',
       'deck_limit',
       'spoiler',
@@ -88,7 +87,8 @@ export const TABLES: { [key: string]: Table } = {
       'traits',
       'text',
       'flavor',
-      'objective'
+      'objective',
+      'imagesrc'
     ],
     foreignKeys: {
       token_id: 'token',

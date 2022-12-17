@@ -530,7 +530,8 @@ mutation upsertCardText(
   $traits: String,
   $text: String,
   $flavor: String,
-  $objective: String
+  $objective: String,
+  $imagesrc: String
 ) {
 	insert_rangers_card_text_one(
     object: {
@@ -541,6 +542,7 @@ mutation upsertCardText(
       traits: $traits
       flavor: $flavor
       objective: $objective
+      imagesrc: $imagesrc
     }
     on_conflict: {
       constraint: card_text_pkey
@@ -551,7 +553,8 @@ mutation upsertCardText(
         text,
         traits,
         flavor,
-        objective
+        objective,
+        imagesrc
       ]
     }
   ) {
