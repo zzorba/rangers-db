@@ -9,12 +9,13 @@ import {
   useDisclosure,
   Button,
 } from '@chakra-ui/react'
+import { t } from '@lingui/macro';
 
-export function useDeleteDialog<T>(
+export default function useDeleteDialog<T>(
   title: string,
-  getMessage: (t: T) => string,
-  onDelete: (t: T) => void
-): [(t: T) => void, React.ReactNode] {
+  getMessage: (obj: T) => string,
+  onDelete: (obj: T) => void
+): [(obj: T) => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [obj, setObj] = useState<T | undefined>();
   const cancelRef = React.useRef(null);
@@ -24,8 +25,8 @@ export function useDeleteDialog<T>(
       onClose();
     }
   }, [obj, onDelete, onClose]);
-  const showDialog = useCallback((t: T) => {
-    setObj(t);
+  const showDialog = useCallback((obj: T) => {
+    setObj(obj);
     onOpen();
   }, [setObj, onOpen])
   return [
@@ -46,10 +47,10 @@ export function useDeleteDialog<T>(
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose}>
-              Cancel
+              {t`Cancel`}
             </Button>
             <Button colorScheme='red' onClick={onDeleteClick} ml={3}>
-              Delete
+              {t`Delete`}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

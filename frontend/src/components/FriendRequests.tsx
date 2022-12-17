@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { List, ListItem, IconButton, ButtonGroup, Text, Flex } from '@chakra-ui/react';
 import { filter, flatMap, map } from 'lodash';
 import { t } from '@lingui/macro';
-import { CheckIcon, CloseIcon, PlusSquareIcon } from '@chakra-ui/icons';
+import { SlPlus, SlMinus, SlCheck } from 'react-icons/sl';
 
 import ListHeader from './ListHeader';
 import { UserInfoFragment, UserProfileFragment } from '../generated/graphql/apollo-schema';
@@ -26,12 +26,16 @@ export interface FriendAction {
 function FriendActionButton({ userId, action: { onPress, title, icon } }: { userId: string; action: FriendAction }) {
   const onClick = useCallback(() => onPress(userId), [onPress, userId]);
   const icons = {
-    check: <CheckIcon />,
-    remove: <CloseIcon />,
-    add: <PlusSquareIcon />,
+    check: <SlCheck />,
+    remove: <SlMinus />,
+    add: <SlPlus />,
   }
   return (
-    <IconButton aria-label={title} onClick={onClick} icon={icons[icon]} />
+    <IconButton
+      aria-label={title}
+      onClick={onClick}
+      icon={icons[icon]}
+    />
   );
 }
 

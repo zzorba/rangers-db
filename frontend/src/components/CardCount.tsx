@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
-import { Box, Flex, Text, useRadio, useRadioGroup, UseRadioProps } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, useRadio, useRadioGroup, UseRadioProps } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { Slots } from '../types/types';
+import { CardFragment } from '../generated/graphql/apollo-schema';
 
 export default function CardCount({
   count,
@@ -20,7 +21,7 @@ export default function CardCount({
       px={2}
       py={3}
     >
-      ×{count}
+      { `×${count}` }
     </Box>
   );
 }
@@ -111,25 +112,24 @@ export function CountToggle({ code, slots, setSlots }: { code: string; slots: Sl
   );
 }
 
-export function CountControls({ code, slots, setSlots, onClose, countMode }: {
+export function CountControls({ card, slots, setSlots, onClose, countMode }: {
   onClose?: () => void;
-  code: string;
+  card: CardFragment;
   slots: Slots;
-  setSlots: (code: string, count: number) => void;
+  setSlots: (card: CardFragment, count: number) => void;
   countMode?: 'noah';
 }) {
   const onChange = useCallback((value: string) => {
     if (value === '+') {
-      setSlots(code, 2);
+      setSlots(card, 2);
     } else if (value === '-') {
-      setSlots(code, 0);
+      setSlots(card, 0);
     } else {
-      setSlots(code, parseInt(value));
+      setSlots(card, parseInt(value));
     }
     onClose?.();
-  }, [code, setSlots, onClose]);
-  const currentCount = `${slots[code] || 0}`;
-
+  }, [card, setSlots, onClose]);
+  const currentCount = `${(card.id && slots[card.id]) || 0}`;
   const { getRadioProps } = useRadioGroup({
     name: 'deck-count',
     defaultValue: currentCount,
@@ -145,6 +145,33 @@ export function CountControls({ code, slots, setSlots, onClose, countMode }: {
           </RadioCardCount>
         );
       }) }
+    </Flex>
+  );
+}
+
+
+export function IncDecCountControls({ card, slots, setSlots, onClose }: {
+  onClose?: () => void;
+  card: CardFragment;
+  slots: Slots;
+  setSlots: (card: CardFragment, count: number) => void;
+}) {
+  const onInc = useCallback(() => {
+    if (card.id) {
+      setSlots(card, Math.min((slots[card.id] || 0) + 1, card.quantity || 2));
+    }
+  }, [card, slots, setSlots]);
+  const count = (card.id && slots[card.id]) || 0;
+  const onDec = useCallback(() => {
+    if (card.id) {
+      setSlots(card, Math.max((slots[card.id] || 0) - 1, 0));
+    }
+  }, [card, slots, setSlots]);
+  return (
+    <Flex direction="row" alignItems="center" marginLeft={2}>
+      <Button variant="ghost" onClick={onDec} disabled={count <= 0}>−</Button>
+      <CardCount count={count} marginLeft={1} />
+      <Button variant="ghost" onClick={onInc} disabled={count >= (card.quantity || 2)} marginLeft={1}>+</Button>
     </Flex>
   );
 }

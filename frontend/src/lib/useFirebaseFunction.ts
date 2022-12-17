@@ -24,7 +24,6 @@ export default function useFirebaseFunction<T, R={}>(name: string): [
     const f = httpsCallable<T, GenericResponse<R>>(firebaseFunctions, name);
     try {
       const result = await f(t);
-      console.log(`Raw results: ${JSON.stringify(result)}`)
       if (!result.data.success) {
         setError(result.data.error);
       }

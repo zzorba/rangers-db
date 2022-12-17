@@ -1,15 +1,32 @@
-import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client/core';
+import { ApolloClient, HttpLink, InMemoryCache, InMemoryCacheConfig, NormalizedCacheObject } from '@apollo/client/core';
 import { LocalStorageWrapper, CachePersistor } from 'apollo3-cache-persist';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { setContext } from '@apollo/client/link/context';
 
 const isServer = typeof window === "undefined";
 
+const CACHE_CONFIG: InMemoryCacheConfig = {
+  typePolicies: {
+    rangers_campaign: {
+      keyFields: ['id'],
+      fields: {
+        latest_decks: {
+          read(existing) {
+            return existing || '';
+          },
+          merge(existing, incoming) {
+            return incoming || existing || '';
+          },
+        },
+      },
+    },
+  },
+};
 let ANON_CLIENT: ApolloClient<NormalizedCacheObject> | null = null;
 let ANON_PURGE: () => Promise<void> = async() => {};
 export async function initAnonClient(forceNew?: boolean): Promise<[ApolloClient<NormalizedCacheObject>, () => Promise<void>]> {
   if (!ANON_CLIENT || forceNew) {
-    const cache = new InMemoryCache();
+    const cache = new InMemoryCache(CACHE_CONFIG);
     if (!isServer) {
       let newPersistor = new CachePersistor({
         cache,
@@ -32,8 +49,7 @@ export async function initAnonClient(forceNew?: boolean): Promise<[ApolloClient<
 }
 
 export async function initAuthClient(user: AuthUser): Promise<[CachePersistor<NormalizedCacheObject>, ApolloClient<NormalizedCacheObject>]> {
-  const cache = new InMemoryCache();
-
+  const cache = new InMemoryCache(CACHE_CONFIG);
   const authLink = setContext(async(req, { headers }) => {
     const hasuraToken = await user.user.getIdToken();
     if (hasuraToken) {

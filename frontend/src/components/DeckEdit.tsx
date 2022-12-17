@@ -34,23 +34,24 @@ import NextLink from 'next/link';
 import { sumBy, find, keys, union, omit, forEach, map, flatMap, pick, values, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
 
-import { CardFragment, DeckFragment, useCreateDeckMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap } from '../lib/hooks';
 import { CardRow, ShowCard, useCardModal } from './Card';
-import { SimpleCardList } from './CardList';
-import { CountControls, CountToggle } from './CardCount';
+import { SimpleCardList, SpoilerCardList } from './CardList';
+import { CountControls, IncDecCountControls } from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
 import SolidButton from './SolidButton';
 import { useLocale } from '../lib/TranslationProvider';
-import { DeckItemComponent, parseDeck } from './Deck';
+import { DeckCountLine, DeckItemComponent } from './Deck';
 import { WarningIcon } from '@chakra-ui/icons';
+import parseDeck, { ParsedDeck } from '../lib/parseDeck';
 
 interface Props {
-  deck: DeckFragment;
+  deck: DeckWithFullCampaignFragment;
   cards: CardsMap;
 }
 
@@ -185,39 +186,51 @@ function useAspectEditor(stats: AspectStats, setStats: (stats: AspectStats) => v
 }
 
 function useChooseRoleModal(
-  specialty: string | undefined,
+  parsedDeck: ParsedDeck,
   cards: CardsMap,
-  setRole: (role: string) => void,
-  role: string | undefined
+  showCard: ShowCard,
+  setRole?: (role: string) => void
 ): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const onChange = useCallback((role: string) => {
-    setRole(role);
+    setRole?.(role);
     onClose();
   }, [setRole, onClose]);
+  const showRole = useCallback(() => !!parsedDeck.role && showCard(parsedDeck.role), [showCard, parsedDeck.role])
+  if (!setRole) {
+    return [showRole, null];
+  }
   return [
     onOpen,
     <Modal key="role-modal" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
-          <Heading>Choose role</Heading>
+          <Heading>{t`Choose role`}</Heading>
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <RoleRadioChooser specialty={specialty} cards={cards} role={role} onChange={onChange} />
+          <RoleRadioChooser
+            specialty={parsedDeck.specialty}
+            cards={cards}
+            role={parsedDeck.role?.id || undefined}
+            onChange={onChange}
+          />
         </ModalBody>
       </ModalContent>
     </Modal>
   ];
 }
 
-function BaseDeckbuildingTabs({ cards, stats, background, specialty, showCard, slots, updateSlots }: { cards: CardsMap; stats: AspectStats; background: string | undefined; specialty: string | undefined; showCard: ShowCard; slots: Slots; updateSlots: (code: string, count: number) => void }) {
-  const renderControl = useCallback((code: string) => {
-    return (
-      <CountControls code={code} slots={slots} setSlots={updateSlots} countMode="noah" />
-    );
-  }, [slots, updateSlots]);
+function BaseDeckbuildingTabs({ renderControl, cards, stats, background, specialty, showCard }: {
+  cards: CardsMap;
+  stats: AspectStats;
+  background: string | undefined;
+  specialty: string | undefined;
+  slots: Slots;
+  showCard: ShowCard;
+  renderControl: (card: CardFragment) => React.ReactNode;
+}) {
   const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards] = useMemo(() => {
     const pc: CardFragment[] = [];
     const bc: CardFragment[] = [];
@@ -321,29 +334,94 @@ function BaseDeckbuildingTabs({ cards, stats, background, specialty, showCard, s
   );
 }
 
-function UpgradeDeckbuildingTabs({ }: { showCard: ShowCard }) {
+function UpgradeDeckbuildingTabs({ showCard, unlockedRewards, renderControl, sideSlots, stats, cards }: {
+  cards: CardsMap;
+  stats: AspectStats;
+  slots: Slots;
+  sideSlots: Slots;
+  unlockedRewards: string[] | undefined;
+  showCard: ShowCard;
+  renderControl: (card: CardFragment) => React.ReactNode;
+}) {
+  const [rewardCards, maladyCards, sideCards] = useMemo(() => {
+    const rc: CardFragment[] = [];
+    const mc: CardFragment[] = [];
+    const sc: CardFragment[] = [];
+    forEach(sortBy(values(cards), c => c?.set_position || 0), c => {
+      if (!c) {
+        return;
+      }
+      if (c.type_id === 'role') {
+        return;
+      }
+      if (c.set_id === 'malady') {
+        mc.push(c);
+        return;
+      }
+      if (c.aspect_id) {
+        const aspect = c.aspect_id.toLowerCase();
+        if (aspect === 'awa' || aspect == 'spi' || aspect === 'fit' || aspect === 'foc') {
+          if (stats[aspect] < (c.level || 0)) {
+            // Outside your level
+            return;
+          }
+        }
+      }
+      if (c.set_id === 'reward') {
+        rc.push(c);
+        return;
+      }
+      if (c.id && (sideSlots[c.id] || 0) > 0) {
+        sc.push(c);
+        return;
+      }
+    });
+    return [rc, mc, sc];
+  }, [cards, sideSlots, stats]);
   return (
     <Tabs>
       <TabList overflowX="scroll" overflowY="hidden">
-        <Tab>{t`Unlocked rewards`}</Tab>
+        <Tab>{t`Rewards`}</Tab>
+        <Tab>{t`Maladies`}</Tab>
         <Tab>{t`Displaced cards`}</Tab>
       </TabList>
       <TabPanels>
         <TabPanel>
-          <Text>Rewards you unlock will go here.</Text>
+          <SpoilerCardList
+            unlocked={unlockedRewards}
+            cards={rewardCards}
+            showCard={showCard}
+            renderControl={renderControl}
+            upsellText={!unlockedRewards ? t`You can add this deck to a campaign to track rewards you have unlocked as a group.` : undefined}
+          />
         </TabPanel>
         <TabPanel>
-          <Text>Cards you take out of your deck will go here.</Text>
+          <SpoilerCardList
+            cards={maladyCards}
+            showCard={showCard}
+            renderControl={renderControl}
+          />
+        </TabPanel>
+        <TabPanel>
+          <SimpleCardList
+            cards={sideCards}
+            showCard={showCard}
+            renderControl={renderControl}
+            emptyText={t`Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp.`}
+          />
         </TabPanel>
       </TabPanels>
     </Tabs>
   );
 }
 
-export default function DeckEdit({ deck, cards }: Props) {
-  const [stats, setStats] = useState<AspectStats>(pick(deck, ['awa', 'fit', 'foc', 'spi']));
-  const [slots, setSlots] = useState<Slots>(deck.slots || {});
-  const updateSlots = useCallback((code: string, count: number) => {
+function useSlots(originalSlots: Slots) : [Slots, (card: CardFragment, count: number) => void] {
+  const [slots, setSlots] = useState<Slots>(originalSlots);
+  const updateSlots = useCallback((card: CardFragment, count: number) => {
+    const code = card.id;
+    if (!code) {
+      return;
+    }
     const newSlots = { ...slots };
     if (!count) {
       delete newSlots[code];
@@ -353,7 +431,45 @@ export default function DeckEdit({ deck, cards }: Props) {
       setSlots(newSlots);
     }
   }, [slots, setSlots]);
-  const [showCard, cardModal] = useCardModal(slots, updateSlots, !deck.previous_deck ? 'noah' : undefined);
+  return [slots, updateSlots];
+}
+
+export default function DeckEdit({ deck, cards }: Props) {
+  const [stats, setStats] = useState<AspectStats>(pick(deck, ['awa', 'fit', 'foc', 'spi']));
+  const [slots, updateSlots] = useSlots(deck.slots || {});
+  const [sideSlots, updateSideSlots] = useSlots(deck.side_slots || {});
+
+  const updateUpgradeSlots = useCallback((card: CardFragment, count: number) => {
+    if (card.set_id === 'reward' || card.set_id === 'malady') {
+      updateSlots(card, count);
+    } else if (card.id) {
+      const diff = count - (slots[card.id] || 0);
+      updateSideSlots(card, (sideSlots[card.id] || 0) - diff);
+      updateSlots(card, count);
+    }
+  }, [slots, sideSlots, updateSlots, updateSideSlots]);
+  const isUpgrade = !!deck.previous_deck;
+  const renderControl = useCallback((card: CardFragment) => {
+    if (card.set_id === 'malady') {
+      return (
+        <IncDecCountControls
+          card={card}
+          slots={slots}
+          setSlots={updateSlots}
+        />
+      );
+    }
+    return (
+      <CountControls
+        card={card}
+        slots={slots}
+        setSlots={!isUpgrade ? updateSlots : updateUpgradeSlots}
+        countMode={!isUpgrade ? 'noah' : undefined}
+      />
+    );
+  }, [slots, updateSlots, updateUpgradeSlots, isUpgrade]);
+
+  const [showCard, cardModal] = useCardModal(slots, renderControl);
   const [meta, setMeta] = useState<DeckMeta>(deck.meta || {});
   const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
   const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
@@ -374,7 +490,12 @@ export default function DeckEdit({ deck, cards }: Props) {
       role,
     });
   }, [meta, setMeta]);
-  const [showRole, roleModal] = useChooseRoleModal(parsedDeck.specialty, cards, setRole, parsedDeck.role?.id || undefined);
+  const [showRole, roleModal] = useChooseRoleModal(
+    parsedDeck,
+    cards,
+    showCard,
+    !deck.previous_deck ? setRole : undefined
+  );
   const [aspectEditor, aspectError] = useAspectEditor(stats, setStats);
 
   const [name, setName] = useState(deck.name);
@@ -416,6 +537,7 @@ export default function DeckEdit({ deck, cards }: Props) {
           problem,
         },
         slots,
+        sideSlots,
         name,
         awa: stats.awa,
         foc: stats.foc,
@@ -428,37 +550,28 @@ export default function DeckEdit({ deck, cards }: Props) {
       return;
     }
     setSaveError(r.errors[0].message);
-  }, [saveDeck, stats, meta, slots, name, deck, parsedDeck.problem, parsedDeck.roleProblems, aspectError]);
+  }, [saveDeck, stats, meta, slots, sideSlots, name, deck, parsedDeck.problem, parsedDeck.roleProblems, aspectError]);
 
-  const renderControl = useCallback((code: string) => {
-    if (!deck.previous_deck) {
-      return <Box marginLeft={2}><CountToggle code={code} slots={slots} setSlots={updateSlots} /></Box>;
-    }
-    return (
-      <CountControls code={code} slots={slots} setSlots={updateSlots} />
-    );
-  }, [deck.previous_deck, slots, updateSlots]);
   return (
     <>
-      <SimpleGrid minChildWidth="300px" spacingX={4} columns={2}>
+      <SimpleGrid minChildWidth="400px" spacingX={4} spacingY="4rem" columns={2}>
         <Box>
           <EditableTextInput
             value={name}
             fontSize="2xl"
             onChange={setName}
           />
-          { !!hasEdits && (
-            <ButtonGroup paddingBottom={2} paddingTop={2}>
-              <SolidButton color="blue" onClick={saveChanges}>{t`Save Changes`}</SolidButton>
-              <Button as={NextLink} href={`/decks/view/${deck.id}`}>{t`Discard Changes`}</Button>
-            </ButtonGroup>
-          ) }
-          { !!saveError && <Text color="red" paddingTop={2} paddingBottom={4}>{saveError}</Text>}
+          <DeckCountLine parsedDeck={parsedDeck} />
           { !parsedDeck.loading && !!parsedDeck.problem && (
             <Box marginBottom={4}>
               <DeckProblemComponent errors={parsedDeck.problem} />
             </Box>
           )}
+          <ButtonGroup paddingBottom={2} paddingTop={2}>
+            { !!hasEdits && <SolidButton color="blue" onClick={saveChanges}>{t`Save changes`}</SolidButton> }
+            <Button as={NextLink} href={`/decks/view/${deck.id}`}>{hasEdits ? t`Discard changes` : t`Done editing`}</Button>
+          </ButtonGroup>
+          { !!saveError && <Text color="red" paddingTop={2} paddingBottom={4}>{saveError}</Text>}
           <MetaControls
             meta={meta}
             setMeta={setMeta}
@@ -474,7 +587,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               </Box>
               ) : (
               <Input as={Button} disabled={!parsedDeck.specialty} onClick={showRole}>
-                Choose role
+                {t`Choose role`}
               </Input>
               ) }
           </FormControl>
@@ -500,11 +613,19 @@ export default function DeckEdit({ deck, cards }: Props) {
               specialty={specialty}
               stats={stats}
               slots={slots}
-              updateSlots={updateSlots}
+              renderControl={renderControl}
               showCard={showCard}
             />
           ) : (
-            <UpgradeDeckbuildingTabs showCard={showCard} />
+            <UpgradeDeckbuildingTabs
+              showCard={showCard}
+              stats={stats}
+              cards={cards}
+              slots={slots}
+              unlockedRewards={deck.campaign?.rewards}
+              sideSlots={sideSlots}
+              renderControl={renderControl}
+            />
           )}
         </Box>
       </SimpleGrid>
@@ -517,14 +638,12 @@ export default function DeckEdit({ deck, cards }: Props) {
 const SHOW_ASPECTS = false;
 export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNode] {
   const { categories } = useLocale();
-
   const { authUser } = useAuth();
   const [name, setName] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [stats, setStats] = useState<AspectStats>({ awa: 3, fit: 3, foc: 3, spi: 3 })
 
   const [createDeck] = useCreateDeckMutation();
-
   const [meta, setMeta] = useState<DeckMeta>({});
   const [aspectEditor, aspectError] = useAspectEditor(stats, setStats);
   const placeholderDeckName = useMemo(() => {
@@ -539,7 +658,7 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
     if (specialty) {
       return specialty;
     }
-    return 'Name your character';
+    return t`Name your character`;
   }, [meta, categories]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | undefined>();

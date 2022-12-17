@@ -5,9 +5,10 @@ import { t } from '@lingui/macro';
 import React, { useCallback, useMemo } from 'react';
 import { GetProfileDocument, UserInfoFragment, UserProfileFragment } from '../generated/graphql/apollo-schema';
 import ListHeader from './ListHeader';
-import SubmitButton from './SubmitButton';
+import SubmitButton, { SubmitIconButton } from './SubmitButton';
 import FriendSearch from './FriendSearch';
 import FriendRequestsComponent from './FriendRequests';
+import { SlMinus, SlPlus } from 'react-icons/sl';
 
 interface Props {
   selection: string[];
@@ -37,12 +38,12 @@ function FriendRow({ add, remove, user }: {
     return undefined;
   }, [remove, user]);
   return (
-    <ListItem padding={2}>
+    <ListItem paddingTop={2} paddingBottom={2}>
       <Flex direction="row" alignItems="center" justifyContent="space-between">
-        <Text>{user.handle}</Text>
+        <Text paddingLeft={2} paddingRight={2}>{user.handle}</Text>
         <ButtonGroup>
-          { !!add && (<SubmitButton aria-label={t`Add`} onSubmit={onAdd} color="gray"><PlusSquareIcon /></SubmitButton>) }
-          { !!remove && (<SubmitButton aria-label={t`Remove`} onSubmit={onRemove} color="gray"><MinusIcon /></SubmitButton>) }
+          { !!add && <SubmitIconButton aria-label={t`Add`} onSubmit={onAdd} icon={<SlPlus/>} /> }
+          { !!remove && <SubmitIconButton aria-label={t`Remove`} onSubmit={onRemove} icon={<SlMinus />} /> }
         </ButtonGroup>
       </Flex>
     </ListItem>

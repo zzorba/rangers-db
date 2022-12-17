@@ -34,7 +34,7 @@ import { LOCALES } from '../lib/Lingui';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { useLocale } from '../lib/TranslationProvider';
 
-const SHOW_CAMPAIGNS = false;
+const SHOW_CAMPAIGNS = true;
 function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
   return useMemo(() => [
     ...(authUser ? [{ label: t`Profile`, href: '/profile' }] : []),

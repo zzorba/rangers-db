@@ -53,6 +53,7 @@ export default function FriendSearch({ sendFriendRequest }: { sendFriendRequest:
             <Input
               placeholder={t`Find new friends`}
               value={search}
+              type="search"
               onChange={(e) => setSearch(e.target.value)}
               onKeyPress={e=> {
                 if (e.key === 'Enter') {

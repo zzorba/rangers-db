@@ -137,7 +137,9 @@ export function getDeckErrors(): DeckErrorTranslations {
     invalid_role: t`Your role card does not match your chosen specialty.`,
     invalid_aspect_levels: t`Your deck contains cards with aspect requirements that are not allowed.`,
     invalid_outside_interest: t`Your outside interest card cannot have the Expert trait.`,
-    too_many_outside_interest: t`There are too many outside interest cards in the deck.`
+    too_many_outside_interest: t`There are too many outside interest cards in the deck.`,
+    too_many_cards: t`Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck.`,
+    too_few_cards: t`Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck.`,
   };
 }
 export function getDeckCardErrors(): DeckCardErrorTranslations {

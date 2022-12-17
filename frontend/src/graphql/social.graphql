@@ -1,7 +1,5 @@
-fragment UserInfo on rangers_users {
-  id
-  handle
-}
+# import UserInfo from 'fragments.graphql'
+
 
 fragment UserProfile on rangers_users {
   id

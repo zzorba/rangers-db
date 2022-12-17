@@ -1,39 +1,1382 @@
-import { Box, Text, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
-import React, { useCallback, useState } from 'react';
-import { CampaignFragment, useAddFriendToCampaignMutation, useCreateCampaignMutation, useGetProfileQuery } from '../generated/graphql/apollo-schema';
-import { useAuth } from '../lib/AuthContext';
-import { select, t } from '@lingui/macro';
-import SolidButton from './SolidButton';
-import FriendChooser from './FriendChooser';
-import { uniq, filter, map } from 'lodash';
+import { Button, Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, Editable } from '@chakra-ui/react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { plural, t } from '@lingui/macro';
+import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim } from 'lodash';
 import NextLink from 'next/link';
 import Router from 'next/router';
 
+import { CampaignFragment, CardFragment, DeckFragment, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
+import { useAuth } from '../lib/AuthContext';
+import SolidButton from './SolidButton';
+import FriendChooser from './FriendChooser';
+import ListHeader from './ListHeader';
+import CoreIcon from '../icons/CoreIcon';
+import { CompactDeckRow } from './Deck';
+import { CardsMap } from '../lib/hooks';
+import SubmitButton, { SubmitIconButton } from './SubmitButton';
+import { SlCheck, SlMinus, SlPlus } from 'react-icons/sl';
+import { useLocale } from '../lib/TranslationProvider';
+import { CardRow } from './Card';
+import EditableTextInput from './EditableTextInput';
+import PageHeading from './PageHeading';
+import PaginationWrapper from './PaginationWrapper';
+import { AuthUser } from '../lib/useFirebaseAuth';
+import { RoleImage } from './CardImage';
+import internal from 'stream';
+import { UserInfo } from 'os';
+import { MdFormatStrikethrough } from 'react-icons/md';
+import { createSourceEventStream } from 'graphql';
 
-function CampaignRow({ campaign }: { campaign: CampaignFragment }) {
+interface MissionEntry {
+  day: number;
+  name: string;
+  progress?: number;
+  completed?: boolean;
+}
+
+interface LatestDeck {
+  user: UserInfoFragment;
+  deck: DeckFragment;
+}
+
+interface NotableEvent {
+  event: string;
+  crossed_out?: boolean;
+}
+
+export interface ParsedCampaign {
+  id: number;
+  name: string;
+  day: number;
+  user_id: string;
+
+  missions: MissionEntry[];
+  calendar: CalendarEntry[];
+  events: NotableEvent[];
+  rewards: string[];
+  current_location: string | undefined;
+  current_path_terrain: string | undefined;
+
+  latest_decks: LatestDeck[];
+  access: UserInfoFragment[];
+}
+
+export class CampaignWrapper implements ParsedCampaign {
+  id: number;
+  user_id: string;
+  name: string;
+  day: number;
+
+  access: UserInfoFragment[];
+
+  events: NotableEvent[];
+  missions: MissionEntry[];
+  calendar: CalendarEntry[];
+  rewards: string[];
+  latest_decks: LatestDeck[];
+  current_location: string | undefined;
+  current_path_terrain: string | undefined;
+
+
+  constructor(campaign: CampaignFragment) {
+    this.id = campaign.id;
+    this.user_id = campaign.user_id;
+    this.name = campaign.name;
+    this.day = campaign.day;
+
+    this.missions = Array.isArray(campaign.missions) ? (campaign.missions as MissionEntry[]) : [];
+    this.calendar = Array.isArray(campaign.calendar) ? (campaign.calendar as CalendarEntry[]) : [];
+    this.rewards = Array.isArray(campaign.rewards) ? (campaign.rewards as string[]) : [];
+    this.events = Array.isArray(campaign.events) ? (campaign.events as NotableEvent[]) : [];
+
+    this.current_location = campaign.current_location || undefined;
+    this.current_path_terrain = campaign.current_path_terrain || undefined;
+
+    this.access = flatMap(campaign.access, a => {
+      if (a.user) {
+        return a.user;
+      }
+      return [];
+    });
+    this.latest_decks = flatMap(campaign.latest_decks, ld => {
+      if (ld.deck && ld.user) {
+        return {
+          deck: ld.deck,
+          user: ld.user,
+        };
+      }
+      return [];
+    });
+  }
+}
+
+function CampaignRow({ campaign, roleCards }: { campaign: ParsedCampaign; roleCards: CardsMap }) {
+  const roles = useMemo(() => {
+    return flatMap(campaign.latest_decks, d => {
+      const role = d.deck?.meta.role;
+      if (typeof role === 'string') {
+        return roleCards[role] || [];
+      }
+      return [];
+    })
+  }, [campaign.latest_decks, roleCards]);
   return (
-    <ListItem as={NextLink} href={`/campaigns/${campaign.id}`}>
-      <Text>{campaign.name}</Text>
+    <ListItem padding={2} borderBottomWidth="1px" borderColor="gray.100">
+      <Flex direction="row" justifyContent="space-between" as={NextLink} href={`/campaigns/${campaign.id}`}>
+        <Flex direction="column">
+          <Flex direction="row" alignItems="flex-end">
+            <Text fontSize="lg" fontWeight="600">{campaign.name}</Text>
+            <Text marginLeft="2em">{t`Day ${campaign.day}`}</Text>
+          </Flex>
+          <Flex direction="row">
+            <CoreIcon icon="ranger" size="22" />
+            <Text marginLeft={2}>{ filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}</Text>
+          </Flex>
+        </Flex>
+        <Flex direction="row">
+          { flatMap(roles, card => card.imagesrc ? <RoleImage key={card.id} name={card.name} url={card.imagesrc} /> : [])}
+        </Flex>
+      </Flex>
     </ListItem>
   );
 }
-export function CampaignList({ campaigns, }: { campaigns: CampaignFragment[]}) {
+export function CampaignList({ campaigns, roleCards }: { campaigns: ParsedCampaign[]; roleCards: CardsMap }) {
   return (
     <List>
-      { map(campaigns, c => <CampaignRow key={c.id} campaign={c} />) }
+      { map(campaigns, c => <CampaignRow key={c.id} campaign={c} roleCards={roleCards} />) }
     </List>
   )
 }
 
-export default function CampaignDetail({ campaign }: { campaign: CampaignFragment }) {
+function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }: { user: UserInfoFragment; campaign: ParsedCampaign; roleCards: CardsMap; showChooseDeck: () => void; removeDeck: (deck: DeckFragment) => void }) {
+  const { authUser } = useAuth();
+  const deck = useMemo(() => find(campaign.latest_decks, d => d.user?.id === user.id)?.deck, [campaign.latest_decks, user.id]);
+  const onRemove = useCallback(() => {
+    !!deck && removeDeck(deck);
+  }, [removeDeck, deck]);
+  const [doLeaveCampaign] = useLeaveCampaignMutation();
+  const leaveCampaign = useCallback(async() => {
+    if (authUser?.uid) {
+      await doLeaveCampaign({
+        variables: {
+          userId: authUser.uid,
+          campaignId: campaign.id,
+        },
+      });
+      Router.push('/campaigns');
+    }
+  }, [doLeaveCampaign, authUser, campaign.id]);
+  return (
+    <ListItem key={user.id} padding={2} flexDirection="column">
+      <Flex direction="row">
+        { deck ? (
+          <CompactDeckRow
+            deck={deck}
+            roleCards={roleCards}
+            href={`/decks/view/${deck.id}`}
+            buttons={authUser?.uid === deck.user_id && (
+              <ButtonGroup marginTop={1}>
+                <Button onClick={onRemove} variant="ghost">
+                  { t`Remove deck` }
+                </Button>
+              </ButtonGroup>
+            )}
+          >
+            <Text>
+              <CoreIcon icon="ranger" size={18} />&nbsp;
+              { user.handle || (user.id === authUser?.uid ? t`You` : user.id) }
+            </Text>
+          </CompactDeckRow>
+        ) : (
+          <Text>
+            <CoreIcon icon="ranger" size={18} />&nbsp;
+            { user.handle || (user.id === authUser?.uid ? t`You` : user.id) }
+          </Text>
+        ) }
+      </Flex>
+      { authUser?.uid === user.id && !deck && (
+        <ButtonGroup marginTop={1}>
+          <Button onClick={showChooseDeck} variant="ghost">
+            { t`Choose deck` }
+          </Button>
+          { authUser.uid !== campaign.user_id && (
+            <Button onClick={leaveCampaign} variant="ghost" color="red">
+              { t`Leave campaign` }
+            </Button>
+          ) }
+        </ButtonGroup>
+      ) }
+    </ListItem>
+  );
+}
+
+function RewardRow({ card, unlocked, onUpdate }: { card: CardFragment; unlocked: boolean; onUpdate: (code: string, unlocked: boolean) => Promise<string | undefined> }) {
+  const onSubmit = useCallback(async () => {
+    if (card.id) {
+      return await onUpdate(card.id, !unlocked);
+    }
+  }, [unlocked, onUpdate, card]);
+  return (
+    <CardRow card={card}>
+      <Box marginLeft={2}>
+        <SubmitIconButton
+          onSubmit={onSubmit}
+          aria-label={unlocked ? t`Remove reward` : t`Add reward`}
+          icon={unlocked ? <SlMinus /> : <SlPlus />}
+        />
+      </Box>
+    </CardRow>
+  );
+}
+
+
+function RewardsTab({ campaign, cards }: { campaign: ParsedCampaign; cards: CardsMap }) {
+  const { locale } = useLocale();
+  const rewardCards = useMemo(() =>
+    sortBy(flatMap(values(cards), c => c?.set_id === 'reward' ? c : []), c => c.set_position),
+  [cards]);
+  const [search, setSearch] = useState('');
+  const { isOpen: showAll, onOpen: onShow, onClose: onHide } = useDisclosure();
+  const [unlockedRewards, unlockedCodes] = useMemo(() => {
+    const unlockedList: string[] = [];
+    const unlockedCards = flatMap(campaign.rewards, (code) => {
+      unlockedList.push(code);
+      return cards[code] || [];
+    });
+
+    return [unlockedCards, new Set(unlockedList)];
+  }, [campaign.rewards, cards]);
+  const visibleCards = useMemo(() => {
+    const lowerSearch = search.toLocaleLowerCase(locale);
+    return filter(rewardCards, c => !!showAll || !!(
+      c.name && search.length >= 2 && c.name.toLocaleLowerCase(locale).indexOf(lowerSearch) !== -1)
+    );
+  }, [rewardCards, search, showAll, locale]);
+  const [updateRewards] = useUpdateCampaignRewardsMutation();
+  const toggleReward = useCallback(async(code: string, unlocked: boolean) => {
+    if (unlocked) {
+      if (!find(campaign.rewards, c => c === code)) {
+        const r = await updateRewards({
+          variables: {
+            campaignId: campaign.id,
+            rewards: [...campaign.rewards, code],
+          },
+        });
+        if (r.errors?.length) {
+          return r.errors[0].message;
+        }
+      }
+    } else {
+      if (find(campaign.rewards, c => c === code)) {
+        const r = await updateRewards({
+          variables: {
+            campaignId: campaign.id,
+            rewards: filter(campaign.rewards, c => c !== code),
+          },
+        });
+        if (r.errors?.length) {
+          return r.errors[0].message;
+        }
+      }
+    }
+    return undefined;
+  }, [updateRewards, campaign.id, campaign.rewards]);
+  return (
+    <List>
+      <ListHeader title={t`Available`} />
+      { map(unlockedRewards, c => <RewardRow key={c.id} unlocked card={c} onUpdate={toggleReward} />)}
+      <ListHeader title={t`All`} />
+      <ListItem padding={2}>
+        <form onSubmit={e => {
+          e.preventDefault();
+        }}>
+          <Flex direction="row">
+            <Input
+              type="search"
+              value={search}
+              placeholder={t`Search by name`}
+              onChange={e => setSearch(e.target.value)}
+            />
+            <ButtonGroup marginLeft={2}>
+              <Button onClick={showAll ? onHide : onShow}>{showAll ? t`Hide spoilers` : t`Show all` }</Button>
+            </ButtonGroup>
+          </Flex>
+        </form>
+      </ListItem>
+      { map(visibleCards, c => (
+        <RewardRow
+          key={c.id}
+          card={c}
+          unlocked={!!c.id && unlockedCodes.has(c.id)}
+          onUpdate={toggleReward}
+        />
+      )) }
+    </List>
+  );
+}
+
+function EditableGuideNumber({ index, value, onUpdate, disabled }: { index: number; value: string; onUpdate: (index: number, value: string) => Promise<string | undefined>; disabled?: boolean }) {
+  const onChange = useCallback((newValue: string) => {
+    if (newValue !== value) {
+      onUpdate(index, newValue);
+    }
+  }, [value, index, onUpdate]);
+  return (
+    <ListItem paddingTop={2}>
+      <EditableTextInput
+        value={value}
+        hideEditButton
+        onChange={onChange}
+        disabled={disabled}
+      />
+    </ListItem>
+  );
+}
+
+function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [setCalendar] = useSetCampaignCalendarMutation();
+  const [day, setDay] = useState<number>(1);
+  const [entries, setEntries] = useState<string[]>([]);
+  const onSubmit = useCallback(async() => {
+    if (!day) {
+      return;
+    }
+    const newEntry: CalendarEntry = {
+      day,
+      guides: filter(map(entries, e => trim(e)), x => !!x),
+    };
+    const calendar: CalendarEntry[] = [
+      ...flatMap(campaign.calendar as CalendarEntry[], c => {
+        if (c.day === day) {
+          return [];
+        }
+        return c;
+      }),
+      ...(newEntry.guides.length ? [newEntry] : []),
+    ];
+
+    const result = await setCalendar({
+      variables: {
+        campaignId: campaign.id,
+        calendar,
+      },
+    });
+    if (result.errors?.length) {
+      return result.errors[0].message;
+    }
+    onClose();
+    return undefined;
+  }, [setCalendar, day, entries, campaign.id, campaign.calendar, onClose]);
+  const onShow = useCallback((day: number) => {
+    setDay(day);
+    setEntries(find(campaign.calendar as CalendarEntry[], e => e.day === day)?.guides || []);
+    onOpen();
+  }, [campaign, setDay, setEntries, onOpen]);
+  const [newEntry, setNewEntry] = useState('');
+  const onSubmitNewGuide = useCallback(async() => {
+    const currentDay: CalendarEntry = {
+      day,
+      guides: uniq([
+        ...filter(map(entries, e => trim(e)), x => !!x),
+        newEntry,
+      ]),
+    };
+    const calendar: CalendarEntry[] = [
+      ...flatMap(campaign.calendar as CalendarEntry[], c => {
+        if (c.day === day) {
+          return [];
+        }
+        return c;
+      }),
+      ...(currentDay.guides.length ? [currentDay] : []),
+    ];
+
+    const result = await setCalendar({
+      variables: {
+        campaignId: campaign.id,
+        calendar,
+      },
+    });
+    if (result.errors?.length) {
+      return result.errors[0].message;
+    }
+    setNewEntry('');
+    setEntries(currentDay.guides);
+  }, [campaign.id, entries, setCalendar, campaign.calendar, day, newEntry]);
+  const onUpdateGuideEntry = useCallback(async(index: number, entry: string) => {
+    const currentDay: CalendarEntry = {
+      day,
+      guides: uniq(filter(
+        map(entries, (e, idx) => trim(idx === index ? entry : e)),
+        x => !!x
+      )),
+    };
+    const calendar: CalendarEntry[] = [
+      ...flatMap(campaign.calendar as CalendarEntry[], c => {
+        if (c.day === day) {
+          return [];
+        }
+        return c;
+      }),
+      ...(currentDay.guides.length ? [currentDay] : []),
+    ];
+
+    const result = await setCalendar({
+      variables: {
+        campaignId: campaign.id,
+        calendar,
+      },
+    });
+    if (result.errors?.length) {
+      return result.errors[0].message;
+    }
+    setEntries(currentDay.guides);
+  }, [campaign.id, entries, setCalendar, campaign.calendar, day]);
+  const [setCampaignDay] = useSetCampaignDayMutation();
+  const onAdvanceTime = useCallback(async(): Promise<string | undefined> => {
+    const r = await setCampaignDay({
+      variables: {
+        campaignId: campaign.id,
+        day: day + 1,
+      },
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    onClose();
+    return undefined;
+  }, [campaign, onClose, day, setCampaignDay]);
+  const onRollbackTime = useCallback(async(): Promise<string | undefined> => {
+    const r = await setCampaignDay({
+      variables: {
+        campaignId: campaign.id,
+        day,
+      },
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    onClose();
+    return undefined;
+  }, [campaign, onClose, day, setCampaignDay]);
+  const editable = day >= campaign.day;
+  const dayChange = (day - campaign.day + 1);
+  return [
+    onShow,
+    <Modal key="mission" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Day ${day}`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Flex direction="column">
+            { !editable &&  (
+              <Text>{t`This day is in the past. It is currently day ${campaign.day}.`}</Text>
+            )}
+            { (editable || entries.length > 0 || FIXED_GUIDE_ENTRIES[day]?.length) && (
+              <Flex direction="row">
+                <CoreIcon icon="guide" size={22} />
+                <Text verticalAlign="center" marginLeft={1}>
+                  { t`Guide entries` }
+                </Text>
+              </Flex>
+            ) }
+            <List>
+              { map(FIXED_GUIDE_ENTRIES[day] || [], (e, idx) => (
+                <EditableGuideNumber
+                  key={idx}
+                  index={idx}
+                  value={e}
+                  onUpdate={onUpdateGuideEntry}
+                  disabled
+                />
+              ))}
+              { map(entries, (e, idx) => (
+                <EditableGuideNumber
+                  key={idx}
+                  index={idx}
+                  value={e}
+                  onUpdate={onUpdateGuideEntry}
+                  disabled={day < campaign.day}
+                />
+              )) }
+              { editable && (
+                <ListItem marginTop={2} marginBottom={2}>
+                  <form onSubmit={e => {
+                    e.preventDefault();
+                    onSubmitNewGuide();
+                  }}>
+                    <Flex direction="row">
+                      <Input
+                        value={newEntry}
+                        type="number"
+                        placeholder={t`Record guide entry`}
+                        onChange={e => setNewEntry(e.target.value)}
+                      />
+                      { !!newEntry && (
+                        <ButtonGroup marginLeft={2}>
+                          <SubmitIconButton aria-label={t`Save`} onSubmit={onSubmitNewGuide} icon={<SlCheck />} />
+                        </ButtonGroup>
+                      ) }
+                    </Flex>
+                  </form>
+                </ListItem>
+              ) }
+            </List>
+          </Flex>
+          <FormControl>
+            { editable ? (
+              <>
+                <Text>{t`Mark day ${day} as complete.`}</Text>
+                { dayChange > 1 && (
+                  <Text>
+                    { plural(dayChange, {
+                      one: `This will advance the calendar ${dayChange} day.`,
+                      other: `This will advance the calendar ${dayChange} days.`,
+                    }) }
+                  </Text>
+                ) }
+                <SubmitButton marginTop={1} color="blue" onSubmit={onAdvanceTime}>
+                  { t`Finish day` }
+                </SubmitButton>
+              </>
+            ) : (
+              <>
+                <SubmitButton marginTop={1} color="blue" onSubmit={onRollbackTime}>
+                  { t`Rollback time to here` }
+                </SubmitButton>
+              </>
+            ) }
+          </FormControl>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
+function useAddMissionModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [addMission] = useAddCampaignMissionMutation();
+  const [name, setName] = useState('');
+  const [day, setDay] = useState(campaign.day);
+  const onSubmit = useCallback(async() => {
+    if (!name || !day) {
+      return t`Name and day are required.`
+    }
+    const mission: MissionEntry = {
+      name,
+      day,
+    };
+    const result = await addMission({
+      variables: {
+        campaignId: campaign.id,
+        mission,
+      },
+    });
+    if (result.errors?.length) {
+      return result.errors[0].message;
+    }
+    onClose();
+    return undefined;
+  }, [campaign.id, addMission, name, day, onClose]);
+  const onShow = useCallback(() => {
+    setDay(campaign.day);
+    onOpen();
+  }, [campaign.day, setDay, onOpen])
+  return [
+    onShow,
+    <Modal key="mission" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>
+              {t`Add mission`}
+            </Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <form onSubmit={e => {
+            e.preventDefault();
+            onSubmit();
+          }}>
+            <FormControl>
+              <FormLabel>{t`Day`}</FormLabel>
+              <Input
+                value={day}
+                type="number"
+                onChange={e => setDay(parseInt(e.target.value))}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>{t`Name`}</FormLabel>
+              <Input
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+            </FormControl>
+          </form>
+        </ModalBody>
+        <ModalFooter>
+          {!!name && !!day && <SubmitButton color="blue" onSubmit={onSubmit}>{t`Add`}</SubmitButton> }
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
+
+function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry, index: number) => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [current, setCurrent] = useState<{ mission: MissionEntry; index: number } | undefined>();
+
+  const [name, setName] = useState('');
+  const [day, setDay] = useState('');
+  const [progress, setProgress] = useState<number>(0);
+  const [completed, setCompleted] = useState<boolean>(false);
+
+  const showModal = useCallback(async(mission: MissionEntry, index: number) => {
+    setCurrent({ mission, index });
+    setName(mission.name);
+    setDay(`${mission.day}`);
+    setProgress(mission.progress || 0);
+    setCompleted(mission.completed || false);
+    onOpen();
+  }, [setName, setDay, setProgress, setCompleted, setCurrent, onOpen]);
+
+  const hasChanges = useMemo(() => {
+    return !!current && (
+      trim(current.mission.name) !== trim(name) ||
+      current.mission.day !== parseInt(trim(day)) ||
+      (current.mission.progress || 0) !== progress ||
+      (current.mission.completed || false) !== completed
+    );
+  }, [current, name, day, progress, completed]);
+
+  const [setMissions] = useSetCampaignMissionsMutation();
+  const onDelete = useCallback(async() => {
+    if (!current) {
+      return;
+    }
+    const r = await setMissions({
+      variables: {
+        campaignId: campaign.id,
+        missions: filter(campaign.missions as MissionEntry[], (m, idx) => idx !== current.index),
+      }
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    setCurrent(undefined);
+    onClose();
+  }, [current, campaign.id, campaign.missions, setMissions, setCurrent, onClose]);
+
+  const onSubmit = useCallback(async() => {
+    if (!current) {
+      return;
+    }
+    if (!name || !parseInt(day)) {
+      return t`Name and day are required.`
+    }
+    const mission: MissionEntry = {
+      name,
+      day: parseInt(day),
+      completed,
+      progress,
+    };
+    const result = await setMissions({
+      variables: {
+        campaignId: campaign.id,
+        missions: map(campaign.missions as MissionEntry[], (m, idx) => idx !== current.index ? m : mission),
+      },
+    });
+    if (result.errors?.length) {
+      return result.errors[0].message;
+    }
+    onClose();
+    return undefined;
+  }, [setMissions, campaign.id, campaign.missions, current, name, day, completed, progress, onClose]);
+  return [
+    showModal,
+    <Modal key="access" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Edit mission`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <form onSubmit={e => {
+            e.preventDefault();
+            onSubmit();
+          }}>
+            <FormControl marginBottom={2}>
+              <FormLabel>{t`Day`}</FormLabel>
+              <Input
+                value={day}
+                type="number"
+                onChange={e => setDay(e.target.value)}
+              />
+            </FormControl>
+            <FormControl marginBottom={2}>
+              <FormLabel>{t`Name`}</FormLabel>
+              <Input
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>{t`Progress`}</FormLabel>
+              <ButtonGroup>
+                { map(range(0, 3), p => {
+                  const progressNumber = p + 1;
+                  const checked = progress > p;
+                  return (
+                    <IconButton
+                      key={p}
+                      aria-label={t`Progress ${progressNumber}`}
+                      variant="ghost"
+                      icon={<ProgressChit filled={checked} />}
+                      onClick={() => setProgress(checked ? p : p + 1)}
+                    />
+                  );
+                }) }
+              </ButtonGroup>
+            </FormControl>
+            <FormControl>
+              <Checkbox isChecked={completed} onChange={(event) => setCompleted(event.target.checked)}>
+                {t`Completed`}
+              </Checkbox>
+            </FormControl>
+          </form>
+        </ModalBody>
+        <ModalFooter>
+          <ButtonGroup>
+            <SubmitButton color="red" onSubmit={onDelete}>{t`Delete`}</SubmitButton>
+            <SubmitButton color="blue" disabled={!hasChanges} onSubmit={onSubmit}>{t`Save`}</SubmitButton>
+          </ButtonGroup>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
+
+function ProgressChit({ filled, marginRight }: { filled?: boolean; marginRight?: number | string }) {
+  return (
+    <AspectRatio width="16px" ratio={1} marginRight={marginRight}>
+      <Box borderRadius="3px" borderColor="gray.500" borderWidth="2px" transform="rotate(45deg)">
+        { !!filled && (
+          <AspectRatio width="10px" ratio={1}>
+            <Box borderRadius="1px" backgroundColor="gray.600" />
+          </AspectRatio>
+        )}
+      </Box>
+    </AspectRatio>
+  )
+}
+
+function MissionRow({ mission, index, showEdit }: { mission: MissionEntry; index: number; showEdit: (mission: MissionEntry, index: number) => void }) {
+  const onClick = useCallback(() => showEdit(mission, index), [showEdit, mission, index]);
+  return (
+    <Tr cursor="pointer" onClick={onClick}>
+      <Td>
+        <AspectRatio width="40px" ratio={1}>
+          <Box borderRadius="12px" borderColor="gray.500" borderWidth="2px">
+            <AspectRatio width="34px" ratio={1}>
+              <Box borderRadius="10px" borderColor="gray.500" borderWidth="1px" marginRight={1}>
+                <Text textAlign="center" fontWeight="600">
+                  {mission.day || ' '}
+                </Text>
+              </Box>
+            </AspectRatio>
+          </Box>
+        </AspectRatio>
+      </Td>
+      <Td>
+        <Text fontSize="lg" textDecorationLine={mission.completed ? 'line-through' : undefined}>
+          { mission.name }
+        </Text>
+      </Td>
+      <Td>
+        <Flex direction="row">
+          { map(range(0, 3), (idx) => <ProgressChit marginRight="6px" key={idx} filled={(mission.progress || 0) > idx} />)}
+        </Flex>
+      </Td>
+    </Tr>
+  )
+}
+function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
+  const [showAddMission, addMissionModal] = useAddMissionModal(campaign);
+  const [showEditMission, editMissionModal] = useEditMissionModal(campaign);
   return (
     <>
-      <Text>{campaign.name}</Text>
+      <TableContainer marginBottom={2}>
+        <Table variant="simple">
+          <Thead>
+            <Th>{t`Day`}</Th>
+            <Th>{t`Name`}</Th>
+            <Th>{t`Progress`}</Th>
+          </Thead>
+          <Tbody>
+            { map(campaign.missions as MissionEntry[], (mission, idx) => (
+              <MissionRow key={idx} mission={mission} index={idx} showEdit={showEditMission} />
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
+      <Button leftIcon={<SlPlus />} onClick={showAddMission}>{t`Add mission`}</Button>
+      { addMissionModal }
+      { editMissionModal }
+    </>
+  );
+}
+
+function useEditEventModal(onUpdate: (idx: number, event: NotableEvent) => Promise<void>): [(index: number, event: NotableEvent) => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [index, setIndex] = useState<number>(0);
+  const [text, setText] = useState('');
+  const [crossedOut, setCrossedOut] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const showModal = useCallback((index: number, event: NotableEvent) => {
+    setText(event.event);
+    setIndex(index);
+    setCrossedOut(event.crossed_out || false);
+    onOpen();
+  }, [onOpen, setText, setIndex, setCrossedOut]);
+  const onSaveEvent = useCallback(async() => {
+    setSubmitting(true);
+    await onUpdate(index, { event: text, crossed_out: crossedOut });
+    setSubmitting(false);
+    onClose();
+    return undefined;
+  }, [onUpdate, onClose, index, text, crossedOut, setSubmitting]);
+  return [
+    showModal,
+    <Modal key="deck" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent maxW="600px">
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Edit notable event`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <form onSubmit={e => {
+            e.preventDefault();
+            onSaveEvent();
+          }}>
+            <FormControl marginBottom={4}>
+              <FormLabel>{t`What happened?`}</FormLabel>
+              <Input
+                type="text"
+                textDecorationLine={crossedOut ? 'line-through' : undefined}
+                value={text}
+                onChange={e => setText(e.target.value)}
+              />
+            </FormControl>
+            <FormControl>
+              <Checkbox isChecked={crossedOut} onChange={(event) => setCrossedOut(event.target.checked)}>
+                { t`Crossed-out` }
+              </Checkbox>
+            </FormControl>
+          </form>
+        </ModalBody>
+        <ModalFooter>
+          <Flex direction="row" flex={1} justifyContent="flex-end">
+            <SubmitButton
+              color="blue"
+              onSubmit={onSaveEvent}
+            >
+              { t`Save` }
+            </SubmitButton>
+          </Flex>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
+
+function EventLine({ event, idx, onClick }: {
+  event: NotableEvent;
+  idx: number;
+  onClick: (idx: number, event: NotableEvent) => void;
+}) {
+  const handleClick = useCallback(() => onClick(idx, event), [onClick, idx, event]);
+  return (
+    <ListItem key={idx} paddingTop={2} paddingBottom={2} onClick={handleClick} cursor="pointer">
+      <Text padding={2} borderBottomWidth={1} borderColor="gray.100" textDecorationLine={event.crossed_out ? 'line-through' : undefined}>
+        { event.event }
+      </Text>
+    </ListItem>
+  );
+}
+
+function EventsTab({ campaign }: { campaign: ParsedCampaign }) {
+  const [event, setEvent] = useState('');
+  const [addEvent] = useAddCampaignEventMutation();
+  const onSubmitNewEvent = useCallback(async() => {
+    if (event) {
+      const newEvent: NotableEvent = {
+        event: trim(event),
+      };
+      const r = await addEvent({
+        variables: {
+          campaignId: campaign.id,
+          event: newEvent,
+        }
+      });
+      if (r.errors?.length) {
+        return r.errors[0].message;
+      }
+    }
+    setEvent('');
+    return undefined;
+  }, [event, campaign.id, setEvent, addEvent]);
+  const [updateEvents] = useUpdateCampaignEventsMutation();
+  const onUpdateEvent = useCallback(async(idx: number, value: NotableEvent) => {
+    const newEvents = flatMap(campaign.events, (e, i) => {
+      if (idx === i) {
+        if (value.event) {
+          return value;
+        }
+        return [];
+      }
+      return e;
+    });
+    await updateEvents({
+      variables: {
+        campaignId: campaign.id,
+        events: newEvents,
+      }
+    });
+  }, [updateEvents, campaign.events, campaign.id]);
+  const [showEditEvent, eventModal] = useEditEventModal(onUpdateEvent);
+  return (
+    <>
+      <List>
+        <form onSubmit={e => {
+          e.preventDefault();
+          onSubmitNewEvent();
+        }}>
+          <Flex direction="row">
+            <Input
+              value={event}
+              placeholder={t`What happened?`}
+              onChange={e => setEvent(e.target.value)}
+            />
+            { !!event && (
+              <ButtonGroup marginLeft={2}>
+                <SubmitIconButton aria-label={t`Save`} onSubmit={onSubmitNewEvent} icon={<SlCheck />} />
+              </ButtonGroup>
+            ) }
+          </Flex>
+        </form>
+        { map(campaign.events, (event, idx) => (
+          <EventLine
+            key={idx}
+            idx={idx}
+            event={event}
+            onClick={showEditEvent}
+          />)) }
+      </List>
+      { eventModal }
+    </>
+  );
+}
+
+interface CalendarEntry {
+  day: number;
+  guides: string[];
+}
+const size = 40;
+
+function DayButton({ day, currentDay, onClick }: { day: number; currentDay: number; onClick: (day: number) => void }) {
+  const handleClick = useCallback(() => onClick(day), [onClick, day]);
+  return (
+    <IconButton onClick={handleClick} borderRadius={`${size / 2}px`} variant="ghost" aria-label={t`Day ${day}`} icon={
+      <AspectRatio key={day} minWidth={`${size}px`} ratio={1}>
+        <Box borderRadius={`${size / 2}px`}
+          borderWidth={currentDay === day ? '3px' : '1px'}
+          borderColor="gray.500"
+          backgroundColor={currentDay > day ? 'gray.200' : undefined}
+        >
+          <Text
+            color={currentDay > day ? 'gray.500' : undefined}
+            fontWeight={currentDay <= day ? '600' : '400'}
+            textDecorationLine={currentDay > day ? 'line-through' : undefined}
+          >&nbsp;{day}&nbsp;</Text>
+        </Box>
+      </AspectRatio>
+    } />
+  );
+}
+interface Weather {
+  start: number;
+  end: number;
+  name: string;
+}
+function useWeather(): Weather[] {
+  return useMemo(() => {
+    return [
+      {
+        start: 1,
+        end: 3,
+        name: t`A Perfect Day`,
+      },
+      {
+        start: 4,
+        end: 7,
+        name: t`Downpour`,
+      },
+      {
+        start: 8,
+        end: 9,
+        name: t`A Perfect Day`,
+      },
+      {
+        start: 10,
+        end: 12,
+        name: t`Downpour`,
+      },
+      {
+        start: 13,
+        end: 14,
+        name: t`Howling Winds`,
+      },
+      {
+        start: 15,
+        end: 17,
+        name: t`Downpour`,
+      },
+      {
+        start: 18,
+        end: 20,
+        name: t`Howling Winds`,
+      },
+      {
+        start: 21,
+        end: 22,
+        name: t`A Perfect Day`,
+      },
+      {
+        start: 23,
+        end: 25,
+        name: t`Downpour`,
+      },
+      {
+        start: 26,
+        end: 28,
+        name: t`Howling Winds`,
+      },
+      {
+        start: 29,
+        end: 30,
+        name: t`A Perfect Day`,
+      }
+    ]
+  }, []);
+}
+const FIXED_GUIDE_ENTRIES: { [day: string]: string[] | undefined } = {
+  '1': ['1'],
+  '3': ['94.1'],
+  '4': ['1.04'],
+};
+
+function Timeline({ campaign }: { campaign: ParsedCampaign }) {
+  const weatherLabels = useWeather();
+  const [showDayModal, editDayModal] = useEditDayModal(campaign);
+  const entriesByDay = useMemo(() => {
+    const r: { [key: string]: string[] | undefined } = {};
+    r['1'] = ['1'];
+    r['3'] = ['94.1'];
+    r['4'] = ['1.04'];
+    forEach(campaign.calendar as CalendarEntry[], ({ day, guides }) => {
+      if (!r[day]) {
+        r[day] = [];
+      }
+      forEach(guides, g => {
+        r[day]?.push(g);
+      });
+    });
+    return r;
+  }, [campaign.calendar]);
+
+  return (
+    <>
+      <Box maxW="100vw">
+        <Flex direction="column"  overflowX="scroll" paddingBottom="16px">
+          <Flex direction="row" alignItems="flex-end">
+            { map(range(1, 31), (day) => {
+              const entries = entriesByDay[day];
+
+              return (
+                <Flex direction="column" marginRight="4px" alignItems="center">
+                  { !!entries?.length && (
+                    <>
+                      <CoreIcon icon="guide" size="18" />
+                      <Text textAlign="center" fontSize="xs">{entries.join(', ')}</Text>
+                    </>
+                  ) }
+                  <DayButton onClick={showDayModal} currentDay={campaign.day} day={day} />
+                </Flex>
+              );
+            })}
+          </Flex>
+          <Flex direction="row" marginTop="4px">
+            { map(weatherLabels, ({ start, end, name }) => {
+              const current = campaign.day >= start && campaign.day <= end;
+              return (
+                <Flex direction="column" minWidth={`${(end - start) * (size + 4) + (size - 10)}px`} marginLeft="5px" marginRight="9px">
+                  <Box
+                    borderLeftWidth="1px"
+                    borderRightWidth="1px"
+                    borderRadius="4px" borderBottomWidth="1px" height="16px" width="100%"
+                    borderColor={current ? 'gray.600' : 'gray.300'}
+                  />
+                  <Text textAlign="center" fontSize="2xs" fontWeight={current ? '600' : '400'}>
+                    {name}
+                  </Text>
+                </Flex>
+              );
+            })}
+          </Flex>
+        </Flex>
+      </Box>
+      { editDayModal }
+    </>
+  );
+}
+
+
+
+export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign: () => Promise<void>, cards: CardsMap): [() => void, React.ReactNode] {
+  const { authUser } = useAuth();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { data: totalDecks } = useGetMyCampaignDecksTotalQuery({
+    variables: {
+      userId: authUser?.uid || '',
+    },
+    skip: !authUser,
+  });
+  const { fetchMore } = useGetMyCampaignDecksQuery({
+    variables: {
+      userId: authUser?.uid || '',
+      limit: 5,
+      offset: 0,
+    },
+    skip: true,
+  });
+
+  const fetchDecks = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<DeckFragment[]> => {
+    if (authUser) {
+      const data = await fetchMore({
+        variables: {
+          userId: authUser.uid,
+          limit: pageSize,
+          offset,
+        },
+      });
+      return data.data.decks || [];
+    }
+    return [];
+  }, [fetchMore]);
+
+  const [setDeckCampaign] = useSetDeckCampaignMutation();
+  const onChooseDeck = useCallback(async(deck: DeckFragment) => {
+    const r = await setDeckCampaign({
+      variables: {
+        campaignId: campaign.id,
+        deckId: deck.id,
+      }
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    await refetchCampaign();
+    onClose();
+    return undefined;
+  }, [setDeckCampaign, refetchCampaign, onClose, campaign.id]);
+  const showModal = useCallback(() => {
+    onOpen();
+  }, [onOpen]);
+  return [
+    showModal,
+    <Modal key="deck" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent maxW="600px">
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Choose deck`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <PaginationWrapper
+            total={totalDecks?.total.aggregate?.count}
+            pageSize={5}
+            fetchData={fetchDecks}
+            deleteCount={0}
+          >
+            { (decks: DeckFragment[]) => (
+              <List>
+                { map(decks, deck => (
+                  <ListItem key={deck.id}>
+                    <CompactDeckRow
+                      deck={deck}
+                      roleCards={cards}
+                      onClick={onChooseDeck}
+                    />
+                  </ListItem>
+                )) }
+              </List>
+            ) }
+          </PaginationWrapper>
+        </ModalBody>
+        <ModalFooter>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
+function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampaign }: {
+  campaign: ParsedCampaign;
+  cards: CardsMap;
+  showEditFriends: () => void;
+  refetchCampaign: () => Promise<void>;
+}) {
+  const [showChooseDeck, chooseDeckModal] = useShowChooseDeckModal(campaign, refetchCampaign, cards);
+  const [removeDeckFromCampaign] = useRemoveDeckCampaignMutation();
+  const removeDeck = useCallback(async(deck: DeckFragment) => {
+    const r = await removeDeckFromCampaign({
+      variables: {
+        deckId: deck.id,
+        campaignId: campaign.id,
+      },
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    await refetchCampaign();
+  }, [removeDeckFromCampaign, refetchCampaign, campaign.id]);
+  return (
+    <>
+      <Text>{t`Rangers`}</Text>
+      <List>
+        { map(campaign.access, user => (
+          <CampaignUser
+            key={user.id}
+            user={user}
+            campaign={campaign}
+            roleCards={cards}
+            showChooseDeck={showChooseDeck}
+            removeDeck={removeDeck}
+          />
+        )) }
+        <ListItem>
+          <Button variant="ghost" leftIcon={<SlPlus />}  onClick={showEditFriends}>
+            { t`Add` }
+          </Button>
+        </ListItem>
+      </List>
+      { chooseDeckModal }
+    </>
+  );
+}
+
+export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
+  const [setCampaignLocationMutation] = useSetCampaignLocationMutation();
+  const setCampaignLocation = useCallback(async(value: string) => {
+    setCampaignLocationMutation({
+      variables: {
+        campaignId: campaign.id,
+        location: value,
+      },
+    });
+  }, [setCampaignLocationMutation, campaign.id]);
+  const [setCampaignPathTerrainMutation] = useSetCampaignPathTerrainMutation();
+  const setCampaignTerrain = useCallback(async(value: string) => {
+    setCampaignPathTerrainMutation({
+      variables: {
+        campaignId: campaign.id,
+        terrain: value,
+      },
+    });
+  }, [setCampaignPathTerrainMutation, campaign.id]);
+  return (
+    <>
+      <PageHeading title={campaign.name} />
+      <Timeline campaign={campaign} />
+      <SimpleGrid columns={[1,1,1,2]} spacingY="2em" spacingX="1em">
+        <Flex direction="column" paddingLeft={[1,1,2]}>
+          <CampaignRangersSection
+            campaign={campaign}
+            cards={cards}
+            showEditFriends={showEditFriends}
+            refetchCampaign={refetchCampaign}
+          />
+          <Box
+            marginTop={2}
+            marginBottom={2}
+            padding={2}
+            borderRadius="8px"
+            borderWidth={2}
+            backgroundColor="gray.100"
+            borderColor="gray.500"
+            maxW="24rem"
+          >
+            <Text textAlign="center" fontSize="lg" fontWeight="600">
+              {t`Current Position`}
+            </Text>
+            <FormControl marginBottom={4}>
+              <FormLabel textDecorationLine="underline" fontSize="sm">{t`Location`}</FormLabel>
+              <EditableTextInput hideEditButton onChange={setCampaignLocation} value={campaign.current_location || ''} placeholder={t`Record current location`} />
+            </FormControl>
+            <FormControl marginBottom={2}>
+              <FormLabel textDecorationLine="underline" fontSize="sm">{t`Path Terrain`}</FormLabel>
+              <EditableTextInput hideEditButton onChange={setCampaignTerrain} value={campaign.current_path_terrain || ''} placeholder={t`Record current path terrain`} />
+            </FormControl>
+          </Box>
+        </Flex>
+        <Tabs paddingRight={2}>
+          <TabList>
+            <Tab>{t`Missions`}</Tab>
+            <Tab>{t`Rewards`}</Tab>
+            <Tab>{t`Notable Events`}</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <MissionsTab campaign={campaign} />
+            </TabPanel>
+            <TabPanel>
+              <RewardsTab campaign={campaign} cards={cards} />
+            </TabPanel>
+            <TabPanel>
+              <EventsTab campaign={campaign} />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+      </SimpleGrid>
     </>
   )
 }
 
-export function useEditCampaignAccessModal(campaign: CampaignFragment): [() => void, React.ReactNode] {
+export function useEditCampaignAccessModal(
+  campaign: ParsedCampaign | undefined | null,
+  updateAccess: (selection: string[]) => Promise<string | undefined>
+): [() => void, React.ReactNode] {
   const { authUser } = useAuth();
   const { data, refetch } = useGetProfileQuery({
     variables: {
@@ -50,7 +1393,33 @@ export function useEditCampaignAccessModal(campaign: CampaignFragment): [() => v
     };
   }, [refetch, authUser]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedFriends, setSelectedFriends] = useState(flatMap(campaign?.access, user => user.id || []));
+  useEffect(() => {
+    setSelectedFriends(flatMap(campaign?.access, user => user.id || []));
+  }, [setSelectedFriends, campaign?.access]);
+  const onAdd = useCallback(async(id: string) => {
+    setSelectedFriends(uniq([
+      ...selectedFriends,
+      id,
+    ]));
+    return undefined;
+  }, [selectedFriends, setSelectedFriends]);
+  const hasChanges = useMemo(() => {
+    const original = flatMap(campaign?.access, user => user.id || []);
+    return !!(difference(original, selectedFriends).length || difference(selectedFriends, original).length);
+  }, [selectedFriends, campaign?.access]);
+  const onRemove = useCallback(async(id: string) => {
+    setSelectedFriends(filter(selectedFriends, f => f !== id));
+    return undefined;
+  }, [selectedFriends, setSelectedFriends]);
 
+  const onSubmit = useCallback(async() => {
+    const result = await updateAccess(selectedFriends);
+    if (!result) {
+      onClose();
+    }
+    return result;
+  }, [selectedFriends, updateAccess, onClose]);
   return [
     onOpen,
     <Modal key="access" isOpen={isOpen} onClose={onClose}>
@@ -58,13 +1427,22 @@ export function useEditCampaignAccessModal(campaign: CampaignFragment): [() => v
       <ModalContent>
         <ModalHeader>
           <Box paddingRight={8}>
-            <Heading>{t`New campaign`}</Heading>
+            <Heading>{t`Edit players`}</Heading>
           </Box>
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
+          <FriendChooser
+            profile={data?.profile || undefined}
+            selection={selectedFriends}
+            add={onAdd}
+            refreshProfile={refreshProfile}
+            remove={onRemove}
+            title={t`Players`}
+          />
         </ModalBody>
         <ModalFooter>
+          {!!hasChanges && <SubmitButton color="blue" onSubmit={onSubmit}>{t`Save`}</SubmitButton> }
         </ModalFooter>
       </ModalContent>
     </Modal>

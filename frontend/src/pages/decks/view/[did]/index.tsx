@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react'
 import { t } from '@lingui/macro';
 import Head from 'next/head';
 
-import { useGetCardsQuery, useGetDeckQuery } from '../../../../generated/graphql/apollo-schema';
+import { useGetAllCardsQuery, useGetDeckQuery } from '../../../../generated/graphql/apollo-schema';
 import { useCardsMap, useRouterPathParam } from '../../../../lib/hooks';
 import LoadingPage from '../../../../components/LoadingPage';
 import Deck from '../../../../components/Deck';
@@ -19,7 +19,7 @@ export default function ViewDeckPage() {
     skip: !isReady || !deckId,
   });
   const { locale } = useLocale();
-  const { data: cardsData } = useGetCardsQuery({
+  const { data: cardsData } = useGetAllCardsQuery({
     variables: {
       locale,
     },
