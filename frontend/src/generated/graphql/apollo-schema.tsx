@@ -35461,7 +35461,7 @@ export type GetMyCampaignsQueryVariables = Exact<{
 }>;
 
 
-export type GetMyCampaignsQuery = { __typename?: 'query_root', user?: { __typename?: 'rangers_users', campaigns: Array<{ __typename?: 'rangers_user_campaign', campaign?: { __typename?: 'rangers_campaign', id: number, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null }> } | null };
+export type GetMyCampaignsQuery = { __typename?: 'query_root', user?: { __typename?: 'rangers_users', campaigns: Array<{ __typename?: 'rangers_user_campaign', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null }> } | null };
 
 export type GetMyCampaignsTotalQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -35475,14 +35475,14 @@ export type GetCampaignQueryVariables = Exact<{
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign?: { __typename?: 'rangers_campaign', id: number, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
 
 export type CreateCampaignMutationVariables = Exact<{
   name: Scalars['String'];
 }>;
 
 
-export type CreateCampaignMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
+export type CreateCampaignMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
 
 export type AddFriendToCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
@@ -35571,6 +35571,14 @@ export type SetCampaignDayMutationVariables = Exact<{
 
 
 export type SetCampaignDayMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, day: number } | null };
+
+export type LeaveCampaignMutationVariables = Exact<{
+  campaignId: Scalars['Int'];
+  userId: Scalars['String'];
+}>;
+
+
+export type LeaveCampaignMutation = { __typename?: 'mutation_root', delete_rangers_campaign_access_by_pk?: { __typename?: 'rangers_campaign_access', campaign_id: number, user_id: string } | null };
 
 export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null };
 
@@ -35720,7 +35728,7 @@ export type SaveDeckMutation = { __typename?: 'mutation_root', update_rangers_de
 
 export type UserInfoFragment = { __typename?: 'rangers_users', id: string, handle?: string | null };
 
-export type CampaignFragment = { __typename?: 'rangers_campaign', id: number, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
+export type CampaignFragment = { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
 export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, published?: boolean | null, meta: any, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
@@ -35846,6 +35854,7 @@ export const DeckFragmentDoc = gql`
 export const CampaignFragmentDoc = gql`
     fragment Campaign on rangers_campaign {
   id
+  user_id
   name
   day
   current_location
@@ -36495,6 +36504,41 @@ export function useSetCampaignDayMutation(baseOptions?: Apollo.MutationHookOptio
 export type SetCampaignDayMutationHookResult = ReturnType<typeof useSetCampaignDayMutation>;
 export type SetCampaignDayMutationResult = Apollo.MutationResult<SetCampaignDayMutation>;
 export type SetCampaignDayMutationOptions = Apollo.BaseMutationOptions<SetCampaignDayMutation, SetCampaignDayMutationVariables>;
+export const LeaveCampaignDocument = gql`
+    mutation leaveCampaign($campaignId: Int!, $userId: String!) {
+  delete_rangers_campaign_access_by_pk(campaign_id: $campaignId, user_id: $userId) {
+    campaign_id
+    user_id
+  }
+}
+    `;
+export type LeaveCampaignMutationFn = Apollo.MutationFunction<LeaveCampaignMutation, LeaveCampaignMutationVariables>;
+
+/**
+ * __useLeaveCampaignMutation__
+ *
+ * To run a mutation, you first call `useLeaveCampaignMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLeaveCampaignMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [leaveCampaignMutation, { data, loading, error }] = useLeaveCampaignMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useLeaveCampaignMutation(baseOptions?: Apollo.MutationHookOptions<LeaveCampaignMutation, LeaveCampaignMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LeaveCampaignMutation, LeaveCampaignMutationVariables>(LeaveCampaignDocument, options);
+      }
+export type LeaveCampaignMutationHookResult = ReturnType<typeof useLeaveCampaignMutation>;
+export type LeaveCampaignMutationResult = Apollo.MutationResult<LeaveCampaignMutation>;
+export type LeaveCampaignMutationOptions = Apollo.BaseMutationOptions<LeaveCampaignMutation, LeaveCampaignMutationVariables>;
 export const GetCardsDocument = gql`
     query getCards($locale: String!) {
   cards: rangers_card_localized(

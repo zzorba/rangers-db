@@ -5,7 +5,7 @@ import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, 
 import NextLink from 'next/link';
 import Router from 'next/router';
 
-import { CampaignFragment, CardFragment, DeckFragment, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
+import { CampaignFragment, CardFragment, DeckFragment, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import SolidButton from './SolidButton';
 import FriendChooser from './FriendChooser';
@@ -48,6 +48,7 @@ export interface ParsedCampaign {
   id: number;
   name: string;
   day: number;
+  user_id: string;
 
   missions: MissionEntry[];
   calendar: CalendarEntry[];
@@ -62,6 +63,7 @@ export interface ParsedCampaign {
 
 export class CampaignWrapper implements ParsedCampaign {
   id: number;
+  user_id: string;
   name: string;
   day: number;
 
@@ -78,6 +80,7 @@ export class CampaignWrapper implements ParsedCampaign {
 
   constructor(campaign: CampaignFragment) {
     this.id = campaign.id;
+    this.user_id = campaign.user_id;
     this.name = campaign.name;
     this.day = campaign.day;
 
@@ -118,15 +121,17 @@ function CampaignRow({ campaign, roleCards }: { campaign: ParsedCampaign; roleCa
     })
   }, [campaign.latest_decks, roleCards]);
   return (
-    <ListItem as={NextLink} href={`/campaigns/${campaign.id}`}>
-      <Flex direction="row" justifyContent="space-between">
+    <ListItem padding={2} borderBottomWidth="1px" borderColor="gray.100">
+      <Flex direction="row" justifyContent="space-between" as={NextLink} href={`/campaigns/${campaign.id}`}>
         <Flex direction="column">
-          <Text fontSize="lg" fontWeight="600">{campaign.name}</Text>
+          <Flex direction="row" alignItems="flex-end">
+            <Text fontSize="lg" fontWeight="600">{campaign.name}</Text>
+            <Text marginLeft="2em">{t`Day ${campaign.day}`}</Text>
+          </Flex>
           <Flex direction="row">
             <CoreIcon icon="ranger" size="22" />
             <Text marginLeft={2}>{ filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}</Text>
           </Flex>
-          <Text>{t`Day ${campaign.day}`}</Text>
         </Flex>
         <Flex direction="row">
           { flatMap(roles, card => card.imagesrc ? <RoleImage key={card.id} name={card.name} url={card.imagesrc} /> : [])}
@@ -149,6 +154,18 @@ function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }:
   const onRemove = useCallback(() => {
     !!deck && removeDeck(deck);
   }, [removeDeck, deck]);
+  const [doLeaveCampaign] = useLeaveCampaignMutation();
+  const leaveCampaign = useCallback(async() => {
+    if (authUser?.uid) {
+      await doLeaveCampaign({
+        variables: {
+          userId: authUser.uid,
+          campaignId: campaign.id,
+        },
+      });
+      Router.push('/campaigns');
+    }
+  }, [doLeaveCampaign, authUser, campaign.id]);
   return (
     <ListItem key={user.id} padding={2} flexDirection="column">
       <Flex direction="row">
@@ -182,6 +199,11 @@ function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }:
           <Button onClick={showChooseDeck} variant="ghost">
             { t`Choose deck` }
           </Button>
+          { authUser.uid !== campaign.user_id && (
+            <Button onClick={leaveCampaign} variant="ghost" color="red">
+              { t`Leave campaign` }
+            </Button>
+          ) }
         </ButtonGroup>
       ) }
     </ListItem>

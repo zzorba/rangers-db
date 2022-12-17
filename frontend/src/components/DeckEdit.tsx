@@ -440,12 +440,10 @@ export default function DeckEdit({ deck, cards }: Props) {
   const [sideSlots, updateSideSlots] = useSlots(deck.side_slots || {});
 
   const updateUpgradeSlots = useCallback((card: CardFragment, count: number) => {
-    console.log(`${JSON.stringify(card)}, ${count}`);
     if (card.set_id === 'reward' || card.set_id === 'malady') {
       updateSlots(card, count);
     } else if (card.id) {
       const diff = count - (slots[card.id] || 0);
-      console.log(`Diff: ${diff}, setting side=${(sideSlots[card.id] || 0) - diff}, main=${count}`);
       updateSideSlots(card, (sideSlots[card.id] || 0) - diff);
       updateSlots(card, count);
     }
@@ -547,7 +545,7 @@ export default function DeckEdit({ deck, cards }: Props) {
 
   return (
     <>
-      <SimpleGrid minChildWidth="300px" spacingX={4} columns={2}>
+      <SimpleGrid minChildWidth="400px" spacingX={4} spacingY="4rem" columns={2}>
         <Box>
           <EditableTextInput
             value={name}

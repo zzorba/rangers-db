@@ -107,7 +107,6 @@ mutation updateCampaignRewards(
   }
 }
 
-
 mutation addCampaignEvent(
   $campaignId: Int!,
   $event: jsonb!
@@ -244,5 +243,15 @@ mutation setCampaignDay(
   ) {
     id
     day
+  }
+}
+
+mutation leaveCampaign(
+  $campaignId: Int!,
+  $userId: String!
+) {
+  delete_rangers_campaign_access_by_pk(campaign_id: $campaignId, user_id: $userId) {
+    campaign_id
+    user_id
   }
 }

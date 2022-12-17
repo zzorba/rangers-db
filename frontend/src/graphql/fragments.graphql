@@ -5,6 +5,7 @@ fragment UserInfo on rangers_users {
 
 fragment Campaign on rangers_campaign {
   id
+  user_id
   name
   day
   current_location
