@@ -69,7 +69,9 @@ export default function parseDeck(
     }
     const problems: DeckCardError[] = [];
     if (count > 2) {
-      problems.push('too_many_duplicates');
+      if (card.set_id !== 'malady') {
+        problems.push('too_many_duplicates');
+      }
     } else if (!previousDeck && count !== 2) {
       problems.push('need_two_cards');
     }
@@ -273,7 +275,7 @@ export default function parseDeck(
     {
       type: 'header',
       id: 'other',
-      title: t`Other`,
+      title: t`Rewards and Maladies`,
       problem: undefined,
     },
   ];

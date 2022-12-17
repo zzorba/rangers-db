@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Box, Flex, Text, useRadio, useRadioGroup, UseRadioProps } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, useRadio, useRadioGroup, UseRadioProps } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { Slots } from '../types/types';
 import { CardFragment } from '../generated/graphql/apollo-schema';
@@ -21,7 +21,7 @@ export default function CardCount({
       px={2}
       py={3}
     >
-      ×{count}
+      { `×${count}` }
     </Box>
   );
 }
@@ -145,6 +145,33 @@ export function CountControls({ card, slots, setSlots, onClose, countMode }: {
           </RadioCardCount>
         );
       }) }
+    </Flex>
+  );
+}
+
+
+export function IncDecCountControls({ card, slots, setSlots, onClose }: {
+  onClose?: () => void;
+  card: CardFragment;
+  slots: Slots;
+  setSlots: (card: CardFragment, count: number) => void;
+}) {
+  const onInc = useCallback(() => {
+    if (card.id) {
+      setSlots(card, Math.min((slots[card.id] || 0) + 1, card.quantity || 2));
+    }
+  }, [card, slots, setSlots]);
+  const count = (card.id && slots[card.id]) || 0;
+  const onDec = useCallback(() => {
+    if (card.id) {
+      setSlots(card, Math.max((slots[card.id] || 0) - 1, 0));
+    }
+  }, [card, slots, setSlots]);
+  return (
+    <Flex direction="row" alignItems="center" marginLeft={2}>
+      <Button variant="ghost" onClick={onDec} disabled={count <= 0}>−</Button>
+      <CardCount count={count} marginLeft={1} />
+      <Button variant="ghost" onClick={onInc} disabled={count >= (card.quantity || 2)} marginLeft={1}>+</Button>
     </Flex>
   );
 }

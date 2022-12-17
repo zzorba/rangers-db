@@ -41,7 +41,7 @@ import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../
 import { CardsMap } from '../lib/hooks';
 import { CardRow, ShowCard, useCardModal } from './Card';
 import { SimpleCardList, SpoilerCardList } from './CardList';
-import { CountControls } from './CardCount';
+import { CountControls, IncDecCountControls } from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
 import SolidButton from './SolidButton';
@@ -450,6 +450,15 @@ export default function DeckEdit({ deck, cards }: Props) {
   }, [slots, sideSlots, updateSlots, updateSideSlots]);
   const isUpgrade = !!deck.previous_deck;
   const renderControl = useCallback((card: CardFragment) => {
+    if (card.set_id === 'malady') {
+      return (
+        <IncDecCountControls
+          card={card}
+          slots={slots}
+          setSlots={updateSlots}
+        />
+      );
+    }
     return (
       <CountControls
         card={card}
