@@ -34,14 +34,14 @@ import NextLink from 'next/link';
 import { sumBy, find, keys, union, omit, forEach, map, flatMap, pick, values, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
 
-import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap } from '../lib/hooks';
 import { CardRow, ShowCard, useCardModal } from './Card';
 import { SimpleCardList, SpoilerCardList } from './CardList';
-import { CountControls, CountToggle } from './CardCount';
+import { CountControls } from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
 import SolidButton from './SolidButton';
@@ -578,7 +578,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               </Box>
               ) : (
               <Input as={Button} disabled={!parsedDeck.specialty} onClick={showRole}>
-                Choose role
+                {t`Choose role`}
               </Input>
               ) }
           </FormControl>
@@ -649,7 +649,7 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
     if (specialty) {
       return specialty;
     }
-    return 'Name your character';
+    return t`Name your character`;
   }, [meta, categories]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | undefined>();
