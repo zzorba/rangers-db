@@ -889,7 +889,7 @@ function useEditEventModal(onUpdate: (idx: number, event: NotableEvent) => Promi
 function EventLine({ event, idx, onClick }: {
   event: NotableEvent;
   idx: number;
-  onClick: (idx: number, event: NotableEvent) => Promise<void>;
+  onClick: (idx: number, event: NotableEvent) => void;
 }) {
   const handleClick = useCallback(() => onClick(idx, event), [onClick, idx, event]);
   return (

@@ -21,4 +21,5 @@ const SolidButton = React.forwardRef<HTMLButtonElement, Props>(
     );
   }
 );
+SolidButton.displayName = 'SolidButton';
 export default SolidButton;
