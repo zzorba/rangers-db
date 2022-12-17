@@ -35,6 +35,7 @@ import { RoleImage } from './CardImage';
 import CoreIcon from '../icons/CoreIcon';
 import parseDeck, { CardItem, Item, ParsedDeck } from '../lib/parseDeck';
 import useDeleteDialog from './useDeleteDialog';
+import { Url } from 'url';
 
 interface Props {
   deck: DeckWithCampaignFragment;
@@ -328,7 +329,13 @@ export function DeckDescription({ deck, roleCards, ...textProps }: {
   return <Text {...textProps}>{description}</Text>
 }
 
-export function CompactDeckRow({ deck, roleCards, onClick, children, buttons }: Props & { roleCards: CardsMap; onClick?: (deck: DeckFragment) => void; children?: React.ReactNode; buttons?: React.ReactNode }) {
+export function CompactDeckRow({ deck, roleCards, onClick, children, buttons, href }: Props & {
+  roleCards: CardsMap;
+  onClick?: (deck: DeckFragment) => void;
+  children?: React.ReactNode;
+  buttons?: React.ReactNode;
+  href?: string;
+}) {
   const role = useMemo(() => {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
@@ -336,33 +343,36 @@ export function CompactDeckRow({ deck, roleCards, onClick, children, buttons }: 
     onClick?.(deck);
   }, [onClick, deck]);
   return (
-    <ListItem
+    <Flex
+      flex={1}
       paddingTop={2}
       paddingBottom={2}
       borderBottomColor="gray.100"
       borderBottomWidth="1px"
       onClick={onClick ? handleClick : undefined}
       cursor={onClick ? 'pointer' : undefined}
+      flexDirection="column"
     >
       <Flex direction="row">
-        <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start">
-          { !!role && !!role.imagesrc && <RoleImage large name={role.name} url={role.imagesrc} /> }
-          <Flex direction="column">
+        { !!role && !!role.imagesrc && <RoleImage large name={role.name} url={role.imagesrc} /> }
+        <Flex direction="column" flex={1}>
+          { href ? (
+            <Text fontSize={['md', 'md', 'lg']} as={NextLink} href={href}>{deck.name}</Text>
+          ) : (
             <Text fontSize={['md', 'md', 'lg']}>{deck.name}</Text>
-            { children }
-            <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
-          </Flex>
+          ) }
+          { children }
+          <DeckDescription fontSize={['xs', 's', 'm']} deck={deck} roleCards={roleCards} />
+          { !!deck.meta.problem && <DeckProblemComponent errors={deck.meta.problem} limit={1} /> }
         </Flex>
-        <Flex marginLeft={2} direction="row" alignItems="flex-start" justifyContent="space-between">
-          <SimpleGrid columns={2} marginRight={1}>
-            <MiniAspect aspect="AWA" value={deck.awa} />
-            <MiniAspect aspect="SPI" value={deck.spi} />
-            <MiniAspect aspect="FIT" value={deck.fit} />
-            <MiniAspect aspect="FOC" value={deck.foc} />
-          </SimpleGrid>
-        </Flex>
-        { buttons }
+        <SimpleGrid columns={2} marginRight={1}>
+          <MiniAspect aspect="AWA" value={deck.awa} />
+          <MiniAspect aspect="SPI" value={deck.spi} />
+          <MiniAspect aspect="FIT" value={deck.fit} />
+          <MiniAspect aspect="FOC" value={deck.foc} />
+        </SimpleGrid>
       </Flex>
-    </ListItem>
+      { buttons }
+    </Flex>
   );
 }

@@ -22,9 +22,92 @@ import PageHeading from './PageHeading';
 import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
+import internal from 'stream';
+import { UserInfo } from 'os';
+import { MdFormatStrikethrough } from 'react-icons/md';
+import { createSourceEventStream } from 'graphql';
+
+interface MissionEntry {
+  day: number;
+  name: string;
+  progress?: number;
+  completed?: boolean;
+}
+
+interface LatestDeck {
+  user: UserInfoFragment;
+  deck: DeckFragment;
+}
+
+interface NotableEvent {
+  event: string;
+  crossed_out?: boolean;
+}
+
+export interface ParsedCampaign {
+  id: number;
+  name: string;
+  day: number;
+
+  missions: MissionEntry[];
+  calendar: CalendarEntry[];
+  events: NotableEvent[];
+  rewards: string[];
+  current_location: string | undefined;
+  current_path_terrain: string | undefined;
+
+  latest_decks: LatestDeck[];
+  access: UserInfoFragment[];
+}
+
+export class CampaignWrapper implements ParsedCampaign {
+  id: number;
+  name: string;
+  day: number;
+
+  access: UserInfoFragment[];
+
+  events: NotableEvent[];
+  missions: MissionEntry[];
+  calendar: CalendarEntry[];
+  rewards: string[];
+  latest_decks: LatestDeck[];
+  current_location: string | undefined;
+  current_path_terrain: string | undefined;
 
 
-function CampaignRow({ campaign, roleCards }: { campaign: CampaignFragment; roleCards: CardsMap }) {
+  constructor(campaign: CampaignFragment) {
+    this.id = campaign.id;
+    this.name = campaign.name;
+    this.day = campaign.day;
+
+    this.missions = Array.isArray(campaign.missions) ? (campaign.missions as MissionEntry[]) : [];
+    this.calendar = Array.isArray(campaign.calendar) ? (campaign.calendar as CalendarEntry[]) : [];
+    this.rewards = Array.isArray(campaign.rewards) ? (campaign.rewards as string[]) : [];
+    this.events = Array.isArray(campaign.events) ? (campaign.events as NotableEvent[]) : [];
+
+    this.current_location = campaign.current_location || undefined;
+    this.current_path_terrain = campaign.current_path_terrain || undefined;
+
+    this.access = flatMap(campaign.access, a => {
+      if (a.user) {
+        return a.user;
+      }
+      return [];
+    });
+    this.latest_decks = flatMap(campaign.latest_decks, ld => {
+      if (ld.deck && ld.user) {
+        return {
+          deck: ld.deck,
+          user: ld.user,
+        };
+      }
+      return [];
+    });
+  }
+}
+
+function CampaignRow({ campaign, roleCards }: { campaign: ParsedCampaign; roleCards: CardsMap }) {
   const roles = useMemo(() => {
     return flatMap(campaign.latest_decks, d => {
       const role = d.deck?.meta.role;
@@ -41,7 +124,7 @@ function CampaignRow({ campaign, roleCards }: { campaign: CampaignFragment; role
           <Text fontSize="lg" fontWeight="600">{campaign.name}</Text>
           <Flex direction="row">
             <CoreIcon icon="ranger" size="22" />
-            <Text marginLeft={2}>{ filter(map(campaign.access, a => a.user?.handle || ''), x => !!x).join(', ')}</Text>
+            <Text marginLeft={2}>{ filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}</Text>
           </Flex>
           <Text>{t`Day ${campaign.day}`}</Text>
         </Flex>
@@ -52,7 +135,7 @@ function CampaignRow({ campaign, roleCards }: { campaign: CampaignFragment; role
     </ListItem>
   );
 }
-export function CampaignList({ campaigns, roleCards }: { campaigns: CampaignFragment[]; roleCards: CardsMap }) {
+export function CampaignList({ campaigns, roleCards }: { campaigns: ParsedCampaign[]; roleCards: CardsMap }) {
   return (
     <List>
       { map(campaigns, c => <CampaignRow key={c.id} campaign={c} roleCards={roleCards} />) }
@@ -60,42 +143,47 @@ export function CampaignList({ campaigns, roleCards }: { campaigns: CampaignFrag
   )
 }
 
-function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }: { user: UserInfoFragment; campaign: CampaignFragment; roleCards: CardsMap; showChooseDeck: () => void; removeDeck: (deck: DeckFragment) => void }) {
+function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }: { user: UserInfoFragment; campaign: ParsedCampaign; roleCards: CardsMap; showChooseDeck: () => void; removeDeck: (deck: DeckFragment) => void }) {
   const { authUser } = useAuth();
   const deck = useMemo(() => find(campaign.latest_decks, d => d.user?.id === user.id)?.deck, [campaign.latest_decks, user.id]);
   const onRemove = useCallback(() => {
     !!deck && removeDeck(deck);
   }, [removeDeck, deck]);
   return (
-    <ListItem key={user.id} padding={2}>
-      <Flex direction="row" alignItems="center" justifyContent="space-between">
-        <Flex direction="column">
-          { deck ? (
-            <CompactDeckRow
-              deck={deck}
-              roleCards={roleCards}
-              buttons={authUser?.uid === user.id ? <ButtonGroup><IconButton aria-label={t`Remove deck`} icon={<SlMinus />} onClick={onRemove} /></ButtonGroup> : undefined}
-            >
-              <Text>
-                <CoreIcon icon="ranger" size={18} />&nbsp;
-                { user.handle || (user.id === authUser?.uid ? t`You` : user.id) }
-              </Text>
-            </CompactDeckRow>
-          ) : (
+    <ListItem key={user.id} padding={2} flexDirection="column">
+      <Flex direction="row">
+        { deck ? (
+          <CompactDeckRow
+            deck={deck}
+            roleCards={roleCards}
+            href={`/decks/view/${deck.id}`}
+            buttons={authUser?.uid === deck.user_id && (
+              <ButtonGroup marginTop={1}>
+                <Button onClick={onRemove} variant="ghost">
+                  { t`Remove deck` }
+                </Button>
+              </ButtonGroup>
+            )}
+          >
             <Text>
               <CoreIcon icon="ranger" size={18} />&nbsp;
               { user.handle || (user.id === authUser?.uid ? t`You` : user.id) }
             </Text>
-          ) }
-        </Flex>
-        { !deck && authUser?.uid === user.id && (
-          <ButtonGroup>
-            <Button onClick={showChooseDeck} variant="ghost">
-              {t`Choose deck`}
-            </Button>
-          </ButtonGroup>
+          </CompactDeckRow>
+        ) : (
+          <Text>
+            <CoreIcon icon="ranger" size={18} />&nbsp;
+            { user.handle || (user.id === authUser?.uid ? t`You` : user.id) }
+          </Text>
         ) }
       </Flex>
+      { authUser?.uid === user.id && !deck && (
+        <ButtonGroup marginTop={1}>
+          <Button onClick={showChooseDeck} variant="ghost">
+            { t`Choose deck` }
+          </Button>
+        </ButtonGroup>
+      ) }
     </ListItem>
   );
 }
@@ -120,7 +208,7 @@ function RewardRow({ card, unlocked, onUpdate }: { card: CardFragment; unlocked:
 }
 
 
-function RewardsTab({ campaign, cards }: { campaign: CampaignFragment; cards: CardsMap }) {
+function RewardsTab({ campaign, cards }: { campaign: ParsedCampaign; cards: CardsMap }) {
   const { locale } = useLocale();
   const rewardCards = useMemo(() =>
     sortBy(flatMap(values(cards), c => c?.set_id === 'reward' ? c : []), c => c.set_position),
@@ -129,12 +217,9 @@ function RewardsTab({ campaign, cards }: { campaign: CampaignFragment; cards: Ca
   const { isOpen: showAll, onOpen: onShow, onClose: onHide } = useDisclosure();
   const [unlockedRewards, unlockedCodes] = useMemo(() => {
     const unlockedList: string[] = [];
-    const unlockedCards = flatMap(campaign.rewards as string[], (code) => {
-      if (typeof code === 'string') {
-        unlockedList.push(code);
-        return cards[code] || [];
-      }
-      return [];
+    const unlockedCards = flatMap(campaign.rewards, (code) => {
+      unlockedList.push(code);
+      return cards[code] || [];
     });
 
     return [unlockedCards, new Set(unlockedList)];
@@ -226,7 +311,7 @@ function EditableGuideNumber({ index, value, onUpdate, disabled }: { index: numb
   );
 }
 
-function useEditDayModal(campaign: CampaignFragment): [(day: number) => void, React.ReactNode] {
+function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [setCalendar] = useSetCampaignCalendarMutation();
   const [day, setDay] = useState<number>(1);
@@ -452,7 +537,7 @@ function useEditDayModal(campaign: CampaignFragment): [(day: number) => void, Re
   ];
 }
 
-function useAddMissionModal(campaign: CampaignFragment): [() => void, React.ReactNode] {
+function useAddMissionModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addMission] = useAddCampaignMissionMutation();
   const [name, setName] = useState('');
@@ -461,7 +546,7 @@ function useAddMissionModal(campaign: CampaignFragment): [() => void, React.Reac
     if (!name || !day) {
       return t`Name and day are required.`
     }
-    const mission: Mission = {
+    const mission: MissionEntry = {
       name,
       day,
     };
@@ -489,7 +574,7 @@ function useAddMissionModal(campaign: CampaignFragment): [() => void, React.Reac
         <ModalHeader>
           <Box paddingRight={8}>
             <Heading>
-              {t`New mission`}
+              {t`Add mission`}
             </Heading>
           </Box>
         </ModalHeader>
@@ -525,16 +610,16 @@ function useAddMissionModal(campaign: CampaignFragment): [() => void, React.Reac
 }
 
 
-function useEditMissionModal(campaign: CampaignFragment): [(mission: Mission, index: number) => void, React.ReactNode] {
+function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry, index: number) => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [current, setCurrent] = useState<{ mission: Mission; index: number } | undefined>();
+  const [current, setCurrent] = useState<{ mission: MissionEntry; index: number } | undefined>();
 
   const [name, setName] = useState('');
   const [day, setDay] = useState('');
   const [progress, setProgress] = useState<number>(0);
   const [completed, setCompleted] = useState<boolean>(false);
 
-  const showModal = useCallback(async(mission: Mission, index: number) => {
+  const showModal = useCallback(async(mission: MissionEntry, index: number) => {
     setCurrent({ mission, index });
     setName(mission.name);
     setDay(`${mission.day}`);
@@ -560,7 +645,7 @@ function useEditMissionModal(campaign: CampaignFragment): [(mission: Mission, in
     const r = await setMissions({
       variables: {
         campaignId: campaign.id,
-        missions: filter(campaign.missions as Mission[], (m, idx) => idx !== current.index),
+        missions: filter(campaign.missions as MissionEntry[], (m, idx) => idx !== current.index),
       }
     });
     if (r.errors?.length) {
@@ -577,7 +662,7 @@ function useEditMissionModal(campaign: CampaignFragment): [(mission: Mission, in
     if (!name || !parseInt(day)) {
       return t`Name and day are required.`
     }
-    const mission: Mission = {
+    const mission: MissionEntry = {
       name,
       day: parseInt(day),
       completed,
@@ -586,7 +671,7 @@ function useEditMissionModal(campaign: CampaignFragment): [(mission: Mission, in
     const result = await setMissions({
       variables: {
         campaignId: campaign.id,
-        missions: map(campaign.missions as Mission[], (m, idx) => idx !== current.index ? m : mission),
+        missions: map(campaign.missions as MissionEntry[], (m, idx) => idx !== current.index ? m : mission),
       },
     });
     if (result.errors?.length) {
@@ -662,12 +747,7 @@ function useEditMissionModal(campaign: CampaignFragment): [(mission: Mission, in
   ];
 }
 
-interface Mission {
-  day: number;
-  name: string;
-  progress?: number;
-  completed?: boolean;
-}
+
 function ProgressChit({ filled, marginRight }: { filled?: boolean; marginRight?: number | string }) {
   return (
     <AspectRatio width="16px" ratio={1} marginRight={marginRight}>
@@ -682,7 +762,7 @@ function ProgressChit({ filled, marginRight }: { filled?: boolean; marginRight?:
   )
 }
 
-function MissionRow({ mission, index, showEdit }: { mission: Mission; index: number; showEdit: (mission: Mission, index: number) => void }) {
+function MissionRow({ mission, index, showEdit }: { mission: MissionEntry; index: number; showEdit: (mission: MissionEntry, index: number) => void }) {
   const onClick = useCallback(() => showEdit(mission, index), [showEdit, mission, index]);
   return (
     <Tr cursor="pointer" onClick={onClick}>
@@ -712,7 +792,7 @@ function MissionRow({ mission, index, showEdit }: { mission: Mission; index: num
     </Tr>
   )
 }
-function MissionsTab({ campaign }: { campaign: CampaignFragment }) {
+function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
   const [showAddMission, addMissionModal] = useAddMissionModal(campaign);
   const [showEditMission, editMissionModal] = useEditMissionModal(campaign);
   return (
@@ -725,40 +805,114 @@ function MissionsTab({ campaign }: { campaign: CampaignFragment }) {
             <Th>{t`Progress`}</Th>
           </Thead>
           <Tbody>
-            { map(campaign.missions as Mission[], (mission, idx) => (
+            { map(campaign.missions as MissionEntry[], (mission, idx) => (
               <MissionRow key={idx} mission={mission} index={idx} showEdit={showEditMission} />
             ))}
           </Tbody>
         </Table>
       </TableContainer>
-      <Button leftIcon={<SlPlus />} onClick={showAddMission}>{t`New mission`}</Button>
+      <Button leftIcon={<SlPlus />} onClick={showAddMission}>{t`Add mission`}</Button>
       { addMissionModal }
       { editMissionModal }
     </>
   );
 }
 
+function useEditEventModal(onUpdate: (idx: number, event: NotableEvent) => Promise<void>): [(index: number, event: NotableEvent) => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [index, setIndex] = useState<number>(0);
+  const [text, setText] = useState('');
+  const [crossedOut, setCrossedOut] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-function EventLine({ text, idx, onUpdate }: { text: string; idx: number; onUpdate: (idx: number, value: string) => void }) {
-  const onChange = useCallback((value: string) => {
-    onUpdate(idx, value);
-  }, [onUpdate, idx]);
+  const showModal = useCallback((index: number, event: NotableEvent) => {
+    setText(event.event);
+    setIndex(index);
+    setCrossedOut(event.crossed_out || false);
+    onOpen();
+  }, [onOpen, setText, setIndex, setCrossedOut]);
+  const onSaveEvent = useCallback(async() => {
+    setSubmitting(true);
+    await onUpdate(index, { event: text, crossed_out: crossedOut });
+    setSubmitting(false);
+    onClose();
+    return undefined;
+  }, [onUpdate, onClose, index, text, crossedOut, setSubmitting]);
+  return [
+    showModal,
+    <Modal key="deck" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent maxW="600px">
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Edit notable event`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <form onSubmit={e => {
+            e.preventDefault();
+            onSaveEvent();
+          }}>
+            <FormControl marginBottom={4}>
+              <FormLabel>{t`What happened?`}</FormLabel>
+              <Input
+                type="text"
+                textDecorationLine={crossedOut ? 'line-through' : undefined}
+                value={text}
+                onChange={e => setText(e.target.value)}
+              />
+            </FormControl>
+            <FormControl>
+              <Checkbox isChecked={crossedOut} onChange={(event) => setCrossedOut(event.target.checked)}>
+                { t`Crossed-out` }
+              </Checkbox>
+            </FormControl>
+          </form>
+        </ModalBody>
+        <ModalFooter>
+          <Flex direction="row" flex={1} justifyContent="flex-end">
+            <SubmitButton
+              color="blue"
+              onSubmit={onSaveEvent}
+            >
+              { t`Save` }
+            </SubmitButton>
+          </Flex>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
+
+function EventLine({ event, idx, onClick }: {
+  event: NotableEvent;
+  idx: number;
+  onClick: (idx: number, event: NotableEvent) => Promise<void>;
+}) {
+  const handleClick = useCallback(() => onClick(idx, event), [onClick, idx, event]);
   return (
-    <ListItem key={idx} paddingTop={2} paddingBottom={2}>
-      <EditableTextInput value={text} onChange={onChange} hideEditButton />
+    <ListItem key={idx} paddingTop={2} paddingBottom={2} onClick={handleClick} cursor="pointer">
+      <Text padding={2} borderBottomWidth={1} borderColor="gray.100" textDecorationLine={event.crossed_out ? 'line-through' : undefined}>
+        { event.event }
+      </Text>
     </ListItem>
   );
 }
 
-function EventsTab({ campaign }: { campaign: CampaignFragment }) {
+function EventsTab({ campaign }: { campaign: ParsedCampaign }) {
   const [event, setEvent] = useState('');
   const [addEvent] = useAddCampaignEventMutation();
   const onSubmitNewEvent = useCallback(async() => {
     if (event) {
+      const newEvent: NotableEvent = {
+        event: trim(event),
+      };
       const r = await addEvent({
         variables: {
           campaignId: campaign.id,
-          event: trim(event),
+          event: newEvent,
         }
       });
       if (r.errors?.length) {
@@ -769,12 +923,11 @@ function EventsTab({ campaign }: { campaign: CampaignFragment }) {
     return undefined;
   }, [event, campaign.id, setEvent, addEvent]);
   const [updateEvents] = useUpdateCampaignEventsMutation();
-  const onUpdateEvent = useCallback(async(idx: number, value: string) => {
-    const newEvents = flatMap(campaign.events as string[], (e, i) => {
+  const onUpdateEvent = useCallback(async(idx: number, value: NotableEvent) => {
+    const newEvents = flatMap(campaign.events, (e, i) => {
       if (idx === i) {
-        const trimmed = trim(value);
-        if (trimmed) {
-          return trimmed;
+        if (value.event) {
+          return value;
         }
         return [];
       }
@@ -787,27 +940,37 @@ function EventsTab({ campaign }: { campaign: CampaignFragment }) {
       }
     });
   }, [updateEvents, campaign.events, campaign.id]);
+  const [showEditEvent, eventModal] = useEditEventModal(onUpdateEvent);
   return (
-    <List>
-      <form onSubmit={e => {
-        e.preventDefault();
-        onSubmitNewEvent();
-      }}>
-        <Flex direction="row">
-          <Input
-            value={event}
-            placeholder={t`What happened?`}
-            onChange={e => setEvent(e.target.value)}
-          />
-          { !!event && (
-            <ButtonGroup marginLeft={2}>
-              <SubmitIconButton aria-label={t`Save`} onSubmit={onSubmitNewEvent} icon={<SlCheck />} />
-            </ButtonGroup>
-          ) }
-        </Flex>
-      </form>
-      { map(campaign.events as string[], (event, idx) => <EventLine key={idx} idx={idx} text={event} onUpdate={onUpdateEvent} />) }
-    </List>
+    <>
+      <List>
+        <form onSubmit={e => {
+          e.preventDefault();
+          onSubmitNewEvent();
+        }}>
+          <Flex direction="row">
+            <Input
+              value={event}
+              placeholder={t`What happened?`}
+              onChange={e => setEvent(e.target.value)}
+            />
+            { !!event && (
+              <ButtonGroup marginLeft={2}>
+                <SubmitIconButton aria-label={t`Save`} onSubmit={onSubmitNewEvent} icon={<SlCheck />} />
+              </ButtonGroup>
+            ) }
+          </Flex>
+        </form>
+        { map(campaign.events, (event, idx) => (
+          <EventLine
+            key={idx}
+            idx={idx}
+            event={event}
+            onClick={showEditEvent}
+          />)) }
+      </List>
+      { eventModal }
+    </>
   );
 }
 
@@ -909,7 +1072,7 @@ const FIXED_GUIDE_ENTRIES: { [day: string]: string[] | undefined } = {
   '4': ['1.04'],
 };
 
-function Timeline({ campaign }: { campaign: CampaignFragment }) {
+function Timeline({ campaign }: { campaign: ParsedCampaign }) {
   const weatherLabels = useWeather();
   const [showDayModal, editDayModal] = useEditDayModal(campaign);
   const entriesByDay = useMemo(() => {
@@ -976,11 +1139,9 @@ function Timeline({ campaign }: { campaign: CampaignFragment }) {
 
 
 
-export function useShowChooseDeckModal(campaign: CampaignFragment, refetchCampaign: () => Promise<void>, cards: CardsMap): [() => void, React.ReactNode] {
+export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign: () => Promise<void>, cards: CardsMap): [() => void, React.ReactNode] {
   const { authUser } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | undefined>();
   const { data: totalDecks } = useGetMyCampaignDecksTotalQuery({
     variables: {
       userId: authUser?.uid || '',
@@ -1049,12 +1210,13 @@ export function useShowChooseDeckModal(campaign: CampaignFragment, refetchCampai
             { (decks: DeckFragment[]) => (
               <List>
                 { map(decks, deck => (
-                  <CompactDeckRow
-                    key={deck.id}
-                    deck={deck}
-                    roleCards={cards}
-                    onClick={onChooseDeck}
-                  />
+                  <ListItem key={deck.id}>
+                    <CompactDeckRow
+                      deck={deck}
+                      roleCards={cards}
+                      onClick={onChooseDeck}
+                    />
+                  </ListItem>
                 )) }
               </List>
             ) }
@@ -1068,7 +1230,7 @@ export function useShowChooseDeckModal(campaign: CampaignFragment, refetchCampai
 }
 
 function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampaign }: {
-  campaign: CampaignFragment;
+  campaign: ParsedCampaign;
   cards: CardsMap;
   showEditFriends: () => void;
   refetchCampaign: () => Promise<void>;
@@ -1091,17 +1253,15 @@ function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampa
     <>
       <Text>{t`Rangers`}</Text>
       <List>
-        { flatMap(campaign.access, u => (
-          u.user ? (
-            <CampaignUser
-              key={u.user.id}
-              user={u.user}
-              campaign={campaign}
-              roleCards={cards}
-              showChooseDeck={showChooseDeck}
-              removeDeck={removeDeck}
-            />
-          ) : []
+        { map(campaign.access, user => (
+          <CampaignUser
+            key={user.id}
+            user={user}
+            campaign={campaign}
+            roleCards={cards}
+            showChooseDeck={showChooseDeck}
+            removeDeck={removeDeck}
+          />
         )) }
         <ListItem>
           <Button variant="ghost" leftIcon={<SlPlus />}  onClick={showEditFriends}>
@@ -1114,7 +1274,7 @@ function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampa
   );
 }
 
-export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: CampaignFragment; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
+export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
   const [setCampaignLocationMutation] = useSetCampaignLocationMutation();
   const setCampaignLocation = useCallback(async(value: string) => {
     setCampaignLocationMutation({
@@ -1192,7 +1352,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
 }
 
 export function useEditCampaignAccessModal(
-  campaign: CampaignFragment | undefined | null,
+  campaign: ParsedCampaign | undefined | null,
   updateAccess: (selection: string[]) => Promise<string | undefined>
 ): [() => void, React.ReactNode] {
   const { authUser } = useAuth();
@@ -1211,9 +1371,9 @@ export function useEditCampaignAccessModal(
     };
   }, [refetch, authUser]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedFriends, setSelectedFriends] = useState(flatMap(campaign?.access, u => u.user?.id || []));
+  const [selectedFriends, setSelectedFriends] = useState(flatMap(campaign?.access, user => user.id || []));
   useEffect(() => {
-    setSelectedFriends(flatMap(campaign?.access, u => u.user?.id || []));
+    setSelectedFriends(flatMap(campaign?.access, user => user.id || []));
   }, [setSelectedFriends, campaign?.access]);
   const onAdd = useCallback(async(id: string) => {
     setSelectedFriends(uniq([
@@ -1223,7 +1383,7 @@ export function useEditCampaignAccessModal(
     return undefined;
   }, [selectedFriends, setSelectedFriends]);
   const hasChanges = useMemo(() => {
-    const original = flatMap(campaign?.access, u => u.user?.id || []);
+    const original = flatMap(campaign?.access, user => user.id || []);
     return !!(difference(original, selectedFriends).length || difference(selectedFriends, original).length);
   }, [selectedFriends, campaign?.access]);
   const onRemove = useCallback(async(id: string) => {

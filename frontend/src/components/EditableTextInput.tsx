@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { t } from '@lingui/macro';
-import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip, ResponsiveValue, EditableProps, useStatStyles } from '@chakra-ui/react'
+import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip, ResponsiveValue, EditableProps, useStatStyles, InputGroup, InputRightAddon } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
 
 function EditableControls() {
@@ -14,8 +14,16 @@ function EditableControls() {
   }
   return (
     <ButtonGroup justifyContent='center' size='sm' marginLeft={2}>
-      <IconButton aria-label={t`Submit`} icon={<CheckIcon />} {...getSubmitButtonProps()} />
-      <IconButton aria-label={t`Cancel`} icon={<CloseIcon />} {...getCancelButtonProps()} />
+      <IconButton
+        aria-label={t`Submit`}
+        icon={<CheckIcon />}
+        {...getSubmitButtonProps()}
+      />
+      <IconButton
+        aria-label={t`Cancel`}
+        icon={<CloseIcon />}
+        {...getCancelButtonProps()}
+      />
     </ButtonGroup>
   );
 }
@@ -32,6 +40,7 @@ function EditablePreviewWithEditButton({ hideEditButton }: { hideEditButton: boo
     </Flex>
   );
 }
+
 export default function EditableTextInput({
   value,
   placeholder,
@@ -66,9 +75,14 @@ export default function EditableTextInput({
       onSubmit={(updated) => onChange(updated)}
       {...otherProps}
     >
-      <EditablePreviewWithEditButton hideEditButton={hideEditButton} />
+      <EditablePreviewWithEditButton
+        hideEditButton={hideEditButton}
+      />
       <Flex direction="row">
-        <Input backgroundColor="white" as={EditableInput} />
+        <Input
+          backgroundColor="white"
+          as={EditableInput}
+        />
         <EditableControls />
       </Flex>
     </Editable>

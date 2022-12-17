@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { Box, Button } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
-import { flatMap } from 'lodash';
+import { flatMap, map } from 'lodash';
 
 import PageHeading from '../../components/PageHeading';
 import { useCardsMap, useRequireAuth } from '../../lib/hooks';
-import { Campaign, CampaignFragment, useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
+import { CampaignFragment, useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
 import { useAuth } from '../../lib/AuthContext';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
-import { CampaignList, useNewCampaignModal } from '../../components/Campaign';
+import { CampaignList, CampaignWrapper, ParsedCampaign, useNewCampaignModal } from '../../components/Campaign';
 import { useLocale } from '../../lib/TranslationProvider';
 
 export default function CampaignsList() {
@@ -30,7 +30,7 @@ export default function CampaignsList() {
     skip: true,
   });
 
-  const fetchCampaigns = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<CampaignFragment[]> => {
+  const fetchCampaigns = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<ParsedCampaign[]> => {
     if (authUser) {
       const data = await fetchMore({
         variables: {
@@ -39,7 +39,10 @@ export default function CampaignsList() {
           offset,
         },
       });
-      return flatMap(data.data.user?.campaigns || [], c => c.campaign || []);
+      return map(
+        flatMap(data.data.user?.campaigns || [], c => c.campaign || []),
+        c => new CampaignWrapper(c)
+      );
     }
     return [];
   }, [fetchMore]);
@@ -68,7 +71,7 @@ export default function CampaignsList() {
           total={totalCampaigns?.user?.campaigns_aggregate.aggregate?.count}
           fetchData={fetchCampaigns}
         >
-          { (campaigns: CampaignFragment[]) => (
+          { (campaigns: ParsedCampaign[]) => (
             <CampaignList
               campaigns={campaigns}
               roleCards={roleCards}

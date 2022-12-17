@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import Head from 'next/head'
 import { t } from '@lingui/macro';
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import { filter, flatMap } from 'lodash';
 
 import { useAddFriendToCampaignMutation, useGetAllCardsQuery, useRemoveFriendFromCampaignMutation } from '../../generated/graphql/apollo-schema';
@@ -9,7 +9,7 @@ import { useCardsMap, useRequireAuth, useRouterPathParam } from '../../lib/hooks
 import LoadingPage from '../../components/LoadingPage';
 import { useLocale } from '../../lib/TranslationProvider';
 import { useGetCampaignQuery } from '../../generated/graphql/apollo-schema';
-import Campaign, { useEditCampaignAccessModal } from '../../components/Campaign';
+import Campaign, { CampaignWrapper, useEditCampaignAccessModal } from '../../components/Campaign';
 
 export default function CampaignPage() {
   useRequireAuth();
@@ -28,7 +28,7 @@ export default function CampaignPage() {
     },
   });
   const cards = useCardsMap(cardsData?.cards);
-  const campaign = data?.campaign;
+  const campaign = useMemo(() => data?.campaign ? new CampaignWrapper(data.campaign) : undefined, [data]);
   const handleRefresh = useCallback(async() => {
     await refetch({ campaignId });
   }, [refetch, campaignId]);
@@ -40,8 +40,8 @@ export default function CampaignPage() {
       return undefined;
     }
     const selectionSet = new Set(selection);
-    const toRemove = flatMap(campaign?.access, u => !!u.user && !selectionSet.has(u.user.id) ? u.user.id : []);
-    const existingSet = new Set(flatMap(campaign?.access, u => u.user?.id || []));
+    const toRemove = flatMap(campaign?.access, user => !selectionSet.has(user.id) ? user.id : []);
+    const existingSet = new Set(flatMap(campaign?.access, user => user.id || []));
     const toAdd = filter(selection, id => !existingSet.has(id));
     try {
       for (let i = 0; i < toRemove.length; i++) {
@@ -77,6 +77,23 @@ export default function CampaignPage() {
     return undefined;
   }, [campaign, campaignId, addFriend, removeFriend]);
   const [showEditFriends, editFriendsModal] = useEditCampaignAccessModal(campaign, updateAccess);
+  if (data && !data.campaign) {
+    return (
+      <>
+        <Head>
+          <title>{t`Campaign`} - {t`RangersDB`}</title>
+        </Head>
+        <Box
+          maxW="64rem"
+          marginX="auto"
+          py={{ base: "3rem", lg: "4rem" }}
+          px={{ base: "1rem", lg: "0" }}
+        >
+          <Text>{t`This campaign is not accessible. Are you sure you are signed into the correct account?`}</Text>
+        </Box>
+      </>
+    );
+  }
   if (loading) {
     return <LoadingPage />;
   }
