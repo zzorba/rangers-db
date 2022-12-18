@@ -161,12 +161,16 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
 
   const [doDelete] = useDeleteDeckMutation();
   const deleteDeck = useCallback(async(d: DeckFragment) => {
-    await doDelete({
+    const r = await doDelete({
       variables: {
         id: d.id,
       },
     });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
     Router.push('/decks');
+    return undefined;
   }, [doDelete]);
   const [onDelete, deleteDialog] = useDeleteDialog(
     t`Delete deck?`,

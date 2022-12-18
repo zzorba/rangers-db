@@ -14,7 +14,7 @@ import { t } from '@lingui/macro';
 export default function useDeleteDialog<T>(
   title: string,
   getMessage: (obj: T) => string,
-  onDelete: (obj: T) => void
+  onDelete: (obj: T) => Promise<string | undefined>
 ): [(obj: T) => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [obj, setObj] = useState<T | undefined>();

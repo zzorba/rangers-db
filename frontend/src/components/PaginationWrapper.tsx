@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { t } from '@lingui/macro';
-import { Box, Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { Pagination, PaginationContainer, PaginationNext, PaginationPageGroup, PaginationPrevious, usePagination } from '@ajna/pagination';
 import { useAuth } from '../lib/AuthContext';
 import { AuthUser } from '../lib/useFirebaseAuth';
@@ -9,11 +9,10 @@ import LoadingPage from './LoadingPage';
 interface Props<T> {
   total: number | undefined;
   fetchData: (authUser: AuthUser, pageSize: number, offset: number) => Promise<T[]>;
-  children: (data: T[]) => React.ReactNode;
-  deleteCount?: number;
+  children: (data: T[], refetch: () => void) => React.ReactNode;
   pageSize?: number;
 }
-export default function PaginationWrapper<T>({ children, total, fetchData, deleteCount, pageSize: pageSizeProp }: Props<T>) {
+export default function PaginationWrapper<T>({ children, total, fetchData, pageSize: pageSizeProp }: Props<T>) {
   const { authUser } = useAuth();
   const {
     isDisabled,
@@ -32,6 +31,7 @@ export default function PaginationWrapper<T>({ children, total, fetchData, delet
   });
 
   const [data, setData] = useState<T[] | undefined>();
+  const [deleteCount, setDeleteCount] = useState(0);
   useEffect(() => {
     if (authUser) {
       fetchData(authUser, pageSize, offset).then((result) => {
@@ -43,6 +43,7 @@ export default function PaginationWrapper<T>({ children, total, fetchData, delet
   const handlePageChange = useCallback((nextPage: number) => {
     setCurrentPage(nextPage);
   }, [setCurrentPage]);
+  const refetch = useCallback(() => setDeleteCount(deleteCount + 1), [setDeleteCount, deleteCount]);
   return (
     <>
       <Box
@@ -51,7 +52,7 @@ export default function PaginationWrapper<T>({ children, total, fetchData, delet
         py={{ base: "3rem", lg: "4rem" }}
         px={{ base: "1rem", lg: "0" }}
       >
-        { isDisabled || !data ? <LoadingPage /> : children(data) }
+        { isDisabled || !data ? <LoadingPage /> : children(data, refetch) }
         <Pagination
           isDisabled={isDisabled}
           currentPage={currentPage}

@@ -5,7 +5,7 @@ import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, 
 import NextLink from 'next/link';
 import Router from 'next/router';
 
-import { CampaignFragment, CardFragment, DeckFragment, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
+import { CampaignFragment, CardFragment, DeckFragment, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import SolidButton from './SolidButton';
 import FriendChooser from './FriendChooser';
@@ -22,10 +22,8 @@ import PageHeading from './PageHeading';
 import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
-import internal from 'stream';
-import { UserInfo } from 'os';
-import { MdFormatStrikethrough } from 'react-icons/md';
-import { createSourceEventStream } from 'graphql';
+import useDeleteDialog from './useDeleteDialog';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 interface MissionEntry {
   day: number;
@@ -110,7 +108,11 @@ export class CampaignWrapper implements ParsedCampaign {
   }
 }
 
-function CampaignRow({ campaign, roleCards }: { campaign: ParsedCampaign; roleCards: CardsMap }) {
+function CampaignRow({ campaign, roleCards, onDelete }: {
+  campaign: ParsedCampaign;
+  roleCards: CardsMap;
+  onDelete?: (campaign: ParsedCampaign) => void;
+}) {
   const roles = useMemo(() => {
     return flatMap(campaign.latest_decks, d => {
       const role = d.deck?.meta.role;
@@ -120,31 +122,70 @@ function CampaignRow({ campaign, roleCards }: { campaign: ParsedCampaign; roleCa
       return [];
     })
   }, [campaign.latest_decks, roleCards]);
+  const onDeleteClick = useCallback(() => onDelete?.(campaign), [onDelete, campaign]);
   return (
     <ListItem padding={2} borderBottomWidth="1px" borderColor="gray.100">
-      <Flex direction="row" justifyContent="space-between" as={NextLink} href={`/campaigns/${campaign.id}`}>
-        <Flex direction="column">
-          <Flex direction="row" alignItems="flex-end">
-            <Text fontSize="lg" fontWeight="600">{campaign.name}</Text>
-            <Text marginLeft="2em">{t`Day ${campaign.day}`}</Text>
+      <Flex direction="row">
+        <Flex flex={1} direction="row" justifyContent="space-between" as={NextLink} href={`/campaigns/${campaign.id}`}>
+          <Flex direction="column">
+            <Flex direction="row" alignItems="flex-end">
+              <Text fontSize="lg" fontWeight="600">{campaign.name}</Text>
+              <Text marginLeft="2em">{t`Day ${campaign.day}`}</Text>
+            </Flex>
+            <Flex direction="row">
+              <CoreIcon icon="ranger" size="22" />
+              <Text marginLeft={2}>{ filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}</Text>
+            </Flex>
           </Flex>
           <Flex direction="row">
-            <CoreIcon icon="ranger" size="22" />
-            <Text marginLeft={2}>{ filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}</Text>
+            { flatMap(roles, card => card.imagesrc ? <RoleImage key={card.id} name={card.name} url={card.imagesrc} /> : [])}
           </Flex>
         </Flex>
-        <Flex direction="row">
-          { flatMap(roles, card => card.imagesrc ? <RoleImage key={card.id} name={card.name} url={card.imagesrc} /> : [])}
-        </Flex>
+        <ButtonGroup>
+          { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<DeleteIcon />} color="red" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
+        </ButtonGroup>
       </Flex>
     </ListItem>
   );
 }
-export function CampaignList({ campaigns, roleCards }: { campaigns: ParsedCampaign[]; roleCards: CardsMap }) {
+
+function deleteCampaignMessage(campaign: ParsedCampaign) {
+  return t`Are you sure you want to delete your campaign: ${campaign.name}? This action cannot be undone.`
+}
+export function CampaignList({ campaigns, roleCards, refetch }: { campaigns: ParsedCampaign[]; roleCards: CardsMap; refetch: () => void; }) {
+  const { authUser } = useAuth();
+  const [doDelete] = useDeleteCampaignMutation();
+  const deleteCampaign = useCallback(async(c: ParsedCampaign) => {
+    const r = await doDelete({
+      variables: {
+        campaignId: c.id,
+      },
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    refetch();
+    return undefined;
+  }, [doDelete, refetch]);
+  const [onDelete, deleteDialog] = useDeleteDialog(
+    t`Delete campaign?`,
+    deleteCampaignMessage,
+    deleteCampaign
+  );
   return (
-    <List>
-      { map(campaigns, c => <CampaignRow key={c.id} campaign={c} roleCards={roleCards} />) }
-    </List>
+    <>
+      <List>
+        { map(campaigns, c => (
+          <CampaignRow
+            key={c.id}
+            campaign={c}
+            roleCards={roleCards}
+            onDelete={authUser?.uid === c.user_id ? onDelete : undefined}
+          />)
+        ) }
+      </List>
+      { deleteDialog }
+    </>
   )
 }
 
@@ -1227,7 +1268,6 @@ export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign
             total={totalDecks?.total.aggregate?.count}
             pageSize={5}
             fetchData={fetchDecks}
-            deleteCount={0}
           >
             { (decks: DeckFragment[]) => (
               <List>

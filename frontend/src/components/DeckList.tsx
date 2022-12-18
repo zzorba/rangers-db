@@ -4,7 +4,7 @@ import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
 
-import { DeckFragment, DeckWithCampaignFragment } from '../generated/graphql/apollo-schema';
+import { DeckFragment, DeckWithCampaignFragment, useDeleteDeckMutation } from '../generated/graphql/apollo-schema';
 import { CardsMap } from '../lib/hooks';
 import { Text } from '@chakra-ui/react';
 import { useAuth } from '../lib/AuthContext';
@@ -14,7 +14,7 @@ import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import DeckProblemComponent from './DeckProblemComponent';
 import CoreIcon from '../icons/CoreIcon';
 import { DeckError } from '../types/types';
-
+import useDeleteDialog from './useDeleteDialog';
 
 export function DeckRow({ deck, roleCards, onDelete }: {
   deck: DeckWithCampaignFragment;
@@ -60,28 +60,54 @@ export function DeckRow({ deck, roleCards, onDelete }: {
     </ListItem>
   );
 }
+
+function deleteDeckMessage(d: DeckFragment) {
+  return t`Are you sure you want to delete the '${d.name}' deck?`;
+}
+
 export default function DeckList({
   roleCards,
   decks,
-  onDelete,
+  refetch,
 }: {
   decks: DeckWithCampaignFragment[] | undefined;
   roleCards: CardsMap;
-  onDelete: (deck: DeckFragment) => void;
+  refetch: () => void;
 }) {
+  const [doDelete] = useDeleteDeckMutation();
+  const deleteDeck = useCallback(async(d: DeckFragment) => {
+    const r = await doDelete({
+      variables: {
+        id: d.id,
+      },
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    refetch();
+    return undefined;
+  }, [doDelete, refetch]);
+  const [onDelete, deleteDialog] = useDeleteDialog(
+    t`Delete deck?`,
+    deleteDeckMessage,
+    deleteDeck
+  );
   if (!decks?.length) {
     return <Text>{t`You don't seem to have any decks.`}</Text>
   }
   return (
-    <List>
-      { map(decks, deck => (
-        <DeckRow
-          key={deck.id}
-          deck={deck}
-          roleCards={roleCards}
-          onDelete={onDelete}
-        />
-      )) }
-    </List>
+    <>
+      <List>
+        { map(decks, deck => (
+          <DeckRow
+            key={deck.id}
+            deck={deck}
+            roleCards={roleCards}
+            onDelete={onDelete}
+          />
+        )) }
+      </List>
+      { deleteDialog }
+    </>
   );
 }

@@ -71,10 +71,11 @@ export default function CampaignsList() {
           total={totalCampaigns?.user?.campaigns_aggregate.aggregate?.count}
           fetchData={fetchCampaigns}
         >
-          { (campaigns: ParsedCampaign[]) => (
+          { (campaigns: ParsedCampaign[], refetch) => (
             <CampaignList
               campaigns={campaigns}
               roleCards={roleCards}
+              refetch={refetch}
             />
           ) }
         </PaginationWrapper>

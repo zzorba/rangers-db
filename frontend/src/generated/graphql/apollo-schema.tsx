@@ -23374,6 +23374,7 @@ export type Rangers_Card_Localized = {
   progress_fixed?: Maybe<Scalars['Boolean']>;
   quantity?: Maybe<Scalars['Int']>;
   real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -23492,6 +23493,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   progress_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
   real_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_imagesrc?: InputMaybe<String_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
   real_objective?: InputMaybe<String_Comparison_Exp>;
   real_text?: InputMaybe<String_Comparison_Exp>;
@@ -23548,6 +23550,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -23603,6 +23606,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -23659,6 +23663,7 @@ export type Rangers_Card_Localized_Order_By = {
   progress_fixed?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
   real_flavor?: InputMaybe<Order_By>;
+  real_imagesrc?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
   real_objective?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
@@ -23749,6 +23754,8 @@ export enum Rangers_Card_Localized_Select_Column {
   Quantity = 'quantity',
   /** column name */
   RealFlavor = 'real_flavor',
+  /** column name */
+  RealImagesrc = 'real_imagesrc',
   /** column name */
   RealName = 'real_name',
   /** column name */
@@ -23900,6 +23907,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
   real_flavor?: InputMaybe<Scalars['String']>;
+  real_imagesrc?: InputMaybe<Scalars['String']>;
   real_name?: InputMaybe<Scalars['String']>;
   real_objective?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
@@ -24395,6 +24403,7 @@ export type Rangers_Card_Text = {
   __typename?: 'rangers_card_text';
   flavor?: Maybe<Scalars['String']>;
   id: Scalars['String'];
+  imagesrc?: Maybe<Scalars['String']>;
   locale: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
@@ -24457,6 +24466,7 @@ export type Rangers_Card_Text_Bool_Exp = {
   _or?: InputMaybe<Array<Rangers_Card_Text_Bool_Exp>>;
   flavor?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   objective?: InputMaybe<String_Comparison_Exp>;
@@ -24475,6 +24485,7 @@ export enum Rangers_Card_Text_Constraint {
 export type Rangers_Card_Text_Insert_Input = {
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
@@ -24488,6 +24499,7 @@ export type Rangers_Card_Text_Max_Fields = {
   __typename?: 'rangers_card_text_max_fields';
   flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
@@ -24500,6 +24512,7 @@ export type Rangers_Card_Text_Max_Fields = {
 export type Rangers_Card_Text_Max_Order_By = {
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   objective?: InputMaybe<Order_By>;
@@ -24513,6 +24526,7 @@ export type Rangers_Card_Text_Min_Fields = {
   __typename?: 'rangers_card_text_min_fields';
   flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
@@ -24525,6 +24539,7 @@ export type Rangers_Card_Text_Min_Fields = {
 export type Rangers_Card_Text_Min_Order_By = {
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   objective?: InputMaybe<Order_By>;
@@ -24553,6 +24568,7 @@ export type Rangers_Card_Text_On_Conflict = {
 export type Rangers_Card_Text_Order_By = {
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   objective?: InputMaybe<Order_By>;
@@ -24574,6 +24590,8 @@ export enum Rangers_Card_Text_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
   Locale = 'locale',
   /** column name */
   Name = 'name',
@@ -24591,6 +24609,7 @@ export enum Rangers_Card_Text_Select_Column {
 export type Rangers_Card_Text_Set_Input = {
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
@@ -24611,6 +24630,7 @@ export type Rangers_Card_Text_Stream_Cursor_Input = {
 export type Rangers_Card_Text_Stream_Cursor_Value_Input = {
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
@@ -24625,6 +24645,8 @@ export enum Rangers_Card_Text_Update_Column {
   Flavor = 'flavor',
   /** column name */
   Id = 'id',
+  /** column name */
+  Imagesrc = 'imagesrc',
   /** column name */
   Locale = 'locale',
   /** column name */
@@ -35580,6 +35602,13 @@ export type LeaveCampaignMutationVariables = Exact<{
 
 export type LeaveCampaignMutation = { __typename?: 'mutation_root', delete_rangers_campaign_access_by_pk?: { __typename?: 'rangers_campaign_access', campaign_id: number, user_id: string } | null };
 
+export type DeleteCampaignMutationVariables = Exact<{
+  campaignId: Scalars['Int'];
+}>;
+
+
+export type DeleteCampaignMutation = { __typename?: 'mutation_root', delete_rangers_campaign_by_pk?: { __typename?: 'rangers_campaign', id: number } | null };
+
 export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null };
 
 export type AspectFragment = { __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null };
@@ -36539,6 +36568,39 @@ export function useLeaveCampaignMutation(baseOptions?: Apollo.MutationHookOption
 export type LeaveCampaignMutationHookResult = ReturnType<typeof useLeaveCampaignMutation>;
 export type LeaveCampaignMutationResult = Apollo.MutationResult<LeaveCampaignMutation>;
 export type LeaveCampaignMutationOptions = Apollo.BaseMutationOptions<LeaveCampaignMutation, LeaveCampaignMutationVariables>;
+export const DeleteCampaignDocument = gql`
+    mutation deleteCampaign($campaignId: Int!) {
+  delete_rangers_campaign_by_pk(id: $campaignId) {
+    id
+  }
+}
+    `;
+export type DeleteCampaignMutationFn = Apollo.MutationFunction<DeleteCampaignMutation, DeleteCampaignMutationVariables>;
+
+/**
+ * __useDeleteCampaignMutation__
+ *
+ * To run a mutation, you first call `useDeleteCampaignMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCampaignMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCampaignMutation, { data, loading, error }] = useDeleteCampaignMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *   },
+ * });
+ */
+export function useDeleteCampaignMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCampaignMutation, DeleteCampaignMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteCampaignMutation, DeleteCampaignMutationVariables>(DeleteCampaignDocument, options);
+      }
+export type DeleteCampaignMutationHookResult = ReturnType<typeof useDeleteCampaignMutation>;
+export type DeleteCampaignMutationResult = Apollo.MutationResult<DeleteCampaignMutation>;
+export type DeleteCampaignMutationOptions = Apollo.BaseMutationOptions<DeleteCampaignMutation, DeleteCampaignMutationVariables>;
 export const GetCardsDocument = gql`
     query getCards($locale: String!) {
   cards: rangers_card_localized(
