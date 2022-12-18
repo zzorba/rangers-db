@@ -41,7 +41,8 @@ a {
 }
 .FOC {
   background: #1e2f64;
-  border-color: #1e2f64;}
+  border-color: #1e2f64;
+}
 .FIT {
   background: #811019;
   border-color: #811019;
@@ -56,8 +57,12 @@ a {
   font-style: normal;
   font-weight: 500;
 }
-.card-text i.card-flavor {
-  color: #888888;
+.card-text i.card-light-flavor {
+  color: #666666;
+  font-weight: 500;
+}
+.card-text i.card-dark-flavor {
+  color: #AAAAAA;
   font-weight: 500;
 }
 .card-text b {

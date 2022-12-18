@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import Parser from 'simple-text-parser';
 import { filter } from 'lodash';
-import { Box } from '@chakra-ui/react';
+import { Box, useColorMode } from '@chakra-ui/react';
 import { useLocale } from '../lib/TranslationProvider';
 
 export function useIconedText(
@@ -10,25 +10,26 @@ export function useIconedText(
   flavor?: string | undefined | null
 ): string {
   const { aspects } = useLocale();
+  const { colorMode } = useColorMode();
   return useMemo(() => {
     const parser = new Parser().addRule(
       /\[\[(.*?)\]\]/gi,
       (tag, element) => {
-        return `<span style="text-shadow: 0 0 2px var(--chakra-colors-aspect-${aspectId});">${element}</span>`;
+        return `<span style="text-shadow: 0 0 2px var(--chakra-colors-${colorMode}-aspect-${aspectId});">${element}</span>`;
       }
     ).addRule(
       /\[([^\]0-9]+)\]/gi,
       (tag, element) => {
         if (aspects[element]) {
-          return `<span style="color: var(--chakra-colors-aspect-${element}); font-weight: 900; letter-spacing: -0.5px">${aspects[element]?.short_name}</span>`;
+          return `<span style="color: var(--chakra-colors-${colorMode}-aspect-${element}); font-weight: 900; letter-spacing: -0.5px">${aspects[element]?.short_name}</span>`;
         }
         return `<span class="core-${element}"></span>`;
       }
     ).addRule(/\n/g, () => '<hr class="card-line"></hr>');
-    const cleanText = text ? text.replace(/<f>/g, '<i class="card-flavor">').replace(/<\/f>/g, '</i>') : undefined;
+    const cleanText = text ? text.replace(/<f>/g, `<i class="card-${colorMode}-flavor">`).replace(/<\/f>/g, '</i>') : undefined;
     return parser.render(
-      filter([cleanText, flavor ? `<i class="card-flavor">${flavor}</i>` : undefined], x => !!x).join('\n'));
-  }, [text, aspectId, flavor, aspects]);
+      filter([cleanText, flavor ? `<i class="card-${colorMode}-flavor">${flavor}</i>` : undefined], x => !!x).join('\n'));
+  }, [text, aspectId, flavor, aspects, colorMode]);
 }
 
 export default function CardText({ text, flavor, aspectId, noPadding }: { text: string | undefined | null; flavor?: string | undefined | null, aspectId: string | undefined | null; noPadding?: boolean }) {

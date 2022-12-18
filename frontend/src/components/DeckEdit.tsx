@@ -284,7 +284,7 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
       </TabList>
       <TabPanels>
         <TabPanel>
-          <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
             {t`Select 4 different personality cards, 1 from each aspect.`}
           </Text>
           <SimpleCardList
@@ -295,7 +295,7 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
             {t`Select 5 different cards from your chosen background.`}
           </Text>
           <SimpleCardList
@@ -306,7 +306,7 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" color="gray.600" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
             {t`Select 5 different cards from your chosen specialty.`}
           </Text>
           <SimpleCardList
@@ -317,10 +317,10 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" color="gray.600" paddingBottom={1}>
+          <Text fontSize="md" className='lightText' paddingBottom={1}>
             {t`Select 1 cards from any background of specialty as your outside interest.`}
           </Text>
-          <Text fontSize="sm" color="gray.600" fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
             {t`Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.`}
           </Text>
           <SimpleCardList

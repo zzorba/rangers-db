@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue } from '@chakra-ui/react';
+import { Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
@@ -21,6 +21,7 @@ export function DeckRow({ deck, roleCards, onDelete }: {
   roleCards: CardsMap;
   onDelete: (deck: DeckFragment) => void;
 }) {
+  const { colorMode } = useColorMode();
   const { authUser } = useAuth();
   const doDelete = useCallback(() => {
     onDelete(deck);
@@ -51,7 +52,7 @@ export function DeckRow({ deck, roleCards, onDelete }: {
           </SimpleGrid>
           { authUser?.uid === deck.user_id && (
             <ButtonGroup marginLeft={[1, 2, "2em"]} orientation={buttonOrientation || 'horizontal'}>
-              <IconButton aria-label={t`Edit`} color="gray.600" icon={<EditIcon />} as={NextLink} href={`/decks/edit/${deck.id}`} />
+              <IconButton aria-label={t`Edit`} color={`${colorMode}.lightText`} icon={<EditIcon />} as={NextLink} href={`/decks/edit/${deck.id}`} />
               <IconButton aria-label={t`Delete`} color="red.400" icon={<DeleteIcon />} onClick={doDelete} />
             </ButtonGroup>
           )}

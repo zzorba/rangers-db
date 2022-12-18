@@ -1,4 +1,4 @@
-import { Button, Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, Editable } from '@chakra-ui/react';
+import { Button, Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, Editable, useColorMode } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { plural, t } from '@lingui/macro';
 import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim } from 'lodash';
@@ -1183,7 +1183,9 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
                   <Box
                     borderLeftWidth="1px"
                     borderRightWidth="1px"
-                    borderRadius="4px" borderBottomWidth="1px" height="16px" width="100%"
+                    borderBottomLeftRadius="4px"
+                    borderBottomRightRadius="4px"
+                    borderBottomWidth="1px" height="16px" width="100%"
                     borderColor={current ? 'gray.600' : 'gray.300'}
                   />
                   <Text textAlign="center" fontSize="2xs" fontWeight={current ? '600' : '400'}>
@@ -1355,6 +1357,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       },
     });
   }, [setCampaignPathTerrainMutation, campaign.id]);
+  const { colorMode } = useColorMode();
   return (
     <>
       <PageHeading title={campaign.name} />
@@ -1373,7 +1376,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
             padding={2}
             borderRadius="8px"
             borderWidth={2}
-            backgroundColor="gray.100"
+            backgroundColor={`${colorMode}.lightBackground`}
             borderColor="gray.500"
             maxW="24rem"
           >

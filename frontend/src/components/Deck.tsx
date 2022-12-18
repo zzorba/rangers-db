@@ -13,6 +13,7 @@ import {
   AspectRatio,
   Link,
   Tooltip,
+  useColorMode,
 } from '@chakra-ui/react';
 import { ArrowUpIcon, CopyIcon, DeleteIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
@@ -42,6 +43,7 @@ interface Props {
 }
 
 export function DeckItemComponent({ item, showCard, lightCount }: { item: Item; showCard: ShowCard; lightCount?: boolean }) {
+  const { colorMode } = useColorMode();
   switch (item.type) {
     case 'header':
       return <ListHeader key={item.title} title={item.title} problem={item.problem} />;
@@ -51,7 +53,7 @@ export function DeckItemComponent({ item, showCard, lightCount }: { item: Item; 
       return (
         <ListItem padding={2}>
           <Flex direction="row" alignItems="center">
-            <InfoIcon marginRight={2} boxSize="24px" color="gray.500" />
+            <InfoIcon marginRight={2} boxSize="24px" color={`${colorMode}.lightText`} />
             <Text fontSize="md">{item.description}</Text>
           </Flex>
         </ListItem>

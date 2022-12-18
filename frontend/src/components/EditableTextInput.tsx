@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { t } from '@lingui/macro';
-import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip, ResponsiveValue, EditableProps, useStatStyles, InputGroup, InputRightAddon } from '@chakra-ui/react'
+import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip, ResponsiveValue, EditableProps, useStatStyles, InputGroup, InputRightAddon, useColorMode } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
 
 function EditableControls() {
@@ -55,6 +55,7 @@ export default function EditableTextInput({
   placeholder?: string;
   onChange: (value: string) => void;
 }) {
+  const { colorMode } = useColorMode();
   const [liveValue, setLiveValue] = useState(value);
   useEffect(() => {
     setLiveValue(value);
@@ -67,10 +68,12 @@ export default function EditableTextInput({
       disabled={disabled}
       onChange={setLiveValue}
       isPreviewFocusable
-      color={!value ? 'gray.500' : undefined}
+      _placeholder={{
+        color: `${colorMode}.lightText`,
+      }}
       selectAllOnFocus={false}
       _focus={{
-        backgroundColor: 'white',
+        backgroundColor: colorMode === 'light' ? 'white' : 'black',
       }}
       onSubmit={(updated) => onChange(updated)}
       {...otherProps}
@@ -80,7 +83,10 @@ export default function EditableTextInput({
       />
       <Flex direction="row">
         <Input
-          backgroundColor="white"
+          backgroundColor={colorMode === 'light' ? 'white' : 'black'}
+          _placeholder={{
+            color: `${colorMode}.lightText`
+          }}
           as={EditableInput}
         />
         <EditableControls />

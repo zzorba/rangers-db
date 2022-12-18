@@ -15,7 +15,9 @@ import {
   useBreakpointValue,
   useDisclosure,
   Spinner,
+  useColorMode,
 } from '@chakra-ui/react';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import {
@@ -127,6 +129,7 @@ export default function WithSubnavigation() {
     signOut();
   }, [signOut]);
   const navItems = useNavItems(authUser);
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box>
       <Flex
@@ -211,6 +214,12 @@ export default function WithSubnavigation() {
                 </Button>
               </>
             )}
+            <IconButton
+              aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
+              onClick={toggleColorMode}
+              icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+              variant="ghost"
+            />
           </Stack>
         ) }
       </Flex>

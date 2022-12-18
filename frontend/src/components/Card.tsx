@@ -13,6 +13,7 @@ import {
   ModalFooter,
   SimpleGrid,
   AspectRatio,
+  useColorMode,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
 import { t } from '@lingui/macro';
@@ -79,13 +80,21 @@ function FooterInfo({ card }: { card: CardFragment }) {
 }
 
 function Equip({ equip, aspect }: { equip: number; aspect?: string }) {
+  const { colorMode } = useColorMode();
   return (
     <Flex
       direction="row"
       padding={1}
     >
       { map(range(0, equip), idx => (
-        <div className={`equip ${aspect}`} key={idx} />
+        <div
+          className="equip"
+          style={{
+            backgroundColor: `var(--chakra-colors-${colorMode}-aspect-${aspect})`,
+            borderColor: `var(--chakra-colors-${colorMode}-aspect-${aspect})`
+         }}
+          key={idx}
+        />
       )) }
       { map(range(equip, 5), idx => (
         <div className="equip" key={idx} />
@@ -139,13 +148,16 @@ function Cost({ cost, aspectId, aspect }: { cost: number | null | undefined; asp
 
 function ApproachIcon({ type, mini }: { type: 'conflict' | 'reason' | 'connection' | 'exploration'; mini?: boolean}) {
   return (
-    <Flex borderRadius={4}
+    <Flex
+      borderRadius={4}
+      borderWidth="0.25px"
+      borderColor="white"
       padding={mini ? 0.5 : 1}
       paddingTop={mini ? 0.5 : 2}
       paddingBottom={mini ? 0.5 : 2}
-      backgroundColor="#222222"
+      backgroundColor="black"
       direction="column" alignItems="center" justifyContent="center" marginLeft={mini ? 0.5 : 1}>
-      <CoreIcon icon={type} size={mini ? 18 : 24} color="#FFFFFF" />
+      <CoreIcon icon={type} size={mini ? 18 : 24} color="white" />
     </Flex>
   )
 }
