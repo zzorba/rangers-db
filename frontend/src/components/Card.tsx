@@ -193,7 +193,7 @@ function Tokens({ count, name, plurals, aspect, aspectId }: { count: number; nam
 function CardPresenceAndIcons({ card, mini }: { card: CardFragment; mini?: boolean }) {
   return (
     <Flex direction="row" flex={1} alignItems="flex-start" justifyContent="flex-end" backgroundClip="blue">
-      { !!card.presence && (
+      { (card.presence !== undefined && card.presence !== null) && (
         <Box padding={mini ? 0.5 : 1} paddingLeft={mini ? 2 : 3} paddingRight={mini ? 2 : 3} maxW={10} maxH={10} marginRight={1} marginLeft={3} backgroundColor="#622c52">
           <Text color="#FFFFFF" fontSize={mini ? 'm' : 'xl'} fontWeight={900}>
             {card.presence}
