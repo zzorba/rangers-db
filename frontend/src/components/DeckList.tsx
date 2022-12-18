@@ -1,12 +1,11 @@
 import React, { useCallback, useMemo } from 'react';
-import { Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode } from '@chakra-ui/react';
+import { Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
 
 import { DeckFragment, DeckWithCampaignFragment, useDeleteDeckMutation } from '../generated/graphql/apollo-schema';
 import { CardsMap } from '../lib/hooks';
-import { Text } from '@chakra-ui/react';
 import { useAuth } from '../lib/AuthContext';
 import { RoleImage } from './CardImage';
 import { DeckDescription, MiniAspect } from './Deck';

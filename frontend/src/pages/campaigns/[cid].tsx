@@ -4,11 +4,10 @@ import { t } from '@lingui/macro';
 import { Box, Text } from '@chakra-ui/react'
 import { filter, flatMap } from 'lodash';
 
-import { useAddFriendToCampaignMutation, useGetAllCardsQuery, useRemoveFriendFromCampaignMutation } from '../../generated/graphql/apollo-schema';
+import { useGetCampaignQuery, useAddFriendToCampaignMutation, useGetAllCardsQuery, useRemoveFriendFromCampaignMutation } from '../../generated/graphql/apollo-schema';
 import { useCardsMap, useRequireAuth, useRouterPathParam } from '../../lib/hooks';
 import LoadingPage from '../../components/LoadingPage';
 import { useLocale } from '../../lib/TranslationProvider';
-import { useGetCampaignQuery } from '../../generated/graphql/apollo-schema';
 import Campaign, { CampaignWrapper, useEditCampaignAccessModal } from '../../components/Campaign';
 
 export default function CampaignPage() {
