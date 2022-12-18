@@ -43,6 +43,7 @@ fragment CardText on rangers_card_text {
   text
   flavor
   objective
+  imagesrc
 }
 
 fragment CardSet on rangers_set {

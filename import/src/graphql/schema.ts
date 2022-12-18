@@ -23374,6 +23374,7 @@ export type Rangers_Card_Localized = {
   progress_fixed?: Maybe<Scalars['Boolean']>;
   quantity?: Maybe<Scalars['Int']>;
   real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -23492,6 +23493,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   progress_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
   real_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_imagesrc?: InputMaybe<String_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
   real_objective?: InputMaybe<String_Comparison_Exp>;
   real_text?: InputMaybe<String_Comparison_Exp>;
@@ -23548,6 +23550,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -23603,6 +23606,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
@@ -23659,6 +23663,7 @@ export type Rangers_Card_Localized_Order_By = {
   progress_fixed?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
   real_flavor?: InputMaybe<Order_By>;
+  real_imagesrc?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
   real_objective?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
@@ -23749,6 +23754,8 @@ export enum Rangers_Card_Localized_Select_Column {
   Quantity = 'quantity',
   /** column name */
   RealFlavor = 'real_flavor',
+  /** column name */
+  RealImagesrc = 'real_imagesrc',
   /** column name */
   RealName = 'real_name',
   /** column name */
@@ -23900,6 +23907,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
   real_flavor?: InputMaybe<Scalars['String']>;
+  real_imagesrc?: InputMaybe<Scalars['String']>;
   real_name?: InputMaybe<Scalars['String']>;
   real_objective?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
@@ -35470,7 +35478,7 @@ export type Users_Updates = {
 
 export type CardFragment = { __typename?: 'rangers_card', id: string, name: string, traits?: string | null | undefined, equip?: number | null | undefined, presence?: number | null | undefined, token_id?: string | null | undefined, token_count?: number | null | undefined, harm?: number | null | undefined, approach_conflict?: number | null | undefined, approach_reason?: number | null | undefined, approach_exploration?: number | null | undefined, approach_connection?: number | null | undefined, text?: string | null | undefined, set_id: string, set_position: number, quantity: number, level?: number | null | undefined, type_id?: string | null | undefined, cost?: number | null | undefined, aspect_id?: string | null | undefined, progress?: number | null | undefined, back_card_id?: string | null | undefined, imagesrc?: string | null | undefined, area_id?: string | null | undefined, guide_entry?: string | null | undefined, progress_fixed?: boolean | null | undefined, flavor?: string | null | undefined, locations?: any | null | undefined, objective?: string | null | undefined, illustrator?: string | null | undefined, pack_id?: string | null | undefined, deck_limit?: number | null | undefined, position?: number | null | undefined, spoiler?: boolean | null | undefined };
 
-export type CardTextFragment = { __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined };
+export type CardTextFragment = { __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined, imagesrc?: string | null | undefined };
 
 export type CardSetFragment = { __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined };
 
@@ -35503,7 +35511,7 @@ export type CardAreaTextFragment = { __typename?: 'rangers_area_text', id: strin
 export type GetCardsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCardsQuery = { __typename?: 'query_root', rangers_card: Array<{ __typename?: 'rangers_card', id: string, name: string, traits?: string | null | undefined, equip?: number | null | undefined, presence?: number | null | undefined, token_id?: string | null | undefined, token_count?: number | null | undefined, harm?: number | null | undefined, approach_conflict?: number | null | undefined, approach_reason?: number | null | undefined, approach_exploration?: number | null | undefined, approach_connection?: number | null | undefined, text?: string | null | undefined, set_id: string, set_position: number, quantity: number, level?: number | null | undefined, type_id?: string | null | undefined, cost?: number | null | undefined, aspect_id?: string | null | undefined, progress?: number | null | undefined, back_card_id?: string | null | undefined, imagesrc?: string | null | undefined, area_id?: string | null | undefined, guide_entry?: string | null | undefined, progress_fixed?: boolean | null | undefined, flavor?: string | null | undefined, locations?: any | null | undefined, objective?: string | null | undefined, illustrator?: string | null | undefined, pack_id?: string | null | undefined, deck_limit?: number | null | undefined, position?: number | null | undefined, spoiler?: boolean | null | undefined }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined }> };
+export type GetCardsQuery = { __typename?: 'query_root', rangers_card: Array<{ __typename?: 'rangers_card', id: string, name: string, traits?: string | null | undefined, equip?: number | null | undefined, presence?: number | null | undefined, token_id?: string | null | undefined, token_count?: number | null | undefined, harm?: number | null | undefined, approach_conflict?: number | null | undefined, approach_reason?: number | null | undefined, approach_exploration?: number | null | undefined, approach_connection?: number | null | undefined, text?: string | null | undefined, set_id: string, set_position: number, quantity: number, level?: number | null | undefined, type_id?: string | null | undefined, cost?: number | null | undefined, aspect_id?: string | null | undefined, progress?: number | null | undefined, back_card_id?: string | null | undefined, imagesrc?: string | null | undefined, area_id?: string | null | undefined, guide_entry?: string | null | undefined, progress_fixed?: boolean | null | undefined, flavor?: string | null | undefined, locations?: any | null | undefined, objective?: string | null | undefined, illustrator?: string | null | undefined, pack_id?: string | null | undefined, deck_limit?: number | null | undefined, position?: number | null | undefined, spoiler?: boolean | null | undefined }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined, imagesrc?: string | null | undefined }> };
 
 export type GetMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -35515,14 +35523,14 @@ export type GetTranslationDataQueryVariables = Exact<{
 }>;
 
 
-export type GetTranslationDataQuery = { __typename?: 'query_root', rangers_area_text: Array<{ __typename?: 'rangers_area_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined }> };
+export type GetTranslationDataQuery = { __typename?: 'query_root', rangers_area_text: Array<{ __typename?: 'rangers_area_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined, imagesrc?: string | null | undefined }> };
 
 export type GetTranslationsQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type GetTranslationsQuery = { __typename?: 'query_root', rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined }> };
+export type GetTranslationsQuery = { __typename?: 'query_root', rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined, imagesrc?: string | null | undefined }> };
 
 export type UpsertCardMutationVariables = Exact<{
   id: Scalars['String'];
@@ -35622,7 +35630,7 @@ export type GetLocaleTextQueryVariables = Exact<{
 }>;
 
 
-export type GetLocaleTextQuery = { __typename?: 'query_root', rangers_area_text: Array<{ __typename?: 'rangers_area_text', id: string, locale: string, name: string }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }> };
+export type GetLocaleTextQuery = { __typename?: 'query_root', rangers_area_text: Array<{ __typename?: 'rangers_area_text', id: string, locale: string, name: string }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined, imagesrc?: string | null | undefined }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }> };
 
 export type UpsertCardTextMutationVariables = Exact<{
   id: Scalars['String'];
@@ -35758,6 +35766,7 @@ export const CardTextFragmentDoc = gql`
   text
   flavor
   objective
+  imagesrc
 }
     `;
 export const CardSetFragmentDoc = gql`

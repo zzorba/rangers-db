@@ -88,7 +88,7 @@ export const TABLES: { [key: string]: Table } = {
       'text',
       'flavor',
       'objective',
-      'imagesrc'
+      'imagesrc',
     ],
     foreignKeys: {
       token_id: 'token',

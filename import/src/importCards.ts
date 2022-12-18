@@ -163,7 +163,7 @@ async function importMetadata() {
           await accessFile(`${BASE_IMAGE_DIR}${path}`, fs.constants.F_OK);
           card.imagesrc = `${BASE_IMAGE_URL}${path}`;
         } catch (e) {
-          false && console.log(`Could not find image for ${card.id}`);
+          console.log(`Could not find image for ${card.id}`);
         }
         const existing = find(cards.rangers_card, c => c.id === card.id);
         if (!existing || !deepEqual(
@@ -179,13 +179,19 @@ async function importMetadata() {
         if (CARD_DATA.textFields) {
           const theText = safePick(card, CARD_DATA.textFields);
           const translation = find(cards.rangers_card_text, c => c.id === card.id);
-          if (!translation || !deepEqual(safePick(existing, CARD_DATA.textFields), theText)) {
+          if (!translation || !deepEqual(
+            safePick(existing, CARD_DATA.textFields),
+            theText
+          )) {
             console.log(`\tUpdating ${card.id} text`);
             await client.upsertCardText({
               id: card.id,
               locale: 'en',
               ...theText,
             } as any);
+          } else {
+            console.log(`Existing: ${JSON.stringify(safePick(existing, CARD_DATA.textFields))}`);
+            console.log(`New: ${JSON.stringify(theText)}`);
           }
           for (let n = 0; n < LOCALES.length; n++) {
             const locale = LOCALES[n];
