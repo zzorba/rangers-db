@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ['de', 'en', 'it', 'pseudo'],
+    locales: ['de', 'fr', 'en', 'it', 'pseudo'],
     defaultLocale: 'en',
     localeDetection: false,
     domains: [
@@ -17,6 +17,11 @@ const nextConfig = {
       {
         domain: process.env.NODE_ENV === 'development' ? 'de.localhost' : 'de.rangersdb.com',
         defaultLocale: 'de',
+        http: process.env.NODE_ENV === 'development',
+      },
+      {
+        domain: process.env.NODE_ENV === 'development' ? 'fr.localhost' : 'fr.rangersdb.com',
+        defaultLocale: 'fr',
         http: process.env.NODE_ENV === 'development',
       },
       {
