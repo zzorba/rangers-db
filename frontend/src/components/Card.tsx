@@ -347,7 +347,7 @@ export function useCardModal(slots?: Slots, renderControl?: (card: CardFragment)
         </ModalBody>
         <ModalFooter justifyContent="space-between">
           { !!card && <FooterInfo card={card} /> }
-          { !!card && card.type_id !== 'role' && (!!renderControl ? renderControl(card) : <CardCount count={count} />) }
+          { !!card && card.type_id !== 'role' && !!slots && (!!renderControl ? renderControl(card) : <CardCount count={count} />) }
         </ModalFooter>
       </ModalContent>
     </Modal>
