@@ -189,9 +189,6 @@ async function importMetadata() {
               locale: 'en',
               ...theText,
             } as any);
-          } else {
-            console.log(`Existing: ${JSON.stringify(safePick(existing, CARD_DATA.textFields))}`);
-            console.log(`New: ${JSON.stringify(theText)}`);
           }
           for (let n = 0; n < LOCALES.length; n++) {
             const locale = LOCALES[n];
