@@ -208,6 +208,9 @@ function CardPresenceAndIcons({ card, mini }: { card: CardFragment; mini?: boole
 const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }: Props & { flex?: number; miniLevel?: boolean; problem?: DeckCardError[]; includeSet?: boolean; includeText?: boolean }) => {
   const { aspects, locale } = useLocale();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
+  const cardTraits = card.traits && locale === 'de'
+      ? card.traits.split(' / ').map((item) => '¬' + item).join(' / ')
+      : card.traits;
   return (
     <Flex direction="row" flex={flex} alignItems="flex-start">
       <Flex direction="row" flexGrow={1} alignItems="flex-start">
@@ -226,7 +229,7 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
             ) : (
               <>
                 <Text fontSize="xs" fontWeight={600} noOfLines={2} paddingRight={2}>
-                  { locale === 'de' ? '¬' : ''}{card.type_name}{card.traits ? <i> / {card.traits}</i> : ''}
+                  { locale === 'de' ? '¬' : ''}{card.type_name}{cardTraits ? <i> / {cardTraits}</i> : ''}
                   { includeSet && card.type_id === 'role' ? ` - ${card.set_name} Specialty` : ''}
                 </Text>
                 { !!card.equip && <Equip equip={card.equip} aspect={card.aspect_id || undefined} /> }
