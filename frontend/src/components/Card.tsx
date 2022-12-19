@@ -331,7 +331,7 @@ export function CardRow({ card, problem, children, onClick, includeSet, includeT
 }
 
 export type ShowCard = (card: CardFragment, problem?: DeckCardError[]) => void;
-export function useCardModal(slots?: Slots, renderControl?: (card: CardFragment) => React.ReactNode): [
+export function useCardModal(slots?: Slots, renderControl?: (card: CardFragment, onClose?: () => void) => React.ReactNode): [
   ShowCard,
   React.ReactNode,
 ] {
@@ -362,7 +362,7 @@ export function useCardModal(slots?: Slots, renderControl?: (card: CardFragment)
         </ModalBody>
         <ModalFooter justifyContent="space-between">
           { !!card && <FooterInfo card={card} /> }
-          { !!card && card.type_id !== 'role' && !!slots && (!!renderControl ? renderControl(card) : <CardCount count={count} />) }
+          { !!card && card.type_id !== 'role' && !!slots && (!!renderControl ? renderControl(card, onClose) : <CardCount count={count} />) }
         </ModalFooter>
       </ModalContent>
     </Modal>

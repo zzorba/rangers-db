@@ -284,7 +284,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
         ) : <Spinner size="md" /> }
         { (!!deck.previous_deck || !!deck.next_deck) && (
           <Flex direction="column" marginTop={8}>
-            <Text borderBottomWidth={1} borderColor="gray.100" marginBottom={2} paddingBottom={1} fontWeight="600">{t`Campaign progress`}</Text>
+            <Text borderBottomWidth={1} borderColor="gray.500" marginBottom={2} paddingBottom={1} fontWeight="600">{t`Campaign progress`}</Text>
             { !!deck.previous_deck && (
               <Link as={NextLink} href={`/decks/view/${deck.previous_deck.id}`}>{t`Previous deck (${deck.previous_deck.version})`}</Link>
             )}
@@ -353,7 +353,7 @@ export function CompactDeckRow({ deck, roleCards, onClick, children, buttons, hr
       flex={1}
       paddingTop={2}
       paddingBottom={2}
-      borderBottomColor="gray.100"
+      borderBottomColor="gray.500"
       borderBottomWidth="1px"
       onClick={onClick ? handleClick : undefined}
       cursor={onClick ? 'pointer' : undefined}

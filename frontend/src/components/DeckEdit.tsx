@@ -28,6 +28,8 @@ import {
   SimpleGrid,
   ButtonGroup,
   RadioGroup,
+  useColorMode,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import Router from 'next/router';
 import NextLink from 'next/link';
@@ -284,7 +286,7 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
       </TabList>
       <TabPanels>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.500">
             {t`Select 4 different personality cards, 1 from each aspect.`}
           </Text>
           <SimpleCardList
@@ -295,7 +297,7 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.500">
             {t`Select 5 different cards from your chosen background.`}
           </Text>
           <SimpleCardList
@@ -306,7 +308,7 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.500">
             {t`Select 5 different cards from your chosen specialty.`}
           </Text>
           <SimpleCardList
@@ -320,7 +322,7 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
           <Text fontSize="md" className='lightText' paddingBottom={1}>
             {t`Select 1 cards from any background of specialty as your outside interest.`}
           </Text>
-          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.500">
             {t`Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.`}
           </Text>
           <SimpleCardList
@@ -449,7 +451,7 @@ export default function DeckEdit({ deck, cards }: Props) {
     }
   }, [slots, sideSlots, updateSlots, updateSideSlots]);
   const isUpgrade = !!deck.previous_deck;
-  const renderControl = useCallback((card: CardFragment) => {
+  const renderControl = useCallback((card: CardFragment, onClose?: () => void) => {
     if (card.set_id === 'malady') {
       return (
         <IncDecCountControls
@@ -465,6 +467,7 @@ export default function DeckEdit({ deck, cards }: Props) {
         slots={slots}
         setSlots={!isUpgrade ? updateSlots : updateUpgradeSlots}
         countMode={!isUpgrade ? 'noah' : undefined}
+        onClose={onClose}
       />
     );
   }, [slots, updateSlots, updateUpgradeSlots, isUpgrade]);
@@ -551,7 +554,7 @@ export default function DeckEdit({ deck, cards }: Props) {
     }
     setSaveError(r.errors[0].message);
   }, [saveDeck, stats, meta, slots, sideSlots, name, deck, parsedDeck.problem, parsedDeck.roleProblems, aspectError]);
-
+  const hoverBackground = useColorModeValue('gray.100', 'gray.700');
   return (
     <>
       <SimpleGrid minChildWidth="400px" spacingX={4} spacingY="4rem" columns={2}>
@@ -564,7 +567,7 @@ export default function DeckEdit({ deck, cards }: Props) {
           <DeckCountLine parsedDeck={parsedDeck} />
           { !parsedDeck.loading && !!parsedDeck.problem && (
             <Box marginBottom={4}>
-              <DeckProblemComponent errors={parsedDeck.problem} />
+              <DeckProblemComponent errors={parsedDeck.problem} limit={1} summarizeOthers />
             </Box>
           )}
           <ButtonGroup paddingBottom={2} paddingTop={2}>
@@ -582,7 +585,7 @@ export default function DeckEdit({ deck, cards }: Props) {
             <FormLabel>{t`Role`}</FormLabel>
             <DeckProblemComponent limit={1} errors={parsedDeck.roleProblems} />
             { parsedDeck.role ? (
-              <Box _hover={{ bg: "gray.50" }} cursor="pointer" onClick={showRole}>
+              <Box _hover={{ bg: hoverBackground }} cursor="pointer" onClick={showRole}>
                 <CardRow card={parsedDeck.role} includeText last />
               </Box>
               ) : (

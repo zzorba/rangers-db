@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { Box, Button, Flex, Text, useRadio, useRadioGroup, UseRadioProps } from '@chakra-ui/react';
+import React, { useCallback, useEffect } from 'react';
+import { Box, Button, Flex, Text, useColorModeValue, useRadio, useRadioGroup, UseRadioProps } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { Slots } from '../types/types';
 import { CardFragment } from '../generated/graphql/apollo-schema';
@@ -13,9 +13,9 @@ export default function CardCount({
     <Box fontFamily="mono"
       borderRadius="md"
       borderWidth="1px"
-      bg={`gray.${light ? 100 : 600}`}
+      bg={useColorModeValue('gray.100', 'gray.600')}
       borderColor="gray.300"
-      color={light ? 'gray.800' : 'white'}
+      color={useColorModeValue('gray.800', 'white')}
       padding={2}
       marginLeft={marginLeft}
       px={2}
@@ -132,7 +132,7 @@ export function CountControls({ card, slots, setSlots, onClose, countMode }: {
   const currentCount = `${(card.id && slots[card.id]) || 0}`;
   const { getRadioProps } = useRadioGroup({
     name: 'deck-count',
-    defaultValue: currentCount,
+    value: currentCount,
     onChange: onChange,
   });
   return (

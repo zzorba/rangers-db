@@ -1,4 +1,4 @@
-import { Button, Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, Editable, useColorMode } from '@chakra-ui/react';
+import { Button, Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { plural, t } from '@lingui/macro';
 import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim } from 'lodash';
@@ -124,7 +124,7 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
   }, [campaign.latest_decks, roleCards]);
   const onDeleteClick = useCallback(() => onDelete?.(campaign), [onDelete, campaign]);
   return (
-    <ListItem padding={2} borderBottomWidth="1px" borderColor="gray.100">
+    <ListItem padding={2} borderBottomWidth="1px" borderColor="gray.500">
       <Flex direction="row">
         <Flex flex={1} direction="row" justifyContent="space-between" as={NextLink} href={`/campaigns/${campaign.id}`}>
           <Flex direction="column">
@@ -812,12 +812,13 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
 
 
 function ProgressChit({ filled, marginRight }: { filled?: boolean; marginRight?: number | string }) {
+  const fillColor = useColorModeValue('gray.600', 'gray.100');
   return (
     <AspectRatio width="16px" ratio={1} marginRight={marginRight}>
       <Box borderRadius="3px" borderColor="gray.500" borderWidth="2px" transform="rotate(45deg)">
         { !!filled && (
           <AspectRatio width="10px" ratio={1}>
-            <Box borderRadius="1px" backgroundColor="gray.600" />
+            <Box borderRadius="1px" backgroundColor={fillColor} />
           </AspectRatio>
         )}
       </Box>
@@ -957,7 +958,7 @@ function EventLine({ event, idx, onClick }: {
   const handleClick = useCallback(() => onClick(idx, event), [onClick, idx, event]);
   return (
     <ListItem key={idx} paddingTop={2} paddingBottom={2} onClick={handleClick} cursor="pointer">
-      <Text padding={2} borderBottomWidth={1} borderColor="gray.100" textDecorationLine={event.crossed_out ? 'line-through' : undefined}>
+      <Text padding={2} borderBottomWidth={1} borderColor="gray.500" textDecorationLine={event.crossed_out ? 'line-through' : undefined}>
         { event.event }
       </Text>
     </ListItem>

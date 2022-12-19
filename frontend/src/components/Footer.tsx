@@ -25,7 +25,7 @@ export default function Footer() {
         </Text>
         <Text marginTop={2}>
           <Trans>
-            If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}.
+            If you&lsquo;d like to support the development and maintenance of this site, consider supporting us on {patreon}.
           </Trans>
         </Text>
       </Box>

@@ -36,7 +36,7 @@ export function RoleImage({ name, url, large }: {
       position="relative"
       overflow="hidden"
       borderWidth={2}
-      borderColor="gray.600"
+      borderColor="gray.500"
     >
       <img
         alt={name || 'Role'}
