@@ -600,8 +600,8 @@ msgid "Personality"
 msgstr "Personality"
 
 #: src/components/CardList.tsx:62
-msgid "Player"
-msgstr "Player"
+#~ msgid "Player"
+#~ msgstr "Player"
 
 #: src/components/Campaign.tsx:1485
 #: src/components/Campaign.tsx:1602
@@ -637,6 +637,10 @@ msgstr "Progress {progressNumber}"
 #: src/components/NavBar.tsx:102
 msgid "Pseudo"
 msgstr "Pseudo"
+
+#: src/components/CardList.tsx:62
+msgid "Ranger"
+msgstr "Ranger"
 
 #: src/components/Campaign.tsx:1319
 msgid "Rangers"

@@ -59,7 +59,7 @@ export default function CardList() {
     <>
       <Tabs>
         <TabList>
-          <Tab>{t`Player`}</Tab>
+          <Tab>{t`Ranger`}</Tab>
           <Tab>{t`Rewards and Maladies`}</Tab>
         </TabList>
         <TabPanels>

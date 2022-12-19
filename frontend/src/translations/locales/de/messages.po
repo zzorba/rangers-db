@@ -580,8 +580,8 @@ msgid "Personality"
 msgstr "Charakteristiken"
 
 #: src/components/CardList.tsx:62
-msgid "Player"
-msgstr ""
+#~ msgid "Player"
+#~ msgstr ""
 
 #: src/components/Campaign.tsx:1485
 #: src/components/Campaign.tsx:1602
@@ -616,6 +616,10 @@ msgstr "Fortschritt {progressNumber}"
 #: src/components/NavBar.tsx:102
 msgid "Pseudo"
 msgstr "Pseudonym"
+
+#: src/components/CardList.tsx:62
+msgid "Ranger"
+msgstr ""
 
 #: src/components/Campaign.tsx:1319
 msgid "Rangers"
