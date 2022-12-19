@@ -65,7 +65,7 @@ msgstr ""
 msgid "Already have an account? <0>Login</0> now."
 msgstr ""
 
-#: src/components/DeckList.tsx:66
+#: src/components/DeckList.tsx:65
 msgid "Are you sure you want to delete the '{0}' deck?"
 msgstr ""
 
@@ -111,8 +111,8 @@ msgstr ""
 msgid "Camp"
 msgstr ""
 
-#: src/pages/campaigns/[cid].tsx:84
-#: src/pages/campaigns/[cid].tsx:103
+#: src/pages/campaigns/[cid].tsx:83
+#: src/pages/campaigns/[cid].tsx:102
 msgid "Campaign"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Cancel Friendship"
 msgstr ""
 
-#: src/components/NavBar.tsx:52
+#: src/components/NavBar.tsx:54
 #: src/pages/cards/index.tsx:16
 msgid "Cards"
 msgstr ""
@@ -206,7 +206,9 @@ msgstr ""
 msgid "Current Position"
 msgstr ""
 
-#: src/components/NavBar.tsx:218
+#: src/components/NavBar.tsx:226
+#: src/components/NavBar.tsx:343
+#: src/components/NavBar.tsx:348
 msgid "Dark mode"
 msgstr ""
 
@@ -233,7 +235,7 @@ msgstr ""
 msgid "Deck search"
 msgstr ""
 
-#: src/components/NavBar.tsx:56
+#: src/components/NavBar.tsx:58
 msgid "Decks"
 msgstr ""
 
@@ -241,7 +243,7 @@ msgstr ""
 #: src/components/Campaign.tsx:145
 #: src/components/Campaign.tsx:804
 #: src/components/Deck.tsx:231
-#: src/components/DeckList.tsx:56
+#: src/components/DeckList.tsx:55
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
 msgstr ""
@@ -251,7 +253,7 @@ msgid "Delete campaign?"
 msgstr ""
 
 #: src/components/Deck.tsx:178
-#: src/components/DeckList.tsx:92
+#: src/components/DeckList.tsx:91
 msgid "Delete deck?"
 msgstr ""
 
@@ -289,7 +291,7 @@ msgid "E-mail Address"
 msgstr ""
 
 #: src/components/Deck.tsx:208
-#: src/components/DeckList.tsx:55
+#: src/components/DeckList.tsx:54
 #: src/components/EditableTextInput.tsx:39
 msgid "Edit"
 msgstr ""
@@ -313,7 +315,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: src/components/NavBar.tsx:93
+#: src/components/NavBar.tsx:95
 msgid "English"
 msgstr ""
 
@@ -355,7 +357,7 @@ msgstr ""
 msgid "Friends"
 msgstr ""
 
-#: src/components/NavBar.tsx:94
+#: src/components/NavBar.tsx:96
 msgid "German"
 msgstr ""
 
@@ -382,7 +384,11 @@ msgstr ""
 msgid "Howling Winds"
 msgstr ""
 
-#: src/components/NavBar.tsx:95
+#: src/components/Footer.tsx:27
+msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgstr ""
+
+#: src/components/NavBar.tsx:97
 msgid "Italian"
 msgstr ""
 
@@ -390,7 +396,9 @@ msgstr ""
 msgid "Leave campaign"
 msgstr ""
 
-#: src/components/NavBar.tsx:218
+#: src/components/NavBar.tsx:226
+#: src/components/NavBar.tsx:343
+#: src/components/NavBar.tsx:348
 msgid "Light mode"
 msgstr ""
 
@@ -415,11 +423,11 @@ msgstr ""
 msgid "Missions"
 msgstr ""
 
-#: src/components/NavBar.tsx:48
+#: src/components/NavBar.tsx:50
 msgid "My Campaigns"
 msgstr ""
 
-#: src/components/NavBar.tsx:44
+#: src/components/NavBar.tsx:46
 #: src/pages/decks/index.tsx:62
 msgid "My Decks"
 msgstr ""
@@ -448,7 +456,7 @@ msgstr ""
 msgid "New campaign"
 msgstr ""
 
-#: src/components/NavBar.tsx:231
+#: src/components/NavBar.tsx:240
 msgid "New cards are available"
 msgstr ""
 
@@ -567,7 +575,7 @@ msgstr ""
 msgid "Previous deck ({0})"
 msgstr ""
 
-#: src/components/NavBar.tsx:42
+#: src/components/NavBar.tsx:44
 #: src/pages/profile.tsx:13
 msgid "Profile"
 msgstr ""
@@ -581,7 +589,7 @@ msgstr ""
 msgid "Progress {progressNumber}"
 msgstr ""
 
-#: src/components/NavBar.tsx:100
+#: src/components/NavBar.tsx:102
 msgid "Pseudo"
 msgstr ""
 
@@ -589,10 +597,10 @@ msgstr ""
 msgid "Rangers"
 msgstr ""
 
-#: src/components/NavBar.tsx:166
+#: src/components/NavBar.tsx:169
 #: src/components/PageHeading.tsx:10
-#: src/pages/campaigns/[cid].tsx:84
-#: src/pages/campaigns/[cid].tsx:103
+#: src/pages/campaigns/[cid].tsx:83
+#: src/pages/campaigns/[cid].tsx:102
 #: src/pages/cards/[cid].tsx:30
 #: src/pages/cards/[cid].tsx:31
 #: src/pages/decks/edit/[did].tsx:52
@@ -725,15 +733,15 @@ msgstr ""
 msgid "Show all"
 msgstr ""
 
-#: src/components/NavBar.tsx:200
+#: src/components/NavBar.tsx:204
 msgid "Sign In"
 msgstr ""
 
-#: src/components/NavBar.tsx:189
+#: src/components/NavBar.tsx:193
 msgid "Sign Out"
 msgstr ""
 
-#: src/components/NavBar.tsx:213
+#: src/components/NavBar.tsx:217
 msgid "Sign Up"
 msgstr ""
 
@@ -754,7 +762,7 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: src/components/Footer.tsx:22
+#: src/components/Footer.tsx:24
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr ""
 
@@ -774,7 +782,7 @@ msgstr ""
 msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
 msgstr ""
 
-#: src/pages/campaigns/[cid].tsx:92
+#: src/pages/campaigns/[cid].tsx:91
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr ""
 
@@ -794,7 +802,7 @@ msgstr ""
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr ""
 
-#: src/components/NavBar.tsx:155
+#: src/components/NavBar.tsx:158
 msgid "Toggle Navigation"
 msgstr ""
 
@@ -838,7 +846,7 @@ msgstr ""
 msgid "Unable to create campaign at this time."
 msgstr ""
 
-#: src/components/NavBar.tsx:232
+#: src/components/NavBar.tsx:241
 msgid "Update now"
 msgstr ""
 
@@ -864,7 +872,7 @@ msgstr ""
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr ""
 
-#: src/components/DeckList.tsx:97
+#: src/components/DeckList.tsx:96
 msgid "You don't seem to have any decks."
 msgstr ""
 

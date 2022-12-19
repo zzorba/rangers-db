@@ -65,7 +65,7 @@ msgstr "Anderen erlauben meine Decks anzusehen"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 
-#: src/components/DeckList.tsx:66
+#: src/components/DeckList.tsx:65
 msgid "Are you sure you want to delete the '{0}' deck?"
 msgstr "Bist du sicher, dass du das '{0}' Deck löschen möchtest?"
 
@@ -115,8 +115,8 @@ msgstr "Vorgeschichte: {backgroundName}"
 msgid "Camp"
 msgstr "Nachtlager"
 
-#: src/pages/campaigns/[cid].tsx:84
-#: src/pages/campaigns/[cid].tsx:103
+#: src/pages/campaigns/[cid].tsx:83
+#: src/pages/campaigns/[cid].tsx:102
 msgid "Campaign"
 msgstr "Kampagne"
 
@@ -141,7 +141,7 @@ msgstr "Freundschaftsanfrage zurücknehmen"
 msgid "Cancel Friendship"
 msgstr "Freundschaft beenden"
 
-#: src/components/NavBar.tsx:52
+#: src/components/NavBar.tsx:54
 #: src/pages/cards/index.tsx:16
 msgid "Cards"
 msgstr "Karten"
@@ -210,7 +210,9 @@ msgstr "Durchgestrichen"
 msgid "Current Position"
 msgstr "Aktuelle Position"
 
-#: src/components/NavBar.tsx:218
+#: src/components/NavBar.tsx:226
+#: src/components/NavBar.tsx:343
+#: src/components/NavBar.tsx:348
 msgid "Dark mode"
 msgstr ""
 
@@ -237,7 +239,7 @@ msgstr "Deck"
 msgid "Deck search"
 msgstr "Decks suchen"
 
-#: src/components/NavBar.tsx:56
+#: src/components/NavBar.tsx:58
 msgid "Decks"
 msgstr "Decks"
 
@@ -245,7 +247,7 @@ msgstr "Decks"
 #: src/components/Campaign.tsx:145
 #: src/components/Campaign.tsx:804
 #: src/components/Deck.tsx:231
-#: src/components/DeckList.tsx:56
+#: src/components/DeckList.tsx:55
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
 msgstr "Löschen"
@@ -255,7 +257,7 @@ msgid "Delete campaign?"
 msgstr "Kampagne löschen?"
 
 #: src/components/Deck.tsx:178
-#: src/components/DeckList.tsx:92
+#: src/components/DeckList.tsx:91
 msgid "Delete deck?"
 msgstr "Deck löschen?"
 
@@ -297,7 +299,7 @@ msgid "E-mail Address"
 msgstr "E-Mail-Adresse"
 
 #: src/components/Deck.tsx:208
-#: src/components/DeckList.tsx:55
+#: src/components/DeckList.tsx:54
 #: src/components/EditableTextInput.tsx:39
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -321,7 +323,7 @@ msgstr "Spieler bearbeiten"
 msgid "Email"
 msgstr "E-Mail"
 
-#: src/components/NavBar.tsx:93
+#: src/components/NavBar.tsx:95
 msgid "English"
 msgstr "Englisch"
 
@@ -363,7 +365,7 @@ msgstr "Freundschaftsanfragen"
 msgid "Friends"
 msgstr "Freunde"
 
-#: src/components/NavBar.tsx:94
+#: src/components/NavBar.tsx:96
 msgid "German"
 msgstr "Deutsch"
 
@@ -390,7 +392,11 @@ msgstr "Du kannst aber schon Links zu deinen eigenen Decks teilen, um  andere zu
 msgid "Howling Winds"
 msgstr "Sturmböen"
 
-#: src/components/NavBar.tsx:95
+#: src/components/Footer.tsx:27
+msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgstr ""
+
+#: src/components/NavBar.tsx:97
 msgid "Italian"
 msgstr "Italienisch"
 
@@ -398,7 +404,9 @@ msgstr "Italienisch"
 msgid "Leave campaign"
 msgstr "Kampagne verlassen"
 
-#: src/components/NavBar.tsx:218
+#: src/components/NavBar.tsx:226
+#: src/components/NavBar.tsx:343
+#: src/components/NavBar.tsx:348
 msgid "Light mode"
 msgstr ""
 
@@ -423,11 +431,11 @@ msgstr "Tag {day} als abgeschlossen markieren."
 msgid "Missions"
 msgstr "Missionen"
 
-#: src/components/NavBar.tsx:48
+#: src/components/NavBar.tsx:50
 msgid "My Campaigns"
 msgstr "Meine Kampagnen"
 
-#: src/components/NavBar.tsx:44
+#: src/components/NavBar.tsx:46
 #: src/pages/decks/index.tsx:62
 msgid "My Decks"
 msgstr "Meine Decks"
@@ -456,7 +464,7 @@ msgstr "Gib deinem Charakter einen Namen"
 msgid "New campaign"
 msgstr "Neue Kampagne"
 
-#: src/components/NavBar.tsx:231
+#: src/components/NavBar.tsx:240
 msgid "New cards are available"
 msgstr "Neue Karten sind verfügbar"
 
@@ -592,7 +600,7 @@ msgstr "Vorherige Seite"
 msgid "Previous deck ({0})"
 msgstr "Vorheriges Deck ({0})"
 
-#: src/components/NavBar.tsx:42
+#: src/components/NavBar.tsx:44
 #: src/pages/profile.tsx:13
 msgid "Profile"
 msgstr "Profil"
@@ -606,7 +614,7 @@ msgstr "Fortschritt"
 msgid "Progress {progressNumber}"
 msgstr "Fortschritt {progressNumber}"
 
-#: src/components/NavBar.tsx:100
+#: src/components/NavBar.tsx:102
 msgid "Pseudo"
 msgstr "Pseudonym"
 
@@ -614,10 +622,10 @@ msgstr "Pseudonym"
 msgid "Rangers"
 msgstr "Ranger"
 
-#: src/components/NavBar.tsx:166
+#: src/components/NavBar.tsx:169
 #: src/components/PageHeading.tsx:10
-#: src/pages/campaigns/[cid].tsx:84
-#: src/pages/campaigns/[cid].tsx:103
+#: src/pages/campaigns/[cid].tsx:83
+#: src/pages/campaigns/[cid].tsx:102
 #: src/pages/cards/[cid].tsx:30
 #: src/pages/cards/[cid].tsx:31
 #: src/pages/decks/edit/[did].tsx:52
@@ -754,15 +762,15 @@ msgstr "Einstellungen"
 msgid "Show all"
 msgstr "Alle anzeigen"
 
-#: src/components/NavBar.tsx:200
+#: src/components/NavBar.tsx:204
 msgid "Sign In"
 msgstr "Einloggen"
 
-#: src/components/NavBar.tsx:189
+#: src/components/NavBar.tsx:193
 msgid "Sign Out"
 msgstr "Ausloggen"
 
-#: src/components/NavBar.tsx:213
+#: src/components/NavBar.tsx:217
 msgid "Sign Up"
 msgstr "Registrieren"
 
@@ -783,7 +791,7 @@ msgstr "Souveränität"
 msgid "Submit"
 msgstr "Veröffentlichen"
 
-#: src/components/Footer.tsx:22
+#: src/components/Footer.tsx:24
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr "Die auf dieser Webseite dargestellten Informationen über Earthborne Rangers - schriftlich wie graphisch - unterliegen den Urheberrechten von Earthborne Games. Diese Webseite gehört nicht zu Earthborne Games, und wird nicht von ihnen erstellt, unterstützt oder befürwortet."
 
@@ -803,7 +811,7 @@ msgstr "Es sind zu viele Hobby-Karten in deinem Deck."
 msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
 msgstr "Die Webseite sollte aber schnell stabil laufen. Die Notiz wird entfernt, sobald ich mit dem Stand der Dinge zufrieden bin."
 
-#: src/pages/campaigns/[cid].tsx:92
+#: src/pages/campaigns/[cid].tsx:91
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr ""
 
@@ -823,7 +831,7 @@ msgstr "Diese Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr "Diese Webseite befindet sich noch im Aufbau, aber du kannst bereits die Liste <0>veröffentlichter Karten</0> einsehen, dich <1>registrieren</1> und mit dem <2>Deck-Bau</2> anfangen."
 
-#: src/components/NavBar.tsx:155
+#: src/components/NavBar.tsx:158
 msgid "Toggle Navigation"
 msgstr "Navigation umschalten"
 
@@ -875,7 +883,7 @@ msgstr "Kampagne kann im Moment nicht erstellt werden."
 #~ msgid "Unlocked rewards"
 #~ msgstr "Freigeschaltete Belohnungen"
 
-#: src/components/NavBar.tsx:232
+#: src/components/NavBar.tsx:241
 msgid "Update now"
 msgstr "Jetzt bearbeiten"
 
@@ -901,7 +909,7 @@ msgstr "Du"
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr ""
 
-#: src/components/DeckList.tsx:97
+#: src/components/DeckList.tsx:96
 msgid "You don't seem to have any decks."
 msgstr "Du hast scheinbar keine Decks."
 

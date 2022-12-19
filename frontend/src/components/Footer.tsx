@@ -1,8 +1,10 @@
 import React from 'react';
-import { Text, Box, useColorModeValue } from '@chakra-ui/react'
-import { t } from '@lingui/macro';
+import { Link, Text, Box, useColorModeValue } from '@chakra-ui/react'
+import { Trans, t } from '@lingui/macro';
+import NextLink from 'next/link';
 
 export default function Footer() {
+  const patreon = <Link as={NextLink} href="https://www.patreon.com/arkhamcards">Patreon</Link>;
   return (
     <Box
       as="footer"
@@ -20,6 +22,11 @@ export default function Footer() {
       >
         <Text fontSize="sm" color="black">
           {t`The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games.`}
+        </Text>
+        <Text marginTop={2}>
+          <Trans>
+            If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}.
+          </Trans>
         </Text>
       </Box>
     </Box>
