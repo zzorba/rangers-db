@@ -28,7 +28,6 @@ import {
   SimpleGrid,
   ButtonGroup,
   RadioGroup,
-  useColorMode,
   useColorModeValue,
   Textarea,
   Tooltip,
@@ -639,7 +638,7 @@ export default function DeckEdit({ deck, cards }: Props) {
   const hoverBackground = useColorModeValue('gray.100', 'gray.700');
   return (
     <>
-      <SimpleGrid minChildWidth="400px" spacingX={4} spacingY="4rem" columns={2}>
+      <SimpleGrid minChildWidth="400px" spacingX={4} spacingY="4rem" columns={[1, 1, 1, 2]}>
         <Box>
           <EditableTextInput
             value={name}
