@@ -32,19 +32,6 @@ const theme = extendTheme({
   },
   styles,
   colors: {
-    dark: {
-      lightText: '#AAAAAA',
-      text: 'white',
-      background: 'dark',
-      lightBackground: '#444444',
-      aspect: {
-        AWA: '#49ab57',
-        FOC: '#446ae3',
-        FIT: '#cc1827',
-        SPI: '#f58225',
-        NEUTRAL: '#888888'
-      },
-    },
     light: {
       lightText: '#666666',
       text: 'black',
@@ -56,6 +43,19 @@ const theme = extendTheme({
         FIT: '#811019',
         SPI: '#da6e17',
         NEUTRAL: '#888888',
+      },
+    },
+    dark: {
+      lightText: '#AAAAAA',
+      text: 'white',
+      background: 'dark',
+      lightBackground: '#444444',
+      aspect: {
+        AWA: '#6aa673',
+        FOC: '#446ae3',
+        FIT: '#ce3b47',
+        SPI: '#f58225',
+        NEUTRAL: '#888888'
       },
     },
     aspect: {
