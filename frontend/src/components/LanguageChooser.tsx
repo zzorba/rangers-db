@@ -21,7 +21,7 @@ const languageOptions: LanguageOption[] = [
   {
     value: 'de',
     label: '🇩🇪',
-    fullLabel: '🇩🇪 Deutsche',
+    fullLabel: '🇩🇪 Deutsch',
   },
   /*
   {
