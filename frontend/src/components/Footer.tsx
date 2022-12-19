@@ -4,7 +4,7 @@ import { Trans, t } from '@lingui/macro';
 import NextLink from 'next/link';
 
 export default function Footer() {
-  const patreon = <Link as={NextLink} href="https://www.patreon.com/arkhamcards">Patreon</Link>;
+  const patreon = <a href="https://www.patreon.com/arkhamcards">Patreon</a>;
   return (
     <Box
       as="footer"
