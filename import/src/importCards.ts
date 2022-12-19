@@ -42,6 +42,18 @@ function safePick(o: any, fields: string[]) {
   });
   return r;
 }
+
+const OMIT = '<OMIT>';
+function omitBlank(o: any, fields: string[]) {
+  const r = safePick(o, fields);
+  forEach(fields, f => {
+    if (r[f] === OMIT) {
+      r[f] = '';
+    }
+  });
+  return r;
+}
+
 const BASE_DIR = process.env.BASE_DATA_DIR;
 if (!BASE_DIR) {
   throw new Error('BASE_DATA_DIR not set in .env');
@@ -173,7 +185,7 @@ async function importMetadata() {
           console.log(`\tUpdating ${card.id} data`);
           await client.upsertCard({
             id: card.id,
-            ...safePick(card, allFields),
+            ...omitBlank(card, allFields),
           } as any);
         }
         if (CARD_DATA.textFields) {
@@ -187,7 +199,7 @@ async function importMetadata() {
             await client.upsertCardText({
               id: card.id,
               locale: 'en',
-              ...theText,
+              ...omitBlank(theText, CARD_DATA.textFields),
             } as any);
           }
           for (let n = 0; n < LOCALES.length; n++) {
@@ -231,7 +243,7 @@ async function importMetadata() {
               await client.upsertCardText({
                 id,
                 locale: locale,
-                ...theTranslation,
+                ...omitBlank(theTranslation, CARD_DATA.textFields),
               } as any);
             }
           }
