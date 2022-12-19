@@ -166,7 +166,7 @@ msgstr "Wähle eine {0}"
 
 #: src/components/DeckDetail.tsx:157
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
-msgstr ""
+msgstr "Wenn du dein Nachtlager aufschlägst wird eine Kopie deines Decks anelegt, damit du Änderungen am Deck verfolgen kannst während du die Kampagne spielst."
 
 #: src/lib/hooks.ts:121
 msgid "Chosen aspects are invalid."
@@ -286,7 +286,7 @@ msgstr "Platzregen"
 
 #: src/components/DeckDetail.tsx:181
 msgid "Duplicate this deck while preserving the original."
-msgstr ""
+msgstr "Klone dieses Deck, das Original bleibt erhalten."
 
 #: src/components/Login.tsx:32
 #: src/components/Register.tsx:35
@@ -481,7 +481,7 @@ msgstr "Nächstes Deck ({0})"
 
 #: src/components/CardList.tsx:215
 msgid "No matching cards found."
-msgstr ""
+msgstr "Keine passenden Karten gefunden."
 
 #: src/components/FriendSearch.tsx:89
 msgid "No results"
@@ -493,7 +493,7 @@ msgstr "Nicht genug Vorgeschichte-Karten."
 
 #: src/lib/hooks.ts:142
 msgid "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
-msgstr ""
+msgstr "Nicht genügend Karten. Wenn Karten während des Nachtlagers entfernt werden, musst du wieder Karten aus deinem Original-Deck hinzufügen um auf 30 Karten zu kommen."
 
 #: src/lib/hooks.ts:134
 msgid "Not enough outside interest cards."
@@ -517,7 +517,7 @@ msgstr "Besondere Ereignisse"
 
 #: src/components/CardList.tsx:215
 msgid "Note: These cards might contain campaign spoilers."
-msgstr ""
+msgstr "Hinweis: Diese Karten könnten Spoiler für die Kampagne enthalten."
 
 #: src/components/DeckEdit.tsx:326
 msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
@@ -581,7 +581,7 @@ msgstr "Charakteristiken"
 
 #: src/components/CardList.tsx:62
 #~ msgid "Player"
-#~ msgstr ""
+#~ msgstr "Spieler"
 
 #: src/components/Campaign.tsx:1485
 #: src/components/Campaign.tsx:1602
@@ -619,7 +619,7 @@ msgstr "Pseudonym"
 
 #: src/components/CardList.tsx:62
 msgid "Ranger"
-msgstr ""
+msgstr "Ranger"
 
 #: src/components/Campaign.tsx:1319
 msgid "Rangers"
