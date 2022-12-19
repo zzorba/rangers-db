@@ -6,9 +6,13 @@ import { useLocale } from '../lib/TranslationProvider';
 
 export function useIconedText(
   text: string | undefined | null,
-  aspectId: string | null | undefined = 'NEUTRAL',
+  options: {
+    aspectId?: string | null,
+    noLines?: boolean,
+  },
   flavor?: string | undefined | null
 ): string {
+  const { aspectId = 'NEUTRAL', noLines } = options;
   const { aspects } = useLocale();
   const { colorMode } = useColorMode();
   return useMemo(() => {
@@ -25,16 +29,16 @@ export function useIconedText(
         }
         return `<span class="core-${element}"></span>`;
       }
-    ).addRule(/\n/g, () => '<hr class="card-line"></hr>');
+    ).addRule(/\n/g, () => noLines ? '<br />' : '<hr class="card-line"></hr>');
     const cleanText = text ? text.replace(/<f>/g, `<i class="card-${colorMode}-flavor">`).replace(/<\/f>/g, '</i>') : undefined;
     return parser.render(
       filter([cleanText, flavor ? `<i class="card-${colorMode}-flavor">${flavor}</i>` : undefined], x => !!x).join('\n'));
-  }, [text, aspectId, flavor, aspects, colorMode]);
+  }, [text, aspectId, noLines, flavor, aspects, colorMode]);
 }
 
 export default function CardText({ text, flavor, aspectId, noPadding }: { text: string | undefined | null; flavor?: string | undefined | null, aspectId: string | undefined | null; noPadding?: boolean }) {
   const { colorMode } = useColorMode();
-  const parsed = useIconedText(text, aspectId, flavor);
+  const parsed = useIconedText(text, { aspectId }, flavor);
   if (noPadding) {
     return <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />;
   }

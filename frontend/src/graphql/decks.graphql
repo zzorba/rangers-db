@@ -176,3 +176,18 @@ mutation saveDeck(
     ...Deck
   }
 }
+
+mutation saveDeckDescription(
+  $id: Int!,
+  $description: String!
+) {
+  update_rangers_deck_by_pk(
+    pk_columns: { id: $id }
+    _set: {
+      description: $description
+    }
+  ) {
+    id
+    description
+  }
+}

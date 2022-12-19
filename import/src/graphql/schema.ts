@@ -14700,6 +14700,8 @@ export type Mutation_Root = {
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
   insert_users_one?: Maybe<Users>;
+  /** execute VOLATILE function "rangers.publish_deck" which returns "rangers.deck" */
+  rangers_publish_deck?: Maybe<Rangers_Deck>;
   /** execute VOLATILE function "rangers.remove_campaign_deck" which returns "rangers.campaign" */
   rangers_remove_campaign_deck: Array<Rangers_Campaign>;
   /** execute VOLATILE function "rangers.set_campaign_deck" which returns "rangers.campaign" */
@@ -17047,6 +17049,17 @@ export type Mutation_RootInsert_UsersArgs = {
 export type Mutation_RootInsert_Users_OneArgs = {
   object: Users_Insert_Input;
   on_conflict?: InputMaybe<Users_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootRangers_Publish_DeckArgs = {
+  args: Rangers_Publish_Deck_Args;
+  distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Deck_Bool_Exp>;
 };
 
 
@@ -24929,6 +24942,7 @@ export type Rangers_Deck = {
   side_slots: Scalars['jsonb'];
   slots: Scalars['jsonb'];
   spi: Scalars['Int'];
+  tags: Scalars['jsonb'];
   updated_at?: Maybe<Scalars['timestamptz']>;
   upgrade?: Maybe<Scalars['jsonb']>;
   /** An object relationship */
@@ -24952,6 +24966,12 @@ export type Rangers_DeckSide_SlotsArgs = {
 
 /** columns and relationships of "rangers.deck" */
 export type Rangers_DeckSlotsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_DeckTagsArgs = {
   path?: InputMaybe<Scalars['String']>;
 };
 
@@ -24996,6 +25016,7 @@ export type Rangers_Deck_Append_Input = {
   meta?: InputMaybe<Scalars['jsonb']>;
   side_slots?: InputMaybe<Scalars['jsonb']>;
   slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
   upgrade?: InputMaybe<Scalars['jsonb']>;
 };
 
@@ -25039,6 +25060,7 @@ export type Rangers_Deck_Bool_Exp = {
   side_slots?: InputMaybe<Jsonb_Comparison_Exp>;
   slots?: InputMaybe<Jsonb_Comparison_Exp>;
   spi?: InputMaybe<Int_Comparison_Exp>;
+  tags?: InputMaybe<Jsonb_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   upgrade?: InputMaybe<Jsonb_Comparison_Exp>;
   user?: InputMaybe<Rangers_Users_Bool_Exp>;
@@ -25059,6 +25081,7 @@ export type Rangers_Deck_Delete_At_Path_Input = {
   meta?: InputMaybe<Array<Scalars['String']>>;
   side_slots?: InputMaybe<Array<Scalars['String']>>;
   slots?: InputMaybe<Array<Scalars['String']>>;
+  tags?: InputMaybe<Array<Scalars['String']>>;
   upgrade?: InputMaybe<Array<Scalars['String']>>;
 };
 
@@ -25067,6 +25090,7 @@ export type Rangers_Deck_Delete_Elem_Input = {
   meta?: InputMaybe<Scalars['Int']>;
   side_slots?: InputMaybe<Scalars['Int']>;
   slots?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['Int']>;
   upgrade?: InputMaybe<Scalars['Int']>;
 };
 
@@ -25075,6 +25099,7 @@ export type Rangers_Deck_Delete_Key_Input = {
   meta?: InputMaybe<Scalars['String']>;
   side_slots?: InputMaybe<Scalars['String']>;
   slots?: InputMaybe<Scalars['String']>;
+  tags?: InputMaybe<Scalars['String']>;
   upgrade?: InputMaybe<Scalars['String']>;
 };
 
@@ -25113,6 +25138,7 @@ export type Rangers_Deck_Insert_Input = {
   side_slots?: InputMaybe<Scalars['jsonb']>;
   slots?: InputMaybe<Scalars['jsonb']>;
   spi?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   upgrade?: InputMaybe<Scalars['jsonb']>;
   user?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
@@ -25428,6 +25454,7 @@ export type Rangers_Deck_Order_By = {
   side_slots?: InputMaybe<Order_By>;
   slots?: InputMaybe<Order_By>;
   spi?: InputMaybe<Order_By>;
+  tags?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   upgrade?: InputMaybe<Order_By>;
   user?: InputMaybe<Rangers_Users_Order_By>;
@@ -25445,6 +25472,7 @@ export type Rangers_Deck_Prepend_Input = {
   meta?: InputMaybe<Scalars['jsonb']>;
   side_slots?: InputMaybe<Scalars['jsonb']>;
   slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
   upgrade?: InputMaybe<Scalars['jsonb']>;
 };
 
@@ -25641,6 +25669,8 @@ export enum Rangers_Deck_Select_Column {
   /** column name */
   Spi = 'spi',
   /** column name */
+  Tags = 'tags',
+  /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
   Upgrade = 'upgrade',
@@ -25667,6 +25697,7 @@ export type Rangers_Deck_Set_Input = {
   side_slots?: InputMaybe<Scalars['jsonb']>;
   slots?: InputMaybe<Scalars['jsonb']>;
   spi?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   upgrade?: InputMaybe<Scalars['jsonb']>;
   user_id?: InputMaybe<Scalars['String']>;
@@ -25740,6 +25771,7 @@ export type Rangers_Deck_Stream_Cursor_Value_Input = {
   side_slots?: InputMaybe<Scalars['jsonb']>;
   slots?: InputMaybe<Scalars['jsonb']>;
   spi?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   upgrade?: InputMaybe<Scalars['jsonb']>;
   user_id?: InputMaybe<Scalars['String']>;
@@ -25792,6 +25824,8 @@ export enum Rangers_Deck_Update_Column {
   Slots = 'slots',
   /** column name */
   Spi = 'spi',
+  /** column name */
+  Tags = 'tags',
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
@@ -27006,6 +27040,10 @@ export type Rangers_Pack_Var_Samp_Fields = {
 export type Rangers_Pack_Variance_Fields = {
   __typename?: 'rangers_pack_variance_fields';
   position?: Maybe<Scalars['Float']>;
+};
+
+export type Rangers_Publish_Deck_Args = {
+  deck_id?: InputMaybe<Scalars['Int']>;
 };
 
 export type Rangers_Remove_Campaign_Deck_Args = {

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Box,
   Heading,
@@ -30,13 +30,15 @@ import {
   RadioGroup,
   useColorMode,
   useColorModeValue,
+  Textarea,
+  Tooltip,
 } from '@chakra-ui/react';
 import Router from 'next/router';
 import NextLink from 'next/link';
 import { sumBy, find, keys, union, omit, forEach, map, flatMap, pick, values, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
 
-import { CardFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckDescriptionMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
@@ -51,6 +53,10 @@ import { useLocale } from '../lib/TranslationProvider';
 import { DeckCountLine, DeckItemComponent } from './Deck';
 import { WarningIcon } from '@chakra-ui/icons';
 import parseDeck, { ParsedDeck } from '../lib/parseDeck';
+import DeckDescriptionView from './DeckDescriptionView';
+import { ParsedCampaign } from './Campaign';
+import CoreIcon from '../icons/CoreIcon';
+import SubmitButton from './SubmitButton';
 
 interface Props {
   deck: DeckWithFullCampaignFragment;
@@ -224,12 +230,79 @@ function useChooseRoleModal(
   ];
 }
 
-function BaseDeckbuildingTabs({ renderControl, cards, stats, background, specialty, showCard }: {
+const icons = ['conflict', 'connection', 'reason', 'exploration', 'harm', 'progress', 'ranger', 'reshuffle', 'guide', 'per_ranger', 'sun', 'crest', 'mountain',
+'conditional', 'AWA', 'FIT', 'SPI', 'FOC']
+function EditDescriptionTab({ deck }: { deck: DeckFragment }) {
+  const { isOpen: editing, onOpen, onClose } = useDisclosure();
+  const [saveDescription] = useSaveDeckDescriptionMutation();
+  const [liveDescription, setLiveDescription] = useState(deck.description || '');
+
+  const doneEditing = useCallback(async() => {
+    const r = await saveDescription({
+      variables: {
+        id: deck.id,
+        description: liveDescription,
+      }
+    })
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    onClose();
+  }, [onClose, liveDescription, saveDescription, deck.id]);
+  useEffect(() => {
+    setLiveDescription(deck.description || '');
+  }, [deck.description, setLiveDescription]);
+  const color = useColorModeValue('black', 'white');
+  if (editing) {
+    return (
+      <>
+        <SubmitButton color="blue" marginBottom={2} onSubmit={doneEditing}>{t`Done editing`}</SubmitButton>
+        <Textarea
+          marginBottom={2}
+          minH="50vh"
+          value={liveDescription}
+          onChange={(e) => setLiveDescription(e.target.value)}
+        />
+        <Text>
+          { t`Descriptions support basic markdown and html formatting.` }
+        </Text>
+        <Text>{t`- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting.`}</Text>
+        <Text>{t`- You can use the following game specific icons by enclosing them in square brackets:`}
+          <Flex direction="row">
+            { map(icons, icon => (
+              <Tooltip label={`[${icon}]`} key={icon}>
+                <Box marginRight={1}><CoreIcon icon={icon} size={18} color={color} /></Box>
+              </Tooltip>
+            )) }
+          </Flex>
+        </Text>
+
+      </>
+    );
+  }
+  return (
+    <>
+      <Button marginBottom={2} onClick={onOpen}>{t`Edit description`}</Button>
+      { !!deck.description && <DeckDescriptionView description={deck.description} /> }
+    </>
+  )
+}
+
+function BaseDeckbuildingTabs({
+  renderControl,
+  cards,
+  stats,
+  background,
+  specialty,
+  showCard,
+  deck,
+}: {
   cards: CardsMap;
   stats: AspectStats;
   background: string | undefined;
   specialty: string | undefined;
   slots: Slots;
+  deck: DeckFragment,
   showCard: ShowCard;
   renderControl: (card: CardFragment) => React.ReactNode;
 }) {
@@ -283,6 +356,7 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
         <Tab>{t`Background`}</Tab>
         <Tab>{t`Specialty`}</Tab>
         <Tab>{t`Outside Interest`}</Tab>
+        <Tab>{t`Description`}</Tab>
       </TabList>
       <TabPanels>
         <TabPanel>
@@ -331,17 +405,21 @@ function BaseDeckbuildingTabs({ renderControl, cards, stats, background, special
             renderControl={renderControl}
           />
         </TabPanel>
+        <TabPanel>
+          <EditDescriptionTab deck={deck} />
+        </TabPanel>
       </TabPanels>
     </Tabs>
   );
 }
 
-function UpgradeDeckbuildingTabs({ showCard, unlockedRewards, renderControl, sideSlots, stats, cards }: {
+function UpgradeDeckbuildingTabs({ showCard, deck, unlockedRewards, renderControl, sideSlots, stats, cards }: {
   cards: CardsMap;
   stats: AspectStats;
   slots: Slots;
   sideSlots: Slots;
   unlockedRewards: string[] | undefined;
+  deck: DeckFragment;
   showCard: ShowCard;
   renderControl: (card: CardFragment) => React.ReactNode;
 }) {
@@ -386,6 +464,7 @@ function UpgradeDeckbuildingTabs({ showCard, unlockedRewards, renderControl, sid
         <Tab>{t`Rewards`}</Tab>
         <Tab>{t`Maladies`}</Tab>
         <Tab>{t`Displaced cards`}</Tab>
+        <Tab>{t`Description`}</Tab>
       </TabList>
       <TabPanels>
         <TabPanel>
@@ -411,6 +490,9 @@ function UpgradeDeckbuildingTabs({ showCard, unlockedRewards, renderControl, sid
             renderControl={renderControl}
             emptyText={t`Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp.`}
           />
+        </TabPanel>
+        <TabPanel>
+          <EditDescriptionTab deck={deck} />
         </TabPanel>
       </TabPanels>
     </Tabs>
@@ -618,6 +700,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               slots={slots}
               renderControl={renderControl}
               showCard={showCard}
+              deck={deck}
             />
           ) : (
             <UpgradeDeckbuildingTabs
@@ -628,8 +711,9 @@ export default function DeckEdit({ deck, cards }: Props) {
               unlockedRewards={deck.campaign?.rewards}
               sideSlots={sideSlots}
               renderControl={renderControl}
+              deck={deck}
             />
-          )}
+          ) }
         </Box>
       </SimpleGrid>
       { cardModal }
