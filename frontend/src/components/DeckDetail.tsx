@@ -202,7 +202,10 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
         </Box>
         <Grid templateColumns="repeat(6, 1fr)" gap={6}>
           <GridItem colSpan={deck.description ? [6, 6, 4] : 6}>
-            <Box borderRightWidth={deck.description ? '1px' : undefined} paddingRight={deck.description ? 6 : undefined}>
+            <Box
+              borderRightWidth={deck.description ? [0, 0, '1px'] : undefined}
+              paddingRight={deck.description ? [0, 0, 6] : undefined}
+            >
               <DeckDescription deck={deck} />
               { !!parsedDeck.role ? (
                 <ChosenRole role={parsedDeck.role} showCard={showCard} />
@@ -238,7 +241,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
               ) : <Spinner size="md" /> }
             </Box>
           </GridItem>
-            { !!deck.description && (
+          { !!deck.description && (
             <GridItem colSpan={[6, 6, 2]}>
               <Stack>
                 <Text fontSize="2xl" fontWeight="600">
