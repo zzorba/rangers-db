@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { useGetAllCardsQuery, useGetDeckQuery } from '../../../../generated/graphql/apollo-schema';
 import { useCardsMap, useRouterPathParam } from '../../../../lib/hooks';
 import LoadingPage from '../../../../components/LoadingPage';
-import Deck from '../../../../components/Deck';
+import DeckDetail from '../../../../components/DeckDetail';
 import { useLocale } from '../../../../lib/TranslationProvider';
 
 export default function ViewDeckPage() {
@@ -40,7 +40,7 @@ export default function ViewDeckPage() {
         py={{ base: "3rem", lg: "4rem" }}
         px={{ base: "1rem", lg: "0" }}
       >
-        { deck ? <Deck deck={deck} cards={cards} /> : <LoadingPage /> }
+        { deck ? <DeckDetail deck={deck} cards={cards} /> : <LoadingPage /> }
       </Box>
     </>
   );

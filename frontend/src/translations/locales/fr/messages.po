@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/Deck.tsx:93
+#: src/components/Deck.tsx:80
 msgid "30 Cards"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgid "Add to campaign"
 msgstr ""
 
 #: src/components/Campaign.tsx:329
-#: src/components/CardList.tsx:170
+#: src/components/CardList.tsx:196
 msgid "All"
 msgstr ""
 
@@ -69,11 +69,11 @@ msgstr ""
 msgid "Are you sure you want to delete the '{0}' deck?"
 msgstr ""
 
-#: src/components/Deck.tsx:105
+#: src/components/DeckDetail.tsx:35
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
 msgstr ""
 
-#: src/components/Deck.tsx:106
+#: src/components/DeckDetail.tsx:36
 msgid "Are you sure you want to delete this deck?"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgid "Aspects"
 msgstr ""
 
 #: src/components/Campaign.tsx:327
-#: src/components/CardList.tsx:159
+#: src/components/CardList.tsx:183
 msgid "Available"
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Background: {backgroundName}"
 msgstr ""
 
-#: src/components/Deck.tsx:220
+#: src/components/DeckDetail.tsx:165
 msgid "Camp"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Campaign"
 msgstr ""
 
-#: src/components/Deck.tsx:287
+#: src/components/DeckDetail.tsx:232
 msgid "Campaign progress"
 msgstr ""
 
@@ -164,7 +164,7 @@ msgstr ""
 msgid "Choose {0}"
 msgstr ""
 
-#: src/components/Deck.tsx:212
+#: src/components/DeckDetail.tsx:157
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
 msgstr ""
 
@@ -185,11 +185,11 @@ msgstr ""
 msgid "Contains too many cards that do not match your chosen background."
 msgstr ""
 
-#: src/components/Deck.tsx:244
+#: src/components/DeckDetail.tsx:189
 msgid "Copy"
 msgstr ""
 
-#: src/components/Deck.tsx:237
+#: src/components/DeckDetail.tsx:182
 msgid "Copy this deck to make your own changes."
 msgstr ""
 
@@ -242,7 +242,7 @@ msgstr ""
 #: src/components/Campaign.tsx:145
 #: src/components/Campaign.tsx:145
 #: src/components/Campaign.tsx:804
-#: src/components/Deck.tsx:231
+#: src/components/DeckDetail.tsx:176
 #: src/components/DeckList.tsx:55
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
@@ -252,7 +252,7 @@ msgstr ""
 msgid "Delete campaign?"
 msgstr ""
 
-#: src/components/Deck.tsx:178
+#: src/components/DeckDetail.tsx:123
 #: src/components/DeckList.tsx:91
 msgid "Delete deck?"
 msgstr ""
@@ -281,7 +281,7 @@ msgstr ""
 msgid "Downpour"
 msgstr ""
 
-#: src/components/Deck.tsx:236
+#: src/components/DeckDetail.tsx:181
 msgid "Duplicate this deck while preserving the original."
 msgstr ""
 
@@ -290,7 +290,7 @@ msgstr ""
 msgid "E-mail Address"
 msgstr ""
 
-#: src/components/Deck.tsx:208
+#: src/components/DeckDetail.tsx:153
 #: src/components/DeckList.tsx:54
 #: src/components/EditableTextInput.tsx:39
 msgid "Edit"
@@ -370,7 +370,7 @@ msgid "Handle"
 msgstr ""
 
 #: src/components/Campaign.tsx:342
-#: src/components/CardList.tsx:183
+#: src/components/CardList.tsx:209
 msgid "Hide spoilers"
 msgstr ""
 
@@ -473,8 +473,12 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: src/components/Deck.tsx:292
+#: src/components/DeckDetail.tsx:237
 msgid "Next deck ({0})"
+msgstr ""
+
+#: src/components/CardList.tsx:215
+msgid "No matching cards found."
 msgstr ""
 
 #: src/components/FriendSearch.tsx:89
@@ -501,12 +505,16 @@ msgstr ""
 msgid "Not enough specialty cards."
 msgstr ""
 
-#: src/components/Deck.tsx:261
+#: src/components/DeckDetail.tsx:206
 msgid "Not set"
 msgstr ""
 
 #: src/components/Campaign.tsx:1401
 msgid "Notable Events"
+msgstr ""
+
+#: src/components/CardList.tsx:215
+msgid "Note: These cards might contain campaign spoilers."
 msgstr ""
 
 #: src/components/DeckEdit.tsx:326
@@ -566,6 +574,10 @@ msgstr ""
 msgid "Personality"
 msgstr ""
 
+#: src/components/CardList.tsx:62
+msgid "Player"
+msgstr ""
+
 #: src/components/Campaign.tsx:1485
 #: src/components/Campaign.tsx:1602
 msgid "Players"
@@ -575,7 +587,7 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: src/components/Deck.tsx:289
+#: src/components/DeckDetail.tsx:234
 msgid "Previous deck ({0})"
 msgstr ""
 
@@ -668,6 +680,7 @@ msgstr ""
 msgid "Rewards"
 msgstr ""
 
+#: src/components/CardList.tsx:63
 #: src/lib/parseDeck.ts:278
 msgid "Rewards and Maladies"
 msgstr ""
@@ -700,7 +713,7 @@ msgid "Save changes"
 msgstr ""
 
 #: src/components/Campaign.tsx:338
-#: src/components/CardList.tsx:179
+#: src/components/CardList.tsx:205
 msgid "Search by name"
 msgstr ""
 
@@ -733,7 +746,7 @@ msgid "Settings"
 msgstr ""
 
 #: src/components/Campaign.tsx:342
-#: src/components/CardList.tsx:183
+#: src/components/CardList.tsx:209
 msgid "Show all"
 msgstr ""
 
@@ -896,7 +909,7 @@ msgstr ""
 msgid "You must choose a specialty."
 msgstr ""
 
-#: src/components/Deck.tsx:212
+#: src/components/DeckDetail.tsx:157
 msgid "You must correct deck errors before upgrading."
 msgstr ""
 
@@ -916,11 +929,11 @@ msgstr ""
 msgid "Your role card does not match your chosen specialty."
 msgstr ""
 
-#: src/components/Deck.tsx:94
+#: src/components/Deck.tsx:81
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr ""
 
-#: src/components/Deck.tsx:93
+#: src/components/Deck.tsx:80
 msgid "{0} / 30 Cards"
 msgstr ""
 

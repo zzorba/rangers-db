@@ -1,9 +1,10 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { filter, flatMap, forEach, map, sortBy } from 'lodash';
-import { t } from '@lingui/macro';
-import { CardFragment, useGetCardsQuery } from '../generated/graphql/apollo-schema';
+import { filter, forEach, map, partition, sortBy } from 'lodash';
+import { plural, t } from '@lingui/macro';
+import { CardFragment, useGetAllCardsQuery, useGetCardsQuery } from '../generated/graphql/apollo-schema';
+import { Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels } from '@chakra-ui/react';
+
 import { CardRow, useCardModal } from './Card';
-import { Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure } from '@chakra-ui/react';
 import LoadingPage from './LoadingPage';
 import { useLocale } from '../lib/TranslationProvider';
 import ListHeader from './ListHeader';
@@ -42,18 +43,38 @@ type Item = CardItem | HeaderItem;
 
 export default function CardList() {
   const { locale } = useLocale();
-  const { data } = useGetCardsQuery({
+  const { data } = useGetAllCardsQuery({
     variables: {
       locale,
     },
   });
   const [showCard, modal] = useCardModal();
+  const [standardCards, rewardCards] = useMemo(() => {
+    return partition(data?.cards, c => c.set_id !== 'reward' && c.set_id !== 'malady');
+  }, [data]);
   if (!data?.cards) {
     return <LoadingPage />;
   }
   return (
     <>
-      <SimpleCardList cards={data?.cards} showCard={showCard} />
+      <Tabs>
+        <TabList>
+          <Tab>{t`Player`}</Tab>
+          <Tab>{t`Rewards and Maladies`}</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <SimpleCardList cards={standardCards} showCard={showCard} />
+          </TabPanel>
+          <TabPanel>
+            <SpoilerCardList
+              cards={rewardCards}
+              showCard={showCard}
+              header="set"
+            />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
       { modal }
     </>
   );
@@ -126,20 +147,20 @@ export function SimpleCardList({ cards, showCard, header = 'set', renderControl,
   );
 }
 
-
-
 export function SpoilerCardList({
   cards,
   unlocked,
   showCard,
   renderControl,
   upsellText,
+  header = 'none',
 }: {
   unlocked?: string[];
   cards: CardFragment[] | undefined;
   showCard: (card: CardFragment) => void;
   renderControl?: (card: CardFragment) => React.ReactNode;
   upsellText?: string;
+  header?: 'aspect' | 'set' | 'none';
 }) {
   const { locale } = useLocale();
   const [search, setSearch] = useState('');
@@ -154,20 +175,25 @@ export function SpoilerCardList({
       c.name && search.length >= 2 && c.name.toLocaleLowerCase(locale).indexOf(lowerSearch) !== -1)
     );
   }, [cards, search, showAll, locale]);
+  const cardCount = cards?.length || 0;
   return (
     <List>
-      <ListHeader title={t`Available`} />
-      { !upsellText && (
-        <ListItem padding={2}>
-          <Text>{upsellText}</Text>
-        </ListItem>
+      { header !== 'set' && (
+        <>
+          <ListHeader title={t`Available`} />
+          { !upsellText && (
+            <ListItem padding={2}>
+              <Text>{upsellText}</Text>
+            </ListItem>
+          ) }
+        </>
       ) }
       { map(unlockedCards, c => (
         <CardButtonRow key={c.id} card={c} showModal={showCard}>
           { renderControl && renderControl(c) }
         </CardButtonRow>
       )) }
-      <ListHeader title={t`All`} />
+      { header !== 'set' && <ListHeader title={t`All`} /> }
       <ListItem padding={2}>
         <form onSubmit={e => {
           e.preventDefault();
@@ -185,11 +211,9 @@ export function SpoilerCardList({
           </Flex>
         </form>
       </ListItem>
-      { map(visibleCards, c => (
-        <CardButtonRow key={c.id} card={c} showModal={showCard}>
-          { renderControl && renderControl(c) }
-        </CardButtonRow>
-      )) }
+      <SimpleCardList
+        emptyText={!search ? t`Note: These cards might contain campaign spoilers.` : t`No matching cards found.`}
+        cards={visibleCards} showCard={showCard} renderControl={renderControl} header={header} />
     </List>
   );
 }

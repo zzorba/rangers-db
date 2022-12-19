@@ -1,19 +1,19 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-12-08 09:55-0500\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: @lingui/cli\n"
-"Language: en\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-08 09:55-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Plural-Forms: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: src/components/Deck.tsx:93
+#: src/components/Deck.tsx:80
 msgid "30 Cards"
 msgstr "30 Karten"
 
@@ -53,7 +53,7 @@ msgid "Add to campaign"
 msgstr "Zur Kampagne hinzufügen"
 
 #: src/components/Campaign.tsx:329
-#: src/components/CardList.tsx:170
+#: src/components/CardList.tsx:196
 msgid "All"
 msgstr "Alle"
 
@@ -69,11 +69,11 @@ msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 msgid "Are you sure you want to delete the '{0}' deck?"
 msgstr "Bist du sicher, dass du das '{0}' Deck löschen möchtest?"
 
-#: src/components/Deck.tsx:105
+#: src/components/DeckDetail.tsx:35
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
 msgstr "Bist du sicher, dass du den letzten Tag ({0}) dieses Decks löschen möchtest?"
 
-#: src/components/Deck.tsx:106
+#: src/components/DeckDetail.tsx:36
 msgid "Are you sure you want to delete this deck?"
 msgstr "Willst du dieses Deck wirklích löschen?"
 
@@ -90,7 +90,7 @@ msgid "Aspects"
 msgstr "Aspekte"
 
 #: src/components/Campaign.tsx:327
-#: src/components/CardList.tsx:159
+#: src/components/CardList.tsx:183
 msgid "Available"
 msgstr "Verfügbar"
 
@@ -107,7 +107,7 @@ msgstr "Vorgeschichte"
 msgid "Background: {backgroundName}"
 msgstr "Vorgeschichte: {backgroundName}"
 
-#: src/components/Deck.tsx:220
+#: src/components/DeckDetail.tsx:165
 msgid "Camp"
 msgstr "Nachtlager"
 
@@ -116,7 +116,7 @@ msgstr "Nachtlager"
 msgid "Campaign"
 msgstr "Kampagne"
 
-#: src/components/Deck.tsx:287
+#: src/components/DeckDetail.tsx:232
 msgid "Campaign progress"
 msgstr "Kampagnenfortschritt"
 
@@ -164,7 +164,7 @@ msgstr "Rolle auswählen"
 msgid "Choose {0}"
 msgstr "Wähle eine {0}"
 
-#: src/components/Deck.tsx:212
+#: src/components/DeckDetail.tsx:157
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
 msgstr ""
 
@@ -185,11 +185,11 @@ msgstr "Freundschaft bestätigen"
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Enthält zu viele Karten, die nicht zur gewählten Vorgeschichte passen."
 
-#: src/components/Deck.tsx:244
+#: src/components/DeckDetail.tsx:189
 msgid "Copy"
 msgstr "Kopieren"
 
-#: src/components/Deck.tsx:237
+#: src/components/DeckDetail.tsx:182
 msgid "Copy this deck to make your own changes."
 msgstr "Kopiere dieses Deck um Änderungen daran vorzunehmen."
 
@@ -242,7 +242,7 @@ msgstr "Decks"
 #: src/components/Campaign.tsx:145
 #: src/components/Campaign.tsx:145
 #: src/components/Campaign.tsx:804
-#: src/components/Deck.tsx:231
+#: src/components/DeckDetail.tsx:176
 #: src/components/DeckList.tsx:55
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
@@ -252,12 +252,11 @@ msgstr "Löschen"
 msgid "Delete campaign?"
 msgstr "Kampagne löschen?"
 
-#: src/components/Deck.tsx:178
+#: src/components/DeckDetail.tsx:123
 #: src/components/DeckList.tsx:91
 msgid "Delete deck?"
 msgstr "Deck löschen?"
 
-#: src/components/DeckEdit.tsx:453
 #~ msgid "Discard Changes"
 #~ msgstr "Änderungen verwerfen"
 
@@ -285,7 +284,7 @@ msgstr "Bearbeiten abschließen"
 msgid "Downpour"
 msgstr "Platzregen"
 
-#: src/components/Deck.tsx:236
+#: src/components/DeckDetail.tsx:181
 msgid "Duplicate this deck while preserving the original."
 msgstr ""
 
@@ -294,7 +293,7 @@ msgstr ""
 msgid "E-mail Address"
 msgstr "E-Mail-Adresse"
 
-#: src/components/Deck.tsx:208
+#: src/components/DeckDetail.tsx:153
 #: src/components/DeckList.tsx:54
 #: src/components/EditableTextInput.tsx:39
 msgid "Edit"
@@ -374,7 +373,7 @@ msgid "Handle"
 msgstr "Anzeigename"
 
 #: src/components/Campaign.tsx:342
-#: src/components/CardList.tsx:183
+#: src/components/CardList.tsx:209
 msgid "Hide spoilers"
 msgstr "Spoiler verstecken"
 
@@ -387,10 +386,6 @@ msgstr "Du kannst aber schon Links zu deinen eigenen Decks teilen, um  andere zu
 #: src/components/Campaign.tsx:1123
 msgid "Howling Winds"
 msgstr "Sturmböen"
-
-#: src/components/Footer.tsx:27
-#~ msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
-#~ msgstr ""
 
 #: src/components/Footer.tsx:27
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
@@ -473,22 +468,20 @@ msgstr "Neue Karten sind verfügbar"
 msgid "New deck"
 msgstr "Neues Deck"
 
-#: src/components/Campaign.tsx:492
-#: src/components/Campaign.tsx:734
-#~ msgid "New mission"
-#~ msgstr ""
-
 #: src/components/PaginationWrapper.tsx:68
 msgid "Next"
 msgstr "Nächste Seite"
 
-#: src/components/Deck.tsx:279
 #~ msgid "Next day ({0})"
 #~ msgstr "Nächster Tag ({0})"
 
-#: src/components/Deck.tsx:292
+#: src/components/DeckDetail.tsx:237
 msgid "Next deck ({0})"
 msgstr "Nächstes Deck ({0})"
+
+#: src/components/CardList.tsx:215
+msgid "No matching cards found."
+msgstr ""
 
 #: src/components/FriendSearch.tsx:89
 msgid "No results"
@@ -514,13 +507,17 @@ msgstr "Nicht genug Eigenarten-Karten."
 msgid "Not enough specialty cards."
 msgstr "Nicht genug Expertise-Karten."
 
-#: src/components/Deck.tsx:261
+#: src/components/DeckDetail.tsx:206
 msgid "Not set"
 msgstr "Nicht festgelegt"
 
 #: src/components/Campaign.tsx:1401
 msgid "Notable Events"
 msgstr "Besondere Ereignisse"
+
+#: src/components/CardList.tsx:215
+msgid "Note: These cards might contain campaign spoilers."
+msgstr ""
 
 #: src/components/DeckEdit.tsx:326
 msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
@@ -550,7 +547,6 @@ msgstr "Nur ein Aspekt kann auf 1 gesetzt werden."
 msgid "Only one aspect can be set to 3."
 msgstr "Nur ein Aspekt kann auf 3 gesetzt werden."
 
-#: src/lib/parseDeck.ts:276
 #~ msgid "Other"
 #~ msgstr "Andere"
 
@@ -583,6 +579,10 @@ msgstr "Ausstehende Freundschaftsanfragen"
 msgid "Personality"
 msgstr "Charakteristiken"
 
+#: src/components/CardList.tsx:62
+msgid "Player"
+msgstr ""
+
 #: src/components/Campaign.tsx:1485
 #: src/components/Campaign.tsx:1602
 msgid "Players"
@@ -592,11 +592,10 @@ msgstr "Spieler"
 msgid "Previous"
 msgstr "Vorherige Seite"
 
-#: src/components/Deck.tsx:276
 #~ msgid "Previous day ({0})"
 #~ msgstr "Vorheriger Tag ({0})"
 
-#: src/components/Deck.tsx:289
+#: src/components/DeckDetail.tsx:234
 msgid "Previous deck ({0})"
 msgstr "Vorheriges Deck ({0})"
 
@@ -689,6 +688,7 @@ msgstr "Zurücknehmen"
 msgid "Rewards"
 msgstr "Belohnungen"
 
+#: src/components/CardList.tsx:63
 #: src/lib/parseDeck.ts:278
 msgid "Rewards and Maladies"
 msgstr "Belohnungen und Schwächungen"
@@ -716,7 +716,6 @@ msgstr "SOV"
 msgid "Save"
 msgstr "Speichern"
 
-#: src/components/DeckEdit.tsx:452
 #~ msgid "Save Changes"
 #~ msgstr "Änderungen speichern"
 
@@ -725,7 +724,7 @@ msgid "Save changes"
 msgstr "Änderungen speichern"
 
 #: src/components/Campaign.tsx:338
-#: src/components/CardList.tsx:179
+#: src/components/CardList.tsx:205
 msgid "Search by name"
 msgstr "Nach Name suchen"
 
@@ -758,7 +757,7 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 #: src/components/Campaign.tsx:342
-#: src/components/CardList.tsx:183
+#: src/components/CardList.tsx:209
 msgid "Show all"
 msgstr "Alle anzeigen"
 
@@ -864,10 +863,6 @@ msgid "Too many cards with the same name."
 msgstr "Zu viele Karten des gleichen Namens."
 
 #: src/lib/hooks.ts:141
-#~ msgid "Too many cards. When making deck changes while camping, you must remove cards to make room for rewards to maintain a 30 card deck."
-#~ msgstr ""
-
-#: src/lib/hooks.ts:141
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Zu viele Karten. Wenn du dein Nachtlager aufschlägst und Änderungen an deinem Deck machst, solltest du Karten enfernen um Platz für Belohnungen zu schaffen und ein 30 Karten Deck zu bewahren."
 
@@ -879,7 +874,6 @@ msgstr "Zwei Aspekte müssen auf 2 gesetzt werden."
 msgid "Unable to create campaign at this time."
 msgstr "Kampagne kann im Moment nicht erstellt werden."
 
-#: src/components/DeckEdit.tsx:328
 #~ msgid "Unlocked rewards"
 #~ msgstr "Freigeschaltete Belohnungen"
 
@@ -929,7 +923,7 @@ msgstr "Du musst eine Berufung wählen."
 msgid "You must choose a specialty."
 msgstr "Du musst eine Expertise wählen."
 
-#: src/components/Deck.tsx:212
+#: src/components/DeckDetail.tsx:157
 msgid "You must correct deck errors before upgrading."
 msgstr "Du musst die Fehler in deinem Deck korrigieren bevor du es verbessern kannst."
 
@@ -949,11 +943,11 @@ msgstr "Deine Hobby-Karte kann nicht das Experte-Merkmal haben."
 msgid "Your role card does not match your chosen specialty."
 msgstr "Deine Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 
-#: src/components/Deck.tsx:94
+#: src/components/Deck.tsx:81
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} Schwächung)} other {({2} Schwächungen)}}"
 
-#: src/components/Deck.tsx:93
+#: src/components/Deck.tsx:80
 msgid "{0} / 30 Cards"
 msgstr "{0} / 30 Karten"
 
