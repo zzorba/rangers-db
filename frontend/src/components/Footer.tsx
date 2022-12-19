@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Box } from '@chakra-ui/react'
+import { Text, Box, useColorModeValue } from '@chakra-ui/react'
 import { t } from '@lingui/macro';
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
       as="footer"
       className="site-footer"
       borderTop="1px solid"
-      borderColor="#888888"
+      borderColor={useColorModeValue('gray.200', 'gray.600')}
       py="1rem"
       fontSize="0.875rem"
     >

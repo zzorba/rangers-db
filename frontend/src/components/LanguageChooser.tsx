@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
 import { Select } from '@chakra-ui/react';
 import { ChakraStylesConfig, Select as ChakraReactSelect } from 'chakra-react-select';
-import { useLocale } from '../lib/TranslationProvider';
-import { find, map } from 'lodash';
 import { useRouter } from 'next/router';
+import { find, map } from 'lodash';
+
+import { useLocale } from '../lib/TranslationProvider';
 
 interface LanguageOption {
   value: string;
