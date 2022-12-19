@@ -33,12 +33,13 @@ export function useIconedText(
 }
 
 export default function CardText({ text, flavor, aspectId, noPadding }: { text: string | undefined | null; flavor?: string | undefined | null, aspectId: string | undefined | null; noPadding?: boolean }) {
+  const { colorMode } = useColorMode();
   const parsed = useIconedText(text, aspectId, flavor);
   if (noPadding) {
     return <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />;
   }
   return (
-    <Box padding={2} borderLeftWidth={2} margin={1} borderLeftColor={aspectId ? `aspect.${aspectId}` : 'gray.500'}>
+    <Box padding={2} borderLeftWidth={2} margin={1} borderLeftColor={aspectId ? `${colorMode}.aspect.${aspectId}` : 'gray.500'}>
       <span className='card-text' dangerouslySetInnerHTML={{ __html: parsed }} />
     </Box>
   );

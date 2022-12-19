@@ -16,6 +16,7 @@ import {
   useDisclosure,
   Spinner,
   useColorMode,
+  ButtonGroup,
 } from '@chakra-ui/react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { map } from 'lodash';
@@ -35,6 +36,7 @@ import Banner from './Banner';
 import { LOCALES } from '../lib/Lingui';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { useLocale } from '../lib/TranslationProvider';
+import { DesktopLanguageChooser, MobileLanguageChooser } from './LanguageChooser';
 
 const SHOW_CAMPAIGNS = true;
 function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
@@ -120,6 +122,7 @@ export function LanguageSwitcher() {
     </select>
   );
 }
+
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const { authUser, loading, signOut } = useAuth();
@@ -179,6 +182,7 @@ export default function WithSubnavigation() {
             direction="row"
             spacing={6}
           >
+            <ButtonGroup>
             { authUser ? (
               <Button
                 fontSize={'sm'}
@@ -214,12 +218,17 @@ export default function WithSubnavigation() {
                 </Button>
               </>
             )}
-            <IconButton
-              aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
-              onClick={toggleColorMode}
-              icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
-              variant="ghost"
-            />
+            </ButtonGroup>
+            <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+              <DesktopLanguageChooser />
+              <IconButton
+                marginLeft={1}
+                aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
+                onClick={toggleColorMode}
+                icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+                variant="ghost"
+              />
+            </Flex>
           </Stack>
         ) }
       </Flex>
@@ -320,6 +329,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 };
 
 const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
@@ -328,13 +338,22 @@ const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
       {map(navItems, (navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <Button
+        marginLeft={1}
+        aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
+        onClick={toggleColorMode}
+        leftIcon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+        variant="ghost"
+      >
+        { colorMode === 'light' ? t`Dark mode` : t`Light mode`}
+      </Button>
+      <MobileLanguageChooser />
     </Stack>
   );
 };
 
 const MobileNavItem = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
-
   return (
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
