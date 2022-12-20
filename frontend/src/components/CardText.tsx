@@ -22,7 +22,7 @@ export function useIconedText(
         return `<span style="text-shadow: 0 0 2px var(--chakra-colors-${colorMode}-aspect-${aspectId});">${element}</span>`;
       }
     ).addRule(
-      /\[([^\]0-9]+)\]/gi,
+      /\[([^\]0-9X]+)\]/gi,
       (tag, element) => {
         if (aspects[element]) {
           return `<span style="color: var(--chakra-colors-${colorMode}-aspect-${element}); font-weight: 900; letter-spacing: -0.5px">${aspects[element]?.short_name}</span>`;
