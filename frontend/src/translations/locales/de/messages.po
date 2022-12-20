@@ -15,11 +15,11 @@ msgstr ""
 
 #: src/components/DeckEdit.tsx:268
 msgid "- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting."
-msgstr ""
+msgstr "- Werden Flavortexte mit <f>dies ist ein Flavortext</f> hinzugefügt, erhalten sie das gleiche Styling wie auf den Karten."
 
 #: src/components/DeckEdit.tsx:269
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
-msgstr ""
+msgstr "- Die folgenden Icons aus dem Spiel können mit eckigen Klammern verwendet werden:"
 
 #: src/components/Deck.tsx:80
 msgid "30 Cards"
@@ -124,7 +124,7 @@ msgstr "Nachtlager"
 msgid "Campaign"
 msgstr "Kampagne"
 
-#: src/components/DeckDetail.tsx:254
+#: src/components/DeckDetail.tsx:257
 msgid "Campaign progress"
 msgstr "Kampagnenfortschritt"
 
@@ -265,15 +265,15 @@ msgstr "Kampagne löschen?"
 msgid "Delete deck?"
 msgstr "Deck löschen?"
 
-#: src/components/DeckDetail.tsx:245
+#: src/components/DeckDetail.tsx:248
 #: src/components/DeckEdit.tsx:358
 #: src/components/DeckEdit.tsx:466
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: src/components/DeckEdit.tsx:266
 msgid "Descriptions support basic markdown and html formatting."
-msgstr ""
+msgstr "Beschreibungen unterstützen einfache Markdown- und HTML-Formatierung."
 
 #~ msgid "Discard Changes"
 #~ msgstr "Änderungen verwerfen"
@@ -320,7 +320,7 @@ msgstr "Bearbeiten"
 
 #: src/components/DeckEdit.tsx:284
 msgid "Edit description"
-msgstr ""
+msgstr "Beschreibung bearbeiten"
 
 #: src/components/Campaign.tsx:753
 msgid "Edit mission"
@@ -498,7 +498,7 @@ msgstr "Nächste Seite"
 #~ msgid "Next day ({0})"
 #~ msgstr "Nächster Tag ({0})"
 
-#: src/components/DeckDetail.tsx:259
+#: src/components/DeckDetail.tsx:262
 msgid "Next deck ({0})"
 msgstr "Nächstes Deck ({0})"
 
@@ -530,7 +530,7 @@ msgstr "Nicht genug Eigenarten-Karten."
 msgid "Not enough specialty cards."
 msgstr "Nicht genug Expertise-Karten."
 
-#: src/components/DeckDetail.tsx:215
+#: src/components/DeckDetail.tsx:218
 msgid "Not set"
 msgstr "Nicht festgelegt"
 
@@ -618,7 +618,7 @@ msgstr "Vorherige Seite"
 #~ msgid "Previous day ({0})"
 #~ msgstr "Vorheriger Tag ({0})"
 
-#: src/components/DeckDetail.tsx:256
+#: src/components/DeckDetail.tsx:259
 msgid "Previous deck ({0})"
 msgstr "Vorheriges Deck ({0})"
 
