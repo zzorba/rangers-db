@@ -132,7 +132,7 @@ msgstr "Camp"
 msgid "Campaign"
 msgstr "Campaign"
 
-#: src/components/DeckDetail.tsx:254
+#: src/components/DeckDetail.tsx:257
 msgid "Campaign progress"
 msgstr "Campaign progress"
 
@@ -273,7 +273,7 @@ msgstr "Delete campaign?"
 msgid "Delete deck?"
 msgstr "Delete deck?"
 
-#: src/components/DeckDetail.tsx:245
+#: src/components/DeckDetail.tsx:248
 #: src/components/DeckEdit.tsx:358
 #: src/components/DeckEdit.tsx:466
 msgid "Description"
@@ -517,7 +517,7 @@ msgstr "Next"
 #~ msgid "Next day ({0})"
 #~ msgstr "Next day ({0})"
 
-#: src/components/DeckDetail.tsx:259
+#: src/components/DeckDetail.tsx:262
 msgid "Next deck ({0})"
 msgstr "Next deck ({0})"
 
@@ -549,7 +549,7 @@ msgstr "Not enough personality cards."
 msgid "Not enough specialty cards."
 msgstr "Not enough specialty cards."
 
-#: src/components/DeckDetail.tsx:215
+#: src/components/DeckDetail.tsx:218
 msgid "Not set"
 msgstr "Not set"
 
@@ -639,7 +639,7 @@ msgstr "Previous"
 #~ msgid "Previous day ({0})"
 #~ msgstr "Previous day ({0})"
 
-#: src/components/DeckDetail.tsx:256
+#: src/components/DeckDetail.tsx:259
 msgid "Previous deck ({0})"
 msgstr "Previous deck ({0})"
 

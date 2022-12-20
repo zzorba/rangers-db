@@ -124,7 +124,7 @@ msgstr ""
 msgid "Campaign"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:254
+#: src/components/DeckDetail.tsx:257
 msgid "Campaign progress"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Delete deck?"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:245
+#: src/components/DeckDetail.tsx:248
 #: src/components/DeckEdit.tsx:358
 #: src/components/DeckEdit.tsx:466
 msgid "Description"
@@ -496,7 +496,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:259
+#: src/components/DeckDetail.tsx:262
 msgid "Next deck ({0})"
 msgstr ""
 
@@ -528,7 +528,7 @@ msgstr ""
 msgid "Not enough specialty cards."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:215
+#: src/components/DeckDetail.tsx:218
 msgid "Not set"
 msgstr ""
 
@@ -610,7 +610,7 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:256
+#: src/components/DeckDetail.tsx:259
 msgid "Previous deck ({0})"
 msgstr ""
 
