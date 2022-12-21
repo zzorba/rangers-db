@@ -24,6 +24,7 @@ import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
 import { DeleteIcon } from '@chakra-ui/icons';
+import { FaTrash } from 'react-icons/fa';
 
 interface MissionEntry {
   day: number;
@@ -142,7 +143,7 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
           </Flex>
         </Flex>
         <ButtonGroup>
-          { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<DeleteIcon />} color="red" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
+          { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<FaTrash />} color="red" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
         </ButtonGroup>
       </Flex>
     </ListItem>

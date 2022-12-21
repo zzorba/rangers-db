@@ -5,7 +5,7 @@ import {
   Text,
   Flex,
   List,
-  ButtonGroup,
+  IconButton,
   Spinner,
   Link,
   Tooltip,
@@ -13,8 +13,13 @@ import {
   Grid,
   GridItem,
   Stack,
+  MenuButton,
+  Menu,
+  MenuList,
+  MenuItem,
+  ButtonGroup,
 } from '@chakra-ui/react';
-import { ArrowUpIcon, CopyIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
+import { HamburgerIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
 import NextLink from 'next/link';
 import { map, pick, values } from 'lodash';
@@ -27,13 +32,14 @@ import { AWA, FIT, FOC, SPI } from '../types/types';
 import { CardsMap } from '../lib/hooks';
 import { CardRow, ShowCard, useCardModal } from './Card';
 import DeckProblemComponent from './DeckProblemComponent';
-import SolidButton from './SolidButton';
 import { useLocale } from '../lib/TranslationProvider';
 import CoreIcon from '../icons/CoreIcon';
 import parseDeck from '../lib/parseDeck';
 import useDeleteDialog from './useDeleteDialog';
 import { DeckCountLine, DeckDescription, DeckItemComponent } from './Deck';
 import DeckDescriptionView from './DeckDescriptionView';
+import { FaCopy, FaEdit, FaMoon, FaTrash } from 'react-icons/fa';
+import SolidButton from './SolidButton';
 
 function deleteDeckMessage(d: DeckFragment) {
   return d.previous_deck ?
@@ -146,58 +152,62 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
               { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
               <DeckCountLine parsedDeck={parsedDeck} />
             </Flex>
-            { authUser && (
-              <SimpleGrid columns={[2, 2, 2, 4]}
-                spacingX={2} spacingY={2} paddingTop={2} paddingBottom={4}>
-                { authUser.uid === deck.user_id && !deck.next_deck && (
-                  <SolidButton
-                    color="blue"
-                    leftIcon={<EditIcon />}
-                    as={NextLink}
-                    href={`/decks/edit/${deck.id}`}
-                  >
-                    {t`Edit`}
-                  </SolidButton>
-                ) }
-                { authUser.uid === deck.user_id && !deck.next_deck && (
-                  <Tooltip label={!!deck.meta.problem ? t`You must correct deck errors before upgrading.` : t`Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign.`}>
-                    <SolidButton
-                      color="green"
-                      leftIcon={<ArrowUpIcon />}
-                      onClick={onUpgradeDeck}
-                      isLoading={upgrading}
-                      disabled={!!deck.meta.problem}
-                    >
-                      {t`Camp`}
-                    </SolidButton>
-                  </Tooltip>
-                ) }
-                { !deck.previous_deck && (
-                  <Tooltip label={authUser.uid === deck.user_id ?
-                      t`Duplicate this deck while preserving the original.` :
-                      t`Copy this deck to make your own changes.`}>
-                    <SolidButton
-                      color="orange"
-                      leftIcon={<CopyIcon />}
-                      onClick={onCopyDeck}
-                      isLoading={copying}
-                    >
-                      {t`Copy`}
-                    </SolidButton>
-                  </Tooltip>
-                ) }
-                { authUser.uid === deck.user_id && !deck.next_deck && (
-                  <SolidButton
-                    color="red"
-                    leftIcon={<DeleteIcon />}
-                    onClick={onDeleteClick}
-                    isLoading={copying}
-                  >
-                    {t`Delete`}
-                  </SolidButton>
-                ) }
-              </SimpleGrid>
-            ) }
+            <ButtonGroup>
+              { authUser?.uid === deck.user_id && !deck.next_deck && (
+                <SolidButton
+                  color="blue"
+                  leftIcon={<FaEdit />}
+                  as={NextLink}
+                  href={`/decks/edit/${deck.id}`}
+                >
+                  {t`Edit`}
+                </SolidButton>
+              ) }
+              { authUser && (
+                <Menu autoSelect={false}>
+                  <MenuButton as={IconButton} aria-label={t`Actions`} icon={<HamburgerIcon />} variant="outline" />
+                  <MenuList>
+
+                    { authUser.uid === deck.user_id && !deck.next_deck && (
+                      <Tooltip
+                        placement="left"
+                        label={!!deck.meta.problem ? t`You must correct deck errors before upgrading.` : t`Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign.`}
+                      >
+                        <MenuItem
+                          icon={upgrading ? <Spinner size="sm" /> : <FaMoon />}
+                          onClick={onUpgradeDeck}
+                          disabled={!!deck.meta.problem}
+                        >{t`Camp`}</MenuItem>
+                      </Tooltip>
+                    ) }
+                    { !deck.previous_deck && (
+                      <Tooltip
+                        placement="left"
+                        label={authUser.uid === deck.user_id ?
+                          t`Duplicate this deck while preserving the original.` :
+                          t`Copy this deck to make your own changes.`}
+                      >
+                        <MenuItem
+                          icon={copying ? <Spinner size="sm" /> : <FaCopy />}
+                          onClick={onCopyDeck}
+                        >
+                          {t`Copy`}
+                        </MenuItem>
+                      </Tooltip>
+                    ) }
+                    { authUser.uid === deck.user_id && !deck.next_deck && (
+                      <MenuItem
+                        color="red"
+                        icon={<FaTrash />}
+                        onClick={onDeleteClick}
+                      >
+                        {t`Delete`}
+                      </MenuItem>
+                    ) }
+                  </MenuList>
+                </Menu>
+              ) }
+            </ButtonGroup>
           </Flex>
         </Box>
         <Grid templateColumns="repeat(6, 1fr)" gap={6}>

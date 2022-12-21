@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { t } from '@lingui/macro';
 import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip, ResponsiveValue, EditableProps, useStatStyles, InputGroup, InputRightAddon, useColorMode } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
+import { FaEdit } from 'react-icons/fa';
 
 function EditableControls() {
   const {
@@ -36,7 +37,7 @@ function EditablePreviewWithEditButton({ hideEditButton }: { hideEditButton: boo
   return (
     <Flex direction="row">
       <EditablePreview backgroundColor={isEditing ? 'white' : undefined} />
-      { !isEditing && !hideEditButton && <IconButton marginLeft="2em" aria-label={t`Edit`} icon={<EditIcon />} {...getEditButtonProps()} /> }
+      { !isEditing && !hideEditButton && <IconButton marginLeft="2em" aria-label={t`Edit`} icon={<FaEdit />} {...getEditButtonProps()} /> }
     </Flex>
   );
 }

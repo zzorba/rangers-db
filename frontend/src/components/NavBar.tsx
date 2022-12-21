@@ -334,10 +334,12 @@ const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
-      display={{ md: 'none' }}>
+      display={{ md: 'none' }}
+    >
       {map(navItems, (navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <MobileLanguageChooser />
       <Button
         marginLeft={1}
         aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
@@ -347,7 +349,6 @@ const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
       >
         { colorMode === 'light' ? t`Dark mode` : t`Light mode`}
       </Button>
-      <MobileLanguageChooser />
     </Stack>
   );
 };
