@@ -21,6 +21,10 @@ msgstr ""
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
 msgstr ""
 
+#: src/components/Card.tsx:245
+msgid "- {0} Specialty"
+msgstr ""
+
 #: src/components/Deck.tsx:80
 msgid "30 Cards"
 msgstr ""

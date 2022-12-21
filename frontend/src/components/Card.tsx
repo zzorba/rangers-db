@@ -242,7 +242,7 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
               <>
                 <Text fontSize="xs" fontWeight={600} noOfLines={2} paddingRight={2}>
                   { locale === 'de' ? '¬' : ''}{card.type_name}{cardTraits ? <i> / {cardTraits}</i> : ''}
-                  { includeSet && card.type_id === 'role' ? ` - ${card.set_name} Specialty` : ''}
+                  { includeSet && card.type_id === 'role' ? t` - ${card.set_name} Specialty` : ''}
                 </Text>
                 { !!card.equip && <Equip equip={card.equip} aspect={card.aspect_id || undefined} /> }
               </>

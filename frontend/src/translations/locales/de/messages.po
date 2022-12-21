@@ -21,6 +21,10 @@ msgstr "- Werden Flavortexte mit <f>dies ist ein Flavortext</f> hinzugefügt, er
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
 msgstr "- Die folgenden Icons aus dem Spiel können mit eckigen Klammern verwendet werden:"
 
+#: src/components/Card.tsx:245
+msgid "- {0} Specialty"
+msgstr ""
+
 #: src/components/Deck.tsx:80
 msgid "30 Cards"
 msgstr "30 Karten"

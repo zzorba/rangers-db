@@ -21,6 +21,10 @@ msgstr "- Flavor text can be denoted using <f>this is flavor</f> tags, to get ca
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
 msgstr "- You can use the following game specific icons by enclosing them in square brackets:"
 
+#: src/components/Card.tsx:245
+msgid "- {0} Specialty"
+msgstr "- {0} Specialty"
+
 #: src/components/Deck.tsx:80
 msgid "30 Cards"
 msgstr "30 Cards"
