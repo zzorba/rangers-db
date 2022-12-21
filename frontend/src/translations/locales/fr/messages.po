@@ -13,11 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/DeckEdit.tsx:268
+#: src/components/DeckEdit.tsx:345
 msgid "- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:269
+#: src/components/DeckEdit.tsx:346
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
 msgstr ""
 
@@ -74,8 +74,12 @@ msgid "Already have an account? <0>Login</0> now."
 msgstr ""
 
 #: src/components/DeckList.tsx:65
-msgid "Are you sure you want to delete the '{0}' deck?"
+msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr ""
+
+#: src/components/DeckList.tsx:65
+#~ msgid "Are you sure you want to delete the '{0}' deck?"
+#~ msgstr ""
 
 #: src/components/DeckDetail.tsx:40
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
@@ -93,7 +97,7 @@ msgstr ""
 msgid "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:177
+#: src/components/DeckEdit.tsx:254
 msgid "Aspects"
 msgstr ""
 
@@ -106,7 +110,7 @@ msgstr ""
 msgid "Awareness"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:355
+#: src/components/DeckEdit.tsx:432
 #: src/lib/parseDeck.ts:254
 msgid "Background"
 msgstr ""
@@ -150,7 +154,7 @@ msgstr ""
 msgid "Cards"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:490
+#: src/components/DeckEdit.tsx:567
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr ""
 
@@ -163,12 +167,16 @@ msgstr ""
 msgid "Choose handle"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:216
-#: src/components/DeckEdit.tsx:674
+#: src/components/DeckEdit.tsx:293
+#: src/components/DeckEdit.tsx:751
 msgid "Choose role"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:112
+#: src/components/DeckEdit.tsx:150
+msgid "Choose starter deck"
+msgstr ""
+
+#: src/components/DeckEdit.tsx:189
 msgid "Choose {0}"
 msgstr ""
 
@@ -202,7 +210,8 @@ msgid "Copy this deck to make your own changes."
 msgstr ""
 
 #: src/components/Campaign.tsx:1614
-#: src/components/DeckEdit.tsx:864
+#: src/components/DeckEdit.tsx:1009
+#: src/components/DeckEdit.tsx:1019
 msgid "Create"
 msgstr ""
 
@@ -212,6 +221,10 @@ msgstr ""
 
 #: src/components/Campaign.tsx:1385
 msgid "Current Position"
+msgstr ""
+
+#: src/components/DeckEdit.tsx:935
+msgid "Custom deck"
 msgstr ""
 
 #: src/components/NavBar.tsx:226
@@ -266,20 +279,20 @@ msgid "Delete deck?"
 msgstr ""
 
 #: src/components/DeckDetail.tsx:248
-#: src/components/DeckEdit.tsx:358
-#: src/components/DeckEdit.tsx:466
+#: src/components/DeckEdit.tsx:435
+#: src/components/DeckEdit.tsx:543
 msgid "Description"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:266
+#: src/components/DeckEdit.tsx:343
 msgid "Descriptions support basic markdown and html formatting."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:656
+#: src/components/DeckEdit.tsx:733
 msgid "Discard changes"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:465
+#: src/components/DeckEdit.tsx:542
 msgid "Displaced cards"
 msgstr ""
 
@@ -288,8 +301,8 @@ msgstr ""
 msgid "Don't have an account?"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:258
-#: src/components/DeckEdit.tsx:656
+#: src/components/DeckEdit.tsx:335
+#: src/components/DeckEdit.tsx:733
 msgid "Done editing"
 msgstr ""
 
@@ -315,7 +328,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:284
+#: src/components/DeckEdit.tsx:361
 msgid "Edit description"
 msgstr ""
 
@@ -438,7 +451,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:464
+#: src/components/DeckEdit.tsx:541
 msgid "Maladies"
 msgstr ""
 
@@ -463,7 +476,8 @@ msgstr ""
 #: src/components/Campaign.tsx:771
 #: src/components/Campaign.tsx:868
 #: src/components/Campaign.tsx:1589
-#: src/components/DeckEdit.tsx:828
+#: src/components/DeckEdit.tsx:945
+#: src/components/DeckEdit.tsx:978
 msgid "Name"
 msgstr ""
 
@@ -474,7 +488,7 @@ msgstr ""
 msgid "Name and day are required."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:747
+#: src/components/DeckEdit.tsx:825
 msgid "Name your character"
 msgstr ""
 
@@ -487,7 +501,7 @@ msgstr ""
 msgid "New cards are available"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:818
+#: src/components/DeckEdit.tsx:928
 #: src/pages/decks/index.tsx:63
 msgid "New deck"
 msgstr ""
@@ -540,15 +554,15 @@ msgstr ""
 msgid "Note: These cards might contain campaign spoilers."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:399
+#: src/components/DeckEdit.tsx:476
 msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:159
+#: src/components/DeckEdit.tsx:236
 msgid "One aspect must be set to 1."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:166
+#: src/components/DeckEdit.tsx:243
 msgid "One aspect must be set to 3."
 msgstr ""
 
@@ -560,15 +574,15 @@ msgstr ""
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:161
+#: src/components/DeckEdit.tsx:238
 msgid "Only one aspect can be set to 1."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:168
+#: src/components/DeckEdit.tsx:245
 msgid "Only one aspect can be set to 3."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:357
+#: src/components/DeckEdit.tsx:434
 #: src/lib/parseDeck.ts:269
 msgid "Outside Interest"
 msgstr ""
@@ -592,7 +606,7 @@ msgstr ""
 msgid "Pending Requests"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:354
+#: src/components/DeckEdit.tsx:431
 #: src/lib/parseDeck.ts:246
 msgid "Personality"
 msgstr ""
@@ -703,7 +717,7 @@ msgid "Revoke"
 msgstr ""
 
 #: src/components/Campaign.tsx:1400
-#: src/components/DeckEdit.tsx:463
+#: src/components/DeckEdit.tsx:540
 msgid "Rewards"
 msgstr ""
 
@@ -712,8 +726,8 @@ msgstr ""
 msgid "Rewards and Maladies"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:666
-#: src/components/DeckEdit.tsx:843
+#: src/components/DeckEdit.tsx:743
+#: src/components/DeckEdit.tsx:960
 msgid "Role"
 msgstr ""
 
@@ -735,7 +749,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:655
+#: src/components/DeckEdit.tsx:732
 msgid "Save changes"
 msgstr ""
 
@@ -748,19 +762,19 @@ msgstr ""
 msgid "Searching decks that have been shared with the community is still under construction."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:396
+#: src/components/DeckEdit.tsx:473
 msgid "Select 1 cards from any background of specialty as your outside interest."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:363
+#: src/components/DeckEdit.tsx:440
 msgid "Select 4 different personality cards, 1 from each aspect."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:374
+#: src/components/DeckEdit.tsx:451
 msgid "Select 5 different cards from your chosen background."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:385
+#: src/components/DeckEdit.tsx:462
 msgid "Select 5 different cards from your chosen specialty."
 msgstr ""
 
@@ -789,7 +803,7 @@ msgstr ""
 msgid "Sign Up"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:356
+#: src/components/DeckEdit.tsx:433
 #: src/lib/parseDeck.ts:262
 msgid "Specialty"
 msgstr ""
@@ -800,6 +814,11 @@ msgstr ""
 
 #: src/lib/hooks.ts:170
 msgid "Spirit"
+msgstr ""
+
+#: src/components/DeckEdit.tsx:936
+#: src/components/DeckEdit.tsx:987
+msgid "Starter deck"
 msgstr ""
 
 #: src/components/EditableTextInput.tsx:18
@@ -882,7 +901,7 @@ msgstr ""
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:171
+#: src/components/DeckEdit.tsx:248
 msgid "Two aspects must be set to 2."
 msgstr ""
 
@@ -912,7 +931,7 @@ msgstr ""
 msgid "You"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:475
+#: src/components/DeckEdit.tsx:552
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr ""
 
@@ -920,7 +939,7 @@ msgstr ""
 msgid "You don't seem to have any decks."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:802
+#: src/components/DeckEdit.tsx:880
 msgid "You must choose a background."
 msgstr ""
 
@@ -928,11 +947,11 @@ msgstr ""
 msgid "You must choose a role card."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:808
+#: src/components/DeckEdit.tsx:886
 msgid "You must choose a role."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:805
+#: src/components/DeckEdit.tsx:883
 msgid "You must choose a specialty."
 msgstr ""
 
@@ -966,6 +985,10 @@ msgstr ""
 
 #: src/components/Card.tsx:74
 msgid "{0} of {1}"
+msgstr ""
+
+#: src/components/DeckEdit.tsx:897
+msgid "{background} - {specialty} (Starter)"
 msgstr ""
 
 #: src/components/Campaign.tsx:579

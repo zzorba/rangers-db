@@ -62,7 +62,7 @@ export function DeckRow({ deck, roleCards, onDelete }: {
 }
 
 function deleteDeckMessage(d: DeckFragment) {
-  return t`Are you sure you want to delete the '${d.name}' deck?`;
+  return t`Are you sure you want to delete the "${d.name}" deck?`;
 }
 
 export default function DeckList({
