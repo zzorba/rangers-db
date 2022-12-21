@@ -13,6 +13,16 @@ mutation upgradeDeck(
   }
 }
 
+mutation publishDeck(
+  $deckId: Int!
+) {
+  deck: rangers_publish_deck(args: {
+    deck_id: $deckId
+  }) {
+    next_deck_id
+  }
+}
+
 mutation setDeckCampaign(
   $deckId: Int!,
   $campaignId: Int!

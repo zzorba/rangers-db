@@ -35703,6 +35703,13 @@ export type UpgradeDeckMutationVariables = Exact<{
 
 export type UpgradeDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', next_deck_id?: number | null } | null };
 
+export type PublishDeckMutationVariables = Exact<{
+  deckId: Scalars['Int'];
+}>;
+
+
+export type PublishDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', next_deck_id?: number | null } | null };
+
 export type SetDeckCampaignMutationVariables = Exact<{
   deckId: Scalars['Int'];
   campaignId: Scalars['Int'];
@@ -36904,6 +36911,39 @@ export function useUpgradeDeckMutation(baseOptions?: Apollo.MutationHookOptions<
 export type UpgradeDeckMutationHookResult = ReturnType<typeof useUpgradeDeckMutation>;
 export type UpgradeDeckMutationResult = Apollo.MutationResult<UpgradeDeckMutation>;
 export type UpgradeDeckMutationOptions = Apollo.BaseMutationOptions<UpgradeDeckMutation, UpgradeDeckMutationVariables>;
+export const PublishDeckDocument = gql`
+    mutation publishDeck($deckId: Int!) {
+  deck: rangers_publish_deck(args: {deck_id: $deckId}) {
+    next_deck_id
+  }
+}
+    `;
+export type PublishDeckMutationFn = Apollo.MutationFunction<PublishDeckMutation, PublishDeckMutationVariables>;
+
+/**
+ * __usePublishDeckMutation__
+ *
+ * To run a mutation, you first call `usePublishDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePublishDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [publishDeckMutation, { data, loading, error }] = usePublishDeckMutation({
+ *   variables: {
+ *      deckId: // value for 'deckId'
+ *   },
+ * });
+ */
+export function usePublishDeckMutation(baseOptions?: Apollo.MutationHookOptions<PublishDeckMutation, PublishDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<PublishDeckMutation, PublishDeckMutationVariables>(PublishDeckDocument, options);
+      }
+export type PublishDeckMutationHookResult = ReturnType<typeof usePublishDeckMutation>;
+export type PublishDeckMutationResult = Apollo.MutationResult<PublishDeckMutation>;
+export type PublishDeckMutationOptions = Apollo.BaseMutationOptions<PublishDeckMutation, PublishDeckMutationVariables>;
 export const SetDeckCampaignDocument = gql`
     mutation setDeckCampaign($deckId: Int!, $campaignId: Int!) {
   campaign: rangers_set_campaign_deck(

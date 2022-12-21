@@ -25,7 +25,7 @@ import NextLink from 'next/link';
 import { map, pick, values } from 'lodash';
 import { t } from "@lingui/macro"
 
-import { CardFragment, DeckFragment, DeckWithCampaignFragment, useCreateDeckMutation, useDeleteDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckFragment, DeckWithCampaignFragment, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AWA, FIT, FOC, SPI } from '../types/types';
@@ -38,9 +38,10 @@ import parseDeck from '../lib/parseDeck';
 import useDeleteDialog from './useDeleteDialog';
 import { DeckCountLine, DeckDescription, DeckItemComponent } from './Deck';
 import DeckDescriptionView from './DeckDescriptionView';
-import { FaCopy, FaEdit, FaMoon, FaTrash } from 'react-icons/fa';
+import { FaCopy, FaEdit, FaMoon, FaShare, FaTrash } from 'react-icons/fa';
 import SolidButton from './SolidButton';
 
+const SHOW_PUBLISH = false;
 function deleteDeckMessage(d: DeckFragment) {
   return d.previous_deck ?
     t`Are you sure you want to delete the latest day (${d.version}) of this deck?` :
@@ -90,6 +91,21 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
     }
   }, [authUser, deck.id, upgradeDeck, setUpgrading]);
 
+  const [publishing, setPublishing] = useState(false);
+  const [publishDeck] = usePublishDeckMutation();
+  const onPublishDeck = useCallback(async() => {
+    setPublishing(true);
+    const r = await publishDeck({
+      variables: {
+        deckId: deck.id,
+      },
+    });
+    setPublishing(false);
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    return undefined;
+  }, [deck.id, setPublishing, publishDeck]);
   const [createDeck] = useCreateDeckMutation();
   const [copying, setCopying] = useState(false);
   const onCopyDeck = useCallback(async() => {
@@ -136,7 +152,15 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
     deleteDeck
   );
   const onDeleteClick = useCallback(() => onDelete(deck), [onDelete, deck]);
-
+  const publishError = useMemo(() => {
+    if (!!deck.previous_deck) {
+      return t`To avoid spoilers for other players, you cannot publish decks that have camped.`;
+    }
+    if (deck.meta.problem) {
+      return t`Please address all deckbuilding errors before publishing.`
+    }
+    return undefined;
+  }, [deck]);
   return (
     <>
       <Box>
@@ -167,7 +191,6 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                 <Menu autoSelect={false}>
                   <MenuButton as={IconButton} aria-label={t`Actions`} icon={<HamburgerIcon />} variant="outline" />
                   <MenuList>
-
                     { authUser.uid === deck.user_id && !deck.next_deck && (
                       <Tooltip
                         placement="left"
@@ -176,8 +199,20 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                         <MenuItem
                           icon={upgrading ? <Spinner size="sm" /> : <FaMoon />}
                           onClick={onUpgradeDeck}
-                          disabled={!!deck.meta.problem}
+                          isDisabled={!!deck.meta.problem}
                         >{t`Camp`}</MenuItem>
+                      </Tooltip>
+                    ) }
+                    { SHOW_PUBLISH && authUser.uid === deck.user_id && (
+                      <Tooltip
+                        placement="left"
+                        label={publishError}
+                      >
+                        <MenuItem
+                          icon={publishing ? <Spinner size="sm" /> : <FaShare />}
+                          onClick={onPublishDeck}
+                          isDisabled={!!publishError}
+                        >{t`Publish`}</MenuItem>
                       </Tooltip>
                     ) }
                     { !deck.previous_deck && (
