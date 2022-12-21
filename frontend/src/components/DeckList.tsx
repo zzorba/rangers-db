@@ -14,6 +14,7 @@ import DeckProblemComponent from './DeckProblemComponent';
 import CoreIcon from '../icons/CoreIcon';
 import { DeckError } from '../types/types';
 import useDeleteDialog from './useDeleteDialog';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 export function DeckRow({ deck, roleCards, onDelete }: {
   deck: DeckWithCampaignFragment;
@@ -51,8 +52,8 @@ export function DeckRow({ deck, roleCards, onDelete }: {
           </SimpleGrid>
           { authUser?.uid === deck.user_id && (
             <ButtonGroup marginLeft={[1, 2, "2em"]} orientation={buttonOrientation || 'horizontal'}>
-              <IconButton aria-label={t`Edit`} color={`${colorMode}.lightText`} icon={<EditIcon />} as={NextLink} href={`/decks/edit/${deck.id}`} />
-              <IconButton aria-label={t`Delete`} color="red.400" icon={<DeleteIcon />} onClick={doDelete} />
+              <IconButton aria-label={t`Edit`} color={`${colorMode}.lightText`} icon={<FaEdit />} as={NextLink} href={`/decks/edit/${deck.id}`} />
+              <IconButton aria-label={t`Delete`} color="red.400" icon={<FaTrash />} onClick={doDelete} />
             </ButtonGroup>
           )}
         </Flex>
