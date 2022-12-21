@@ -23,7 +23,7 @@ msgstr "- Die folgenden Icons aus dem Spiel können mit eckigen Klammern verwend
 
 #: src/components/Card.tsx:245
 msgid "- {0} Specialty"
-msgstr ""
+msgstr " - {0} Expertise"
 
 #: src/components/Deck.tsx:80
 msgid "30 Cards"
@@ -79,7 +79,7 @@ msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 
 #: src/components/DeckList.tsx:65
 msgid "Are you sure you want to delete the \"{0}\" deck?"
-msgstr ""
+msgstr "Willst du wirklich das \"{0}\" Deck löschen?"
 
 #: src/components/DeckList.tsx:65
 #~ msgid "Are you sure you want to delete the '{0}' deck?"
@@ -91,7 +91,7 @@ msgstr "Bist du sicher, dass du den letzten Tag ({0}) dieses Decks löschen möc
 
 #: src/components/DeckDetail.tsx:41
 msgid "Are you sure you want to delete this deck?"
-msgstr "Willst du dieses Deck wirklích löschen?"
+msgstr "Willst du dieses Deck wirklich löschen?"
 
 #: src/components/Campaign.tsx:153
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
@@ -174,11 +174,11 @@ msgstr "Anzeigename wählen"
 #: src/components/DeckEdit.tsx:293
 #: src/components/DeckEdit.tsx:751
 msgid "Choose role"
-msgstr "Rolle auswählen"
+msgstr "Berufung auswählen"
 
 #: src/components/DeckEdit.tsx:150
 msgid "Choose starter deck"
-msgstr ""
+msgstr "Starter-Deck auswählen"
 
 #: src/components/DeckEdit.tsx:189
 msgid "Choose {0}"
@@ -186,7 +186,7 @@ msgstr "Wähle eine {0}"
 
 #: src/components/DeckDetail.tsx:163
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
-msgstr "Wenn du dein Nachtlager aufschlägst wird eine Kopie deines Decks anelegt, damit du Änderungen am Deck verfolgen kannst während du die Kampagne spielst."
+msgstr "Wenn du dein Nachtlager aufschlägst, wird eine Kopie deines Decks angelegt, damit du Änderungen am Deck verfolgen kannst, während du die Kampagne spielst."
 
 #: src/lib/hooks.ts:121
 msgid "Chosen aspects are invalid."
@@ -229,7 +229,7 @@ msgstr "Aktuelle Position"
 
 #: src/components/DeckEdit.tsx:935
 msgid "Custom deck"
-msgstr ""
+msgstr "Eigenes Deck"
 
 #: src/components/NavBar.tsx:226
 #: src/components/NavBar.tsx:343
@@ -534,7 +534,7 @@ msgstr "Nicht genug Vorgeschichte-Karten."
 
 #: src/lib/hooks.ts:142
 msgid "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
-msgstr "Nicht genügend Karten. Wenn Karten während des Nachtlagers entfernt werden, musst du wieder Karten aus deinem Original-Deck hinzufügen um auf 30 Karten zu kommen."
+msgstr "Nicht genügend Karten. Wenn Karten während des Nachtlagers entfernt werden, musst du wieder Karten aus deinem Original-Deck hinzufügen, um auf 30 Karten zu kommen."
 
 #: src/lib/hooks.ts:134
 msgid "Not enough outside interest cards."
@@ -542,7 +542,7 @@ msgstr "Nicht genug Hobby-Karten."
 
 #: src/lib/hooks.ts:124
 msgid "Not enough personality cards."
-msgstr "Nicht genug Eigenarten-Karten."
+msgstr "Nicht genug Charakteristik-Karten."
 
 #: src/lib/hooks.ts:131
 msgid "Not enough specialty cards."
@@ -562,7 +562,7 @@ msgstr "Hinweis: Diese Karten könnten Spoiler für die Kampagne enthalten."
 
 #: src/components/DeckEdit.tsx:476
 msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
-msgstr "Hinweis: Karten aus deiner gewählten Expertise/Vorgeschichte werden hier nicht angezeigt, aber du kannst die anderen Tabs benutzen um auf Karten deiner Klasse zuzugreifen."
+msgstr "Hinweis: Karten aus deiner gewählten Expertise/Vorgeschichte werden hier nicht angezeigt, aber du kannst die anderen Tabs benutzen, um auf Karten deiner Klasse zuzugreifen."
 
 #: src/components/DeckEdit.tsx:236
 msgid "One aspect must be set to 1."
@@ -834,7 +834,7 @@ msgstr "Souveränität"
 #: src/components/DeckEdit.tsx:936
 #: src/components/DeckEdit.tsx:987
 msgid "Starter deck"
-msgstr ""
+msgstr "Starter-Deck"
 
 #: src/components/EditableTextInput.tsx:18
 msgid "Submit"
@@ -842,7 +842,7 @@ msgstr "Veröffentlichen"
 
 #: src/components/Footer.tsx:24
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
-msgstr "Die auf dieser Webseite dargestellten Informationen über Earthborne Rangers - schriftlich wie graphisch - unterliegen den Urheberrechten von Earthborne Games. Diese Webseite gehört nicht zu Earthborne Games, und wird nicht von ihnen erstellt, unterstützt oder befürwortet."
+msgstr "Die auf dieser Webseite dargestellten Informationen über Earthborne Rangers - schriftlich wie graphisch - unterliegen den Urheberrechten von Earthborne Games und Frosted Games. Diese Webseite gehört nicht zu Earthborne Games oder Frosted Games, und wird nicht von ihnen erstellt, unterstützt oder befürwortet."
 
 #: src/pages/register.tsx:19
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
@@ -858,7 +858,7 @@ msgstr "Es sind zu viele Hobby-Karten in deinem Deck."
 
 #: src/pages/index.tsx:29
 msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
-msgstr "Die Webseite sollte aber schnell stabil laufen. Die Notiz wird entfernt, sobald ich mit dem Stand der Dinge zufrieden bin."
+msgstr "Die Webseite sollte aber schnell stabil laufen. Diese Notiz wird entfernt, sobald ich mit dem Stand der Dinge zufrieden bin."
 
 #: src/pages/campaigns/[cid].tsx:91
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
@@ -975,7 +975,7 @@ msgstr "Du musst eine Expertise wählen."
 
 #: src/components/DeckDetail.tsx:163
 msgid "You must correct deck errors before upgrading."
-msgstr "Du musst die Fehler in deinem Deck korrigieren bevor du es verbessern kannst."
+msgstr "Du musst die Fehler in deinem Deck korrigieren, bevor du es verbessern kannst."
 
 #: src/lib/hooks.ts:123
 msgid "You must include two of each card in your starting deck."
@@ -983,7 +983,7 @@ msgstr "Dein Start-Deck muss zwei Kopien jeder Karte beinhalten."
 
 #: src/lib/hooks.ts:138
 msgid "Your deck contains cards with aspect requirements that are not allowed."
-msgstr "Dein Deck beinhaltet Karten mit Aspekt-Voraussetzungen die nicht erlaubt sind."
+msgstr "Dein Deck beinhaltet Karten mit Aspekt-Voraussetzungen, die nicht erlaubt sind."
 
 #: src/lib/hooks.ts:139
 msgid "Your outside interest card cannot have the Expert trait."
@@ -1007,7 +1007,7 @@ msgstr "{0}/{1}"
 
 #: src/components/DeckEdit.tsx:897
 msgid "{background} - {specialty} (Starter)"
-msgstr ""
+msgstr "{background} - {specialty} (Starter)"
 
 #: src/components/Campaign.tsx:579
 msgid "{dayChange, plural, one {This will advance the calendar {dayChange} day.} other {This will advance the calendar {dayChange} days.}}"
