@@ -7,8 +7,8 @@ import { useLocale } from '../lib/TranslationProvider';
 export function useIconedText(
   text: string | undefined | null,
   options: {
-    aspectId?: string | null,
-    noLines?: boolean,
+    aspectId?: string | null;
+    noLines?: boolean;
   },
   flavor?: string | undefined | null
 ): string {
@@ -22,7 +22,7 @@ export function useIconedText(
         return `<span style="text-shadow: 0 0 2px var(--chakra-colors-${colorMode}-aspect-${aspectId});">${element}</span>`;
       }
     ).addRule(
-      /\[([^\]0-9X]+)\]/gi,
+      /\[([^\]0-9X]+)\]/g,
       (tag, element) => {
         if (aspects[element]) {
           return `<span style="color: var(--chakra-colors-${colorMode}-aspect-${element}); font-weight: 900; letter-spacing: -0.5px">${aspects[element]?.short_name}</span>`;
