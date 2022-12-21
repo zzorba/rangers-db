@@ -68,6 +68,8 @@ export function DesktopLanguageChooser() {
       router.push({ pathname, query }, asPath, { locale: option.value });
     }
   }, [router, locale]);
+  const iconColor = useColorModeValue('#666666', '#DDDDDD');
+  const backgroundHoverColor = useColorModeValue('gray.200', 'gray.700')
   const chakraStyles: ChakraStylesConfig<LanguageOption> = {
     dropdownIndicator: (provided, state) => ({
       ...provided,
@@ -82,6 +84,9 @@ export function DesktopLanguageChooser() {
       ...provided,
       padding: 0,
       borderWidth: 0,
+      _hover: {
+        backgroundColor: backgroundHoverColor,
+      },
     }),
     placeholder: (provided, state) => ({
       ...provided,
@@ -89,7 +94,6 @@ export function DesktopLanguageChooser() {
       margin: 0,
     }),
   };
-  const iconColor = useColorModeValue('#666666', '#DDDDDD');
   return (
     <ChakraReactSelect
       isSearchable={false}
