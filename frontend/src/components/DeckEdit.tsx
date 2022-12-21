@@ -36,6 +36,7 @@ import Router from 'next/router';
 import NextLink from 'next/link';
 import { sumBy, find, keys, union, omit, forEach, map, flatMap, pick, values, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
+import { ChakraStylesConfig, Select as ChakraReactSelect, chakraComponents, OptionProps, SingleValue } from 'chakra-react-select';
 
 import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckDescriptionMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
@@ -49,13 +50,14 @@ import DeckProblemComponent from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
 import SolidButton from './SolidButton';
 import { useLocale } from '../lib/TranslationProvider';
-import { DeckCountLine, DeckItemComponent } from './Deck';
+import { DeckCountLine, DeckItemComponent, MiniAspect } from './Deck';
 import { WarningIcon } from '@chakra-ui/icons';
 import parseDeck, { ParsedDeck } from '../lib/parseDeck';
 import DeckDescriptionView from './DeckDescriptionView';
-import { ParsedCampaign } from './Campaign';
 import CoreIcon from '../icons/CoreIcon';
 import SubmitButton from './SubmitButton';
+import { StarterDeck, STARTER_DECKS } from '../lib/starterDeck';
+import { RoleImage } from './CardImage';
 
 interface Props {
   deck: DeckWithFullCampaignFragment;
@@ -77,6 +79,81 @@ function RoleRadioChooser({ specialty, cards, role, onChange }: { specialty: str
         )) }
       </Stack>
     </RadioGroup>
+  );
+}
+
+interface DeckOption {
+  value: string;
+  label: string;
+  deck: StarterDeck;
+  background: string | undefined;
+  specialty: string | undefined;
+  role: CardFragment | undefined;
+}
+
+function StarterDeckOption({ deck, role, background, specialty }: DeckOption) {
+  if (!role) {
+    return null;
+  }
+  return (
+    <Flex direction="row" width="100%">
+      { !!role.imagesrc && <RoleImage name={role.name} url={role.imagesrc} /> }
+      <Flex direction="column" flex={1}>
+        <Text fontSize="lg">{role.name}</Text>
+        <Text>{specialty} - {background}</Text>
+      </Flex>
+      <SimpleGrid columns={2} marginLeft={2}>
+        <MiniAspect extraSmall aspect="AWA" value={deck.awa} />
+        <MiniAspect extraSmall aspect="SPI" value={deck.spi} />
+        <MiniAspect extraSmall aspect="FIT" value={deck.fit} />
+        <MiniAspect extraSmall aspect="FOC" value={deck.foc} />
+      </SimpleGrid>
+    </Flex>
+  );
+}
+const StarterDeckComponents = {
+  Option: ({ data, ...props }: OptionProps<DeckOption, false> ) => (
+    <chakraComponents.Option {...props} data={data}>
+      <StarterDeckOption {...data} />
+    </chakraComponents.Option>
+  ),
+};
+
+function StarterDeckSelect({ deck, onChange, roleCards }: {
+  roleCards: CardsMap;
+  deck: StarterDeck | undefined;
+  onChange: (starterDeck: StarterDeck | undefined) => void;
+}) {
+  const { categories } = useLocale();
+  const deckToOption = useCallback((deck: StarterDeck) => {
+    const role = roleCards[deck.meta.role];
+    const background = categories.background?.options[deck.meta.background];
+    const specialty = categories.specialty?.options[deck.meta.specialty];
+    return {
+      value: deck.meta.role,
+      label: `${background} / ${specialty}`,
+      deck,
+      background,
+      specialty,
+      role,
+    };
+  }, [categories, roleCards]);
+  const options: DeckOption[] = useMemo(() => map(STARTER_DECKS, (d) => deckToOption(d)), [deckToOption]);
+  const handleChange = useCallback((option: SingleValue<DeckOption>) => {
+    onChange(option?.deck);
+  }, [onChange]);
+  return (
+    <>
+      <ChakraReactSelect
+        name="deck"
+        isRequired
+        placeholder={t`Choose starter deck`}
+        onChange={handleChange}
+        options={options}
+        components={StarterDeckComponents}
+      />
+      { !!deck && <Flex marginTop={3}><StarterDeckOption {...deckToOption(deck) } /></Flex> }
+    </>
   );
 }
 
@@ -721,6 +798,7 @@ export default function DeckEdit({ deck, cards }: Props) {
   );
 }
 
+
 const SHOW_ASPECTS = false;
 export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNode] {
   const { categories } = useLocale();
@@ -808,6 +886,38 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
       return t`You must choose a role.`
     }
   }, [meta, aspectError, error]);
+  const [selectedTab, setSelectedTab] = useState(0);
+  const [starter, setStarter] = useState<StarterDeck>();
+  const onCreateStarterDeck = useCallback(async() => {
+    if (!authUser || !starter) {
+      return;
+    }
+    const background = starter.meta.background && categories.background?.options[starter.meta.background];
+    const specialty = starter.meta.specialty && categories.specialty?.options[starter.meta.specialty];
+    const deckName = name || t`${background} - ${specialty} (Starter)`;
+    setSubmitting(true);
+    setError(undefined);
+    const result = await createDeck({
+      variables: {
+        name: deckName,
+        foc: starter.foc,
+        awa: starter.awa,
+        spi: starter.spi,
+        fit: starter.fit,
+        meta: starter.meta,
+        slots: starter.slots,
+      },
+    });
+    setSubmitting(false);
+    if (result.errors?.length) {
+      setError(result.errors[0].message);
+    } else {
+      onClose();
+      if (result.data?.deck?.id) {
+        Router.push(`/decks/view/${result.data.deck.id}`);
+      }
+    }
+  }, [starter, createDeck, categories, authUser, name, onClose]);
   return [
     showModal,
     <Modal key="modal" isOpen={isOpen} onClose={onClose}>
@@ -820,50 +930,95 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <form onSubmit={e => {
-            e.preventDefault();
-            onCreateDeck();
-          }}>
-            <FormControl marginBottom={4}>
-              <FormLabel>{t`Name`}</FormLabel>
-              <Input
-                type="name"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                placeholder={placeholderDeckName}
-              />
-            </FormControl>
-            { SHOW_ASPECTS && aspectEditor }
-            <MetaControls
-              meta={meta}
-              setMeta={setMeta}
-            />
-            { !!meta.specialty && typeof meta.specialty === 'string' && (
-              <FormControl marginBottom={4} isRequired>
-                <FormLabel>{t`Role`}</FormLabel>
-                <RoleRadioChooser
-                  key={meta.specialty}
-                  specialty={meta.specialty}
-                  cards={roleCards}
-                  role={typeof meta.role === 'string' ? meta.role : undefined}
-                  onChange={setRole}
-                />
-              </FormControl>
-            )}
-          </form>
+          <Tabs index={selectedTab} onChange={setSelectedTab}>
+            <TabList>
+              <Tab>{t`Custom deck`}</Tab>
+              <Tab>{t`Starter deck`}</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <form onSubmit={e => {
+                  e.preventDefault();
+                  onCreateDeck();
+                }}>
+                  <FormControl marginBottom={4}>
+                    <FormLabel>{t`Name`}</FormLabel>
+                    <Input
+                      type="name"
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                      placeholder={placeholderDeckName}
+                    />
+                  </FormControl>
+                  { SHOW_ASPECTS && aspectEditor }
+                  <MetaControls
+                    meta={meta}
+                    setMeta={setMeta}
+                  />
+                  { !!meta.specialty && typeof meta.specialty === 'string' && (
+                    <FormControl marginBottom={4} isRequired>
+                      <FormLabel>{t`Role`}</FormLabel>
+                      <RoleRadioChooser
+                        key={meta.specialty}
+                        specialty={meta.specialty}
+                        cards={roleCards}
+                        role={typeof meta.role === 'string' ? meta.role : undefined}
+                        onChange={setRole}
+                      />
+                    </FormControl>
+                  )}
+                </form>
+              </TabPanel>
+              <TabPanel>
+                <form onSubmit={e => {
+                  e.preventDefault();
+                  onCreateStarterDeck();
+                }}>
+                  <FormControl marginBottom={4}>
+                    <FormLabel>{t`Name`}</FormLabel>
+                    <Input
+                      type="name"
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                      placeholder={placeholderDeckName}
+                    />
+                  </FormControl>
+                  <FormControl marginBottom={4}>
+                    <FormLabel>{t`Starter deck`}</FormLabel>
+                    <StarterDeckSelect
+                      deck={starter}
+                      onChange={setStarter}
+                      roleCards={roleCards}
+                    />
+                  </FormControl>
+                </form>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
         </ModalBody>
         <ModalFooter>
-          <Flex direction="row" flex={1} justifyContent={errorMessage ? 'space-between' : 'flex-end'}>
-            { !!errorMessage && <Text color="red">{errorMessage} </Text>}
+          { selectedTab === 0 ? (
+            <Flex direction="row" flex={1} justifyContent={errorMessage ? 'space-between' : 'flex-end'}>
+              { !!errorMessage && <Text color="red">{errorMessage} </Text>}
+              <SolidButton
+                color="blue"
+                isLoading={submitting}
+                disabled={(!!aspectError && SHOW_ASPECTS) || !meta.background || !meta.specialty || !meta.role}
+                onClick={onCreateDeck}
+              >
+                {t`Create`}
+              </SolidButton>
+            </Flex>
+          ) : (
             <SolidButton
               color="blue"
               isLoading={submitting}
-              disabled={(!!aspectError && SHOW_ASPECTS) || !meta.background || !meta.specialty || !meta.role}
-              onClick={onCreateDeck}
+              disabled={!starter}
+              onClick={onCreateStarterDeck}
             >
               {t`Create`}
             </SolidButton>
-          </Flex>
+          ) }
         </ModalFooter>
       </ModalContent>
     </Modal>

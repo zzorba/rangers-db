@@ -85,12 +85,11 @@ export function DeckCountLine({ parsedDeck }: { parsedDeck: ParsedDeck }) {
     </Text>
   );
 }
-const SHOW_UPGRADE = true;
 
-export function MiniAspect({ value, aspect }: { value: number; aspect: string }) {
+export function MiniAspect({ value, aspect, extraSmall }: { value: number; aspect: string; extraSmall?: boolean }) {
   const { aspects } = useLocale();
   return (
-    <AspectRatio width="40px" ratio={1}>
+    <AspectRatio width={extraSmall ? '30px' : '40px'} ratio={1}>
       <Box bg={`aspect.${aspect}`} flexDirection="column" alignItems="center" position="relative">
         <Flex direction="column" alignItems="center" justifyContent="center" position="absolute" top="0" left="0" height="100%" width="100%" >
           <AspectRatio width="90%" ratio={1}>
