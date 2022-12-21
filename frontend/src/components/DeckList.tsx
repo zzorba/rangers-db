@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode } from '@chakra-ui/react';
+import { Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
@@ -32,7 +32,7 @@ export function DeckRow({ deck, roleCards, onDelete }: {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
   return (
-    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor="gray.100" borderBottomWidth="1px">
+    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={useColorModeValue('gray.200', 'gray.700')} borderBottomWidth="1px">
       <Flex direction="row">
         <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
           { !!role && !!role.imagesrc && <RoleImage large name={role.name} url={role.imagesrc} /> }
