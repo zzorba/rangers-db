@@ -143,7 +143,7 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
           </Flex>
         </Flex>
         <ButtonGroup>
-          { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<FaTrash />} color="red" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
+          { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<FaTrash />} color="red.500" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
         </ButtonGroup>
       </Flex>
     </ListItem>
@@ -242,7 +242,7 @@ function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }:
             { t`Choose deck` }
           </Button>
           { authUser.uid !== campaign.user_id && (
-            <Button onClick={leaveCampaign} variant="ghost" color="red">
+            <Button onClick={leaveCampaign} variant="ghost" color="red.500">
               { t`Leave campaign` }
             </Button>
           ) }

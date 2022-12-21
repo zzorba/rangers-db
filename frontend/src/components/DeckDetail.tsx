@@ -197,7 +197,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                     ) }
                     { authUser.uid === deck.user_id && !deck.next_deck && (
                       <MenuItem
-                        color="red"
+                        color="red.500"
                         icon={<FaTrash />}
                         onClick={onDeleteClick}
                       >

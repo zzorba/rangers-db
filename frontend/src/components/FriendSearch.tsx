@@ -64,7 +64,7 @@ export default function FriendSearch({ sendFriendRequest }: { sendFriendRequest:
             />
             { !!search && <IconButton marginLeft={2} aria-label='Search' onClick={doSearch} icon={<SearchIcon />} />}
           </Flex>
-          { !!searchError && <Text color="red">{searchError}</Text> }
+          { !!searchError && <Text color="red.500">{searchError}</Text> }
         </FormControl>
       </form>
       <List>

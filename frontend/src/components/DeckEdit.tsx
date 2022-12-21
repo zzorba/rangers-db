@@ -260,8 +260,8 @@ function useAspectEditor(stats: AspectStats, setStats: (stats: AspectStats) => v
       </Flex>
       { !!aspectError && (
         <Flex direction="row" alignItems="center">
-          <WarningIcon color="red" />
-          <Text marginLeft={2} color="red">{aspectError}</Text>
+          <WarningIcon color="red.500" />
+          <Text marginLeft={2} color="red.500">{aspectError}</Text>
         </Flex>
       ) }
     </Flex>,
@@ -732,7 +732,7 @@ export default function DeckEdit({ deck, cards }: Props) {
             { !!hasEdits && <SolidButton color="blue" onClick={saveChanges}>{t`Save changes`}</SolidButton> }
             <Button as={NextLink} href={`/decks/view/${deck.id}`}>{hasEdits ? t`Discard changes` : t`Done editing`}</Button>
           </ButtonGroup>
-          { !!saveError && <Text color="red" paddingTop={2} paddingBottom={4}>{saveError}</Text>}
+          { !!saveError && <Text color="red.500" paddingTop={2} paddingBottom={4}>{saveError}</Text>}
           <MetaControls
             meta={meta}
             setMeta={setMeta}
@@ -999,7 +999,7 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
         <ModalFooter>
           { selectedTab === 0 ? (
             <Flex direction="row" flex={1} justifyContent={errorMessage ? 'space-between' : 'flex-end'}>
-              { !!errorMessage && <Text color="red">{errorMessage} </Text>}
+              { !!errorMessage && <Text color="red.500">{errorMessage} </Text>}
               <SolidButton
                 color="blue"
                 isLoading={submitting}

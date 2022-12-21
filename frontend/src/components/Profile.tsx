@@ -92,7 +92,7 @@ export default function Profile() {
                   <SolidButton color="blue" marginLeft={2} onClick={submitHandle}>{t`Save`}</SolidButton>
                 )}
               </Flex>
-              { !!setHandleError && <Text color="red">{setHandleError}</Text> }
+              { !!setHandleError && <Text color="red.500">{setHandleError}</Text> }
             </FormControl>
           </form>
           <FormControl marginTop="1em">

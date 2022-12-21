@@ -18,14 +18,14 @@ export default function DeckProblemComponent({ errors, card, limit, summarizeOth
       {map(limit ? take(errors, limit) : errors, error => (
         <ListItem key={error}>
           <Flex direction="row" alignItems="center">
-            <WarningIcon color="red" />
-            <Text marginLeft={2} color="red">{(!!card && cardErrors[error as DeckCardError]) || deckErrors[error]}</Text>
+            <WarningIcon color="red.500" />
+            <Text marginLeft={2} color="red.500">{(!!card && cardErrors[error as DeckCardError]) || deckErrors[error]}</Text>
           </Flex>
           { summarizeOthers && !!limit && errors.length > limit && (
               <Flex direction="row">
                 <WarningIcon color="transparent" />
-                <Tooltip placement="bottom-start" bg="red" label={<Stack>{map(drop(errors, limit), (e, idx) => <Text color="white" key={idx}>{deckErrors[e]}</Text>)}</Stack>}>
-                  <Text marginLeft={2} color="red">
+                <Tooltip placement="bottom-start" bg="red.500" label={<Stack>{map(drop(errors, limit), (e, idx) => <Text color="white" key={idx}>{deckErrors[e]}</Text>)}</Stack>}>
+                  <Text marginLeft={2} color="red.500">
                     {plural(otherErrorCount, { one: `+ ${otherErrorCount} more problem`, other: `+ ${otherErrorCount} more problems` }) }
                   </Text>
                 </Tooltip>
