@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useMemo } from 'react'
 import { useGetSetNamesQuery } from '../generated/graphql/apollo-schema';
 import { AspectMap } from '../types/types';
-import { useLingui } from '@lingui/react';
+import { I18nContext, useLingui, } from '@lingui/react';
 import { CategoryTranslations, DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getDeckCardErrors, getDeckErrors, useCategoryTranslations } from './hooks';
 
 interface TranslationContextType {
@@ -10,6 +10,7 @@ interface TranslationContextType {
   aspects: AspectMap;
   categories: CategoryTranslations;
   locale: string;
+  i18n: any;
 }
 const TranslationContext = createContext<TranslationContextType>({
   deckErrors: getDeckErrors(),
@@ -17,6 +18,7 @@ const TranslationContext = createContext<TranslationContextType>({
   aspects: getAspectMap(),
   categories: {},
   locale: 'en',
+  i18n: null,
 });
 
 export function TranslationProvider({ children }: { children: React.ReactNode }) {
@@ -34,8 +36,9 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
       aspects: getAspectMap(),
       categories: categoryTranslations,
       locale: i18n.locale,
+      i18n,
     };
-  }, [categoryTranslations, i18n.locale]);
+  }, [categoryTranslations, i18n]);
   return (
     <TranslationContext.Provider value={value}>
       { children }

@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react';
-import { Box, Button } from '@chakra-ui/react';
+import React, { useCallback, useMemo } from 'react';
+import { Box, Button, useMediaQuery } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { flatMap, map } from 'lodash';
 
 import PageHeading from '../../components/PageHeading';
 import { useCardsMap, useRequireAuth } from '../../lib/hooks';
-import { CampaignFragment, useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
+import { useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
 import { useAuth } from '../../lib/AuthContext';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
@@ -16,18 +16,15 @@ export default function CampaignsList() {
   useRequireAuth();
   const { authUser } = useAuth();
   const { data: totalCampaigns } = useGetMyCampaignsTotalQuery({
-    variables: {
-      userId: authUser?.uid || '',
-    },
     skip: !authUser,
   })
-  const { fetchMore } = useGetMyCampaignsQuery({
+  const { data, fetchMore } = useGetMyCampaignsQuery({
     variables: {
       userId: authUser?.uid || '',
       limit: 10,
       offset: 0,
     },
-    skip: true,
+    skip: !authUser,
   });
 
   const fetchCampaigns = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<ParsedCampaign[]> => {
@@ -38,22 +35,33 @@ export default function CampaignsList() {
           limit: pageSize,
           offset,
         },
+        updateQuery(_, { fetchMoreResult }) {
+          return fetchMoreResult;
+        },
       });
       return map(
-        flatMap(data.data.user?.campaigns || [], c => c.campaign || []),
+        flatMap(data.data?.campaigns || [], c => c.campaign || []),
         c => new CampaignWrapper(c)
       );
     }
     return [];
   }, [fetchMore]);
   const { locale } = useLocale();
-  const { data } = useGetRoleCardsQuery({
+  const { data: role } = useGetRoleCardsQuery({
     variables: {
       locale,
     },
   });
-  const roleCards = useCardsMap(data?.cards);
-
+  const roleCards = useCardsMap(role?.cards);
+  const campaigns = useMemo(() => {
+    if (!data?.campaigns) {
+      return undefined;
+    }
+    return map(
+      flatMap(data.campaigns || [], c => c.campaign || []),
+      c => new CampaignWrapper(c)
+    );
+  }, [data?.campaigns]);
   const [showNewCampaign, newCampaignModal] = useNewCampaignModal();
   return (
     <>
@@ -68,8 +76,9 @@ export default function CampaignsList() {
 
         </PageHeading>
         <PaginationWrapper
-          total={totalCampaigns?.user?.campaigns_aggregate.aggregate?.count}
+          total={totalCampaigns?.campaigns.aggregate?.count}
           fetchData={fetchCampaigns}
+          data={campaigns}
         >
           { (campaigns: ParsedCampaign[], refetch) => (
             <CampaignList

@@ -1,19 +1,18 @@
 # import Campaign from 'fragments.graphql'
 
 query getMyCampaigns(
-  $userId: String!,
+  $userId: String!
   $limit: Int!,
   $offset: Int!
 ) {
-  user: rangers_users_by_pk(id: $userId) {
-    campaigns(
-      order_by: { updated_at: desc, campaign_id: asc }
-      limit: $limit
-      offset: $offset
-    ) {
-      campaign {
-			  ...Campaign
-      }
+  campaigns: rangers_user_campaign(
+    where: { user_id: { _eq: $userId }}
+    order_by: { updated_at: desc, campaign_id: asc }
+    limit: $limit
+    offset: $offset
+  ) {
+    campaign {
+      ...Campaign
     }
   }
 }
@@ -21,11 +20,11 @@ query getMyCampaigns(
 query getMyCampaignsTotal(
   $userId: String!
 ) {
-  user: rangers_users_by_pk(id: $userId) {
-    campaigns_aggregate {
-      aggregate {
-        count
-      }
+  campaigns: rangers_user_campaign_aggregate(
+    where: { user_id: { _eq: $userId }}
+  ) {
+    aggregate {
+      count
     }
   }
 }

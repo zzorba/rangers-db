@@ -36,7 +36,7 @@ import Router from 'next/router';
 import NextLink from 'next/link';
 import { sumBy, find, keys, union, omit, forEach, map, flatMap, pick, values, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
-import { ChakraStylesConfig, Select as ChakraReactSelect, chakraComponents, OptionProps, SingleValue } from 'chakra-react-select';
+import { Select as ChakraReactSelect, chakraComponents, OptionProps, SingleValue } from 'chakra-react-select';
 
 import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckDescriptionMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';

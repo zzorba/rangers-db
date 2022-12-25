@@ -7,6 +7,21 @@ const isServer = typeof window === "undefined";
 
 const CACHE_CONFIG: InMemoryCacheConfig = {
   typePolicies: {
+    Query: {
+      fields: {
+        getMyCampaigns: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+      },
+    },
+    rangers_search_deck: {
+      keyFields: ['id'],
+    },
+    rangers_deck: {
+      keyFields: ['id'],
+    },
     rangers_campaign: {
       keyFields: ['id'],
       fields: {
@@ -16,6 +31,11 @@ const CACHE_CONFIG: InMemoryCacheConfig = {
           },
           merge(existing, incoming) {
             return incoming || existing || '';
+          },
+        },
+        rank: {
+          merge(existing, incoming) {
+            return incoming || existing;
           },
         },
       },

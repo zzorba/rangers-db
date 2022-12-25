@@ -1,20 +1,20 @@
-import React, { useCallback, useMemo } from 'react';
-import { Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { Box, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
 
-import { DeckFragment, DeckWithCampaignFragment, useDeleteDeckMutation } from '../generated/graphql/apollo-schema';
+import { DeckFragment, DeckWithCampaignFragment, SearchDeckFragment, useDeleteDeckMutation, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
 import { CardsMap } from '../lib/hooks';
 import { useAuth } from '../lib/AuthContext';
 import { RoleImage } from './CardImage';
 import { DeckDescription, MiniAspect } from './Deck';
-import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import DeckProblemComponent from './DeckProblemComponent';
 import CoreIcon from '../icons/CoreIcon';
 import { DeckError } from '../types/types';
 import useDeleteDialog from './useDeleteDialog';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaHeart, FaHeartBroken, FaTrash } from 'react-icons/fa';
+import { SubmitIconButton } from './SubmitButton';
 
 export function DeckRow({ deck, roleCards, onDelete }: {
   deck: DeckWithCampaignFragment;
@@ -33,29 +33,38 @@ export function DeckRow({ deck, roleCards, onDelete }: {
   }, [deck.meta, roleCards]);
   return (
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={useColorModeValue('gray.200', 'gray.700')} borderBottomWidth="1px">
-      <Flex direction="row">
-        <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
-          { !!role && !!role.imagesrc && <RoleImage large name={role.name} url={role.imagesrc} /> }
-          <Flex direction="column">
-            <Text fontSize={['m', 'l', 'xl']}>{deck.name}</Text>
-            { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
-            <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
-            { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
+      <Flex direction="column">
+        <Flex direction="row">
+          <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
+            { !!role && !!role.imagesrc && <RoleImage large name={role.name} url={role.imagesrc} /> }
+            <Flex direction="column">
+              <Text fontSize={['m', 'l', 'xl']}>{deck.name}</Text>
+              <Flex direction="column" display={['none', 'block']}>
+                { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
+                <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
+                { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
+              </Flex>
+            </Flex>
+          </Flex>
+          <Flex marginLeft={1} direction="row" alignItems="flex-start" justifyContent="space-between">
+            <SimpleGrid columns={2} marginRight={1}>
+              <MiniAspect aspect="AWA" value={deck.awa} />
+              <MiniAspect aspect="SPI" value={deck.spi} />
+              <MiniAspect aspect="FIT" value={deck.fit} />
+              <MiniAspect aspect="FOC" value={deck.foc} />
+            </SimpleGrid>
+            { authUser?.uid === deck.user_id && (
+              <ButtonGroup marginLeft={[1, 2, "2em"]} orientation={buttonOrientation || 'horizontal'}>
+                <IconButton aria-label={t`Edit`} color={`${colorMode}.lightText`} icon={<FaEdit />} as={NextLink} href={`/decks/edit/${deck.id}`} />
+                <IconButton aria-label={t`Delete`} color="red.400" icon={<FaTrash />} onClick={doDelete} />
+              </ButtonGroup>
+            )}
           </Flex>
         </Flex>
-        <Flex marginLeft={1} direction="row" alignItems="flex-start" justifyContent="space-between">
-          <SimpleGrid columns={2} marginRight={1}>
-            <MiniAspect aspect="AWA" value={deck.awa} />
-            <MiniAspect aspect="SPI" value={deck.spi} />
-            <MiniAspect aspect="FIT" value={deck.fit} />
-            <MiniAspect aspect="FOC" value={deck.foc} />
-          </SimpleGrid>
-          { authUser?.uid === deck.user_id && (
-            <ButtonGroup marginLeft={[1, 2, "2em"]} orientation={buttonOrientation || 'horizontal'}>
-              <IconButton aria-label={t`Edit`} color={`${colorMode}.lightText`} icon={<FaEdit />} as={NextLink} href={`/decks/edit/${deck.id}`} />
-              <IconButton aria-label={t`Delete`} color="red.400" icon={<FaTrash />} onClick={doDelete} />
-            </ButtonGroup>
-          )}
+        <Flex direction="column" display={['block', 'none']}>
+          { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
+          <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
+          { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
         </Flex>
       </Flex>
     </ListItem>
@@ -109,6 +118,82 @@ export default function DeckList({
         )) }
       </List>
       { deleteDialog }
+    </>
+  );
+}
+
+
+export function SearchDeckRow({ deck, roleCards, onLike }: {
+  deck: SearchDeckFragment;
+  roleCards: CardsMap;
+  onLike: (deck: SearchDeckFragment) => Promise<string | undefined>;
+}) {
+  const { authUser } = useAuth();
+  const doLike = useCallback(async() => {
+    return await onLike(deck);
+  }, [onLike, deck]);
+  const role = useMemo(() => {
+    return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
+  }, [deck.meta, roleCards]);
+  return (
+    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={useColorModeValue('gray.200', 'gray.700')} borderBottomWidth="1px">
+      <Flex direction="column">
+        <Flex direction="row">
+          <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
+            <SimpleGrid columns={2} marginRight={2}>
+              <MiniAspect aspect="AWA" value={deck.awa} extraSmall />
+              <MiniAspect aspect="SPI" value={deck.spi} extraSmall />
+              <MiniAspect aspect="FIT" value={deck.fit} extraSmall />
+              <MiniAspect aspect="FOC" value={deck.foc} extraSmall />
+            </SimpleGrid>
+            { !!role && !!role.imagesrc && <RoleImage name={role.name} url={role.imagesrc} /> }
+            <Flex direction="column">
+              <Text fontSize={['m', 'l', 'xl']}>{deck.name}</Text>
+              <Flex direction="column" display={['none', 'block']}>
+                <DeckDescription fontSize={['xs', 's', 'm']} deck={deck} roleCards={roleCards} />
+              </Flex>
+            </Flex>
+          </Flex>
+          <Flex marginLeft={1} direction="row" alignItems="flex-start" justifyContent="space-between">
+            { !!authUser && (
+              <SubmitIconButton
+                aria-label={deck.liked_by_user ? t`Unlike` : t`Like`}
+                color={deck.liked_by_user ? 'red.600' : 'gray.500'}
+                icon={<FaHeart />}
+                onSubmit={doLike}
+              />
+            ) }
+          </Flex>
+        </Flex>
+        <Flex direction="column" display={['block', 'none']}>
+          <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
+        </Flex>
+      </Flex>
+    </ListItem>
+  );
+}
+
+interface SearchDeckListProps {
+  decks: SearchDeckFragment[] | undefined;
+  roleCards: CardsMap;
+  onLike: (deck: SearchDeckFragment) => Promise<string | undefined>;
+}
+export function SearchDeckList({ roleCards, decks, onLike }: SearchDeckListProps) {
+  if (!decks?.length) {
+    return <Text>{t`No matching decks.`}</Text>
+  }
+  return (
+    <>
+      <List>
+        { map(decks, deck => (
+          <SearchDeckRow
+            key={deck.id}
+            deck={deck}
+            roleCards={roleCards}
+            onLike={onLike}
+          />
+        )) }
+      </List>
     </>
   );
 }

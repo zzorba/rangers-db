@@ -1215,13 +1215,13 @@ export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign
     },
     skip: !authUser,
   });
-  const { fetchMore } = useGetMyCampaignDecksQuery({
+  const { data, fetchMore } = useGetMyCampaignDecksQuery({
     variables: {
       userId: authUser?.uid || '',
       limit: 5,
       offset: 0,
     },
-    skip: true,
+    skip: !authUser,
   });
 
   const fetchDecks = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<DeckFragment[]> => {
@@ -1231,6 +1231,10 @@ export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign
           userId: authUser.uid,
           limit: pageSize,
           offset,
+        },
+        updateQuery(_, { fetchMoreResult }) {
+          console.log(fetchMoreResult);
+          return fetchMoreResult;
         },
       });
       return data.data.decks || [];
@@ -1271,6 +1275,7 @@ export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign
           <PaginationWrapper
             total={totalDecks?.total.aggregate?.count}
             pageSize={5}
+            data={data?.decks}
             fetchData={fetchDecks}
           >
             { (decks: DeckFragment[]) => (

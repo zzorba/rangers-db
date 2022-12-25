@@ -1,10 +1,10 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { forEach } from 'lodash';
 import Router,{ useRouter } from 'next/router';
 import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
-import { CardFragment, SetTypeFragment } from '../generated/graphql/apollo-schema';
+import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
 import { AspectMap, DeckCardError, DeckError } from '../types/types';
 
 export function useRequireAuth() {
@@ -171,4 +171,41 @@ export function getAspectMap(): AspectMap {
       short_name: t`SPI`,
     },
   };
+}
+
+interface BasicDeck {
+  id?: number | null | undefined;
+  liked_by_user?: boolean | null | undefined;
+}
+export function useLikeAction<T extends BasicDeck>(updateCache: (d: T, liked: boolean) => void): (deck: T) => Promise<string | undefined> {
+  const { authUser } = useAuth();
+  const [doLike] = useLikeDeckMutation();
+  const [doUnlike] = useUnlikeDeckMutation();
+  return useCallback(async(deck: T) => {
+    if (authUser && deck.id) {
+      if (deck.liked_by_user) {
+        const r = await doUnlike({
+          variables: {
+            deckId: deck.id,
+            userId: authUser.uid,
+          },
+        });
+        if (r.errors?.length) {
+          return r.errors[0].message;
+        }
+        updateCache(deck, false);
+      } else {
+        const r = await doLike({
+          variables: {
+            deckId: deck.id,
+          },
+        });
+        if (r.errors?.length) {
+          return r.errors[0].message;
+        }
+        updateCache(deck, true);
+      }
+    }
+    return undefined;
+  }, [doLike, doUnlike, updateCache, authUser]);
 }

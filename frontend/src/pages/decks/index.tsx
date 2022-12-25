@@ -15,7 +15,7 @@ export default function DecksPage() {
   useRequireAuth();
   const { locale } = useLocale();
   const { authUser } = useAuth();
-  const { data } = useGetRoleCardsQuery({
+  const { data: role } = useGetRoleCardsQuery({
     variables: {
       locale,
     },
@@ -27,13 +27,13 @@ export default function DecksPage() {
     skip: !authUser,
   });
 
-  const { fetchMore } = useGetMyDecksQuery({
+  const { data, fetchMore } = useGetMyDecksQuery({
     variables: {
       userId: authUser?.uid || '',
       limit: 10,
       offset: 0,
     },
-    skip: true,
+    skip: !authUser?.uid,
   });
 
   const fetchDecks = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<DeckFragment[]> => {
@@ -44,13 +44,17 @@ export default function DecksPage() {
           limit: pageSize,
           offset,
         },
+        updateQuery(_, { fetchMoreResult }) {
+          return fetchMoreResult;
+        },
       });
       return data.data.decks || [];
     }
     return [];
   }, [fetchMore]);
-  const roleCards = useCardsMap(data?.cards);
+  const roleCards = useCardsMap(role?.cards);
   const [showNewDeck, newDeckModal] = useNewDeckModal(roleCards);
+  console.log(data);
   return (
     <>
       <Box
@@ -65,6 +69,7 @@ export default function DecksPage() {
         <PaginationWrapper
           total={totalDecks?.total.aggregate?.count}
           fetchData={fetchDecks}
+          data={data?.decks}
         >
           { (decks: DeckWithCampaignFragment[], refetch) => (
             <DeckList

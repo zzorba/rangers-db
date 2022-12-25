@@ -21,7 +21,7 @@ import NextLink from 'next/link';
 import { filter, map, pick, values } from 'lodash';
 import { plural, t } from "@lingui/macro"
 
-import { CardFragment, DeckFragment, DeckWithCampaignFragment, useCreateDeckMutation, useDeleteDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckFragment, DeckWithCampaignFragment, SearchDeckFragment, useCreateDeckMutation, useDeleteDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { DeckCardError, AWA, FIT, FOC, SPI } from '../types/types';
@@ -86,7 +86,7 @@ export function DeckCountLine({ parsedDeck }: { parsedDeck: ParsedDeck }) {
   );
 }
 
-export function MiniAspect({ value, aspect, extraSmall }: { value: number; aspect: string; extraSmall?: boolean }) {
+export function MiniAspect({ value, aspect, extraSmall }: { value: number | null | undefined; aspect: string; extraSmall?: boolean }) {
   const { aspects } = useLocale();
   return (
     <AspectRatio width={extraSmall ? '30px' : '40px'} ratio={1}>
@@ -104,7 +104,7 @@ export function MiniAspect({ value, aspect, extraSmall }: { value: number; aspec
 }
 
 export function DeckDescription({ deck, roleCards, ...textProps }: {
-  deck: DeckFragment;
+  deck: DeckFragment | SearchDeckFragment;
   roleCards?: CardsMap;
 } & Omit<TextProps, 'text'>) {
   const { categories } = useLocale();

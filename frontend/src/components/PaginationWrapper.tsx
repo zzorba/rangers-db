@@ -11,8 +11,9 @@ interface Props<T> {
   fetchData: (authUser: AuthUser, pageSize: number, offset: number) => Promise<T[]>;
   children: (data: T[], refetch: () => void) => React.ReactNode;
   pageSize?: number;
+  data: T[] | undefined;
 }
-export default function PaginationWrapper<T>({ children, total, fetchData, pageSize: pageSizeProp }: Props<T>) {
+export default function PaginationWrapper<T>({ children, total, fetchData, pageSize: pageSizeProp, data }: Props<T>) {
   const { authUser } = useAuth();
   const {
     isDisabled,
@@ -30,13 +31,10 @@ export default function PaginationWrapper<T>({ children, total, fetchData, pageS
     },
   });
 
-  const [data, setData] = useState<T[] | undefined>();
   const [deleteCount, setDeleteCount] = useState(0);
   useEffect(() => {
     if (authUser) {
-      fetchData(authUser, pageSize, offset).then((result) => {
-        setData(result);
-      });
+      fetchData(authUser, pageSize, offset);
     }
   }, [authUser, fetchData, currentPage, pageSize, offset, deleteCount]);
 

@@ -9,7 +9,6 @@ import {
   Spinner,
   Link,
   Tooltip,
-  SimpleGrid,
   Grid,
   GridItem,
   Stack,
@@ -23,9 +22,10 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
 import NextLink from 'next/link';
 import { map, pick, values } from 'lodash';
-import { t } from "@lingui/macro"
+import { plural, t } from '@lingui/macro';
+import { FaCopy, FaEdit, FaCalendar, FaHeart, FaMoon, FaShare, FaTrash } from 'react-icons/fa';
 
-import { CardFragment, DeckFragment, DeckWithCampaignFragment, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AWA, FIT, FOC, SPI } from '../types/types';
@@ -38,10 +38,10 @@ import parseDeck from '../lib/parseDeck';
 import useDeleteDialog from './useDeleteDialog';
 import { DeckCountLine, DeckDescription, DeckItemComponent } from './Deck';
 import DeckDescriptionView from './DeckDescriptionView';
-import { FaCopy, FaEdit, FaMoon, FaShare, FaTrash } from 'react-icons/fa';
 import SolidButton from './SolidButton';
+import { SubmitIconButton } from './SubmitButton';
 
-const SHOW_PUBLISH = false;
+const SHOW_PUBLISH = true;
 function deleteDeckMessage(d: DeckFragment) {
   return d.previous_deck ?
     t`Are you sure you want to delete the latest day (${d.version}) of this deck?` :
@@ -49,7 +49,7 @@ function deleteDeckMessage(d: DeckFragment) {
 }
 
 interface Props {
-  deck: DeckWithCampaignFragment;
+  deck: DeckWithFullCampaignFragment;
 }
 
 function ChosenRole({ role, showCard }: { role: CardFragment; showCard: ShowCard }) {
@@ -63,9 +63,9 @@ function ChosenRole({ role, showCard }: { role: CardFragment; showCard: ShowCard
   );
 }
 
-export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
+export default function DeckDetail({ deck, cards, onLike }: Props & { cards: CardsMap; onLike?: () => Promise<string | undefined> }) {
   const { authUser } = useAuth();
-  const { categories } = useLocale();
+  const { categories, i18n } = useLocale();
   const [showCard, cardModal] = useCardModal(deck.slots);
   const specialty: string | undefined = typeof deck.meta.specialty === 'string' ? deck.meta.specialty : undefined;
   const hasCards = useMemo(() => values(cards).length > 0, [cards]);
@@ -161,6 +161,8 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
     }
     return undefined;
   }, [deck]);
+  const editable = authUser?.uid === deck.user_id && !deck.next_deck && !deck.published;
+  const likeCount = deck.rank?.like_count || 0;
   return (
     <>
       <Box>
@@ -168,16 +170,41 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
           <Flex direction="row" justifyContent="space-between">
             <Flex direction="column">
               <Heading>{deck?.name || 'Deck'}</Heading>
-              { authUser?.uid !== deck.user_id && deck.user.handle && (
-                <Text fontSize="lg">
-                  <CoreIcon icon="ranger" size={18}/>&nbsp;{deck.user.handle}
-                </Text>
-              ) }
+              <Flex direction="row" alignItems="center">
+                { authUser?.uid !== deck.user_id && deck.user.handle && (
+                  <Text fontSize="lg" marginRight={8}>
+                    <CoreIcon icon="ranger" size={18}/>&nbsp;{deck.user.handle}
+                  </Text>
+                ) }
+                { !!deck.published && (
+                  <>
+                    { authUser?.uid !== deck.user_id && !!onLike ? (
+                      <SubmitIconButton
+                        aria-label={deck.liked_by_user ? t`Unlike` : t`Like`}
+                        color={deck.liked_by_user ? 'red.600' : 'gray.500'}
+                        icon={<FaHeart />}
+                        onSubmit={onLike}
+                      />
+                    ) : <FaHeart /> }
+                    <Text marginLeft={2} size="lg" marginRight={8}>
+                      { plural(likeCount, { one: `${likeCount} like`, other: `${likeCount} likes` }) }
+                    </Text>
+                    { !!deck.created_at && (
+                      <>
+                        <FaCalendar />
+                        <Text marginLeft={2}>
+                          { i18n?.date(deck.created_at, { dateStyle: 'long' }) }
+                        </Text>
+                      </>
+                    ) }
+                  </>
+                ) }
+              </Flex>
               { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
               <DeckCountLine parsedDeck={parsedDeck} />
             </Flex>
             <ButtonGroup>
-              { authUser?.uid === deck.user_id && !deck.next_deck && (
+              { editable && (
                 <SolidButton
                   color="blue"
                   leftIcon={<FaEdit />}
@@ -191,7 +218,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                 <Menu autoSelect={false}>
                   <MenuButton as={IconButton} aria-label={t`Actions`} icon={<HamburgerIcon />} variant="outline" />
                   <MenuList>
-                    { authUser.uid === deck.user_id && !deck.next_deck && (
+                    { editable && (
                       <Tooltip
                         placement="left"
                         label={!!deck.meta.problem ? t`You must correct deck errors before upgrading.` : t`Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign.`}
@@ -203,7 +230,7 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                         >{t`Camp`}</MenuItem>
                       </Tooltip>
                     ) }
-                    { SHOW_PUBLISH && authUser.uid === deck.user_id && (
+                    { SHOW_PUBLISH && authUser.uid === deck.user_id && !deck.published && (
                       <Tooltip
                         placement="left"
                         label={publishError}
@@ -231,13 +258,20 @@ export default function Deck({ deck, cards }: Props & { cards: CardsMap }) {
                       </Tooltip>
                     ) }
                     { authUser.uid === deck.user_id && !deck.next_deck && (
-                      <MenuItem
-                        color="red.500"
-                        icon={<FaTrash />}
-                        onClick={onDeleteClick}
+                      <Tooltip
+                        placement="left"
+                        label={deck.published ?
+                          t`Deleting this published deck will cause will remove it from search.` :
+                          undefined}
                       >
-                        {t`Delete`}
-                      </MenuItem>
+                        <MenuItem
+                          color="red.500"
+                          icon={<FaTrash />}
+                          onClick={onDeleteClick}
+                        >
+                          {t`Delete`}
+                        </MenuItem>
+                      </Tooltip>
                     ) }
                   </MenuList>
                 </Menu>

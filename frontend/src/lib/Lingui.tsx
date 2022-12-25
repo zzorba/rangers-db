@@ -1,5 +1,5 @@
 import type { I18n } from '@lingui/core'
-import { en, de, it } from 'make-plural/plurals'
+import { en, de, it, fr } from 'make-plural/plurals'
 
 export type LOCALES = 'en' | 'de' | 'it' | 'pseudo';
 //anounce which locales we are going to use and connect them to approprite plural rules
@@ -8,6 +8,7 @@ export function initTranslation(i18n: I18n): void {
     en: { plurals: en },
     de: { plurals: de },
     it: { plurals: it },
+    fr: { plurals: fr },
     pseudo: { plurals: en }
   })
 }

@@ -29,6 +29,30 @@ fragment Campaign on rangers_campaign {
   }
 }
 
+fragment SearchDeck on rangers_search_deck {
+  id
+  user_id
+  slots
+  side_slots
+  version
+  name
+  description
+  awa
+  spi
+  fit
+  foc
+  created_at
+  updated_at
+  meta
+  user {
+    ...UserInfo
+  }
+  rank {
+    like_count
+  }
+  liked_by_user
+}
+
 fragment Deck on rangers_deck {
   id
   user_id
@@ -43,8 +67,11 @@ fragment Deck on rangers_deck {
   foc
   created_at
   updated_at
-  published
   meta
+  user {
+    ...UserInfo
+  }
+  published
   previous_deck {
     id
     meta
@@ -59,13 +86,14 @@ fragment Deck on rangers_deck {
     side_slots
     version
   }
-  user {
-    ...UserInfo
-  }
 }
 
 fragment DeckWithCampaign on rangers_deck {
   ...Deck
+  liked_by_user
+  rank {
+    like_count
+  }
   campaign {
     id
     name
@@ -74,6 +102,10 @@ fragment DeckWithCampaign on rangers_deck {
 
 fragment DeckWithFullCampaign on rangers_deck {
   ...Deck
+  liked_by_user
+  rank {
+    like_count
+  }
   campaign {
     id
     name
