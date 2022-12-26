@@ -8,6 +8,7 @@ import ListHeader from './ListHeader';
 import { UserInfoFragment, UserProfileFragment } from '../generated/graphql/apollo-schema';
 import useFirebaseFunction from '../lib/useFirebaseFunction';
 import FriendSearch from './FriendSearch';
+import { useTheme } from '../lib/ThemeContext';
 
 
 interface Props {
@@ -45,8 +46,9 @@ export interface BasicUser {
 }
 
 export function FriendLine({ user, actions }: { user: BasicUser | UserInfoFragment; actions: FriendAction[]; }) {
+  const { colors } = useTheme();
   return (
-    <ListItem paddingTop={2} paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.100">
+    <ListItem paddingTop={2} paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
       <Flex direction="row" justifyContent="space-between">
         <Text padding={2}>{user.handle || user.id}</Text>
         <ButtonGroup>

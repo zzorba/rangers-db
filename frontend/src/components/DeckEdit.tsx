@@ -58,6 +58,7 @@ import CoreIcon from '../icons/CoreIcon';
 import SubmitButton from './SubmitButton';
 import { StarterDeck, STARTER_DECKS } from '../lib/starterDeck';
 import { RoleImage } from './CardImage';
+import { useTheme } from '../lib/ThemeContext';
 
 interface Props {
   deck: DeckWithFullCampaignFragment;
@@ -425,6 +426,7 @@ function BaseDeckbuildingTabs({
     });
     return [pc, bc, sc, oic];
   }, [cards, specialty, background, stats]);
+  const { colors } = useTheme();
   return (
     <Tabs>
       <TabList overflowX="scroll" overflowY="hidden">
@@ -436,7 +438,7 @@ function BaseDeckbuildingTabs({
       </TabList>
       <TabPanels>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.500">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
             {t`Select 4 different personality cards, 1 from each aspect.`}
           </Text>
           <SimpleCardList
@@ -447,7 +449,7 @@ function BaseDeckbuildingTabs({
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.500">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
             {t`Select 5 different cards from your chosen background.`}
           </Text>
           <SimpleCardList
@@ -458,7 +460,7 @@ function BaseDeckbuildingTabs({
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.500">
+          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
             {t`Select 5 different cards from your chosen specialty.`}
           </Text>
           <SimpleCardList
@@ -472,7 +474,7 @@ function BaseDeckbuildingTabs({
           <Text fontSize="md" className='lightText' paddingBottom={1}>
             {t`Select 1 cards from any background of specialty as your outside interest.`}
           </Text>
-          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor="gray.500">
+          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
             {t`Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.`}
           </Text>
           <SimpleCardList

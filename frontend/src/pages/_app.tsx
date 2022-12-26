@@ -13,6 +13,7 @@ import { GraphqlProvider } from '../lib/GraphqlContext';
 import Layout from '../components/Layout';
 import { TranslationProvider } from '../lib/TranslationProvider';
 import { getTranslation, initTranslation } from '../lib/Lingui';
+import { ThemeContextProvider } from '../lib/ThemeContext';
 
 initTranslation(i18n)
 
@@ -29,15 +30,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <I18nProvider i18n={i18n} forceRenderOnLocaleChange>
       <ChakraProvider theme={theme}>
-        <AuthUserProvider>
-          <GraphqlProvider>
-            <TranslationProvider>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </TranslationProvider>
-          </GraphqlProvider>
-        </AuthUserProvider>
+        <ThemeContextProvider>
+          <AuthUserProvider>
+            <GraphqlProvider>
+              <TranslationProvider>
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              </TranslationProvider>
+            </GraphqlProvider>
+          </AuthUserProvider>
+        </ThemeContextProvider>
       </ChakraProvider>
     </I18nProvider>
   );

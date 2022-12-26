@@ -2,15 +2,17 @@ import React from 'react';
 import { Link, Text, Box, useColorModeValue } from '@chakra-ui/react'
 import { Trans, t } from '@lingui/macro';
 import NextLink from 'next/link';
+import { useTheme } from '../lib/ThemeContext';
 
 export default function Footer() {
   const patreon = <a href="https://www.patreon.com/arkhamcards">Patreon</a>;
+  const { colors } = useTheme();
   return (
     <Box
       as="footer"
       className="site-footer"
       borderTop="1px solid"
-      borderColor={useColorModeValue('gray.200', 'gray.600')}
+      borderColor={colors.divider}
       py="1rem"
       fontSize="0.875rem"
     >

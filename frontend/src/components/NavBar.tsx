@@ -37,6 +37,7 @@ import { LOCALES } from '../lib/Lingui';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { useLocale } from '../lib/TranslationProvider';
 import { DesktopLanguageChooser, MobileLanguageChooser } from './LanguageChooser';
+import { useTheme } from '../lib/ThemeContext';
 
 const SHOW_CAMPAIGNS = true;
 function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
@@ -354,6 +355,7 @@ const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
 };
 
 const MobileNavItem = ({ label, children, href }: NavItem) => {
+  const { colors } = useTheme();
   const { isOpen, onToggle } = useDisclosure();
   return (
     <Stack spacing={4} onClick={children && onToggle}>
@@ -388,7 +390,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           pl={4}
           borderLeft={1}
           borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          borderColor={colors.divider}
           align={'start'}
         >
           { children && children.map((child) => (

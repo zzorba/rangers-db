@@ -36,6 +36,7 @@ import { RoleImage } from './CardImage';
 import CoreIcon from '../icons/CoreIcon';
 import parseDeck, { CardItem, Item, ParsedDeck } from '../lib/parseDeck';
 import useDeleteDialog from './useDeleteDialog';
+import { useTheme } from '../lib/ThemeContext';
 
 interface Props {
   deck: DeckWithCampaignFragment;
@@ -134,12 +135,13 @@ export function CompactDeckRow({ deck, roleCards, onClick, children, buttons, hr
   const handleClick = useCallback(() => {
     onClick?.(deck);
   }, [onClick, deck]);
+  const { colors } = useTheme();
   return (
     <Flex
       flex={1}
       paddingTop={2}
       paddingBottom={2}
-      borderBottomColor="gray.500"
+      borderBottomColor={colors.divider}
       borderBottomWidth="1px"
       onClick={onClick ? handleClick : undefined}
       cursor={onClick ? 'pointer' : undefined}

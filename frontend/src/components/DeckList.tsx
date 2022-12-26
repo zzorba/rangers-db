@@ -15,6 +15,7 @@ import { DeckError } from '../types/types';
 import useDeleteDialog from './useDeleteDialog';
 import { FaEdit, FaHeart, FaHeartBroken, FaTrash } from 'react-icons/fa';
 import { SubmitIconButton } from './SubmitButton';
+import { useTheme } from '../lib/ThemeContext';
 
 export function DeckRow({ deck, roleCards, onDelete }: {
   deck: DeckWithCampaignFragment;
@@ -31,8 +32,10 @@ export function DeckRow({ deck, roleCards, onDelete }: {
   const role = useMemo(() => {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
+  const { colors } = useTheme();
+
   return (
-    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={useColorModeValue('gray.200', 'gray.700')} borderBottomWidth="1px">
+    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth="1px">
       <Flex direction="column">
         <Flex direction="row">
           <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
@@ -135,8 +138,9 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
   const role = useMemo(() => {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
+  const { colors } = useTheme();
   return (
-    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={useColorModeValue('gray.200', 'gray.700')} borderBottomWidth="1px">
+    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth="1px">
       <Flex direction="column">
         <Flex direction="row">
           <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>

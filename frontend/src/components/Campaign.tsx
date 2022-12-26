@@ -25,6 +25,7 @@ import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { FaTrash } from 'react-icons/fa';
+import { useTheme } from '../lib/ThemeContext';
 
 interface MissionEntry {
   day: number;
@@ -124,8 +125,9 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
     })
   }, [campaign.latest_decks, roleCards]);
   const onDeleteClick = useCallback(() => onDelete?.(campaign), [onDelete, campaign]);
+  const { colors } = useTheme();
   return (
-    <ListItem padding={2} borderBottomWidth="1px" borderColor={useColorModeValue('gray.200', 'gray.700')}>
+    <ListItem padding={2} borderBottomWidth="1px" borderColor={colors.divider}>
       <Flex direction="row">
         <Flex flex={1} direction="row" justifyContent="space-between" as={NextLink} href={`/campaigns/${campaign.id}`}>
           <Flex direction="column">
