@@ -11,7 +11,6 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalFooter,
-  SimpleGrid,
   AspectRatio,
   useColorMode,
 } from '@chakra-ui/react';
@@ -23,7 +22,7 @@ import { CardFragment } from '../generated/graphql/apollo-schema';
 import { Aspect, DeckCardError, DeckError, Slots } from '../types/types';
 import { getPlural } from '../lib/lang';
 import CoreIcon from '../icons/CoreIcon';
-import CardCount, { CountControls } from './CardCount';
+import CardCount from './CardCount';
 import DeckProblemComponent, { DeckCardProblemTooltip } from './DeckProblemComponent';
 import { useLocale } from '../lib/TranslationProvider';
 import CardImage, { RoleImage } from './CardImage';

@@ -1,3 +1,4 @@
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Box,
   Flex,
@@ -29,8 +30,8 @@ import {
 } from '@chakra-ui/icons';
 import Router, { useRouter } from 'next/router';
 import NextLink from 'next/link';
+
 import { useAuth } from '../lib/AuthContext';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGetCardsQuery, useGetCardsUpdatedAtQuery } from '../generated/graphql/apollo-schema';
 import Banner from './Banner';
 import { LOCALES } from '../lib/Lingui';

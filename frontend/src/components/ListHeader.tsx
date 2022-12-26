@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, ListItem, SimpleGrid, Text } from '@chakra-ui/react';
+
 import { DeckError } from '../types/types';
 import DeckProblemComponent from './DeckProblemComponent';
 

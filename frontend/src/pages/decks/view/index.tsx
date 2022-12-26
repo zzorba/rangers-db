@@ -1,6 +1,7 @@
-import Router from "next/router";
-import { useEffect } from "react";
-import LoadingPage from "../../../components/LoadingPage";
+import { useEffect } from 'react';
+import Router from 'next/router';
+
+import LoadingPage from '../../../components/LoadingPage';
 
 export default function ViewIndex() {
   useEffect(() => {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Box, Button, Flex, FormControl, FormLabel, Input, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { t } from '@lingui/macro';
 
 import { useAuth } from '../lib/AuthContext';
-import { Box, Button, Flex, FormControl, FormLabel, Input, Link } from '@chakra-ui/react';
 
 export default function ResetPassword({ redirect }: { redirect: string | undefined }) {
   const [email, setEmail] = useState('');

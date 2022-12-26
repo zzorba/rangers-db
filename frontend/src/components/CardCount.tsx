@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { Box, Button, Flex, Text, useColorModeValue, useRadio, useRadioGroup, UseRadioProps } from '@chakra-ui/react';
 import { map } from 'lodash';
+
 import { Slots } from '../types/types';
 import { CardFragment } from '../generated/graphql/apollo-schema';
 
 export default function CardCount({
   count,
   marginLeft,
-  light,
-}: { count: number, marginLeft?: number; light?: boolean }) {
+}: { count: number, marginLeft?: number }) {
   return (
     <Box fontFamily="mono"
       borderRadius="md"

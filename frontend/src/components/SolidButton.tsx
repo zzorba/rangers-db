@@ -1,5 +1,5 @@
-import { Button, ButtonProps } from '@chakra-ui/react';
 import React from 'react';
+import { Button, ButtonProps } from '@chakra-ui/react';
 
 export type SolidButtonColor = 'green' | 'blue' | 'yellow' | 'orange' | 'gray' | 'red';
 interface Props extends ButtonProps {

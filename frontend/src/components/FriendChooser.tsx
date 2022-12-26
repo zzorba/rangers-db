@@ -1,12 +1,11 @@
-import { MinusIcon, PlusSquareIcon } from '@chakra-ui/icons';
-import { Flex, ButtonGroup, List, ListItem, Text } from '@chakra-ui/react';
-import { forEach, map, flatMap, find } from 'lodash';
-import { t } from '@lingui/macro';
 import React, { useCallback, useMemo } from 'react';
-import { GetProfileDocument, UserInfoFragment, UserProfileFragment } from '../generated/graphql/apollo-schema';
+import { Flex, ButtonGroup, List, ListItem, Text } from '@chakra-ui/react';
+import { forEach, flatMap } from 'lodash';
+import { t } from '@lingui/macro';
+
+import { UserInfoFragment, UserProfileFragment } from '../generated/graphql/apollo-schema';
 import ListHeader from './ListHeader';
-import SubmitButton, { SubmitIconButton } from './SubmitButton';
-import FriendSearch from './FriendSearch';
+import { SubmitIconButton } from './SubmitButton';
 import FriendRequestsComponent from './FriendRequests';
 import { SlMinus, SlPlus } from 'react-icons/sl';
 

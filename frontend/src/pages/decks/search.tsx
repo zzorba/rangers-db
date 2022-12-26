@@ -5,7 +5,7 @@ import { Select } from 'chakra-react-select';
 import { flatMap, map, values, groupBy } from 'lodash';
 
 import PageHeading from '../../components/PageHeading';
-import { SearchDeckFragment, SearchDeckFragmentDoc, SearchDecksQueryVariables, useGetRoleCardsQuery, useLikeDeckMutation, useSearchDecksLazyQuery, useSearchDecksQuery, useUnlikeDeckMutation } from '../../generated/graphql/apollo-schema';
+import { SearchDeckFragment, SearchDeckFragmentDoc, SearchDecksQueryVariables, useGetRoleCardsQuery, useSearchDecksQuery } from '../../generated/graphql/apollo-schema';
 import { AuthUser } from '../../lib/useFirebaseAuth';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { SearchDeckList } from '../../components/DeckList';

@@ -3,6 +3,7 @@ import { t } from '@lingui/macro';
 import { EditableInput, ButtonGroup, Editable, EditablePreview, Flex, IconButton, Input, useEditableControls, Tooltip, ResponsiveValue, EditableProps, useStatStyles, InputGroup, InputRightAddon, useColorMode } from '@chakra-ui/react'
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
 import { FaEdit } from 'react-icons/fa';
+import { useTheme } from '../lib/ThemeContext';
 
 function EditableControls() {
   const {
@@ -57,6 +58,7 @@ export default function EditableTextInput({
   onChange: (value: string) => void;
 }) {
   const { colorMode } = useColorMode();
+  const { colors } = useTheme();
   const [liveValue, setLiveValue] = useState(value);
   useEffect(() => {
     setLiveValue(value);
@@ -70,7 +72,7 @@ export default function EditableTextInput({
       onChange={setLiveValue}
       isPreviewFocusable
       _placeholder={{
-        color: `${colorMode}.lightText`,
+        color: colors.lightText,
       }}
       selectAllOnFocus={false}
       _focus={{

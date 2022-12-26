@@ -23,7 +23,6 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { DeleteIcon } from '@chakra-ui/icons';
 import { FaTrash } from 'react-icons/fa';
 import { useTheme } from '../lib/ThemeContext';
 
@@ -1366,7 +1365,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       },
     });
   }, [setCampaignPathTerrainMutation, campaign.id]);
-  const { colorMode } = useColorMode();
+  const { colors } = useTheme();
   return (
     <>
       <PageHeading title={campaign.name} />
@@ -1385,7 +1384,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
             padding={2}
             borderRadius="8px"
             borderWidth={2}
-            backgroundColor={`${colorMode}.lightBackground`}
+            backgroundColor={colors.lightBackground}
             borderColor="gray.500"
             maxW="24rem"
           >

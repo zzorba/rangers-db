@@ -1,6 +1,6 @@
 import React from 'react';
-import { t } from '@lingui/macro';
 import { Container } from '@chakra-ui/react';
+import { t } from '@lingui/macro';
 
 import Login from '../components/Login';
 import { usePostLoginRedirect } from '../lib/hooks';

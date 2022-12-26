@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Flex,
@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
+
 import { useAuth } from '../lib/AuthContext';
 
 export default function Login({ redirect }: { redirect: string | undefined }) {

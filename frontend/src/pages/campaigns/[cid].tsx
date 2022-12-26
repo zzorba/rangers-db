@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import Head from 'next/head'
 import { t } from '@lingui/macro';
 import { Box, Text } from '@chakra-ui/react'

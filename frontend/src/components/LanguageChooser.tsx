@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Text, Flex, Select, useColorModeValue, IconButton } from '@chakra-ui/react';
 import { ChakraStylesConfig, ControlProps, chakraComponents, Select as ChakraReactSelect } from 'chakra-react-select';
 import { useRouter } from 'next/router';
@@ -8,6 +8,7 @@ import { US, DE } from 'country-flag-icons/react/3x2'
 import { MdLanguage } from 'react-icons/md';
 
 import { useLocale } from '../lib/TranslationProvider';
+import { useTheme } from '../lib/ThemeContext';
 
 interface LanguageOption {
   value: string;
@@ -61,6 +62,7 @@ const mobileLanguageOptions: LanguageOption[] = [
 ];
 export function DesktopLanguageChooser() {
   const { locale } = useLocale();
+  const { colors } = useTheme();
   const router = useRouter();
   const onChange = useCallback((option: any) => {
     if (option && option.value !== locale) {
@@ -68,8 +70,6 @@ export function DesktopLanguageChooser() {
       router.push({ pathname, query }, asPath, { locale: option.value });
     }
   }, [router, locale]);
-  const iconColor = useColorModeValue('#666666', '#DDDDDD');
-  const backgroundHoverColor = useColorModeValue('gray.200', 'gray.700')
   const chakraStyles: ChakraStylesConfig<LanguageOption> = {
     dropdownIndicator: (provided, state) => ({
       ...provided,
@@ -85,7 +85,7 @@ export function DesktopLanguageChooser() {
       padding: 0,
       borderWidth: 0,
       _hover: {
-        backgroundColor: backgroundHoverColor,
+        backgroundColor: colors.hover,
       },
     }),
     placeholder: (provided, state) => ({
@@ -100,7 +100,7 @@ export function DesktopLanguageChooser() {
       onChange={onChange}
       chakraStyles={chakraStyles}
       name="language"
-      placeholder={<MdLanguage size={20} color={iconColor} />}
+      placeholder={<MdLanguage size={20} color={colors.icon} />}
       useBasicStyles
       options={languageOptions}
     />
@@ -110,6 +110,7 @@ export function DesktopLanguageChooser() {
 
 export function MobileLanguageChooser() {
   const { locale } = useLocale();
+  const { colors } = useTheme();
   const router = useRouter();
   const onChange = useCallback((data: any) => {
     if (data.value !== locale) {
@@ -117,8 +118,6 @@ export function MobileLanguageChooser() {
       router.push({ pathname, query }, asPath, { locale: data.value });
     }
   }, [router, locale]);
-  const iconColor = useColorModeValue('#444444', '#DDDDDD');
-
   return (
     <ChakraReactSelect<LanguageOption>
       isSearchable={false}
@@ -132,7 +131,7 @@ export function MobileLanguageChooser() {
       }}
       placeholder={
         <Flex direction="row">
-          <MdLanguage size={22} color={iconColor} />
+          <MdLanguage size={22} color={colors.icon} />
           <Text marginLeft={3}>{t`Language`}</Text>
         </Flex>
       }

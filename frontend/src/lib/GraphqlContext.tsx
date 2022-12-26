@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { ApolloClient, ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import { CachePersistor } from 'apollo3-cache-persist';
+
 import { initAnonClient, initAuthClient } from '../graphql/client';
 import { useAuth } from './AuthContext';
 import LoadingPage from '../components/LoadingPage';

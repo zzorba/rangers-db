@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { t } from '@lingui/macro';
 import { Box } from '@chakra-ui/react';
 import { Pagination, PaginationContainer, PaginationNext, PaginationPageGroup, PaginationPrevious, usePagination } from '@ajna/pagination';
+import { t } from '@lingui/macro';
+
 import { useAuth } from '../lib/AuthContext';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import LoadingPage from './LoadingPage';

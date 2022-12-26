@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { Box, Button, useMediaQuery } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { flatMap, map } from 'lodash';
 

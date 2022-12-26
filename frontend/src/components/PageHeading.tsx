@@ -1,7 +1,7 @@
 import React from 'react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
 import { t } from '@lingui/macro';
-import { Box, Flex, Heading } from '@chakra-ui/react';
 
 export default function PageHeading({ title, children }: { title: string; children?: React.ReactNode }) {
   return (

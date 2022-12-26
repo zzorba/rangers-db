@@ -1,5 +1,5 @@
 import { forEach, map, flatMap, uniq, sumBy } from 'lodash';
-import { t } from "@lingui/macro"
+import { t } from '@lingui/macro';
 
 import { AspectStats, AWA, DeckCardError, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap, CategoryTranslations } from '../lib/hooks';

@@ -1,4 +1,4 @@
-import { Slots } from "../types/types";
+import { Slots } from '../types/types';
 
 export interface StarterDeck {
   meta: {

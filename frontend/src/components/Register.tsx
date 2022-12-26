@@ -9,8 +9,9 @@ import {
   Link,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { useAuth } from '../lib/AuthContext';
 import { Trans, t } from '@lingui/macro';
+
+import { useAuth } from '../lib/AuthContext';
 
 function Register({ redirect }: { redirect: string | undefined }) {
   const [email, setEmail] = useState('');

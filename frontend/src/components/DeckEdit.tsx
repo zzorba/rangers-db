@@ -714,7 +714,7 @@ export default function DeckEdit({ deck, cards }: Props) {
     }
     setSaveError(r.errors[0].message);
   }, [saveDeck, stats, meta, slots, sideSlots, name, deck, parsedDeck.problem, parsedDeck.roleProblems, aspectError]);
-  const hoverBackground = useColorModeValue('gray.100', 'gray.700');
+  const { colors } = useTheme();
   return (
     <>
       <SimpleGrid minChildWidth="400px" spacingX={4} spacingY="4rem" columns={[1, 1, 1, 2]}>
@@ -745,7 +745,7 @@ export default function DeckEdit({ deck, cards }: Props) {
             <FormLabel>{t`Role`}</FormLabel>
             <DeckProblemComponent limit={1} errors={parsedDeck.roleProblems} />
             { parsedDeck.role ? (
-              <Box _hover={{ bg: hoverBackground }} cursor="pointer" onClick={showRole}>
+              <Box _hover={{ bg: colors.hover }} cursor="pointer" onClick={showRole}>
                 <CardRow card={parsedDeck.role} includeText last />
               </Box>
               ) : (

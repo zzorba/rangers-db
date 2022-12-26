@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react';
 import { AspectRatio, Box, Flex, Text } from '@chakra-ui/react';
-import {
-  ChevronUpIcon,
-  ChevronDownIcon,
-} from '@chakra-ui/icons';
+import { ChevronUpIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { t } from '@lingui/macro'
+
 import { AspectType, AWA, FIT, FOC, SPI } from '../types/types';
 import CoreIcon from '../icons/CoreIcon';
 

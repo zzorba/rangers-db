@@ -1,5 +1,6 @@
-import { ButtonProps, IconButton, IconButtonProps, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { ButtonProps, IconButton, IconButtonProps, useToast } from '@chakra-ui/react';
+
 import SolidButton, { SolidButtonColor } from './SolidButton';
 
 interface Props extends Omit<ButtonProps, 'color' | 'onClick'> {

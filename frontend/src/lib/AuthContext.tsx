@@ -1,4 +1,5 @@
 import React, { createContext, useContext } from 'react'
+
 import useFirebaseAuth, { FirebaseAuth } from './useFirebaseAuth';
 
 const AuthUserContext = createContext<FirebaseAuth>({

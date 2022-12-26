@@ -1,9 +1,10 @@
 import React, { useCallback, useState, useMemo } from 'react';
-import { FormControl, Text, Flex, IconButton, Input, useDisclosure, Spinner, List, ListItem, FormErrorMessage } from '@chakra-ui/react';
+import { FormControl, Text, Flex, IconButton, Input, Spinner, List, ListItem } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
-import useFirebaseFunction from '../lib/useFirebaseFunction';
 import { SearchIcon } from '@chakra-ui/icons';
 import { map } from 'lodash';
+
+import useFirebaseFunction from '../lib/useFirebaseFunction';
 import { BasicUser, FriendAction, FriendLine } from './FriendRequests';
 
 interface SearchResults {

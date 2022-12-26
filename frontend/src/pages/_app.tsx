@@ -1,13 +1,14 @@
 import '../styles/globals.css'
 import '../styles/core.css';
+
+import { useEffect } from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { AppProps } from 'next/app'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 import { AuthUserProvider } from '../lib/AuthContext';
-import { ChakraProvider } from '@chakra-ui/react';
 import theme from '../styles/theme';
 import { GraphqlProvider } from '../lib/GraphqlContext';
 import Layout from '../components/Layout';

@@ -1,54 +1,43 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import {
   Box,
-  Heading,
   Text,
   Flex,
-  List,
   ListItem,
   SimpleGrid,
-  ButtonGroup,
-  Spinner,
   TextProps,
   AspectRatio,
-  Link,
-  Tooltip,
   useColorMode,
 } from '@chakra-ui/react';
-import { ArrowUpIcon, CopyIcon, DeleteIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
-import Router from 'next/router';
+import { InfoIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
-import { filter, map, pick, values } from 'lodash';
-import { plural, t } from "@lingui/macro"
+import { filter } from 'lodash';
+import { plural, t } from '@lingui/macro';
 
-import { CardFragment, DeckFragment, DeckWithCampaignFragment, SearchDeckFragment, useCreateDeckMutation, useDeleteDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
-import { useAuth } from '../lib/AuthContext';
-import AspectCounter from './AspectCounter';
-import { DeckCardError, AWA, FIT, FOC, SPI } from '../types/types';
+import { CardFragment, DeckFragment, DeckWithCampaignFragment, SearchDeckFragment } from '../generated/graphql/apollo-schema';
+import { DeckCardError } from '../types/types';
 import { CardsMap } from '../lib/hooks';
-import { CardRow, ShowCard, useCardModal } from './Card';
+import { CardRow, ShowCard } from './Card';
 import ListHeader from './ListHeader';
 import CardCount from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
-import SolidButton from './SolidButton';
 import { useLocale } from '../lib/TranslationProvider';
 import { RoleImage } from './CardImage';
 import CoreIcon from '../icons/CoreIcon';
-import parseDeck, { CardItem, Item, ParsedDeck } from '../lib/parseDeck';
-import useDeleteDialog from './useDeleteDialog';
+import { CardItem, Item, ParsedDeck } from '../lib/parseDeck';
 import { useTheme } from '../lib/ThemeContext';
 
 interface Props {
   deck: DeckWithCampaignFragment;
 }
 
-export function DeckItemComponent({ item, showCard, lightCount }: { item: Item; showCard: ShowCard; lightCount?: boolean }) {
+export function DeckItemComponent({ item, showCard }: { item: Item; showCard: ShowCard }) {
   const { colorMode } = useColorMode();
   switch (item.type) {
     case 'header':
       return <ListHeader key={item.title} title={item.title} problem={item.problem} />;
     case 'card':
-      return <DeckCardRow key={item.card.id} lightCount={lightCount} item={item} showCard={showCard} />;
+      return <DeckCardRow key={item.card.id} item={item} showCard={showCard} />;
     case 'description':
       return (
         <ListItem padding={2}>
@@ -61,13 +50,13 @@ export function DeckItemComponent({ item, showCard, lightCount }: { item: Item; 
   }
 }
 
-function DeckCardRow({ item, lightCount, showCard }: { item: CardItem; lightCount: boolean | undefined; showCard: (card: CardFragment, problem?: DeckCardError[]) => void }) {
+function DeckCardRow({ item, showCard }: { item: CardItem; showCard: (card: CardFragment, problem?: DeckCardError[]) => void }) {
   const onClick = useCallback(() => showCard(item.card, item.problem), [item, showCard]);
   return (
     <ListItem key={item.card.id} >
       <Flex direction="row" alignItems="center">
         <CardRow card={item.card} problem={item.problem} onClick={onClick}>
-          <CardCount count={item.count} light={lightCount} marginLeft={2} />
+          <CardCount count={item.count} marginLeft={2} />
         </CardRow>
       </Flex>
     </ListItem>

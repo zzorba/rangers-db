@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { t } from '@lingui/macro';
 import { Box, Button } from '@chakra-ui/react';
+
 import { useCardsMap, useRequireAuth } from '../../lib/hooks';
 import { useNewDeckModal } from '../../components/DeckEdit';
 import DeckList from '../../components/DeckList';

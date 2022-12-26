@@ -1,6 +1,7 @@
 import React from 'react';
 import { t } from '@lingui/macro';
 import { Container } from '@chakra-ui/react';
+
 import { useRequireAuth } from '../lib/hooks';
 import Profile from '../components/Profile';
 import PageHeading from '../components/PageHeading';

@@ -315,7 +315,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
               </Flex>
               { hasCards ? (
                 <List>
-                  {map(parsedDeck.cards, item => <DeckItemComponent lightCount key={item.id} item={item} showCard={showCard} />)}
+                  {map(parsedDeck.cards, item => <DeckItemComponent key={item.id} item={item} showCard={showCard} />)}
                 </List>
               ) : <Spinner size="md" /> }
             </Box>

@@ -14,7 +14,6 @@ import useFirebaseFunction from '../lib/useFirebaseFunction';
 import LoadingPage from './LoadingPage';
 import DynamicCheckbox from './DynamicCheckbox';
 import FriendRequestsComponent from './FriendRequests';
-import EditableTextInput from './EditableTextInput';
 import SolidButton from './SolidButton';
 
 export default function Profile() {
