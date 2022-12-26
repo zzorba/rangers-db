@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, Text, Box, useColorModeValue } from '@chakra-ui/react'
+import { Link, Text, Box } from '@chakra-ui/react'
 import { Trans, t } from '@lingui/macro';
-import NextLink from 'next/link';
+
 import { useTheme } from '../lib/ThemeContext';
 
 export default function Footer() {
-  const patreon = <a href="https://www.patreon.com/arkhamcards">Patreon</a>;
+  const patreon = <Link href="https://www.patreon.com/arkhamcards" textDecorationLine="underline">Patreon</Link>;
   const { colors } = useTheme();
   return (
     <Box
