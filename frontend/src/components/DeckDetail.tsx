@@ -280,7 +280,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
           </Flex>
         </Box>
         <Grid templateColumns="repeat(6, 1fr)" gap={6}>
-          <GridItem colSpan={deck.description ? [6, 6, 4] : 6}>
+          <GridItem colSpan={deck.description ? [6, 6, 4, 3] : 6}>
             <Box
               borderRightWidth={deck.description ? [0, 0, '1px'] : undefined}
               paddingRight={deck.description ? [0, 0, 6] : undefined}
@@ -321,7 +321,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
             </Box>
           </GridItem>
           { !!deck.description && (
-            <GridItem colSpan={[6, 6, 2]}>
+            <GridItem colSpan={[6, 6, 2, 3]}>
               <Stack>
                 <Text fontSize="2xl" fontWeight="600">
                   {t`Description`}

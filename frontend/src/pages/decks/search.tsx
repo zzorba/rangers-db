@@ -95,7 +95,7 @@ export default function Search() {
   const [fit, setFit] = useState<number>();
   const [awa, setAwa] = useState<number>();
   const [spi, setSpi] = useState<number>();
-  const [background, setBackground] = useState<string[]>(['shepherd']);
+  const [background, setBackground] = useState<string[]>();
   const [specialty, setSpecialty] = useState<string[]>();
   const [roles, setRole] = useState<string[]>();
   const [total, setTotal] = useState<number>(10);
