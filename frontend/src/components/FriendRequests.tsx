@@ -9,6 +9,7 @@ import { UserInfoFragment, UserProfileFragment } from '../generated/graphql/apol
 import useFirebaseFunction from '../lib/useFirebaseFunction';
 import FriendSearch from './FriendSearch';
 import { useTheme } from '../lib/ThemeContext';
+import { SubmitIconButton } from './SubmitButton';
 
 
 interface Props {
@@ -21,20 +22,20 @@ interface Props {
 export interface FriendAction {
   title: string;
   icon: 'check' | 'remove' | 'add';
-  onPress: (userId: string) => void;
+  onPress: (userId: string) => Promise<string | undefined>;
 }
 
 function FriendActionButton({ userId, action: { onPress, title, icon } }: { userId: string; action: FriendAction }) {
-  const onClick = useCallback(() => onPress(userId), [onPress, userId]);
+  const onClick = useCallback(async() => onPress(userId), [onPress, userId]);
   const icons = {
     check: <SlCheck />,
     remove: <SlMinus />,
     add: <SlPlus />,
   }
   return (
-    <IconButton
+    <SubmitIconButton
       aria-label={title}
-      onClick={onClick}
+      onSubmit={onClick}
       icon={icons[icon]}
     />
   );
@@ -93,7 +94,10 @@ export default function FriendRequestsComponent({
 }: Props) {
   const [updateFriendRequest, error] = useFirebaseFunction('social-updateFriendRequest');
   const onSubmit = useCallback(async (userId: string, action: 'request' | 'revoke') => {
-    await updateFriendRequest({ userId, action });
+    const r = await updateFriendRequest({ userId, action });
+    if (r.error) {
+      return r.error;
+    }
     refreshProfile();
     return undefined;
   }, [updateFriendRequest, refreshProfile]);

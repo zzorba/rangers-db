@@ -13,15 +13,19 @@ interface SearchResults {
   hasMore: boolean;
 }
 const EMPTY_ACTIONS: FriendAction[] = [];
-export default function FriendSearch({ sendFriendRequest }: { sendFriendRequest: (userId: string) => Promise<void>}) {
+export default function FriendSearch({ sendFriendRequest }: { sendFriendRequest: (userId: string) => Promise<string | undefined>}) {
   const [searchFriends, searchError] = useFirebaseFunction<{ search: string }, SearchResults>('social-searchUsers');
   const [liveFriendRequests, setLiveFriendRequests] = useState<{[userId: string]: boolean | undefined}>({});
   const sendRequest = useCallback(async (userId: string) => {
-    await sendFriendRequest(userId);
+    const error = await sendFriendRequest(userId);
+    if (error) {
+      return error;
+    }
     setLiveFriendRequests({
       ...liveFriendRequests,
       [userId]: true,
     });
+    return undefined;
   }, [sendFriendRequest, liveFriendRequests, setLiveFriendRequests]);
   const friendActions: FriendAction[] = useMemo(() => {
     return [
