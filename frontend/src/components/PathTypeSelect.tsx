@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { Select, OptionBase, SingleValue } from 'chakra-react-select';
 import { find, flatMap } from 'lodash';
 import { t } from '@lingui/macro';
@@ -28,7 +28,9 @@ export default function PathTypeSelect({ value, setValue }: Props) {
         name: p.name,
         label: (
           <Flex direction="row" alignItems="center">
-            <PathIcon path={p} size={42} />
+            <Box marginLeft={1} marginRight={3}>
+              <PathIcon path={p} size={48} />
+            </Box>
             <Text marginLeft={2}>{p.name}</Text>
           </Flex>
         ),
