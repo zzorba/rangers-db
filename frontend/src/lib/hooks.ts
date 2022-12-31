@@ -5,7 +5,7 @@ import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
 import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
-import { AspectMap, DeckCardError, DeckError } from '../types/types';
+import { AspectMap, DeckCardError, DeckError, MapLocation, MapLocations, PathType, PathTypeMap } from '../types/types';
 
 export function useRequireAuth() {
   const { authUser, loading } = useAuth();
@@ -171,6 +171,263 @@ export function getAspectMap(): AspectMap {
       short_name: t`SPI`,
     },
   };
+}
+
+export function getPathTypes(): PathTypeMap {
+  const r: PathTypeMap = {};
+  const paths: PathType[] = [
+    {
+      name: t`Old-growth`,
+      icon: 'old_growth',
+      color: '#924030',
+    },
+    {
+      name: t`Mountain Pass`,
+      icon: 'mountain_pass',
+      color: '#1b211e',
+    },
+    {
+      name: t`Woods`,
+      icon: 'woods',
+      color: '#46932b',
+    },
+    {
+      name: t`Lakeshore`,
+      icon: 'lakeshore',
+      color: '#3f4f6b',
+    },
+    {
+      name: t`Grassland`,
+      icon: 'grassland',
+      color: '#d08e10',
+    },
+    {
+      name: t`Ravine`,
+      icon: 'ravine',
+      color: '#67666b',
+    },
+    {
+      name: t`Swamp`,
+      icon: 'swamp',
+      color: '#7a3d63',
+    },
+    {
+      name: t`River`,
+      icon: 'river',
+      color: '#5996aa',
+    },
+  ];
+  forEach(paths, p => {
+    r[p.icon] = p;
+  })
+  return r;
+}
+
+
+export function getMapLocations(): MapLocations {
+  const r: MapLocations = {};
+  const paths: MapLocation[] = [
+    {
+      id: 'atrox_mountain',
+      name: t`Atrox Mountain`,
+      background: true,
+      type: 'trail',
+    },
+    {
+      id: 'northern_outpost',
+      name: t`Northern Outpost`,
+      type: 'location',
+    },
+    {
+      id: 'lone_tree_station',
+      name: t`Lone Tree Station`,
+      background: true,
+      type: 'location',
+    },
+    {
+      id: 'white_sky',
+      name: t`White Sky`,
+      type: 'location',
+    },
+    {
+      id: 'golden_shore',
+      name: t`Golden Shore`,
+      type: 'trail',
+    },
+    {
+      id: 'mount_nim',
+      name: t`Mount Nim`,
+      type: 'trail',
+    },
+    {
+      id: 'ancestors_grove',
+      name: t`Ancestor's Grove`,
+      type: 'trail',
+    },
+    {
+      id: 'kobos_market',
+      name: t`Kobo's Market`,
+      type: 'trail',
+    },
+    {
+      id: 'boulder_field',
+      name: t`Boulder Field`,
+      type: 'trail',
+      background: true,
+    },
+    {
+      id: 'the_fractured_wall',
+      name: t`The Fractured Wall`,
+      type: 'location',
+    },
+    {
+      id: 'the_philosophers_garden',
+      name: t`The Philosopher's Garden`,
+      type: 'trail',
+    },
+    {
+      id: 'the_high_basin',
+      name: t`The High Basin`,
+      type: 'trail',
+    },
+    {
+      id: 'branch',
+      name: t`Branch`,
+      type: 'location',
+    },
+    {
+      id: 'spire',
+      name: t`Spire`,
+      type: 'location',
+      background: true,
+    },
+    {
+      id: 'crossroads_station',
+      name: t`Crossroads Station`,
+      type: 'trail',
+    },
+    {
+      id: 'the_furrow',
+      name: t`The Furrow`,
+      type: 'trail',
+    },
+    {
+      id: 'biologists_outpost',
+      name: t`Biologist's Outpost`,
+      type: 'trail',
+      background: true,
+    },
+    {
+      id: 'terravore',
+      name: t`Terravore`,
+      type: 'trail',
+    },
+    {
+      id: 'mound_of_the_navigator',
+      name: t`Mound of the Navigator`,
+      type: 'trail',
+      background: true,
+    },
+    {
+      id: 'the_greenbridge',
+      name: t`The Greenbridge`,
+      type: 'trail',
+      background: true,
+    },
+    {
+      id: 'michaels_bog',
+      name: t`Michael's Bog`,
+      type: 'trail',
+    },
+    {
+      id: 'the_cypress_citadel',
+      name: t`The Cypress Citadel`,
+      type: 'trail',
+    },
+    {
+      id: 'marsh_of_rebirth',
+      name: t`Marsh of Rebirth`,
+      type: 'location',
+    },
+    {
+      id: 'sunken_outpost',
+      name: t`Sunken Outpost`,
+      type: 'trail',
+      background: true,
+    },
+    {
+      id: 'the_frowning_gate',
+      name: t`The Frowning Gate`,
+      type: 'trail',
+    },
+    {
+      id: 'bowl_of_the_sun',
+      name: t`Bowl of the Sun`,
+      type: 'trail',
+    },
+    {
+      id: 'the_alluvial_ruins',
+      name: t`The Alluvial Ruins`,
+      type: 'trail',
+    },
+    {
+      id: 'the_tumbledown',
+      name: t`The Tumbledown`,
+      type: 'location',
+    },
+    {
+      id: 'watchers_rock',
+      name: t`Watcher's Rock`,
+      type: 'trail',
+    },
+    {
+      id: 'archeological_outpost',
+      name: t`Archeological Outpost`,
+      type: 'trail',
+      background: true,
+    },
+    {
+      id: 'rings_of_the_moon',
+      name: t`Rings of the Moon`,
+      type: 'trail',
+    },
+    {
+      id: 'the_concordant_ziggurats',
+      name: t`The Concordant Ziggurats`,
+      type: 'trail',
+    },
+    {
+      id: 'meadow',
+      name: t`Meadow`,
+      type: 'location',
+    },
+    {
+      id: 'stoneweaver_bridge',
+      name: t`Stoneweaver Bridge`,
+      type: 'trail',
+      background: true,
+    },
+    {
+      id: 'greenbriar_knoll',
+      name: t`Greenbriar Knoll`,
+      type: 'trail',
+    },
+    {
+      id: 'the_plummet',
+      name: t`The Plummet`,
+      type: 'trail',
+    },
+    {
+      id: 'headwaters_station',
+      name: t`Headwaters Station`,
+      type: 'trail',
+      background: true,
+    },
+  ];
+  forEach(paths, p => {
+    r[p.id] = p;
+  })
+  return r;
 }
 
 interface BasicDeck {

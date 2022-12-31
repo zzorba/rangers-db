@@ -13,6 +13,7 @@ fragment Campaign on rangers_campaign {
   missions
   events
   rewards
+  removed
   calendar
   latest_decks {
     deck {
@@ -116,5 +117,22 @@ fragment DeckWithFullCampaign on rangers_deck {
         slots
       }
     }
+  }
+}
+
+fragment BasicDeckComment on rangers_comment {
+  id
+  user {
+    ...UserInfo
+  }
+  text
+  response_count
+}
+
+fragment DeckComment on rangers_comment {
+  ...BasicDeckComment
+  deck_id
+  responses {
+    ...BasicDeckComment
   }
 }

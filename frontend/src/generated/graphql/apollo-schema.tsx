@@ -20,6 +20,7 @@ export type Scalars = {
   jsonb: any;
   timestamp: any;
   timestamptz: any;
+  uuid: any;
 };
 
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
@@ -14289,6 +14290,10 @@ export type Mutation_Root = {
   delete_rangers_card_text?: Maybe<Rangers_Card_Text_Mutation_Response>;
   /** delete single row from the table: "rangers.card_text" */
   delete_rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
+  /** delete data from the table: "rangers.comment" */
+  delete_rangers_comment?: Maybe<Rangers_Comment_Mutation_Response>;
+  /** delete single row from the table: "rangers.comment" */
+  delete_rangers_comment_by_pk?: Maybe<Rangers_Comment>;
   /** delete data from the table: "rangers.deck" */
   delete_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
   /** delete single row from the table: "rangers.deck" */
@@ -14579,6 +14584,10 @@ export type Mutation_Root = {
   insert_rangers_card_text?: Maybe<Rangers_Card_Text_Mutation_Response>;
   /** insert a single row into the table: "rangers.card_text" */
   insert_rangers_card_text_one?: Maybe<Rangers_Card_Text>;
+  /** insert data into the table: "rangers.comment" */
+  insert_rangers_comment?: Maybe<Rangers_Comment_Mutation_Response>;
+  /** insert a single row into the table: "rangers.comment" */
+  insert_rangers_comment_one?: Maybe<Rangers_Comment>;
   /** insert data into the table: "rangers.deck" */
   insert_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
   /** insert data into the table: "rangers.deck_like" */
@@ -14977,6 +14986,12 @@ export type Mutation_Root = {
   update_rangers_card_text_by_pk?: Maybe<Rangers_Card_Text>;
   /** update multiples rows of table: "rangers.card_text" */
   update_rangers_card_text_many?: Maybe<Array<Maybe<Rangers_Card_Text_Mutation_Response>>>;
+  /** update data of the table: "rangers.comment" */
+  update_rangers_comment?: Maybe<Rangers_Comment_Mutation_Response>;
+  /** update single row of the table: "rangers.comment" */
+  update_rangers_comment_by_pk?: Maybe<Rangers_Comment>;
+  /** update multiples rows of table: "rangers.comment" */
+  update_rangers_comment_many?: Maybe<Array<Maybe<Rangers_Comment_Mutation_Response>>>;
   /** update data of the table: "rangers.deck" */
   update_rangers_deck?: Maybe<Rangers_Deck_Mutation_Response>;
   /** update single row of the table: "rangers.deck" */
@@ -15688,6 +15703,18 @@ export type Mutation_RootDelete_Rangers_Card_TextArgs = {
 export type Mutation_RootDelete_Rangers_Card_Text_By_PkArgs = {
   id: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_CommentArgs = {
+  where: Rangers_Comment_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Comment_By_PkArgs = {
+  id: Scalars['uuid'];
 };
 
 
@@ -16648,6 +16675,20 @@ export type Mutation_RootInsert_Rangers_Card_TextArgs = {
 export type Mutation_RootInsert_Rangers_Card_Text_OneArgs = {
   object: Rangers_Card_Text_Insert_Input;
   on_conflict?: InputMaybe<Rangers_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_CommentArgs = {
+  objects: Array<Rangers_Comment_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Comment_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Comment_OneArgs = {
+  object: Rangers_Comment_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Comment_On_Conflict>;
 };
 
 
@@ -18136,6 +18177,28 @@ export type Mutation_RootUpdate_Rangers_Card_Text_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_Card_Text_ManyArgs = {
   updates: Array<Rangers_Card_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_CommentArgs = {
+  _inc?: InputMaybe<Rangers_Comment_Inc_Input>;
+  _set?: InputMaybe<Rangers_Comment_Set_Input>;
+  where: Rangers_Comment_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Comment_By_PkArgs = {
+  _inc?: InputMaybe<Rangers_Comment_Inc_Input>;
+  _set?: InputMaybe<Rangers_Comment_Set_Input>;
+  pk_columns: Rangers_Comment_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Comment_ManyArgs = {
+  updates: Array<Rangers_Comment_Updates>;
 };
 
 
@@ -19663,6 +19726,12 @@ export type Query_Root = {
   rangers_card_updated: Array<Rangers_Card_Updated>;
   /** fetch aggregated fields from the table: "rangers.card_updated" */
   rangers_card_updated_aggregate: Rangers_Card_Updated_Aggregate;
+  /** fetch data from the table: "rangers.comment" */
+  rangers_comment: Array<Rangers_Comment>;
+  /** fetch aggregated fields from the table: "rangers.comment" */
+  rangers_comment_aggregate: Rangers_Comment_Aggregate;
+  /** fetch data from the table: "rangers.comment" using primary key columns */
+  rangers_comment_by_pk?: Maybe<Rangers_Comment>;
   /** fetch data from the table: "rangers.deck" */
   rangers_deck: Array<Rangers_Deck>;
   /** fetch aggregated fields from the table: "rangers.deck" */
@@ -20969,6 +21038,29 @@ export type Query_RootRangers_Card_Updated_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Rangers_Card_Updated_Order_By>>;
   where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_CommentArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Comment_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Comment_By_PkArgs = {
+  id: Scalars['uuid'];
 };
 
 
@@ -22552,6 +22644,7 @@ export type Rangers_Campaign = {
   latest_decks_aggregate: Rangers_Latest_Deck_Aggregate;
   missions: Scalars['jsonb'];
   name: Scalars['String'];
+  removed: Scalars['jsonb'];
   rewards: Scalars['jsonb'];
   updated_at: Scalars['timestamptz'];
   user_id: Scalars['String'];
@@ -22612,6 +22705,12 @@ export type Rangers_CampaignLatest_Decks_AggregateArgs = {
 
 /** columns and relationships of "rangers.campaign" */
 export type Rangers_CampaignMissionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "rangers.campaign" */
+export type Rangers_CampaignRemovedArgs = {
   path?: InputMaybe<Scalars['String']>;
 };
 
@@ -22863,6 +22962,7 @@ export type Rangers_Campaign_Append_Input = {
   calendar?: InputMaybe<Scalars['jsonb']>;
   events?: InputMaybe<Scalars['jsonb']>;
   missions?: InputMaybe<Scalars['jsonb']>;
+  removed?: InputMaybe<Scalars['jsonb']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
 };
 
@@ -22892,6 +22992,7 @@ export type Rangers_Campaign_Bool_Exp = {
   latest_decks_aggregate?: InputMaybe<Rangers_Latest_Deck_Aggregate_Bool_Exp>;
   missions?: InputMaybe<Jsonb_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  removed?: InputMaybe<Jsonb_Comparison_Exp>;
   rewards?: InputMaybe<Jsonb_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   user_id?: InputMaybe<String_Comparison_Exp>;
@@ -22908,6 +23009,7 @@ export type Rangers_Campaign_Delete_At_Path_Input = {
   calendar?: InputMaybe<Array<Scalars['String']>>;
   events?: InputMaybe<Array<Scalars['String']>>;
   missions?: InputMaybe<Array<Scalars['String']>>;
+  removed?: InputMaybe<Array<Scalars['String']>>;
   rewards?: InputMaybe<Array<Scalars['String']>>;
 };
 
@@ -22916,6 +23018,7 @@ export type Rangers_Campaign_Delete_Elem_Input = {
   calendar?: InputMaybe<Scalars['Int']>;
   events?: InputMaybe<Scalars['Int']>;
   missions?: InputMaybe<Scalars['Int']>;
+  removed?: InputMaybe<Scalars['Int']>;
   rewards?: InputMaybe<Scalars['Int']>;
 };
 
@@ -22924,6 +23027,7 @@ export type Rangers_Campaign_Delete_Key_Input = {
   calendar?: InputMaybe<Scalars['String']>;
   events?: InputMaybe<Scalars['String']>;
   missions?: InputMaybe<Scalars['String']>;
+  removed?: InputMaybe<Scalars['String']>;
   rewards?: InputMaybe<Scalars['String']>;
 };
 
@@ -22947,6 +23051,7 @@ export type Rangers_Campaign_Insert_Input = {
   latest_decks?: InputMaybe<Rangers_Latest_Deck_Arr_Rel_Insert_Input>;
   missions?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  removed?: InputMaybe<Scalars['jsonb']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['String']>;
@@ -23015,6 +23120,7 @@ export type Rangers_Campaign_Order_By = {
   latest_decks_aggregate?: InputMaybe<Rangers_Latest_Deck_Aggregate_Order_By>;
   missions?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  removed?: InputMaybe<Order_By>;
   rewards?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
@@ -23030,6 +23136,7 @@ export type Rangers_Campaign_Prepend_Input = {
   calendar?: InputMaybe<Scalars['jsonb']>;
   events?: InputMaybe<Scalars['jsonb']>;
   missions?: InputMaybe<Scalars['jsonb']>;
+  removed?: InputMaybe<Scalars['jsonb']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
 };
 
@@ -23054,6 +23161,8 @@ export enum Rangers_Campaign_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
+  Removed = 'removed',
+  /** column name */
   Rewards = 'rewards',
   /** column name */
   UpdatedAt = 'updated_at',
@@ -23072,6 +23181,7 @@ export type Rangers_Campaign_Set_Input = {
   id?: InputMaybe<Scalars['Int']>;
   missions?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  removed?: InputMaybe<Scalars['jsonb']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['String']>;
@@ -23117,6 +23227,7 @@ export type Rangers_Campaign_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['Int']>;
   missions?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
+  removed?: InputMaybe<Scalars['jsonb']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['String']>;
@@ -23149,6 +23260,8 @@ export enum Rangers_Campaign_Update_Column {
   Missions = 'missions',
   /** column name */
   Name = 'name',
+  /** column name */
+  Removed = 'removed',
   /** column name */
   Rewards = 'rewards',
   /** column name */
@@ -25006,6 +25119,411 @@ export type Rangers_Card_Variance_Fields = {
   token_count?: Maybe<Scalars['Float']>;
 };
 
+/** columns and relationships of "rangers.comment" */
+export type Rangers_Comment = {
+  __typename?: 'rangers_comment';
+  comment_id?: Maybe<Scalars['uuid']>;
+  created_at: Scalars['timestamptz'];
+  /** An object relationship */
+  deck?: Maybe<Rangers_Deck>;
+  deck_id?: Maybe<Scalars['Int']>;
+  id: Scalars['uuid'];
+  /** An object relationship */
+  parent?: Maybe<Rangers_Comment>;
+  /** A computed field, executes function "rangers.comment_response_count" */
+  response_count?: Maybe<Scalars['bigint']>;
+  /** An array relationship */
+  responses: Array<Rangers_Comment>;
+  /** An aggregate relationship */
+  responses_aggregate: Rangers_Comment_Aggregate;
+  text?: Maybe<Scalars['String']>;
+  updated_at: Scalars['timestamptz'];
+  /** An object relationship */
+  user: Rangers_Users;
+  user_id: Scalars['String'];
+};
+
+
+/** columns and relationships of "rangers.comment" */
+export type Rangers_CommentResponsesArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.comment" */
+export type Rangers_CommentResponses_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+/** aggregated selection of "rangers.comment" */
+export type Rangers_Comment_Aggregate = {
+  __typename?: 'rangers_comment_aggregate';
+  aggregate?: Maybe<Rangers_Comment_Aggregate_Fields>;
+  nodes: Array<Rangers_Comment>;
+};
+
+export type Rangers_Comment_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Rangers_Comment_Aggregate_Bool_Exp_Count>;
+};
+
+export type Rangers_Comment_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Rangers_Comment_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "rangers.comment" */
+export type Rangers_Comment_Aggregate_Fields = {
+  __typename?: 'rangers_comment_aggregate_fields';
+  avg?: Maybe<Rangers_Comment_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Comment_Max_Fields>;
+  min?: Maybe<Rangers_Comment_Min_Fields>;
+  stddev?: Maybe<Rangers_Comment_Stddev_Fields>;
+  stddev_pop?: Maybe<Rangers_Comment_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Rangers_Comment_Stddev_Samp_Fields>;
+  sum?: Maybe<Rangers_Comment_Sum_Fields>;
+  var_pop?: Maybe<Rangers_Comment_Var_Pop_Fields>;
+  var_samp?: Maybe<Rangers_Comment_Var_Samp_Fields>;
+  variance?: Maybe<Rangers_Comment_Variance_Fields>;
+};
+
+
+/** aggregate fields of "rangers.comment" */
+export type Rangers_Comment_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "rangers.comment" */
+export type Rangers_Comment_Aggregate_Order_By = {
+  avg?: InputMaybe<Rangers_Comment_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Rangers_Comment_Max_Order_By>;
+  min?: InputMaybe<Rangers_Comment_Min_Order_By>;
+  stddev?: InputMaybe<Rangers_Comment_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Rangers_Comment_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Rangers_Comment_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Rangers_Comment_Sum_Order_By>;
+  var_pop?: InputMaybe<Rangers_Comment_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Rangers_Comment_Var_Samp_Order_By>;
+  variance?: InputMaybe<Rangers_Comment_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "rangers.comment" */
+export type Rangers_Comment_Arr_Rel_Insert_Input = {
+  data: Array<Rangers_Comment_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Rangers_Comment_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Rangers_Comment_Avg_Fields = {
+  __typename?: 'rangers_comment_avg_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "rangers.comment" */
+export type Rangers_Comment_Avg_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.comment". All fields are combined with a logical 'AND'. */
+export type Rangers_Comment_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Comment_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Comment_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Comment_Bool_Exp>>;
+  comment_id?: InputMaybe<Uuid_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  deck?: InputMaybe<Rangers_Deck_Bool_Exp>;
+  deck_id?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  parent?: InputMaybe<Rangers_Comment_Bool_Exp>;
+  response_count?: InputMaybe<Bigint_Comparison_Exp>;
+  responses?: InputMaybe<Rangers_Comment_Bool_Exp>;
+  responses_aggregate?: InputMaybe<Rangers_Comment_Aggregate_Bool_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user?: InputMaybe<Rangers_Users_Bool_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.comment" */
+export enum Rangers_Comment_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  CommentPkey = 'comment_pkey'
+}
+
+/** input type for incrementing numeric columns in table "rangers.comment" */
+export type Rangers_Comment_Inc_Input = {
+  deck_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "rangers.comment" */
+export type Rangers_Comment_Insert_Input = {
+  comment_id?: InputMaybe<Scalars['uuid']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck?: InputMaybe<Rangers_Deck_Obj_Rel_Insert_Input>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  parent?: InputMaybe<Rangers_Comment_Obj_Rel_Insert_Input>;
+  responses?: InputMaybe<Rangers_Comment_Arr_Rel_Insert_Input>;
+  text?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Comment_Max_Fields = {
+  __typename?: 'rangers_comment_max_fields';
+  comment_id?: Maybe<Scalars['uuid']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['uuid']>;
+  text?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "rangers.comment" */
+export type Rangers_Comment_Max_Order_By = {
+  comment_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Comment_Min_Fields = {
+  __typename?: 'rangers_comment_min_fields';
+  comment_id?: Maybe<Scalars['uuid']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['uuid']>;
+  text?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "rangers.comment" */
+export type Rangers_Comment_Min_Order_By = {
+  comment_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "rangers.comment" */
+export type Rangers_Comment_Mutation_Response = {
+  __typename?: 'rangers_comment_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Comment>;
+};
+
+/** input type for inserting object relation for remote table "rangers.comment" */
+export type Rangers_Comment_Obj_Rel_Insert_Input = {
+  data: Rangers_Comment_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Rangers_Comment_On_Conflict>;
+};
+
+/** on_conflict condition type for table "rangers.comment" */
+export type Rangers_Comment_On_Conflict = {
+  constraint: Rangers_Comment_Constraint;
+  update_columns?: Array<Rangers_Comment_Update_Column>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.comment". */
+export type Rangers_Comment_Order_By = {
+  comment_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deck?: InputMaybe<Rangers_Deck_Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  parent?: InputMaybe<Rangers_Comment_Order_By>;
+  response_count?: InputMaybe<Order_By>;
+  responses_aggregate?: InputMaybe<Rangers_Comment_Aggregate_Order_By>;
+  text?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user?: InputMaybe<Rangers_Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.comment */
+export type Rangers_Comment_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "rangers.comment" */
+export enum Rangers_Comment_Select_Column {
+  /** column name */
+  CommentId = 'comment_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "rangers.comment" */
+export type Rangers_Comment_Set_Input = {
+  comment_id?: InputMaybe<Scalars['uuid']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  text?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Rangers_Comment_Stddev_Fields = {
+  __typename?: 'rangers_comment_stddev_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "rangers.comment" */
+export type Rangers_Comment_Stddev_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Rangers_Comment_Stddev_Pop_Fields = {
+  __typename?: 'rangers_comment_stddev_pop_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "rangers.comment" */
+export type Rangers_Comment_Stddev_Pop_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Rangers_Comment_Stddev_Samp_Fields = {
+  __typename?: 'rangers_comment_stddev_samp_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "rangers.comment" */
+export type Rangers_Comment_Stddev_Samp_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "rangers_comment" */
+export type Rangers_Comment_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Comment_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Comment_Stream_Cursor_Value_Input = {
+  comment_id?: InputMaybe<Scalars['uuid']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  text?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Rangers_Comment_Sum_Fields = {
+  __typename?: 'rangers_comment_sum_fields';
+  deck_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "rangers.comment" */
+export type Rangers_Comment_Sum_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "rangers.comment" */
+export enum Rangers_Comment_Update_Column {
+  /** column name */
+  CommentId = 'comment_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Rangers_Comment_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Rangers_Comment_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Comment_Set_Input>;
+  where: Rangers_Comment_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Rangers_Comment_Var_Pop_Fields = {
+  __typename?: 'rangers_comment_var_pop_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "rangers.comment" */
+export type Rangers_Comment_Var_Pop_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Rangers_Comment_Var_Samp_Fields = {
+  __typename?: 'rangers_comment_var_samp_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "rangers.comment" */
+export type Rangers_Comment_Var_Samp_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Rangers_Comment_Variance_Fields = {
+  __typename?: 'rangers_comment_variance_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "rangers.comment" */
+export type Rangers_Comment_Variance_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+};
+
 /** columns and relationships of "rangers.deck" */
 export type Rangers_Deck = {
   __typename?: 'rangers_deck';
@@ -25016,6 +25534,12 @@ export type Rangers_Deck = {
   /** An object relationship */
   campaign?: Maybe<Rangers_Campaign>;
   campaign_id?: Maybe<Scalars['Int']>;
+  /** A computed field, executes function "rangers.deck_comment_count" */
+  comment_count?: Maybe<Scalars['bigint']>;
+  /** An array relationship */
+  comments: Array<Rangers_Comment>;
+  /** An aggregate relationship */
+  comments_aggregate: Rangers_Comment_Aggregate;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   fit: Scalars['Int'];
@@ -25043,6 +25567,26 @@ export type Rangers_Deck = {
   user: Rangers_Users;
   user_id: Scalars['String'];
   version: Scalars['Int'];
+};
+
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_DeckCommentsArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_DeckComments_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
 };
 
 
@@ -25138,6 +25682,9 @@ export type Rangers_Deck_Bool_Exp = {
   base_deck_id?: InputMaybe<Int_Comparison_Exp>;
   campaign?: InputMaybe<Rangers_Campaign_Bool_Exp>;
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
+  comment_count?: InputMaybe<Bigint_Comparison_Exp>;
+  comments?: InputMaybe<Rangers_Comment_Bool_Exp>;
+  comments_aggregate?: InputMaybe<Rangers_Comment_Aggregate_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
   fit?: InputMaybe<Int_Comparison_Exp>;
@@ -25217,6 +25764,7 @@ export type Rangers_Deck_Insert_Input = {
   base_deck_id?: InputMaybe<Scalars['Int']>;
   campaign?: InputMaybe<Rangers_Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: InputMaybe<Scalars['Int']>;
+  comments?: InputMaybe<Rangers_Comment_Arr_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   fit?: InputMaybe<Scalars['Int']>;
@@ -25532,6 +26080,8 @@ export type Rangers_Deck_Order_By = {
   base_deck_id?: InputMaybe<Order_By>;
   campaign?: InputMaybe<Rangers_Campaign_Order_By>;
   campaign_id?: InputMaybe<Order_By>;
+  comment_count?: InputMaybe<Order_By>;
+  comments_aggregate?: InputMaybe<Rangers_Comment_Aggregate_Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   fit?: InputMaybe<Order_By>;
@@ -31337,6 +31887,14 @@ export type Subscription_Root = {
   rangers_card_updated_aggregate: Rangers_Card_Updated_Aggregate;
   /** fetch data from the table in a streaming manner: "rangers.card_updated" */
   rangers_card_updated_stream: Array<Rangers_Card_Updated>;
+  /** fetch data from the table: "rangers.comment" */
+  rangers_comment: Array<Rangers_Comment>;
+  /** fetch aggregated fields from the table: "rangers.comment" */
+  rangers_comment_aggregate: Rangers_Comment_Aggregate;
+  /** fetch data from the table: "rangers.comment" using primary key columns */
+  rangers_comment_by_pk?: Maybe<Rangers_Comment>;
+  /** fetch data from the table in a streaming manner: "rangers.comment" */
+  rangers_comment_stream: Array<Rangers_Comment>;
   /** fetch data from the table: "rangers.deck" */
   rangers_deck: Array<Rangers_Deck>;
   /** fetch aggregated fields from the table: "rangers.deck" */
@@ -33060,6 +33618,36 @@ export type Subscription_RootRangers_Card_Updated_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Card_Updated_Stream_Cursor_Input>>;
   where?: InputMaybe<Rangers_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_CommentArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Comment_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Comment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootRangers_Comment_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Comment_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Comment_Bool_Exp>;
 };
 
 
@@ -36196,6 +36784,19 @@ export type Users_Updates = {
   where: Users_Bool_Exp;
 };
 
+/** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
+export type Uuid_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['uuid']>;
+  _gt?: InputMaybe<Scalars['uuid']>;
+  _gte?: InputMaybe<Scalars['uuid']>;
+  _in?: InputMaybe<Array<Scalars['uuid']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['uuid']>;
+  _lte?: InputMaybe<Scalars['uuid']>;
+  _neq?: InputMaybe<Scalars['uuid']>;
+  _nin?: InputMaybe<Array<Scalars['uuid']>>;
+};
+
 export type GetMyCampaignsQueryVariables = Exact<{
   userId: Scalars['String'];
   limit: Scalars['Int'];
@@ -36203,7 +36804,7 @@ export type GetMyCampaignsQueryVariables = Exact<{
 }>;
 
 
-export type GetMyCampaignsQuery = { __typename?: 'query_root', campaigns: Array<{ __typename?: 'rangers_user_campaign', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null }> };
+export type GetMyCampaignsQuery = { __typename?: 'query_root', campaigns: Array<{ __typename?: 'rangers_user_campaign', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null }> };
 
 export type GetMyCampaignsTotalQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -36217,14 +36818,14 @@ export type GetCampaignQueryVariables = Exact<{
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
 
 export type CreateCampaignMutationVariables = Exact<{
   name: Scalars['String'];
 }>;
 
 
-export type CreateCampaignMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
+export type CreateCampaignMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
 
 export type AddFriendToCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
@@ -36257,6 +36858,22 @@ export type AddCampaignEventMutationVariables = Exact<{
 
 
 export type AddCampaignEventMutation = { __typename?: 'mutation_root', update_rangers_campaign_by_pk?: { __typename?: 'rangers_campaign', id: number, events: any } | null };
+
+export type UpdateCampaignRemovedMutationVariables = Exact<{
+  campaignId: Scalars['Int'];
+  removed: Scalars['jsonb'];
+}>;
+
+
+export type UpdateCampaignRemovedMutation = { __typename?: 'mutation_root', update_rangers_campaign_by_pk?: { __typename?: 'rangers_campaign', id: number, removed: any } | null };
+
+export type AddCampaignRemovedMutationVariables = Exact<{
+  campaignId: Scalars['Int'];
+  removed: Scalars['jsonb'];
+}>;
+
+
+export type AddCampaignRemovedMutation = { __typename?: 'mutation_root', update_rangers_campaign_by_pk?: { __typename?: 'rangers_campaign', id: number, removed: any } | null };
 
 export type UpdateCampaignEventsMutationVariables = Exact<{
   campaignId: Scalars['Int'];
@@ -36461,7 +37078,16 @@ export type GetDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, rank?: { __typename?: 'rangers_deck_rank', like_count?: any | null } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
+export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', comment_count?: any | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, rank?: { __typename?: 'rangers_deck_rank', like_count?: any | null } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
+
+export type GetDeckCommentsQueryVariables = Exact<{
+  deckId: Scalars['Int'];
+  limit: Scalars['Int'];
+  offset: Scalars['Int'];
+}>;
+
+
+export type GetDeckCommentsQuery = { __typename?: 'query_root', rangers_comment: Array<{ __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, response_count?: any | null, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, response_count?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }> };
 
 export type CreateDeckMutationVariables = Exact<{
   name: Scalars['String'];
@@ -36523,7 +37149,7 @@ export type UnlikeDeckMutation = { __typename?: 'mutation_root', update_rangers_
 
 export type UserInfoFragment = { __typename?: 'rangers_users', id: string, handle?: string | null };
 
-export type CampaignFragment = { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
+export type CampaignFragment = { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
 export type SearchDeckFragment = { __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, liked_by_user?: boolean | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null, rank?: { __typename?: 'rangers_deck_rank', like_count?: any | null } | null };
 
@@ -36532,6 +37158,10 @@ export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: s
 export type DeckWithCampaignFragment = { __typename?: 'rangers_deck', liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, rank?: { __typename?: 'rangers_deck_rank', like_count?: any | null } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
 export type DeckWithFullCampaignFragment = { __typename?: 'rangers_deck', liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, rank?: { __typename?: 'rangers_deck_rank', like_count?: any | null } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
+
+export type BasicDeckCommentFragment = { __typename?: 'rangers_comment', id: any, text?: string | null, response_count?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
+
+export type DeckCommentFragment = { __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, response_count?: any | null, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, response_count?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
 export type UserProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
@@ -36659,6 +37289,7 @@ export const CampaignFragmentDoc = gql`
   missions
   events
   rewards
+  removed
   calendar
   latest_decks {
     deck {
@@ -36734,6 +37365,25 @@ export const DeckWithFullCampaignFragmentDoc = gql`
   }
 }
     ${DeckFragmentDoc}`;
+export const BasicDeckCommentFragmentDoc = gql`
+    fragment BasicDeckComment on rangers_comment {
+  id
+  user {
+    ...UserInfo
+  }
+  text
+  response_count
+}
+    ${UserInfoFragmentDoc}`;
+export const DeckCommentFragmentDoc = gql`
+    fragment DeckComment on rangers_comment {
+  ...BasicDeckComment
+  deck_id
+  responses {
+    ...BasicDeckComment
+  }
+}
+    ${BasicDeckCommentFragmentDoc}`;
 export const UserProfileFragmentDoc = gql`
     fragment UserProfile on rangers_users {
   id
@@ -37065,6 +37715,82 @@ export function useAddCampaignEventMutation(baseOptions?: Apollo.MutationHookOpt
 export type AddCampaignEventMutationHookResult = ReturnType<typeof useAddCampaignEventMutation>;
 export type AddCampaignEventMutationResult = Apollo.MutationResult<AddCampaignEventMutation>;
 export type AddCampaignEventMutationOptions = Apollo.BaseMutationOptions<AddCampaignEventMutation, AddCampaignEventMutationVariables>;
+export const UpdateCampaignRemovedDocument = gql`
+    mutation updateCampaignRemoved($campaignId: Int!, $removed: jsonb!) {
+  update_rangers_campaign_by_pk(
+    pk_columns: {id: $campaignId}
+    _set: {removed: $removed}
+  ) {
+    id
+    removed
+  }
+}
+    `;
+export type UpdateCampaignRemovedMutationFn = Apollo.MutationFunction<UpdateCampaignRemovedMutation, UpdateCampaignRemovedMutationVariables>;
+
+/**
+ * __useUpdateCampaignRemovedMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignRemovedMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignRemovedMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignRemovedMutation, { data, loading, error }] = useUpdateCampaignRemovedMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      removed: // value for 'removed'
+ *   },
+ * });
+ */
+export function useUpdateCampaignRemovedMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignRemovedMutation, UpdateCampaignRemovedMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignRemovedMutation, UpdateCampaignRemovedMutationVariables>(UpdateCampaignRemovedDocument, options);
+      }
+export type UpdateCampaignRemovedMutationHookResult = ReturnType<typeof useUpdateCampaignRemovedMutation>;
+export type UpdateCampaignRemovedMutationResult = Apollo.MutationResult<UpdateCampaignRemovedMutation>;
+export type UpdateCampaignRemovedMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignRemovedMutation, UpdateCampaignRemovedMutationVariables>;
+export const AddCampaignRemovedDocument = gql`
+    mutation addCampaignRemoved($campaignId: Int!, $removed: jsonb!) {
+  update_rangers_campaign_by_pk(
+    pk_columns: {id: $campaignId}
+    _append: {removed: $removed}
+  ) {
+    id
+    removed
+  }
+}
+    `;
+export type AddCampaignRemovedMutationFn = Apollo.MutationFunction<AddCampaignRemovedMutation, AddCampaignRemovedMutationVariables>;
+
+/**
+ * __useAddCampaignRemovedMutation__
+ *
+ * To run a mutation, you first call `useAddCampaignRemovedMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCampaignRemovedMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCampaignRemovedMutation, { data, loading, error }] = useAddCampaignRemovedMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      removed: // value for 'removed'
+ *   },
+ * });
+ */
+export function useAddCampaignRemovedMutation(baseOptions?: Apollo.MutationHookOptions<AddCampaignRemovedMutation, AddCampaignRemovedMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddCampaignRemovedMutation, AddCampaignRemovedMutationVariables>(AddCampaignRemovedDocument, options);
+      }
+export type AddCampaignRemovedMutationHookResult = ReturnType<typeof useAddCampaignRemovedMutation>;
+export type AddCampaignRemovedMutationResult = Apollo.MutationResult<AddCampaignRemovedMutation>;
+export type AddCampaignRemovedMutationOptions = Apollo.BaseMutationOptions<AddCampaignRemovedMutation, AddCampaignRemovedMutationVariables>;
 export const UpdateCampaignEventsDocument = gql`
     mutation updateCampaignEvents($campaignId: Int!, $events: jsonb!) {
   update_rangers_campaign_by_pk(
@@ -37976,6 +38702,7 @@ export const GetDeckDocument = gql`
     user {
       handle
     }
+    comment_count
   }
 }
     ${DeckWithFullCampaignFragmentDoc}`;
@@ -38007,6 +38734,48 @@ export function useGetDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetDeckQueryHookResult = ReturnType<typeof useGetDeckQuery>;
 export type GetDeckLazyQueryHookResult = ReturnType<typeof useGetDeckLazyQuery>;
 export type GetDeckQueryResult = Apollo.QueryResult<GetDeckQuery, GetDeckQueryVariables>;
+export const GetDeckCommentsDocument = gql`
+    query getDeckComments($deckId: Int!, $limit: Int!, $offset: Int!) {
+  rangers_comment(
+    where: {deck_id: {_eq: $deckId}, comment_id: {_is_null: true}}
+    order_by: {created_at: desc}
+    offset: $offset
+    limit: $limit
+  ) {
+    ...DeckComment
+  }
+}
+    ${DeckCommentFragmentDoc}`;
+
+/**
+ * __useGetDeckCommentsQuery__
+ *
+ * To run a query within a React component, call `useGetDeckCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDeckCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDeckCommentsQuery({
+ *   variables: {
+ *      deckId: // value for 'deckId'
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useGetDeckCommentsQuery(baseOptions: Apollo.QueryHookOptions<GetDeckCommentsQuery, GetDeckCommentsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDeckCommentsQuery, GetDeckCommentsQueryVariables>(GetDeckCommentsDocument, options);
+      }
+export function useGetDeckCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDeckCommentsQuery, GetDeckCommentsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDeckCommentsQuery, GetDeckCommentsQueryVariables>(GetDeckCommentsDocument, options);
+        }
+export type GetDeckCommentsQueryHookResult = ReturnType<typeof useGetDeckCommentsQuery>;
+export type GetDeckCommentsLazyQueryHookResult = ReturnType<typeof useGetDeckCommentsLazyQuery>;
+export type GetDeckCommentsQueryResult = Apollo.QueryResult<GetDeckCommentsQuery, GetDeckCommentsQueryVariables>;
 export const CreateDeckDocument = gql`
     mutation createDeck($name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!) {
   deck: insert_rangers_deck_one(

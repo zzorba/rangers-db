@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'core';
-  src:  url('/fonts/core.eot?g1ohoi');
-  src:  url('/fonts/core.eot?g1ohoi#iefix') format('embedded-opentype'),
-    url('/fonts/core.ttf?g1ohoi') format('truetype'),
-    url('/fonts/core.woff?g1ohoi') format('woff'),
-    url('/fonts/core.svg?g1ohoi#core') format('svg');
+  src:  url('/fonts/core.eot?yah1m4');
+  src:  url('/fonts/core.eot?yah1m4#iefix') format('embedded-opentype'),
+    url('/fonts/core.ttf?yah1m4') format('truetype'),
+    url('/fonts/core.woff?yah1m4') format('woff'),
+    url('/fonts/core.svg?yah1m4#core') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -66,4 +66,40 @@
 }
 .core-mountain:before {
   content: "\e90d";
+}
+.core-spi_chakra:before {
+  content: "\e90e";
+}
+.core-foc_chakra:before {
+  content: "\e90f";
+}
+.core-fit_chakra:before {
+  content: "\e910";
+}
+.core-awa_chakra:before {
+  content: "\e911";
+}
+.core-old_growth:before {
+  content: "\e912";
+}
+.core-mountain_pass:before {
+  content: "\e913";
+}
+.core-woods:before {
+  content: "\e914";
+}
+.core-lakeshore:before {
+  content: "\e915";
+}
+.core-grassland:before {
+  content: "\e916";
+}
+.core-ravine:before {
+  content: "\e917";
+}
+.core-swamp:before {
+  content: "\e918";
+}
+.core-river:before {
+  content: "\e919";
 }

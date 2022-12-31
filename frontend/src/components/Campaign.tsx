@@ -1,11 +1,11 @@
-import { Button, Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { Button, Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { plural, t } from '@lingui/macro';
 import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim } from 'lodash';
 import NextLink from 'next/link';
 import Router from 'next/router';
 
-import { CampaignFragment, CardFragment, DeckFragment, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
+import { CampaignFragment, CardFragment, DeckFragment, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import SolidButton from './SolidButton';
 import FriendChooser from './FriendChooser';
@@ -25,6 +25,10 @@ import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
 import { FaTrash } from 'react-icons/fa';
 import { useTheme } from '../lib/ThemeContext';
+import PathTypeSelect from './PathTypeSelect';
+import { LocationIcon, PathIcon } from '../icons/LocationIcon';
+import MapLocationSelect from './MapLocationSelect';
+import CardSetSelect from './CardSetSelect';
 
 interface MissionEntry {
   day: number;
@@ -43,21 +47,27 @@ interface NotableEvent {
   crossed_out?: boolean;
 }
 
+interface RemovedEntry {
+  set_id?: string;
+  name: string;
+}
+
 export interface ParsedCampaign {
   id: number;
   name: string;
   day: number;
   user_id: string;
 
+  access: UserInfoFragment[];
+
   missions: MissionEntry[];
   calendar: CalendarEntry[];
   events: NotableEvent[];
   rewards: string[];
+  removed: RemovedEntry[];
+  latest_decks: LatestDeck[];
   current_location: string | undefined;
   current_path_terrain: string | undefined;
-
-  latest_decks: LatestDeck[];
-  access: UserInfoFragment[];
 }
 
 export class CampaignWrapper implements ParsedCampaign {
@@ -71,11 +81,11 @@ export class CampaignWrapper implements ParsedCampaign {
   events: NotableEvent[];
   missions: MissionEntry[];
   calendar: CalendarEntry[];
+  removed: RemovedEntry[];
   rewards: string[];
   latest_decks: LatestDeck[];
   current_location: string | undefined;
   current_path_terrain: string | undefined;
-
 
   constructor(campaign: CampaignFragment) {
     this.id = campaign.id;
@@ -87,7 +97,7 @@ export class CampaignWrapper implements ParsedCampaign {
     this.calendar = Array.isArray(campaign.calendar) ? (campaign.calendar as CalendarEntry[]) : [];
     this.rewards = Array.isArray(campaign.rewards) ? (campaign.rewards as string[]) : [];
     this.events = Array.isArray(campaign.events) ? (campaign.events as NotableEvent[]) : [];
-
+    this.removed = Array.isArray(campaign.removed) ? (campaign.removed as RemovedEntry[]) : [];
     this.current_location = campaign.current_location || undefined;
     this.current_path_terrain = campaign.current_path_terrain || undefined;
 
@@ -263,6 +273,7 @@ function RewardRow({ card, unlocked, onUpdate }: { card: CardFragment; unlocked:
     <CardRow card={card}>
       <Box marginLeft={2}>
         <SubmitIconButton
+          variant="ghost"
           onSubmit={onSubmit}
           aria-label={unlocked ? t`Remove reward` : t`Add reward`}
           icon={unlocked ? <SlMinus /> : <SlPlus />}
@@ -390,7 +401,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
       guides: filter(map(entries, e => trim(e)), x => !!x),
     };
     const calendar: CalendarEntry[] = [
-      ...flatMap(campaign.calendar as CalendarEntry[], c => {
+      ...flatMap(campaign.calendar, c => {
         if (c.day === day) {
           return [];
         }
@@ -413,7 +424,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
   }, [setCalendar, day, entries, campaign.id, campaign.calendar, onClose]);
   const onShow = useCallback((day: number) => {
     setDay(day);
-    setEntries(find(campaign.calendar as CalendarEntry[], e => e.day === day)?.guides || []);
+    setEntries(find(campaign.calendar, e => e.day === day)?.guides || []);
     onOpen();
   }, [campaign, setDay, setEntries, onOpen]);
   const [newEntry, setNewEntry] = useState('');
@@ -426,7 +437,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
       ]),
     };
     const calendar: CalendarEntry[] = [
-      ...flatMap(campaign.calendar as CalendarEntry[], c => {
+      ...flatMap(campaign.calendar, c => {
         if (c.day === day) {
           return [];
         }
@@ -456,7 +467,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
       )),
     };
     const calendar: CalendarEntry[] = [
-      ...flatMap(campaign.calendar as CalendarEntry[], c => {
+      ...flatMap(campaign.calendar, c => {
         if (c.day === day) {
           return [];
         }
@@ -710,7 +721,7 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
     const r = await setMissions({
       variables: {
         campaignId: campaign.id,
-        missions: filter(campaign.missions as MissionEntry[], (m, idx) => idx !== current.index),
+        missions: filter(campaign.missions, (m, idx) => idx !== current.index),
       }
     });
     if (r.errors?.length) {
@@ -736,7 +747,7 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
     const result = await setMissions({
       variables: {
         campaignId: campaign.id,
-        missions: map(campaign.missions as MissionEntry[], (m, idx) => idx !== current.index ? m : mission),
+        missions: map(campaign.missions, (m, idx) => idx !== current.index ? m : mission),
       },
     });
     if (result.errors?.length) {
@@ -858,6 +869,7 @@ function MissionRow({ mission, index, showEdit }: { mission: MissionEntry; index
     </Tr>
   )
 }
+
 function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
   const [showAddMission, addMissionModal] = useAddMissionModal(campaign);
   const [showEditMission, editMissionModal] = useEditMissionModal(campaign);
@@ -871,7 +883,7 @@ function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
             <Th>{t`Progress`}</Th>
           </Thead>
           <Tbody>
-            { map(campaign.missions as MissionEntry[], (mission, idx) => (
+            { map(campaign.missions, (mission, idx) => (
               <MissionRow key={idx} mission={mission} index={idx} showEdit={showEditMission} />
             ))}
           </Tbody>
@@ -880,6 +892,141 @@ function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
       <Button leftIcon={<SlPlus />} onClick={showAddMission}>{t`Add mission`}</Button>
       { addMissionModal }
       { editMissionModal }
+    </>
+  );
+}
+
+function RemoveRow({ remove, index, onRemove }: { remove: RemovedEntry; index: number; onRemove: (index: number) => Promise<string | undefined> }) {
+  const { paths, locations } = useLocale();
+  const removeEntry = useCallback(() => {
+    return onRemove(index);
+  }, [index, onRemove]);
+  const path = remove.set_id && paths[remove.set_id];
+  const location = remove.set_id && locations[remove.set_id];
+  return (
+    <Tr>
+      <Td>
+        { !!path && (
+          <Flex direction="row" alignItems="center">
+            <PathIcon path={path} size={42} />
+            <Text marginLeft={3} fontSize="sm">{path.name}</Text>
+          </Flex>
+        )}
+        { !!location && (
+          <Flex direction="row" alignItems="center">
+            <LocationIcon location={location} size={48} />
+            <Text marginLeft={2} fontSize="sm">{location.name}</Text>
+          </Flex>
+        ) }
+      </Td>
+      <Td>
+        <Text fontSize="lg">
+          { remove.name }
+        </Text>
+      </Td>
+      <Td>
+        <SubmitIconButton
+          variant="ghost"
+          onSubmit={removeEntry}
+          icon={<SlMinus />}
+          aria-label={t`Delete`}
+        />
+      </Td>
+    </Tr>
+  );
+}
+
+function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [cardSet, setCardSet] = useState<string>();
+  const [name, setName] = useState<string>();
+  const [submitEntry] = useAddCampaignRemovedMutation();
+  const [updateRemoved] = useUpdateCampaignRemovedMutation();
+  const onSubmitEntry = useCallback(async() => {
+    if (!name) {
+      return;
+    }
+
+    const entry: RemovedEntry = {
+      set_id: cardSet || undefined,
+      name,
+    };
+
+    const r = await submitEntry({
+      variables: {
+        campaignId: campaign.id,
+        removed: entry,
+      },
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    setName('');
+    setCardSet('');
+    onClose();
+    return undefined;
+  }, [onClose, submitEntry, setName, setCardSet, name, cardSet, campaign.id]);
+
+  const onRemove = useCallback(async(index: number) => {
+    const r = await updateRemoved({
+      variables: {
+        campaignId: campaign.id,
+        removed: filter(campaign.removed, (_, idx) => idx !== index),
+      },
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    return undefined;
+  }, [campaign.removed, campaign.id, updateRemoved]);
+  return (
+    <>
+      <Text marginBottom={2}>
+        {t`Use this section to track cards that are removed permanently from the path decks.`}
+      </Text>
+      <TableContainer marginBottom={2}>
+        <Table variant="simple">
+          <Thead>
+            <Th>{t`Set`}</Th>
+            <Th>{t`Name`}</Th>
+            <Th/>
+          </Thead>
+          <Tbody>
+            { map(campaign.removed, (remove, idx) => (
+              <RemoveRow key={idx} remove={remove} index={idx} onRemove={onRemove} />
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
+      { isOpen ? (
+        <>
+          <form onSubmit={e => {
+            e.preventDefault();
+            onSubmitEntry();
+          }}>
+            <FormControl marginTop={4} isRequired>
+              <FormLabel>{t`Name`}</FormLabel>
+              <Input
+                type="name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+            </FormControl>
+            <FormControl marginTop={4}>
+              <FormLabel>{t`Set`}</FormLabel>
+              <CardSetSelect value={cardSet} setValue={setCardSet} />
+            </FormControl>
+            <ButtonGroup marginTop={2}>
+              <SubmitButton color="blue" disabled={!trim(name)} onSubmit={onSubmitEntry}>
+                { t`Save` }
+              </SubmitButton>
+              <Button onClick={onClose}>{t`Cancel`}</Button>
+            </ButtonGroup>
+          </form>
+        </>
+      ) : (
+        <Button leftIcon={<SlPlus />} onClick={onOpen}>{t`Remove card`}</Button>
+      ) }
     </>
   );
 }
@@ -938,10 +1085,7 @@ function useEditEventModal(onUpdate: (idx: number, event: NotableEvent) => Promi
         </ModalBody>
         <ModalFooter>
           <Flex direction="row" flex={1} justifyContent="flex-end">
-            <SubmitButton
-              color="blue"
-              onSubmit={onSaveEvent}
-            >
+            <SubmitButton color="blue" onSubmit={onSaveEvent}>
               { t`Save` }
             </SubmitButton>
           </Flex>
@@ -1146,7 +1290,7 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
     r['1'] = ['1'];
     r['3'] = ['94.1'];
     r['4'] = ['1.04'];
-    forEach(campaign.calendar as CalendarEntry[], ({ day, guides }) => {
+    forEach(campaign.calendar, ({ day, guides }) => {
       if (!r[day]) {
         r[day] = [];
       }
@@ -1166,7 +1310,7 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
               const entries = entriesByDay[day];
 
               return (
-                <Flex direction="column" marginRight="4px" alignItems="center">
+                <Flex key={day} direction="column" marginRight="4px" alignItems="center">
                   { !!entries?.length && (
                     <>
                       <CoreIcon icon="guide" size="18" />
@@ -1347,6 +1491,8 @@ function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampa
 }
 
 export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
+  const { locations } = useLocale();
+
   const [setCampaignLocationMutation] = useSetCampaignLocationMutation();
   const setCampaignLocation = useCallback(async(value: string) => {
     setCampaignLocationMutation({
@@ -1384,7 +1530,6 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
             padding={2}
             borderRadius="8px"
             borderWidth={2}
-            backgroundColor={colors.lightBackground}
             borderColor="gray.500"
             maxW="24rem"
           >
@@ -1392,12 +1537,12 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
               {t`Current Position`}
             </Text>
             <FormControl marginBottom={4}>
-              <FormLabel textDecorationLine="underline" fontSize="sm">{t`Location`}</FormLabel>
-              <EditableTextInput hideEditButton onChange={setCampaignLocation} value={campaign.current_location || ''} placeholder={t`Record current location`} />
+              <FormLabel>{t`Location`}</FormLabel>
+              <MapLocationSelect value={campaign.current_location} setValue={setCampaignLocation} />
             </FormControl>
             <FormControl marginBottom={2}>
-              <FormLabel textDecorationLine="underline" fontSize="sm">{t`Path Terrain`}</FormLabel>
-              <EditableTextInput hideEditButton onChange={setCampaignTerrain} value={campaign.current_path_terrain || ''} placeholder={t`Record current path terrain`} />
+              <FormLabel>{t`Path Terrain`}</FormLabel>
+              <PathTypeSelect value={campaign.current_path_terrain} setValue={setCampaignTerrain} />
             </FormControl>
           </Box>
         </Flex>
@@ -1406,6 +1551,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
             <Tab>{t`Missions`}</Tab>
             <Tab>{t`Rewards`}</Tab>
             <Tab>{t`Notable Events`}</Tab>
+            <Tab>{t`Removed Cards`}</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
@@ -1416,6 +1562,9 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
             </TabPanel>
             <TabPanel>
               <EventsTab campaign={campaign} />
+            </TabPanel>
+            <TabPanel>
+              <RemovedTab campaign={campaign} />
             </TabPanel>
           </TabPanels>
         </Tabs>

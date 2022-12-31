@@ -1,13 +1,15 @@
 import React, { createContext, useContext, useMemo } from 'react'
 import { useGetSetNamesQuery } from '../generated/graphql/apollo-schema';
-import { AspectMap } from '../types/types';
+import { AspectMap, MapLocations, PathTypeMap } from '../types/types';
 import { I18nContext, useLingui, } from '@lingui/react';
-import { CategoryTranslations, DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getDeckCardErrors, getDeckErrors, useCategoryTranslations } from './hooks';
+import { CategoryTranslations, DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getDeckCardErrors, getDeckErrors, getMapLocations, getPathTypes, useCategoryTranslations } from './hooks';
 
 interface TranslationContextType {
   deckErrors: DeckErrorTranslations;
   cardErrors: DeckCardErrorTranslations;
   aspects: AspectMap;
+  paths: PathTypeMap;
+  locations: MapLocations;
   categories: CategoryTranslations;
   locale: string;
   i18n: any;
@@ -16,6 +18,8 @@ const TranslationContext = createContext<TranslationContextType>({
   deckErrors: getDeckErrors(),
   cardErrors: getDeckCardErrors(),
   aspects: getAspectMap(),
+  paths: getPathTypes(),
+  locations: getMapLocations(),
   categories: {},
   locale: 'en',
   i18n: null,
@@ -34,6 +38,8 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
       deckErrors: getDeckErrors(),
       cardErrors: getDeckCardErrors(),
       aspects: getAspectMap(),
+      paths: getPathTypes(),
+      locations: getMapLocations(),
       categories: categoryTranslations,
       locale: i18n.locale,
       i18n,

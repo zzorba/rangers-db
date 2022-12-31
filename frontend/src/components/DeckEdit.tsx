@@ -36,7 +36,7 @@ import Router from 'next/router';
 import NextLink from 'next/link';
 import { sumBy, find, keys, union, omit, forEach, map, flatMap, pick, values, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
-import { Select as ChakraReactSelect, chakraComponents, OptionProps, SingleValue } from 'chakra-react-select';
+import { Select as ChakraReactSelect, chakraComponents, OptionProps, SingleValue, OptionBase } from 'chakra-react-select';
 
 import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckDescriptionMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
@@ -83,7 +83,7 @@ function RoleRadioChooser({ specialty, cards, role, onChange }: { specialty: str
   );
 }
 
-interface DeckOption {
+interface DeckOption extends OptionBase {
   value: string;
   label: string;
   deck: StarterDeck;
@@ -145,7 +145,7 @@ function StarterDeckSelect({ deck, onChange, roleCards }: {
   }, [onChange]);
   return (
     <>
-      <ChakraReactSelect
+      <ChakraReactSelect<DeckOption>
         name="deck"
         isRequired
         placeholder={t`Choose starter deck`}

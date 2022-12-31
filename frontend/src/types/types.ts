@@ -1,3 +1,5 @@
+import { pathToArray } from "graphql/jsutils/Path";
+
 export interface Aspect {
   name: string;
   short_name: string;
@@ -13,7 +15,25 @@ export const FOC = 'FOC';
 export const SPI = 'SPI';
 export type AspectType = typeof AWA | typeof FIT | typeof FOC | typeof SPI;
 
+export interface MapLocation {
+  id: string;
+  name: string;
+  background?: boolean;
+  type: 'location' | 'trail'
+}
 
+export interface MapLocations {
+  [code: string]: MapLocation | undefined;
+}
+export interface PathType {
+  name: string;
+  icon: string;
+  color: string;
+}
+
+export interface PathTypeMap {
+  [code: string]: PathType | undefined;
+}
 
 export interface DeckMeta {
   [key: string]: string | undefined;

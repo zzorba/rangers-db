@@ -2,6 +2,7 @@
 # import SearchDeck from 'fragments.graphql'
 # import DeckWithCampaign from 'fragments.graphql'
 # import DeckWithFullCampaign from 'fragments.graphql'
+# import DeckComment from 'fragments.graphql'
 
 mutation upgradeDeck(
   $deckId: Int!
@@ -169,6 +170,27 @@ query getDeck(
     user {
       handle
     }
+    comment_count
+  }
+}
+
+query getDeckComments(
+  $deckId: Int!,
+  $limit: Int!
+  $offset: Int!
+) {
+  rangers_comment(
+    where: {
+      deck_id: { _eq: $deckId }
+      comment_id: { _is_null: true }
+    }
+    order_by: {
+      created_at: desc
+    }
+    offset: $offset
+    limit: $limit
+  ) {
+    ...DeckComment
   }
 }
 
