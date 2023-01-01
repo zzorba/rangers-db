@@ -878,9 +878,11 @@ function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
       <TableContainer marginBottom={2}>
         <Table variant="simple">
           <Thead>
-            <Th>{t`Day`}</Th>
-            <Th>{t`Name`}</Th>
-            <Th>{t`Progress`}</Th>
+            <Tr>
+              <Th>{t`Day`}</Th>
+              <Th>{t`Name`}</Th>
+              <Th>{t`Progress`}</Th>
+            </Tr>
           </Thead>
           <Tbody>
             { map(campaign.missions, (mission, idx) => (
@@ -982,14 +984,16 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
   return (
     <>
       <Text marginBottom={2}>
-        {t`Use this section to track cards that are removed permanently from the path decks.`}
+        { t`Track cards that are removed permanently from the path deck here.` }
       </Text>
       <TableContainer marginBottom={2}>
         <Table variant="simple">
           <Thead>
-            <Th>{t`Set`}</Th>
-            <Th>{t`Name`}</Th>
-            <Th/>
+            <Tr>
+              <Th>{t`Set`}</Th>
+              <Th>{t`Name`}</Th>
+              <Th />
+            </Tr>
           </Thead>
           <Tbody>
             { map(campaign.removed, (remove, idx) => (
@@ -1326,7 +1330,7 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
             { map(weatherLabels, ({ start, end, name }) => {
               const current = campaign.day >= start && campaign.day <= end;
               return (
-                <Flex direction="column" minWidth={`${(end - start) * (size + 4) + (size - 10)}px`} marginLeft="5px" marginRight="9px">
+                <Flex key={start} direction="column" minWidth={`${(end - start) * (size + 4) + (size - 10)}px`} marginLeft="5px" marginRight="9px">
                   <Box
                     borderLeftWidth="1px"
                     borderRightWidth="1px"
@@ -1518,23 +1522,16 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       <Timeline campaign={campaign} />
       <SimpleGrid columns={[1,1,1,2]} spacingY="2em" spacingX="1em">
         <Flex direction="column" paddingLeft={[1,1,2]}>
-          <CampaignRangersSection
-            campaign={campaign}
-            cards={cards}
-            showEditFriends={showEditFriends}
-            refetchCampaign={refetchCampaign}
-          />
           <Box
-            marginTop={2}
             marginBottom={2}
             padding={2}
             borderRadius="8px"
             borderWidth={2}
             borderColor="gray.500"
-            maxW="24rem"
+            width="100%"
           >
             <Text textAlign="center" fontSize="lg" fontWeight="600">
-              {t`Current Position`}
+              { t`Current Position` }
             </Text>
             <FormControl marginBottom={4}>
               <FormLabel>{t`Location`}</FormLabel>
@@ -1545,6 +1542,12 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
               <PathTypeSelect value={campaign.current_path_terrain} setValue={setCampaignTerrain} />
             </FormControl>
           </Box>
+          <CampaignRangersSection
+            campaign={campaign}
+            cards={cards}
+            showEditFriends={showEditFriends}
+            refetchCampaign={refetchCampaign}
+          />
         </Flex>
         <Tabs paddingRight={2}>
           <TabList>
@@ -1692,6 +1695,8 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     const result = await createCampaign({
       variables: {
         name,
+        cycleId: 'demo',
+        currentLocation: 'lone_tree_station',
       },
     });
     if (result.errors?.length) {

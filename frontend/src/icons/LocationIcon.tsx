@@ -33,7 +33,7 @@ export function PathIcon({ path, size }: PathIconProps) {
   return (
     <AspectRatio width={`${size}px`} ratio={1}>
       <Box borderRadius="50%" backgroundColor="#e4c9a2" width="100%" borderWidth="1px" borderColor="#451c15">
-        <MapIcon icon={path.icon} color={path.color} size={size - 4} />
+        <MapIcon icon={path.id} color={path.color} size={size - 4} />
       </Box>
     </AspectRatio>
   );

@@ -15,19 +15,37 @@ export const FOC = 'FOC';
 export const SPI = 'SPI';
 export type AspectType = typeof AWA | typeof FIT | typeof FOC | typeof SPI;
 
+export interface MapLocationConnection {
+  id: string;
+  path: Path;
+}
+
 export interface MapLocation {
   id: string;
   name: string;
   background?: boolean;
-  type: 'location' | 'trail'
+  type: 'location' | 'trail';
+  cycles?: string[];
+  connections: MapLocationConnection[];
 }
 
 export interface MapLocations {
   [code: string]: MapLocation | undefined;
 }
+
+export enum Path {
+  WOODS = 'woods',
+  MOUNTAIN_PASS = 'mountain_pass',
+  OLD_GROWTH = 'old_growth',
+  LAKESHORE = 'lakeshore',
+  GRASSLAND = 'grassland',
+  RAVINE = 'ravine',
+  SWAMP = 'swamp',
+  RIVER = 'river',
+}
 export interface PathType {
+  id: Path;
   name: string;
-  icon: string;
   color: string;
 }
 

@@ -29,10 +29,10 @@ msgstr " - {0} Expertise"
 msgid "30 Cards"
 msgstr "30 Karten"
 
-#: src/components/Campaign.tsx:1224
-#: src/components/Campaign.tsx:1234
-#: src/components/Campaign.tsx:1259
-#: src/components/Campaign.tsx:1274
+#: src/components/Campaign.tsx:1228
+#: src/components/Campaign.tsx:1238
+#: src/components/Campaign.tsx:1263
+#: src/components/Campaign.tsx:1278
 msgid "A Perfect Day"
 msgstr "Ein herrlicher Tag"
 
@@ -50,13 +50,13 @@ msgid "Actions"
 msgstr ""
 
 #: src/components/Campaign.tsx:681
-#: src/components/Campaign.tsx:1484
+#: src/components/Campaign.tsx:1488
 #: src/components/FriendChooser.tsx:44
 msgid "Add"
 msgstr "Hinzufügen"
 
 #: src/components/Campaign.tsx:653
-#: src/components/Campaign.tsx:892
+#: src/components/Campaign.tsx:894
 msgid "Add mission"
 msgstr "Mission hinzufügen"
 
@@ -81,11 +81,11 @@ msgstr "Anderen erlauben meine Decks anzusehen"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 
-#: src/lib/hooks.ts:264
+#: src/lib/hooks.ts:589
 msgid "Ancestor's Grove"
 msgstr ""
 
-#: src/lib/hooks.ts:385
+#: src/lib/hooks.ts:713
 msgid "Archeological Outpost"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgstr "Willst du deine Kampagne {0} wirklich löschen? Das lässt sich nicht r�
 msgid "Aspects"
 msgstr "Aspekte"
 
-#: src/lib/hooks.ts:232
+#: src/lib/hooks.ts:551
 msgid "Atrox Mountain"
 msgstr ""
 
@@ -139,19 +139,19 @@ msgstr "Vorgeschichte"
 msgid "Background: {backgroundName}"
 msgstr "Vorgeschichte: {backgroundName}"
 
-#: src/lib/hooks.ts:316
+#: src/lib/hooks.ts:644
 msgid "Biologist's Outpost"
 msgstr ""
 
-#: src/lib/hooks.ts:274
+#: src/lib/hooks.ts:601
 msgid "Boulder Field"
 msgstr ""
 
-#: src/lib/hooks.ts:365
+#: src/lib/hooks.ts:693
 msgid "Bowl of the Sun"
 msgstr ""
 
-#: src/lib/hooks.ts:295
+#: src/lib/hooks.ts:623
 msgid "Branch"
 msgstr ""
 
@@ -172,7 +172,7 @@ msgstr "Kampagnenfortschritt"
 msgid "Campaigns"
 msgstr "Kampagnen"
 
-#: src/components/Campaign.tsx:1023
+#: src/components/Campaign.tsx:1027
 #: src/components/EditableTextInput.tsx:25
 #: src/components/useDeleteDialog.tsx:50
 msgid "Cancel"
@@ -196,7 +196,7 @@ msgid "Cards that are removed from your deck will be stored here. They can be sw
 msgstr "Karten die aus deinem Deck entfernt wurden werden hier abgelegt. Sie können zurück in dein Deck genommen werden wenn du dein Nachtlager aufschlägst."
 
 #: src/components/Campaign.tsx:253
-#: src/components/Campaign.tsx:1415
+#: src/components/Campaign.tsx:1419
 msgid "Choose deck"
 msgstr "Deck auswählen"
 
@@ -246,21 +246,21 @@ msgstr "Kopieren"
 msgid "Copy this deck to make your own changes."
 msgstr "Kopiere dieses Deck um Änderungen daran vorzunehmen."
 
-#: src/components/Campaign.tsx:1770
+#: src/components/Campaign.tsx:1775
 #: src/components/DeckEdit.tsx:1011
 #: src/components/DeckEdit.tsx:1021
 msgid "Create"
 msgstr "Erstellen"
 
-#: src/components/Campaign.tsx:1081
+#: src/components/Campaign.tsx:1085
 msgid "Crossed-out"
 msgstr "Durchgestrichen"
 
-#: src/lib/hooks.ts:306
+#: src/lib/hooks.ts:634
 msgid "Crossroads Station"
 msgstr ""
 
-#: src/components/Campaign.tsx:1537
+#: src/components/Campaign.tsx:1534
 msgid "Current Position"
 msgstr "Aktuelle Position"
 
@@ -276,7 +276,7 @@ msgstr "Dark Mode"
 
 #: src/components/Campaign.tsx:664
 #: src/components/Campaign.tsx:776
-#: src/components/Campaign.tsx:881
+#: src/components/Campaign.tsx:882
 msgid "Day"
 msgstr "Tag"
 
@@ -285,7 +285,7 @@ msgid "Day {0}"
 msgstr "Tag {0}"
 
 #: src/components/Campaign.tsx:526
-#: src/components/Campaign.tsx:1196
+#: src/components/Campaign.tsx:1200
 msgid "Day {day}"
 msgstr "Tag {day}"
 
@@ -304,7 +304,7 @@ msgstr "Decks"
 #: src/components/Campaign.tsx:157
 #: src/components/Campaign.tsx:157
 #: src/components/Campaign.tsx:817
-#: src/components/Campaign.tsx:932
+#: src/components/Campaign.tsx:934
 #: src/components/DeckDetail.tsx:272
 #: src/components/DeckList.tsx:62
 #: src/components/useDeleteDialog.tsx:53
@@ -355,10 +355,10 @@ msgstr "Hast du noch keinen Account?"
 msgid "Done editing"
 msgstr "Bearbeiten abschließen"
 
-#: src/components/Campaign.tsx:1229
-#: src/components/Campaign.tsx:1239
-#: src/components/Campaign.tsx:1249
-#: src/components/Campaign.tsx:1264
+#: src/components/Campaign.tsx:1233
+#: src/components/Campaign.tsx:1243
+#: src/components/Campaign.tsx:1253
+#: src/components/Campaign.tsx:1268
 msgid "Downpour"
 msgstr "Platzregen"
 
@@ -385,11 +385,11 @@ msgstr "Beschreibung bearbeiten"
 msgid "Edit mission"
 msgstr "Mission bearbeiten"
 
-#: src/components/Campaign.tsx:1061
+#: src/components/Campaign.tsx:1065
 msgid "Edit notable event"
 msgstr "Besonderes Ereignis bearbeiten"
 
-#: src/components/Campaign.tsx:1630
+#: src/components/Campaign.tsx:1633
 msgid "Edit players"
 msgstr "Spieler bearbeiten"
 
@@ -454,15 +454,15 @@ msgstr "Freunde"
 msgid "German"
 msgstr "Deutsch"
 
-#: src/lib/hooks.ts:254
+#: src/lib/hooks.ts:577
 msgid "Golden Shore"
 msgstr ""
 
-#: src/lib/hooks.ts:200
+#: src/lib/hooks.ts:201
 msgid "Grassland"
 msgstr ""
 
-#: src/lib/hooks.ts:412
+#: src/lib/hooks.ts:740
 msgid "Greenbriar Knoll"
 msgstr ""
 
@@ -474,7 +474,7 @@ msgstr "Kampagnenbucheinträge"
 msgid "Handle"
 msgstr "Anzeigename"
 
-#: src/lib/hooks.ts:422
+#: src/lib/hooks.ts:750
 msgid "Headwaters Station"
 msgstr ""
 
@@ -487,9 +487,9 @@ msgstr "Spoiler verstecken"
 #~ msgid "However, you can share links to your individual decks to inspire others."
 #~ msgstr "Du kannst aber schon Links zu deinen eigenen Decks teilen, um  andere zu inspirieren."
 
-#: src/components/Campaign.tsx:1244
-#: src/components/Campaign.tsx:1254
-#: src/components/Campaign.tsx:1269
+#: src/components/Campaign.tsx:1248
+#: src/components/Campaign.tsx:1258
+#: src/components/Campaign.tsx:1273
 msgid "Howling Winds"
 msgstr "Sturmböen"
 
@@ -501,11 +501,11 @@ msgstr "Du kannst die Entwicklung und den Unterhalt dieser Webseite auf {patreon
 msgid "Italian"
 msgstr "Italienisch"
 
-#: src/lib/hooks.ts:269
+#: src/lib/hooks.ts:595
 msgid "Kobo's Market"
 msgstr ""
 
-#: src/lib/hooks.ts:195
+#: src/lib/hooks.ts:196
 msgid "Lakeshore"
 msgstr ""
 
@@ -528,7 +528,7 @@ msgstr "Light Mode"
 msgid "Like"
 msgstr ""
 
-#: src/components/Campaign.tsx:1540
+#: src/components/Campaign.tsx:1537
 msgid "Location"
 msgstr "Ort"
 
@@ -541,7 +541,7 @@ msgstr ""
 msgid "Login"
 msgstr "Anmeldung"
 
-#: src/lib/hooks.ts:243
+#: src/lib/hooks.ts:564
 msgid "Lone Tree Station"
 msgstr ""
 
@@ -553,31 +553,31 @@ msgstr "Schwächungen"
 msgid "Mark day {day} as complete."
 msgstr "Tag {day} als abgeschlossen markieren."
 
-#: src/lib/hooks.ts:349
+#: src/lib/hooks.ts:677
 msgid "Marsh of Rebirth"
 msgstr ""
 
-#: src/lib/hooks.ts:401
+#: src/lib/hooks.ts:729
 msgid "Meadow"
 msgstr ""
 
-#: src/lib/hooks.ts:339
+#: src/lib/hooks.ts:667
 msgid "Michael's Bog"
 msgstr ""
 
-#: src/components/Campaign.tsx:1551
+#: src/components/Campaign.tsx:1554
 msgid "Missions"
 msgstr "Missionen"
 
-#: src/lib/hooks.ts:327
+#: src/lib/hooks.ts:655
 msgid "Mound of the Navigator"
 msgstr ""
 
-#: src/lib/hooks.ts:259
+#: src/lib/hooks.ts:583
 msgid "Mount Nim"
 msgstr ""
 
-#: src/lib/hooks.ts:185
+#: src/lib/hooks.ts:186
 msgid "Mountain Pass"
 msgstr ""
 
@@ -592,10 +592,10 @@ msgstr "Meine Decks"
 
 #: src/components/Campaign.tsx:672
 #: src/components/Campaign.tsx:784
-#: src/components/Campaign.tsx:882
-#: src/components/Campaign.tsx:991
-#: src/components/Campaign.tsx:1008
-#: src/components/Campaign.tsx:1745
+#: src/components/Campaign.tsx:883
+#: src/components/Campaign.tsx:994
+#: src/components/Campaign.tsx:1012
+#: src/components/Campaign.tsx:1750
 #: src/components/DeckEdit.tsx:947
 #: src/components/DeckEdit.tsx:980
 msgid "Name"
@@ -612,7 +612,7 @@ msgstr "Name und Tag werden benötigt."
 msgid "Name your character"
 msgstr "Gib deinem Charakter einen Namen"
 
-#: src/components/Campaign.tsx:1735
+#: src/components/Campaign.tsx:1740
 #: src/pages/campaigns/index.tsx:75
 msgid "New campaign"
 msgstr "Neue Kampagne"
@@ -649,7 +649,7 @@ msgstr ""
 msgid "No results"
 msgstr "Kein Ergebnis"
 
-#: src/lib/hooks.ts:238
+#: src/lib/hooks.ts:558
 msgid "Northern Outpost"
 msgstr ""
 
@@ -677,7 +677,7 @@ msgstr "Nicht genug Expertise-Karten."
 msgid "Not set"
 msgstr "Nicht festgelegt"
 
-#: src/components/Campaign.tsx:1553
+#: src/components/Campaign.tsx:1556
 msgid "Notable Events"
 msgstr "Besondere Ereignisse"
 
@@ -689,7 +689,7 @@ msgstr "Hinweis: Diese Karten könnten Spoiler für die Kampagne enthalten."
 msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
 msgstr "Hinweis: Karten aus deiner gewählten Expertise/Vorgeschichte werden hier nicht angezeigt, aber du kannst die anderen Tabs benutzen, um auf Karten deiner Klasse zuzugreifen."
 
-#: src/lib/hooks.ts:180
+#: src/lib/hooks.ts:181
 msgid "Old-growth"
 msgstr ""
 
@@ -736,7 +736,7 @@ msgstr "Hobby-Karten können nicht das Experte-Merkmal haben."
 msgid "Password"
 msgstr "Passwort"
 
-#: src/components/Campaign.tsx:1544
+#: src/components/Campaign.tsx:1541
 msgid "Path Terrain"
 msgstr "Terrain-Typ"
 
@@ -757,8 +757,8 @@ msgstr "Charakteristiken"
 #~ msgid "Player"
 #~ msgstr "Spieler"
 
-#: src/components/Campaign.tsx:1641
-#: src/components/Campaign.tsx:1758
+#: src/components/Campaign.tsx:1644
+#: src/components/Campaign.tsx:1763
 msgid "Players"
 msgstr "Spieler"
 
@@ -783,7 +783,7 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/components/Campaign.tsx:791
-#: src/components/Campaign.tsx:883
+#: src/components/Campaign.tsx:884
 msgid "Progress"
 msgstr "Fortschritt"
 
@@ -803,7 +803,7 @@ msgstr ""
 msgid "Ranger"
 msgstr "Ranger"
 
-#: src/components/Campaign.tsx:1470
+#: src/components/Campaign.tsx:1474
 msgid "Rangers"
 msgstr "Ranger"
 
@@ -823,7 +823,7 @@ msgstr "RangersDB"
 msgid "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
 msgstr "RangersDB befindet sich noch im Aufbau, weshalb Funktionen in nächster Zeit hinzugefügt und wieder entfernt werden können."
 
-#: src/lib/hooks.ts:205
+#: src/lib/hooks.ts:206
 msgid "Ravine"
 msgstr ""
 
@@ -856,7 +856,7 @@ msgstr "Ablehnen"
 msgid "Remove"
 msgstr "Entfernen"
 
-#: src/components/Campaign.tsx:1028
+#: src/components/Campaign.tsx:1032
 msgid "Remove card"
 msgstr ""
 
@@ -868,7 +868,7 @@ msgstr "Deck entfernen"
 msgid "Remove reward"
 msgstr "Belohnung entfernen"
 
-#: src/components/Campaign.tsx:1554
+#: src/components/Campaign.tsx:1557
 msgid "Removed Cards"
 msgstr ""
 
@@ -881,7 +881,7 @@ msgstr "Freundschaftsanfrage senden"
 msgid "Revoke"
 msgstr "Zurücknehmen"
 
-#: src/components/Campaign.tsx:1552
+#: src/components/Campaign.tsx:1555
 #: src/components/DeckEdit.tsx:542
 msgid "Rewards"
 msgstr "Belohnungen"
@@ -891,11 +891,11 @@ msgstr "Belohnungen"
 msgid "Rewards and Maladies"
 msgstr "Belohnungen und Schwächungen"
 
-#: src/lib/hooks.ts:391
+#: src/lib/hooks.ts:719
 msgid "Rings of the Moon"
 msgstr ""
 
-#: src/lib/hooks.ts:215
+#: src/lib/hooks.ts:216
 msgid "River"
 msgstr ""
 
@@ -916,10 +916,10 @@ msgstr "SOV"
 
 #: src/components/Campaign.tsx:577
 #: src/components/Campaign.tsx:818
-#: src/components/Campaign.tsx:1021
-#: src/components/Campaign.tsx:1089
-#: src/components/Campaign.tsx:1169
-#: src/components/Campaign.tsx:1645
+#: src/components/Campaign.tsx:1025
+#: src/components/Campaign.tsx:1093
+#: src/components/Campaign.tsx:1173
+#: src/components/Campaign.tsx:1648
 #: src/components/Profile.tsx:91
 msgid "Save"
 msgstr "Speichern"
@@ -964,7 +964,7 @@ msgstr ""
 msgid "Select location..."
 msgstr ""
 
-#: src/components/PathTypeSelect.tsx:54
+#: src/components/PathTypeSelect.tsx:56
 msgid "Select path terrain..."
 msgstr ""
 
@@ -972,8 +972,8 @@ msgstr ""
 msgid "Send Friend Request"
 msgstr "Freundschaftsanfrage senden"
 
-#: src/components/Campaign.tsx:990
-#: src/components/Campaign.tsx:1016
+#: src/components/Campaign.tsx:993
+#: src/components/Campaign.tsx:1020
 msgid "Set"
 msgstr ""
 
@@ -1007,7 +1007,7 @@ msgstr "Expertise"
 msgid "Specialty: {specialtyName}"
 msgstr "Expertise: {specialtyName}"
 
-#: src/lib/hooks.ts:300
+#: src/lib/hooks.ts:628
 msgid "Spire"
 msgstr ""
 
@@ -1020,7 +1020,7 @@ msgstr "Souveränität"
 msgid "Starter deck"
 msgstr "Starter-Deck"
 
-#: src/lib/hooks.ts:406
+#: src/lib/hooks.ts:734
 msgid "Stoneweaver Bridge"
 msgstr ""
 
@@ -1028,59 +1028,59 @@ msgstr ""
 msgid "Submit"
 msgstr "Veröffentlichen"
 
-#: src/lib/hooks.ts:354
+#: src/lib/hooks.ts:682
 msgid "Sunken Outpost"
 msgstr ""
 
-#: src/lib/hooks.ts:210
+#: src/lib/hooks.ts:211
 msgid "Swamp"
 msgstr ""
 
-#: src/lib/hooks.ts:322
+#: src/lib/hooks.ts:650
 msgid "Terravore"
 msgstr ""
 
-#: src/lib/hooks.ts:370
+#: src/lib/hooks.ts:698
 msgid "The Alluvial Ruins"
 msgstr ""
 
-#: src/lib/hooks.ts:396
+#: src/lib/hooks.ts:724
 msgid "The Concordant Ziggurats"
 msgstr ""
 
-#: src/lib/hooks.ts:344
+#: src/lib/hooks.ts:672
 msgid "The Cypress Citadel"
 msgstr ""
 
-#: src/lib/hooks.ts:280
+#: src/lib/hooks.ts:608
 msgid "The Fractured Wall"
 msgstr ""
 
-#: src/lib/hooks.ts:360
+#: src/lib/hooks.ts:688
 msgid "The Frowning Gate"
 msgstr ""
 
-#: src/lib/hooks.ts:311
+#: src/lib/hooks.ts:639
 msgid "The Furrow"
 msgstr ""
 
-#: src/lib/hooks.ts:333
+#: src/lib/hooks.ts:661
 msgid "The Greenbridge"
 msgstr ""
 
-#: src/lib/hooks.ts:290
+#: src/lib/hooks.ts:618
 msgid "The High Basin"
 msgstr ""
 
-#: src/lib/hooks.ts:285
+#: src/lib/hooks.ts:613
 msgid "The Philosopher's Garden"
 msgstr ""
 
-#: src/lib/hooks.ts:417
+#: src/lib/hooks.ts:745
 msgid "The Plummet"
 msgstr ""
 
-#: src/lib/hooks.ts:375
+#: src/lib/hooks.ts:703
 msgid "The Tumbledown"
 msgstr ""
 
@@ -1168,11 +1168,15 @@ msgstr "Zu viele Karten des gleichen Namens."
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Zu viele Karten. Wenn du dein Nachtlager aufschlägst und Änderungen an deinem Deck machst, solltest du Karten enfernen um Platz für Belohnungen zu schaffen und ein 30 Karten Deck zu bewahren."
 
+#: src/components/Campaign.tsx:987
+msgid "Track cards that are removed permanently from the path deck here."
+msgstr ""
+
 #: src/components/DeckEdit.tsx:249
 msgid "Two aspects must be set to 2."
 msgstr "Zwei Aspekte müssen auf 2 gesetzt werden."
 
-#: src/components/Campaign.tsx:1703
+#: src/components/Campaign.tsx:1708
 msgid "Unable to create campaign at this time."
 msgstr "Kampagne kann im Moment nicht erstellt werden."
 
@@ -1189,10 +1193,10 @@ msgid "Update now"
 msgstr "Jetzt bearbeiten"
 
 #: src/components/Campaign.tsx:985
-msgid "Use this section to track cards that are removed permanently from the path decks."
-msgstr ""
+#~ msgid "Use this section to track cards that are removed permanently from the path decks."
+#~ msgstr ""
 
-#: src/lib/hooks.ts:380
+#: src/lib/hooks.ts:708
 msgid "Watcher's Rock"
 msgstr ""
 
@@ -1200,8 +1204,8 @@ msgstr ""
 msgid "Welcome to RangersDB"
 msgstr "Willkommen auf RangersDB"
 
-#: src/components/Campaign.tsx:1071
-#: src/components/Campaign.tsx:1164
+#: src/components/Campaign.tsx:1075
+#: src/components/Campaign.tsx:1168
 msgid "What happened?"
 msgstr "Was ist passiert?"
 
@@ -1209,11 +1213,11 @@ msgstr "Was ist passiert?"
 msgid "When starting a campaign, you must include two of each card in your deck."
 msgstr "Beim Kampagnenstart muss dein Deck zwei Kopien jeder Karte beinhalten."
 
-#: src/lib/hooks.ts:249
+#: src/lib/hooks.ts:571
 msgid "White Sky"
 msgstr ""
 
-#: src/lib/hooks.ts:190
+#: src/lib/hooks.ts:191
 msgid "Woods"
 msgstr ""
 

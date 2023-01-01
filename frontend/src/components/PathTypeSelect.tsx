@@ -24,7 +24,7 @@ export default function PathTypeSelect({ value, setValue }: Props) {
         return [];
       }
       return {
-        value: p.icon,
+        value: p.id,
         name: p.name,
         label: (
           <Flex direction="row" alignItems="center">

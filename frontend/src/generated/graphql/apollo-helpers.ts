@@ -4590,7 +4590,7 @@ export type rangers_aspect_text_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_campaignKeySpecifier = ('access' | 'access_aggregate' | 'calendar' | 'created_at' | 'creator' | 'current_location' | 'current_path_terrain' | 'day' | 'events' | 'id' | 'latest_decks' | 'latest_decks_aggregate' | 'missions' | 'name' | 'removed' | 'rewards' | 'updated_at' | 'user_id' | rangers_campaignKeySpecifier)[];
+export type rangers_campaignKeySpecifier = ('access' | 'access_aggregate' | 'calendar' | 'created_at' | 'creator' | 'current_location' | 'current_path_terrain' | 'cycle_id' | 'day' | 'events' | 'id' | 'latest_decks' | 'latest_decks_aggregate' | 'missions' | 'name' | 'removed' | 'rewards' | 'updated_at' | 'user_id' | rangers_campaignKeySpecifier)[];
 export type rangers_campaignFieldPolicy = {
 	access?: FieldPolicy<any> | FieldReadFunction<any>,
 	access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4599,6 +4599,7 @@ export type rangers_campaignFieldPolicy = {
 	creator?: FieldPolicy<any> | FieldReadFunction<any>,
 	current_location?: FieldPolicy<any> | FieldReadFunction<any>,
 	current_path_terrain?: FieldPolicy<any> | FieldReadFunction<any>,
+	cycle_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	day?: FieldPolicy<any> | FieldReadFunction<any>,
 	events?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4708,22 +4709,24 @@ export type rangers_campaign_avg_fieldsFieldPolicy = {
 	day?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_campaign_max_fieldsKeySpecifier = ('created_at' | 'current_location' | 'current_path_terrain' | 'day' | 'id' | 'name' | 'updated_at' | 'user_id' | rangers_campaign_max_fieldsKeySpecifier)[];
+export type rangers_campaign_max_fieldsKeySpecifier = ('created_at' | 'current_location' | 'current_path_terrain' | 'cycle_id' | 'day' | 'id' | 'name' | 'updated_at' | 'user_id' | rangers_campaign_max_fieldsKeySpecifier)[];
 export type rangers_campaign_max_fieldsFieldPolicy = {
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	current_location?: FieldPolicy<any> | FieldReadFunction<any>,
 	current_path_terrain?: FieldPolicy<any> | FieldReadFunction<any>,
+	cycle_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	day?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_campaign_min_fieldsKeySpecifier = ('created_at' | 'current_location' | 'current_path_terrain' | 'day' | 'id' | 'name' | 'updated_at' | 'user_id' | rangers_campaign_min_fieldsKeySpecifier)[];
+export type rangers_campaign_min_fieldsKeySpecifier = ('created_at' | 'current_location' | 'current_path_terrain' | 'cycle_id' | 'day' | 'id' | 'name' | 'updated_at' | 'user_id' | rangers_campaign_min_fieldsKeySpecifier)[];
 export type rangers_campaign_min_fieldsFieldPolicy = {
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	current_location?: FieldPolicy<any> | FieldReadFunction<any>,
 	current_path_terrain?: FieldPolicy<any> | FieldReadFunction<any>,
+	cycle_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	day?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,

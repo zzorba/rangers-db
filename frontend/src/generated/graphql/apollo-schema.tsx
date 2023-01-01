@@ -22635,6 +22635,7 @@ export type Rangers_Campaign = {
   creator: Rangers_Users;
   current_location?: Maybe<Scalars['String']>;
   current_path_terrain?: Maybe<Scalars['String']>;
+  cycle_id: Scalars['String'];
   day: Scalars['Int'];
   events: Scalars['jsonb'];
   id: Scalars['Int'];
@@ -22985,6 +22986,7 @@ export type Rangers_Campaign_Bool_Exp = {
   creator?: InputMaybe<Rangers_Users_Bool_Exp>;
   current_location?: InputMaybe<String_Comparison_Exp>;
   current_path_terrain?: InputMaybe<String_Comparison_Exp>;
+  cycle_id?: InputMaybe<String_Comparison_Exp>;
   day?: InputMaybe<Int_Comparison_Exp>;
   events?: InputMaybe<Jsonb_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
@@ -23045,6 +23047,7 @@ export type Rangers_Campaign_Insert_Input = {
   creator?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
   current_location?: InputMaybe<Scalars['String']>;
   current_path_terrain?: InputMaybe<Scalars['String']>;
+  cycle_id?: InputMaybe<Scalars['String']>;
   day?: InputMaybe<Scalars['Int']>;
   events?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
@@ -23063,6 +23066,7 @@ export type Rangers_Campaign_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   current_location?: Maybe<Scalars['String']>;
   current_path_terrain?: Maybe<Scalars['String']>;
+  cycle_id?: Maybe<Scalars['String']>;
   day?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
@@ -23076,6 +23080,7 @@ export type Rangers_Campaign_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   current_location?: Maybe<Scalars['String']>;
   current_path_terrain?: Maybe<Scalars['String']>;
+  cycle_id?: Maybe<Scalars['String']>;
   day?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
@@ -23114,6 +23119,7 @@ export type Rangers_Campaign_Order_By = {
   creator?: InputMaybe<Rangers_Users_Order_By>;
   current_location?: InputMaybe<Order_By>;
   current_path_terrain?: InputMaybe<Order_By>;
+  cycle_id?: InputMaybe<Order_By>;
   day?: InputMaybe<Order_By>;
   events?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
@@ -23151,6 +23157,8 @@ export enum Rangers_Campaign_Select_Column {
   /** column name */
   CurrentPathTerrain = 'current_path_terrain',
   /** column name */
+  CycleId = 'cycle_id',
+  /** column name */
   Day = 'day',
   /** column name */
   Events = 'events',
@@ -23176,6 +23184,7 @@ export type Rangers_Campaign_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   current_location?: InputMaybe<Scalars['String']>;
   current_path_terrain?: InputMaybe<Scalars['String']>;
+  cycle_id?: InputMaybe<Scalars['String']>;
   day?: InputMaybe<Scalars['Int']>;
   events?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
@@ -23222,6 +23231,7 @@ export type Rangers_Campaign_Stream_Cursor_Value_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   current_location?: InputMaybe<Scalars['String']>;
   current_path_terrain?: InputMaybe<Scalars['String']>;
+  cycle_id?: InputMaybe<Scalars['String']>;
   day?: InputMaybe<Scalars['Int']>;
   events?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
@@ -23250,6 +23260,8 @@ export enum Rangers_Campaign_Update_Column {
   CurrentLocation = 'current_location',
   /** column name */
   CurrentPathTerrain = 'current_path_terrain',
+  /** column name */
+  CycleId = 'cycle_id',
   /** column name */
   Day = 'day',
   /** column name */
@@ -36822,6 +36834,8 @@ export type GetCampaignQuery = { __typename?: 'query_root', campaign?: { __typen
 
 export type CreateCampaignMutationVariables = Exact<{
   name: Scalars['String'];
+  cycleId: Scalars['String'];
+  currentLocation: Scalars['String'];
 }>;
 
 
@@ -37522,8 +37536,10 @@ export type GetCampaignQueryHookResult = ReturnType<typeof useGetCampaignQuery>;
 export type GetCampaignLazyQueryHookResult = ReturnType<typeof useGetCampaignLazyQuery>;
 export type GetCampaignQueryResult = Apollo.QueryResult<GetCampaignQuery, GetCampaignQueryVariables>;
 export const CreateCampaignDocument = gql`
-    mutation createCampaign($name: String!) {
-  campaign: insert_rangers_campaign_one(object: {name: $name}) {
+    mutation createCampaign($name: String!, $cycleId: String!, $currentLocation: String!) {
+  campaign: insert_rangers_campaign_one(
+    object: {name: $name, cycle_id: $cycleId, current_location: $currentLocation}
+  ) {
     ...Campaign
   }
 }
@@ -37544,6 +37560,8 @@ export type CreateCampaignMutationFn = Apollo.MutationFunction<CreateCampaignMut
  * const [createCampaignMutation, { data, loading, error }] = useCreateCampaignMutation({
  *   variables: {
  *      name: // value for 'name'
+ *      cycleId: // value for 'cycleId'
+ *      currentLocation: // value for 'currentLocation'
  *   },
  * });
  */

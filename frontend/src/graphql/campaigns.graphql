@@ -39,10 +39,14 @@ query getCampaign(
 
 mutation createCampaign(
   $name: String!,
+  $cycleId: String!,
+  $currentLocation: String!,
 ) {
   campaign: insert_rangers_campaign_one(
     object: {
       name: $name
+      cycle_id: $cycleId
+      current_location: $currentLocation
     }
   ) {
     ...Campaign

@@ -30,7 +30,7 @@ export default function CardSetSelect({ value, setValue }: Props) {
               return [];
             }
             return {
-              value: p.icon,
+              value: p.id,
               name: p.name,
               type: 'location',
               label: (

@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo } from 'react';
-import { forEach } from 'lodash';
+import { forEach, omit } from 'lodash';
 import Router,{ useRouter } from 'next/router';
 import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
 import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
-import { AspectMap, DeckCardError, DeckError, MapLocation, MapLocations, PathType, PathTypeMap } from '../types/types';
+import { AspectMap, DeckCardError, DeckError, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
 
 export function useRequireAuth() {
   const { authUser, loading } = useAuth();
@@ -177,103 +177,431 @@ export function getPathTypes(): PathTypeMap {
   const r: PathTypeMap = {};
   const paths: PathType[] = [
     {
+      id: Path.OLD_GROWTH,
       name: t`Old-growth`,
-      icon: 'old_growth',
       color: '#924030',
     },
     {
+      id: Path.MOUNTAIN_PASS,
       name: t`Mountain Pass`,
-      icon: 'mountain_pass',
       color: '#1b211e',
     },
     {
+      id: Path.WOODS,
       name: t`Woods`,
-      icon: 'woods',
       color: '#46932b',
     },
     {
+      id: Path.LAKESHORE,
       name: t`Lakeshore`,
-      icon: 'lakeshore',
       color: '#3f4f6b',
     },
     {
+      id: Path.GRASSLAND,
       name: t`Grassland`,
-      icon: 'grassland',
       color: '#d08e10',
     },
     {
+      id: Path.RAVINE,
       name: t`Ravine`,
-      icon: 'ravine',
       color: '#67666b',
     },
     {
+      id: Path.SWAMP,
       name: t`Swamp`,
-      icon: 'swamp',
       color: '#7a3d63',
     },
     {
+      id: Path.RIVER,
       name: t`River`,
-      icon: 'river',
       color: '#5996aa',
     },
   ];
   forEach(paths, p => {
-    r[p.icon] = p;
+    r[p.id] = p;
   })
   return r;
 }
 
 
+const CONNECTIONS: { locA: string; locB: string; path: Path }[] = [
+  {
+    locA: 'atrox_mountain',
+    locB: 'northern_outpost',
+    path: Path.WOODS,
+  },
+  {
+    locA: 'atrox_mountain',
+    locB: 'golden_shore',
+    path: Path.LAKESHORE,
+  },
+  {
+    locA: 'atrox_mountain',
+    locB: 'lone_tree_station',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'golden_shore',
+    locB: 'northern_outpost',
+    path: Path.WOODS,
+  },
+  {
+    locA: 'golden_shore',
+    locB: 'mount_nim',
+    path: Path.LAKESHORE,
+  },
+  {
+    locA: 'northern_outpost',
+    locB: 'mount_nim',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'white_sky',
+    locB: 'mount_nim',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'white_sky',
+    locB: 'lone_tree_station',
+    path: Path.LAKESHORE,
+  },
+  {
+    locA: 'white_sky',
+    locB: 'boulder_field',
+    path: Path.WOODS,
+  },
+  {
+    locA: 'lone_tree_station',
+    locB: 'boulder_field',
+    path: Path.WOODS,
+  },
+  {
+    locA: 'lone_tree_station',
+    locB: 'ancestors_grove',
+    path: Path.OLD_GROWTH,
+  },
+  {
+    locA: 'ancestors_grove',
+    locB: 'boulder_field',
+    path: Path.WOODS,
+  },
+  {
+    locA: 'kobos_market',
+    locB: 'boulder_field',
+    path: Path.OLD_GROWTH,
+  },
+  {
+    locA: 'kobos_market',
+    locB: 'ancestors_grove',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'the_plummet',
+    locB: 'ancestors_grove',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'the_plummet',
+    locB: 'kobos_market',
+    path: Path.LAKESHORE,
+  },
+  {
+    locA: 'the_plummet',
+    locB: 'the_concordant_ziggurats',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'headwaters_station',
+    locB: 'the_concordant_ziggurats',
+    path: Path.RIVER,
+  },
+  {
+    locA: 'meadow',
+    locB: 'the_concordant_ziggurats',
+    path: Path.GRASSLAND,
+  },
+  {
+    locA: 'meadow',
+    locB: 'greenbriar_knoll',
+    path: Path.GRASSLAND,
+  },
+  {
+    locA: 'meadow',
+    locB: 'stoneweaver_bridge',
+    path: Path.GRASSLAND,
+  },
+  {
+    locA: 'meadow',
+    locB: 'rings_of_the_moon',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'the_concordant_ziggurats',
+    locB: 'rings_of_the_moon',
+    path: Path.RIVER,
+  },
+  {
+    locA: 'the_concordant_ziggurats',
+    locB: 'archeological_outpost',
+    path: Path.GRASSLAND,
+  },
+  {
+    locA: 'rings_of_the_moon',
+    locB: 'archeological_outpost',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'rings_of_the_moon',
+    locB: 'the_alluvial_ruins',
+    path: Path.RIVER,
+  },
+  {
+    locA: 'archeological_outpost',
+    locB: 'the_alluvial_ruins',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'archeological_outpost',
+    locB: 'watchers_rock',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'the_tumbledown',
+    locB: 'watchers_rock',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'kobos_market',
+    locB: 'spire',
+    path: Path.LAKESHORE,
+  },
+  {
+    locA: 'white_sky',
+    locB: 'spire',
+    path: Path.RIVER,
+  },
+  {
+    locA: 'the_philosophers_garden',
+    locB: 'spire',
+    path: Path.OLD_GROWTH,
+  },
+  {
+    locA: 'the_philosophers_garden',
+    locB: 'the_fractured_wall',
+    path: Path.WOODS,
+  },
+  {
+    locA: 'mount_nim',
+    locB: 'the_fractured_wall',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'the_high_basin',
+    locB: 'the_fractured_wall',
+    path: Path.LAKESHORE,
+  },
+  {
+    locA: 'the_furrow',
+    locB: 'the_fractured_wall',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'the_high_basin',
+    locB: 'the_furrow',
+    path: Path.LAKESHORE,
+  },
+  {
+    locA: 'the_high_basin',
+    locB: 'branch',
+    path: Path.OLD_GROWTH,
+  },
+  {
+    locA: 'the_philosophers_garden',
+    locB: 'branch',
+    path: Path.OLD_GROWTH,
+  },
+  {
+    locA: 'crossroads_station',
+    locB: 'branch',
+    path: Path.OLD_GROWTH,
+  },
+  {
+    locA: 'crossroads_station',
+    locB: 'spire',
+    path: Path.GRASSLAND,
+  },
+  {
+    locA: 'terravore',
+    locB: 'the_furrow',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'crossroads_station',
+    locB: 'biologists_outpost',
+    path: Path.OLD_GROWTH,
+  },
+  {
+    locA: 'the_high_basin',
+    locB: 'biologists_outpost',
+    path: Path.RIVER,
+  },
+  {
+    locA: 'stoneweaver_bridge',
+    locB: 'biologists_outpost',
+    path: Path.RIVER,
+  },
+  {
+    locA: 'stoneweaver_bridge',
+    locB: 'spire',
+    path: Path.RIVER,
+  },
+  {
+    locA: 'stoneweaver_bridge',
+    locB: 'greenbriar_knoll',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'spire',
+    locB: 'greenbriar_knoll',
+    path: Path.WOODS,
+  },
+  {
+    locA: 'biologists_outpost',
+    locB: 'mound_of_the_navigator',
+    path: Path.WOODS,
+  },
+  {
+    locA: 'terravore',
+    locB: 'mound_of_the_navigator',
+    path: Path.OLD_GROWTH,
+  },
+  {
+    locA: 'stoneweaver_bridge',
+    locB: 'mound_of_the_navigator',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'the_greenbridge',
+    locB: 'mound_of_the_navigator',
+    path: Path.SWAMP,
+  },
+  {
+    locA: 'the_greenbridge',
+    locB: 'sunken_outpost',
+    path: Path.SWAMP,
+  },
+  {
+    locA: 'michaels_bog',
+    locB: 'sunken_outpost',
+    path: Path.SWAMP,
+  },
+  {
+    locA: 'michaels_bog',
+    locB: 'the_cypress_citadel',
+    path: Path.SWAMP,
+  },
+  {
+    locA: 'michaels_bog',
+    locB: 'the_frowning_gate',
+    path: Path.SWAMP,
+  },
+  {
+    locA: 'sunken_outpost',
+    locB: 'the_frowning_gate',
+    path: Path.SWAMP,
+  },
+  {
+    locA: 'the_alluvial_ruins',
+    locB: 'the_frowning_gate',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'bowl_of_the_sun',
+    locB: 'the_frowning_gate',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'the_alluvial_ruins',
+    locB: 'stoneweaver_bridge',
+    path: Path.RIVER,
+  },
+  {
+    locA: 'the_alluvial_ruins',
+    locB: 'bowl_of_the_sun',
+    path: Path.RAVINE,
+  },
+  {
+    locA: 'the_tumbledown',
+    locB: 'bowl_of_the_sun',
+    path: Path.MOUNTAIN_PASS,
+  },
+  {
+    locA: 'the_tumbledown',
+    locB: 'the_alluvial_ruins',
+    path: Path.RIVER,
+  },
+];
+
 export function getMapLocations(): MapLocations {
   const r: MapLocations = {};
-  const paths: MapLocation[] = [
+
+  const paths: Omit<MapLocation, 'connections'>[] = [
     {
       id: 'atrox_mountain',
       name: t`Atrox Mountain`,
       background: true,
       type: 'trail',
+      cycles: ['core', 'demo'],
     },
     {
       id: 'northern_outpost',
       name: t`Northern Outpost`,
       type: 'location',
+      cycles: ['core', 'demo'],
     },
     {
       id: 'lone_tree_station',
       name: t`Lone Tree Station`,
       background: true,
       type: 'location',
+      cycles: ['core', 'demo'],
     },
     {
       id: 'white_sky',
       name: t`White Sky`,
       type: 'location',
+      cycles: ['core', 'demo'],
     },
     {
       id: 'golden_shore',
       name: t`Golden Shore`,
       type: 'trail',
+      cycles: ['core', 'demo'],
     },
     {
       id: 'mount_nim',
       name: t`Mount Nim`,
       type: 'trail',
+      cycles: ['core', 'demo'],
     },
     {
       id: 'ancestors_grove',
       name: t`Ancestor's Grove`,
       type: 'trail',
+      cycles: ['core', 'demo'],
     },
     {
       id: 'kobos_market',
       name: t`Kobo's Market`,
       type: 'trail',
+      cycles: ['core', 'demo'],
     },
     {
       id: 'boulder_field',
       name: t`Boulder Field`,
       type: 'trail',
       background: true,
+      cycles: ['core', 'demo'],
     },
     {
       id: 'the_fractured_wall',
@@ -425,8 +753,27 @@ export function getMapLocations(): MapLocations {
     },
   ];
   forEach(paths, p => {
-    r[p.id] = p;
-  })
+    r[p.id] = {
+      ...omit(p, ['cycles']),
+      cycles: p.cycles || ['core'],
+      connections: [],
+    };
+  });
+  forEach(CONNECTIONS, c => {
+    const locA = r[c.locA];
+    const locB = r[c.locB];
+    if (locA && locB) {
+      locA.connections?.push({
+        id: c.locB,
+        path: c.path,
+      });
+      locB.connections?.push({
+        id: c.locA,
+        path: c.path,
+      });
+    }
+  });
+
   return r;
 }
 
