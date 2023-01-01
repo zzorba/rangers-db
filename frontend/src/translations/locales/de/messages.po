@@ -1114,7 +1114,7 @@ msgstr "Es sind zu viele Hobby-Karten in deinem Deck."
 
 #: src/pages/index.tsx:28
 msgid "There is also a <0>campaign</0> tracking system that you can share with your friends and track rewards and events as you progress through the valley."
-msgstr "Es gibt auch einen Kampagnen-Tracker den du mit deinen Freunden teilen kannst um Belohnungen und Ereignisse zu verfolgen während du durch das Tal wanderst."
+msgstr "Es gibt auch einen <0>Kampagnen-Tracker</0> den du mit deinen Freunden teilen kannst um Belohnungen und Ereignisse zu verfolgen während ihr durch das Tal wandert."
 
 #: src/pages/index.tsx:29
 #~ msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
