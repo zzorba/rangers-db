@@ -8,6 +8,7 @@ fragment Campaign on rangers_campaign {
   user_id
   name
   day
+  cycle_id
   current_location
   current_path_terrain
   missions

@@ -6,6 +6,7 @@ import { t } from '@lingui/macro';
 
 import { useLocale } from '../lib/TranslationProvider';
 import { LocationIcon } from '../icons/LocationIcon';
+import { MapLocation } from '../types/types';
 
 export interface MapLocationOption extends OptionBase {
   value: string;
@@ -15,14 +16,20 @@ export interface MapLocationOption extends OptionBase {
 }
 interface Props {
   value: string | undefined | null;
+  filter?: (location: MapLocation) => boolean;
+  decoration?: (location: MapLocation) => React.ReactNode | null;
   setValue: (value: string) => void;
 }
-export default function MapLocationSelect({ value, setValue }: Props) {
+export default function MapLocationSelect({ value, setValue, decoration, filter: filterLocation }: Props) {
   const { locations } = useLocale();
   const options: MapLocationOption[] = useMemo(() => {
     return sortBy(
       flatMap(locations, loc => {
         if (!loc) {
+          return [];
+        }
+
+        if (filterLocation && !filterLocation(loc)) {
           return [];
         }
         return {
@@ -31,14 +38,17 @@ export default function MapLocationSelect({ value, setValue }: Props) {
           label: (
             <Flex direction="row" alignItems="center">
               <LocationIcon location={loc} size={64} />
-              <Text marginLeft={2}>{loc.name}</Text>
+              <Flex direction="column" marginLeft={2} justifyContent="center" alignItems="flex-start">
+                <Text>{loc.name}</Text>
+                { !!decoration && decoration(loc) }
+              </Flex>
             </Flex>
           ),
         };
       }),
       opt => opt.name
     );
-  }, [locations]);
+  }, [locations, value, decoration, filterLocation]);
   const onChange = useCallback((option: SingleValue<MapLocationOption>) => {
     if (option && option.value !== value) {
       setValue(option.value);
@@ -56,7 +66,7 @@ export default function MapLocationSelect({ value, setValue }: Props) {
       { !!value && !locations[value] && <Text>{value}</Text>}
       <Select<MapLocationOption>
         isRequired={false}
-        defaultValue={find(options, o => o.value === value)}
+        value={find(options, o => o.value === value)}
         onChange={onChange}
         options={options}
         size="lg"

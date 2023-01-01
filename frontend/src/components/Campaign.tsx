@@ -5,7 +5,7 @@ import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, 
 import NextLink from 'next/link';
 import Router from 'next/router';
 
-import { CampaignFragment, CardFragment, DeckFragment, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
+import { CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import SolidButton from './SolidButton';
 import FriendChooser from './FriendChooser';
@@ -14,7 +14,7 @@ import CoreIcon from '../icons/CoreIcon';
 import { CompactDeckRow } from './Deck';
 import { CardsMap } from '../lib/hooks';
 import SubmitButton, { SubmitIconButton } from './SubmitButton';
-import { SlCheck, SlMinus, SlPlus } from 'react-icons/sl';
+import { SlCheck, SlClose, SlMinus, SlPlus } from 'react-icons/sl';
 import { useLocale } from '../lib/TranslationProvider';
 import { CardRow } from './Card';
 import EditableTextInput from './EditableTextInput';
@@ -23,12 +23,13 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { FaTrash } from 'react-icons/fa';
+import { FaMoon, FaTrash } from 'react-icons/fa';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
 import MapLocationSelect from './MapLocationSelect';
 import CardSetSelect from './CardSetSelect';
+import { MapLocation } from '../types/types';
 
 interface MissionEntry {
   day: number;
@@ -52,11 +53,18 @@ interface RemovedEntry {
   name: string;
 }
 
+interface HistoryEntry {
+  day: number;
+  location?: string;
+  path_terrain?: string;
+}
+
 export interface ParsedCampaign {
   id: number;
   name: string;
   day: number;
   user_id: string;
+  cycle_id: string;
 
   access: UserInfoFragment[];
 
@@ -75,6 +83,7 @@ export class CampaignWrapper implements ParsedCampaign {
   user_id: string;
   name: string;
   day: number;
+  cycle_id: string;
 
   access: UserInfoFragment[];
 
@@ -92,6 +101,7 @@ export class CampaignWrapper implements ParsedCampaign {
     this.user_id = campaign.user_id;
     this.name = campaign.name;
     this.day = campaign.day;
+    this.cycle_id = campaign.cycle_id;
 
     this.missions = Array.isArray(campaign.missions) ? (campaign.missions as MissionEntry[]) : [];
     this.calendar = Array.isArray(campaign.calendar) ? (campaign.calendar as CalendarEntry[]) : [];
@@ -875,6 +885,7 @@ function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
   const [showEditMission, editMissionModal] = useEditMissionModal(campaign);
   return (
     <>
+      <Button leftIcon={<SlPlus />} onClick={showAddMission} marginBottom={2}>{t`Add mission`}</Button>
       <TableContainer marginBottom={2}>
         <Table variant="simple">
           <Thead>
@@ -891,7 +902,6 @@ function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
           </Tbody>
         </Table>
       </TableContainer>
-      <Button leftIcon={<SlPlus />} onClick={showAddMission}>{t`Add mission`}</Button>
       { addMissionModal }
       { editMissionModal }
     </>
@@ -986,6 +996,37 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
       <Text marginBottom={2}>
         { t`Track cards that are removed permanently from the path deck here.` }
       </Text>
+      <Box marginBottom={2}>
+        { isOpen ? (
+          <>
+            <form onSubmit={e => {
+              e.preventDefault();
+              onSubmitEntry();
+            }}>
+              <FormControl marginTop={4} isRequired>
+                <FormLabel>{t`Name`}</FormLabel>
+                <Input
+                  type="name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                />
+              </FormControl>
+              <FormControl marginTop={4}>
+                <FormLabel>{t`Set`}</FormLabel>
+                <CardSetSelect value={cardSet} setValue={setCardSet} />
+              </FormControl>
+              <ButtonGroup marginTop={2}>
+                <SubmitButton color="blue" disabled={!trim(name)} onSubmit={onSubmitEntry}>
+                  { t`Save` }
+                </SubmitButton>
+                <Button onClick={onClose}>{t`Cancel`}</Button>
+              </ButtonGroup>
+            </form>
+          </>
+        ) : (
+          <Button leftIcon={<SlPlus />} onClick={onOpen}>{t`Remove card`}</Button>
+        ) }
+      </Box>
       <TableContainer marginBottom={2}>
         <Table variant="simple">
           <Thead>
@@ -1002,35 +1043,6 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
           </Tbody>
         </Table>
       </TableContainer>
-      { isOpen ? (
-        <>
-          <form onSubmit={e => {
-            e.preventDefault();
-            onSubmitEntry();
-          }}>
-            <FormControl marginTop={4} isRequired>
-              <FormLabel>{t`Name`}</FormLabel>
-              <Input
-                type="name"
-                value={name}
-                onChange={e => setName(e.target.value)}
-              />
-            </FormControl>
-            <FormControl marginTop={4}>
-              <FormLabel>{t`Set`}</FormLabel>
-              <CardSetSelect value={cardSet} setValue={setCardSet} />
-            </FormControl>
-            <ButtonGroup marginTop={2}>
-              <SubmitButton color="blue" disabled={!trim(name)} onSubmit={onSubmitEntry}>
-                { t`Save` }
-              </SubmitButton>
-              <Button onClick={onClose}>{t`Cancel`}</Button>
-            </ButtonGroup>
-          </form>
-        </>
-      ) : (
-        <Button leftIcon={<SlPlus />} onClick={onOpen}>{t`Remove card`}</Button>
-      ) }
     </>
   );
 }
@@ -1154,27 +1166,32 @@ function EventsTab({ campaign }: { campaign: ParsedCampaign }) {
       }
     });
   }, [updateEvents, campaign.events, campaign.id]);
+  const { onOpen, onClose, isOpen } = useDisclosure();
   const [showEditEvent, eventModal] = useEditEventModal(onUpdateEvent);
   return (
     <>
       <List>
-        <form onSubmit={e => {
-          e.preventDefault();
-          onSubmitNewEvent();
-        }}>
-          <Flex direction="row">
-            <Input
-              value={event}
-              placeholder={t`What happened?`}
-              onChange={e => setEvent(e.target.value)}
-            />
-            { !!event && (
+        { isOpen ? (
+          <form onSubmit={e => {
+            e.preventDefault();
+            onSubmitNewEvent();
+          }}>
+            <Flex direction="row">
+              <FormControl>
+                <Input
+                  value={event}
+                  autoFocus
+                  placeholder={t`What happened?`}
+                  onChange={e => setEvent(e.target.value)}
+                />
+              </FormControl>
               <ButtonGroup marginLeft={2}>
-                <SubmitIconButton aria-label={t`Save`} onSubmit={onSubmitNewEvent} icon={<SlCheck />} />
+                { !!event && <SubmitIconButton aria-label={t`Save`} onSubmit={onSubmitNewEvent} icon={<SlCheck />} /> }
+                <IconButton aria-label={t`Cancel`} icon={<SlClose />} onClick={onClose} />
               </ButtonGroup>
-            ) }
-          </Flex>
-        </form>
+            </Flex>
+          </form>
+        ) : <Button leftIcon={<SlPlus />} onClick={onOpen}>{t`Record event`}</Button>}
         { map(campaign.events, (event, idx) => (
           <EventLine
             key={idx}
@@ -1494,9 +1511,170 @@ function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampa
   );
 }
 
-export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
-  const { locations } = useLocale();
+function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { locations, paths } = useLocale();
+  const [location, setLocation] = useState<string>();
+  const [terrain, setTerrain] = useState<string>();
+  const [showAll, setShowAll] = useState(false);
 
+  const currentDay = campaign.day;
+  const [campaignTravel] = useCampaignTravelMutation();
+  const onTravel = useCallback(async() => {
+    if (!location || !terrain) {
+      return t`You must choose a location and path terrain to travel.`
+    }
+    const history: HistoryEntry = {
+      day: campaign.day,
+      location: campaign.current_location || undefined,
+      path_terrain: campaign.current_path_terrain || undefined,
+    };
+    const r = await campaignTravel({
+      variables: {
+        campaignId: campaign.id,
+        day: campaign.day + 1,
+        currentLocation: location,
+        currentPathTerrain: terrain,
+        history,
+      }
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    setLocation(undefined);
+    setTerrain(undefined);
+    onClose();
+    return undefined;
+  }, [location, terrain, campaign, campaignTravel, setLocation, setTerrain, onClose]);
+  const currentLocation = campaign.current_location ? locations[campaign.current_location] : undefined;
+  const locationName = currentLocation?.name || campaign.current_location;
+  const filterLocation = useCallback((loc: MapLocation): boolean => {
+    if (loc.cycles && !find(loc.cycles, x => x === campaign.cycle_id)) {
+      return false;
+    }
+    if (currentLocation && loc.id === currentLocation.id) {
+      // Must leave a location to travel;
+      return false;
+    }
+    if (showAll) {
+      return true;
+    }
+    if (currentLocation && !find(currentLocation.connections, con => con.id === loc.id)) {
+      return false;
+    }
+    return true;
+  }, [showAll, currentLocation, campaign.cycle_id]);
+
+  const onSetLocation = useCallback((value: string) => {
+    if (currentLocation) {
+      const connection = find(currentLocation.connections, con => con.id === value);
+      setTerrain(connection?.path);
+    }
+    setLocation(value);
+  }, [currentLocation, setTerrain, setLocation]);
+  const renderPath = useCallback((loc: MapLocation) => {
+    if (currentLocation) {
+      const connection = find(currentLocation.connections, con => con.id === loc.id);
+      if (connection) {
+        const path = find(paths, p => p?.id === connection.path);
+        if (path) {
+          return (
+            <Flex direction="row" alignItems="center" marginTop={1}>
+              <PathIcon path={path} size={24} />
+              <Text marginLeft={2} fontSize="sm">{path.name}</Text>
+            </Flex>
+          );
+        }
+      }
+    }
+    return null;
+  }, [currentLocation, paths]);
+  const selectedPath = useMemo(() => terrain ? find(paths, p => p?.id === terrain) : undefined, [paths, terrain]);
+  return [
+    onOpen,
+    <Modal key="travel" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>
+              {t`Travel`}
+            </Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <form onSubmit={e => {
+            e.preventDefault();
+            onTravel();
+          }}>
+            { !!locationName && (
+              <>
+                <Text marginBottom={2} fontSize="lg">{
+                  plural(currentDay,
+                    {
+                      one: `Departing from ${locationName} to end day ${currentDay}.`,
+                      other: `Departing from ${locationName} to end day ${currentDay}.`,
+                    })
+                  }
+                </Text>
+                { !!currentLocation && (
+                  <Checkbox
+                    marginBottom={2}
+                    isChecked={showAll}
+                    onChange={(event) => {
+                      setShowAll(event.target.checked);
+                    }}
+                  >
+                    { t`Show all locations` }
+                  </Checkbox>
+                ) }
+              </>
+            ) }
+            <FormControl marginBottom={4}>
+              <FormLabel>{showAll ? t`Location` : t`Connecting Location`}</FormLabel>
+              <MapLocationSelect
+                value={location}
+                filter={filterLocation}
+                decoration={renderPath}
+                setValue={onSetLocation}
+              />
+            </FormControl>
+            { !!showAll ? (
+              <FormControl marginBottom={2}>
+                <FormLabel>{t`Path Terrain`}</FormLabel>
+                <PathTypeSelect value={terrain} setValue={setTerrain} />
+              </FormControl>
+            ) : (
+              selectedPath && (
+                <>
+                  <FormLabel>{t`Path Terrain`}</FormLabel>
+                  <Flex direction="row" alignItems="center">
+                    <PathIcon path={selectedPath} size={42} />
+                    <Text marginLeft={2}>{selectedPath.name}</Text>
+                  </Flex>
+                </>
+              )
+            ) }
+          </form>
+        </ModalBody>
+        <ModalFooter>
+          <Flex direction="row" flex={1} justifyContent="flex-end">
+            <SubmitButton
+              color="blue"
+              disabled={!location || !terrain}
+              onSubmit={onTravel}
+            >
+              { t`Travel` }
+            </SubmitButton>
+          </Flex>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ]
+}
+
+export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
   const [setCampaignLocationMutation] = useSetCampaignLocationMutation();
   const setCampaignLocation = useCallback(async(value: string) => {
     setCampaignLocationMutation({
@@ -1515,16 +1693,21 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       },
     });
   }, [setCampaignPathTerrainMutation, campaign.id]);
-  const { colors } = useTheme();
+  const [onTravel, travelModal] = useTravelModal(campaign);
   return (
     <>
-      <PageHeading title={campaign.name} />
+      <PageHeading title={campaign.name}>
+        <Button leftIcon={<FaMoon />} onClick={onTravel}>{t`Travel`}</Button>
+      </PageHeading>
       <Timeline campaign={campaign} />
       <SimpleGrid columns={[1,1,1,2]} spacingY="2em" spacingX="1em">
         <Flex direction="column" paddingLeft={[1,1,2]}>
           <Box
             marginBottom={2}
-            padding={2}
+            paddingLeft={4}
+            paddingRight={4}
+            paddingTop={2}
+            paddingBottom={2}
             borderRadius="8px"
             borderWidth={2}
             borderColor="gray.500"
@@ -1572,8 +1755,9 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
           </TabPanels>
         </Tabs>
       </SimpleGrid>
+      { travelModal }
     </>
-  )
+  );
 }
 
 export function useEditCampaignAccessModal(
@@ -1672,7 +1856,6 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [createCampaign] = useCreateCampaignMutation();
   const [addFriendToCampaign] = useAddFriendToCampaignMutation();
-  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | undefined>();
   const [selectedFriends, setSelectedFriends] = useState<string[]>([]);
   const onAdd = useCallback(async(id: string) => {
@@ -1691,7 +1874,6 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     if (!authUser) {
       return;
     }
-    setSubmitting(true);
     setError(undefined);
     const result = await createCampaign({
       variables: {
@@ -1702,13 +1884,11 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     });
     if (result.errors?.length) {
       setError(result.errors[0].message);
-      setSubmitting(false);
-      return;
+      return undefined;
     }
     if (!result.data?.campaign) {
       setError(t`Unable to create campaign at this time.`);
-      setSubmitting(false);
-      return;
+      return undefined;
     }
     const campaignId = result.data.campaign.id;
     for (let i = 0; i < selectedFriends.length; i++) {
@@ -1721,12 +1901,11 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
       });
       if (fResult.errors?.length) {
         setError(fResult.errors[0].message);
-        setSubmitting(false);
       }
     }
-    setSubmitting(false);
     Router.push(`/campaigns/${campaignId}`);
     onClose();
+    return undefined;
   }, [createCampaign, addFriendToCampaign, onClose, cycle, selectedFriends, authUser, name]);
   const showModal = useCallback(() => {
     onOpen();
@@ -1747,7 +1926,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
             e.preventDefault();
             onCreateCampaign();
           }}>
-            <FormControl marginBottom={4}>
+            <FormControl marginBottom={4} isRequired>
               <FormLabel>{t`Name`}</FormLabel>
               <Input
                 type="name"
@@ -1780,14 +1959,13 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
         </ModalBody>
         <ModalFooter>
           <Flex direction="row" flex={1} justifyContent="flex-end">
-            <SolidButton
+            <SubmitButton
               color="blue"
-              isLoading={submitting}
               disabled={!name}
-              onClick={onCreateCampaign}
+              onSubmit={onCreateCampaign}
             >
               {t`Create`}
-            </SolidButton>
+            </SubmitButton>
           </Flex>
         </ModalFooter>
       </ModalContent>

@@ -4590,7 +4590,7 @@ export type rangers_aspect_text_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_campaignKeySpecifier = ('access' | 'access_aggregate' | 'calendar' | 'created_at' | 'creator' | 'current_location' | 'current_path_terrain' | 'cycle_id' | 'day' | 'events' | 'id' | 'latest_decks' | 'latest_decks_aggregate' | 'missions' | 'name' | 'removed' | 'rewards' | 'updated_at' | 'user_id' | rangers_campaignKeySpecifier)[];
+export type rangers_campaignKeySpecifier = ('access' | 'access_aggregate' | 'calendar' | 'created_at' | 'creator' | 'current_location' | 'current_path_terrain' | 'cycle_id' | 'day' | 'events' | 'history' | 'id' | 'latest_decks' | 'latest_decks_aggregate' | 'missions' | 'name' | 'removed' | 'rewards' | 'updated_at' | 'user_id' | rangers_campaignKeySpecifier)[];
 export type rangers_campaignFieldPolicy = {
 	access?: FieldPolicy<any> | FieldReadFunction<any>,
 	access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4602,6 +4602,7 @@ export type rangers_campaignFieldPolicy = {
 	cycle_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	day?: FieldPolicy<any> | FieldReadFunction<any>,
 	events?: FieldPolicy<any> | FieldReadFunction<any>,
+	history?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	latest_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	latest_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,

@@ -282,6 +282,34 @@ mutation setCampaignDay(
   }
 }
 
+mutation campaignTravel(
+  $campaignId: Int!,
+  $day: Int!,
+  $currentLocation: String!,
+  $currentPathTerrain: String!
+  $history: jsonb!
+) {
+  campaign: update_rangers_campaign_by_pk(
+    pk_columns: {
+	    id: $campaignId
+    }
+    _set: {
+      day: $day
+      current_location: $currentLocation
+      current_path_terrain: $currentPathTerrain
+    }
+    _append: {
+      history: $history
+    }
+  ) {
+    id
+    day
+    history
+    current_location
+    current_path_terrain
+  }
+}
+
 mutation leaveCampaign(
   $campaignId: Int!,
   $userId: String!

@@ -49,7 +49,7 @@ export default function PathTypeSelect({ value, setValue }: Props) {
         isSearchable={false}
         useBasicStyles
         isRequired={false}
-        defaultValue={find(options, o => o.value === value)}
+        value={find(options, o => o.value === value)}
         onChange={onChange}
         options={options}
         size="lg"
