@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { Flex, ButtonGroup, List, ListItem, Text } from '@chakra-ui/react';
-import { forEach, flatMap } from 'lodash';
+import { map, forEach, flatMap } from 'lodash';
 import { t } from '@lingui/macro';
 
 import { UserInfoFragment, UserProfileFragment } from '../generated/graphql/apollo-schema';
@@ -11,16 +11,16 @@ import { SlMinus, SlPlus } from 'react-icons/sl';
 
 interface Props {
   selection: string[];
-  title: string;
   add: (id: string) => Promise<string | undefined>;
   remove?: (id: string) => Promise<string | undefined>;
   profile?: UserProfileFragment;
   refreshProfile: () => void;
-
+  noBorder?: boolean;
 }
 
-function FriendRow({ add, remove, user }: {
+function FriendRow({ add, remove, user, paddingLeft }: {
   user: UserInfoFragment;
+  paddingLeft?: number;
   add?: (id: string) => Promise<string | undefined>;
   remove?: (id: string) => Promise<string | undefined>;
 }) {
@@ -37,19 +37,19 @@ function FriendRow({ add, remove, user }: {
     return undefined;
   }, [remove, user]);
   return (
-    <ListItem paddingTop={2} paddingBottom={2}>
+    <ListItem paddingTop={2} paddingBottom={2} paddingLeft={paddingLeft}>
       <Flex direction="row" alignItems="center" justifyContent="space-between">
         <Text paddingLeft={2} paddingRight={2}>{user.handle}</Text>
-        <ButtonGroup>
-          { !!add && <SubmitIconButton aria-label={t`Add`} onSubmit={onAdd} icon={<SlPlus/>} /> }
-          { !!remove && <SubmitIconButton aria-label={t`Remove`} onSubmit={onRemove} icon={<SlMinus />} /> }
+        <ButtonGroup marginRight={2}>
+          { !!add && <SubmitIconButton variant="ghost" aria-label={t`Add`} onSubmit={onAdd} icon={<SlPlus/>} /> }
+          { !!remove && <SubmitIconButton variant="ghost" aria-label={t`Remove`} onSubmit={onRemove} icon={<SlMinus />} /> }
         </ButtonGroup>
       </Flex>
     </ListItem>
   );
 }
 
-export default function FriendChooser({ selection, title, add, remove, profile, refreshProfile }: Props) {
+export default function FriendChooser({ noBorder, selection, add, remove, profile, refreshProfile }: Props) {
   const friendsById = useMemo(() => {
     const r: { [id: string]: UserInfoFragment | undefined } = {};
     forEach(profile?.friends, f => {
@@ -59,20 +59,28 @@ export default function FriendChooser({ selection, title, add, remove, profile, 
     });
     return r;
   }, [profile]);
+  const selectedFriends = useMemo(() => {
+    return flatMap(selection, id => {
+      const friend = friendsById[id];
+      if (!friend) {
+        return [];
+      }
+      return friend;
+    });
+  }, [selection, friendsById])
   return (
-    <List>
-      <ListHeader title={title} />
-      { !!selection.length && (
+    <List borderRadius="8px" borderWidth={noBorder ? undefined : '1px'}>
+      { !!selectedFriends.length && (
         <>
-          { flatMap(selection, id => {
-            const friend = friendsById[id];
-            if (!friend) {
-              return null;
-            }
-            return (
-              <FriendRow key={id} remove={remove} user={friend} />
-            );
-          })}
+          { map(selectedFriends, friend => (
+            <FriendRow
+              key={friend.id}
+              remove={remove}
+              user={friend}
+              paddingLeft={noBorder ? undefined : 2}
+            />
+          ))}
+           <ListItem borderBottomWidth={1} />
         </>
       ) }
       <FriendRequestsComponent
@@ -84,6 +92,7 @@ export default function FriendChooser({ selection, title, add, remove, profile, 
           onPress: add,
           icon: 'add'
         }]}
+        paddingLeft={noBorder ? undefined : 2}
       />
     </List>
   )

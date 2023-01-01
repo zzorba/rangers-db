@@ -1,4 +1,4 @@
-import { Button, Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip } from '@chakra-ui/react';
+import { Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { plural, t } from '@lingui/macro';
 import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim } from 'lodash';
@@ -1636,12 +1636,12 @@ export function useEditCampaignAccessModal(
         <ModalCloseButton />
         <ModalBody>
           <FriendChooser
+            noBorder
             profile={data?.profile || undefined}
             selection={selectedFriends}
             add={onAdd}
             refreshProfile={refreshProfile}
             remove={onRemove}
-            title={t`Players`}
           />
         </ModalBody>
         <ModalFooter>
@@ -1686,6 +1686,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     setSelectedFriends(filter(selectedFriends, f => f !== id));
     return undefined;
   }, [selectedFriends, setSelectedFriends]);
+  const [cycle, setCycle] = useState<string>('demo');
   const onCreateCampaign = useCallback(async() => {
     if (!authUser) {
       return;
@@ -1695,7 +1696,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     const result = await createCampaign({
       variables: {
         name,
-        cycleId: 'demo',
+        cycleId: cycle,
         currentLocation: 'lone_tree_station',
       },
     });
@@ -1726,7 +1727,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     setSubmitting(false);
     Router.push(`/campaigns/${campaignId}`);
     onClose();
-  }, [createCampaign, addFriendToCampaign, selectedFriends, onClose, authUser, name]);
+  }, [createCampaign, addFriendToCampaign, onClose, cycle, selectedFriends, authUser, name]);
   const showModal = useCallback(() => {
     onOpen();
   }, [onOpen]);
@@ -1754,14 +1755,27 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
                 onChange={e => setName(e.target.value)}
               />
             </FormControl>
-            <FriendChooser
-              profile={data?.profile || undefined}
-              selection={selectedFriends}
-              add={onAdd}
-              refreshProfile={refreshProfile}
-              remove={onRemove}
-              title={t`Players`}
-            />
+            <FormControl marginBottom={4} isRequired>
+              <FormLabel>{t`Campaign`}</FormLabel>
+              <Select
+                onChange={(event) => setCycle(event.target.value)}
+                placeholder={t`Select campaign`}
+                value={cycle}
+              >
+                <option value="demo">{t`Demo`}</option>
+                <option value="core">{t`Core`}</option>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <FormLabel>{t`Players`}</FormLabel>
+              <FriendChooser
+                profile={data?.profile || undefined}
+                selection={selectedFriends}
+                add={onAdd}
+                refreshProfile={refreshProfile}
+                remove={onRemove}
+              />
+            </FormControl>
           </form>
         </ModalBody>
         <ModalFooter>

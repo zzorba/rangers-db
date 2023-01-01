@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useMemo } from 'react';
-import { FormControl, Text, Flex, IconButton, Input, Spinner, List, ListItem } from '@chakra-ui/react';
+import { Box, FormControl, Text, Flex, IconButton, Input, Spinner, List, ListItem } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { SearchIcon } from '@chakra-ui/icons';
 import { map } from 'lodash';
@@ -13,7 +13,10 @@ interface SearchResults {
   hasMore: boolean;
 }
 const EMPTY_ACTIONS: FriendAction[] = [];
-export default function FriendSearch({ sendFriendRequest }: { sendFriendRequest: (userId: string) => Promise<string | undefined>}) {
+export default function FriendSearch({ sendFriendRequest }: {
+  sendFriendRequest: (userId: string) => Promise<string | undefined>;
+  paddingLeft?: number;
+}) {
   const [searchFriends, searchError] = useFirebaseFunction<{ search: string }, SearchResults>('social-searchUsers');
   const [liveFriendRequests, setLiveFriendRequests] = useState<{[userId: string]: boolean | undefined}>({});
   const sendRequest = useCallback(async (userId: string) => {
@@ -49,29 +52,31 @@ export default function FriendSearch({ sendFriendRequest }: { sendFriendRequest:
   }, [search, setResults, searchFriends]);
   return (
     <Flex direction="column">
-      <form onSubmit={e => {
-        e.preventDefault();
-        doSearch();
-      }}>
-        <FormControl marginTop={2}>
-          <Flex direction="row">
-            <Input
-              placeholder={t`Find new friends`}
-              value={search}
-              type="search"
-              onChange={(e) => setSearch(e.target.value)}
-              onKeyPress={e=> {
-                if (e.key === 'Enter') {
-                  doSearch();
-                  e.preventDefault();
-                }
-              }}
-            />
-            { !!search && <IconButton marginLeft={2} aria-label='Search' onClick={doSearch} icon={<SearchIcon />} />}
-          </Flex>
-          { !!searchError && <Text color="red.500">{searchError}</Text> }
-        </FormControl>
-      </form>
+      <Box padding={2}>
+        <form onSubmit={e => {
+          e.preventDefault();
+          doSearch();
+        }}>
+          <FormControl marginTop={2}>
+            <Flex direction="row">
+              <Input
+                placeholder={t`Find new friends`}
+                value={search}
+                type="search"
+                onChange={(e) => setSearch(e.target.value)}
+                onKeyPress={e=> {
+                  if (e.key === 'Enter') {
+                    doSearch();
+                    e.preventDefault();
+                  }
+                }}
+              />
+              { !!search && <IconButton marginLeft={2} aria-label='Search' onClick={doSearch} icon={<SearchIcon />} />}
+            </Flex>
+            { !!searchError && <Text margin={2} color="red.500">{searchError}</Text> }
+          </FormControl>
+        </form>
+      </Box>
       <List>
         { searching && (
           <ListItem padding={2}>

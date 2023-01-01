@@ -17,6 +17,7 @@ interface Props {
   removeIds?: string[];
   refreshProfile: () => void;
   friendActions?: FriendAction[];
+  paddingLeft?: number;
 }
 
 export interface FriendAction {
@@ -37,6 +38,7 @@ function FriendActionButton({ userId, action: { onPress, title, icon } }: { user
       aria-label={title}
       onSubmit={onClick}
       icon={icons[icon]}
+      variant="ghost"
     />
   );
 }
@@ -46,13 +48,13 @@ export interface BasicUser {
   handle?: string;
 }
 
-export function FriendLine({ user, actions }: { user: BasicUser | UserInfoFragment; actions: FriendAction[]; }) {
+export function FriendLine({ user, actions, paddingLeft }: { user: BasicUser | UserInfoFragment; actions: FriendAction[]; paddingLeft?: number }) {
   const { colors } = useTheme();
   return (
-    <ListItem paddingTop={2} paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+    <ListItem paddingTop={2} paddingBottom={2} paddingLeft={paddingLeft} borderBottomWidth="1px" borderBottomColor={colors.divider}>
       <Flex direction="row" justifyContent="space-between">
         <Text padding={2}>{user.handle || user.id}</Text>
-        <ButtonGroup>
+        <ButtonGroup marginRight={2}>
           { map(actions, (a, idx) => <FriendActionButton key={idx} userId={user.id} action={a} /> ) }
         </ButtonGroup>
       </Flex>
@@ -60,12 +62,13 @@ export function FriendLine({ user, actions }: { user: BasicUser | UserInfoFragme
   );
 }
 
-function FriendSection({ users, title, actions, removeIds, children }: {
+function FriendSection({ users, title, actions, removeIds, children, paddingLeft }: {
   users: UserInfoFragment[];
   title: string;
   actions: FriendAction[];
   removeIds?: string[];
   children?: React.ReactNode;
+  paddingLeft?: number;
 }) {
   const theUsers = useMemo(() => {
     if (!removeIds) {
@@ -80,7 +83,7 @@ function FriendSection({ users, title, actions, removeIds, children }: {
   return (
     <List>
       <ListHeader title={title} />
-      { map(theUsers, user => <FriendLine key={user.id} user={user} actions={actions} />) }
+      { map(theUsers, user => <FriendLine paddingLeft={paddingLeft} key={user.id} user={user} actions={actions} />) }
       { children }
     </List>
   )
@@ -91,6 +94,7 @@ export default function FriendRequestsComponent({
   refreshProfile,
   removeIds,
   friendActions,
+  paddingLeft,
 }: Props) {
   const [updateFriendRequest, error] = useFirebaseFunction('social-updateFriendRequest');
   const onSubmit = useCallback(async (userId: string, action: 'request' | 'revoke') => {
@@ -152,6 +156,7 @@ export default function FriendRequestsComponent({
             icon: 'remove',
           },
         ]}
+        paddingLeft={paddingLeft}
       />
       <FriendSection
         key="sent"
@@ -162,6 +167,7 @@ export default function FriendRequestsComponent({
           onPress: revokeFriendRequest,
           icon: 'remove',
         }]}
+        paddingLeft={paddingLeft}
       />
       <FriendSection
         key="friends"
@@ -173,8 +179,12 @@ export default function FriendRequestsComponent({
           onPress: revokeFriendRequest,
           icon: 'remove',
         }]}
+        paddingLeft={paddingLeft}
       />
-      <FriendSearch sendFriendRequest={sendFriendRequest} />
+      <FriendSearch
+        sendFriendRequest={sendFriendRequest}
+        paddingLeft={paddingLeft}
+      />
     </List>
   );
 }
