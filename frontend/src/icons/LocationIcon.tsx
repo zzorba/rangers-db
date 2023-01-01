@@ -46,19 +46,21 @@ interface LocationIconProps {
 
 export function LocationIcon({ location, size }: LocationIconProps) {
   return (
-    <AspectRatio width={`${size}px`} ratio={1}>
-      <Box width="100%" position="relative">
-        <Box position="absolute" top={0} left={0}>
-          <MapIcon
-            icon={`${location.background ? location.id : location.type}_bg`}
-            color={location.type === 'location' ? '#F7BC3F' : '#E8CB9E'}
-            size={size - 4}
-          />
+    <Box>
+      <AspectRatio width={`${size}px`} ratio={1}>
+        <Box width="100%" position="relative">
+          <Box position="absolute" top={0} left={0}>
+            <MapIcon
+              icon={`${location.background ? location.id : location.type}_bg`}
+              color={location.type === 'location' ? '#F7BC3F' : '#E8CB9E'}
+              size={size - 4}
+            />
+          </Box>
+          <Box position="absolute" top={0} left={0}>
+            <MapIcon icon={location.id} color="#451C15" size={size - 4} />
+          </Box>
         </Box>
-        <Box position="absolute" top={0} left={0}>
-          <MapIcon icon={location.id} color="#451C15" size={size - 4} />
-        </Box>
-      </Box>
-    </AspectRatio>
+      </AspectRatio>
+    </Box>
   );
 }

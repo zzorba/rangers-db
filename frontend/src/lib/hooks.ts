@@ -5,7 +5,7 @@ import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
 import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
-import { AspectMap, DeckCardError, DeckError, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
+import { AspectMap, CampaignCycle, DeckCardError, DeckError, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
 
 export function useRequireAuth() {
   const { authUser, loading } = useAuth();
@@ -541,6 +541,19 @@ const CONNECTIONS: { locA: string; locB: string; path: Path }[] = [
     path: Path.RIVER,
   },
 ];
+
+export function getCampaignCycles(): CampaignCycle[] {
+  return [
+    {
+      id: 'demo',
+      name: t`Demo`,
+    },
+    {
+      id: 'core',
+      name: t`Core set`,
+    },
+  ];
+}
 
 export function getMapLocations(): MapLocations {
   const r: MapLocations = {};

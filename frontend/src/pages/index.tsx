@@ -20,7 +20,9 @@ function Home() {
           py={{ base: "3rem", lg: "4rem" }}
           px={{ base: "1rem", lg: "0" }}
         >
-          <Heading>{t`Welcome to RangersDB`}</Heading>
+          <Heading>
+            {t`Welcome to RangersDB`}
+          </Heading>
           <Text paddingTop="2em">
             <Trans>This site is still under construction, but you can view the list of <Link textDecorationLine="underline" as={NextLink} href="/cards">previewed cards</Link> and can <Link as={NextLink} href="/register" textDecorationLine="underline">register</Link> and start building <Link textDecorationLine="underline" as={NextLink} href="/decks">decks</Link>.</Trans>
           </Text>

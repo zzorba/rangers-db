@@ -39,7 +39,7 @@ export function DeckRow({ deck, roleCards, onDelete }: {
       <Flex direction="column">
         <Flex direction="row">
           <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
-            { !!role && !!role.imagesrc && <RoleImage large name={role.name} url={role.imagesrc} /> }
+            { !!role && !!role.imagesrc && <RoleImage size="large" name={role.name} url={role.imagesrc} /> }
             <Flex direction="column">
               <Text fontSize={['m', 'l', 'xl']}>{deck.name}</Text>
               <Flex direction="column" display={['none', 'block']}>

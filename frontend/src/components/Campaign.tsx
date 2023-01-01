@@ -1,5 +1,5 @@
-import { Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { plural, t } from '@lingui/macro';
 import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim } from 'lodash';
 import NextLink from 'next/link';
@@ -29,7 +29,7 @@ import PathTypeSelect from './PathTypeSelect';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
 import MapLocationSelect from './MapLocationSelect';
 import CardSetSelect from './CardSetSelect';
-import { MapLocation } from '../types/types';
+import { CampaignCycle, MapLocation } from '../types/types';
 
 interface MissionEntry {
   day: number;
@@ -134,6 +134,9 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
   roleCards: CardsMap;
   onDelete?: (campaign: ParsedCampaign) => void;
 }) {
+  const roleImageSize = useBreakpointValue(['small', 'small', 'medium']);
+  const { locations } = useLocale();
+  const currentLocation = useMemo(() => find(locations, loc => loc?.id === campaign.current_location), [campaign.current_location, locations])
   const roles = useMemo(() => {
     return flatMap(campaign.latest_decks, d => {
       const role = d.deck?.meta.role;
@@ -144,30 +147,44 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
     })
   }, [campaign.latest_decks, roleCards]);
   const onDeleteClick = useCallback(() => onDelete?.(campaign), [onDelete, campaign]);
-  const { colors } = useTheme();
+  const day = campaign.day;
   return (
-    <ListItem padding={2} borderBottomWidth="1px" borderColor={colors.divider}>
-      <Flex direction="row">
-        <Flex flex={1} direction="row" justifyContent="space-between" as={NextLink} href={`/campaigns/${campaign.id}`}>
+    <Tr>
+      <Td as={NextLink} href={`/campaigns/${campaign.id}`}>
+        <SimpleGrid columns={[1,1,2]} spacingY="2">
           <Flex direction="column">
-            <Flex direction="row" alignItems="flex-end">
-              <Text fontSize="lg" fontWeight="600">{campaign.name}</Text>
-              <Text marginLeft="2em">{t`Day ${campaign.day}`}</Text>
-            </Flex>
+            <Text fontSize="lg" fontWeight="600" marginBottom={2}>
+              {campaign.name}
+            </Text>
             <Flex direction="row">
               <CoreIcon icon="ranger" size="22" />
               <Text marginLeft={2}>{ filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}</Text>
             </Flex>
           </Flex>
-          <Flex direction="row">
-            { flatMap(roles, card => card.imagesrc ? <RoleImage key={card.id} name={card.name} url={card.imagesrc} /> : [])}
-          </Flex>
+          { !!currentLocation && (
+            <Flex direction="row" alignItems="center">
+              <LocationIcon location={currentLocation} size={58} />
+              <Flex direction="column" marginLeft={2}>
+                <Text>{currentLocation.name}</Text>
+                <Text>{t`Day ${day}`}</Text>
+              </Flex>
+            </Flex>
+          ) }
+        </SimpleGrid>
+      </Td>
+      <Td>
+        <Flex direction="row" justifyContent="space-between">
+          <SimpleGrid columns={[2, 2, 4]} as={NextLink} href={`/campaigns/${campaign.id}`}>
+            { flatMap(roles, card => card.imagesrc ? (
+              <RoleImage key={card.id} name={card.name} url={card.imagesrc} size={roleImageSize} />
+            ) : [])}
+          </SimpleGrid>
+          <ButtonGroup>
+            { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<FaTrash />} color="red.500" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
+          </ButtonGroup>
         </Flex>
-        <ButtonGroup>
-          { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<FaTrash />} color="red.500" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
-        </ButtonGroup>
-      </Flex>
-    </ListItem>
+      </Td>
+    </Tr>
   );
 }
 
@@ -196,16 +213,26 @@ export function CampaignList({ campaigns, roleCards, refetch }: { campaigns: Par
   );
   return (
     <>
-      <List>
-        { map(campaigns, c => (
-          <CampaignRow
-            key={c.id}
-            campaign={c}
-            roleCards={roleCards}
-            onDelete={authUser?.uid === c.user_id ? onDelete : undefined}
-          />)
-        ) }
-      </List>
+      <TableContainer marginBottom={2}>
+        <Table size="sm" variant="simple">
+          <Thead>
+            <Tr>
+              <Th>{t`Name`}</Th>
+              <Th>{t`Rangers`}</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            { map(campaigns, c => (
+              <CampaignRow
+                key={c.id}
+                campaign={c}
+                roleCards={roleCards}
+                onDelete={authUser?.uid === c.user_id ? onDelete : undefined}
+              />)
+            ) }
+          </Tbody>
+        </Table>
+      </TableContainer>
       { deleteDialog }
     </>
   )
@@ -1674,7 +1701,21 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
   ]
 }
 
+function CycleChiclet({ cycle }: { cycle: CampaignCycle }) {
+  const { colors } = useTheme();
+  return (
+    <Flex direction="row" marginTop={1}>
+      <Box padding={2} paddingLeft={4} paddingRight={4} borderRadius="8px" backgroundColor={colors.text}>
+        <Text color={colors.background}>{cycle.name}</Text>
+      </Box>
+    </Flex>
+  );
+}
+
 export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
+  const { cycles } = useLocale();
+  const { colors } = useTheme();
+  const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign.cycle_id]);
   const [setCampaignLocationMutation] = useSetCampaignLocationMutation();
   const setCampaignLocation = useCallback(async(value: string) => {
     setCampaignLocationMutation({
@@ -1699,9 +1740,13 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
   }, [campaign.cycle_id]);
   return (
     <>
-      <PageHeading title={campaign.name}>
+      <PageHeading
+        title={campaign.name}
+        subHeader={!!cycle ? <CycleChiclet cycle={cycle} /> : undefined}
+      >
         <Button leftIcon={<FaMoon />} onClick={onTravel}>{t`Travel`}</Button>
       </PageHeading>
+
       <Timeline campaign={campaign} />
       <SimpleGrid columns={[1,1,1,2]} spacingY="2em" spacingX="1em">
         <Flex direction="column" paddingLeft={[1,1,2]}>

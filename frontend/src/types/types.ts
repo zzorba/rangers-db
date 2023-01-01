@@ -20,6 +20,11 @@ export interface MapLocationConnection {
   path: Path;
 }
 
+export interface CampaignCycle {
+  id: string;
+  name: string;
+}
+
 export interface MapLocation {
   id: string;
   name: string;
