@@ -41,7 +41,7 @@ msgstr "A Perfect Day"
 msgid "AWA"
 msgstr "AWA"
 
-#: src/components/FriendRequests.tsx:145
+#: src/components/FriendRequests.tsx:149
 msgid "Accept"
 msgstr "Accept"
 
@@ -64,7 +64,7 @@ msgstr "Add mission"
 msgid "Add reward"
 msgstr "Add reward"
 
-#: src/components/FriendChooser.tsx:83
+#: src/components/FriendChooser.tsx:91
 msgid "Add to campaign"
 msgstr "Add to campaign"
 
@@ -167,6 +167,7 @@ msgstr "Branch"
 msgid "Camp"
 msgstr "Camp"
 
+#: src/components/Campaign.tsx:1759
 #: src/pages/campaigns/[cid].tsx:83
 #: src/pages/campaigns/[cid].tsx:102
 msgid "Campaign"
@@ -254,7 +255,11 @@ msgstr "Copy"
 msgid "Copy this deck to make your own changes."
 msgstr "Copy this deck to make your own changes."
 
-#: src/components/Campaign.tsx:1775
+#: src/components/Campaign.tsx:1766
+msgid "Core"
+msgstr "Core"
+
+#: src/components/Campaign.tsx:1789
 #: src/components/DeckEdit.tsx:1011
 #: src/components/DeckEdit.tsx:1021
 msgid "Create"
@@ -331,6 +336,10 @@ msgstr "Delete deck?"
 #: src/components/DeckDetail.tsx:264
 msgid "Deleting this published deck will cause will remove it from search."
 msgstr "Deleting this published deck will cause will remove it from search."
+
+#: src/components/Campaign.tsx:1765
+msgid "Demo"
+msgstr "Demo"
 
 #: src/components/DeckDetail.tsx:327
 #: src/components/DeckEdit.tsx:437
@@ -431,7 +440,7 @@ msgstr "Filter by Role"
 msgid "Filter by {0}"
 msgstr "Filter by {0}"
 
-#: src/components/FriendSearch.tsx:59
+#: src/components/FriendSearch.tsx:63
 msgid "Find new friends"
 msgstr "Find new friends"
 
@@ -451,11 +460,11 @@ msgstr "Focus"
 msgid "Forgot Password"
 msgstr "Forgot Password"
 
-#: src/components/FriendRequests.tsx:141
+#: src/components/FriendRequests.tsx:145
 msgid "Friend Requests"
 msgstr "Friend Requests"
 
-#: src/components/FriendRequests.tsx:168
+#: src/components/FriendRequests.tsx:174
 msgid "Friends"
 msgstr "Friends"
 
@@ -608,7 +617,7 @@ msgstr "My Decks"
 #: src/components/Campaign.tsx:883
 #: src/components/Campaign.tsx:994
 #: src/components/Campaign.tsx:1012
-#: src/components/Campaign.tsx:1750
+#: src/components/Campaign.tsx:1751
 #: src/components/DeckEdit.tsx:947
 #: src/components/DeckEdit.tsx:980
 msgid "Name"
@@ -625,7 +634,7 @@ msgstr "Name and day are required."
 msgid "Name your character"
 msgstr "Name your character"
 
-#: src/components/Campaign.tsx:1740
+#: src/components/Campaign.tsx:1741
 #: src/pages/campaigns/index.tsx:75
 msgid "New campaign"
 msgstr "New campaign"
@@ -664,7 +673,7 @@ msgstr "No matching cards found."
 msgid "No matching decks."
 msgstr "No matching decks."
 
-#: src/components/FriendSearch.tsx:94
+#: src/components/FriendSearch.tsx:99
 msgid "No results"
 msgstr "No results"
 
@@ -764,7 +773,7 @@ msgstr "Path Terrain"
 msgid "Paths"
 msgstr "Paths"
 
-#: src/components/FriendRequests.tsx:158
+#: src/components/FriendRequests.tsx:163
 msgid "Pending Requests"
 msgstr "Pending Requests"
 
@@ -777,8 +786,7 @@ msgstr "Personality"
 #~ msgid "Player"
 #~ msgstr "Player"
 
-#: src/components/Campaign.tsx:1644
-#: src/components/Campaign.tsx:1763
+#: src/components/Campaign.tsx:1770
 msgid "Players"
 msgstr "Players"
 
@@ -869,7 +877,7 @@ msgstr "Register"
 msgid "Register now"
 msgstr "Register now"
 
-#: src/components/FriendRequests.tsx:150
+#: src/components/FriendRequests.tsx:154
 msgid "Reject"
 msgstr "Reject"
 
@@ -893,12 +901,12 @@ msgstr "Remove reward"
 msgid "Removed Cards"
 msgstr "Removed Cards"
 
-#: src/components/FriendSearch.tsx:33
+#: src/components/FriendSearch.tsx:36
 msgid "Request friend"
 msgstr "Request friend"
 
-#: src/components/FriendRequests.tsx:161
-#: src/components/FriendRequests.tsx:172
+#: src/components/FriendRequests.tsx:166
+#: src/components/FriendRequests.tsx:178
 msgid "Revoke"
 msgstr "Revoke"
 
@@ -977,6 +985,10 @@ msgstr "Select 5 different cards from your chosen background."
 #: src/components/DeckEdit.tsx:464
 msgid "Select 5 different cards from your chosen specialty."
 msgstr "Select 5 different cards from your chosen specialty."
+
+#: src/components/Campaign.tsx:1762
+msgid "Select campaign"
+msgstr "Select campaign"
 
 #: src/components/CardSetSelect.tsx:92
 msgid "Select card set..."
@@ -1202,7 +1214,7 @@ msgstr "Track cards that are removed permanently from the path deck here."
 msgid "Two aspects must be set to 2."
 msgstr "Two aspects must be set to 2."
 
-#: src/components/Campaign.tsx:1708
+#: src/components/Campaign.tsx:1709
 msgid "Unable to create campaign at this time."
 msgstr "Unable to create campaign at this time."
 
