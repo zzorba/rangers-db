@@ -368,7 +368,7 @@ const CONNECTIONS: { locA: string; locB: string; path: Path }[] = [
   {
     locA: 'the_tumbledown',
     locB: 'watchers_rock',
-    path: Path.RAVINE,
+    path: Path.MOUNTAIN_PASS,
   },
   {
     locA: 'kobos_market',
