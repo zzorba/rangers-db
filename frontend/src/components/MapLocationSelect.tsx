@@ -48,7 +48,7 @@ export default function MapLocationSelect({ value, setValue, decoration, filter:
       }),
       opt => opt.name
     );
-  }, [locations, value, decoration, filterLocation]);
+  }, [locations, decoration, filterLocation]);
   const onChange = useCallback((option: SingleValue<MapLocationOption>) => {
     if (option && option.value !== value) {
       setValue(option.value);

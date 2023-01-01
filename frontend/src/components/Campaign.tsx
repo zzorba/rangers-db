@@ -1694,6 +1694,9 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
     });
   }, [setCampaignPathTerrainMutation, campaign.id]);
   const [onTravel, travelModal] = useTravelModal(campaign);
+  const filterLocation = useCallback((location: MapLocation): boolean => {
+    return !location.cycles || !!find(location.cycles, x => x === campaign.cycle_id);
+  }, [campaign.cycle_id]);
   return (
     <>
       <PageHeading title={campaign.name}>
@@ -1718,7 +1721,11 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
             </Text>
             <FormControl marginBottom={4}>
               <FormLabel>{t`Location`}</FormLabel>
-              <MapLocationSelect value={campaign.current_location} setValue={setCampaignLocation} />
+              <MapLocationSelect
+                value={campaign.current_location}
+                filter={filterLocation}
+                setValue={setCampaignLocation}
+              />
             </FormControl>
             <FormControl marginBottom={2}>
               <FormLabel>{t`Path Terrain`}</FormLabel>
