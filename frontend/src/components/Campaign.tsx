@@ -134,7 +134,7 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
   roleCards: CardsMap;
   onDelete?: (campaign: ParsedCampaign) => void;
 }) {
-  const roleImageSize = useBreakpointValue(['small', 'small', 'medium']);
+  const roleImageSize = useBreakpointValue<'small' | 'medium'>(['small', 'small', 'medium']);
   const { locations } = useLocale();
   const currentLocation = useMemo(() => find(locations, loc => loc?.id === campaign.current_location), [campaign.current_location, locations])
   const roles = useMemo(() => {
