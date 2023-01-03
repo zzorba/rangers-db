@@ -1706,7 +1706,7 @@ function CycleChiclet({ cycle }: { cycle: CampaignCycle }) {
   return (
     <Flex direction="row" marginTop={1}>
       <Box padding={2} paddingLeft={4} paddingRight={4} borderRadius="8px" backgroundColor={colors.text}>
-        <Text color={colors.background}>{cycle.name}</Text>
+        <Text color={colors.inverted}>{cycle.name}</Text>
       </Box>
     </Flex>
   );

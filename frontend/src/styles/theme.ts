@@ -35,6 +35,7 @@ const theme = extendTheme({
     light: {
       lightText: '#666666',
       text: 'black',
+      inverted: 'white',
       background: 'white',
       lightBackground: '#AAAAAA',
       aspect: {
@@ -48,6 +49,7 @@ const theme = extendTheme({
     dark: {
       lightText: '#AAAAAA',
       text: 'white',
+      inverted: 'black',
       background: 'dark',
       lightBackground: '#444444',
       aspect: {
