@@ -101,7 +101,6 @@ msgstr "Archäologischer Vorposten"
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "Willst du wirklich das \"{0}\" Deck löschen?"
 
-#: src/components/DeckList.tsx:65
 #~ msgid "Are you sure you want to delete the '{0}' deck?"
 #~ msgstr "Bist du sicher, dass du das '{0}' Deck löschen möchtest?"
 
@@ -117,7 +116,6 @@ msgstr "Willst du dieses Deck wirklich löschen?"
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Willst du deine Kampagne {0} wirklich löschen? Das lässt sich nicht rückgängig machen."
 
-#: src/pages/index.tsx:26
 #~ msgid "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
 #~ msgstr "Da diese Webseite noch im Aufbau ist, können Funktionen in nächster Zeit hinzugefügt und wieder entfernt werden. Die gesamte Seite wird voraussichtlich wegen Wartungen wiederholt offline gehen. Daten können dabei <0>verloren gehen</0>!"
 
@@ -324,7 +322,6 @@ msgstr "Dark Mode"
 msgid "Day"
 msgstr "Tag"
 
-#: src/components/Campaign.tsx:155
 #~ msgid "Day {0}"
 #~ msgstr "Tag {0}"
 
@@ -559,7 +556,6 @@ msgstr "Oberlauf-Station"
 msgid "Hide spoilers"
 msgstr "Spoiler verstecken"
 
-#: src/pages/decks/search.tsx:19
 #~ msgid "However, you can share links to your individual decks to inspire others."
 #~ msgstr "Du kannst aber schon Links zu deinen eigenen Decks teilen, um  andere zu inspirieren."
 
@@ -799,6 +795,7 @@ msgstr "Nur ein Aspekt kann auf 1 gesetzt werden."
 msgid "Only one aspect can be set to 3."
 msgstr "Nur ein Aspekt kann auf 3 gesetzt werden."
 
+#. card_set_header
 #: src/components/CardFilter.tsx:353
 msgid "Other"
 msgstr "Andere"
@@ -840,7 +837,6 @@ msgstr "Ausstehende Freundschaftsanfragen"
 msgid "Personality"
 msgstr "Charakteristiken"
 
-#: src/components/CardList.tsx:62
 #~ msgid "Player"
 #~ msgstr "Spieler"
 
@@ -918,11 +914,9 @@ msgstr "Schlucht"
 msgid "Reason"
 msgstr ""
 
-#: src/components/Campaign.tsx:1396
 #~ msgid "Record current location"
 #~ msgstr "Aktuellen Ort notieren"
 
-#: src/components/Campaign.tsx:1400
 #~ msgid "Record current path terrain"
 #~ msgstr "Aktuellen Terrain-Typ notieren"
 
@@ -1032,7 +1026,6 @@ msgstr "Änderungen speichern"
 msgid "Search by name"
 msgstr "Nach Name suchen"
 
-#: src/pages/decks/search.tsx:16
 #~ msgid "Searching decks that have been shared with the community is still under construction."
 #~ msgstr "Die Suche nach veröffentlichten Decks befindet sich derzeit noch im Aufbau."
 
@@ -1052,26 +1045,14 @@ msgstr "Wähle 5 Karten deiner gewählten Vorgeschichte aus."
 msgid "Select 5 different cards from your chosen specialty."
 msgstr "Wähle 5 Karten deiner gewählten Expertise aus."
 
-#: src/components/CardFilter.tsx:541
-#~ msgid "Select approach icons"
-#~ msgstr ""
-
 #: src/components/Campaign.tsx:1993
 #: src/pages/admin/map.tsx:67
 msgid "Select campaign"
 msgstr "Kampagne auswählen"
 
-#: src/components/CardFilter.tsx:525
-#~ msgid "Select card set"
-#~ msgstr ""
-
 #: src/components/CardSetSelect.tsx:92
 msgid "Select card set..."
 msgstr "Pfadkarten-Set auswählen..."
-
-#: src/components/CardFilter.tsx:508
-#~ msgid "Select card type"
-#~ msgstr ""
 
 #: src/components/MapLocationSelect.tsx:75
 msgid "Select location..."
@@ -1080,10 +1061,6 @@ msgstr "Ort auswählen..."
 #: src/components/PathTypeSelect.tsx:56
 msgid "Select path terrain..."
 msgstr "Terrain-Typ auswählen..."
-
-#: src/components/CardFilter.tsx:516
-#~ msgid "Select trait"
-#~ msgstr ""
 
 #: src/components/FriendStatusComponent.tsx:51
 msgid "Send Friend Request"
@@ -1225,7 +1202,6 @@ msgstr "Es sind zu viele Hobby-Karten in deinem Deck."
 msgid "There is also a <0>campaign</0> tracking system that you can share with your friends and track rewards and events as you progress through the valley."
 msgstr "Es gibt auch einen <0>Kampagnen-Tracker</0> den du mit deinen Freunden teilen kannst um Belohnungen und Ereignisse zu verfolgen während ihr durch das Tal wandert."
 
-#: src/pages/index.tsx:29
 #~ msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
 #~ msgstr "Die Webseite sollte aber schnell stabil laufen. Diese Notiz wird entfernt, sobald ich mit dem Stand der Dinge zufrieden bin."
 
@@ -1327,10 +1303,6 @@ msgstr "Gefällt mir nicht"
 msgid "Update now"
 msgstr "Jetzt bearbeiten"
 
-#: src/components/Campaign.tsx:985
-#~ msgid "Use this section to track cards that are removed permanently from the path decks."
-#~ msgstr ""
-
 #: src/lib/hooks.ts:721
 msgid "Watcher's Rock"
 msgstr "Das Auge Am Rand"
@@ -1409,6 +1381,13 @@ msgstr "Deine Hobby-Karte kann nicht das Experte-Merkmal haben."
 #: src/lib/hooks.ts:137
 msgid "Your role card does not match your chosen specialty."
 msgstr "Deine Berufungs-Karte passt nicht zu deiner gewählten Expertise."
+
+#: src/components/CardFilter.tsx:353
+#~ msgid "card_set.other"
+#~ msgstr "Andere"
+
+#~ msgid "card_set_header"
+#~ msgstr ""
 
 #: src/components/Deck.tsx:71
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"

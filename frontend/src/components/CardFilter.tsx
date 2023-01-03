@@ -350,7 +350,7 @@ export function useCardSearchControls(allCards: CardFragment[]): [React.ReactNod
         options: sortBy(flatMap(specialty.options, (name, id) => name ? ({ value: id, name, label: name }) : []), o => o.label) || [],
       }] : []),
       {
-        label: t`Other`,
+        label: t({ comment: 'card_set_header', message: `Other` }),
         options: [{
           value: 'personality',
           name: t`Personality`,

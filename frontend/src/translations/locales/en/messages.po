@@ -818,6 +818,7 @@ msgstr "Only one aspect can be set to 1."
 msgid "Only one aspect can be set to 3."
 msgstr "Only one aspect can be set to 3."
 
+#. card_set_header
 #: src/components/CardFilter.tsx:353
 msgid "Other"
 msgstr "Other"
@@ -1443,6 +1444,13 @@ msgstr "Your role card does not match your chosen specialty."
 #: src/components/AspectCounter.tsx:13
 #~ msgid "awa"
 #~ msgstr "AWA"
+
+#: src/components/CardFilter.tsx:353
+#~ msgid "card_set.other"
+#~ msgstr "Other"
+
+#~ msgid "card_set_header"
+#~ msgstr "card_set_header"
 
 #: src/components/AspectCounter.tsx:14
 #~ msgid "fit"

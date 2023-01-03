@@ -818,6 +818,7 @@ msgstr ""
 msgid "Only one aspect can be set to 3."
 msgstr ""
 
+#. card_set_header
 #: src/components/CardFilter.tsx:353
 msgid "Other"
 msgstr ""
@@ -1442,6 +1443,13 @@ msgstr ""
 
 #: src/components/AspectCounter.tsx:13
 #~ msgid "awa"
+#~ msgstr ""
+
+#: src/components/CardFilter.tsx:353
+#~ msgid "card_set.other"
+#~ msgstr ""
+
+#~ msgid "card_set_header"
 #~ msgstr ""
 
 #: src/components/AspectCounter.tsx:14
