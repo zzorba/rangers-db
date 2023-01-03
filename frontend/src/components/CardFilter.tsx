@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { find, filter, trim, map, sortBy, flatMap, uniq, uniqBy } from 'lodash';
 import { t } from '@lingui/macro';
 import { Flex, Text, FormControl, FormLabel, Input, SimpleGrid, Stack } from '@chakra-ui/react';
@@ -165,15 +165,17 @@ function NumberCompareInput({
     setValue(parsed);
     setLiveValue(parsed ? serializeNumberCompare(parsed): '');
   }, [liveValue, setValue]);
+  const ref = useRef<HTMLInputElement>(null);
   return (
     <Input
+      ref={ref}
       value={liveValue}
       onChange={(e) => setLiveValue(e.target.value)}
       onBlur={onBlur}
       type="search"
       onKeyPress={e=> {
         if (e.key === 'Enter') {
-          onBlur();
+          ref.current?.blur();
           e.preventDefault();
         }
       }}
