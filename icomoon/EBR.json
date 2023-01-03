@@ -8,7 +8,7 @@
     {
       "selection": [
         {
-          "order": 84,
+          "order": 94,
           "id": 60,
           "name": "river",
           "prevSize": 32,
@@ -16,7 +16,7 @@
           "tempChar": ""
         },
         {
-          "order": 85,
+          "order": 95,
           "id": 59,
           "name": "swamp",
           "prevSize": 32,
@@ -24,7 +24,7 @@
           "tempChar": ""
         },
         {
-          "order": 86,
+          "order": 96,
           "id": 58,
           "name": "ravine",
           "prevSize": 32,
@@ -32,7 +32,7 @@
           "tempChar": ""
         },
         {
-          "order": 88,
+          "order": 97,
           "id": 57,
           "name": "grassland",
           "prevSize": 32,
@@ -40,7 +40,7 @@
           "tempChar": ""
         },
         {
-          "order": 87,
+          "order": 98,
           "id": 56,
           "name": "lakeshore",
           "prevSize": 32,
@@ -48,7 +48,7 @@
           "tempChar": ""
         },
         {
-          "order": 89,
+          "order": 99,
           "id": 55,
           "name": "woods",
           "prevSize": 32,
@@ -56,7 +56,7 @@
           "tempChar": ""
         },
         {
-          "order": 90,
+          "order": 100,
           "id": 54,
           "name": "mountain_pass",
           "prevSize": 32,
@@ -64,7 +64,7 @@
           "tempChar": ""
         },
         {
-          "order": 91,
+          "order": 101,
           "id": 53,
           "name": "old_growth1",
           "prevSize": 32,
@@ -72,7 +72,7 @@
           "tempChar": ""
         },
         {
-          "order": 92,
+          "order": 102,
           "id": 61,
           "name": "location_bg",
           "prevSize": 32,
@@ -80,7 +80,7 @@
           "tempChar": ""
         },
         {
-          "order": 76,
+          "order": 103,
           "id": 6,
           "name": "trail_bg",
           "prevSize": 32,
@@ -95,7 +95,7 @@
           ]
         },
         {
-          "order": 83,
+          "order": 104,
           "id": 52,
           "name": "rings_of_the_moon",
           "prevSize": 32,
@@ -103,7 +103,7 @@
           "tempChar": ""
         },
         {
-          "order": 31,
+          "order": 105,
           "id": 51,
           "name": "biologists_outpost",
           "prevSize": 32,
@@ -111,7 +111,7 @@
           "tempChar": ""
         },
         {
-          "order": 32,
+          "order": 106,
           "id": 50,
           "name": "spire_bg",
           "prevSize": 32,
@@ -119,7 +119,7 @@
           "tempChar": ""
         },
         {
-          "order": 33,
+          "order": 107,
           "id": 49,
           "name": "spire",
           "prevSize": 32,
@@ -127,7 +127,7 @@
           "tempChar": ""
         },
         {
-          "order": 35,
+          "order": 108,
           "id": 47,
           "name": "archeological_outpost_bg",
           "prevSize": 32,
@@ -135,7 +135,7 @@
           "tempChar": ""
         },
         {
-          "order": 36,
+          "order": 109,
           "id": 46,
           "name": "archeological_outpost",
           "prevSize": 32,
@@ -143,7 +143,7 @@
           "tempChar": ""
         },
         {
-          "order": 37,
+          "order": 110,
           "id": 45,
           "name": "watchers_rock_bg",
           "prevSize": 32,
@@ -151,7 +151,7 @@
           "tempChar": ""
         },
         {
-          "order": 38,
+          "order": 111,
           "id": 44,
           "name": "watchers_rock",
           "prevSize": 32,
@@ -159,7 +159,7 @@
           "tempChar": ""
         },
         {
-          "order": 39,
+          "order": 112,
           "id": 43,
           "name": "sunken_outpost_bg",
           "prevSize": 32,
@@ -167,7 +167,7 @@
           "tempChar": ""
         },
         {
-          "order": 40,
+          "order": 113,
           "id": 42,
           "name": "sunken_outpost",
           "prevSize": 32,
@@ -175,7 +175,7 @@
           "tempChar": ""
         },
         {
-          "order": 41,
+          "order": 114,
           "id": 41,
           "name": "the_greenbridge_bg",
           "prevSize": 32,
@@ -183,7 +183,7 @@
           "tempChar": ""
         },
         {
-          "order": 42,
+          "order": 115,
           "id": 40,
           "name": "the_greenbridge",
           "prevSize": 32,
@@ -191,7 +191,7 @@
           "tempChar": ""
         },
         {
-          "order": 43,
+          "order": 116,
           "id": 39,
           "name": "mound_of_the_navigator_bg",
           "prevSize": 32,
@@ -199,7 +199,7 @@
           "tempChar": ""
         },
         {
-          "order": 44,
+          "order": 117,
           "id": 38,
           "name": "mound_of_the_navigator",
           "prevSize": 32,
@@ -207,7 +207,7 @@
           "tempChar": ""
         },
         {
-          "order": 45,
+          "order": 118,
           "id": 37,
           "name": "stoneweaver_bridge_bg",
           "prevSize": 32,
@@ -215,7 +215,7 @@
           "tempChar": ""
         },
         {
-          "order": 46,
+          "order": 119,
           "id": 36,
           "name": "stoneweaver_bridge",
           "prevSize": 32,
@@ -223,7 +223,7 @@
           "tempChar": ""
         },
         {
-          "order": 47,
+          "order": 120,
           "id": 35,
           "name": "the_concordant_ziggurats",
           "prevSize": 32,
@@ -231,7 +231,7 @@
           "tempChar": ""
         },
         {
-          "order": 48,
+          "order": 121,
           "id": 34,
           "name": "the_alluvial_ruins",
           "prevSize": 32,
@@ -239,7 +239,7 @@
           "tempChar": ""
         },
         {
-          "order": 49,
+          "order": 122,
           "id": 33,
           "name": "terravore",
           "prevSize": 32,
@@ -247,7 +247,7 @@
           "tempChar": ""
         },
         {
-          "order": 50,
+          "order": 123,
           "id": 32,
           "name": "the_furrow",
           "prevSize": 32,
@@ -255,7 +255,7 @@
           "tempChar": ""
         },
         {
-          "order": 51,
+          "order": 124,
           "id": 31,
           "name": "the_high_basin",
           "prevSize": 32,
@@ -263,7 +263,7 @@
           "tempChar": ""
         },
         {
-          "order": 52,
+          "order": 125,
           "id": 30,
           "name": "branch",
           "prevSize": 32,
@@ -271,7 +271,7 @@
           "tempChar": ""
         },
         {
-          "order": 53,
+          "order": 126,
           "id": 29,
           "name": "crossroads_station",
           "prevSize": 32,
@@ -279,7 +279,7 @@
           "tempChar": ""
         },
         {
-          "order": 54,
+          "order": 127,
           "id": 28,
           "name": "greenbriar_knoll",
           "prevSize": 32,
@@ -287,7 +287,7 @@
           "tempChar": ""
         },
         {
-          "order": 55,
+          "order": 128,
           "id": 27,
           "name": "meadow",
           "prevSize": 32,
@@ -295,7 +295,7 @@
           "tempChar": ""
         },
         {
-          "order": 56,
+          "order": 129,
           "id": 26,
           "name": "michaels_bog",
           "prevSize": 32,
@@ -303,7 +303,7 @@
           "tempChar": ""
         },
         {
-          "order": 57,
+          "order": 130,
           "id": 25,
           "name": "the_cypress_citadel",
           "prevSize": 32,
@@ -311,7 +311,7 @@
           "tempChar": ""
         },
         {
-          "order": 58,
+          "order": 131,
           "id": 24,
           "name": "marsh_of_rebirth",
           "prevSize": 32,
@@ -319,7 +319,7 @@
           "tempChar": ""
         },
         {
-          "order": 59,
+          "order": 132,
           "id": 23,
           "name": "the_frowning_gate",
           "prevSize": 32,
@@ -327,7 +327,7 @@
           "tempChar": ""
         },
         {
-          "order": 60,
+          "order": 133,
           "id": 22,
           "name": "bowl_of_the_sun",
           "prevSize": 32,
@@ -335,7 +335,7 @@
           "tempChar": ""
         },
         {
-          "order": 61,
+          "order": 134,
           "id": 21,
           "name": "the_tumbledown",
           "prevSize": 32,
@@ -343,7 +343,7 @@
           "tempChar": ""
         },
         {
-          "order": 62,
+          "order": 135,
           "id": 20,
           "name": "headwaters_station_bg",
           "prevSize": 32,
@@ -351,7 +351,7 @@
           "tempChar": ""
         },
         {
-          "order": 63,
+          "order": 136,
           "id": 19,
           "name": "headwaters_station",
           "prevSize": 32,
@@ -359,7 +359,7 @@
           "tempChar": ""
         },
         {
-          "order": 64,
+          "order": 137,
           "id": 18,
           "name": "the_plummet",
           "prevSize": 32,
@@ -367,7 +367,7 @@
           "tempChar": ""
         },
         {
-          "order": 65,
+          "order": 138,
           "id": 17,
           "name": "boulder_field_bg",
           "prevSize": 32,
@@ -382,7 +382,7 @@
           ]
         },
         {
-          "order": 66,
+          "order": 139,
           "id": 16,
           "name": "boulder_field",
           "prevSize": 32,
@@ -390,7 +390,7 @@
           "tempChar": ""
         },
         {
-          "order": 67,
+          "order": 140,
           "id": 15,
           "name": "kobos_market",
           "prevSize": 32,
@@ -398,7 +398,7 @@
           "tempChar": ""
         },
         {
-          "order": 68,
+          "order": 141,
           "id": 14,
           "name": "ancestors_grove",
           "prevSize": 32,
@@ -406,7 +406,7 @@
           "tempChar": ""
         },
         {
-          "order": 69,
+          "order": 142,
           "id": 13,
           "name": "the_philosophers_garden",
           "prevSize": 32,
@@ -414,7 +414,7 @@
           "tempChar": ""
         },
         {
-          "order": 70,
+          "order": 143,
           "id": 12,
           "name": "the_fractured_wall",
           "prevSize": 32,
@@ -422,7 +422,7 @@
           "tempChar": ""
         },
         {
-          "order": 71,
+          "order": 144,
           "id": 11,
           "name": "white_sky",
           "prevSize": 32,
@@ -430,7 +430,7 @@
           "tempChar": ""
         },
         {
-          "order": 72,
+          "order": 145,
           "id": 10,
           "name": "mount_nim",
           "prevSize": 32,
@@ -438,7 +438,7 @@
           "tempChar": ""
         },
         {
-          "order": 75,
+          "order": 146,
           "id": 7,
           "name": "northern_outpost",
           "prevSize": 32,
@@ -446,7 +446,7 @@
           "tempChar": ""
         },
         {
-          "order": 78,
+          "order": 147,
           "id": 4,
           "name": "golden_shore",
           "prevSize": 32,
@@ -454,7 +454,7 @@
           "tempChar": ""
         },
         {
-          "order": 79,
+          "order": 148,
           "id": 3,
           "name": "atrox_mountain_bg",
           "prevSize": 32,
@@ -462,7 +462,7 @@
           "tempChar": ""
         },
         {
-          "order": 80,
+          "order": 149,
           "id": 2,
           "name": "atrox_mountain",
           "prevSize": 32,
@@ -470,7 +470,7 @@
           "tempChar": ""
         },
         {
-          "order": 81,
+          "order": 150,
           "id": 1,
           "name": "lone_tree_station_bg",
           "prevSize": 32,
@@ -478,7 +478,7 @@
           "tempChar": ""
         },
         {
-          "order": 82,
+          "order": 151,
           "id": 0,
           "name": "lone_tree_station",
           "prevSize": 32,
@@ -486,7 +486,7 @@
           "tempChar": ""
         },
         {
-          "order": 93,
+          "order": 152,
           "id": 62,
           "name": "biologists_outpost_bg",
           "prevSize": 32,
@@ -6005,7 +6005,7 @@
     {
       "selection": [
         {
-          "order": 16,
+          "order": 0,
           "id": 12,
           "name": "conflict",
           "prevSize": 32,
@@ -6013,7 +6013,7 @@
           "tempChar": ""
         },
         {
-          "order": 5,
+          "order": 0,
           "id": 11,
           "name": "connection",
           "prevSize": 32,
@@ -6021,7 +6021,7 @@
           "tempChar": ""
         },
         {
-          "order": 6,
+          "order": 0,
           "id": 2,
           "name": "reason",
           "prevSize": 32,
@@ -6029,7 +6029,7 @@
           "tempChar": ""
         },
         {
-          "order": 7,
+          "order": 0,
           "id": 9,
           "name": "exploration",
           "prevSize": 32,
@@ -6037,7 +6037,7 @@
           "tempChar": ""
         },
         {
-          "order": 8,
+          "order": 0,
           "id": 13,
           "name": "conditional",
           "prevSize": 32,
@@ -6045,7 +6045,7 @@
           "tempChar": ""
         },
         {
-          "order": 9,
+          "order": 0,
           "id": 7,
           "name": "harm",
           "prevSize": 32,
@@ -6053,7 +6053,7 @@
           "tempChar": ""
         },
         {
-          "order": 21,
+          "order": 0,
           "id": 18,
           "name": "old_growth",
           "prevSize": 32,
@@ -6061,7 +6061,7 @@
           "tempChar": ""
         },
         {
-          "order": 10,
+          "order": 0,
           "id": 4,
           "name": "progress",
           "prevSize": 32,
@@ -6069,7 +6069,7 @@
           "tempChar": ""
         },
         {
-          "order": 11,
+          "order": 0,
           "id": 3,
           "name": "ranger",
           "prevSize": 32,
@@ -6077,7 +6077,7 @@
           "tempChar": ""
         },
         {
-          "order": 12,
+          "order": 0,
           "id": 1,
           "name": "reshuffle",
           "prevSize": 32,
@@ -6085,7 +6085,7 @@
           "tempChar": ""
         },
         {
-          "order": 13,
+          "order": 0,
           "id": 8,
           "name": "guide",
           "prevSize": 32,
@@ -6093,7 +6093,7 @@
           "tempChar": ""
         },
         {
-          "order": 14,
+          "order": 0,
           "id": 5,
           "name": "per_ranger",
           "prevSize": 32,
@@ -6101,7 +6101,7 @@
           "tempChar": ""
         },
         {
-          "order": 15,
+          "order": 0,
           "id": 0,
           "name": "sun",
           "prevSize": 32,
@@ -6109,7 +6109,7 @@
           "tempChar": ""
         },
         {
-          "order": 2,
+          "order": 0,
           "id": 10,
           "name": "crest",
           "prevSize": 32,
@@ -6117,7 +6117,7 @@
           "tempChar": ""
         },
         {
-          "order": 3,
+          "order": 0,
           "id": 6,
           "name": "mountain",
           "prevSize": 32,
@@ -6125,7 +6125,7 @@
           "tempChar": ""
         },
         {
-          "order": 17,
+          "order": 0,
           "id": 14,
           "name": "spi_chakra",
           "prevSize": 32,
@@ -6133,7 +6133,7 @@
           "tempChar": ""
         },
         {
-          "order": 18,
+          "order": 0,
           "id": 15,
           "name": "foc_chakra",
           "prevSize": 32,
@@ -6141,7 +6141,7 @@
           "tempChar": ""
         },
         {
-          "order": 19,
+          "order": 0,
           "id": 16,
           "name": "fit_chakra",
           "prevSize": 32,
@@ -6149,7 +6149,7 @@
           "tempChar": ""
         },
         {
-          "order": 20,
+          "order": 0,
           "id": 17,
           "name": "awa_chakra",
           "prevSize": 32,
