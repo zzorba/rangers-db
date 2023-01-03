@@ -195,6 +195,10 @@ function costFilter(cost: NumberCompare | null, card: CardFragment): boolean {
   if (card.cost === null || card.cost === undefined) {
     return false;
   }
+  if (card.cost === -2) {
+    // X is anything, it could even be a boat!
+    return true;
+  }
   switch (cost.operand) {
     case 'eq': {
       if (card.cost !== cost.value) {
