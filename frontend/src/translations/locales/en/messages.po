@@ -89,7 +89,7 @@ msgstr "Already have an account? <0>Login</0> now."
 msgid "Ancestor's Grove"
 msgstr "Ancestor's Grove"
 
-#: src/components/CardFilter.tsx:539
+#: src/components/CardFilter.tsx:545
 msgid "Approach icons"
 msgstr "Approach icons"
 
@@ -129,7 +129,7 @@ msgstr "Are you sure you want to delete your campaign: {0}? This action cannot b
 #~ msgid "Aspect"
 #~ msgstr "Aspect"
 
-#: src/components/CardFilter.tsx:554
+#: src/components/CardFilter.tsx:560
 msgid "Aspect requirements"
 msgstr "Aspect requirements"
 
@@ -209,7 +209,7 @@ msgstr "Cancel Friend Request"
 msgid "Cancel Friendship"
 msgstr "Cancel Friendship"
 
-#: src/components/CardFilter.tsx:523
+#: src/components/CardFilter.tsx:529
 msgid "Card set"
 msgstr "Card set"
 
@@ -294,7 +294,7 @@ msgstr "Core"
 msgid "Core set"
 msgstr "Core set"
 
-#: src/components/CardFilter.tsx:532
+#: src/components/CardFilter.tsx:538
 msgid "Cost"
 msgstr "Cost"
 
@@ -465,7 +465,7 @@ msgstr "Email"
 msgid "English"
 msgstr "English"
 
-#: src/components/CardFilter.tsx:548
+#: src/components/CardFilter.tsx:554
 msgid "Equip"
 msgstr "Equip"
 
@@ -486,6 +486,22 @@ msgstr "FOC"
 #: src/pages/decks/search.tsx:85
 msgid "Filter by Role"
 msgstr "Filter by Role"
+
+#: src/components/CardFilter.tsx:547
+msgid "Filter by approach icons"
+msgstr "Filter by approach icons"
+
+#: src/components/CardFilter.tsx:531
+msgid "Filter by card set"
+msgstr "Filter by card set"
+
+#: src/components/CardFilter.tsx:514
+msgid "Filter by card type"
+msgstr "Filter by card type"
+
+#: src/components/CardFilter.tsx:522
+msgid "Filter by trait"
+msgstr "Filter by trait"
 
 #: src/pages/decks/search.tsx:31
 msgid "Filter by {0}"
@@ -802,7 +818,7 @@ msgstr "Only one aspect can be set to 1."
 msgid "Only one aspect can be set to 3."
 msgstr "Only one aspect can be set to 3."
 
-#: src/components/CardFilter.tsx:347
+#: src/components/CardFilter.tsx:353
 msgid "Other"
 msgstr "Other"
 
@@ -836,8 +852,8 @@ msgstr "Paths"
 msgid "Pending Requests"
 msgstr "Pending Requests"
 
-#: src/components/CardFilter.tsx:350
-#: src/components/CardFilter.tsx:351
+#: src/components/CardFilter.tsx:356
+#: src/components/CardFilter.tsx:357
 #: src/components/DeckEdit.tsx:433
 #: src/lib/parseDeck.ts:246
 msgid "Personality"
@@ -1058,8 +1074,8 @@ msgid "Select 5 different cards from your chosen specialty."
 msgstr "Select 5 different cards from your chosen specialty."
 
 #: src/components/CardFilter.tsx:541
-msgid "Select approach icons"
-msgstr "Select approach icons"
+#~ msgid "Select approach icons"
+#~ msgstr "Select approach icons"
 
 #: src/components/Campaign.tsx:1993
 #: src/pages/admin/map.tsx:67
@@ -1067,16 +1083,16 @@ msgid "Select campaign"
 msgstr "Select campaign"
 
 #: src/components/CardFilter.tsx:525
-msgid "Select card set"
-msgstr "Select card set"
+#~ msgid "Select card set"
+#~ msgstr "Select card set"
 
 #: src/components/CardSetSelect.tsx:92
 msgid "Select card set..."
 msgstr "Select card set..."
 
 #: src/components/CardFilter.tsx:508
-msgid "Select card type"
-msgstr "Select card type"
+#~ msgid "Select card type"
+#~ msgstr "Select card type"
 
 #: src/components/MapLocationSelect.tsx:75
 msgid "Select location..."
@@ -1087,8 +1103,8 @@ msgid "Select path terrain..."
 msgstr "Select path terrain..."
 
 #: src/components/CardFilter.tsx:516
-msgid "Select trait"
-msgstr "Select trait"
+#~ msgid "Select trait"
+#~ msgstr "Select trait"
 
 #: src/components/FriendStatusComponent.tsx:51
 msgid "Send Friend Request"
@@ -1302,7 +1318,7 @@ msgstr "Too many cards. When making deck changes while camping, you should remov
 msgid "Track cards that are removed permanently from the path deck here."
 msgstr "Track cards that are removed permanently from the path deck here."
 
-#: src/components/CardFilter.tsx:514
+#: src/components/CardFilter.tsx:520
 msgid "Traits"
 msgstr "Traits"
 
@@ -1316,7 +1332,7 @@ msgstr "Travel"
 msgid "Two aspects must be set to 2."
 msgstr "Two aspects must be set to 2."
 
-#: src/components/CardFilter.tsx:505
+#: src/components/CardFilter.tsx:511
 msgid "Types"
 msgstr "Types"
 

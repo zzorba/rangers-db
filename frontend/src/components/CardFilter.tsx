@@ -511,7 +511,7 @@ export function useCardSearchControls(allCards: CardFragment[]): [React.ReactNod
         <FormLabel>{t`Types`}</FormLabel>
         <MultiSelect
           value={types}
-          placeholder={t`Select card type`}
+          placeholder={t`Filter by card type`}
           setValue={setTypes}
           options={allTypes}
         />
@@ -519,7 +519,7 @@ export function useCardSearchControls(allCards: CardFragment[]): [React.ReactNod
       <FormControl>
         <FormLabel>{t`Traits`}</FormLabel>
         <MultiSelect
-          placeholder={t`Select trait`}
+          placeholder={t`Filter by trait`}
           value={traits}
           setValue={setTraits}
           options={allTraits}
@@ -528,7 +528,7 @@ export function useCardSearchControls(allCards: CardFragment[]): [React.ReactNod
       <FormControl>
         <FormLabel>{t`Card set`}</FormLabel>
         <MultiGroupSelect
-          placeholder={t`Select card set`}
+          placeholder={t`Filter by card set`}
           value={cardSets}
           setValue={setCardSets}
           options={allCardSets}
@@ -544,7 +544,7 @@ export function useCardSearchControls(allCards: CardFragment[]): [React.ReactNod
       <FormControl>
         <FormLabel>{t`Approach icons`}</FormLabel>
         <MultiSelect
-          placeholder={t`Select approach icons`}
+          placeholder={t`Filter by approach icons`}
           value={approach}
           setValue={setApproach}
           options={allApproaches}
