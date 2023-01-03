@@ -68,8 +68,12 @@ msgstr ""
 msgid "Add to campaign"
 msgstr ""
 
+#: src/components/CardList.tsx:193
+msgid "Advanced controls"
+msgstr ""
+
 #: src/components/Campaign.tsx:379
-#: src/components/CardList.tsx:196
+#: src/components/CardList.tsx:261
 msgid "All"
 msgstr ""
 
@@ -83,6 +87,10 @@ msgstr ""
 
 #: src/lib/hooks.ts:602
 msgid "Ancestor's Grove"
+msgstr ""
+
+#: src/components/CardFilter.tsx:539
+msgid "Approach icons"
 msgstr ""
 
 #: src/lib/hooks.ts:726
@@ -121,6 +129,10 @@ msgstr ""
 #~ msgid "Aspect"
 #~ msgstr ""
 
+#: src/components/CardFilter.tsx:554
+msgid "Aspect requirements"
+msgstr ""
+
 #: src/components/DeckEdit.tsx:255
 msgid "Aspects"
 msgstr ""
@@ -130,7 +142,7 @@ msgid "Atrox Mountain"
 msgstr ""
 
 #: src/components/Campaign.tsx:377
-#: src/components/CardList.tsx:183
+#: src/components/CardList.tsx:248
 msgid "Available"
 msgstr ""
 
@@ -197,6 +209,10 @@ msgstr ""
 msgid "Cancel Friendship"
 msgstr ""
 
+#: src/components/CardFilter.tsx:523
+msgid "Card set"
+msgstr ""
+
 #: src/components/NavBar.tsx:56
 #: src/pages/cards/index.tsx:16
 msgid "Cards"
@@ -244,8 +260,16 @@ msgstr ""
 msgid "Confirm Friend"
 msgstr ""
 
+#: src/lib/TranslationProvider.tsx:51
+msgid "Conflict"
+msgstr ""
+
 #: src/components/Campaign.tsx:1662
 msgid "Connecting Location"
+msgstr ""
+
+#: src/lib/TranslationProvider.tsx:52
+msgid "Connection"
 msgstr ""
 
 #: src/lib/hooks.ts:135
@@ -268,6 +292,10 @@ msgstr ""
 
 #: src/lib/hooks.ts:553
 msgid "Core set"
+msgstr ""
+
+#: src/components/CardFilter.tsx:532
+msgid "Cost"
 msgstr ""
 
 #: src/components/Campaign.tsx:2019
@@ -319,7 +347,7 @@ msgstr ""
 msgid "Deck"
 msgstr ""
 
-#: src/pages/decks/search.tsx:173
+#: src/pages/decks/search.tsx:178
 msgid "Deck search"
 msgstr ""
 
@@ -437,6 +465,14 @@ msgstr ""
 msgid "English"
 msgstr ""
 
+#: src/components/CardFilter.tsx:548
+msgid "Equip"
+msgstr ""
+
+#: src/lib/TranslationProvider.tsx:53
+msgid "Exploration"
+msgstr ""
+
 #: src/components/AspectCounter.tsx:12
 #: src/lib/hooks.ts:167
 msgid "FIT"
@@ -447,7 +483,7 @@ msgstr ""
 msgid "FOC"
 msgstr ""
 
-#: src/pages/decks/search.tsx:80
+#: src/pages/decks/search.tsx:85
 msgid "Filter by Role"
 msgstr ""
 
@@ -512,7 +548,7 @@ msgid "Headwaters Station"
 msgstr ""
 
 #: src/components/Campaign.tsx:392
-#: src/components/CardList.tsx:209
+#: src/components/CardList.tsx:274
 msgid "Hide spoilers"
 msgstr ""
 
@@ -682,7 +718,11 @@ msgstr ""
 msgid "Next deck ({0})"
 msgstr ""
 
-#: src/components/CardList.tsx:215
+#: src/components/CardList.tsx:163
+msgid "No matching cards"
+msgstr ""
+
+#: src/components/CardList.tsx:281
 msgid "No matching cards found."
 msgstr ""
 
@@ -726,7 +766,7 @@ msgstr ""
 msgid "Notable Events"
 msgstr ""
 
-#: src/components/CardList.tsx:215
+#: src/components/CardList.tsx:281
 msgid "Note: These cards might contain campaign spoilers."
 msgstr ""
 
@@ -762,9 +802,9 @@ msgstr ""
 msgid "Only one aspect can be set to 3."
 msgstr ""
 
-#: src/lib/parseDeck.ts:276
-#~ msgid "Other"
-#~ msgstr ""
+#: src/components/CardFilter.tsx:347
+msgid "Other"
+msgstr ""
 
 #: src/components/DeckEdit.tsx:436
 #: src/lib/parseDeck.ts:269
@@ -796,6 +836,8 @@ msgstr ""
 msgid "Pending Requests"
 msgstr ""
 
+#: src/components/CardFilter.tsx:350
+#: src/components/CardFilter.tsx:351
 #: src/components/DeckEdit.tsx:433
 #: src/lib/parseDeck.ts:246
 msgid "Personality"
@@ -847,7 +889,7 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
-#: src/components/CardList.tsx:62
+#: src/components/CardList.tsx:68
 msgid "Ranger"
 msgstr ""
 
@@ -874,6 +916,10 @@ msgstr ""
 
 #: src/lib/hooks.ts:206
 msgid "Ravine"
+msgstr ""
+
+#: src/lib/TranslationProvider.tsx:54
+msgid "Reason"
 msgstr ""
 
 #: src/components/Campaign.tsx:1396
@@ -939,7 +985,7 @@ msgstr ""
 msgid "Rewards"
 msgstr ""
 
-#: src/components/CardList.tsx:63
+#: src/components/CardList.tsx:69
 #: src/lib/parseDeck.ts:278
 msgid "Rewards and Maladies"
 msgstr ""
@@ -954,7 +1000,7 @@ msgstr ""
 
 #: src/components/DeckEdit.tsx:745
 #: src/components/DeckEdit.tsx:962
-#: src/pages/decks/search.tsx:73
+#: src/pages/decks/search.tsx:79
 msgid "Role"
 msgstr ""
 
@@ -986,7 +1032,8 @@ msgid "Save changes"
 msgstr ""
 
 #: src/components/Campaign.tsx:388
-#: src/components/CardList.tsx:205
+#: src/components/CardList.tsx:190
+#: src/components/CardList.tsx:270
 msgid "Search by name"
 msgstr ""
 
@@ -1010,13 +1057,25 @@ msgstr ""
 msgid "Select 5 different cards from your chosen specialty."
 msgstr ""
 
+#: src/components/CardFilter.tsx:541
+msgid "Select approach icons"
+msgstr ""
+
 #: src/components/Campaign.tsx:1993
 #: src/pages/admin/map.tsx:67
 msgid "Select campaign"
 msgstr ""
 
+#: src/components/CardFilter.tsx:525
+msgid "Select card set"
+msgstr ""
+
 #: src/components/CardSetSelect.tsx:92
 msgid "Select card set..."
+msgstr ""
+
+#: src/components/CardFilter.tsx:508
+msgid "Select card type"
 msgstr ""
 
 #: src/components/MapLocationSelect.tsx:75
@@ -1025,6 +1084,10 @@ msgstr ""
 
 #: src/components/PathTypeSelect.tsx:56
 msgid "Select path terrain..."
+msgstr ""
+
+#: src/components/CardFilter.tsx:516
+msgid "Select trait"
 msgstr ""
 
 #: src/components/FriendStatusComponent.tsx:51
@@ -1041,7 +1104,7 @@ msgid "Settings"
 msgstr ""
 
 #: src/components/Campaign.tsx:392
-#: src/components/CardList.tsx:209
+#: src/components/CardList.tsx:274
 msgid "Show all"
 msgstr ""
 
@@ -1239,6 +1302,10 @@ msgstr ""
 msgid "Track cards that are removed permanently from the path deck here."
 msgstr ""
 
+#: src/components/CardFilter.tsx:514
+msgid "Traits"
+msgstr ""
+
 #: src/components/Campaign.tsx:1628
 #: src/components/Campaign.tsx:1695
 #: src/components/Campaign.tsx:1747
@@ -1247,6 +1314,10 @@ msgstr ""
 
 #: src/components/DeckEdit.tsx:249
 msgid "Two aspects must be set to 2."
+msgstr ""
+
+#: src/components/CardFilter.tsx:505
+msgid "Types"
 msgstr ""
 
 #: src/components/Campaign.tsx:1942

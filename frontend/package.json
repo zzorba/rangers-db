@@ -39,6 +39,7 @@
     "marked": "^4.2.4",
     "next": "13.0.6",
     "next-intl": "^2.9.1",
+    "next-usequerystate": "^1.7.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",

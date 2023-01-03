@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
-import { createFilter, OptionBase, Select } from 'chakra-react-select';
+import { createFilter, OptionBase, Select, SingleValue } from 'chakra-react-select';
 import { find, flatMap, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
 
@@ -67,7 +67,7 @@ export default function CardSetSelect({ value, setValue }: Props) {
       ),
     }];
   }, [locations, paths]);
-  const onChange = useCallback((option: any) => {
+  const onChange = useCallback((option: SingleValue<MapLocationOption | PathOption>) => {
     if (option && option.value !== value) {
       setValue(option.value);
     }

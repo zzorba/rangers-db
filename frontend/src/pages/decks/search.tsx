@@ -1,11 +1,11 @@
 import { Box, FormControl, FormLabel } from '@chakra-ui/react';
 import React, { useCallback, useMemo, useState } from 'react';
 import { t } from '@lingui/macro';
-import { Select } from 'chakra-react-select';
+import { MultiValue, Select, SingleValue } from 'chakra-react-select';
 import { flatMap, map, values, groupBy } from 'lodash';
 
 import PageHeading from '../../components/PageHeading';
-import { SearchDeckFragment, SearchDeckFragmentDoc, SearchDecksQueryVariables, useGetRoleCardsQuery, useSearchDecksQuery } from '../../generated/graphql/apollo-schema';
+import { CardFragment, SearchDeckFragment, SearchDeckFragmentDoc, SearchDecksQueryVariables, useGetRoleCardsQuery, useSearchDecksQuery } from '../../generated/graphql/apollo-schema';
 import { AuthUser } from '../../lib/useFirebaseAuth';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { SearchDeckList } from '../../components/DeckList';
@@ -33,6 +33,12 @@ function CategorySelect({ category, onChange }: { category: CategoryTranslation;
       />
     </FormControl>
   )
+}
+
+interface RoleOption {
+  value: string;
+  label: string;
+  card: CardFragment;
 }
 
 function RoleSelect({ roleCards, onChange, roles, specialty }: {
@@ -71,11 +77,10 @@ function RoleSelect({ roleCards, onChange, roles, specialty }: {
   return (
     <FormControl marginBottom={4}>
       <FormLabel>{t`Role`}</FormLabel>
-      <Select
+      <Select<RoleOption, true>
         isMulti
-        onChange={(e) => {
-          console.log(e);
-          onChange(map(e, (x: any) => x.value));
+        onChange={(event: MultiValue<RoleOption>) => {
+          onChange(map(event, x => x.value));
         }}
         placeholder={t`Filter by Role`}
         options={options}

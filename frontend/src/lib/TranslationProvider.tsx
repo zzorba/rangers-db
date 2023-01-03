@@ -1,18 +1,21 @@
 import React, { createContext, useContext, useMemo } from 'react'
 import { useGetSetNamesQuery } from '../generated/graphql/apollo-schema';
 import { AspectMap, CampaignCycle, MapLocations, PathTypeMap } from '../types/types';
-import { I18nContext, useLingui, } from '@lingui/react';
+import { useLingui, } from '@lingui/react';
+import { I18n } from '@lingui/core';
+import { t } from '@lingui/macro';
 import { CategoryTranslations, DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getCampaignCycles, getDeckCardErrors, getDeckErrors, getMapLocations, getPathTypes, useCategoryTranslations } from './hooks';
 
 interface TranslationContextType {
   deckErrors: DeckErrorTranslations;
   cardErrors: DeckCardErrorTranslations;
   aspects: AspectMap;
+  approaches: { [approach: string]: string };
   paths: PathTypeMap;
   locations: MapLocations;
   categories: CategoryTranslations;
   locale: string;
-  i18n: any;
+  i18n: I18n | null;
   cycles: CampaignCycle[];
 }
 const TranslationContext = createContext<TranslationContextType>({
@@ -22,6 +25,7 @@ const TranslationContext = createContext<TranslationContextType>({
   paths: getPathTypes(),
   locations: getMapLocations(),
   cycles: getCampaignCycles(),
+  approaches: {},
   categories: {},
   locale: 'en',
   i18n: null,
@@ -43,6 +47,12 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
       paths: getPathTypes(),
       locations: getMapLocations(),
       cycles: getCampaignCycles(),
+      approaches: {
+        conflict: t`Conflict`,
+        connection: t`Connection`,
+        exploration: t`Exploration`,
+        reason: t`Reason`,
+      },
       categories: categoryTranslations,
       locale: i18n.locale,
       i18n,

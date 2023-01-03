@@ -1,13 +1,16 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { filter, forEach, map, partition, sortBy } from 'lodash';
-import { plural, t } from '@lingui/macro';
-import { CardFragment, useGetAllCardsQuery, useGetCardsQuery } from '../generated/graphql/apollo-schema';
-import { Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels } from '@chakra-ui/react';
+import { filter, trim, forEach, map, partition, sortBy } from 'lodash';
+import { t } from '@lingui/macro';
+import { FaFilter } from 'react-icons/fa';
+import { Box, Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels, IconButton, Collapse } from '@chakra-ui/react';
 
+import { CardFragment, useGetAllCardsQuery } from '../generated/graphql/apollo-schema';
 import { CardRow, useCardModal } from './Card';
 import LoadingPage from './LoadingPage';
 import { useLocale } from '../lib/TranslationProvider';
 import ListHeader from './ListHeader';
+import { useCardSearchControls } from './CardFilter';
+import { useTheme } from '../lib/ThemeContext';
 
 function CardButtonRow({ card, showModal, children }: { card: CardFragment; showModal: (card: CardFragment) => void; children?: React.ReactNode }) {
   const onClick = useCallback(() => showModal(card), [card, showModal]);
@@ -41,6 +44,7 @@ interface HeaderItem {
 
 type Item = CardItem | HeaderItem;
 
+
 export default function CardList() {
   const { locale } = useLocale();
   const { data } = useGetAllCardsQuery({
@@ -52,6 +56,8 @@ export default function CardList() {
   const [standardCards, rewardCards] = useMemo(() => {
     return partition(data?.cards, c => c.set_id !== 'reward' && c.set_id !== 'malady');
   }, [data]);
+
+  const [controls, hasFilters, filterCard] = useCardSearchControls(standardCards);
   if (!data?.cards) {
     return <LoadingPage />;
   }
@@ -64,7 +70,13 @@ export default function CardList() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <SimpleCardList cards={standardCards} showCard={showCard} />
+            <SimpleCardList
+              cards={standardCards}
+              controls={controls}
+              showCard={showCard}
+              filter={filterCard}
+              hasFilters={hasFilters}
+            />
           </TabPanel>
           <TabPanel>
             <SpoilerCardList
@@ -84,15 +96,35 @@ interface SimpleCardListProps {
   cards?: CardFragment[];
   showCard: (card: CardFragment) => void;
   header?: 'aspect' | 'set' | 'none';
+  advancedControls?: React.ReactNode;
+  filter?: (card: CardFragment) => boolean;
   renderControl?: (card: CardFragment) => React.ReactNode;
   emptyText?: string;
+  controls?: React.ReactNode;
+  noSearch?: boolean;
+  hasFilters?: boolean;
 }
-export function SimpleCardList({ cards, showCard, header = 'set', renderControl, emptyText }: SimpleCardListProps) {
+export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard }: SimpleCardListProps) {
+  const { locale } = useLocale();
+  const [search, setSearch] = useState('');
+  const visibleCards = useMemo(() => {
+    const filtered = filterCard ? filter(cards, c => filterCard(c)) : cards;
+    if (!trim(search)) {
+      return sortBy(filtered, c => c.position);
+    }
+    const lowerSearch = search.toLocaleLowerCase(locale);
+    return sortBy(filter(filtered, c =>
+      !!(c.name && c.name.toLocaleLowerCase(locale).indexOf(lowerSearch) !== -1) ||
+      !!(c.type_name && c.type_name.toLocaleLowerCase(locale).indexOf(lowerSearch) !== -1) ||
+      !!(c.traits && c.traits.toLocaleLowerCase(locale).indexOf(lowerSearch) !== -1)
+    ), card => card.position);
+  }, [cards, search, locale, filterCard]);
+
   const items = useMemo(() => {
-    const sorted = sortBy(cards, card => card.position);
     const items: Item[] = [];
+
     let currentHeader: string | undefined = undefined;
-    forEach(sorted, card => {
+    forEach(visibleCards, card => {
       switch (header) {
         case 'set':
           if (card.set_name && card.set_name !== currentHeader) {
@@ -122,28 +154,62 @@ export function SimpleCardList({ cards, showCard, header = 'set', renderControl,
       });
     });
     return items;
-  }, [cards, header]);
-  if (!items.length) {
-    if (emptyText) {
+  }, [visibleCards, header]);
+  const emptyState = useMemo(() => {
+    if ((trim(search) || hasFilters) && (cards?.length || 0) > 0) {
       return (
         <List>
           <ListItem padding={2}>
-            <Text>{emptyText}</Text>
+            <Text>{t`No matching cards`}</Text>
           </ListItem>
         </List>
-      )
+      );
     }
-    return <LoadingPage />;
-  }
+    if (emptyText) {
+      <List>
+        <ListItem padding={2}>
+          <Text>{emptyText}</Text>
+        </ListItem>
+      </List>
+    }
+    if (!cards) {
+      return (
+        <LoadingPage />
+      );
+    }
+    return null;
+  }, [emptyText, search, hasFilters, cards]);
+  const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: hasFilters });
+  const { colors } = useTheme();
   return (
-    <List>
-      { map(items, item => item.type === 'card' ?
-        <CardButtonRow key={item.card.id} card={item.card} showModal={showCard}>
-          { !!renderControl && !!item.card.id && renderControl(item.card)}
-        </CardButtonRow> :
-        <CardHeader key={item.title} title={item.title} />
-      ) }
-    </List>
+    <>
+      { !noSearch && <Flex direction="row">
+        <Input
+          type="search"
+          value={search}
+          placeholder={t`Search by name`}
+          onChange={e => setSearch(e.target.value)}
+        />
+        { !!controls && <IconButton marginLeft={2} onClick={onToggle} icon={<FaFilter />} aria-label={t`Advanced controls`} />}
+      </Flex> }
+      { !!controls && (
+        <Collapse in={isOpen}>
+          <Box marginLeft={4} padding={4} marginRight={8} borderLeftWidth="1px" borderLeftColor={colors.divider}>
+            { controls }
+          </Box>
+        </Collapse>
+      )}
+      { items.length ? (
+        <List>
+          { map(items, item => item.type === 'card' ?
+            <CardButtonRow key={item.card.id} card={item.card} showModal={showCard}>
+              { !!renderControl && !!item.card.id && renderControl(item.card)}
+            </CardButtonRow> :
+            <CardHeader key={item.title} title={item.title} />
+          ) }
+        </List>
+      ) : emptyState }
+    </>
   );
 }
 
@@ -175,7 +241,6 @@ export function SpoilerCardList({
       c.name && search.length >= 2 && c.name.toLocaleLowerCase(locale).indexOf(lowerSearch) !== -1)
     );
   }, [cards, search, showAll, locale]);
-  const cardCount = cards?.length || 0;
   return (
     <List>
       { header !== 'set' && (
@@ -212,6 +277,7 @@ export function SpoilerCardList({
         </form>
       </ListItem>
       <SimpleCardList
+        noSearch
         emptyText={!search ? t`Note: These cards might contain campaign spoilers.` : t`No matching cards found.`}
         cards={visibleCards} showCard={showCard} renderControl={renderControl} header={header} />
     </List>
