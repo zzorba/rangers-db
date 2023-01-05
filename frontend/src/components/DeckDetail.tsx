@@ -22,8 +22,8 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
 import NextLink from 'next/link';
 import { map, pick, values } from 'lodash';
-import { plural, t } from '@lingui/macro';
-import { FaCopy, FaEdit, FaCalendar, FaHeart, FaMoon, FaShare, FaTrash } from 'react-icons/fa';
+import { t } from '@lingui/macro';
+import { FaCopy, FaEdit, FaMoon, FaShare, FaTrash } from 'react-icons/fa';
 
 import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
@@ -41,6 +41,7 @@ import DeckDescriptionView from './DeckDescriptionView';
 import SolidButton from './SolidButton';
 import { SubmitIconButton } from './SubmitButton';
 import LikeButton from './LikeButton';
+import { SlCalender } from 'react-icons/sl';
 
 const SHOW_PUBLISH = true;
 function deleteDeckMessage(d: DeckFragment) {
@@ -185,9 +186,9 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
                       onClick={onLike}
                     />
                     { !!deck.created_at && (
-                      <Flex direction="row" alignItems="center" marginLeft={2}>
-                        <FaCalendar />
-                        <Text marginLeft={2}>
+                      <Flex direction="row" alignItems="center" marginLeft={4}>
+                        <SlCalender />
+                        <Text  marginLeft={2}>
                           { i18n?.date(deck.created_at, { dateStyle: 'long' }) }
                         </Text>
                       </Flex>

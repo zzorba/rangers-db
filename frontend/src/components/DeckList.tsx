@@ -13,10 +13,12 @@ import DeckProblemComponent from './DeckProblemComponent';
 import CoreIcon from '../icons/CoreIcon';
 import { DeckError } from '../types/types';
 import useDeleteDialog from './useDeleteDialog';
-import { FaEdit, FaHeart, FaHeartBroken, FaTrash } from 'react-icons/fa';
+import { FaCalendar, FaEdit, FaHeart, FaHeartBroken, FaTrash } from 'react-icons/fa';
 import SubmitButton, { SubmitIconButton } from './SubmitButton';
 import { useTheme } from '../lib/ThemeContext';
 import LikeButton from './LikeButton';
+import { useLocale } from '../lib/TranslationProvider';
+import { SlCalender } from 'react-icons/sl';
 
 export function DeckRow({ deck, roleCards, onDelete }: {
   deck: DeckWithCampaignFragment;
@@ -132,6 +134,7 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
   roleCards: CardsMap;
   onLike: (deck: SearchDeckFragment) => Promise<string | undefined>;
 }) {
+  const { i18n } = useLocale();
   const doLike = useCallback(async() => {
     return await onLike(deck);
   }, [onLike, deck]);
@@ -146,20 +149,28 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
         <Flex direction="row">
           <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
             <SimpleGrid columns={2} marginRight={2}>
-              <MiniAspect aspect="AWA" value={deck.awa} extraSmall />
-              <MiniAspect aspect="SPI" value={deck.spi} extraSmall />
-              <MiniAspect aspect="FIT" value={deck.fit} extraSmall />
-              <MiniAspect aspect="FOC" value={deck.foc} extraSmall />
+              <MiniAspect aspect="AWA" value={deck.awa} />
+              <MiniAspect aspect="SPI" value={deck.spi} />
+              <MiniAspect aspect="FIT" value={deck.fit} />
+              <MiniAspect aspect="FOC" value={deck.foc} />
             </SimpleGrid>
-            { !!role && !!role.imagesrc && <RoleImage name={role.name} url={role.imagesrc} /> }
+            { !!role && !!role.imagesrc && <RoleImage name={role.name} url={role.imagesrc} size="large" /> }
             <Flex direction="column">
               <Text fontSize={['m', 'l', 'xl']}>{deck.name}</Text>
               <Flex direction="column" display={['none', 'block']}>
                 <DeckDescription fontSize={['xs', 's', 'm']} deck={deck} roleCards={roleCards} />
+                { !!deck.created_at && (
+                  <Flex direction="row" alignItems="center" marginTop="2px">
+                    <SlCalender size="12" />
+                    <Text fontSize="sm" marginLeft={1}>
+                      { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
+                    </Text>
+                  </Flex>
+                ) }
               </Flex>
             </Flex>
           </Flex>
-          <Flex marginLeft={1} direction="row" alignItems="center">
+          <Flex marginLeft={1} direction="column" alignItems="flex-end">
             <LikeButton
               liked={deck.liked_by_user}
               likeCount={deck.rank?.like_count}
@@ -169,6 +180,14 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
         </Flex>
         <Flex direction="column" display={['block', 'none']}>
           <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
+          { !!deck.created_at && (
+            <Flex direction="row" alignItems="center" marginTop="2px">
+              <SlCalender size="12" />
+              <Text fontSize="sm" marginLeft={1}>
+                { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
+              </Text>
+            </Flex>
+          ) }
         </Flex>
       </Flex>
     </ListItem>

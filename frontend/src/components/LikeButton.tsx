@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { Box, Button, Text } from '@chakra-ui/react';
+import { Flex, Button, Text } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { useAuth } from '../lib/AuthContext';
 import { FaHeart } from 'react-icons/fa';
+import { SlHeart } from 'react-icons/sl';
 
 export default function LikeButton({ liked = false, likeCount = 0, onClick }: { liked: boolean | undefined | null; likeCount: number | undefined | null; onClick?: () => Promise<string | undefined>}) {
   const { authUser } = useAuth();
@@ -20,7 +21,7 @@ export default function LikeButton({ liked = false, likeCount = 0, onClick }: { 
       <Button
         aria-label={liked ? t`Unlike` : t`Like`}
         color={liked ? 'red.600' : 'gray.500'}
-        rightIcon={<FaHeart />}
+        leftIcon={liked ? <FaHeart /> : <SlHeart />}
         onClick={handleClick}
         isLoading={submitting}
       >
@@ -29,9 +30,9 @@ export default function LikeButton({ liked = false, likeCount = 0, onClick }: { 
     );
   }
   return (
-    <Box flexDirection="row" alignItems="center">
-      <Text>{likeCount}</Text>
-      <FaHeart color="red.600" size={24} />
-    </Box>
+    <Flex flexDirection="row" alignItems="center">
+      <FaHeart color="red.600" size={18} />
+      <Text marginLeft={1}>{likeCount}</Text>
+    </Flex>
   );
 }
