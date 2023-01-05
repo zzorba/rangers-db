@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { Box, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import React, { useCallback, useState, useMemo } from 'react';
+import { Button, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
@@ -14,8 +14,9 @@ import CoreIcon from '../icons/CoreIcon';
 import { DeckError } from '../types/types';
 import useDeleteDialog from './useDeleteDialog';
 import { FaEdit, FaHeart, FaHeartBroken, FaTrash } from 'react-icons/fa';
-import { SubmitIconButton } from './SubmitButton';
+import SubmitButton, { SubmitIconButton } from './SubmitButton';
 import { useTheme } from '../lib/ThemeContext';
+import LikeButton from './LikeButton';
 
 export function DeckRow({ deck, roleCards, onDelete }: {
   deck: DeckWithCampaignFragment;
@@ -131,7 +132,6 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
   roleCards: CardsMap;
   onLike: (deck: SearchDeckFragment) => Promise<string | undefined>;
 }) {
-  const { authUser } = useAuth();
   const doLike = useCallback(async() => {
     return await onLike(deck);
   }, [onLike, deck]);
@@ -139,6 +139,7 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
   const { colors } = useTheme();
+  const likes = deck.rank?.like_count || 0;
   return (
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth="1px">
       <Flex direction="column">
@@ -158,15 +159,12 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
               </Flex>
             </Flex>
           </Flex>
-          <Flex marginLeft={1} direction="row" alignItems="flex-start" justifyContent="space-between">
-            { !!authUser && (
-              <SubmitIconButton
-                aria-label={deck.liked_by_user ? t`Unlike` : t`Like`}
-                color={deck.liked_by_user ? 'red.600' : 'gray.500'}
-                icon={<FaHeart />}
-                onSubmit={doLike}
-              />
-            ) }
+          <Flex marginLeft={1} direction="row" alignItems="center">
+            <LikeButton
+              liked={deck.liked_by_user}
+              likeCount={deck.rank?.like_count}
+              onClick={doLike}
+            />
           </Flex>
         </Flex>
         <Flex direction="column" display={['block', 'none']}>

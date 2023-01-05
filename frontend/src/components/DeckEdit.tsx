@@ -75,7 +75,11 @@ function RoleRadioChooser({ specialty, cards, role, onChange }: { specialty: str
       <Stack>
         { map(possibleRoles, (roleCard, idx) => (
           <Radio key={roleCard.id} value={roleCard.id || ''}>
-            <CardRow card={roleCard} includeText last={idx === possibleRoles.length - 1} />
+            <CardRow
+              card={roleCard}
+              includeText
+              last={idx === possibleRoles.length - 1}
+            />
           </Radio>
         )) }
       </Stack>

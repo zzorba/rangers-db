@@ -24,8 +24,8 @@ const CARD_WIDTH = 140;
 
 const sizes = {
   large: '80px',
-  medium: '50px',
-  small: '40px',
+  medium: '60px',
+  small: '50px',
 };
 
 export function RoleImage({ name, url, size = 'medium' }: {

@@ -226,7 +226,7 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
     <Flex direction="row" flex={flex} alignItems="flex-start">
       <Flex direction="row" flexGrow={1} alignItems="flex-start">
         { card.type_id === 'role' && card.imagesrc ? (
-          <RoleImage name={card.name} url={card.imagesrc} />
+          <RoleImage name={card.name} url={card.imagesrc} size={includeText ? 'large' : 'small'} />
         ) : (
           <Cost cost={card.cost} aspectId={card.aspect_id} aspect={aspect} />
         ) }

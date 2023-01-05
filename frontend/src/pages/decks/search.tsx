@@ -165,7 +165,13 @@ export default function Search() {
       id,
       fragmentName: 'SearchDeck',
       fragment: SearchDeckFragmentDoc,
-    }, (data) => ({ ...data, liked_by_user: liked }));
+    }, (data) => ({
+      ...data,
+      liked_by_user: liked,
+      rank: {
+        like_count: (data.rank.like_count || 0) + (liked ? 1 : -1),
+      },
+    }));
   }, [client]);
   const onLike = useLikeAction<SearchDeckFragment>(updateLikeCache);
   return (

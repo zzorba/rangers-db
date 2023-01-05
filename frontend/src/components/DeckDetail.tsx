@@ -40,6 +40,7 @@ import { DeckCountLine, DeckDescription, DeckItemComponent } from './Deck';
 import DeckDescriptionView from './DeckDescriptionView';
 import SolidButton from './SolidButton';
 import { SubmitIconButton } from './SubmitButton';
+import LikeButton from './LikeButton';
 
 const SHOW_PUBLISH = true;
 function deleteDeckMessage(d: DeckFragment) {
@@ -178,24 +179,18 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
                 ) }
                 { !!deck.published && (
                   <>
-                    { authUser?.uid !== deck.user_id && !!onLike ? (
-                      <SubmitIconButton
-                        aria-label={deck.liked_by_user ? t`Unlike` : t`Like`}
-                        color={deck.liked_by_user ? 'red.600' : 'gray.500'}
-                        icon={<FaHeart />}
-                        onSubmit={onLike}
-                      />
-                    ) : <FaHeart /> }
-                    <Text marginLeft={2} size="lg" marginRight={8}>
-                      { plural(likeCount, { one: `${likeCount} like`, other: `${likeCount} likes` }) }
-                    </Text>
+                    <LikeButton
+                      liked={deck.liked_by_user}
+                      likeCount={deck.rank?.like_count}
+                      onClick={onLike}
+                    />
                     { !!deck.created_at && (
-                      <>
+                      <Flex direction="row" alignItems="center" marginLeft={2}>
                         <FaCalendar />
                         <Text marginLeft={2}>
                           { i18n?.date(deck.created_at, { dateStyle: 'long' }) }
                         </Text>
-                      </>
+                      </Flex>
                     ) }
                   </>
                 ) }
