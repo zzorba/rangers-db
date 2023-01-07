@@ -137,7 +137,6 @@ fragment BasicDeckComment on rangers_comment {
     ...UserInfo
   }
   text
-  response_count
 }
 
 fragment DeckComment on rangers_comment {
