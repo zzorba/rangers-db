@@ -37,7 +37,7 @@ export default function DecksPage() {
     skip: !authUser?.uid,
   });
 
-  const fetchDecks = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<DeckFragment[]> => {
+  const fetchDecks = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<DeckWithCampaignFragment[]> => {
     if (authUser) {
       const data = await fetchMore({
         variables: {
@@ -67,7 +67,7 @@ export default function DecksPage() {
         <PageHeading title={t`My Decks`}>
           { !!authUser && <Button onClick={showNewDeck}>{t`New deck`}</Button> }
         </PageHeading>
-        <PaginationWrapper
+        <PaginationWrapper<DeckWithCampaignFragment>
           total={totalDecks?.total.aggregate?.count}
           fetchData={fetchDecks}
           data={data?.decks}

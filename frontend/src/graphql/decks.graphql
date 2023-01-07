@@ -239,6 +239,22 @@ mutation createDeck(
   }
 }
 
+mutation cloneDeck(
+  $originalDeckId: Int!
+  $newDeckId: Int!
+) {
+  deck: insert_rangers_deck_copy_one(
+    object: {
+      deck_id: $originalDeckId
+      copy_deck_id: $newDeckId
+    }
+  ) {
+    user_id
+    deck_id
+    copy_deck_id
+  }
+}
+
 mutation deleteDeck(
   $id: Int!
 ) {

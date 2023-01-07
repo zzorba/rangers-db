@@ -14,7 +14,7 @@ import NextLink from 'next/link';
 import { filter } from 'lodash';
 import { plural, t } from '@lingui/macro';
 
-import { CardFragment, DeckFragment, DeckWithCampaignFragment, SearchDeckFragment } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckFragment, SearchDeckFragment } from '../generated/graphql/apollo-schema';
 import { DeckCardError } from '../types/types';
 import { CardsMap } from '../lib/hooks';
 import { CardRow, ShowCard } from './Card';
@@ -27,9 +27,6 @@ import CoreIcon from '../icons/CoreIcon';
 import { CardItem, Item, ParsedDeck } from '../lib/parseDeck';
 import { useTheme } from '../lib/ThemeContext';
 
-interface Props {
-  deck: DeckWithCampaignFragment;
-}
 
 export function DeckItemComponent({ item, showCard }: { item: Item; showCard: ShowCard }) {
   const { colorMode } = useColorMode();
@@ -111,7 +108,8 @@ export function DeckDescription({ deck, roleCards, ...textProps }: {
   return <Text {...textProps}>{description}</Text>
 }
 
-export function CompactDeckRow({ deck, roleCards, onClick, children, buttons, href }: Props & {
+export function CompactDeckRow({ deck, roleCards, onClick, children, buttons, href }: {
+  deck: DeckFragment;
   roleCards: CardsMap;
   onClick?: (deck: DeckFragment) => void;
   children?: React.ReactNode;

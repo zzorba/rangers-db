@@ -168,9 +168,7 @@ export default function Search() {
     }, (data) => ({
       ...data,
       liked_by_user: liked,
-      likes: {
-        count: (data.likes.count || 0) + (liked ? 1 : -1),
-      },
+      like_count: (data.like_count || 0) + (liked ? 1 : -1),
     }));
   }, [client]);
   const onLike = useLikeAction<SearchDeckFragment>(updateLikeCache);

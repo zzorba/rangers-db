@@ -8,6 +8,10 @@ import { BasicDeckCommentFragment, usePostCommentMutation } from '../generated/g
 import CoreIcon from '../icons/CoreIcon';
 import { useAuth } from '../lib/AuthContext';
 import SubmitButton from './SubmitButton';
+import { SlCalender } from 'react-icons/sl';
+import { useLocale } from '../lib/TranslationProvider';
+import { useIconedText } from './CardText';
+import DeckDescriptionView from './DeckDescriptionView';
 
 interface Props {
   comments: BasicDeckCommentFragment[];
@@ -15,16 +19,33 @@ interface Props {
 }
 
 function CommentComponent({ comment, onReply }: { comment: BasicDeckCommentFragment; onReply: (comment: BasicDeckCommentFragment) => void }) {
+  const { i18n } = useLocale();
+  const iconized = useIconedText(comment.text, { noLines: true });
+
   return (
-    <Box borderRadius="4px" marginTop={1} borderWidth="1px" padding={2}>
+    <Box marginTop={1} padding={2}>
       <Flex direction="column">
-        { comment.text }
-        { !!comment.user.handle && (
-          <Flex direction="row" alignItems="center">
-            <CoreIcon icon="ranger" size={18} />
-            <Text marginLeft={1}>{comment.user.handle}</Text>
+        <Flex direction="row" justifyContent="space-between" >
+          { !!comment.user.handle && (
+            <Flex direction="row" alignItems="center" minWidth="200px">
+              <CoreIcon icon="ranger" size={18} />
+              <Text fontSize="lg" marginLeft={1}>{comment.user.handle}</Text>
+            </Flex>
+          ) }
+          <Flex direction="row" justifyContent="flex-end">
+            <Flex direction="row" alignItems="center">
+              <SlCalender />
+              <Text fontSize="lg" marginLeft={2}>
+                {i18n?.date(comment.created_at, { dateStyle: 'long' })}
+              </Text>
+            </Flex>
           </Flex>
-        )}
+        </Flex>
+        { !!comment.text && (
+          <Box paddingTop={2} paddingLeft={2} paddingRight={2}>
+            <DeckDescriptionView description={comment.text} />
+          </Box>
+        ) }
       </Flex>
     </Box>
   );
@@ -96,16 +117,21 @@ function useCommentModal(deckId: number): [React.ReactNode, (comment?: BasicDeck
     handleOpen,
   ];
 }
+
 export default function CommentsComponent({ comments, deckId }: Props) {
   const { authUser } = useAuth();
   const [commentModal, openModal] = useCommentModal(deckId);
   const onClick = useCallback(() => openModal(), [openModal]);
   return (
-    <Box marginTop={4}>
-      <Heading size="md">{t`Comments`}</Heading>
-      { map(comments, (comment, idx) => <CommentComponent key={idx} comment={comment} onReply={openModal} />)}
-      { !!authUser && <Button leftIcon={<FaComment />} onClick={onClick}>{t`Reply`}</Button> }
+    <>
+      <Box marginTop={4}>
+        <Flex direction="row" alignItems="center" justifyContent="space-between">
+          <Heading size="md">{t`Comments`}</Heading>
+          { !!authUser && <Button marginBottom={2} leftIcon={<FaComment />} onClick={onClick}>{t`Comment`}</Button> }
+        </Flex>
+        { map(comments, (comment, idx) => <CommentComponent key={idx} comment={comment} onReply={openModal} />)}
+      </Box>
       { commentModal }
-    </Box>
+    </>
   )
 }

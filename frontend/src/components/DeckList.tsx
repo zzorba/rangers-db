@@ -1,10 +1,10 @@
-import React, { useCallback, useState, useMemo } from 'react';
-import { Grid, Box, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, useColorModeValue, GridItem } from '@chakra-ui/react';
+import React, { useCallback, useMemo } from 'react';
+import { Box, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
 
-import { DeckFragment, DeckWithCampaignFragment, SearchDeckFragment, useDeleteDeckMutation, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
+import { DeckFragment, DeckWithCampaignFragment, SearchDeckFragment, useDeleteDeckMutation } from '../generated/graphql/apollo-schema';
 import { CardsMap } from '../lib/hooks';
 import { useAuth } from '../lib/AuthContext';
 import { RoleImage } from './CardImage';
@@ -13,8 +13,7 @@ import DeckProblemComponent from './DeckProblemComponent';
 import CoreIcon from '../icons/CoreIcon';
 import { DeckError } from '../types/types';
 import useDeleteDialog from './useDeleteDialog';
-import { FaCalendar, FaEdit, FaHeart, FaHeartBroken, FaTrash } from 'react-icons/fa';
-import SubmitButton, { SubmitIconButton } from './SubmitButton';
+import { FaComment, FaEdit, FaTrash } from 'react-icons/fa';
 import { useTheme } from '../lib/ThemeContext';
 import LikeButton from './LikeButton';
 import { useLocale } from '../lib/TranslationProvider';
@@ -142,7 +141,6 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
   const { colors } = useTheme();
-  const likes = deck.likes?.count || 0;
   return (
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth="1px">
       <Flex direction="column">
@@ -170,16 +168,22 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
               </Flex>
             </Flex>
           </Flex>
-          <Flex marginLeft={1} direction="column" alignItems="flex-end" display={['none', 'block']}>
-            <LikeButton
-              liked={deck.liked_by_user}
-              likeCount={deck.likes?.count}
-              onClick={doLike}
-            />
+          <Flex marginLeft={1} direction="column" alignItems="flex-start" display={['none', 'block']}>
+            <Flex direction="column">
+              <LikeButton
+                liked={deck.liked_by_user}
+                likeCount={deck.like_count}
+                onClick={doLike}
+              />
+              <Flex direction="row" alignItems="center" padding={2} marginLeft={2} justifyContent="flex-start">
+                <FaComment />
+                <Text marginLeft={2}>{deck.comment_count || 0}</Text>
+              </Flex>
+            </Flex>
           </Flex>
         </Flex>
         <Flex display={['block', 'none']} marginTop={1} direction="row" justifyContent="space-evenly">
-          <Flex direction="row">
+          <Flex direction="row" alignItems="flex-start">
             <Flex direction="column" flex="1">
               <DeckDescription fontSize="xs" deck={deck} roleCards={roleCards} />
               { !!deck.created_at && (
@@ -191,10 +195,14 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
                 </Flex>
               ) }
             </Flex>
+            <Flex direction="row" alignItems="center" padding={2} marginLeft={2} justifyContent="flex-start">
+              <FaComment />
+              <Text marginLeft={1}>{deck.comment_count || 0}</Text>
+            </Flex>
             <Box marginLeft={2}>
               <LikeButton
                 liked={deck.liked_by_user}
-                likeCount={deck.likes?.count}
+                likeCount={deck.like_count}
                 onClick={doLike}
               />
             </Box>

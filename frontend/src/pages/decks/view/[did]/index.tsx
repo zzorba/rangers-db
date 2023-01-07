@@ -39,12 +39,7 @@ export default function ViewDeckPage() {
     }, (data) => ({
       ...data,
       liked_by_user: liked,
-      likes: data.likes ? {
-        ...data.likes,
-        count: data.likes.count + (liked ? 1 : -1),
-      } : {
-        count: liked ? 1 : 0,
-      },
+      like_count: (data.like_count || 0) + (liked ? 1 : -1),
     }));
   }, [client]);
   const onLikeAction = useLikeAction(updateLikeCache);

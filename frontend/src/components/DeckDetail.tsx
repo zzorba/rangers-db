@@ -23,9 +23,10 @@ import Router from 'next/router';
 import NextLink from 'next/link';
 import { map, pick, values } from 'lodash';
 import { t } from '@lingui/macro';
+import { SlCalender } from 'react-icons/sl';
 import { FaCopy, FaEdit, FaMoon, FaShare, FaTrash } from 'react-icons/fa';
 
-import { CardFragment, DeckDetailFragment, DeckFragment, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckDetailFragment, DeckFragment, useCloneDeckMutation, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AWA, FIT, FOC, SPI } from '../types/types';
@@ -40,7 +41,6 @@ import { DeckCountLine, DeckDescription, DeckItemComponent } from './Deck';
 import DeckDescriptionView from './DeckDescriptionView';
 import SolidButton from './SolidButton';
 import LikeButton from './LikeButton';
-import { SlCalender } from 'react-icons/sl';
 import CommentsComponent from './CommentsComponent';
 
 const SHOW_COMMENTS = false;
@@ -115,31 +115,46 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
     return undefined;
   }, [deck.id, setPublishing, publishDeck]);
   const [createDeck] = useCreateDeckMutation();
+  const [cloneDeck] = useCloneDeckMutation();
   const [copying, setCopying] = useState(false);
   const onCopyDeck = useCallback(async() => {
     if (authUser) {
       setCopying(true);
-      const result = await createDeck({
-        variables: {
-          name: `${deck.name} (Copy)`,
-          foc: deck.foc,
-          fit: deck.fit,
-          awa: deck.awa,
-          spi: deck.spi,
-          meta: deck.meta,
-          slots: deck.slots,
-        },
-      });
-      setCopying(false);
-      if (result.errors?.length) {
-        // TODO: handle error
-      } else {
-        if (result.data?.deck?.id) {
-          Router.push(`/decks/view/${result.data.deck.id}`);
+      try {
+        const result = await createDeck({
+          variables: {
+            name: t`${deck.name} (Copy)`,
+            foc: deck.foc,
+            fit: deck.fit,
+            awa: deck.awa,
+            spi: deck.spi,
+            meta: deck.meta,
+            slots: deck.slots,
+          },
+        });
+        if (result.errors?.length) {
+          return result.errors[0].message;
         }
+        const newDeckId = result.data?.deck?.id;
+        if (newDeckId) {
+          if (deck.published) {
+            const r = await cloneDeck({
+              variables: {
+                newDeckId,
+                originalDeckId: deck.id,
+              },
+            });
+            if (r.errors?.length) {
+              return r.errors[0].message;
+            }
+          }
+          Router.push(`/decks/view/${newDeckId}`);
+        }
+      } finally {
+        setCopying(false);
       }
     }
-  }, [createDeck, authUser, deck]);
+  }, [createDeck, cloneDeck, authUser, deck]);
 
   const [doDelete] = useDeleteDeckMutation();
   const deleteDeck = useCallback(async(d: DeckFragment) => {
@@ -170,7 +185,6 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
     return undefined;
   }, [deck]);
   const editable = authUser?.uid === deck.user_id && !deck.next_deck && !deck.published;
-  const likeCount = deck.likes?.count || 0;
   return (
     <>
       <Box>
@@ -188,7 +202,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                   <>
                     <LikeButton
                       liked={deck.liked_by_user}
-                      likeCount={deck.likes?.count}
+                      likeCount={deck.like_count}
                       onClick={onLike}
                     />
                     { !!deck.created_at && (

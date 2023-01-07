@@ -49,9 +49,8 @@ fragment SearchDeck on rangers_search_deck {
   user {
     ...UserInfo
   }
-  likes {
-    count
-  }
+  comment_count
+  like_count
   liked_by_user
 }
 
@@ -92,10 +91,9 @@ fragment Deck on rangers_deck {
 
 fragment DeckWithCampaign on rangers_deck {
   ...Deck
+  comment_count
+  like_count
   liked_by_user
-  likes {
-    count
-  }
   campaign {
     id
     name
@@ -104,10 +102,9 @@ fragment DeckWithCampaign on rangers_deck {
 
 fragment DeckDetail on rangers_deck {
   ...Deck
+  comment_count
+  like_count
   liked_by_user
-  likes {
-    count
-  }
   campaign {
     id
     name
@@ -136,6 +133,7 @@ fragment BasicDeckComment on rangers_comment {
     ...UserInfo
   }
   text
+  created_at
 }
 
 fragment DeckComment on rangers_comment {
