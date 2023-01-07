@@ -5484,7 +5484,7 @@ export type rangers_card_variance_fieldsFieldPolicy = {
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_commentKeySpecifier = ('comment_id' | 'created_at' | 'deck' | 'deck_id' | 'id' | 'parent' | 'response_count' | 'responses' | 'responses_aggregate' | 'text' | 'updated_at' | 'user' | 'user_id' | rangers_commentKeySpecifier)[];
+export type rangers_commentKeySpecifier = ('comment_id' | 'created_at' | 'deck' | 'deck_id' | 'id' | 'parent' | 'responses' | 'responses_aggregate' | 'text' | 'updated_at' | 'user' | 'user_id' | rangers_commentKeySpecifier)[];
 export type rangers_commentFieldPolicy = {
 	comment_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5492,7 +5492,6 @@ export type rangers_commentFieldPolicy = {
 	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	parent?: FieldPolicy<any> | FieldReadFunction<any>,
-	response_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	responses?: FieldPolicy<any> | FieldReadFunction<any>,
 	responses_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5576,7 +5575,7 @@ export type rangers_comment_variance_fieldsKeySpecifier = ('deck_id' | rangers_c
 export type rangers_comment_variance_fieldsFieldPolicy = {
 	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deckKeySpecifier = ('awa' | 'base_deck' | 'base_deck_id' | 'campaign' | 'campaign_id' | 'comment_count' | 'comments' | 'comments_aggregate' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'liked_by_user' | 'likes' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'previous_deck' | 'published' | 'rank' | 'side_slots' | 'slots' | 'spi' | 'tags' | 'updated_at' | 'upgrade' | 'user' | 'user_id' | 'version' | rangers_deckKeySpecifier)[];
+export type rangers_deckKeySpecifier = ('awa' | 'base_deck' | 'base_deck_id' | 'campaign' | 'campaign_id' | 'comment_count' | 'comments' | 'comments_aggregate' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'liked_by_user' | 'likes' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'previous_deck' | 'published' | 'rank' | 'side_slots' | 'slots' | 'spi' | 'tags' | 'updated_at' | 'upgrade' | 'user' | 'user_id' | 'version' | rangers_deckKeySpecifier)[];
 export type rangers_deckFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5591,6 +5590,7 @@ export type rangers_deckFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	liked_by_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	likes?: FieldPolicy<any> | FieldReadFunction<any>,
 	meta?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5629,7 +5629,7 @@ export type rangers_deck_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_avg_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_avg_fieldsKeySpecifier)[];
+export type rangers_deck_avg_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_avg_fieldsKeySpecifier)[];
 export type rangers_deck_avg_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5637,6 +5637,7 @@ export type rangers_deck_avg_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
@@ -5802,7 +5803,7 @@ export type rangers_deck_like_variance_fieldsKeySpecifier = ('deck_id' | rangers
 export type rangers_deck_like_variance_fieldsFieldPolicy = {
 	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_max_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_deck_max_fieldsKeySpecifier)[];
+export type rangers_deck_max_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_deck_max_fieldsKeySpecifier)[];
 export type rangers_deck_max_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5812,6 +5813,7 @@ export type rangers_deck_max_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5819,7 +5821,7 @@ export type rangers_deck_max_fieldsFieldPolicy = {
 	user_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_min_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_deck_min_fieldsKeySpecifier)[];
+export type rangers_deck_min_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_deck_min_fieldsKeySpecifier)[];
 export type rangers_deck_min_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5829,6 +5831,7 @@ export type rangers_deck_min_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5926,7 +5929,7 @@ export type rangers_deck_rank_variance_fieldsFieldPolicy = {
 	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	score?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_stddev_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_fieldsKeySpecifier)[];
+export type rangers_deck_stddev_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_fieldsKeySpecifier)[];
 export type rangers_deck_stddev_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5934,11 +5937,12 @@ export type rangers_deck_stddev_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_stddev_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_deck_stddev_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_pop_fieldsKeySpecifier)[];
 export type rangers_deck_stddev_pop_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5946,11 +5950,12 @@ export type rangers_deck_stddev_pop_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_stddev_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_deck_stddev_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_samp_fieldsKeySpecifier)[];
 export type rangers_deck_stddev_samp_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5958,11 +5963,12 @@ export type rangers_deck_stddev_samp_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_sum_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_sum_fieldsKeySpecifier)[];
+export type rangers_deck_sum_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_sum_fieldsKeySpecifier)[];
 export type rangers_deck_sum_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5970,11 +5976,12 @@ export type rangers_deck_sum_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_var_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_var_pop_fieldsKeySpecifier)[];
+export type rangers_deck_var_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_var_pop_fieldsKeySpecifier)[];
 export type rangers_deck_var_pop_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5982,11 +5989,12 @@ export type rangers_deck_var_pop_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_var_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_var_samp_fieldsKeySpecifier)[];
+export type rangers_deck_var_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_var_samp_fieldsKeySpecifier)[];
 export type rangers_deck_var_samp_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5994,11 +6002,12 @@ export type rangers_deck_var_samp_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deck_variance_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_variance_fieldsKeySpecifier)[];
+export type rangers_deck_variance_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_variance_fieldsKeySpecifier)[];
 export type rangers_deck_variance_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6006,6 +6015,7 @@ export type rangers_deck_variance_fieldsFieldPolicy = {
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	like_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>

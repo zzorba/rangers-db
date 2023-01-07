@@ -25254,8 +25254,6 @@ export type Rangers_Comment = {
   id: Scalars['uuid'];
   /** An object relationship */
   parent?: Maybe<Rangers_Comment>;
-  /** A computed field, executes function "rangers.comment_response_count" */
-  response_count?: Maybe<Scalars['bigint']>;
   /** An array relationship */
   responses: Array<Rangers_Comment>;
   /** An aggregate relationship */
@@ -25372,7 +25370,6 @@ export type Rangers_Comment_Bool_Exp = {
   deck_id?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   parent?: InputMaybe<Rangers_Comment_Bool_Exp>;
-  response_count?: InputMaybe<Bigint_Comparison_Exp>;
   responses?: InputMaybe<Rangers_Comment_Bool_Exp>;
   responses_aggregate?: InputMaybe<Rangers_Comment_Aggregate_Bool_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
@@ -25486,7 +25483,6 @@ export type Rangers_Comment_Order_By = {
   deck_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   parent?: InputMaybe<Rangers_Comment_Order_By>;
-  response_count?: InputMaybe<Order_By>;
   responses_aggregate?: InputMaybe<Rangers_Comment_Aggregate_Order_By>;
   text?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -25671,6 +25667,7 @@ export type Rangers_Deck = {
   fit: Scalars['Int'];
   foc: Scalars['Int'];
   id: Scalars['Int'];
+  like_count?: Maybe<Scalars['Int']>;
   /** A computed field, executes function "rangers.deck_liked_by_user" */
   liked_by_user?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
@@ -25795,6 +25792,7 @@ export type Rangers_Deck_Avg_Fields = {
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
   spi?: Maybe<Scalars['Float']>;
   version?: Maybe<Scalars['Float']>;
@@ -25818,6 +25816,7 @@ export type Rangers_Deck_Bool_Exp = {
   fit?: InputMaybe<Int_Comparison_Exp>;
   foc?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
+  like_count?: InputMaybe<Int_Comparison_Exp>;
   liked_by_user?: InputMaybe<Boolean_Comparison_Exp>;
   likes?: InputMaybe<Rangers_Deck_Like_Count_Bool_Exp>;
   meta?: InputMaybe<Jsonb_Comparison_Exp>;
@@ -25881,6 +25880,7 @@ export type Rangers_Deck_Inc_Input = {
   fit?: InputMaybe<Scalars['Int']>;
   foc?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['Int']>;
+  like_count?: InputMaybe<Scalars['Int']>;
   next_deck_id?: InputMaybe<Scalars['Int']>;
   spi?: InputMaybe<Scalars['Int']>;
   version?: InputMaybe<Scalars['Int']>;
@@ -25899,6 +25899,7 @@ export type Rangers_Deck_Insert_Input = {
   fit?: InputMaybe<Scalars['Int']>;
   foc?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['Int']>;
+  like_count?: InputMaybe<Scalars['Int']>;
   likes?: InputMaybe<Rangers_Deck_Like_Count_Obj_Rel_Insert_Input>;
   meta?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
@@ -26389,6 +26390,7 @@ export type Rangers_Deck_Max_Fields = {
   fit?: Maybe<Scalars['Int']>;
   foc?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
+  like_count?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   spi?: Maybe<Scalars['Int']>;
@@ -26408,6 +26410,7 @@ export type Rangers_Deck_Min_Fields = {
   fit?: Maybe<Scalars['Int']>;
   foc?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
+  like_count?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   spi?: Maybe<Scalars['Int']>;
@@ -26453,6 +26456,7 @@ export type Rangers_Deck_Order_By = {
   fit?: InputMaybe<Order_By>;
   foc?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  like_count?: InputMaybe<Order_By>;
   liked_by_user?: InputMaybe<Order_By>;
   likes?: InputMaybe<Rangers_Deck_Like_Count_Order_By>;
   meta?: InputMaybe<Order_By>;
@@ -26691,6 +26695,8 @@ export enum Rangers_Deck_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  LikeCount = 'like_count',
+  /** column name */
   Meta = 'meta',
   /** column name */
   Name = 'name',
@@ -26726,6 +26732,7 @@ export type Rangers_Deck_Set_Input = {
   fit?: InputMaybe<Scalars['Int']>;
   foc?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['Int']>;
+  like_count?: InputMaybe<Scalars['Int']>;
   meta?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
   next_deck_id?: InputMaybe<Scalars['Int']>;
@@ -26749,6 +26756,7 @@ export type Rangers_Deck_Stddev_Fields = {
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
   spi?: Maybe<Scalars['Float']>;
   version?: Maybe<Scalars['Float']>;
@@ -26763,6 +26771,7 @@ export type Rangers_Deck_Stddev_Pop_Fields = {
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
   spi?: Maybe<Scalars['Float']>;
   version?: Maybe<Scalars['Float']>;
@@ -26777,6 +26786,7 @@ export type Rangers_Deck_Stddev_Samp_Fields = {
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
   spi?: Maybe<Scalars['Float']>;
   version?: Maybe<Scalars['Float']>;
@@ -26800,6 +26810,7 @@ export type Rangers_Deck_Stream_Cursor_Value_Input = {
   fit?: InputMaybe<Scalars['Int']>;
   foc?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['Int']>;
+  like_count?: InputMaybe<Scalars['Int']>;
   meta?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
   next_deck_id?: InputMaybe<Scalars['Int']>;
@@ -26823,6 +26834,7 @@ export type Rangers_Deck_Sum_Fields = {
   fit?: Maybe<Scalars['Int']>;
   foc?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
+  like_count?: Maybe<Scalars['Int']>;
   next_deck_id?: Maybe<Scalars['Int']>;
   spi?: Maybe<Scalars['Int']>;
   version?: Maybe<Scalars['Int']>;
@@ -26846,6 +26858,8 @@ export enum Rangers_Deck_Update_Column {
   Foc = 'foc',
   /** column name */
   Id = 'id',
+  /** column name */
+  LikeCount = 'like_count',
   /** column name */
   Meta = 'meta',
   /** column name */
@@ -26899,6 +26913,7 @@ export type Rangers_Deck_Var_Pop_Fields = {
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
   spi?: Maybe<Scalars['Float']>;
   version?: Maybe<Scalars['Float']>;
@@ -26913,6 +26928,7 @@ export type Rangers_Deck_Var_Samp_Fields = {
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
   spi?: Maybe<Scalars['Float']>;
   version?: Maybe<Scalars['Float']>;
@@ -26927,6 +26943,7 @@ export type Rangers_Deck_Variance_Fields = {
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
   spi?: Maybe<Scalars['Float']>;
   version?: Maybe<Scalars['Float']>;
@@ -37501,7 +37518,7 @@ export type GetDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', liked_by_user?: boolean | null, comment_count?: any | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, likes?: { __typename?: 'rangers_deck_like_count', count: number } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
+export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, likes?: { __typename?: 'rangers_deck_like_count', count: number } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
 
 export type GetDeckCommentsQueryVariables = Exact<{
   deckId: Scalars['Int'];
@@ -37589,7 +37606,7 @@ export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: s
 
 export type DeckWithCampaignFragment = { __typename?: 'rangers_deck', liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, likes?: { __typename?: 'rangers_deck_like_count', count: number } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
-export type DeckDetailFragment = { __typename?: 'rangers_deck', liked_by_user?: boolean | null, comment_count?: any | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, likes?: { __typename?: 'rangers_deck_like_count', count: number } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
+export type DeckDetailFragment = { __typename?: 'rangers_deck', liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, likes?: { __typename?: 'rangers_deck_like_count', count: number } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
 export type BasicDeckCommentFragment = { __typename?: 'rangers_comment', id: any, text?: string | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
@@ -37811,7 +37828,6 @@ export const DeckDetailFragmentDoc = gql`
   comments(order_by: {created_at: asc}, limit: 5) {
     ...BasicDeckComment
   }
-  comment_count
 }
     ${DeckFragmentDoc}
 ${BasicDeckCommentFragmentDoc}`;

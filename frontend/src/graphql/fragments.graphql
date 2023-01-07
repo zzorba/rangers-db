@@ -128,7 +128,6 @@ fragment DeckDetail on rangers_deck {
   ) {
     ...BasicDeckComment
   }
-  comment_count
 }
 
 fragment BasicDeckComment on rangers_comment {
