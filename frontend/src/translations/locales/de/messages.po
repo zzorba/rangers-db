@@ -45,7 +45,7 @@ msgstr "WAH"
 msgid "Accept"
 msgstr "Annehmen"
 
-#: src/components/DeckDetail.tsx:214
+#: src/components/DeckDetail.tsx:221
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -97,18 +97,18 @@ msgstr ""
 msgid "Archeological Outpost"
 msgstr "Archäologischer Vorposten"
 
-#: src/components/DeckList.tsx:79
+#: src/components/DeckList.tsx:81
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "Willst du wirklich das \"{0}\" Deck löschen?"
 
 #~ msgid "Are you sure you want to delete the '{0}' deck?"
 #~ msgstr "Bist du sicher, dass du das '{0}' Deck löschen möchtest?"
 
-#: src/components/DeckDetail.tsx:48
+#: src/components/DeckDetail.tsx:50
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
 msgstr "Bist du sicher, dass du den letzten Tag ({0}) dieses Decks löschen möchtest?"
 
-#: src/components/DeckDetail.tsx:49
+#: src/components/DeckDetail.tsx:51
 msgid "Are you sure you want to delete this deck?"
 msgstr "Willst du dieses Deck wirklich löschen?"
 
@@ -165,7 +165,7 @@ msgstr "Die Sonnenschale"
 msgid "Branch"
 msgstr "Die Ästelei"
 
-#: src/components/DeckDetail.tsx:225
+#: src/components/DeckDetail.tsx:232
 msgid "Camp"
 msgstr "Nachtlager"
 
@@ -176,7 +176,7 @@ msgstr "Nachtlager"
 msgid "Campaign"
 msgstr "Kampagne"
 
-#: src/components/DeckDetail.tsx:331
+#: src/components/DeckDetail.tsx:338
 msgid "Campaign progress"
 msgstr "Kampagnenfortschritt"
 
@@ -234,13 +234,21 @@ msgstr "Starter-Deck auswählen"
 msgid "Choose {0}"
 msgstr "Wähle eine {0}"
 
-#: src/components/DeckDetail.tsx:219
+#: src/components/DeckDetail.tsx:226
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
 msgstr "Wenn du dein Nachtlager aufschlägst, wird eine Kopie deines Decks angelegt, damit du Änderungen am Deck verfolgen kannst, während du die Kampagne spielst."
 
 #: src/lib/hooks.ts:121
 msgid "Chosen aspects are invalid."
 msgstr "Die gewählten Aspekte sind nicht zulässig."
+
+#: src/components/CommentsComponent.tsx:72
+msgid "Comment"
+msgstr ""
+
+#: src/components/CommentsComponent.tsx:105
+msgid "Comments"
+msgstr ""
 
 #: src/components/Campaign.tsx:847
 msgid "Completed"
@@ -267,11 +275,11 @@ msgstr ""
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Enthält zu viele Karten, die nicht zur gewählten Vorgeschichte passen."
 
-#: src/components/DeckDetail.tsx:251
+#: src/components/DeckDetail.tsx:258
 msgid "Copy"
 msgstr "Kopieren"
 
-#: src/components/DeckDetail.tsx:245
+#: src/components/DeckDetail.tsx:252
 msgid "Copy this deck to make your own changes."
 msgstr "Kopiere dieses Deck um Änderungen daran vorzunehmen."
 
@@ -348,8 +356,8 @@ msgstr "Decks"
 #: src/components/Campaign.tsx:183
 #: src/components/Campaign.tsx:854
 #: src/components/Campaign.tsx:971
-#: src/components/DeckDetail.tsx:267
-#: src/components/DeckList.tsx:63
+#: src/components/DeckDetail.tsx:274
+#: src/components/DeckList.tsx:65
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
 msgstr "Löschen"
@@ -358,12 +366,12 @@ msgstr "Löschen"
 msgid "Delete campaign?"
 msgstr "Kampagne löschen?"
 
-#: src/components/DeckDetail.tsx:151
-#: src/components/DeckList.tsx:105
+#: src/components/DeckDetail.tsx:158
+#: src/components/DeckList.tsx:107
 msgid "Delete deck?"
 msgstr "Deck löschen?"
 
-#: src/components/DeckDetail.tsx:259
+#: src/components/DeckDetail.tsx:266
 msgid "Deleting this published deck will cause will remove it from search."
 msgstr "Wenn du dieses veröffentlichte Deck entfernst, wird es auch aus der Suche entfernt."
 
@@ -373,7 +381,7 @@ msgstr "Wenn du dieses veröffentlichte Deck entfernst, wird es auch aus der Suc
 msgid "Demo"
 msgstr "Demo"
 
-#: src/components/DeckDetail.tsx:322
+#: src/components/DeckDetail.tsx:329
 #: src/components/DeckEdit.tsx:441
 #: src/components/DeckEdit.tsx:549
 msgid "Description"
@@ -411,7 +419,7 @@ msgstr "Bearbeiten abschließen"
 msgid "Downpour"
 msgstr "Platzregen"
 
-#: src/components/DeckDetail.tsx:244
+#: src/components/DeckDetail.tsx:251
 msgid "Duplicate this deck while preserving the original."
 msgstr "Klone dieses Deck, das Original bleibt erhalten."
 
@@ -420,8 +428,8 @@ msgstr "Klone dieses Deck, das Original bleibt erhalten."
 msgid "E-mail Address"
 msgstr "E-Mail-Adresse"
 
-#: src/components/DeckDetail.tsx:209
-#: src/components/DeckList.tsx:62
+#: src/components/DeckDetail.tsx:216
+#: src/components/DeckList.tsx:64
 #: src/components/EditableTextInput.tsx:41
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -595,7 +603,7 @@ msgstr "Kampagne verlassen"
 msgid "Light mode"
 msgstr "Light Mode"
 
-#: src/components/LikeButton.tsx:21
+#: src/components/LikeButton.tsx:23
 msgid "Like"
 msgstr "Gefällt mir"
 
@@ -706,7 +714,7 @@ msgstr "Nächste Seite"
 #~ msgid "Next day ({0})"
 #~ msgstr "Nächster Tag ({0})"
 
-#: src/components/DeckDetail.tsx:336
+#: src/components/DeckDetail.tsx:343
 msgid "Next deck ({0})"
 msgstr "Nächstes Deck ({0})"
 
@@ -718,7 +726,7 @@ msgstr ""
 msgid "No matching cards found."
 msgstr "Keine passenden Karten gefunden."
 
-#: src/components/DeckList.tsx:185
+#: src/components/DeckList.tsx:215
 msgid "No matching decks."
 msgstr "Keine passenden Decks."
 
@@ -750,7 +758,7 @@ msgstr "Nicht genug Charakteristik-Karten."
 msgid "Not enough specialty cards."
 msgstr "Nicht genug Expertise-Karten."
 
-#: src/components/DeckDetail.tsx:292
+#: src/components/DeckDetail.tsx:299
 msgid "Not set"
 msgstr "Nicht festgelegt"
 
@@ -843,9 +851,13 @@ msgstr "Charakteristiken"
 msgid "Players"
 msgstr "Spieler"
 
-#: src/components/DeckDetail.tsx:161
+#: src/components/DeckDetail.tsx:168
 msgid "Please address all deckbuilding errors before publishing."
 msgstr "Bitte behebe alle Fehler bevor du das Deck veröffentlichst."
+
+#: src/components/CommentsComponent.tsx:91
+msgid "Post"
+msgstr ""
 
 #: src/components/PaginationWrapper.tsx:63
 msgid "Previous"
@@ -854,7 +866,7 @@ msgstr "Vorherige Seite"
 #~ msgid "Previous day ({0})"
 #~ msgstr "Vorheriger Tag ({0})"
 
-#: src/components/DeckDetail.tsx:333
+#: src/components/DeckDetail.tsx:340
 msgid "Previous deck ({0})"
 msgstr "Vorheriges Deck ({0})"
 
@@ -876,7 +888,7 @@ msgstr "Fortschritt {progressNumber}"
 msgid "Pseudo"
 msgstr "Pseudonym"
 
-#: src/components/DeckDetail.tsx:237
+#: src/components/DeckDetail.tsx:244
 msgid "Publish"
 msgstr "Veröffentlichen"
 
@@ -959,6 +971,10 @@ msgstr "Belohnung entfernen"
 #: src/components/Campaign.tsx:1792
 msgid "Removed Cards"
 msgstr "Entfernte Karten"
+
+#: src/components/CommentsComponent.tsx:107
+msgid "Reply"
+msgstr ""
 
 #: src/components/FriendSearch.tsx:36
 msgid "Request friend"
@@ -1224,7 +1240,7 @@ msgstr "Diese Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr "Diese Webseite befindet sich noch im Aufbau, aber du kannst bereits die Liste <0>veröffentlichter Karten</0> einsehen, dich <1>registrieren</1> und mit dem <2>Deck-Bau</2> anfangen."
 
-#: src/components/DeckDetail.tsx:158
+#: src/components/DeckDetail.tsx:165
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "Um Spoiler für andere Spieler zu vermeiden kannst du keine Decks veröffentlichen, mit denen du dein Nachtlager aufgeschlagen hast."
 
@@ -1290,7 +1306,7 @@ msgstr ""
 msgid "Unable to create campaign at this time."
 msgstr "Kampagne kann im Moment nicht erstellt werden."
 
-#: src/components/LikeButton.tsx:21
+#: src/components/LikeButton.tsx:23
 msgid "Unlike"
 msgstr "Gefällt mir nicht"
 
@@ -1335,7 +1351,7 @@ msgstr "Du"
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr "Du kannst dieses Deck zu einer Kampagne hinzufügen und Belohnungen, die ihr als Gruppe freigeschaltet habt, verfolgen."
 
-#: src/components/DeckList.tsx:110
+#: src/components/DeckList.tsx:112
 msgid "You don't seem to have any decks."
 msgstr "Du hast scheinbar keine Decks."
 
@@ -1360,7 +1376,7 @@ msgstr "Du musst eine Berufung wählen."
 msgid "You must choose a specialty."
 msgstr "Du musst eine Expertise wählen."
 
-#: src/components/DeckDetail.tsx:219
+#: src/components/DeckDetail.tsx:226
 msgid "You must correct deck errors before upgrading."
 msgstr "Du musst die Fehler in deinem Deck korrigieren, bevor du es verbessern kannst."
 

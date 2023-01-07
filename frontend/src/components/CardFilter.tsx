@@ -358,7 +358,7 @@ export function useCardSearchControls(allCards: CardFragment[]): [React.ReactNod
           value: 'personality',
           name: t`Personality`,
           label: t`Personality`,
-        }]
+        }],
       }
     ];
   }, [categories]);

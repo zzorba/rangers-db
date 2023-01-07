@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Flex, Button, Text } from '@chakra-ui/react';
+import { Flex, Button, Text, ButtonGroup } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { useAuth } from '../lib/AuthContext';
 import { FaHeart } from 'react-icons/fa';
@@ -18,15 +18,17 @@ export default function LikeButton({ liked = false, likeCount = 0, onClick }: { 
   }, [setSubmitting, onClick]);
   if (authUser && onClick) {
     return (
-      <Button
-        aria-label={liked ? t`Unlike` : t`Like`}
-        color={liked ? 'red.600' : 'gray.500'}
-        leftIcon={liked ? <FaHeart /> : <SlHeart />}
-        onClick={handleClick}
-        isLoading={submitting}
-      >
-        { likeCount }
-      </Button>
+      <ButtonGroup>
+        <Button
+          aria-label={liked ? t`Unlike` : t`Like`}
+          color={liked ? 'red.600' : 'gray.500'}
+          leftIcon={liked ? <FaHeart /> : <SlHeart />}
+          onClick={handleClick}
+          isLoading={submitting}
+        >
+          { likeCount }
+        </Button>
+      </ButtonGroup>
     );
   }
   return (

@@ -168,8 +168,8 @@ export default function Search() {
     }, (data) => ({
       ...data,
       liked_by_user: liked,
-      rank: {
-        like_count: (data.rank.like_count || 0) + (liked ? 1 : -1),
+      likes: {
+        count: (data.likes.count || 0) + (liked ? 1 : -1),
       },
     }));
   }, [client]);

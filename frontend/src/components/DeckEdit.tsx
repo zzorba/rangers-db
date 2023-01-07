@@ -38,7 +38,7 @@ import { sumBy, find, keys, union, omit, forEach, map, flatMap, pick, values, so
 import { t } from '@lingui/macro';
 import { Select as ChakraReactSelect, chakraComponents, OptionProps, SingleValue, OptionBase } from 'chakra-react-select';
 
-import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useSaveDeckDescriptionMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckDetailFragment, DeckFragment, useCreateDeckMutation, useSaveDeckDescriptionMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
@@ -61,7 +61,7 @@ import { RoleImage } from './CardImage';
 import { useTheme } from '../lib/ThemeContext';
 
 interface Props {
-  deck: DeckWithFullCampaignFragment;
+  deck: DeckDetailFragment;
   cards: CardsMap;
 }
 

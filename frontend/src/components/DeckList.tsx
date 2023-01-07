@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useMemo } from 'react';
-import { Button, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { Grid, Box, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, useColorModeValue, GridItem } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
@@ -142,7 +142,7 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
   const { colors } = useTheme();
-  const likes = deck.rank?.like_count || 0;
+  const likes = deck.likes?.count || 0;
   return (
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth="1px">
       <Flex direction="column">
@@ -170,24 +170,35 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
               </Flex>
             </Flex>
           </Flex>
-          <Flex marginLeft={1} direction="column" alignItems="flex-end">
+          <Flex marginLeft={1} direction="column" alignItems="flex-end" display={['none', 'block']}>
             <LikeButton
               liked={deck.liked_by_user}
-              likeCount={deck.rank?.like_count}
+              likeCount={deck.likes?.count}
               onClick={doLike}
             />
           </Flex>
         </Flex>
-        <Flex direction="column" display={['block', 'none']}>
-          <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
-          { !!deck.created_at && (
-            <Flex direction="row" alignItems="center" marginTop="2px">
-              <SlCalender size="12" />
-              <Text fontSize="sm" marginLeft={1}>
-                { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
-              </Text>
+        <Flex display={['block', 'none']} marginTop={1} direction="row" justifyContent="space-evenly">
+          <Flex direction="row">
+            <Flex direction="column" flex="1">
+              <DeckDescription fontSize="xs" deck={deck} roleCards={roleCards} />
+              { !!deck.created_at && (
+                <Flex direction="row" alignItems="center" marginTop="2px">
+                  <SlCalender size="12" />
+                  <Text fontSize="sm" marginLeft={1}>
+                    { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
+                  </Text>
+                </Flex>
+              ) }
             </Flex>
-          ) }
+            <Box marginLeft={2}>
+              <LikeButton
+                liked={deck.liked_by_user}
+                likeCount={deck.likes?.count}
+                onClick={doLike}
+              />
+            </Box>
+          </Flex>
         </Flex>
       </Flex>
     </ListItem>

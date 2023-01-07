@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react'
 import { t } from '@lingui/macro';
 import Head from 'next/head';
 
-import { DeckWithFullCampaignFragment, DeckWithFullCampaignFragmentDoc, useGetAllCardsQuery, useGetDeckQuery } from '../../../../generated/graphql/apollo-schema';
+import { DeckDetailFragment, DeckDetailFragmentDoc, useGetAllCardsQuery, useGetDeckQuery } from '../../../../generated/graphql/apollo-schema';
 import { useCardsMap, useLikeAction, useRouterPathParam } from '../../../../lib/hooks';
 import LoadingPage from '../../../../components/LoadingPage';
 import DeckDetail from '../../../../components/DeckDetail';
@@ -30,20 +30,20 @@ export default function ViewDeckPage() {
   const cards = useCardsMap(cardsData?.cards);
   const deck = data?.deck;
   const client = useApolloClient();
-  const updateLikeCache = useCallback((deck: DeckWithFullCampaignFragment, liked: boolean) => {
+  const updateLikeCache = useCallback((deck: DeckDetailFragment, liked: boolean) => {
     const id = client.cache.identify(deck);
     client.cache.updateFragment({
       id,
-      fragmentName: 'DeckWithFullCampaign',
-      fragment: DeckWithFullCampaignFragmentDoc,
+      fragmentName: 'DeckDetail',
+      fragment: DeckDetailFragmentDoc,
     }, (data) => ({
       ...data,
       liked_by_user: liked,
-      rank: data.rank ? {
-        ...data.rank,
-        like_count: data.rank.like_count + (liked ? 1 : -1),
+      likes: data.likes ? {
+        ...data.likes,
+        count: data.likes.count + (liked ? 1 : -1),
       } : {
-        like_count: liked ? 1 : 0,
+        count: liked ? 1 : 0,
       },
     }));
   }, [client]);

@@ -49,8 +49,8 @@ fragment SearchDeck on rangers_search_deck {
   user {
     ...UserInfo
   }
-  rank {
-    like_count
+  likes {
+    count
   }
   liked_by_user
 }
@@ -93,8 +93,8 @@ fragment Deck on rangers_deck {
 fragment DeckWithCampaign on rangers_deck {
   ...Deck
   liked_by_user
-  rank {
-    like_count
+  likes {
+    count
   }
   campaign {
     id
@@ -102,11 +102,11 @@ fragment DeckWithCampaign on rangers_deck {
   }
 }
 
-fragment DeckWithFullCampaign on rangers_deck {
+fragment DeckDetail on rangers_deck {
   ...Deck
   liked_by_user
-  rank {
-    like_count
+  likes {
+    count
   }
   campaign {
     id
@@ -119,6 +119,16 @@ fragment DeckWithFullCampaign on rangers_deck {
       }
     }
   }
+  user {
+    handle
+  }
+  comments(
+    order_by: { created_at: asc }
+    limit: 5
+  ) {
+    ...BasicDeckComment
+  }
+  comment_count
 }
 
 fragment BasicDeckComment on rangers_comment {

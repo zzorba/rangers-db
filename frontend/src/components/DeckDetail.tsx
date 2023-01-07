@@ -25,7 +25,7 @@ import { map, pick, values } from 'lodash';
 import { t } from '@lingui/macro';
 import { FaCopy, FaEdit, FaMoon, FaShare, FaTrash } from 'react-icons/fa';
 
-import { CardFragment, DeckFragment, DeckWithFullCampaignFragment, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, DeckDetailFragment, DeckFragment, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AWA, FIT, FOC, SPI } from '../types/types';
@@ -39,11 +39,12 @@ import useDeleteDialog from './useDeleteDialog';
 import { DeckCountLine, DeckDescription, DeckItemComponent } from './Deck';
 import DeckDescriptionView from './DeckDescriptionView';
 import SolidButton from './SolidButton';
-import { SubmitIconButton } from './SubmitButton';
 import LikeButton from './LikeButton';
 import { SlCalender } from 'react-icons/sl';
+import CommentsComponent from './CommentsComponent';
 
-const SHOW_PUBLISH = true;
+const SHOW_COMMENTS = false;
+
 function deleteDeckMessage(d: DeckFragment) {
   return d.previous_deck ?
     t`Are you sure you want to delete the latest day (${d.version}) of this deck?` :
@@ -51,7 +52,9 @@ function deleteDeckMessage(d: DeckFragment) {
 }
 
 interface Props {
-  deck: DeckWithFullCampaignFragment;
+  deck: DeckDetailFragment;
+  cards: CardsMap;
+  onLike?: () => Promise<string | undefined>;
 }
 
 function ChosenRole({ role, showCard }: { role: CardFragment; showCard: ShowCard }) {
@@ -65,7 +68,7 @@ function ChosenRole({ role, showCard }: { role: CardFragment; showCard: ShowCard
   );
 }
 
-export default function DeckDetail({ deck, cards, onLike }: Props & { cards: CardsMap; onLike?: () => Promise<string | undefined> }) {
+export default function DeckDetail({ deck, cards, onLike }: Props) {
   const { authUser } = useAuth();
   const { categories, i18n } = useLocale();
   const [showCard, cardModal] = useCardModal(deck.slots);
@@ -105,6 +108,9 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
     setPublishing(false);
     if (r.errors?.length) {
       return r.errors[0].message;
+    }
+    if (r.data?.deck) {
+      Router.push(`/decks/view/${r.data.deck.id}`);
     }
     return undefined;
   }, [deck.id, setPublishing, publishDeck]);
@@ -164,7 +170,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
     return undefined;
   }, [deck]);
   const editable = authUser?.uid === deck.user_id && !deck.next_deck && !deck.published;
-  const likeCount = deck.rank?.like_count || 0;
+  const likeCount = deck.likes?.count || 0;
   return (
     <>
       <Box>
@@ -182,7 +188,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
                   <>
                     <LikeButton
                       liked={deck.liked_by_user}
-                      likeCount={deck.rank?.like_count}
+                      likeCount={deck.likes?.count}
                       onClick={onLike}
                     />
                     { !!deck.created_at && (
@@ -226,7 +232,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
                         >{t`Camp`}</MenuItem>
                       </Tooltip>
                     ) }
-                    { SHOW_PUBLISH && authUser.uid === deck.user_id && !deck.published && (
+                    { authUser.uid === deck.user_id && !deck.published && (
                       <Tooltip
                         placement="left"
                         label={publishError}
@@ -327,7 +333,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
             </GridItem>
           ) }
         </Grid>
-        { (!!deck.previous_deck || !!deck.next_deck) && (
+        { !deck.published && (!!deck.previous_deck || !!deck.next_deck) && (
           <Flex direction="column" marginTop={8}>
             <Text borderBottomWidth={1} borderColor="gray.500" marginBottom={2} paddingBottom={1} fontWeight="600">{t`Campaign progress`}</Text>
             { !!deck.previous_deck && (
@@ -338,6 +344,9 @@ export default function DeckDetail({ deck, cards, onLike }: Props & { cards: Car
             )}
           </Flex>
         )}
+        { SHOW_COMMENTS && !!deck.published && (
+          <CommentsComponent comments={deck.comments} deckId={deck.id} />
+        ) }
       </Box>
       {cardModal}
       {deleteDialog}

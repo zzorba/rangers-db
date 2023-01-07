@@ -45,7 +45,7 @@ msgstr ""
 msgid "Accept"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:214
+#: src/components/DeckDetail.tsx:221
 msgid "Actions"
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "Archeological Outpost"
 msgstr ""
 
-#: src/components/DeckList.tsx:79
+#: src/components/DeckList.tsx:81
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgstr ""
 #~ msgid "Are you sure you want to delete the '{0}' deck?"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:48
+#: src/components/DeckDetail.tsx:50
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
 msgstr ""
 
@@ -113,7 +113,7 @@ msgstr ""
 #~ msgid "Are you sure you want to delete the latest day's copy of this deck?"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:49
+#: src/components/DeckDetail.tsx:51
 msgid "Are you sure you want to delete this deck?"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgstr ""
 msgid "Branch"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:225
+#: src/components/DeckDetail.tsx:232
 msgid "Camp"
 msgstr ""
 
@@ -186,7 +186,7 @@ msgstr ""
 msgid "Campaign"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:331
+#: src/components/DeckDetail.tsx:338
 msgid "Campaign progress"
 msgstr ""
 
@@ -244,12 +244,20 @@ msgstr ""
 msgid "Choose {0}"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:219
+#: src/components/DeckDetail.tsx:226
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
 msgstr ""
 
 #: src/lib/hooks.ts:121
 msgid "Chosen aspects are invalid."
+msgstr ""
+
+#: src/components/CommentsComponent.tsx:72
+msgid "Comment"
+msgstr ""
+
+#: src/components/CommentsComponent.tsx:105
+msgid "Comments"
 msgstr ""
 
 #: src/components/Campaign.tsx:847
@@ -277,11 +285,11 @@ msgstr ""
 msgid "Contains too many cards that do not match your chosen background."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:251
+#: src/components/DeckDetail.tsx:258
 msgid "Copy"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:245
+#: src/components/DeckDetail.tsx:252
 msgid "Copy this deck to make your own changes."
 msgstr ""
 
@@ -359,8 +367,8 @@ msgstr ""
 #: src/components/Campaign.tsx:183
 #: src/components/Campaign.tsx:854
 #: src/components/Campaign.tsx:971
-#: src/components/DeckDetail.tsx:267
-#: src/components/DeckList.tsx:63
+#: src/components/DeckDetail.tsx:274
+#: src/components/DeckList.tsx:65
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
 msgstr ""
@@ -369,12 +377,12 @@ msgstr ""
 msgid "Delete campaign?"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:151
-#: src/components/DeckList.tsx:105
+#: src/components/DeckDetail.tsx:158
+#: src/components/DeckList.tsx:107
 msgid "Delete deck?"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:259
+#: src/components/DeckDetail.tsx:266
 msgid "Deleting this published deck will cause will remove it from search."
 msgstr ""
 
@@ -384,7 +392,7 @@ msgstr ""
 msgid "Demo"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:322
+#: src/components/DeckDetail.tsx:329
 #: src/components/DeckEdit.tsx:441
 #: src/components/DeckEdit.tsx:549
 msgid "Description"
@@ -423,7 +431,7 @@ msgstr ""
 msgid "Downpour"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:244
+#: src/components/DeckDetail.tsx:251
 msgid "Duplicate this deck while preserving the original."
 msgstr ""
 
@@ -432,8 +440,8 @@ msgstr ""
 msgid "E-mail Address"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:209
-#: src/components/DeckList.tsx:62
+#: src/components/DeckDetail.tsx:216
+#: src/components/DeckList.tsx:64
 #: src/components/EditableTextInput.tsx:41
 msgid "Edit"
 msgstr ""
@@ -612,7 +620,7 @@ msgstr ""
 msgid "Light mode"
 msgstr ""
 
-#: src/components/LikeButton.tsx:21
+#: src/components/LikeButton.tsx:23
 msgid "Like"
 msgstr ""
 
@@ -729,7 +737,7 @@ msgstr ""
 #~ msgid "Next day ({0})"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:336
+#: src/components/DeckDetail.tsx:343
 msgid "Next deck ({0})"
 msgstr ""
 
@@ -741,7 +749,7 @@ msgstr ""
 msgid "No matching cards found."
 msgstr ""
 
-#: src/components/DeckList.tsx:185
+#: src/components/DeckList.tsx:215
 msgid "No matching decks."
 msgstr ""
 
@@ -773,7 +781,7 @@ msgstr ""
 msgid "Not enough specialty cards."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:292
+#: src/components/DeckDetail.tsx:299
 msgid "Not set"
 msgstr ""
 
@@ -867,8 +875,12 @@ msgstr ""
 msgid "Players"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:161
+#: src/components/DeckDetail.tsx:168
 msgid "Please address all deckbuilding errors before publishing."
+msgstr ""
+
+#: src/components/CommentsComponent.tsx:91
+msgid "Post"
 msgstr ""
 
 #: src/components/PaginationWrapper.tsx:63
@@ -879,7 +891,7 @@ msgstr ""
 #~ msgid "Previous day ({0})"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:333
+#: src/components/DeckDetail.tsx:340
 msgid "Previous deck ({0})"
 msgstr ""
 
@@ -901,7 +913,7 @@ msgstr ""
 msgid "Pseudo"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:237
+#: src/components/DeckDetail.tsx:244
 msgid "Publish"
 msgstr ""
 
@@ -985,6 +997,10 @@ msgstr ""
 
 #: src/components/Campaign.tsx:1792
 msgid "Removed Cards"
+msgstr ""
+
+#: src/components/CommentsComponent.tsx:107
+msgid "Reply"
 msgstr ""
 
 #: src/components/FriendSearch.tsx:36
@@ -1270,7 +1286,7 @@ msgstr ""
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:158
+#: src/components/DeckDetail.tsx:165
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr ""
 
@@ -1340,7 +1356,7 @@ msgstr ""
 msgid "Unable to create campaign at this time."
 msgstr ""
 
-#: src/components/LikeButton.tsx:21
+#: src/components/LikeButton.tsx:23
 msgid "Unlike"
 msgstr ""
 
@@ -1394,7 +1410,7 @@ msgstr ""
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr ""
 
-#: src/components/DeckList.tsx:110
+#: src/components/DeckList.tsx:112
 msgid "You don't seem to have any decks."
 msgstr ""
 
@@ -1419,7 +1435,7 @@ msgstr ""
 msgid "You must choose a specialty."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:219
+#: src/components/DeckDetail.tsx:226
 msgid "You must correct deck errors before upgrading."
 msgstr ""
 
