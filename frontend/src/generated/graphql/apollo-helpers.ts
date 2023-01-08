@@ -6432,12 +6432,13 @@ export type rangers_pack_variance_fieldsKeySpecifier = ('position' | rangers_pac
 export type rangers_pack_variance_fieldsFieldPolicy = {
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deckKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'liked_by_user' | 'likes' | 'meta' | 'name' | 'next_deck_id' | 'published' | 'rank' | 'side_slots' | 'slots' | 'spi' | 'tags' | 'updated_at' | 'upgrade' | 'user' | 'user_id' | 'version' | rangers_search_deckKeySpecifier)[];
+export type rangers_search_deckKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'liked_by_user' | 'likes' | 'meta' | 'name' | 'next_deck_id' | 'published' | 'rank' | 'side_slots' | 'slots' | 'spi' | 'tags' | 'updated_at' | 'upgrade' | 'user' | 'user_id' | 'version' | rangers_search_deckKeySpecifier)[];
 export type rangers_search_deckFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6480,12 +6481,13 @@ export type rangers_search_deck_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_avg_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_avg_fieldsKeySpecifier)[];
+export type rangers_search_deck_avg_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_avg_fieldsKeySpecifier)[];
 export type rangers_search_deck_avg_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6494,12 +6496,13 @@ export type rangers_search_deck_avg_fieldsFieldPolicy = {
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_max_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_search_deck_max_fieldsKeySpecifier)[];
+export type rangers_search_deck_max_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_search_deck_max_fieldsKeySpecifier)[];
 export type rangers_search_deck_max_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6513,12 +6516,13 @@ export type rangers_search_deck_max_fieldsFieldPolicy = {
 	user_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_min_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_search_deck_min_fieldsKeySpecifier)[];
+export type rangers_search_deck_min_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_search_deck_min_fieldsKeySpecifier)[];
 export type rangers_search_deck_min_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6537,12 +6541,13 @@ export type rangers_search_deck_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_stddev_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_stddev_fieldsKeySpecifier)[];
+export type rangers_search_deck_stddev_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_stddev_fieldsKeySpecifier)[];
 export type rangers_search_deck_stddev_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6551,12 +6556,13 @@ export type rangers_search_deck_stddev_fieldsFieldPolicy = {
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_stddev_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_search_deck_stddev_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_stddev_pop_fieldsKeySpecifier)[];
 export type rangers_search_deck_stddev_pop_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6565,12 +6571,13 @@ export type rangers_search_deck_stddev_pop_fieldsFieldPolicy = {
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_stddev_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_search_deck_stddev_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_stddev_samp_fieldsKeySpecifier)[];
 export type rangers_search_deck_stddev_samp_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6579,12 +6586,13 @@ export type rangers_search_deck_stddev_samp_fieldsFieldPolicy = {
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_sum_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_sum_fieldsKeySpecifier)[];
+export type rangers_search_deck_sum_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_sum_fieldsKeySpecifier)[];
 export type rangers_search_deck_sum_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6593,12 +6601,13 @@ export type rangers_search_deck_sum_fieldsFieldPolicy = {
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_var_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_var_pop_fieldsKeySpecifier)[];
+export type rangers_search_deck_var_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_var_pop_fieldsKeySpecifier)[];
 export type rangers_search_deck_var_pop_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6607,12 +6616,13 @@ export type rangers_search_deck_var_pop_fieldsFieldPolicy = {
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_var_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_var_samp_fieldsKeySpecifier)[];
+export type rangers_search_deck_var_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_var_samp_fieldsKeySpecifier)[];
 export type rangers_search_deck_var_samp_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6621,12 +6631,13 @@ export type rangers_search_deck_var_samp_fieldsFieldPolicy = {
 	spi?: FieldPolicy<any> | FieldReadFunction<any>,
 	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_search_deck_variance_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_variance_fieldsKeySpecifier)[];
+export type rangers_search_deck_variance_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'comment_count' | 'copy_count' | 'fit' | 'foc' | 'id' | 'like_count' | 'next_deck_id' | 'spi' | 'version' | rangers_search_deck_variance_fieldsKeySpecifier)[];
 export type rangers_search_deck_variance_fieldsFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	comment_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,

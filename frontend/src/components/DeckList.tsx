@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { Box, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode } from '@chakra-ui/react';
+import { Icon, Box, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, Tooltip } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
@@ -13,7 +13,7 @@ import DeckProblemComponent from './DeckProblemComponent';
 import CoreIcon from '../icons/CoreIcon';
 import { DeckError } from '../types/types';
 import useDeleteDialog from './useDeleteDialog';
-import { FaComment, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaComment, FaEdit, FaHeart, FaShare, FaShareAlt, FaShareAltSquare, FaTrash } from 'react-icons/fa';
 import { useTheme } from '../lib/ThemeContext';
 import LikeButton from './LikeButton';
 import { useLocale } from '../lib/TranslationProvider';
@@ -141,6 +141,30 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
   const { colors } = useTheme();
+  const socialProof = useMemo(() => {
+    return (
+      <Flex direction="row" alignItems="flex-start">
+        <Tooltip label={t`Likes`}>
+          <Flex direction="row" alignItems="center" minWidth="45px" justifyContent="flex-start">
+            <Icon as={FaHeart} size={24} color="red.500" />
+            <Text marginLeft={1}>{deck.like_count || 0}</Text>
+          </Flex>
+        </Tooltip>
+        <Tooltip label={t`Comments`}>
+          <Flex direction="row" alignItems="center" minWidth="45px" marginLeft={2} justifyContent="flex-start">
+            <Icon as={FaComment} size={24} color="blue.500" />
+            <Text marginLeft={1}>{deck.comment_count || 0}</Text>
+          </Flex>
+        </Tooltip>
+        <Tooltip label={t`Copies`}>
+          <Flex direction="row" alignItems="center" minWidth="45px" marginLeft={2} justifyContent="flex-start">
+            <Icon as={FaShareAlt} size={24} color="yellow.500" />
+            <Text marginLeft={1}>{deck.copy_count || 0}</Text>
+          </Flex>
+        </Tooltip>
+      </Flex>
+    );
+  }, [deck.like_count, deck.copy_count, deck.comment_count]);
   return (
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth="1px">
       <Flex direction="column">
@@ -157,55 +181,37 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
               <Text fontSize={['m', 'l', 'xl']}>{deck.name}</Text>
               <Flex direction="column" display={['none', 'block']}>
                 <DeckDescription fontSize={['xs', 's', 'm']} deck={deck} roleCards={roleCards} />
-                { !!deck.created_at && (
-                  <Flex direction="row" alignItems="center" marginTop="2px">
-                    <SlCalender size="12" />
-                    <Text fontSize="sm" marginLeft={1}>
-                      { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
-                    </Text>
-                  </Flex>
-                ) }
+                <Flex direction="row" alignItems="center" justifyContent="flex-start" marginTop="2px">
+                  { !!deck.created_at && (
+                    <Flex direction="row" alignItems="center" minWidth="100px">
+                      <Icon as={SlCalender} size="22" />
+                      <Text fontSize="sm" marginLeft={1}>
+                        { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
+                      </Text>
+                    </Flex>
+                  ) }
+                </Flex>
               </Flex>
             </Flex>
           </Flex>
-          <Flex marginLeft={1} direction="column" alignItems="flex-start" display={['none', 'block']}>
-            <Flex direction="column">
-              <LikeButton
-                liked={deck.liked_by_user}
-                likeCount={deck.like_count}
-                onClick={doLike}
-              />
-              <Flex direction="row" alignItems="center" padding={2} marginLeft={2} justifyContent="flex-start">
-                <FaComment />
-                <Text marginLeft={2}>{deck.comment_count || 0}</Text>
-              </Flex>
-            </Flex>
-          </Flex>
+          { socialProof }
         </Flex>
         <Flex display={['block', 'none']} marginTop={1} direction="row" justifyContent="space-evenly">
           <Flex direction="row" alignItems="flex-start">
             <Flex direction="column" flex="1">
               <DeckDescription fontSize="xs" deck={deck} roleCards={roleCards} />
-              { !!deck.created_at && (
-                <Flex direction="row" alignItems="center" marginTop="2px">
-                  <SlCalender size="12" />
-                  <Text fontSize="sm" marginLeft={1}>
-                    { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
-                  </Text>
-                </Flex>
-              ) }
+              <Flex direction="row" alignItems="center" justifyContent="space-between" marginTop="2px">
+                { !!deck.created_at && (
+                  <Flex direction="row" alignItems="center">
+                    <Icon as={SlCalender} size="22" />
+                    <Text fontSize="sm" marginLeft={1}>
+                      { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
+                    </Text>
+                  </Flex>
+                ) }
+                { socialProof }
+              </Flex>
             </Flex>
-            <Flex direction="row" alignItems="center" padding={2} marginLeft={2} justifyContent="flex-start">
-              <FaComment />
-              <Text marginLeft={1}>{deck.comment_count || 0}</Text>
-            </Flex>
-            <Box marginLeft={2}>
-              <LikeButton
-                liked={deck.liked_by_user}
-                likeCount={deck.like_count}
-                onClick={doLike}
-              />
-            </Box>
           </Flex>
         </Flex>
       </Flex>

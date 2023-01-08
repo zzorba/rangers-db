@@ -9,6 +9,20 @@ function tableName(t: string) {
 }
 
 console.log(`
+  CREATE OR REPLACE FUNCTION rangers_deck_copy_count_increment() RETURNS TRIGGER AS $$
+      BEGIN
+          UPDATE rangers.deck
+          SET copy_count = copy_count + 1
+          WHERE id = NEW.deck_id AND NEW.user_id <> user_id;
+          RETURN NEW;
+      END
+  $$ LANGUAGE plpgsql;
+
+  CREATE TRIGGER rangers_deck_copy_count_increment_trig AFTER INSERT ON rangers.deck_copy
+      FOR EACH ROW EXECUTE PROCEDURE rangers_deck_copy_count_increment();
+`)
+
+console.log(`
   CREATE OR REPLACE FUNCTION ${tableName('upgrade_deck')}(deck_id integer, upgrade_data json)
   RETURNS ${tableName('deck')}
   LANGUAGE plpgsql

@@ -28510,6 +28510,7 @@ export type Rangers_Search_Deck = {
   base_deck_id?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   comment_count?: Maybe<Scalars['Int']>;
+  copy_count?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   fit?: Maybe<Scalars['Int']>;
@@ -28613,6 +28614,7 @@ export type Rangers_Search_Deck_Avg_Fields = {
   base_deck_id?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
@@ -28631,6 +28633,7 @@ export type Rangers_Search_Deck_Bool_Exp = {
   base_deck_id?: InputMaybe<Int_Comparison_Exp>;
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   comment_count?: InputMaybe<Int_Comparison_Exp>;
+  copy_count?: InputMaybe<Int_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
   fit?: InputMaybe<Int_Comparison_Exp>;
@@ -28688,6 +28691,7 @@ export type Rangers_Search_Deck_Inc_Input = {
   base_deck_id?: InputMaybe<Scalars['Int']>;
   campaign_id?: InputMaybe<Scalars['Int']>;
   comment_count?: InputMaybe<Scalars['Int']>;
+  copy_count?: InputMaybe<Scalars['Int']>;
   fit?: InputMaybe<Scalars['Int']>;
   foc?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['Int']>;
@@ -28703,6 +28707,7 @@ export type Rangers_Search_Deck_Insert_Input = {
   base_deck_id?: InputMaybe<Scalars['Int']>;
   campaign_id?: InputMaybe<Scalars['Int']>;
   comment_count?: InputMaybe<Scalars['Int']>;
+  copy_count?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   fit?: InputMaybe<Scalars['Int']>;
@@ -28733,6 +28738,7 @@ export type Rangers_Search_Deck_Max_Fields = {
   base_deck_id?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   comment_count?: Maybe<Scalars['Int']>;
+  copy_count?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   fit?: Maybe<Scalars['Int']>;
@@ -28754,6 +28760,7 @@ export type Rangers_Search_Deck_Min_Fields = {
   base_deck_id?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   comment_count?: Maybe<Scalars['Int']>;
+  copy_count?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   fit?: Maybe<Scalars['Int']>;
@@ -28783,6 +28790,7 @@ export type Rangers_Search_Deck_Order_By = {
   base_deck_id?: InputMaybe<Order_By>;
   campaign_id?: InputMaybe<Order_By>;
   comment_count?: InputMaybe<Order_By>;
+  copy_count?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   fit?: InputMaybe<Order_By>;
@@ -28827,6 +28835,8 @@ export enum Rangers_Search_Deck_Select_Column {
   /** column name */
   CommentCount = 'comment_count',
   /** column name */
+  CopyCount = 'copy_count',
+  /** column name */
   CreatedAt = 'created_at',
   /** column name */
   Description = 'description',
@@ -28870,6 +28880,7 @@ export type Rangers_Search_Deck_Set_Input = {
   base_deck_id?: InputMaybe<Scalars['Int']>;
   campaign_id?: InputMaybe<Scalars['Int']>;
   comment_count?: InputMaybe<Scalars['Int']>;
+  copy_count?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   fit?: InputMaybe<Scalars['Int']>;
@@ -28897,6 +28908,7 @@ export type Rangers_Search_Deck_Stddev_Fields = {
   base_deck_id?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
@@ -28913,6 +28925,7 @@ export type Rangers_Search_Deck_Stddev_Pop_Fields = {
   base_deck_id?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
@@ -28929,6 +28942,7 @@ export type Rangers_Search_Deck_Stddev_Samp_Fields = {
   base_deck_id?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
@@ -28952,6 +28966,7 @@ export type Rangers_Search_Deck_Stream_Cursor_Value_Input = {
   base_deck_id?: InputMaybe<Scalars['Int']>;
   campaign_id?: InputMaybe<Scalars['Int']>;
   comment_count?: InputMaybe<Scalars['Int']>;
+  copy_count?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   fit?: InputMaybe<Scalars['Int']>;
@@ -28979,6 +28994,7 @@ export type Rangers_Search_Deck_Sum_Fields = {
   base_deck_id?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   comment_count?: Maybe<Scalars['Int']>;
+  copy_count?: Maybe<Scalars['Int']>;
   fit?: Maybe<Scalars['Int']>;
   foc?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
@@ -29013,6 +29029,7 @@ export type Rangers_Search_Deck_Var_Pop_Fields = {
   base_deck_id?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
@@ -29029,6 +29046,7 @@ export type Rangers_Search_Deck_Var_Samp_Fields = {
   base_deck_id?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
@@ -29045,6 +29063,7 @@ export type Rangers_Search_Deck_Variance_Fields = {
   base_deck_id?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
   comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
   fit?: Maybe<Scalars['Float']>;
   foc?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
@@ -37970,7 +37989,7 @@ export type SearchDecksQueryVariables = Exact<{
 }>;
 
 
-export type SearchDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, comment_count?: number | null, like_count?: number | null, liked_by_user?: boolean | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
+export type SearchDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, comment_count?: number | null, copy_count?: number | null, like_count?: number | null, liked_by_user?: boolean | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
 export type GetMyDecksQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -37979,7 +37998,7 @@ export type GetMyDecksQueryVariables = Exact<{
 }>;
 
 
-export type GetMyDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null }> };
+export type GetMyDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', comment_count: number, copy_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null }> };
 
 export type GetMyDecksTotalQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -37993,7 +38012,7 @@ export type GetDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
+export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
 
 export type GetDeckCommentsQueryVariables = Exact<{
   deckId: Scalars['Int'];
@@ -38021,6 +38040,7 @@ export type CreateDeckMutationVariables = Exact<{
   spi: Scalars['Int'];
   meta: Scalars['jsonb'];
   slots: Scalars['jsonb'];
+  description?: InputMaybe<Scalars['String']>;
 }>;
 
 
@@ -38083,13 +38103,13 @@ export type UserInfoFragment = { __typename?: 'rangers_users', id: string, handl
 
 export type CampaignFragment = { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
-export type SearchDeckFragment = { __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, comment_count?: number | null, like_count?: number | null, liked_by_user?: boolean | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null };
+export type SearchDeckFragment = { __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, comment_count?: number | null, copy_count?: number | null, like_count?: number | null, liked_by_user?: boolean | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null };
 
 export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
-export type DeckWithCampaignFragment = { __typename?: 'rangers_deck', comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
+export type DeckWithCampaignFragment = { __typename?: 'rangers_deck', comment_count: number, copy_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
-export type DeckDetailFragment = { __typename?: 'rangers_deck', comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
+export type DeckDetailFragment = { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
 export type BasicDeckCommentFragment = { __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
@@ -38260,6 +38280,7 @@ export const SearchDeckFragmentDoc = gql`
     ...UserInfo
   }
   comment_count
+  copy_count
   like_count
   liked_by_user
 }
@@ -38268,6 +38289,7 @@ export const DeckWithCampaignFragmentDoc = gql`
     fragment DeckWithCampaign on rangers_deck {
   ...Deck
   comment_count
+  copy_count
   like_count
   liked_by_user
   campaign {
@@ -38289,9 +38311,20 @@ export const BasicDeckCommentFragmentDoc = gql`
 export const DeckDetailFragmentDoc = gql`
     fragment DeckDetail on rangers_deck {
   ...Deck
+  copy_count
   comment_count
   like_count
   liked_by_user
+  original_deck {
+    deck {
+      id
+      name
+      user {
+        id
+        handle
+      }
+    }
+  }
   campaign {
     id
     name
@@ -39804,9 +39837,9 @@ export type PostCommentMutationHookResult = ReturnType<typeof usePostCommentMuta
 export type PostCommentMutationResult = Apollo.MutationResult<PostCommentMutation>;
 export type PostCommentMutationOptions = Apollo.BaseMutationOptions<PostCommentMutation, PostCommentMutationVariables>;
 export const CreateDeckDocument = gql`
-    mutation createDeck($name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!) {
+    mutation createDeck($name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!, $description: String) {
   deck: insert_rangers_deck_one(
-    object: {name: $name, foc: $foc, fit: $fit, awa: $awa, spi: $spi, meta: $meta, slots: $slots}
+    object: {name: $name, foc: $foc, fit: $fit, awa: $awa, spi: $spi, meta: $meta, slots: $slots, description: $description}
   ) {
     ...Deck
   }
@@ -39834,6 +39867,7 @@ export type CreateDeckMutationFn = Apollo.MutationFunction<CreateDeckMutation, C
  *      spi: // value for 'spi'
  *      meta: // value for 'meta'
  *      slots: // value for 'slots'
+ *      description: // value for 'description'
  *   },
  * });
  */

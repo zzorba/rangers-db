@@ -223,6 +223,7 @@ mutation createDeck(
   $spi: Int!,
   $meta: jsonb!,
   $slots: jsonb!,
+  $description: String
 ) {
   deck: insert_rangers_deck_one(
     object: {
@@ -233,6 +234,7 @@ mutation createDeck(
       spi: $spi
       meta: $meta
       slots: $slots
+      description: $description
     }
   ) {
     ...Deck

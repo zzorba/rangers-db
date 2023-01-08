@@ -124,6 +124,7 @@ export default function CommentsComponent({ comments, deckId }: Props) {
   const onClick = useCallback(() => openModal(), [openModal]);
   return (
     <>
+      <a id="comments" />
       <Box marginTop={4}>
         <Flex direction="row" alignItems="center" justifyContent="space-between">
           <Heading size="md">{t`Comments`}</Heading>

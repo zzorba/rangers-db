@@ -50,6 +50,7 @@ fragment SearchDeck on rangers_search_deck {
     ...UserInfo
   }
   comment_count
+  copy_count
   like_count
   liked_by_user
 }
@@ -92,6 +93,7 @@ fragment Deck on rangers_deck {
 fragment DeckWithCampaign on rangers_deck {
   ...Deck
   comment_count
+  copy_count
   like_count
   liked_by_user
   campaign {
@@ -102,9 +104,20 @@ fragment DeckWithCampaign on rangers_deck {
 
 fragment DeckDetail on rangers_deck {
   ...Deck
+  copy_count
   comment_count
   like_count
   liked_by_user
+  original_deck {
+    deck {
+      id
+      name
+      user {
+        id
+        handle
+      }
+    }
+  }
   campaign {
     id
     name

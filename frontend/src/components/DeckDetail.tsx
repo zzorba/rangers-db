@@ -1,13 +1,15 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import {
   Box,
+  Button,
   Heading,
+  Icon,
   Text,
   Flex,
   List,
+  Link,
   IconButton,
   Spinner,
-  Link,
   Tooltip,
   Grid,
   GridItem,
@@ -22,9 +24,9 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
 import NextLink from 'next/link';
 import { map, pick, values } from 'lodash';
-import { t } from '@lingui/macro';
+import { t, Trans } from '@lingui/macro';
 import { SlCalender } from 'react-icons/sl';
-import { FaCopy, FaEdit, FaMoon, FaShare, FaTrash } from 'react-icons/fa';
+import { FaComment, FaCopy, FaEdit, FaMoon, FaShare, FaShareAlt, FaTrash } from 'react-icons/fa';
 
 import { CardFragment, DeckDetailFragment, DeckFragment, useCloneDeckMutation, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
@@ -130,6 +132,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
             spi: deck.spi,
             meta: deck.meta,
             slots: deck.slots,
+            description: deck.description,
           },
         });
         if (result.errors?.length) {
@@ -185,6 +188,25 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
     return undefined;
   }, [deck]);
   const editable = authUser?.uid === deck.user_id && !deck.next_deck && !deck.published;
+  const copyDeckInfo = useMemo(() => {
+    if (!deck.original_deck?.deck) {
+      return null;
+    }
+    const deckLink = (
+      <Link textDecorationLine="underline" as={NextLink} href={`/decks/view/${deck.original_deck.deck.id}`}>
+        {deck.original_deck.deck.name}
+      </Link>
+    );
+    const authorLink = deck.original_deck.deck.user.handle;
+    return (
+      <Flex direction="row" alignItems="center">
+        <Icon as={FaShareAlt} />
+        <Text marginLeft={2}>
+          <Trans>Copy of {deckLink} by {authorLink}</Trans>
+        </Text>
+      </Flex>
+    );
+  }, [deck.original_deck]);
   return (
     <>
       <Box>
@@ -198,25 +220,22 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                     <CoreIcon icon="ranger" size={18}/>&nbsp;{deck.user.handle}
                   </Text>
                 ) }
-                { !!deck.published && (
-                  <>
-                    <LikeButton
-                      liked={deck.liked_by_user}
-                      likeCount={deck.like_count}
-                      onClick={onLike}
-                    />
-                    { !!deck.created_at && (
-                      <Flex direction="row" alignItems="center" marginLeft={4}>
-                        <SlCalender />
-                        <Text  marginLeft={2}>
-                          { i18n?.date(deck.created_at, { dateStyle: 'long' }) }
-                        </Text>
-                      </Flex>
-                    ) }
-                  </>
+                { !!deck.published && !!deck.created_at && (
+                  <Flex direction="row" alignItems="center" marginLeft={4}>
+                    <SlCalender />
+                    <Text  marginLeft={2}>
+                      { i18n?.date(deck.created_at, { dateStyle: 'long' }) }
+                    </Text>
+                  </Flex>
                 ) }
               </Flex>
-              { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
+              { copyDeckInfo }
+              { !!deck.campaign && (
+                <Flex direction="row" alignItems="center">
+                  <CoreIcon icon="guide" size={18} />
+                  <Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link>
+                </Flex>
+              ) }
               <DeckCountLine parsedDeck={parsedDeck} />
             </Flex>
             <ButtonGroup>
@@ -230,7 +249,39 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                   {t`Edit`}
                 </SolidButton>
               ) }
-              { authUser && (
+              { !!deck.published && (
+                <>
+                  <LikeButton
+                    aria-label={t`Like deck`}
+                    liked={deck.liked_by_user}
+                    likeCount={deck.like_count}
+                    onClick={onLike}
+                  />
+                  { !!SHOW_COMMENTS && (
+                    <Button
+                      aria-label={t`See comments`}
+                      as={NextLink}
+                      href="#comments"
+                      leftIcon={<Icon as={FaComment}
+                        color="blue.500"
+                      />}
+                    >
+                      { deck.comment_count }
+                    </Button>
+                  ) }
+                  <Tooltip label={t`Copy this deck to make your own changes.`}>
+                    <Button
+                      aria-label={t`Copy deck`}
+                      leftIcon={<Icon as={FaShareAlt} color="yellow.500" />}
+                      isLoading={copying}
+                      onClick={onCopyDeck}
+                    >
+                      { deck.copy_count }
+                    </Button>
+                  </Tooltip>
+                </>
+              ) }
+              { authUser && (!deck.published || authUser.uid === deck.user_id) &&(
                 <Menu autoSelect={false}>
                   <MenuButton as={IconButton} aria-label={t`Actions`} icon={<HamburgerIcon />} variant="outline" />
                   <MenuList>
@@ -258,7 +309,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                         >{t`Publish`}</MenuItem>
                       </Tooltip>
                     ) }
-                    { !deck.previous_deck && (
+                    { !deck.previous_deck && !deck.published && (
                       <Tooltip
                         placement="left"
                         label={authUser.uid === deck.user_id ?
@@ -266,7 +317,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                           t`Copy this deck to make your own changes.`}
                       >
                         <MenuItem
-                          icon={copying ? <Spinner size="sm" /> : <FaCopy />}
+                          icon={copying ? <Spinner size="sm" /> : <FaShareAlt />}
                           onClick={onCopyDeck}
                         >
                           {t`Copy`}
