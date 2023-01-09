@@ -11,7 +11,6 @@ import FriendSearch from './FriendSearch';
 import { useTheme } from '../lib/ThemeContext';
 import { SubmitIconButton } from './SubmitButton';
 
-
 interface Props {
   profile?: UserProfileFragment;
   removeIds?: string[];

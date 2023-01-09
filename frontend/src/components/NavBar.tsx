@@ -147,10 +147,8 @@ export default function WithSubnavigation() {
     },
     skip: !authUser,
   });
-  const badged = !loading && !profileLoading && !!authUser && (
-    !data?.profile?.handle ||
-    (data.profile.received_requests_aggregate.aggregate?.count || 0) > 0
-  );
+  const noHandle = !loading && !profileLoading && !!authUser && !data?.profile?.handle;
+  const pendingFriendRequests = (data?.profile?.received_requests_aggregate.aggregate?.count || 0) > 0;
   return (
     <Box>
       <Flex
@@ -214,7 +212,11 @@ export default function WithSubnavigation() {
                 as={IconButton}
                 variant="ghost"
                 color={colors.icon}
-                icon={<Avatar size="xs">{ !!badged ? <AvatarBadge borderColor='papayawhip' bg='tomato' boxSize='1.25em'/> : null}</Avatar>}
+                icon={(
+                  <Avatar size="xs">
+                    { noHandle || pendingFriendRequests ? <AvatarBadge borderColor='papayawhip' bg='tomato' boxSize='1.25em'/> : null}
+                  </Avatar>
+                )}
               />
               <MenuList>
                 { authUser ? (
@@ -274,7 +276,7 @@ export default function WithSubnavigation() {
           action={t`Update now`}
           onClick={forceCardUpdate}
         />
-      )}
+      ) }
     </Box>
   );
 }
