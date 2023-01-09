@@ -19,6 +19,7 @@ import {
   MenuList,
   MenuItem,
   ButtonGroup,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
@@ -66,6 +67,8 @@ function ChosenRole({ role, showCard }: { role: CardFragment; showCard: ShowCard
       onClick={onClick}
       card={role}
       includeSet
+      includeText
+      last
     />
   );
 }
@@ -221,7 +224,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                   </Text>
                 ) }
                 { !!deck.published && !!deck.created_at && (
-                  <Flex direction="row" alignItems="center" marginLeft={4}>
+                  <Flex direction="row" alignItems="center">
                     <SlCalender />
                     <Text  marginLeft={2}>
                       { i18n?.date(deck.created_at, { dateStyle: 'long' }) }
@@ -348,24 +351,33 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
         </Box>
         <Grid templateColumns="repeat(6, 1fr)" gap={6}>
           <GridItem colSpan={deck.description ? [6, 6, 4, 3] : 6}>
-            <Box
-              borderRightWidth={deck.description ? [0, 0, '1px'] : undefined}
-              paddingRight={deck.description ? [0, 0, 6] : undefined}
-            >
-              <DeckDescription deck={deck} />
-              { !!parsedDeck.role ? (
-                <ChosenRole role={parsedDeck.role} showCard={showCard} />
-              ) : (
-                <Text>
-                  <i>{categories.specialty?.name}:&nbsp;</i>
-                  {
-                    specialty && categories.specialty ?
-                    categories.specialty.options[specialty] :
-                    t`Not set`
-                  }
-                </Text>
-              ) }
-              { !!parsedDeck.problem?.length && hasCards && (
+            <SimpleGrid columns={2} minChildWidth="300px">
+              <Box
+                borderRightWidth={deck.description ? [0, 0, '1px'] : undefined}
+                paddingRight={deck.description ? [0, 0, 6] : undefined}
+              >
+                <DeckDescription deck={deck} />
+                { !!parsedDeck.role ? (
+                  <ChosenRole role={parsedDeck.role} showCard={showCard} />
+                ) : (
+                  <Text>
+                    <i>{categories.specialty?.name}:&nbsp;</i>
+                    {
+                      specialty && categories.specialty ?
+                      categories.specialty.options[specialty] :
+                      t`Not set`
+                    }
+                  </Text>
+                ) }
+              </Box>
+              <Flex direction="row" justifyContent={['flex-start', 'flex-start', 'flex-end']} marginTop={2}>
+                <AspectCounter aspect={AWA} count={deck.awa} />
+                <AspectCounter aspect={SPI} count={deck.spi} />
+                <AspectCounter aspect={FIT} count={deck.fit} />
+                <AspectCounter aspect={FOC} count={deck.foc} />
+              </Flex>
+            </SimpleGrid>
+            { !!parsedDeck.problem?.length && hasCards && (
                 <Box marginTop={2} marginBottom={2}>
                   <DeckProblemComponent
                     limit={1}
@@ -374,18 +386,11 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                   />
                 </Box>
               ) }
-              <Flex direction="row" maxW="24rem" marginTop={2}>
-                <AspectCounter aspect={AWA} count={deck.awa} />
-                <AspectCounter aspect={SPI} count={deck.spi} />
-                <AspectCounter aspect={FIT} count={deck.fit} />
-                <AspectCounter aspect={FOC} count={deck.foc} />
-              </Flex>
-              { hasCards ? (
-                <List>
-                  {map(parsedDeck.cards, item => <DeckItemComponent key={item.id} item={item} showCard={showCard} />)}
-                </List>
-              ) : <Spinner size="md" /> }
-            </Box>
+            { hasCards ? (
+              <List>
+                {map(parsedDeck.cards, item => <DeckItemComponent key={item.id} item={item} showCard={showCard} />)}
+              </List>
+            ) : <Spinner size="md" /> }
           </GridItem>
           { !!deck.description && (
             <GridItem colSpan={[6, 6, 2, 3]}>

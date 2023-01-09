@@ -230,18 +230,30 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
         ) : (
           <Cost cost={card.cost} aspectId={card.aspect_id} aspect={aspect} />
         ) }
-        <Flex direction="column">
-          <DeckCardProblemTooltip errors={problem}>
-            <Text fontSize="xl" fontWeight={600} textDecorationLine={problem ? 'line-through' : undefined} noOfLines={2}>{card.name}</Text>
-          </DeckCardProblemTooltip>
+        <Flex direction="column" justifyContent="flex-start">
+          <Flex direction="column" flex={1}>
+            <DeckCardProblemTooltip errors={problem}>
+              <Text
+                fontSize="xl"
+                fontWeight={600}
+                textDecorationLine={problem ? 'line-through' : undefined}
+                noOfLines={2}
+              >
+                { card.name }
+              </Text>
+            </DeckCardProblemTooltip>
+          </Flex>
           <Flex direction="row">
             { includeText && card.text ? (
-              <CardText noPadding text={card.text} aspectId={card.aspect_id} />
+              <Box marginTop={2}>
+                <CardText noPadding text={card.text} aspectId={card.aspect_id} />
+              </Box>
             ) : (
               <>
                 <Text fontSize="xs" fontWeight={600} noOfLines={2} paddingRight={2}>
                   { locale === 'de' ? '¬' : ''}{card.type_name}{cardTraits ? <i> / {cardTraits}</i> : ''}
-                  { includeSet && card.type_id === 'role' ? t` - ${card.set_name} Specialty` : ''}
+                  { ' ' }
+                  { (includeSet && card.type_id === 'role') ? t` - ${card.set_name} Specialty` : ''}
                 </Text>
                 { !!card.equip && <Equip equip={card.equip} aspect={card.aspect_id || undefined} /> }
               </>
@@ -322,7 +334,14 @@ export function CardRow({ card, problem, children, onClick, includeSet, includeT
   return (
     <Flex direction="row" padding={2} flex={1} alignItems="flex-start" borderBottomWidth={last ? undefined : 0.5} borderColor="#BBBBBB">
       <Flex direction="row" flex={1} onClick={onClick} cursor={onClick ? 'pointer' : undefined}>
-        <CardHeader card={card} flex={1} miniLevel problem={problem} includeSet={includeSet} includeText={includeText} />
+        <CardHeader
+          flex={1}
+          card={card}
+          miniLevel
+          problem={problem}
+          includeSet={includeSet}
+          includeText={includeText}
+        />
       </Flex>
       { children }
     </Flex>
