@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Text } from '@chakra-ui/react';
+import { Flex, Link, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 import { UserInfoFragment } from '../generated/graphql/apollo-schema';
@@ -14,10 +14,10 @@ export default function UserLink({ user }: Props) {
   }
   return (
     <Link as={NextLink} href={`/users/${user.handle}`}>
-      <Text>
-        <CoreIcon icon="ranger" size={18} />&nbsp;
-        { user.handle }
-      </Text>
+      <Flex direction="row" alignItems="center">
+        <CoreIcon icon="ranger" size={14} />&nbsp;
+        <Text fontSize="md">{ user.handle }</Text>
+      </Flex>
     </Link>
   );
 }
