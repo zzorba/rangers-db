@@ -22,6 +22,22 @@ fragment UserProfile on rangers_users {
   }
 }
 
+fragment NavProfile on rangers_users {
+  id
+  handle
+  received_requests_aggregate {
+    aggregate {
+      count
+    }
+  }
+}
+
+query getNavProfile($id: String!) {
+  profile: rangers_users_by_pk(id: $id) {
+    ...NavProfile
+  }
+}
+
 query getProfile($id: String!) {
   profile: rangers_users_by_pk(id: $id) {
     ...UserProfile

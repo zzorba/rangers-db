@@ -38117,6 +38117,15 @@ export type DeckCommentFragment = { __typename?: 'rangers_comment', deck_id?: nu
 
 export type UserProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
+export type NavProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, received_requests_aggregate: { __typename?: 'rangers_user_received_friend_requests_aggregate', aggregate?: { __typename?: 'rangers_user_received_friend_requests_aggregate_fields', count: number } | null } };
+
+export type GetNavProfileQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type GetNavProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null, received_requests_aggregate: { __typename?: 'rangers_user_received_friend_requests_aggregate', aggregate?: { __typename?: 'rangers_user_received_friend_requests_aggregate_fields', count: number } | null } } | null };
+
 export type GetProfileQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
@@ -38383,6 +38392,17 @@ export const UserProfileFragmentDoc = gql`
   }
 }
     ${UserInfoFragmentDoc}`;
+export const NavProfileFragmentDoc = gql`
+    fragment NavProfile on rangers_users {
+  id
+  handle
+  received_requests_aggregate {
+    aggregate {
+      count
+    }
+  }
+}
+    `;
 export const GetMyCampaignsDocument = gql`
     query getMyCampaigns($userId: String!, $limit: Int!, $offset: Int!) {
   campaigns: rangers_user_campaign(
@@ -40116,6 +40136,41 @@ export function useUnlikeDeckMutation(baseOptions?: Apollo.MutationHookOptions<U
 export type UnlikeDeckMutationHookResult = ReturnType<typeof useUnlikeDeckMutation>;
 export type UnlikeDeckMutationResult = Apollo.MutationResult<UnlikeDeckMutation>;
 export type UnlikeDeckMutationOptions = Apollo.BaseMutationOptions<UnlikeDeckMutation, UnlikeDeckMutationVariables>;
+export const GetNavProfileDocument = gql`
+    query getNavProfile($id: String!) {
+  profile: rangers_users_by_pk(id: $id) {
+    ...NavProfile
+  }
+}
+    ${NavProfileFragmentDoc}`;
+
+/**
+ * __useGetNavProfileQuery__
+ *
+ * To run a query within a React component, call `useGetNavProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetNavProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetNavProfileQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetNavProfileQuery(baseOptions: Apollo.QueryHookOptions<GetNavProfileQuery, GetNavProfileQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetNavProfileQuery, GetNavProfileQueryVariables>(GetNavProfileDocument, options);
+      }
+export function useGetNavProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetNavProfileQuery, GetNavProfileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetNavProfileQuery, GetNavProfileQueryVariables>(GetNavProfileDocument, options);
+        }
+export type GetNavProfileQueryHookResult = ReturnType<typeof useGetNavProfileQuery>;
+export type GetNavProfileLazyQueryHookResult = ReturnType<typeof useGetNavProfileLazyQuery>;
+export type GetNavProfileQueryResult = Apollo.QueryResult<GetNavProfileQuery, GetNavProfileQueryVariables>;
 export const GetProfileDocument = gql`
     query getProfile($id: String!) {
   profile: rangers_users_by_pk(id: $id) {

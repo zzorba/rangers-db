@@ -19,8 +19,13 @@ import {
   Spinner,
   useColorMode,
   ButtonGroup,
+  MenuButton,
+  Menu,
+  MenuList,
+  MenuItem,
+  AvatarBadge,
 } from '@chakra-ui/react';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaSun, FaSlidersH, FaMoon, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaUser } from 'react-icons/fa';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import {
@@ -33,7 +38,7 @@ import Router, { useRouter } from 'next/router';
 import NextLink from 'next/link';
 
 import { useAuth } from '../lib/AuthContext';
-import { useGetCardsQuery, useGetCardsUpdatedAtQuery } from '../generated/graphql/apollo-schema';
+import { NavProfileFragment, useGetCardsQuery, useGetCardsUpdatedAtQuery, useGetNavProfileQuery, useGetProfileQuery } from '../generated/graphql/apollo-schema';
 import Banner from './Banner';
 import { LOCALES } from '../lib/Lingui';
 import { AuthUser } from '../lib/useFirebaseAuth';
@@ -41,18 +46,16 @@ import { useLocale } from '../lib/TranslationProvider';
 import { DesktopLanguageChooser, MobileLanguageChooser } from './LanguageChooser';
 import { useTheme } from '../lib/ThemeContext';
 
-const SHOW_CAMPAIGNS = true;
 function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
   return useMemo(() => [
-    ...(authUser ? [{ label: t`Profile`, href: '/profile' }] : []),
     {
       label: t`My Decks`,
       href: '/decks',
     },
-    ...(SHOW_CAMPAIGNS ? [{
+    {
       label: t`My Campaigns`,
       href: '/campaigns',
-    }] : []),
+    },
     {
       label: t`Cards`,
       href: '/cards',
@@ -61,7 +64,7 @@ function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
       label: t`Decks`,
       href: '/decks/search',
     },
-  ], [authUser]);
+  ], []);
 }
 function useCardNeedUpdate(): [boolean, () => void] {
   const { locale } = useLocale();
@@ -127,6 +130,7 @@ export function LanguageSwitcher() {
 }
 
 export default function WithSubnavigation() {
+  const { colors } = useTheme();
   const { isOpen, onToggle } = useDisclosure();
   const { authUser, loading, signOut } = useAuth();
   const [cardNeedUpdate, forceCardUpdate] = useCardNeedUpdate();
@@ -136,6 +140,17 @@ export default function WithSubnavigation() {
   }, [signOut]);
   const navItems = useNavItems(authUser);
   const { colorMode, toggleColorMode } = useColorMode();
+  const desktopNav = useBreakpointValue({ base: false, md: true });
+  const { data, loading: profileLoading } = useGetNavProfileQuery({
+    variables: {
+      id: authUser?.uid || '',
+    },
+    skip: !authUser,
+  });
+  const badged = !loading && !profileLoading && !!authUser && (
+    !data?.profile?.handle ||
+    (data.profile.received_requests_aggregate.aggregate?.count || 0) > 0
+  );
   return (
     <Box>
       <Flex
@@ -175,67 +190,83 @@ export default function WithSubnavigation() {
             <DesktopNav navItems={navItems}/>
           </Flex>
         </Flex>
-        { loading ? (
-          <Spinner size="sm" />
-        ) : (
-          <Stack
-            flex={{ base: 1, md: 0 }}
-            justify="flex-end"
-            direction="row"
-            spacing={6}
-          >
-            <ButtonGroup>
-              { authUser ? (
-                <Button
-                  fontSize={'sm'}
-                  fontWeight={400}
-                  variant={'link'}
-                  onClick={onSignOut}
-                >
-                  {t`Sign Out`}
-                </Button>
-              ) : (
-                <>
-                  <Button
-                    fontSize={'sm'}
-                    fontWeight={400}
-                    variant={'link'}
-                    as={NextLink}
-                    href="/login"
-                  >
-                    {t`Sign In`}
-                  </Button>
-                  <Button
-                    display={{ base: 'none', md: 'inline-flex' }}
-                    fontSize={'sm'}
-                    fontWeight={600}
-                    color={'white'}
-                    bg={'blue.400'}
-                    as={NextLink}
-                    href="/register"
-                    _hover={{
-                      bg: 'blue.600',
-                    }}>
-                  {t`Sign Up`}
-                  </Button>
-                </>
-              )}
-            </ButtonGroup>
-            <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-              <DesktopLanguageChooser />
-              <IconButton
-                marginLeft={1}
-                aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
-                onClick={toggleColorMode}
-                icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+        <Stack
+          flex={{ base: 1, md: 0 }}
+          justify="flex-end"
+          direction="row"
+          spacing={6}
+        >
+          <ButtonGroup>
+            { !!desktopNav && (
+              <>
+                <DesktopLanguageChooser />
+                <IconButton
+                  marginLeft={1}
+                  aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
+                  onClick={toggleColorMode}
+                  icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+                  variant="ghost"
+                />
+              </>
+            ) }
+            <Menu autoSelect={false}>
+              <MenuButton
+                as={IconButton}
                 variant="ghost"
+                color={colors.icon}
+                icon={<Avatar size="xs">{ !!badged ? <AvatarBadge borderColor='papayawhip' bg='tomato' boxSize='1.25em'/> : null}</Avatar>}
               />
-            </Flex>
-          </Stack>
-        ) }
+              <MenuList>
+                { authUser ? (
+                  <>
+                    { !!data?.profile?.handle && (
+                      <MenuItem
+                        as={NextLink}
+                        icon={<FaUser />}
+                        href={`/users/${data.profile.handle}`}
+                      >
+                        {t`Profile`}
+                      </MenuItem>
+                    ) }
+                    <MenuItem
+                      as={NextLink}
+                      href="/profile"
+                      icon={<FaSlidersH />}
+                    >
+                      {t`Account Settings`}
+                    </MenuItem>
+                    <MenuItem
+                      icon={<FaSignOutAlt />}
+                      onClick={onSignOut}
+                    >
+                      {t`Sign Out`}
+                    </MenuItem>
+                  </>
+                ) : (
+                  <>
+                    <MenuItem
+                      icon={<FaSignInAlt />}
+                      as={NextLink}
+                      href="/login"
+                    >
+                      {t`Sign In`}
+                    </MenuItem>
+                    <MenuItem
+                      icon={<FaUserPlus />}
+                      as={NextLink}
+                      href="/register"
+                    >
+                      {t`Sign Up`}
+                    </MenuItem>
+                  </>
+                ) }
+              </MenuList>
+            </Menu>
+          </ButtonGroup>
+        </Stack>
       </Flex>
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav navItems={navItems} />
+        <MobileNav navItems={navItems} profile={data?.profile} />
       </Collapse>
       { !!cardNeedUpdate && (
         <Banner
@@ -330,27 +361,84 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   );
 };
 
-const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
+const MobileNav = ({ navItems, profile }: { navItems: NavItem[]; profile: NavProfileFragment | null | undefined }) => {
+  const { authUser, signOut } = useAuth();
   const { colorMode, toggleColorMode } = useColorMode();
+  const onSignOut = useCallback(() => {
+    Router.push('/');
+    signOut();
+  }, [signOut]);
+  const mobileNavItems = useMemo(() => {
+    if (!authUser) {
+      return navItems;
+    }
+    return [
+      ...navItems,
+      ...(profile?.handle ? [
+        {
+          label: t`Profile`,
+          href: `/users/${profile.handle}`,
+        },
+      ] : []),
+      {
+        label: t`Account Settings`,
+        href: '/profile',
+      },
+    ];
+  }, [navItems, authUser, profile]);
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}
     >
-      {map(navItems, (navItem) => (
+      { !authUser && (
+        <ButtonGroup orientation="vertical">
+          <Button
+            as={NextLink}
+            href="/login"
+            leftIcon={<FaSignInAlt />}
+            variant="solid"
+          >
+            {t`Sign In`}
+          </Button>
+          <Button
+            color={'white'}
+            bg={'blue.400'}
+            as={NextLink}
+            href="/register"
+            _hover={{
+              bg: 'blue.600',
+            }}
+            leftIcon={<FaUserPlus />}
+          >
+            {t`Sign Up`}
+          </Button>
+        </ButtonGroup>
+      ) }
+      {map(mobileNavItems, (navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <ButtonGroup orientation="vertical">
+        { !!authUser && (
+          <Button
+            leftIcon={<FaSignOutAlt />}
+            onClick={onSignOut}
+            variant="outline"
+          >
+            {t`Sign Out`}
+          </Button>
+        ) }
+        <Button
+          aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
+          onClick={toggleColorMode}
+          leftIcon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+          variant="outline"
+        >
+          { colorMode === 'light' ? t`Dark mode` : t`Light mode`}
+        </Button>
+      </ButtonGroup>
       <MobileLanguageChooser />
-      <Button
-        marginLeft={1}
-        aria-label={colorMode === 'light' ? t`Dark mode` : t`Light mode`}
-        onClick={toggleColorMode}
-        leftIcon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
-        variant="ghost"
-      >
-        { colorMode === 'light' ? t`Dark mode` : t`Light mode`}
-      </Button>
     </Stack>
   );
 };

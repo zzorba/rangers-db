@@ -35,7 +35,7 @@ export default function FriendSearch({ sendFriendRequest }: {
       {
         title: t`Request friend`,
         onPress: sendRequest,
-        icon: 'check',
+        icon: 'add',
       },
     ]
   }, [sendRequest])

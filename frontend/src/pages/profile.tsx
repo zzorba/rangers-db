@@ -10,7 +10,7 @@ function ProfilePage() {
   useRequireAuth();
   return (
     <Container maxW="container.md" minH="lg">
-      <PageHeading title={t`Profile`} />
+      <PageHeading title={t`Account Settings`} />
       <ProfileSettings />
     </Container>
   );
