@@ -161,7 +161,15 @@ export function SearchDeckRow({ deck, roleCards, last }: {
             </Flex>
           </Tooltip>
         </Flex>
-        <UserLink user={deck.user} />
+
+        { !!deck.created_at && (
+          <Flex direction="row" alignItems="center" minWidth="90px">
+            <Icon as={SlCalender} size="20" />
+            <Text fontSize="sm" marginLeft={1}>
+              { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
+            </Text>
+          </Flex>
+        ) }
       </Flex>
     );
   }, [deck.user, deck.like_count, deck.copy_count, deck.comment_count]);
@@ -182,15 +190,8 @@ export function SearchDeckRow({ deck, roleCards, last }: {
               <Flex direction="column" display={['none', 'block']}>
                 <DeckDescription fontSize={['xs', 'sm']} deck={deck} roleCards={roleCards} />
                 <Flex direction="row" alignItems="center" justifyContent="flex-start" marginTop={2}>
-                  { !!deck.created_at && (
-                    <Flex direction="row" alignItems="center" minWidth="100px">
-                      <Icon as={SlCalender} size="20" />
-                      <Text fontSize="sm" marginLeft={1}>
-                        { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
-                      </Text>
-                    </Flex>
-                  ) }
-                </Flex>
+                  <UserLink user={deck.user} />
+              </Flex>
               </Flex>
             </Flex>
           </Flex>
