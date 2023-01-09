@@ -21,7 +21,7 @@ msgstr ""
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
 msgstr ""
 
-#: src/components/Card.tsx:256
+#: src/components/Card.tsx:272
 msgid "- {0} Specialty"
 msgstr ""
 
@@ -37,7 +37,7 @@ msgid "A Perfect Day"
 msgstr ""
 
 #: src/components/AspectCounter.tsx:11
-#: src/lib/hooks.ts:159
+#: src/lib/hooks.ts:160
 msgid "AWA"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Accept"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:289
+#: src/components/DeckDetail.tsx:294
 msgid "Actions"
 msgstr ""
 
@@ -77,7 +77,8 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: src/components/Profile.tsx:103
+#: src/components/Profile.tsx:100
+#: src/components/ProfileSettings.tsx:99
 msgid "Allow people to view my decks"
 msgstr ""
 
@@ -85,7 +86,7 @@ msgstr ""
 msgid "Already have an account? <0>Login</0> now."
 msgstr ""
 
-#: src/lib/hooks.ts:602
+#: src/lib/hooks.ts:603
 msgid "Ancestor's Grove"
 msgstr ""
 
@@ -93,7 +94,7 @@ msgstr ""
 msgid "Approach icons"
 msgstr ""
 
-#: src/lib/hooks.ts:726
+#: src/lib/hooks.ts:727
 msgid "Archeological Outpost"
 msgstr ""
 
@@ -105,7 +106,7 @@ msgstr ""
 #~ msgid "Are you sure you want to delete the '{0}' deck?"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:53
+#: src/components/DeckDetail.tsx:54
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
 msgstr ""
 
@@ -113,7 +114,7 @@ msgstr ""
 #~ msgid "Are you sure you want to delete the latest day's copy of this deck?"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:54
+#: src/components/DeckDetail.tsx:55
 msgid "Are you sure you want to delete this deck?"
 msgstr ""
 
@@ -137,7 +138,7 @@ msgstr ""
 msgid "Aspects"
 msgstr ""
 
-#: src/lib/hooks.ts:564
+#: src/lib/hooks.ts:565
 msgid "Atrox Mountain"
 msgstr ""
 
@@ -146,7 +147,7 @@ msgstr ""
 msgid "Available"
 msgstr ""
 
-#: src/lib/hooks.ts:158
+#: src/lib/hooks.ts:159
 msgid "Awareness"
 msgstr ""
 
@@ -159,23 +160,23 @@ msgstr ""
 msgid "Background: {backgroundName}"
 msgstr ""
 
-#: src/lib/hooks.ts:657
+#: src/lib/hooks.ts:658
 msgid "Biologist's Outpost"
 msgstr ""
 
-#: src/lib/hooks.ts:614
+#: src/lib/hooks.ts:615
 msgid "Boulder Field"
 msgstr ""
 
-#: src/lib/hooks.ts:706
+#: src/lib/hooks.ts:707
 msgid "Bowl of the Sun"
 msgstr ""
 
-#: src/lib/hooks.ts:636
+#: src/lib/hooks.ts:637
 msgid "Branch"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:300
+#: src/components/DeckDetail.tsx:305
 msgid "Camp"
 msgstr ""
 
@@ -186,7 +187,7 @@ msgstr ""
 msgid "Campaign"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:408
+#: src/components/DeckDetail.tsx:417
 msgid "Campaign progress"
 msgstr ""
 
@@ -213,7 +214,7 @@ msgstr ""
 msgid "Card set"
 msgstr ""
 
-#: src/components/NavBar.tsx:56
+#: src/components/NavBar.tsx:57
 #: src/pages/cards/index.tsx:16
 msgid "Cards"
 msgstr ""
@@ -227,7 +228,8 @@ msgstr ""
 msgid "Choose deck"
 msgstr ""
 
-#: src/components/Profile.tsx:87
+#: src/components/Profile.tsx:84
+#: src/components/ProfileSettings.tsx:83
 msgid "Choose handle"
 msgstr ""
 
@@ -244,11 +246,11 @@ msgstr ""
 msgid "Choose {0}"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:294
+#: src/components/DeckDetail.tsx:299
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
 msgstr ""
 
-#: src/lib/hooks.ts:121
+#: src/lib/hooks.ts:122
 msgid "Chosen aspects are invalid."
 msgstr ""
 
@@ -258,7 +260,7 @@ msgid "Comment"
 msgstr ""
 
 #: src/components/CommentsComponent.tsx:130
-#: src/components/DeckList.tsx:153
+#: src/components/DeckList.tsx:154
 msgid "Comments"
 msgstr ""
 
@@ -282,29 +284,29 @@ msgstr ""
 msgid "Connection"
 msgstr ""
 
-#: src/lib/hooks.ts:135
 #: src/lib/hooks.ts:136
+#: src/lib/hooks.ts:137
 msgid "Contains too many cards that do not match your chosen background."
 msgstr ""
 
-#: src/components/DeckList.tsx:159
+#: src/components/DeckList.tsx:162
 msgid "Copies"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:326
+#: src/components/DeckDetail.tsx:331
 msgid "Copy"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:277
+#: src/components/DeckDetail.tsx:282
 msgid "Copy deck"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:208
+#: src/components/DeckDetail.tsx:213
 msgid "Copy of {deckLink} by {authorLink}"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:275
-#: src/components/DeckDetail.tsx:320
+#: src/components/DeckDetail.tsx:280
+#: src/components/DeckDetail.tsx:325
 msgid "Copy this deck to make your own changes."
 msgstr ""
 
@@ -313,12 +315,17 @@ msgstr ""
 msgid "Core"
 msgstr ""
 
-#: src/lib/hooks.ts:553
+#: src/lib/hooks.ts:554
 msgid "Core set"
 msgstr ""
 
 #: src/components/CardFilter.tsx:541
 msgid "Cost"
+msgstr ""
+
+#: src/pages/users/[handle].tsx:28
+#: src/pages/users/[handle].tsx:48
+msgid "Could not find user {handle}"
 msgstr ""
 
 #: src/components/Campaign.tsx:2019
@@ -331,7 +338,7 @@ msgstr ""
 msgid "Crossed-out"
 msgstr ""
 
-#: src/lib/hooks.ts:647
+#: src/lib/hooks.ts:648
 msgid "Crossroads Station"
 msgstr ""
 
@@ -370,11 +377,11 @@ msgstr ""
 msgid "Deck"
 msgstr ""
 
-#: src/pages/decks/search.tsx:182
+#: src/pages/decks/search.tsx:109
 msgid "Deck search"
 msgstr ""
 
-#: src/components/NavBar.tsx:60
+#: src/components/NavBar.tsx:61
 msgid "Decks"
 msgstr ""
 
@@ -382,7 +389,7 @@ msgstr ""
 #: src/components/Campaign.tsx:183
 #: src/components/Campaign.tsx:854
 #: src/components/Campaign.tsx:971
-#: src/components/DeckDetail.tsx:342
+#: src/components/DeckDetail.tsx:347
 #: src/components/DeckList.tsx:64
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
@@ -392,22 +399,22 @@ msgstr ""
 msgid "Delete campaign?"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:179
+#: src/components/DeckDetail.tsx:184
 #: src/components/DeckList.tsx:106
 msgid "Delete deck?"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:334
+#: src/components/DeckDetail.tsx:339
 msgid "Deleting this published deck will cause will remove it from search."
 msgstr ""
 
 #: src/components/Campaign.tsx:1996
-#: src/lib/hooks.ts:549
+#: src/lib/hooks.ts:550
 #: src/pages/admin/map.tsx:70
 msgid "Demo"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:399
+#: src/components/DeckDetail.tsx:408
 #: src/components/DeckEdit.tsx:441
 #: src/components/DeckEdit.tsx:549
 msgid "Description"
@@ -446,7 +453,7 @@ msgstr ""
 msgid "Downpour"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:319
+#: src/components/DeckDetail.tsx:324
 msgid "Duplicate this deck while preserving the original."
 msgstr ""
 
@@ -455,7 +462,7 @@ msgstr ""
 msgid "E-mail Address"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:252
+#: src/components/DeckDetail.tsx:257
 #: src/components/DeckList.tsx:63
 #: src/components/EditableTextInput.tsx:41
 msgid "Edit"
@@ -478,13 +485,15 @@ msgid "Edit players"
 msgstr ""
 
 #: src/components/Login.tsx:29
-#: src/components/Profile.tsx:67
-#: src/components/Profile.tsx:71
+#: src/components/Profile.tsx:64
+#: src/components/Profile.tsx:68
+#: src/components/ProfileSettings.tsx:63
+#: src/components/ProfileSettings.tsx:67
 #: src/components/Register.tsx:32
 msgid "Email"
 msgstr ""
 
-#: src/components/NavBar.tsx:97
+#: src/components/NavBar.tsx:98
 msgid "English"
 msgstr ""
 
@@ -497,16 +506,16 @@ msgid "Exploration"
 msgstr ""
 
 #: src/components/AspectCounter.tsx:12
-#: src/lib/hooks.ts:167
+#: src/lib/hooks.ts:168
 msgid "FIT"
 msgstr ""
 
 #: src/components/AspectCounter.tsx:13
-#: src/lib/hooks.ts:163
+#: src/lib/hooks.ts:164
 msgid "FOC"
 msgstr ""
 
-#: src/pages/decks/search.tsx:85
+#: src/pages/decks/search.tsx:82
 msgid "Filter by Role"
 msgstr ""
 
@@ -526,7 +535,7 @@ msgstr ""
 msgid "Filter by trait"
 msgstr ""
 
-#: src/pages/decks/search.tsx:31
+#: src/pages/decks/search.tsx:28
 msgid "Filter by {0}"
 msgstr ""
 
@@ -538,11 +547,11 @@ msgstr ""
 msgid "Finish day"
 msgstr ""
 
-#: src/lib/hooks.ts:166
+#: src/lib/hooks.ts:167
 msgid "Fitness"
 msgstr ""
 
-#: src/lib/hooks.ts:162
+#: src/lib/hooks.ts:163
 msgid "Focus"
 msgstr ""
 
@@ -558,19 +567,19 @@ msgstr ""
 msgid "Friends"
 msgstr ""
 
-#: src/components/NavBar.tsx:98
+#: src/components/NavBar.tsx:99
 msgid "German"
 msgstr ""
 
-#: src/lib/hooks.ts:590
+#: src/lib/hooks.ts:591
 msgid "Golden Shore"
 msgstr ""
 
-#: src/lib/hooks.ts:201
+#: src/lib/hooks.ts:202
 msgid "Grassland"
 msgstr ""
 
-#: src/lib/hooks.ts:753
+#: src/lib/hooks.ts:754
 msgid "Greenbriar Knoll"
 msgstr ""
 
@@ -578,11 +587,12 @@ msgstr ""
 msgid "Guide entries"
 msgstr ""
 
-#: src/components/Profile.tsx:81
+#: src/components/Profile.tsx:78
+#: src/components/ProfileSettings.tsx:77
 msgid "Handle"
 msgstr ""
 
-#: src/lib/hooks.ts:763
+#: src/lib/hooks.ts:764
 msgid "Headwaters Station"
 msgstr ""
 
@@ -609,15 +619,15 @@ msgstr ""
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr ""
 
-#: src/components/NavBar.tsx:99
+#: src/components/NavBar.tsx:100
 msgid "Italian"
 msgstr ""
 
-#: src/lib/hooks.ts:608
+#: src/lib/hooks.ts:609
 msgid "Kobo's Market"
 msgstr ""
 
-#: src/lib/hooks.ts:196
+#: src/lib/hooks.ts:197
 msgid "Lakeshore"
 msgstr ""
 
@@ -639,11 +649,11 @@ msgstr ""
 msgid "Like"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:258
+#: src/components/DeckDetail.tsx:263
 msgid "Like deck"
 msgstr ""
 
-#: src/components/DeckList.tsx:147
+#: src/components/DeckList.tsx:146
 msgid "Likes"
 msgstr ""
 
@@ -661,7 +671,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: src/lib/hooks.ts:577
+#: src/lib/hooks.ts:578
 msgid "Lone Tree Station"
 msgstr ""
 
@@ -673,15 +683,19 @@ msgstr ""
 msgid "Mark day {day} as complete."
 msgstr ""
 
-#: src/lib/hooks.ts:690
+#: src/lib/hooks.ts:691
 msgid "Marsh of Rebirth"
 msgstr ""
 
-#: src/lib/hooks.ts:742
+#: src/lib/hooks.ts:743
 msgid "Meadow"
 msgstr ""
 
-#: src/lib/hooks.ts:680
+#: src/pages/users/[handle].tsx:69
+msgid "Member since {joinDate}"
+msgstr ""
+
+#: src/lib/hooks.ts:681
 msgid "Michael's Bog"
 msgstr ""
 
@@ -689,23 +703,23 @@ msgstr ""
 msgid "Missions"
 msgstr ""
 
-#: src/lib/hooks.ts:668
+#: src/lib/hooks.ts:669
 msgid "Mound of the Navigator"
 msgstr ""
 
-#: src/lib/hooks.ts:596
+#: src/lib/hooks.ts:597
 msgid "Mount Nim"
 msgstr ""
 
-#: src/lib/hooks.ts:186
+#: src/lib/hooks.ts:187
 msgid "Mountain Pass"
 msgstr ""
 
-#: src/components/NavBar.tsx:52
+#: src/components/NavBar.tsx:53
 msgid "My Campaigns"
 msgstr ""
 
-#: src/components/NavBar.tsx:48
+#: src/components/NavBar.tsx:49
 #: src/pages/decks/index.tsx:67
 msgid "My Decks"
 msgstr ""
@@ -752,7 +766,7 @@ msgstr ""
 #~ msgid "New mission"
 #~ msgstr ""
 
-#: src/components/PaginationWrapper.tsx:67
+#: src/components/PaginationWrapper.tsx:65
 msgid "Next"
 msgstr ""
 
@@ -760,7 +774,7 @@ msgstr ""
 #~ msgid "Next day ({0})"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:413
+#: src/components/DeckDetail.tsx:422
 msgid "Next deck ({0})"
 msgstr ""
 
@@ -772,39 +786,43 @@ msgstr ""
 msgid "No matching cards found."
 msgstr ""
 
-#: src/components/DeckList.tsx:229
+#: src/pages/decks/search.tsx:128
 msgid "No matching decks."
+msgstr ""
+
+#: src/pages/users/[handle].tsx:77
+msgid "No published decks."
 msgstr ""
 
 #: src/components/FriendSearch.tsx:99
 msgid "No results"
 msgstr ""
 
-#: src/lib/hooks.ts:571
+#: src/lib/hooks.ts:572
 msgid "Northern Outpost"
 msgstr ""
 
-#: src/lib/hooks.ts:129
+#: src/lib/hooks.ts:130
 msgid "Not enough background cards."
 msgstr ""
 
-#: src/lib/hooks.ts:142
+#: src/lib/hooks.ts:143
 msgid "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
 msgstr ""
 
-#: src/lib/hooks.ts:134
+#: src/lib/hooks.ts:135
 msgid "Not enough outside interest cards."
 msgstr ""
 
-#: src/lib/hooks.ts:124
+#: src/lib/hooks.ts:125
 msgid "Not enough personality cards."
 msgstr ""
 
-#: src/lib/hooks.ts:131
+#: src/lib/hooks.ts:132
 msgid "Not enough specialty cards."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:368
+#: src/components/DeckDetail.tsx:376
 msgid "Not set"
 msgstr ""
 
@@ -820,7 +838,7 @@ msgstr ""
 msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
 msgstr ""
 
-#: src/lib/hooks.ts:181
+#: src/lib/hooks.ts:182
 msgid "Old-growth"
 msgstr ""
 
@@ -858,7 +876,7 @@ msgstr ""
 msgid "Outside Interest"
 msgstr ""
 
-#: src/lib/hooks.ts:151
+#: src/lib/hooks.ts:152
 msgid "Outside interest cards cannot have the Expert trait."
 msgstr ""
 
@@ -898,7 +916,7 @@ msgstr ""
 msgid "Players"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:189
+#: src/components/DeckDetail.tsx:194
 msgid "Please address all deckbuilding errors before publishing."
 msgstr ""
 
@@ -906,7 +924,7 @@ msgstr ""
 msgid "Post"
 msgstr ""
 
-#: src/components/PaginationWrapper.tsx:63
+#: src/components/PaginationWrapper.tsx:61
 msgid "Previous"
 msgstr ""
 
@@ -914,12 +932,12 @@ msgstr ""
 #~ msgid "Previous day ({0})"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:410
+#: src/components/DeckDetail.tsx:419
 msgid "Previous deck ({0})"
 msgstr ""
 
-#: src/components/NavBar.tsx:46
-#: src/pages/profile.tsx:14
+#: src/components/NavBar.tsx:47
+#: src/pages/profile.tsx:13
 msgid "Profile"
 msgstr ""
 
@@ -932,12 +950,16 @@ msgstr ""
 msgid "Progress {progressNumber}"
 msgstr ""
 
-#: src/components/NavBar.tsx:104
+#: src/components/NavBar.tsx:105
 msgid "Pseudo"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:312
+#: src/components/DeckDetail.tsx:317
 msgid "Publish"
+msgstr ""
+
+#: src/pages/users/[handle].tsx:71
+msgid "Published decks"
 msgstr ""
 
 #: src/components/CardList.tsx:68
@@ -949,7 +971,7 @@ msgstr ""
 msgid "Rangers"
 msgstr ""
 
-#: src/components/NavBar.tsx:171
+#: src/components/NavBar.tsx:172
 #: src/components/PageHeading.tsx:10
 #: src/pages/campaigns/[cid].tsx:83
 #: src/pages/campaigns/[cid].tsx:102
@@ -958,6 +980,8 @@ msgstr ""
 #: src/pages/decks/edit/[did].tsx:52
 #: src/pages/decks/view/[did]/index.tsx:58
 #: src/pages/index.tsx:13
+#: src/pages/users/[handle].tsx:40
+#: src/pages/users/[handle].tsx:57
 msgid "RangersDB"
 msgstr ""
 
@@ -965,7 +989,7 @@ msgstr ""
 msgid "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
 msgstr ""
 
-#: src/lib/hooks.ts:206
+#: src/lib/hooks.ts:207
 msgid "Ravine"
 msgstr ""
 
@@ -1045,17 +1069,17 @@ msgstr ""
 msgid "Rewards and Maladies"
 msgstr ""
 
-#: src/lib/hooks.ts:732
+#: src/lib/hooks.ts:733
 msgid "Rings of the Moon"
 msgstr ""
 
-#: src/lib/hooks.ts:216
+#: src/lib/hooks.ts:217
 msgid "River"
 msgstr ""
 
 #: src/components/DeckEdit.tsx:749
 #: src/components/DeckEdit.tsx:966
-#: src/pages/decks/search.tsx:79
+#: src/pages/decks/search.tsx:76
 msgid "Role"
 msgstr ""
 
@@ -1064,7 +1088,7 @@ msgid "Rollback time to here"
 msgstr ""
 
 #: src/components/AspectCounter.tsx:14
-#: src/lib/hooks.ts:171
+#: src/lib/hooks.ts:172
 msgid "SPI"
 msgstr ""
 
@@ -1074,7 +1098,8 @@ msgstr ""
 #: src/components/Campaign.tsx:1132
 #: src/components/Campaign.tsx:1216
 #: src/components/Campaign.tsx:1884
-#: src/components/Profile.tsx:91
+#: src/components/Profile.tsx:88
+#: src/components/ProfileSettings.tsx:87
 msgid "Save"
 msgstr ""
 
@@ -1096,7 +1121,7 @@ msgstr ""
 #~ msgid "Searching decks that have been shared with the community is still under construction."
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:265
+#: src/components/DeckDetail.tsx:270
 msgid "See comments"
 msgstr ""
 
@@ -1158,7 +1183,8 @@ msgstr ""
 msgid "Set"
 msgstr ""
 
-#: src/components/Profile.tsx:98
+#: src/components/Profile.tsx:95
+#: src/components/ProfileSettings.tsx:94
 msgid "Settings"
 msgstr ""
 
@@ -1192,11 +1218,11 @@ msgstr ""
 msgid "Specialty: {specialtyName}"
 msgstr ""
 
-#: src/lib/hooks.ts:641
+#: src/lib/hooks.ts:642
 msgid "Spire"
 msgstr ""
 
-#: src/lib/hooks.ts:170
+#: src/lib/hooks.ts:171
 msgid "Spirit"
 msgstr ""
 
@@ -1205,7 +1231,7 @@ msgstr ""
 msgid "Starter deck"
 msgstr ""
 
-#: src/lib/hooks.ts:747
+#: src/lib/hooks.ts:748
 msgid "Stoneweaver Bridge"
 msgstr ""
 
@@ -1213,59 +1239,59 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: src/lib/hooks.ts:695
+#: src/lib/hooks.ts:696
 msgid "Sunken Outpost"
 msgstr ""
 
-#: src/lib/hooks.ts:211
+#: src/lib/hooks.ts:212
 msgid "Swamp"
 msgstr ""
 
-#: src/lib/hooks.ts:663
+#: src/lib/hooks.ts:664
 msgid "Terravore"
 msgstr ""
 
-#: src/lib/hooks.ts:711
+#: src/lib/hooks.ts:712
 msgid "The Alluvial Ruins"
 msgstr ""
 
-#: src/lib/hooks.ts:737
+#: src/lib/hooks.ts:738
 msgid "The Concordant Ziggurats"
 msgstr ""
 
-#: src/lib/hooks.ts:685
+#: src/lib/hooks.ts:686
 msgid "The Cypress Citadel"
 msgstr ""
 
-#: src/lib/hooks.ts:621
+#: src/lib/hooks.ts:622
 msgid "The Fractured Wall"
 msgstr ""
 
-#: src/lib/hooks.ts:701
+#: src/lib/hooks.ts:702
 msgid "The Frowning Gate"
 msgstr ""
 
-#: src/lib/hooks.ts:652
+#: src/lib/hooks.ts:653
 msgid "The Furrow"
 msgstr ""
 
-#: src/lib/hooks.ts:674
+#: src/lib/hooks.ts:675
 msgid "The Greenbridge"
 msgstr ""
 
-#: src/lib/hooks.ts:631
+#: src/lib/hooks.ts:632
 msgid "The High Basin"
 msgstr ""
 
-#: src/lib/hooks.ts:626
+#: src/lib/hooks.ts:627
 msgid "The Philosopher's Garden"
 msgstr ""
 
-#: src/lib/hooks.ts:758
+#: src/lib/hooks.ts:759
 msgid "The Plummet"
 msgstr ""
 
-#: src/lib/hooks.ts:716
+#: src/lib/hooks.ts:717
 msgid "The Tumbledown"
 msgstr ""
 
@@ -1277,11 +1303,11 @@ msgstr ""
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr ""
 
-#: src/lib/hooks.ts:147
+#: src/lib/hooks.ts:148
 msgid "There are too many cards with this card's name in your deck."
 msgstr ""
 
-#: src/lib/hooks.ts:140
+#: src/lib/hooks.ts:141
 msgid "There are too many outside interest cards in the deck."
 msgstr ""
 
@@ -1297,7 +1323,7 @@ msgstr ""
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr ""
 
-#: src/lib/hooks.ts:150
+#: src/lib/hooks.ts:151
 msgid "This card's aspect requirement is not satisfied by your chosen aspects."
 msgstr ""
 
@@ -1305,7 +1331,7 @@ msgstr ""
 msgid "This day is in the past. It is currently day {0}."
 msgstr ""
 
-#: src/lib/hooks.ts:149
+#: src/lib/hooks.ts:150
 msgid "This role card does not match your chosen specialty."
 msgstr ""
 
@@ -1313,39 +1339,39 @@ msgstr ""
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:186
+#: src/components/DeckDetail.tsx:191
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr ""
 
-#: src/components/NavBar.tsx:160
+#: src/components/NavBar.tsx:161
 msgid "Toggle Navigation"
 msgstr ""
 
-#: src/lib/hooks.ts:125
+#: src/lib/hooks.ts:126
 msgid "Too many AWA personality cards."
 msgstr ""
 
-#: src/lib/hooks.ts:128
+#: src/lib/hooks.ts:129
 msgid "Too many FIT personality cards."
 msgstr ""
 
-#: src/lib/hooks.ts:127
+#: src/lib/hooks.ts:128
 msgid "Too many FOC personality cards."
 msgstr ""
 
-#: src/lib/hooks.ts:126
+#: src/lib/hooks.ts:127
 msgid "Too many SPI personality cards."
 msgstr ""
 
-#: src/lib/hooks.ts:130
+#: src/lib/hooks.ts:131
 msgid "Too many cards of the chosen background."
 msgstr ""
 
-#: src/lib/hooks.ts:132
+#: src/lib/hooks.ts:133
 msgid "Too many cards of the chosen specialty."
 msgstr ""
 
-#: src/lib/hooks.ts:122
+#: src/lib/hooks.ts:123
 msgid "Too many cards with the same name."
 msgstr ""
 
@@ -1353,7 +1379,7 @@ msgstr ""
 #~ msgid "Too many cards. When making deck changes while camping, you must remove cards to make room for rewards to maintain a 30 card deck."
 #~ msgstr ""
 
-#: src/lib/hooks.ts:141
+#: src/lib/hooks.ts:142
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr ""
 
@@ -1403,7 +1429,7 @@ msgstr ""
 #~ msgid "Use this section to track cards that are removed permanently from the path decks."
 #~ msgstr ""
 
-#: src/lib/hooks.ts:721
+#: src/lib/hooks.ts:722
 msgid "Watcher's Rock"
 msgstr ""
 
@@ -1416,15 +1442,15 @@ msgstr ""
 msgid "What happened?"
 msgstr ""
 
-#: src/lib/hooks.ts:148
+#: src/lib/hooks.ts:149
 msgid "When starting a campaign, you must include two of each card in your deck."
 msgstr ""
 
-#: src/lib/hooks.ts:584
+#: src/lib/hooks.ts:585
 msgid "White Sky"
 msgstr ""
 
-#: src/lib/hooks.ts:191
+#: src/lib/hooks.ts:192
 msgid "Woods"
 msgstr ""
 
@@ -1450,7 +1476,7 @@ msgstr ""
 msgid "You must choose a location and path terrain to travel."
 msgstr ""
 
-#: src/lib/hooks.ts:133
+#: src/lib/hooks.ts:134
 msgid "You must choose a role card."
 msgstr ""
 
@@ -1462,23 +1488,23 @@ msgstr ""
 msgid "You must choose a specialty."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:294
+#: src/components/DeckDetail.tsx:299
 msgid "You must correct deck errors before upgrading."
 msgstr ""
 
-#: src/lib/hooks.ts:123
+#: src/lib/hooks.ts:124
 msgid "You must include two of each card in your starting deck."
 msgstr ""
 
-#: src/lib/hooks.ts:138
+#: src/lib/hooks.ts:139
 msgid "Your deck contains cards with aspect requirements that are not allowed."
 msgstr ""
 
-#: src/lib/hooks.ts:139
+#: src/lib/hooks.ts:140
 msgid "Your outside interest card cannot have the Expert trait."
 msgstr ""
 
-#: src/lib/hooks.ts:137
+#: src/lib/hooks.ts:138
 msgid "Your role card does not match your chosen specialty."
 msgstr ""
 
@@ -1509,8 +1535,8 @@ msgstr ""
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:131
-#: src/components/DeckDetail.tsx:131
+#: src/components/DeckDetail.tsx:136
+#: src/components/DeckDetail.tsx:136
 msgid "{0} (Copy)"
 msgstr ""
 

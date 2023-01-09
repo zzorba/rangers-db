@@ -45,6 +45,7 @@ import DeckDescriptionView from './DeckDescriptionView';
 import SolidButton from './SolidButton';
 import LikeButton from './LikeButton';
 import CommentsComponent from './CommentsComponent';
+import UserLink from './UserLink';
 
 const SHOW_COMMENTS = false;
 
@@ -204,7 +205,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
         {deck.original_deck.deck.name}
       </Link>
     );
-    const authorLink = deck.original_deck.deck.user.handle;
+    const authorLink = <UserLink user={deck.original_deck.deck.user} />;
     return (
       <Flex direction="row" alignItems="center">
         <Icon as={FaShareAlt} />
@@ -221,11 +222,11 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
           <Flex direction="row" justifyContent="space-between">
             <Flex direction="column">
               <Heading>{deck?.name || 'Deck'}</Heading>
-              <Flex direction="row" alignItems="center">
-                { authUser?.uid !== deck.user_id && deck.user.handle && (
-                  <Text fontSize="lg" marginRight={8}>
-                    <CoreIcon icon="ranger" size={18}/>&nbsp;{deck.user.handle}
-                  </Text>
+              <SimpleGrid columns={2}>
+                { authUser?.uid !== deck.user_id && !!deck.user.handle && (
+                  <Box>
+                    <UserLink user={deck.user} />
+                  </Box>
                 ) }
                 { !!deck.published && !!deck.created_at && (
                   <Flex direction="row" alignItems="center">
@@ -235,7 +236,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                     </Text>
                   </Flex>
                 ) }
-              </Flex>
+              </SimpleGrid>
               { copyDeckInfo }
               { !!deck.campaign && (
                 <Flex direction="row" alignItems="center">

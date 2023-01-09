@@ -74,6 +74,7 @@ export default function ProfilePage() {
               roleCards={roleCards}
               userId={user.id}
               pageSize={5}
+              emptyMessage={t`No published decks.`}
             />
           </Box>
         </Box>

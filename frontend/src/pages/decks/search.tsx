@@ -125,6 +125,7 @@ export default function Search() {
         fit={fit}
         userId={userId}
         pageSize={5}
+        emptyMessage={t`No matching decks.`}
       />
     </Box>
   );

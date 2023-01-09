@@ -225,10 +225,11 @@ export function SearchDeckRow({ deck, roleCards, last }: {
 interface SearchDeckListProps {
   decks: SearchDeckFragment[] | undefined;
   roleCards: CardsMap;
+  emptyMessage: string;
 }
-export function SearchDeckList({ roleCards, decks }: SearchDeckListProps) {
+export function SearchDeckList({ roleCards, decks, emptyMessage }: SearchDeckListProps) {
   if (!decks?.length) {
-    return <Text>{t`No matching decks.`}</Text>
+    return <Text>{emptyMessage}</Text>
   }
   return (
     <List>

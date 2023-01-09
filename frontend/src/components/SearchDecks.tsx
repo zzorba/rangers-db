@@ -18,10 +18,12 @@ interface Props {
   specialty?: string[];
   roles?: string[];
   pageSize?: number;
+  emptyMessage: string;
 }
 
 export default function SearchDecks({
   roleCards,
+  emptyMessage,
   pageSize = 10,
   userId, awa, spi, foc, fit, background, specialty, roles,
 }: Props) {
@@ -83,6 +85,7 @@ export default function SearchDecks({
         <SearchDeckList
           decks={decks}
           roleCards={roleCards}
+          emptyMessage={emptyMessage}
         />
       ) }
     </PaginationWrapper>

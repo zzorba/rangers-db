@@ -14,10 +14,7 @@ export default function UserLink({ user }: Props) {
   }
   return (
     <Link as={NextLink} href={`/users/${user.handle}`}>
-      <Flex direction="row" alignItems="center">
-        <CoreIcon icon="ranger" size={14} />&nbsp;
-        <Text fontSize="md">{ user.handle }</Text>
-      </Flex>
+      <CoreIcon icon="ranger" size={16} />&nbsp;{ user.handle }
     </Link>
   );
 }
