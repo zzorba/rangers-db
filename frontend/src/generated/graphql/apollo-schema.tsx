@@ -38115,14 +38115,21 @@ export type BasicDeckCommentFragment = { __typename?: 'rangers_comment', id: any
 
 export type DeckCommentFragment = { __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, created_at: any, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
-export type UserProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
+export type UserProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
 export type GetProfileQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-export type GetProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null, settings?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean } | null };
+export type GetProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null, settings?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean } | null };
+
+export type GetProfileByHandleQueryVariables = Exact<{
+  handle: Scalars['String'];
+}>;
+
+
+export type GetProfileByHandleQuery = { __typename?: 'query_root', profile: Array<{ __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> }> };
 
 export type SetPrivateDecksMutationVariables = Exact<{
   userId: Scalars['String'];
@@ -38358,6 +38365,7 @@ export const UserProfileFragmentDoc = gql`
     fragment UserProfile on rangers_users {
   id
   handle
+  created_at
   friends {
     user {
       ...UserInfo
@@ -40147,6 +40155,41 @@ export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
 export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
 export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
+export const GetProfileByHandleDocument = gql`
+    query getProfileByHandle($handle: String!) {
+  profile: rangers_users(where: {handle: {_ilike: $handle}}) {
+    ...UserProfile
+  }
+}
+    ${UserProfileFragmentDoc}`;
+
+/**
+ * __useGetProfileByHandleQuery__
+ *
+ * To run a query within a React component, call `useGetProfileByHandleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProfileByHandleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProfileByHandleQuery({
+ *   variables: {
+ *      handle: // value for 'handle'
+ *   },
+ * });
+ */
+export function useGetProfileByHandleQuery(baseOptions: Apollo.QueryHookOptions<GetProfileByHandleQuery, GetProfileByHandleQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetProfileByHandleQuery, GetProfileByHandleQueryVariables>(GetProfileByHandleDocument, options);
+      }
+export function useGetProfileByHandleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfileByHandleQuery, GetProfileByHandleQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetProfileByHandleQuery, GetProfileByHandleQueryVariables>(GetProfileByHandleDocument, options);
+        }
+export type GetProfileByHandleQueryHookResult = ReturnType<typeof useGetProfileByHandleQuery>;
+export type GetProfileByHandleLazyQueryHookResult = ReturnType<typeof useGetProfileByHandleLazyQuery>;
+export type GetProfileByHandleQueryResult = Apollo.QueryResult<GetProfileByHandleQuery, GetProfileByHandleQueryVariables>;
 export const SetPrivateDecksDocument = gql`
     mutation setPrivateDecks($userId: String!, $privateDecks: Boolean!) {
   update_rangers_user_settings_by_pk(

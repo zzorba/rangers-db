@@ -1,8 +1,10 @@
 import React, { useCallback, useMemo } from 'react';
-import { Icon, Box, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, Tooltip } from '@chakra-ui/react';
+import { Icon, Text, Link, ButtonGroup, Flex, IconButton, List, ListItem, SimpleGrid, useBreakpointValue, useColorMode, Tooltip } from '@chakra-ui/react';
 import { map } from 'lodash';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
+import { FaComment, FaEdit, FaHeart, FaShareAlt, FaTrash } from 'react-icons/fa';
+import { SlCalender } from 'react-icons/sl';
 
 import { DeckFragment, DeckWithCampaignFragment, SearchDeckFragment, useDeleteDeckMutation } from '../generated/graphql/apollo-schema';
 import { CardsMap } from '../lib/hooks';
@@ -13,11 +15,9 @@ import DeckProblemComponent from './DeckProblemComponent';
 import CoreIcon from '../icons/CoreIcon';
 import { DeckError } from '../types/types';
 import useDeleteDialog from './useDeleteDialog';
-import { FaComment, FaEdit, FaHeart, FaShare, FaShareAlt, FaShareAltSquare, FaTrash } from 'react-icons/fa';
 import { useTheme } from '../lib/ThemeContext';
-import LikeButton from './LikeButton';
 import { useLocale } from '../lib/TranslationProvider';
-import { SlCalender } from 'react-icons/sl';
+import UserLink from './UserLink';
 
 export function DeckRow({ deck, roleCards, onDelete }: {
   deck: DeckWithCampaignFragment;
@@ -42,22 +42,22 @@ export function DeckRow({ deck, roleCards, onDelete }: {
         <Flex direction="row">
           <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
             { !!role && !!role.imagesrc && <RoleImage size="large" name={role.name} url={role.imagesrc} /> }
-            <Flex direction="column">
-              <Text fontSize={['m', 'l', 'xl']}>{deck.name}</Text>
-              <Flex direction="column" display={['none', 'block']}>
-                { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
-                <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
-                { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
-              </Flex>
-            </Flex>
-          </Flex>
-          <Flex marginLeft={1} direction="row" alignItems="flex-start" justifyContent="space-between">
-            <SimpleGrid columns={2} marginRight={1}>
+            <SimpleGrid columns={2} marginRight={2}>
               <MiniAspect aspect="AWA" value={deck.awa} />
               <MiniAspect aspect="SPI" value={deck.spi} />
               <MiniAspect aspect="FIT" value={deck.fit} />
               <MiniAspect aspect="FOC" value={deck.foc} />
             </SimpleGrid>
+            <Flex direction="column">
+              <Text fontSize={['md', 'lg']}>{deck.name}</Text>
+              <Flex direction="column" display={['none', 'block']}>
+                { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
+                <DeckDescription fontSize={['xs', 'sm']}deck={deck} roleCards={roleCards} />
+                { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
+              </Flex>
+            </Flex>
+          </Flex>
+          <Flex marginLeft={1} direction="row" alignItems="flex-start" justifyContent="space-between">
             { authUser?.uid === deck.user_id && (
               <ButtonGroup marginLeft={[1, 2, "2em"]} orientation={buttonOrientation || 'horizontal'}>
                 <IconButton aria-label={t`Edit`} color={`${colorMode}.lightText`} icon={<FaEdit />} as={NextLink} href={`/decks/edit/${deck.id}`} />
@@ -128,63 +128,63 @@ export default function DeckList({
 }
 
 
-export function SearchDeckRow({ deck, roleCards, onLike }: {
+export function SearchDeckRow({ deck, roleCards, last }: {
   deck: SearchDeckFragment;
   roleCards: CardsMap;
-  onLike: (deck: SearchDeckFragment) => Promise<string | undefined>;
+  last?: boolean;
 }) {
   const { i18n } = useLocale();
-  const doLike = useCallback(async() => {
-    return await onLike(deck);
-  }, [onLike, deck]);
   const role = useMemo(() => {
     return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
   }, [deck.meta, roleCards]);
   const { colors } = useTheme();
   const socialProof = useMemo(() => {
     return (
-      <Flex direction="row" alignItems="flex-start">
-        <Tooltip label={t`Likes`}>
-          <Flex direction="row" alignItems="center" minWidth="45px" justifyContent="flex-start">
-            <Icon as={FaHeart} size={24} color="red.500" />
-            <Text marginLeft={1}>{deck.like_count || 0}</Text>
-          </Flex>
-        </Tooltip>
-        <Tooltip label={t`Comments`}>
-          <Flex direction="row" alignItems="center" minWidth="45px" marginLeft={2} justifyContent="flex-start">
-            <Icon as={FaComment} size={24} color="blue.500" />
-            <Text marginLeft={1}>{deck.comment_count || 0}</Text>
-          </Flex>
-        </Tooltip>
-        <Tooltip label={t`Copies`}>
-          <Flex direction="row" alignItems="center" minWidth="45px" marginLeft={2} justifyContent="flex-start">
-            <Icon as={FaShareAlt} size={24} color="yellow.500" />
-            <Text marginLeft={1}>{deck.copy_count || 0}</Text>
-          </Flex>
-        </Tooltip>
+      <Flex direction="column" alignItems="flex-end" justifyContent="space-between">
+        <Flex direction="row" alignItems="flex-start">
+          <Tooltip label={t`Likes`}>
+            <Flex direction="row" alignItems="center" minWidth="45px" justifyContent="flex-start">
+              <Icon as={FaHeart} size={24} color="red.500" />
+              <Text marginLeft={1}>{deck.like_count || 0}</Text>
+            </Flex>
+          </Tooltip>
+          <Tooltip label={t`Comments`}>
+            <Flex direction="row" alignItems="center" minWidth="45px" marginLeft={2} justifyContent="flex-start">
+              <Icon as={FaComment} size={24} color="blue.500" />
+              <Text marginLeft={1}>{deck.comment_count || 0}</Text>
+            </Flex>
+          </Tooltip>
+          <Tooltip label={t`Copies`}>
+            <Flex direction="row" alignItems="center" minWidth="45px" marginLeft={2} justifyContent="flex-start">
+              <Icon as={FaShareAlt} size={24} color="yellow.500" />
+              <Text marginLeft={1}>{deck.copy_count || 0}</Text>
+            </Flex>
+          </Tooltip>
+        </Flex>
+        <UserLink user={deck.user} />
       </Flex>
     );
-  }, [deck.like_count, deck.copy_count, deck.comment_count]);
+  }, [deck.user, deck.like_count, deck.copy_count, deck.comment_count]);
   return (
-    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth="1px">
+    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth={last ? undefined : '1px'}>
       <Flex direction="column">
         <Flex direction="row">
           <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
+            { !!role && !!role.imagesrc && <RoleImage name={role.name} url={role.imagesrc} size="large" /> }
             <SimpleGrid columns={2} marginRight={2}>
               <MiniAspect aspect="AWA" value={deck.awa} />
               <MiniAspect aspect="SPI" value={deck.spi} />
               <MiniAspect aspect="FIT" value={deck.fit} />
               <MiniAspect aspect="FOC" value={deck.foc} />
             </SimpleGrid>
-            { !!role && !!role.imagesrc && <RoleImage name={role.name} url={role.imagesrc} size="large" /> }
             <Flex direction="column">
-              <Text fontSize={['m', 'l', 'xl']}>{deck.name}</Text>
+              <Text fontSize={['md', 'lg']}>{deck.name}</Text>
               <Flex direction="column" display={['none', 'block']}>
-                <DeckDescription fontSize={['xs', 's', 'm']} deck={deck} roleCards={roleCards} />
-                <Flex direction="row" alignItems="center" justifyContent="flex-start" marginTop="2px">
+                <DeckDescription fontSize={['xs', 'sm']} deck={deck} roleCards={roleCards} />
+                <Flex direction="row" alignItems="center" justifyContent="flex-start" marginTop={2}>
                   { !!deck.created_at && (
                     <Flex direction="row" alignItems="center" minWidth="100px">
-                      <Icon as={SlCalender} size="22" />
+                      <Icon as={SlCalender} size="20" />
                       <Text fontSize="sm" marginLeft={1}>
                         { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
                       </Text>
@@ -203,7 +203,7 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
               <Flex direction="row" alignItems="center" justifyContent="space-between" marginTop="2px">
                 { !!deck.created_at && (
                   <Flex direction="row" alignItems="center">
-                    <Icon as={SlCalender} size="22" />
+                    <Icon as={SlCalender} size="20" />
                     <Text fontSize="sm" marginLeft={1}>
                       { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
                     </Text>
@@ -222,24 +222,21 @@ export function SearchDeckRow({ deck, roleCards, onLike }: {
 interface SearchDeckListProps {
   decks: SearchDeckFragment[] | undefined;
   roleCards: CardsMap;
-  onLike: (deck: SearchDeckFragment) => Promise<string | undefined>;
 }
-export function SearchDeckList({ roleCards, decks, onLike }: SearchDeckListProps) {
+export function SearchDeckList({ roleCards, decks }: SearchDeckListProps) {
   if (!decks?.length) {
     return <Text>{t`No matching decks.`}</Text>
   }
   return (
-    <>
-      <List>
-        { map(decks, deck => (
-          <SearchDeckRow
-            key={deck.id}
-            deck={deck}
-            roleCards={roleCards}
-            onLike={onLike}
-          />
-        )) }
-      </List>
-    </>
+    <List>
+      { map(decks, (deck, index) => (
+        <SearchDeckRow
+          key={deck.id}
+          deck={deck}
+          roleCards={roleCards}
+          last={index === decks.length - 1}
+        />
+      )) }
+    </List>
   );
 }

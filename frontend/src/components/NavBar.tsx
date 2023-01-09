@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
+  Avatar,
   Box,
   Flex,
   Text,
@@ -174,7 +175,6 @@ export default function WithSubnavigation() {
             <DesktopNav navItems={navItems}/>
           </Flex>
         </Flex>
-
         { loading ? (
           <Spinner size="sm" />
         ) : (
@@ -185,41 +185,41 @@ export default function WithSubnavigation() {
             spacing={6}
           >
             <ButtonGroup>
-            { authUser ? (
-              <Button
-                fontSize={'sm'}
-                fontWeight={400}
-                variant={'link'}
-                onClick={onSignOut}
-              >
-                {t`Sign Out`}
-              </Button>
-            ) : (
-              <>
+              { authUser ? (
                 <Button
                   fontSize={'sm'}
                   fontWeight={400}
                   variant={'link'}
-                  as={NextLink}
-                  href="/login"
+                  onClick={onSignOut}
                 >
-                  {t`Sign In`}
+                  {t`Sign Out`}
                 </Button>
-                <Button
-                  display={{ base: 'none', md: 'inline-flex' }}
-                  fontSize={'sm'}
-                  fontWeight={600}
-                  color={'white'}
-                  bg={'blue.400'}
-                  as={NextLink}
-                  href="/register"
-                  _hover={{
-                    bg: 'blue.600',
-                  }}>
-                 {t`Sign Up`}
-                </Button>
-              </>
-            )}
+              ) : (
+                <>
+                  <Button
+                    fontSize={'sm'}
+                    fontWeight={400}
+                    variant={'link'}
+                    as={NextLink}
+                    href="/login"
+                  >
+                    {t`Sign In`}
+                  </Button>
+                  <Button
+                    display={{ base: 'none', md: 'inline-flex' }}
+                    fontSize={'sm'}
+                    fontWeight={600}
+                    color={'white'}
+                    bg={'blue.400'}
+                    as={NextLink}
+                    href="/register"
+                    _hover={{
+                      bg: 'blue.600',
+                    }}>
+                  {t`Sign Up`}
+                  </Button>
+                </>
+              )}
             </ButtonGroup>
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopLanguageChooser />

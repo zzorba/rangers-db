@@ -216,7 +216,22 @@ function CardPresenceAndIcons({ card, mini }: { card: CardFragment; mini?: boole
   );
 }
 
-const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }: Props & { flex?: number; miniLevel?: boolean; problem?: DeckCardError[]; includeSet?: boolean; includeText?: boolean }) => {
+export function CardHeader({
+  card,
+  flex,
+  miniLevel,
+  problem,
+  includeSet,
+  includeText,
+  children,
+}: Props & {
+  flex?: number;
+  miniLevel?: boolean;
+  problem?: DeckCardError[];
+  includeSet?: boolean;
+  includeText?: boolean;
+  children?: React.ReactNode;
+}) {
   const { aspects, locale } = useLocale();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   const cardTraits = card.traits && locale === 'de'
@@ -234,7 +249,7 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
           <Flex direction="column" flex={1}>
             <DeckCardProblemTooltip errors={problem}>
               <Text
-                fontSize="xl"
+                fontSize="lg"
                 fontWeight={600}
                 textDecorationLine={problem ? 'line-through' : undefined}
                 noOfLines={2}
@@ -243,9 +258,10 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
               </Text>
             </DeckCardProblemTooltip>
           </Flex>
+          { children }
           <Flex direction="row">
             { includeText && card.text ? (
-              <Box marginTop={2}>
+              <Box>
                 <CardText noPadding text={card.text} aspectId={card.aspect_id} />
               </Box>
             ) : (
@@ -271,7 +287,7 @@ const CardHeader = ({ card, flex, miniLevel, problem, includeSet, includeText }:
       ) : <CardPresenceAndIcons card={card} /> }
     </Flex>
   );
-};
+}
 
 function CardBody({ card, padding, problem, count, detail }: Props & { padding?: number; problem?: DeckError[]; count?: number; detail?: boolean }) {
   const { aspects } = useLocale();

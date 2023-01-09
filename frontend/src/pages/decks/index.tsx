@@ -37,7 +37,7 @@ export default function DecksPage() {
     skip: !authUser?.uid,
   });
 
-  const fetchDecks = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<DeckWithCampaignFragment[]> => {
+  const fetchDecks = useCallback(async(authUser: AuthUser | undefined, pageSize: number, offset: number): Promise<DeckWithCampaignFragment[]> => {
     if (authUser) {
       const data = await fetchMore({
         variables: {

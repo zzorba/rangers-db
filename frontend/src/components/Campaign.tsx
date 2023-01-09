@@ -1417,7 +1417,7 @@ export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign
     skip: !authUser,
   });
 
-  const fetchDecks = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<DeckFragment[]> => {
+  const fetchDecks = useCallback(async(authUser: AuthUser | undefined, pageSize: number, offset: number): Promise<DeckFragment[]> => {
     if (authUser) {
       const data = await fetchMore({
         variables: {

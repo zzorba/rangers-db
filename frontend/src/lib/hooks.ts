@@ -4,8 +4,9 @@ import Router,{ useRouter } from 'next/router';
 import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
-import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, SetTypeFragment, useGetRoleCardsQuery, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
 import { AspectMap, CampaignCycle, DeckCardError, DeckError, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
+import { useLocale } from './TranslationProvider';
 
 export function useRequireAuth() {
   const { authUser, loading } = useAuth();
@@ -794,7 +795,8 @@ interface BasicDeck {
   id?: number | null | undefined;
   liked_by_user?: boolean | null | undefined;
 }
-export function useLikeAction<T extends BasicDeck>(updateCache: (d: T, liked: boolean) => void): (deck: T) => Promise<string | undefined> {
+export type LikeDeck<T extends BasicDeck> = (deck: T) => Promise<string | undefined>;
+export function useLikeAction<T extends BasicDeck>(updateCache: (d: T, liked: boolean) => void): LikeDeck<T> {
   const { authUser } = useAuth();
   const [doLike] = useLikeDeckMutation();
   const [doUnlike] = useUnlikeDeckMutation();
@@ -825,4 +827,14 @@ export function useLikeAction<T extends BasicDeck>(updateCache: (d: T, liked: bo
     }
     return undefined;
   }, [doLike, doUnlike, updateCache, authUser]);
+}
+
+export function useRoleCards(): CardsMap {
+  const { locale } = useLocale();
+  const { data: role } = useGetRoleCardsQuery({
+    variables: {
+      locale,
+    },
+  });
+  return useCardsMap(role?.cards);
 }

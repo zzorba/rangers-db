@@ -27,7 +27,7 @@ export default function CampaignsList() {
     skip: !authUser,
   });
 
-  const fetchCampaigns = useCallback(async(authUser: AuthUser, pageSize: number, offset: number): Promise<ParsedCampaign[]> => {
+  const fetchCampaigns = useCallback(async(authUser: AuthUser | undefined, pageSize: number, offset: number): Promise<ParsedCampaign[]> => {
     if (authUser) {
       const data = await fetchMore({
         variables: {

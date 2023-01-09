@@ -34,7 +34,7 @@ import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AWA, FIT, FOC, SPI } from '../types/types';
 import { CardsMap } from '../lib/hooks';
-import { CardRow, ShowCard, useCardModal } from './Card';
+import { CardHeader, CardRow, ShowCard, useCardModal } from './Card';
 import DeckProblemComponent from './DeckProblemComponent';
 import { useLocale } from '../lib/TranslationProvider';
 import CoreIcon from '../icons/CoreIcon';
@@ -60,16 +60,20 @@ interface Props {
   onLike?: () => Promise<string | undefined>;
 }
 
-function ChosenRole({ role, showCard }: { role: CardFragment; showCard: ShowCard }) {
+function ChosenRole({ role, showCard, children }: { role: CardFragment; showCard: ShowCard; children: React.ReactNode }) {
   const onClick = useCallback(() => showCard(role), [role, showCard]);
   return (
-    <CardRow
-      onClick={onClick}
-      card={role}
-      includeSet
-      includeText
-      last
-    />
+    <Flex marginRight={2} direction="column" onClick={onClick}  cursor="pointer" alignItems="flex-start">
+      <CardHeader
+        flex={1}
+        card={role}
+        miniLevel
+        includeSet
+        includeText
+      >
+        { children }
+      </CardHeader>
+    </Flex>
   );
 }
 
@@ -351,26 +355,30 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
         </Box>
         <Grid templateColumns="repeat(6, 1fr)" gap={6}>
           <GridItem colSpan={deck.description ? [6, 6, 4, 3] : 6}>
-            <SimpleGrid columns={2} minChildWidth="300px">
+            <SimpleGrid columns={deck.description ? 1 : [1, 1, 2]}>
               <Box
                 borderRightWidth={deck.description ? [0, 0, '1px'] : undefined}
                 paddingRight={deck.description ? [0, 0, 6] : undefined}
               >
-                <DeckDescription deck={deck} />
                 { !!parsedDeck.role ? (
-                  <ChosenRole role={parsedDeck.role} showCard={showCard} />
+                  <ChosenRole role={parsedDeck.role} showCard={showCard}>
+                    <DeckDescription deck={deck} />
+                  </ChosenRole>
                 ) : (
-                  <Text>
-                    <i>{categories.specialty?.name}:&nbsp;</i>
-                    {
-                      specialty && categories.specialty ?
-                      categories.specialty.options[specialty] :
-                      t`Not set`
-                    }
-                  </Text>
+                  <>
+                    <DeckDescription deck={deck} />
+                    <Text>
+                      <i>{categories.specialty?.name}:&nbsp;</i>
+                      {
+                        specialty && categories.specialty ?
+                        categories.specialty.options[specialty] :
+                        t`Not set`
+                      }
+                    </Text>
+                  </>
                 ) }
               </Box>
-              <Flex direction="row" justifyContent={['flex-start', 'flex-start', 'flex-end']} marginTop={2}>
+              <Flex direction="row" justifyContent="flex-start" alignItems="flex-start" marginTop={2}>
                 <AspectCounter aspect={AWA} count={deck.awa} />
                 <AspectCounter aspect={SPI} count={deck.spi} />
                 <AspectCounter aspect={FIT} count={deck.fit} />

@@ -26,8 +26,8 @@ export default function AspectCounter({ aspect, onChange, count }: { aspect: Asp
   const decEnabled = !!onChange && count > 1;
   const incEnabled = !!onChange && count < 4;
   return (
-    <Flex flex={0.25} maxWidth="100px">
-      <AspectRatio width="100%" ratio={1}>
+    <Flex flex={0.25} maxWidth="100px" minWidth="50px">
+      <AspectRatio width="100%" maxWidth="100px" ratio={1}>
         <Flex background={`aspect.${aspect}`} direction="column" alignItems="center" position="relative">
           <Flex pointerEvents="none" direction="column" alignItems="center" justifyContent="center" position="absolute" top="0" left="0" height="100%" width="100%" >
             <AspectRatio width={onChange ? '75%' : '70%'} ratio={1}>
