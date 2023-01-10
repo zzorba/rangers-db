@@ -41,9 +41,15 @@ msgstr "Ein herrlicher Tag"
 msgid "AWA"
 msgstr "WAH"
 
-#: src/components/FriendRequests.tsx:149
+#: src/components/FriendRequests.tsx:148
 msgid "Accept"
 msgstr "Annehmen"
+
+#: src/components/NavBar.tsx:238
+#: src/components/NavBar.tsx:386
+#: src/pages/profile.tsx:13
+msgid "Account Settings"
+msgstr ""
 
 #: src/components/DeckDetail.tsx:294
 msgid "Actions"
@@ -98,7 +104,7 @@ msgstr ""
 msgid "Archeological Outpost"
 msgstr "Archäologischer Vorposten"
 
-#: src/components/DeckList.tsx:80
+#: src/components/DeckList.tsx:111
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "Willst du wirklich das \"{0}\" Deck löschen?"
 
@@ -204,7 +210,7 @@ msgstr "Freundschaft beenden"
 msgid "Card set"
 msgstr ""
 
-#: src/components/NavBar.tsx:57
+#: src/components/NavBar.tsx:60
 #: src/pages/cards/index.tsx:16
 msgid "Cards"
 msgstr "Karten"
@@ -250,7 +256,7 @@ msgid "Comment"
 msgstr ""
 
 #: src/components/CommentsComponent.tsx:130
-#: src/components/DeckList.tsx:154
+#: src/components/DeckList.tsx:185
 msgid "Comments"
 msgstr ""
 
@@ -279,7 +285,7 @@ msgstr ""
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Enthält zu viele Karten, die nicht zur gewählten Vorgeschichte passen."
 
-#: src/components/DeckList.tsx:162
+#: src/components/DeckList.tsx:193
 msgid "Copies"
 msgstr ""
 
@@ -340,9 +346,9 @@ msgstr "Aktuelle Position"
 msgid "Custom deck"
 msgstr "Eigenes Deck"
 
-#: src/components/NavBar.tsx:228
-#: src/components/NavBar.tsx:347
-#: src/components/NavBar.tsx:352
+#: src/components/NavBar.tsx:203
+#: src/components/NavBar.tsx:435
+#: src/components/NavBar.tsx:440
 msgid "Dark mode"
 msgstr "Dark Mode"
 
@@ -370,7 +376,7 @@ msgstr "Deck"
 msgid "Deck search"
 msgstr "Decks suchen"
 
-#: src/components/NavBar.tsx:61
+#: src/components/NavBar.tsx:64
 msgid "Decks"
 msgstr "Decks"
 
@@ -379,7 +385,7 @@ msgstr "Decks"
 #: src/components/Campaign.tsx:854
 #: src/components/Campaign.tsx:971
 #: src/components/DeckDetail.tsx:347
-#: src/components/DeckList.tsx:64
+#: src/components/DeckList.tsx:84
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
 msgstr "Löschen"
@@ -389,7 +395,7 @@ msgid "Delete campaign?"
 msgstr "Kampagne löschen?"
 
 #: src/components/DeckDetail.tsx:184
-#: src/components/DeckList.tsx:106
+#: src/components/DeckList.tsx:137
 msgid "Delete deck?"
 msgstr "Deck löschen?"
 
@@ -451,7 +457,7 @@ msgid "E-mail Address"
 msgstr "E-Mail-Adresse"
 
 #: src/components/DeckDetail.tsx:257
-#: src/components/DeckList.tsx:63
+#: src/components/DeckList.tsx:77
 #: src/components/EditableTextInput.tsx:41
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -481,7 +487,7 @@ msgstr "Spieler bearbeiten"
 msgid "Email"
 msgstr "E-Mail"
 
-#: src/components/NavBar.tsx:98
+#: src/components/NavBar.tsx:101
 msgid "English"
 msgstr "Englisch"
 
@@ -547,15 +553,15 @@ msgstr "Ruhe"
 msgid "Forgot Password"
 msgstr "Passwort vergessen"
 
-#: src/components/FriendRequests.tsx:145
+#: src/components/FriendRequests.tsx:144
 msgid "Friend Requests"
 msgstr "Freundschaftsanfragen"
 
-#: src/components/FriendRequests.tsx:174
+#: src/components/FriendRequests.tsx:173
 msgid "Friends"
 msgstr "Freunde"
 
-#: src/components/NavBar.tsx:99
+#: src/components/NavBar.tsx:102
 msgid "German"
 msgstr "Deutsch"
 
@@ -602,7 +608,7 @@ msgstr "Sturmböen"
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Du kannst die Entwicklung und den Unterhalt dieser Webseite auf {patreon} unterstützen."
 
-#: src/components/NavBar.tsx:100
+#: src/components/NavBar.tsx:103
 msgid "Italian"
 msgstr "Italienisch"
 
@@ -622,9 +628,9 @@ msgstr "Sprache"
 msgid "Leave campaign"
 msgstr "Kampagne verlassen"
 
-#: src/components/NavBar.tsx:228
-#: src/components/NavBar.tsx:347
-#: src/components/NavBar.tsx:352
+#: src/components/NavBar.tsx:203
+#: src/components/NavBar.tsx:435
+#: src/components/NavBar.tsx:440
 msgid "Light mode"
 msgstr "Light Mode"
 
@@ -636,7 +642,7 @@ msgstr "Gefällt mir"
 msgid "Like deck"
 msgstr ""
 
-#: src/components/DeckList.tsx:146
+#: src/components/DeckList.tsx:177
 msgid "Likes"
 msgstr ""
 
@@ -698,11 +704,11 @@ msgstr "Nim-Spitzen"
 msgid "Mountain Pass"
 msgstr "Bergpass"
 
-#: src/components/NavBar.tsx:53
+#: src/components/NavBar.tsx:56
 msgid "My Campaigns"
 msgstr "Meine Kampagnen"
 
-#: src/components/NavBar.tsx:49
+#: src/components/NavBar.tsx:52
 #: src/pages/decks/index.tsx:67
 msgid "My Decks"
 msgstr "Meine Decks"
@@ -735,7 +741,7 @@ msgstr "Gib deinem Charakter einen Namen"
 msgid "New campaign"
 msgstr "Neue Kampagne"
 
-#: src/components/NavBar.tsx:242
+#: src/components/NavBar.tsx:275
 msgid "New cards are available"
 msgstr "Neue Karten sind verfügbar"
 
@@ -874,7 +880,7 @@ msgstr "Terrain-Typ"
 msgid "Paths"
 msgstr "Pfade"
 
-#: src/components/FriendRequests.tsx:163
+#: src/components/FriendRequests.tsx:162
 msgid "Pending Requests"
 msgstr "Ausstehende Freundschaftsanfragen"
 
@@ -911,8 +917,8 @@ msgstr "Vorherige Seite"
 msgid "Previous deck ({0})"
 msgstr "Vorheriges Deck ({0})"
 
-#: src/components/NavBar.tsx:47
-#: src/pages/profile.tsx:13
+#: src/components/NavBar.tsx:230
+#: src/components/NavBar.tsx:381
 msgid "Profile"
 msgstr "Profil"
 
@@ -925,7 +931,7 @@ msgstr "Fortschritt"
 msgid "Progress {progressNumber}"
 msgstr "Fortschritt {progressNumber}"
 
-#: src/components/NavBar.tsx:105
+#: src/components/NavBar.tsx:108
 msgid "Pseudo"
 msgstr "Pseudonym"
 
@@ -946,7 +952,7 @@ msgstr "Ranger"
 msgid "Rangers"
 msgstr "Ranger"
 
-#: src/components/NavBar.tsx:172
+#: src/components/NavBar.tsx:185
 #: src/components/PageHeading.tsx:10
 #: src/pages/campaigns/[cid].tsx:83
 #: src/pages/campaigns/[cid].tsx:102
@@ -995,7 +1001,7 @@ msgstr "Registrieren"
 msgid "Register now"
 msgstr "Jetzt registrieren"
 
-#: src/components/FriendRequests.tsx:154
+#: src/components/FriendRequests.tsx:153
 msgid "Reject"
 msgstr "Ablehnen"
 
@@ -1027,8 +1033,8 @@ msgstr "Entfernte Karten"
 msgid "Request friend"
 msgstr "Freundschaftsanfrage senden"
 
-#: src/components/FriendRequests.tsx:166
-#: src/components/FriendRequests.tsx:178
+#: src/components/FriendRequests.tsx:165
+#: src/components/FriendRequests.tsx:177
 msgid "Revoke"
 msgstr "Zurücknehmen"
 
@@ -1152,15 +1158,18 @@ msgstr "Alle anzeigen"
 msgid "Show all locations"
 msgstr ""
 
-#: src/components/NavBar.tsx:206
+#: src/components/NavBar.tsx:254
+#: src/components/NavBar.tsx:405
 msgid "Sign In"
 msgstr "Einloggen"
 
-#: src/components/NavBar.tsx:195
+#: src/components/NavBar.tsx:244
+#: src/components/NavBar.tsx:431
 msgid "Sign Out"
 msgstr "Ausloggen"
 
-#: src/components/NavBar.tsx:219
+#: src/components/NavBar.tsx:261
+#: src/components/NavBar.tsx:417
 msgid "Sign Up"
 msgstr "Registrieren"
 
@@ -1297,7 +1306,7 @@ msgstr "Diese Webseite befindet sich noch im Aufbau, aber du kannst bereits die 
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "Um Spoiler für andere Spieler zu vermeiden kannst du keine Decks veröffentlichen, mit denen du dein Nachtlager aufgeschlagen hast."
 
-#: src/components/NavBar.tsx:161
+#: src/components/NavBar.tsx:174
 msgid "Toggle Navigation"
 msgstr "Navigation umschalten"
 
@@ -1366,7 +1375,7 @@ msgstr "Gefällt mir nicht"
 #~ msgid "Unlocked rewards"
 #~ msgstr "Freigeschaltete Belohnungen"
 
-#: src/components/NavBar.tsx:243
+#: src/components/NavBar.tsx:276
 msgid "Update now"
 msgstr "Jetzt bearbeiten"
 
@@ -1404,7 +1413,7 @@ msgstr "Du"
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr "Du kannst dieses Deck zu einer Kampagne hinzufügen und Belohnungen, die ihr als Gruppe freigeschaltet habt, verfolgen."
 
-#: src/components/DeckList.tsx:111
+#: src/components/DeckList.tsx:142
 msgid "You don't seem to have any decks."
 msgstr "Du hast scheinbar keine Decks."
 

@@ -40,7 +40,13 @@ export function DeckRow({ deck, roleCards, onDelete }: {
     <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth="1px">
       <Flex direction="column">
         <Flex direction="row">
-          <Flex flex={[1.2, 1.25, 1.5, 2]} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
+          <Flex
+            flex={[1.2, 1.25, 1.5, 2]}
+            direction="row"
+            alignItems="flex-start"
+            as={NextLink}
+            href={`/decks/view/${deck.id}`}
+          >
             { !!role && !!role.imagesrc && <RoleImage size="large" name={role.name} url={role.imagesrc} /> }
             <SimpleGrid columns={2} marginRight={2} width="80px" minWidth="80px">
               <MiniAspect aspect="AWA" value={deck.awa} />
@@ -51,7 +57,14 @@ export function DeckRow({ deck, roleCards, onDelete }: {
             <Flex direction="column">
               <Text fontSize={['md', 'lg']}>{deck.name}</Text>
               <Flex direction="column" display={['none', 'block']}>
-                { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
+                { !!deck.campaign && (
+                  <Flex direction="row" alignItems="center">
+                    <CoreIcon icon="guide" size={18} />
+                    <Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>
+                      {deck.campaign.name}
+                    </Link>
+                  </Flex>
+                )}
                 <DeckDescription fontSize={['xs', 'sm']}deck={deck} roleCards={roleCards} />
                 { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
               </Flex>
@@ -60,14 +73,32 @@ export function DeckRow({ deck, roleCards, onDelete }: {
           <Flex marginLeft={1} direction="row" alignItems="flex-start" justifyContent="space-between">
             { authUser?.uid === deck.user_id && (
               <ButtonGroup marginLeft={[1, 2, "2em"]} orientation={buttonOrientation || 'horizontal'}>
-                <IconButton aria-label={t`Edit`} color={`${colorMode}.lightText`} icon={<FaEdit />} as={NextLink} href={`/decks/edit/${deck.id}`} />
-                <IconButton aria-label={t`Delete`} color="red.400" icon={<FaTrash />} onClick={doDelete} />
+                <IconButton
+                  aria-label={t`Edit`}
+                  color={`${colorMode}.lightText`}
+                  icon={<FaEdit />}
+                  as={NextLink}
+                  href={`/decks/edit/${deck.id}`}
+                />
+                <IconButton
+                  aria-label={t`Delete`}
+                  color="red.400"
+                  icon={<FaTrash />}
+                  onClick={doDelete}
+                />
               </ButtonGroup>
             )}
           </Flex>
         </Flex>
         <Flex direction="column" display={['block', 'none']}>
-          { !!deck.campaign && <Flex direction="row" alignItems="center"><CoreIcon icon="guide" size={18} /><Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>{deck.campaign.name}</Link></Flex>}
+          { !!deck.campaign && (
+            <Flex direction="row" alignItems="center">
+              <CoreIcon icon="guide" size={18} />
+              <Link marginLeft={1} as={NextLink} href={`/campaigns/${deck.campaign.id}`}>
+                {deck.campaign.name}
+              </Link>
+            </Flex>
+          )}
           <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
           { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
         </Flex>
@@ -171,7 +202,12 @@ export function SearchDeckRow({ deck, roleCards, last }: {
     );
   }, [deck.like_count, deck.copy_count, deck.comment_count]);
   return (
-    <ListItem paddingTop={3} paddingBottom={3} borderBottomColor={colors.divider} borderBottomWidth={last ? undefined : '1px'}>
+    <ListItem
+      paddingTop={3}
+      paddingBottom={3}
+      borderBottomColor={colors.divider}
+      borderBottomWidth={last ? undefined : '1px'}
+    >
       <Flex direction="column">
         <Flex display={['block', 'none']}>
           <Grid templateColumns="repeat(6, 1fr)">
@@ -192,7 +228,9 @@ export function SearchDeckRow({ deck, roleCards, last }: {
         </Flex>
         <Flex direction="row" alignItems="flex-start">
           <Flex flex={4} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
-            { !!role && !!role.imagesrc && <RoleImage name={role.name} url={role.imagesrc} size="large" /> }
+            { !!role && !!role.imagesrc && (
+              <RoleImage name={role.name} url={role.imagesrc} size="large" />
+            ) }
             <SimpleGrid columns={2} width="80px" minWidth="80px">
               <MiniAspect aspect="AWA" value={deck.awa} />
               <MiniAspect aspect="SPI" value={deck.spi} />
@@ -207,7 +245,13 @@ export function SearchDeckRow({ deck, roleCards, last }: {
           </Flex>
           <Flex flex={[0.6, 1.5, 1]} direction="column">
             { !!deck.created_at && (
-              <Flex display={['none', 'flex']} direction="row" alignItems="center" justifyContent="flex-end" marginBottom={1}>
+              <Flex
+                display={['none', 'flex']}
+                direction="row"
+                alignItems="center"
+                justifyContent="flex-end"
+                marginBottom={1}
+              >
                 <Icon as={SlCalender} size="20" />
                 <Text fontSize="sm" marginLeft={1}>
                   { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
