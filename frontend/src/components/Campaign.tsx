@@ -150,15 +150,17 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
   const day = campaign.day;
   return (
     <Tr>
-      <Td as={NextLink} href={`/campaigns/${campaign.id}`}>
-        <SimpleGrid columns={[1,1,2]} spacingY="2">
+      <Td>
+        <SimpleGrid columns={[1,1,2]} spacingY="2" as={NextLink} href={`/campaigns/${campaign.id}`}>
           <Flex direction="column">
             <Text fontSize="lg" fontWeight="600" marginBottom={2}>
               {campaign.name}
             </Text>
             <Flex direction="row">
               <CoreIcon icon="ranger" size="22" />
-              <Text marginLeft={2}>{ filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}</Text>
+              <Text marginLeft={2}>
+                {filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}
+              </Text>
             </Flex>
           </Flex>
           { !!currentLocation && (
