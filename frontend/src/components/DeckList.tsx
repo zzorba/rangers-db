@@ -207,7 +207,7 @@ export function SearchDeckRow({ deck, roleCards, last }: {
           </Flex>
           <Flex flex={[0.6, 1.5, 1]} direction="column">
             { !!deck.created_at && (
-              <Flex display={['none', 'flex']} direction="row" alignItems="center" justifyContent="flex-end">
+              <Flex display={['none', 'flex']} direction="row" alignItems="center" justifyContent="flex-end" marginBottom={1}>
                 <Icon as={SlCalender} size="20" />
                 <Text fontSize="sm" marginLeft={1}>
                   { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
