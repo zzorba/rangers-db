@@ -61,7 +61,7 @@ function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
       href: '/cards',
     },
     {
-      label: t`Decks`,
+      label: t`Decklists`,
       href: '/decks/search',
     },
   ], []);
