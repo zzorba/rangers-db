@@ -171,34 +171,32 @@ export function SearchDeckRow({ deck, roleCards, last }: {
   const { colors } = useTheme();
   const socialProof = useMemo(() => {
     return (
-      <Flex direction="row" justifyContent="flex-end">
-        <SimpleGrid columns={[1, 3]} marginLeft={2} marginRight={2} spacingX={2} spacingY={1}>
-          <Box>
-            <Tooltip label={t`Likes`}>
-              <Flex direction="row" alignItems="center" minWidth="45px" justifyContent="flex-end">
-                <Icon as={FaHeart} size={24} color="red.500" />
-                <Text marginLeft={1}>{deck.like_count || 0}</Text>
-              </Flex>
-            </Tooltip>
-          </Box>
-          <Box>
-            <Tooltip label={t`Comments`}>
-              <Flex direction="row" alignItems="center" minWidth="45px" justifyContent="flex-end">
-                <Icon as={FaComment} size={24} color="blue.500" />
-                <Text marginLeft={1}>{deck.comment_count || 0}</Text>
-              </Flex>
-            </Tooltip>
-          </Box>
-          <Box>
-            <Tooltip label={t`Copies`}>
-              <Flex direction="row" alignItems="center" minWidth="45px" justifyContent="flex-end">
-                <Icon as={FaShareAlt} size={24} color="yellow.500" />
-                <Text marginLeft={1}>{deck.copy_count || 0}</Text>
-              </Flex>
-            </Tooltip>
-          </Box>
-        </SimpleGrid>
-      </Flex>
+      <SimpleGrid columns={[1, 3]} marginLeft={2} marginRight={2} spacingX={2} spacingY={1}>
+        <Box>
+          <Tooltip label={t`Likes`}>
+            <Flex direction="row" alignItems="center" minWidth="3em" justifyContent={['flex-end', 'flex-start']}>
+              <Icon as={FaHeart} size={24} color="red.500" />
+              <Text marginLeft={1}>{deck.like_count || 0}</Text>
+            </Flex>
+          </Tooltip>
+        </Box>
+        <Box>
+          <Tooltip label={t`Comments`}>
+            <Flex direction="row" alignItems="center" minWidth="3em" justifyContent={['flex-end', 'flex-start']}>
+              <Icon as={FaComment} size={24} color="blue.500" />
+              <Text marginLeft={1}>{deck.comment_count || 0}</Text>
+            </Flex>
+          </Tooltip>
+        </Box>
+        <Box>
+          <Tooltip label={t`Copies`}>
+            <Flex direction="row" alignItems="center" minWidth="3em" justifyContent={['flex-end', 'flex-start']}>
+              <Icon as={FaShareAlt} size={24} color="yellow.500" />
+              <Text marginLeft={1}>{deck.copy_count || 0}</Text>
+            </Flex>
+          </Tooltip>
+        </Box>
+      </SimpleGrid>
     );
   }, [deck.like_count, deck.copy_count, deck.comment_count]);
   return (
@@ -226,7 +224,7 @@ export function SearchDeckRow({ deck, roleCards, last }: {
             </GridItem>
           </Grid>
         </Flex>
-        <Flex direction="row" alignItems="flex-start">
+        <Flex direction="row" alignItems="flex-start" justifyContent="flex-start">
           <Flex flex={4} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
             { !!role && !!role.imagesrc && (
               <RoleImage name={role.name} url={role.imagesrc} size="large" />
@@ -243,22 +241,22 @@ export function SearchDeckRow({ deck, roleCards, last }: {
               <UserLink user={deck.user} />
             </Flex>
           </Flex>
-          <Flex flex={[0.6, 1.5, 1]} direction="column">
-            { !!deck.created_at && (
-              <Flex
-                display={['none', 'flex']}
-                direction="row"
-                alignItems="center"
-                justifyContent="flex-end"
-                marginBottom={1}
-              >
-                <Icon as={SlCalender} size="20" />
-                <Text fontSize="sm" marginLeft={1}>
-                  { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
-                </Text>
+          <Flex flex={[0.6, 1.5, 1]} justifyContent="flex-end">
+            <Flex direction="column" alignItems="flex-end" justifyContent="flex-end">
+              { !!deck.created_at && (
+                <Flex display={['none', 'flex']} marginBottom={1}>
+                  <Flex direction="row" alignItems="center" justifyContent="flex-end">
+                    <Icon as={SlCalender} size="20" />
+                    <Text fontSize="sm" marginLeft={1}>
+                      { i18n?.date(deck.created_at, { dateStyle: 'short' }) }
+                    </Text>
+                  </Flex>
+                </Flex>
+              ) }
+              <Flex direction="column" minHeight="3.2em" justifyContent="flex-end" alignItems="flex-end">
+                { socialProof }
               </Flex>
-            ) }
-            { socialProof }
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
