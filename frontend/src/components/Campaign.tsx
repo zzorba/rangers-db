@@ -23,7 +23,7 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { FaMoon, FaTrash, FaWalking } from 'react-icons/fa';
+import { FaClock, FaMoon, FaTrash, FaWalking } from 'react-icons/fa';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
@@ -634,16 +634,24 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
                     }) }
                   </Text>
                 ) }
-                <SubmitButton marginTop={1} color="blue" onSubmit={onAdvanceTime}>
+                <SubmitButton
+                  leftIcon={<FaMoon />}
+                  marginTop={1}
+                  color="blue"
+                  onSubmit={onAdvanceTime}
+                >
                   { t`Finish day` }
                 </SubmitButton>
               </>
             ) : (
-              <>
-                <SubmitButton marginTop={1} color="blue" onSubmit={onRollbackTime}>
-                  { t`Rollback time to here` }
-                </SubmitButton>
-              </>
+              <SubmitButton
+                leftIcon={<FaClock />}
+                marginTop={1}
+                color="blue"
+                onSubmit={onRollbackTime}
+              >
+                { t`Rollback time to here` }
+              </SubmitButton>
             ) }
           </FormControl>
         </ModalBody>
