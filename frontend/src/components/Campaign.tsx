@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
+import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { plural, t } from '@lingui/macro';
 import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim } from 'lodash';
 import NextLink from 'next/link';
@@ -23,7 +23,7 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { FaMoon, FaTrash } from 'react-icons/fa';
+import { FaMoon, FaTrash, FaWalking } from 'react-icons/fa';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
@@ -1543,6 +1543,7 @@ function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampa
 function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { locations, paths } = useLocale();
+  const [camp, setCamp] = useState<boolean>(true);
   const [location, setLocation] = useState<string>();
   const [terrain, setTerrain] = useState<string>();
   const [showAll, setShowAll] = useState(false);
@@ -1561,7 +1562,7 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
     const r = await campaignTravel({
       variables: {
         campaignId: campaign.id,
-        day: campaign.day + 1,
+        day: campaign.day + (camp ? 1 : 0),
         currentLocation: location,
         currentPathTerrain: terrain,
         history,
@@ -1572,9 +1573,10 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
     }
     setLocation(undefined);
     setTerrain(undefined);
+    setCamp(true);
     onClose();
     return undefined;
-  }, [location, terrain, campaign, campaignTravel, setLocation, setTerrain, onClose]);
+  }, [location, terrain, campaign, camp, campaignTravel, setCamp, setLocation, setTerrain, onClose]);
   const currentLocation = campaign.current_location ? locations[campaign.current_location] : undefined;
   const locationName = currentLocation?.name || campaign.current_location;
   const filterLocation = useCallback((loc: MapLocation): boolean => {
@@ -1625,11 +1627,20 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
-          <Box paddingRight={8}>
-            <Heading>
-              {t`Travel`}
-            </Heading>
-          </Box>
+          { currentLocation ? (
+            <Flex direction="row" alignItems="center">
+              <LocationIcon location={currentLocation} size={52} />
+              <Text fontSize="3xl" marginLeft={1}>
+                {t`Departing ${currentLocation.name}`}
+              </Text>
+            </Flex>
+          ) : (
+            <Flex direction="row" alignItems="center" paddingRight={8}>
+              <Heading>
+                { t`Travel` }
+              </Heading>
+            </Flex>
+          ) }
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -1637,54 +1648,56 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
             e.preventDefault();
             onTravel();
           }}>
-            { !!locationName && (
-              <>
-                <Text marginBottom={2} fontSize="lg">{
-                  plural(currentDay,
-                    {
-                      one: `Departing from ${locationName} to end day ${currentDay}.`,
-                      other: `Departing from ${locationName} to end day ${currentDay}.`,
-                    })
-                  }
-                </Text>
-                { !!currentLocation && (
-                  <Checkbox
-                    marginBottom={2}
-                    isChecked={showAll}
-                    onChange={(event) => {
-                      setShowAll(event.target.checked);
-                    }}
-                  >
-                    { t`Show all locations` }
-                  </Checkbox>
-                ) }
-              </>
-            ) }
-            <FormControl marginBottom={4}>
-              <FormLabel>{showAll ? t`Location` : t`Connecting Location`}</FormLabel>
-              <MapLocationSelect
-                value={location}
-                filter={filterLocation}
-                decoration={renderPath}
-                setValue={onSetLocation}
-              />
-            </FormControl>
-            { !!showAll ? (
-              <FormControl marginBottom={2}>
-                <FormLabel>{t`Path Terrain`}</FormLabel>
-                <PathTypeSelect value={terrain} setValue={setTerrain} />
+            <Stack>
+              <Checkbox
+                marginBottom={2}
+                isChecked={camp}
+                onChange={(event) => {
+                  setCamp(event.target.checked);
+                }}
+              >
+                { t`Camp` }
+              </Checkbox>
+              <FormControl marginBottom={4}>
+                <FormLabel>{showAll ? t`Location` : t`Connecting Location`}</FormLabel>
+                <MapLocationSelect
+                  value={location}
+                  filter={filterLocation}
+                  decoration={renderPath}
+                  setValue={onSetLocation}
+                />
               </FormControl>
-            ) : (
-              selectedPath && (
-                <>
+              { !!showAll ? (
+                <FormControl marginBottom={2}>
                   <FormLabel>{t`Path Terrain`}</FormLabel>
-                  <Flex direction="row" alignItems="center">
-                    <PathIcon path={selectedPath} size={42} />
-                    <Text marginLeft={2}>{selectedPath.name}</Text>
-                  </Flex>
-                </>
-              )
-            ) }
+                  <PathTypeSelect value={terrain} setValue={setTerrain} />
+                </FormControl>
+              ) : (
+                selectedPath && (
+                  <>
+                    <FormLabel>{t`Path Terrain`}</FormLabel>
+                    <Flex direction="row" alignItems="center">
+                      <PathIcon path={selectedPath} size={42} />
+                      <Text marginLeft={2}>{selectedPath.name}</Text>
+                    </Flex>
+                  </>
+                )
+              ) }
+              { !!locationName && !!currentLocation && (
+                <Checkbox
+                  marginBottom={2}
+                  isChecked={showAll}
+                  onChange={(event) => {
+                    setShowAll(event.target.checked);
+                  }}
+                >
+                  { t`Show all locations` }
+                </Checkbox>
+              ) }
+              <Text>
+                { !!camp ? t`Camping will end day ${currentDay} and allow any earned rewards to be swapped into decks.` : t`Rangers will continue day ${currentDay} with their current decks.`}
+              </Text>
+            </Stack>
           </form>
         </ModalBody>
         <ModalFooter>
@@ -1692,6 +1705,7 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
             <SubmitButton
               color="blue"
               disabled={!location || !terrain}
+              leftIcon={camp ? <FaMoon /> : <FaWalking />}
               onSubmit={onTravel}
             >
               { t`Travel` }
@@ -1716,7 +1730,6 @@ function CycleChiclet({ cycle }: { cycle: CampaignCycle }) {
 
 export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
   const { cycles } = useLocale();
-  const { colors } = useTheme();
   const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign.cycle_id]);
   const [setCampaignLocationMutation] = useSetCampaignLocationMutation();
   const setCampaignLocation = useCallback(async(value: string) => {
@@ -1746,7 +1759,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
         title={campaign.name}
         subHeader={!!cycle ? <CycleChiclet cycle={cycle} /> : undefined}
       >
-        <Button leftIcon={<FaMoon />} onClick={onTravel}>{t`Travel`}</Button>
+        <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
       </PageHeading>
 
       <Timeline campaign={campaign} />
