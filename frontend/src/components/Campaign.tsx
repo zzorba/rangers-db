@@ -30,6 +30,7 @@ import { LocationIcon, PathIcon } from '../icons/LocationIcon';
 import MapLocationSelect from './MapLocationSelect';
 import CardSetSelect from './CardSetSelect';
 import { CampaignCycle, MapLocation } from '../types/types';
+import { MoonIcon } from '../icons/MoonIcon';
 
 interface MissionEntry {
   day: number;
@@ -1251,21 +1252,15 @@ const size = 40;
 function DayButton({ day, currentDay, onClick }: { day: number; currentDay: number; onClick: (day: number) => void }) {
   const handleClick = useCallback(() => onClick(day), [onClick, day]);
   return (
-    <IconButton onClick={handleClick} borderRadius={`${size / 2}px`} variant="ghost" aria-label={t`Day ${day}`} icon={
-      <AspectRatio key={day} minWidth={`${size}px`} ratio={1}>
-        <Box borderRadius={`${size / 2}px`}
-          borderWidth={currentDay === day ? '3px' : '1px'}
-          borderColor="gray.500"
-          backgroundColor={currentDay > day ? 'gray.200' : undefined}
-        >
-          <Text
-            color={currentDay > day ? 'gray.500' : undefined}
-            fontWeight={currentDay <= day ? '600' : '400'}
-            textDecorationLine={currentDay > day ? 'line-through' : undefined}
-          >&nbsp;{day}&nbsp;</Text>
-        </Box>
-      </AspectRatio>
-    } />
+    <IconButton
+      onClick={handleClick}
+      borderRadius={`${size / 2}px`}
+      variant="ghost"
+      aria-label={t`Day ${day}`}
+      icon={
+        <MoonIcon day={day} currentDay={currentDay} size={size} />
+      }
+    />
   );
 }
 interface Weather {
