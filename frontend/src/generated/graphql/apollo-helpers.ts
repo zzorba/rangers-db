@@ -5494,7 +5494,7 @@ export type rangers_card_variance_fieldsFieldPolicy = {
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_commentKeySpecifier = ('comment_id' | 'created_at' | 'deck' | 'deck_id' | 'id' | 'parent' | 'responses' | 'responses_aggregate' | 'text' | 'updated_at' | 'user' | 'user_id' | rangers_commentKeySpecifier)[];
+export type rangers_commentKeySpecifier = ('comment_id' | 'created_at' | 'deck' | 'deck_id' | 'id' | 'parent' | 'response_count' | 'responses' | 'responses_aggregate' | 'text' | 'updated_at' | 'user' | 'user_id' | rangers_commentKeySpecifier)[];
 export type rangers_commentFieldPolicy = {
 	comment_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5502,6 +5502,7 @@ export type rangers_commentFieldPolicy = {
 	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	parent?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	responses?: FieldPolicy<any> | FieldReadFunction<any>,
 	responses_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5528,26 +5529,29 @@ export type rangers_comment_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_avg_fieldsKeySpecifier = ('deck_id' | rangers_comment_avg_fieldsKeySpecifier)[];
+export type rangers_comment_avg_fieldsKeySpecifier = ('deck_id' | 'response_count' | rangers_comment_avg_fieldsKeySpecifier)[];
 export type rangers_comment_avg_fieldsFieldPolicy = {
-	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_max_fieldsKeySpecifier = ('comment_id' | 'created_at' | 'deck_id' | 'id' | 'text' | 'updated_at' | 'user_id' | rangers_comment_max_fieldsKeySpecifier)[];
+export type rangers_comment_max_fieldsKeySpecifier = ('comment_id' | 'created_at' | 'deck_id' | 'id' | 'response_count' | 'text' | 'updated_at' | 'user_id' | rangers_comment_max_fieldsKeySpecifier)[];
 export type rangers_comment_max_fieldsFieldPolicy = {
 	comment_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_min_fieldsKeySpecifier = ('comment_id' | 'created_at' | 'deck_id' | 'id' | 'text' | 'updated_at' | 'user_id' | rangers_comment_min_fieldsKeySpecifier)[];
+export type rangers_comment_min_fieldsKeySpecifier = ('comment_id' | 'created_at' | 'deck_id' | 'id' | 'response_count' | 'text' | 'updated_at' | 'user_id' | rangers_comment_min_fieldsKeySpecifier)[];
 export type rangers_comment_min_fieldsFieldPolicy = {
 	comment_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id?: FieldPolicy<any> | FieldReadFunction<any>
@@ -5557,33 +5561,40 @@ export type rangers_comment_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_stddev_fieldsKeySpecifier = ('deck_id' | rangers_comment_stddev_fieldsKeySpecifier)[];
+export type rangers_comment_stddev_fieldsKeySpecifier = ('deck_id' | 'response_count' | rangers_comment_stddev_fieldsKeySpecifier)[];
 export type rangers_comment_stddev_fieldsFieldPolicy = {
-	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_stddev_pop_fieldsKeySpecifier = ('deck_id' | rangers_comment_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_comment_stddev_pop_fieldsKeySpecifier = ('deck_id' | 'response_count' | rangers_comment_stddev_pop_fieldsKeySpecifier)[];
 export type rangers_comment_stddev_pop_fieldsFieldPolicy = {
-	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_stddev_samp_fieldsKeySpecifier = ('deck_id' | rangers_comment_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_comment_stddev_samp_fieldsKeySpecifier = ('deck_id' | 'response_count' | rangers_comment_stddev_samp_fieldsKeySpecifier)[];
 export type rangers_comment_stddev_samp_fieldsFieldPolicy = {
-	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_sum_fieldsKeySpecifier = ('deck_id' | rangers_comment_sum_fieldsKeySpecifier)[];
+export type rangers_comment_sum_fieldsKeySpecifier = ('deck_id' | 'response_count' | rangers_comment_sum_fieldsKeySpecifier)[];
 export type rangers_comment_sum_fieldsFieldPolicy = {
-	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_var_pop_fieldsKeySpecifier = ('deck_id' | rangers_comment_var_pop_fieldsKeySpecifier)[];
+export type rangers_comment_var_pop_fieldsKeySpecifier = ('deck_id' | 'response_count' | rangers_comment_var_pop_fieldsKeySpecifier)[];
 export type rangers_comment_var_pop_fieldsFieldPolicy = {
-	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_var_samp_fieldsKeySpecifier = ('deck_id' | rangers_comment_var_samp_fieldsKeySpecifier)[];
+export type rangers_comment_var_samp_fieldsKeySpecifier = ('deck_id' | 'response_count' | rangers_comment_var_samp_fieldsKeySpecifier)[];
 export type rangers_comment_var_samp_fieldsFieldPolicy = {
-	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_comment_variance_fieldsKeySpecifier = ('deck_id' | rangers_comment_variance_fieldsKeySpecifier)[];
+export type rangers_comment_variance_fieldsKeySpecifier = ('deck_id' | 'response_count' | rangers_comment_variance_fieldsKeySpecifier)[];
 export type rangers_comment_variance_fieldsFieldPolicy = {
-	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type rangers_deckKeySpecifier = ('awa' | 'base_deck' | 'base_deck_id' | 'campaign' | 'campaign_id' | 'comment_count' | 'comments' | 'comments_aggregate' | 'copy_count' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'liked_by_user' | 'likes' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'original_deck' | 'previous_deck' | 'published' | 'rank' | 'side_slots' | 'slots' | 'spi' | 'tags' | 'updated_at' | 'upgrade' | 'user' | 'user_id' | 'version' | rangers_deckKeySpecifier)[];
 export type rangers_deckFieldPolicy = {

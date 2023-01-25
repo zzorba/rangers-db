@@ -102,6 +102,18 @@ fragment DeckWithCampaign on rangers_deck {
   }
 }
 
+fragment BasicDeckComment on rangers_comment {
+  id
+  user {
+    ...UserInfo
+  }
+  text
+  created_at
+  updated_at
+  response_count
+  comment_id
+}
+
 fragment DeckDetail on rangers_deck {
   ...Deck
   copy_count
@@ -138,15 +150,6 @@ fragment DeckDetail on rangers_deck {
   ) {
     ...BasicDeckComment
   }
-}
-
-fragment BasicDeckComment on rangers_comment {
-  id
-  user {
-    ...UserInfo
-  }
-  text
-  created_at
 }
 
 fragment DeckComment on rangers_comment {

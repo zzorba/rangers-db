@@ -11,6 +11,7 @@ mutation upgradeDeck(
     deck_id: $deckId,
     upgrade_data: {}
   }) {
+    id
     next_deck_id
   }
 }
@@ -191,6 +192,25 @@ query getDeckComments(
   }
 }
 
+query getResponseComments(
+  $commentId: uuid!,
+  $limit: Int!
+  $offset: Int!
+) {
+  rangers_comment(
+    where: {
+      comment_id: { _eq: $commentId }
+    }
+    order_by: {
+      created_at: desc
+    }
+    offset: $offset
+    limit: $limit
+  ) {
+    ...DeckComment
+  }
+}
+
 mutation postComment(
   $deckId: Int!,
   $text: String!,
@@ -203,15 +223,27 @@ mutation postComment(
       comment_id: $commentId
     }
   ) {
+    ...BasicDeckComment
+    comment_id
+    deck_id
+  }
+}
+
+mutation editComment(
+  $id: uuid!,
+  $text: String!
+) {
+  update_rangers_comment_by_pk(
+    pk_columns: {
+      id: $id
+    }
+    _set: {
+      text: $text
+    }
+  ) {
     id
     text
-    user {
-      id
-      handle
-    }
-    deck_id
-    comment_id
-    created_at
+    updated_at
   }
 }
 

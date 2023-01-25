@@ -25345,6 +25345,7 @@ export type Rangers_Comment = {
   id: Scalars['uuid'];
   /** An object relationship */
   parent?: Maybe<Rangers_Comment>;
+  response_count: Scalars['Int'];
   /** An array relationship */
   responses: Array<Rangers_Comment>;
   /** An aggregate relationship */
@@ -25443,11 +25444,13 @@ export type Rangers_Comment_Arr_Rel_Insert_Input = {
 export type Rangers_Comment_Avg_Fields = {
   __typename?: 'rangers_comment_avg_fields';
   deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "rangers.comment" */
 export type Rangers_Comment_Avg_Order_By = {
   deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "rangers.comment". All fields are combined with a logical 'AND'. */
@@ -25461,6 +25464,7 @@ export type Rangers_Comment_Bool_Exp = {
   deck_id?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   parent?: InputMaybe<Rangers_Comment_Bool_Exp>;
+  response_count?: InputMaybe<Int_Comparison_Exp>;
   responses?: InputMaybe<Rangers_Comment_Bool_Exp>;
   responses_aggregate?: InputMaybe<Rangers_Comment_Aggregate_Bool_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
@@ -25480,6 +25484,7 @@ export enum Rangers_Comment_Constraint {
 /** input type for incrementing numeric columns in table "rangers.comment" */
 export type Rangers_Comment_Inc_Input = {
   deck_id?: InputMaybe<Scalars['Int']>;
+  response_count?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "rangers.comment" */
@@ -25490,6 +25495,7 @@ export type Rangers_Comment_Insert_Input = {
   deck_id?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['uuid']>;
   parent?: InputMaybe<Rangers_Comment_Obj_Rel_Insert_Input>;
+  response_count?: InputMaybe<Scalars['Int']>;
   responses?: InputMaybe<Rangers_Comment_Arr_Rel_Insert_Input>;
   text?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -25504,6 +25510,7 @@ export type Rangers_Comment_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   deck_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['uuid']>;
+  response_count?: Maybe<Scalars['Int']>;
   text?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['String']>;
@@ -25515,6 +25522,7 @@ export type Rangers_Comment_Max_Order_By = {
   created_at?: InputMaybe<Order_By>;
   deck_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
@@ -25527,6 +25535,7 @@ export type Rangers_Comment_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   deck_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['uuid']>;
+  response_count?: Maybe<Scalars['Int']>;
   text?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['String']>;
@@ -25538,6 +25547,7 @@ export type Rangers_Comment_Min_Order_By = {
   created_at?: InputMaybe<Order_By>;
   deck_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
@@ -25574,6 +25584,7 @@ export type Rangers_Comment_Order_By = {
   deck_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   parent?: InputMaybe<Rangers_Comment_Order_By>;
+  response_count?: InputMaybe<Order_By>;
   responses_aggregate?: InputMaybe<Rangers_Comment_Aggregate_Order_By>;
   text?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -25597,6 +25608,8 @@ export enum Rangers_Comment_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  ResponseCount = 'response_count',
+  /** column name */
   Text = 'text',
   /** column name */
   UpdatedAt = 'updated_at',
@@ -25610,6 +25623,7 @@ export type Rangers_Comment_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   deck_id?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['uuid']>;
+  response_count?: InputMaybe<Scalars['Int']>;
   text?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['String']>;
@@ -25619,33 +25633,39 @@ export type Rangers_Comment_Set_Input = {
 export type Rangers_Comment_Stddev_Fields = {
   __typename?: 'rangers_comment_stddev_fields';
   deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "rangers.comment" */
 export type Rangers_Comment_Stddev_Order_By = {
   deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Rangers_Comment_Stddev_Pop_Fields = {
   __typename?: 'rangers_comment_stddev_pop_fields';
   deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "rangers.comment" */
 export type Rangers_Comment_Stddev_Pop_Order_By = {
   deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Rangers_Comment_Stddev_Samp_Fields = {
   __typename?: 'rangers_comment_stddev_samp_fields';
   deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "rangers.comment" */
 export type Rangers_Comment_Stddev_Samp_Order_By = {
   deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "rangers_comment" */
@@ -25662,6 +25682,7 @@ export type Rangers_Comment_Stream_Cursor_Value_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   deck_id?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['uuid']>;
+  response_count?: InputMaybe<Scalars['Int']>;
   text?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['String']>;
@@ -25671,11 +25692,13 @@ export type Rangers_Comment_Stream_Cursor_Value_Input = {
 export type Rangers_Comment_Sum_Fields = {
   __typename?: 'rangers_comment_sum_fields';
   deck_id?: Maybe<Scalars['Int']>;
+  response_count?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "rangers.comment" */
 export type Rangers_Comment_Sum_Order_By = {
   deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "rangers.comment" */
@@ -25688,6 +25711,8 @@ export enum Rangers_Comment_Update_Column {
   DeckId = 'deck_id',
   /** column name */
   Id = 'id',
+  /** column name */
+  ResponseCount = 'response_count',
   /** column name */
   Text = 'text',
   /** column name */
@@ -25708,33 +25733,39 @@ export type Rangers_Comment_Updates = {
 export type Rangers_Comment_Var_Pop_Fields = {
   __typename?: 'rangers_comment_var_pop_fields';
   deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "rangers.comment" */
 export type Rangers_Comment_Var_Pop_Order_By = {
   deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Rangers_Comment_Var_Samp_Fields = {
   __typename?: 'rangers_comment_var_samp_fields';
   deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "rangers.comment" */
 export type Rangers_Comment_Var_Samp_Order_By = {
   deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Rangers_Comment_Variance_Fields = {
   __typename?: 'rangers_comment_variance_fields';
   deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "rangers.comment" */
 export type Rangers_Comment_Variance_Order_By = {
   deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "rangers.deck" */
@@ -37934,7 +37965,7 @@ export type UpgradeDeckMutationVariables = Exact<{
 }>;
 
 
-export type UpgradeDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', next_deck_id?: number | null } | null };
+export type UpgradeDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', id: number, next_deck_id?: number | null } | null };
 
 export type PublishDeckMutationVariables = Exact<{
   deckId: Scalars['Int'];
@@ -38012,7 +38043,7 @@ export type GetDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
+export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
 
 export type GetDeckCommentsQueryVariables = Exact<{
   deckId: Scalars['Int'];
@@ -38021,7 +38052,16 @@ export type GetDeckCommentsQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckCommentsQuery = { __typename?: 'query_root', rangers_comment: Array<{ __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, created_at: any, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }> };
+export type GetDeckCommentsQuery = { __typename?: 'query_root', rangers_comment: Array<{ __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }> };
+
+export type GetResponseCommentsQueryVariables = Exact<{
+  commentId: Scalars['uuid'];
+  limit: Scalars['Int'];
+  offset: Scalars['Int'];
+}>;
+
+
+export type GetResponseCommentsQuery = { __typename?: 'query_root', rangers_comment: Array<{ __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }> };
 
 export type PostCommentMutationVariables = Exact<{
   deckId: Scalars['Int'];
@@ -38030,7 +38070,15 @@ export type PostCommentMutationVariables = Exact<{
 }>;
 
 
-export type PostCommentMutation = { __typename?: 'mutation_root', insert_rangers_comment_one?: { __typename?: 'rangers_comment', id: any, text?: string | null, deck_id?: number | null, comment_id?: any | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null };
+export type PostCommentMutation = { __typename?: 'mutation_root', insert_rangers_comment_one?: { __typename?: 'rangers_comment', comment_id?: any | null, deck_id?: number | null, id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } | null };
+
+export type EditCommentMutationVariables = Exact<{
+  id: Scalars['uuid'];
+  text: Scalars['String'];
+}>;
+
+
+export type EditCommentMutation = { __typename?: 'mutation_root', update_rangers_comment_by_pk?: { __typename?: 'rangers_comment', id: any, text?: string | null, updated_at: any } | null };
 
 export type CreateDeckMutationVariables = Exact<{
   name: Scalars['String'];
@@ -38109,11 +38157,11 @@ export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: s
 
 export type DeckWithCampaignFragment = { __typename?: 'rangers_deck', comment_count: number, copy_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
-export type DeckDetailFragment = { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
+export type BasicDeckCommentFragment = { __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
-export type BasicDeckCommentFragment = { __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
+export type DeckDetailFragment = { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
-export type DeckCommentFragment = { __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, created_at: any, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
+export type DeckCommentFragment = { __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
 export type UserProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
@@ -38322,6 +38370,9 @@ export const BasicDeckCommentFragmentDoc = gql`
   }
   text
   created_at
+  updated_at
+  response_count
+  comment_id
 }
     ${UserInfoFragmentDoc}`;
 export const DeckDetailFragmentDoc = gql`
@@ -39399,6 +39450,7 @@ export type GetSetNamesQueryResult = Apollo.QueryResult<GetSetNamesQuery, GetSet
 export const UpgradeDeckDocument = gql`
     mutation upgradeDeck($deckId: Int!) {
   deck: rangers_upgrade_deck(args: {deck_id: $deckId, upgrade_data: {}}) {
+    id
     next_deck_id
   }
 }
@@ -39819,23 +39871,59 @@ export function useGetDeckCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOp
 export type GetDeckCommentsQueryHookResult = ReturnType<typeof useGetDeckCommentsQuery>;
 export type GetDeckCommentsLazyQueryHookResult = ReturnType<typeof useGetDeckCommentsLazyQuery>;
 export type GetDeckCommentsQueryResult = Apollo.QueryResult<GetDeckCommentsQuery, GetDeckCommentsQueryVariables>;
+export const GetResponseCommentsDocument = gql`
+    query getResponseComments($commentId: uuid!, $limit: Int!, $offset: Int!) {
+  rangers_comment(
+    where: {comment_id: {_eq: $commentId}}
+    order_by: {created_at: desc}
+    offset: $offset
+    limit: $limit
+  ) {
+    ...DeckComment
+  }
+}
+    ${DeckCommentFragmentDoc}`;
+
+/**
+ * __useGetResponseCommentsQuery__
+ *
+ * To run a query within a React component, call `useGetResponseCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetResponseCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetResponseCommentsQuery({
+ *   variables: {
+ *      commentId: // value for 'commentId'
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useGetResponseCommentsQuery(baseOptions: Apollo.QueryHookOptions<GetResponseCommentsQuery, GetResponseCommentsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetResponseCommentsQuery, GetResponseCommentsQueryVariables>(GetResponseCommentsDocument, options);
+      }
+export function useGetResponseCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetResponseCommentsQuery, GetResponseCommentsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetResponseCommentsQuery, GetResponseCommentsQueryVariables>(GetResponseCommentsDocument, options);
+        }
+export type GetResponseCommentsQueryHookResult = ReturnType<typeof useGetResponseCommentsQuery>;
+export type GetResponseCommentsLazyQueryHookResult = ReturnType<typeof useGetResponseCommentsLazyQuery>;
+export type GetResponseCommentsQueryResult = Apollo.QueryResult<GetResponseCommentsQuery, GetResponseCommentsQueryVariables>;
 export const PostCommentDocument = gql`
     mutation postComment($deckId: Int!, $text: String!, $commentId: uuid) {
   insert_rangers_comment_one(
     object: {deck_id: $deckId, text: $text, comment_id: $commentId}
   ) {
-    id
-    text
-    user {
-      id
-      handle
-    }
-    deck_id
+    ...BasicDeckComment
     comment_id
-    created_at
+    deck_id
   }
 }
-    `;
+    ${BasicDeckCommentFragmentDoc}`;
 export type PostCommentMutationFn = Apollo.MutationFunction<PostCommentMutation, PostCommentMutationVariables>;
 
 /**
@@ -39864,6 +39952,42 @@ export function usePostCommentMutation(baseOptions?: Apollo.MutationHookOptions<
 export type PostCommentMutationHookResult = ReturnType<typeof usePostCommentMutation>;
 export type PostCommentMutationResult = Apollo.MutationResult<PostCommentMutation>;
 export type PostCommentMutationOptions = Apollo.BaseMutationOptions<PostCommentMutation, PostCommentMutationVariables>;
+export const EditCommentDocument = gql`
+    mutation editComment($id: uuid!, $text: String!) {
+  update_rangers_comment_by_pk(pk_columns: {id: $id}, _set: {text: $text}) {
+    id
+    text
+    updated_at
+  }
+}
+    `;
+export type EditCommentMutationFn = Apollo.MutationFunction<EditCommentMutation, EditCommentMutationVariables>;
+
+/**
+ * __useEditCommentMutation__
+ *
+ * To run a mutation, you first call `useEditCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editCommentMutation, { data, loading, error }] = useEditCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      text: // value for 'text'
+ *   },
+ * });
+ */
+export function useEditCommentMutation(baseOptions?: Apollo.MutationHookOptions<EditCommentMutation, EditCommentMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<EditCommentMutation, EditCommentMutationVariables>(EditCommentDocument, options);
+      }
+export type EditCommentMutationHookResult = ReturnType<typeof useEditCommentMutation>;
+export type EditCommentMutationResult = Apollo.MutationResult<EditCommentMutation>;
+export type EditCommentMutationOptions = Apollo.BaseMutationOptions<EditCommentMutation, EditCommentMutationVariables>;
 export const CreateDeckDocument = gql`
     mutation createDeck($name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!, $description: String) {
   deck: insert_rangers_deck_one(
