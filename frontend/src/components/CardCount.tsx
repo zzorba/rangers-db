@@ -8,7 +8,8 @@ import { CardFragment } from '../generated/graphql/apollo-schema';
 export default function CardCount({
   count,
   marginLeft,
-}: { count: number, marginLeft?: number }) {
+  delta,
+}: { count: number; marginLeft?: number; delta?: boolean }) {
   return (
     <Box fontFamily="mono"
       borderRadius="md"
@@ -21,7 +22,7 @@ export default function CardCount({
       px={2}
       py={3}
     >
-      { `×${count}` }
+      { delta ? (count > 0 ? `+${count}` : `${count}`) : `×${count}` }
     </Box>
   );
 }

@@ -917,7 +917,7 @@ function MissionRow({ mission, index, showEdit }: { mission: MissionEntry; index
         </Flex>
       </Td>
     </Tr>
-  )
+  );
 }
 
 function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {

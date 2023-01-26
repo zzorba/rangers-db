@@ -8,7 +8,763 @@
     {
       "selection": [
         {
-          "order": 94,
+          "order": 0,
+          "id": 29,
+          "name": "day_1",
+          "prevSize": 32,
+          "code": 59648,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 28,
+          "name": "day_2",
+          "prevSize": 32,
+          "code": 59649,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 27,
+          "name": "day_3",
+          "prevSize": 32,
+          "code": 59650,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 26,
+          "name": "day_4",
+          "prevSize": 32,
+          "code": 59651,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 25,
+          "name": "day_5",
+          "prevSize": 32,
+          "code": 59652,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 24,
+          "name": "day_6",
+          "prevSize": 32,
+          "code": 59653,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 23,
+          "name": "day_7",
+          "prevSize": 32,
+          "code": 59654,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 22,
+          "name": "day_8",
+          "prevSize": 32,
+          "code": 59655,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 21,
+          "name": "day_9",
+          "prevSize": 32,
+          "code": 59656,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 20,
+          "name": "day_10",
+          "prevSize": 32,
+          "code": 59657,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 19,
+          "name": "day_11",
+          "prevSize": 32,
+          "code": 59658,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 18,
+          "name": "day_12",
+          "prevSize": 32,
+          "code": 59659,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 17,
+          "name": "day_13",
+          "prevSize": 32,
+          "code": 59660,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 16,
+          "name": "day_14",
+          "prevSize": 32,
+          "code": 59661,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 15,
+          "name": "day_15",
+          "prevSize": 32,
+          "code": 59662,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 14,
+          "name": "day_16",
+          "prevSize": 32,
+          "code": 59663,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 13,
+          "name": "day_17",
+          "prevSize": 32,
+          "code": 59664,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 12,
+          "name": "day_18",
+          "prevSize": 32,
+          "code": 59665,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 11,
+          "name": "day_19",
+          "prevSize": 32,
+          "code": 59666,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 10,
+          "name": "day_20",
+          "prevSize": 32,
+          "code": 59667,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 9,
+          "name": "day_21",
+          "prevSize": 32,
+          "code": 59668,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 8,
+          "name": "day_22",
+          "prevSize": 32,
+          "code": 59669,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 7,
+          "name": "day_23",
+          "prevSize": 32,
+          "code": 59670,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 6,
+          "name": "day_24",
+          "prevSize": 32,
+          "code": 59671,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 5,
+          "name": "day_25",
+          "prevSize": 32,
+          "code": 59672,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 4,
+          "name": "day_26",
+          "prevSize": 32,
+          "code": 59673,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 3,
+          "name": "day_27",
+          "prevSize": 32,
+          "code": 59674,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 2,
+          "name": "day_28",
+          "prevSize": 32,
+          "code": 59675,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 1,
+          "name": "day_29",
+          "prevSize": 32,
+          "code": 59676,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 0,
+          "name": "day_30",
+          "prevSize": 32,
+          "code": 59677,
+          "tempChar": ""
+        }
+      ],
+      "id": 2,
+      "metadata": {
+        "name": "moon",
+        "importSize": {
+          "width": 7,
+          "height": 7
+        }
+      },
+      "height": 1024,
+      "prevSize": 32,
+      "icons": [
+        {
+          "id": 29,
+          "paths": [
+            "M511.261 138.076c-6.181 0-12.198 0.605-18.27 0.93 197.908 9.628 355.61 172.636 355.61 373.005 0 200.314-157.703 363.378-355.61 373.005 6.072 0.279 12.088 0.93 18.27 0.93 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_1"
+          ]
+        },
+        {
+          "id": 28,
+          "paths": [
+            "M511.251 138.076c-9.134 0-18.106 0.713-27.132 1.365 175.262 13.949 313.6 175.207 313.6 372.568s-138.338 358.619-313.6 372.567c9.026 0.605 17.997 1.365 27.132 1.365 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_2"
+          ]
+        },
+        {
+          "id": 27,
+          "paths": [
+            "M511.251 138.076c-9.682 0-19.145 0.713-28.609 1.427 155.241 14.659 277.662 175.645 277.662 372.513s-122.42 357.798-277.662 372.458c9.463 0.713 18.926 1.473 28.609 1.473 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_3"
+          ]
+        },
+        {
+          "id": 26,
+          "paths": [
+            "M511.245 138.076c-15.481 0-30.633 1.256-45.621 3.064 135.166 22.537 239.973 179.802 239.973 370.872 0 191.015-104.807 348.335-239.973 370.872 14.988 1.805 30.14 3.064 45.621 3.064 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_4"
+          ]
+        },
+        {
+          "id": 25,
+          "paths": [
+            "M548.808 139.969c54.209 73.737 90.803 212.567 90.803 372.021s-36.595 298.284-90.803 372.020c188.882-18.817 336.356-178.161 336.356-372.020 0-193.805-147.474-353.203-336.356-372.021z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_5"
+          ]
+        },
+        {
+          "id": 24,
+          "paths": [
+            "M511.24 138.076v747.87c206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_6"
+          ]
+        },
+        {
+          "id": 23,
+          "paths": [
+            "M511.229 138.076v747.87c206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_7"
+          ]
+        },
+        {
+          "id": 22,
+          "paths": [
+            "M511.223 138.076c-33.75 0-66.297 4.869-97.422 13.292-49.395 76.308-82.106 208.629-82.106 359.439 0 152.779 33.641 286.523 84.075 362.338 30.523 8.041 62.414 12.8 95.453 12.8 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_8"
+          ]
+        },
+        {
+          "id": 21,
+          "paths": [
+            "M511.218 138.076c-29.921 0-58.803 3.884-86.701 10.502-63.015 61.921-107.104 201.792-107.104 364.8 0 160 42.557 297.627 103.768 361.19 28.882 7.165 58.913 11.378 90.038 11.378 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_9"
+          ]
+        },
+        {
+          "id": 20,
+          "paths": [
+            "M511.212 138.076c-57.217 0-111.152 13.237-159.672 36.157-41.682 79.097-68.54 201.463-68.54 339.145 0 135.439 25.928 256.164 66.516 335.371 48.957 23.576 103.658 37.197 161.696 37.197 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_10"
+          ]
+        },
+        {
+          "id": 19,
+          "paths": [
+            "M511.207 138.076c-67.72 0-131.009 18.27-185.819 49.723-35.173 79.152-57.491 195.501-57.491 325.579 0 128.055 21.716 242.762 55.959 321.86 55.138 32.055 118.974 50.708 187.35 50.708 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_11"
+          ]
+        },
+        {
+          "id": 18,
+          "paths": [
+            "M511.207 138.076c-75.761 0-146.161 22.701-205.074 61.429-35.118 73.19-57.709 186.421-57.709 313.874 0 125.046 21.716 236.636 55.685 309.88 59.296 39.549 130.462 62.687 207.097 62.687 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_12"
+          ]
+        },
+        {
+          "id": 17,
+          "paths": [
+            "M885.131 512c0 206.496-167.439 373.935-373.935 373.935s-373.935-167.439-373.935-373.935c0-206.496 167.439-373.935 373.935-373.935s373.935 167.439 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_13"
+          ]
+        },
+        {
+          "id": 16,
+          "paths": [
+            "M885.131 512c0 206.496-167.439 373.935-373.935 373.935s-373.935-167.439-373.935-373.935c0-206.496 167.439-373.935 373.935-373.935s373.935 167.439 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_14"
+          ]
+        },
+        {
+          "id": 15,
+          "paths": [
+            "M511.191 885.919c75.761 0 146.161-22.701 205.074-61.429 35.118-73.19 57.709-186.421 57.709-313.874 0-125.046-21.716-236.636-55.685-309.88-59.296-39.549-130.462-62.687-207.097-62.687-206.496 0-373.935 167.439-373.935 373.935 0 206.55 167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_15"
+          ]
+        },
+        {
+          "id": 14,
+          "paths": [
+            "M511.179 885.93c67.72 0 131.009-18.27 185.819-49.723 35.173-79.207 57.491-195.501 57.491-325.579 0-128.055-21.716-242.762-55.959-321.86-55.138-32.055-118.974-50.708-187.35-50.708-206.496 0-373.935 167.439-373.935 373.935s167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_16"
+          ]
+        },
+        {
+          "id": 13,
+          "paths": [
+            "M511.179 885.93c57.217 0 111.152-13.237 159.672-36.157 41.682-79.097 68.54-201.463 68.54-339.145 0-135.439-25.928-256.164-66.516-335.371-48.957-23.576-103.658-37.197-161.696-37.197-206.496 0-373.935 167.439-373.935 373.935s167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_17"
+          ]
+        },
+        {
+          "id": 12,
+          "paths": [
+            "M511.174 885.93c29.867 0 58.803-3.884 86.701-10.502 63.015-61.921 107.050-201.846 107.050-364.8 0-160-42.503-297.627-103.713-361.19-28.882-7.165-58.913-11.378-90.038-11.378-206.496 0-373.935 167.439-373.935 373.935s167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_18"
+          ]
+        },
+        {
+          "id": 11,
+          "paths": [
+            "M511.168 885.93c33.75 0 66.297-4.869 97.422-13.293 49.395-76.308 82.106-208.629 82.106-359.439 0-152.779-33.586-286.523-84.075-362.338-30.523-8.096-62.414-12.8-95.453-12.8-206.496 0-373.935 167.439-373.935 373.935s167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_19"
+          ]
+        },
+        {
+          "id": 10,
+          "paths": [
+            "M511.163 885.93v-747.87c-206.496 0-373.935 167.439-373.935 373.935s167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_20"
+          ]
+        },
+        {
+          "id": 9,
+          "paths": [
+            "M511.163 885.93v-747.87c-206.496 0-373.935 167.439-373.935 373.935s167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_21"
+          ]
+        },
+        {
+          "id": 8,
+          "paths": [
+            "M473.578 884.026c-54.154-73.737-90.803-212.567-90.803-372.021s36.65-298.284 90.803-372.020c-188.882 18.817-336.356 178.161-336.356 372.020 0 193.805 147.474 353.203 336.356 372.021z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_22"
+          ]
+        },
+        {
+          "id": 7,
+          "paths": [
+            "M511.158 885.919c15.481 0 30.633-1.209 45.621-3.064-135.221-22.537-239.973-179.856-239.973-370.872s104.752-348.28 239.973-370.872c-14.988-1.805-30.14-3.064-45.621-3.064-206.496 0-373.935 167.439-373.935 373.935 0 206.55 167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_23"
+          ]
+        },
+        {
+          "id": 6,
+          "paths": [
+            "M511.147 885.919c9.682 0 19.145-0.713 28.609-1.427-155.296-14.659-277.662-175.645-277.662-372.513 0-196.814 122.366-357.798 277.662-372.458-9.463-0.713-18.926-1.473-28.609-1.473-206.496 0-373.935 167.439-373.935 373.935 0 206.55 167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_24"
+          ]
+        },
+        {
+          "id": 5,
+          "paths": [
+            "M511.147 885.919c9.134 0 18.106-0.713 27.132-1.365-175.262-13.949-313.545-175.207-313.545-372.568s138.284-358.619 313.545-372.567c-9.026-0.605-17.997-1.365-27.132-1.365-206.496 0-373.935 167.439-373.935 373.935 0 206.55 167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_25"
+          ]
+        },
+        {
+          "id": 4,
+          "paths": [
+            "M511.136 885.919c6.181 0 12.198-0.605 18.27-0.93-197.908-9.573-355.61-172.636-355.61-373.005 0-200.314 157.703-363.378 355.61-373.005-6.072-0.279-12.088-0.93-18.27-0.93-206.496 0-373.935 167.439-373.935 373.935 0 206.55 167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_26"
+          ]
+        },
+        {
+          "id": 3,
+          "paths": [
+            "M511.136 885.919c6.181 0 12.198-0.605 18.27-0.93-197.908-9.573-355.61-172.636-355.61-373.005 0-200.314 157.703-363.378 355.61-373.005-6.072-0.279-12.088-0.93-18.27-0.93-206.496 0-373.935 167.439-373.935 373.935 0 206.55 167.439 373.935 373.935 373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_27"
+          ]
+        },
+        {
+          "id": 2,
+          "paths": [],
+          "attrs": [],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_28"
+          ]
+        },
+        {
+          "id": 1,
+          "paths": [],
+          "attrs": [],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_29"
+          ]
+        },
+        {
+          "id": 0,
+          "paths": [
+            "M511.102 138.076c-6.181 0-12.198 0.605-18.325 0.93 197.962 9.628 355.665 172.636 355.665 373.005 0 200.314-157.703 363.378-355.665 373.005 6.126 0.279 12.144 0.93 18.325 0.93 206.496 0 373.935-167.439 373.935-373.935 0-206.55-167.439-373.935-373.935-373.935z"
+          ],
+          "attrs": [
+            {
+              "fill": "rgb(155, 51, 34)"
+            }
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "day_30"
+          ]
+        }
+      ],
+      "colorThemes": [],
+      "invisible": false
+    },
+    {
+      "selection": [
+        {
+          "order": 0,
           "id": 60,
           "name": "river",
           "prevSize": 32,
@@ -16,7 +772,7 @@
           "tempChar": ""
         },
         {
-          "order": 95,
+          "order": 0,
           "id": 59,
           "name": "swamp",
           "prevSize": 32,
@@ -24,7 +780,7 @@
           "tempChar": ""
         },
         {
-          "order": 96,
+          "order": 0,
           "id": 58,
           "name": "ravine",
           "prevSize": 32,
@@ -32,7 +788,7 @@
           "tempChar": ""
         },
         {
-          "order": 97,
+          "order": 0,
           "id": 57,
           "name": "grassland",
           "prevSize": 32,
@@ -40,7 +796,7 @@
           "tempChar": ""
         },
         {
-          "order": 98,
+          "order": 0,
           "id": 56,
           "name": "lakeshore",
           "prevSize": 32,
@@ -48,7 +804,7 @@
           "tempChar": ""
         },
         {
-          "order": 99,
+          "order": 0,
           "id": 55,
           "name": "woods",
           "prevSize": 32,
@@ -56,7 +812,7 @@
           "tempChar": ""
         },
         {
-          "order": 100,
+          "order": 0,
           "id": 54,
           "name": "mountain_pass",
           "prevSize": 32,
@@ -64,7 +820,7 @@
           "tempChar": ""
         },
         {
-          "order": 101,
+          "order": 0,
           "id": 53,
           "name": "old_growth1",
           "prevSize": 32,
@@ -72,7 +828,7 @@
           "tempChar": ""
         },
         {
-          "order": 102,
+          "order": 0,
           "id": 61,
           "name": "location_bg",
           "prevSize": 32,
@@ -80,7 +836,7 @@
           "tempChar": ""
         },
         {
-          "order": 103,
+          "order": 0,
           "id": 6,
           "name": "trail_bg",
           "prevSize": 32,
@@ -95,7 +851,7 @@
           ]
         },
         {
-          "order": 104,
+          "order": 0,
           "id": 52,
           "name": "rings_of_the_moon",
           "prevSize": 32,
@@ -103,7 +859,7 @@
           "tempChar": ""
         },
         {
-          "order": 105,
+          "order": 0,
           "id": 51,
           "name": "biologists_outpost",
           "prevSize": 32,
@@ -111,7 +867,7 @@
           "tempChar": ""
         },
         {
-          "order": 106,
+          "order": 0,
           "id": 50,
           "name": "spire_bg",
           "prevSize": 32,
@@ -119,7 +875,7 @@
           "tempChar": ""
         },
         {
-          "order": 107,
+          "order": 0,
           "id": 49,
           "name": "spire",
           "prevSize": 32,
@@ -127,7 +883,7 @@
           "tempChar": ""
         },
         {
-          "order": 108,
+          "order": 0,
           "id": 47,
           "name": "archeological_outpost_bg",
           "prevSize": 32,
@@ -135,7 +891,7 @@
           "tempChar": ""
         },
         {
-          "order": 109,
+          "order": 0,
           "id": 46,
           "name": "archeological_outpost",
           "prevSize": 32,
@@ -143,7 +899,7 @@
           "tempChar": ""
         },
         {
-          "order": 110,
+          "order": 0,
           "id": 45,
           "name": "watchers_rock_bg",
           "prevSize": 32,
@@ -151,7 +907,7 @@
           "tempChar": ""
         },
         {
-          "order": 111,
+          "order": 0,
           "id": 44,
           "name": "watchers_rock",
           "prevSize": 32,
@@ -159,7 +915,7 @@
           "tempChar": ""
         },
         {
-          "order": 112,
+          "order": 0,
           "id": 43,
           "name": "sunken_outpost_bg",
           "prevSize": 32,
@@ -167,7 +923,7 @@
           "tempChar": ""
         },
         {
-          "order": 113,
+          "order": 0,
           "id": 42,
           "name": "sunken_outpost",
           "prevSize": 32,
@@ -175,7 +931,7 @@
           "tempChar": ""
         },
         {
-          "order": 114,
+          "order": 0,
           "id": 41,
           "name": "the_greenbridge_bg",
           "prevSize": 32,
@@ -183,7 +939,7 @@
           "tempChar": ""
         },
         {
-          "order": 115,
+          "order": 0,
           "id": 40,
           "name": "the_greenbridge",
           "prevSize": 32,
@@ -191,7 +947,7 @@
           "tempChar": ""
         },
         {
-          "order": 116,
+          "order": 0,
           "id": 39,
           "name": "mound_of_the_navigator_bg",
           "prevSize": 32,
@@ -199,7 +955,7 @@
           "tempChar": ""
         },
         {
-          "order": 117,
+          "order": 0,
           "id": 38,
           "name": "mound_of_the_navigator",
           "prevSize": 32,
@@ -207,7 +963,7 @@
           "tempChar": ""
         },
         {
-          "order": 118,
+          "order": 0,
           "id": 37,
           "name": "stoneweaver_bridge_bg",
           "prevSize": 32,
@@ -215,7 +971,7 @@
           "tempChar": ""
         },
         {
-          "order": 119,
+          "order": 0,
           "id": 36,
           "name": "stoneweaver_bridge",
           "prevSize": 32,
@@ -223,7 +979,7 @@
           "tempChar": ""
         },
         {
-          "order": 120,
+          "order": 0,
           "id": 35,
           "name": "the_concordant_ziggurats",
           "prevSize": 32,
@@ -231,7 +987,7 @@
           "tempChar": ""
         },
         {
-          "order": 121,
+          "order": 0,
           "id": 34,
           "name": "the_alluvial_ruins",
           "prevSize": 32,
@@ -239,7 +995,7 @@
           "tempChar": ""
         },
         {
-          "order": 122,
+          "order": 0,
           "id": 33,
           "name": "terravore",
           "prevSize": 32,
@@ -247,7 +1003,7 @@
           "tempChar": ""
         },
         {
-          "order": 123,
+          "order": 0,
           "id": 32,
           "name": "the_furrow",
           "prevSize": 32,
@@ -255,7 +1011,7 @@
           "tempChar": ""
         },
         {
-          "order": 124,
+          "order": 0,
           "id": 31,
           "name": "the_high_basin",
           "prevSize": 32,
@@ -263,7 +1019,7 @@
           "tempChar": ""
         },
         {
-          "order": 125,
+          "order": 0,
           "id": 30,
           "name": "branch",
           "prevSize": 32,
@@ -271,7 +1027,7 @@
           "tempChar": ""
         },
         {
-          "order": 126,
+          "order": 0,
           "id": 29,
           "name": "crossroads_station",
           "prevSize": 32,
@@ -279,7 +1035,7 @@
           "tempChar": ""
         },
         {
-          "order": 127,
+          "order": 0,
           "id": 28,
           "name": "greenbriar_knoll",
           "prevSize": 32,
@@ -287,7 +1043,7 @@
           "tempChar": ""
         },
         {
-          "order": 128,
+          "order": 0,
           "id": 27,
           "name": "meadow",
           "prevSize": 32,
@@ -295,7 +1051,7 @@
           "tempChar": ""
         },
         {
-          "order": 129,
+          "order": 0,
           "id": 26,
           "name": "michaels_bog",
           "prevSize": 32,
@@ -303,7 +1059,7 @@
           "tempChar": ""
         },
         {
-          "order": 130,
+          "order": 0,
           "id": 25,
           "name": "the_cypress_citadel",
           "prevSize": 32,
@@ -311,7 +1067,7 @@
           "tempChar": ""
         },
         {
-          "order": 131,
+          "order": 0,
           "id": 24,
           "name": "marsh_of_rebirth",
           "prevSize": 32,
@@ -319,7 +1075,7 @@
           "tempChar": ""
         },
         {
-          "order": 132,
+          "order": 0,
           "id": 23,
           "name": "the_frowning_gate",
           "prevSize": 32,
@@ -327,7 +1083,7 @@
           "tempChar": ""
         },
         {
-          "order": 133,
+          "order": 0,
           "id": 22,
           "name": "bowl_of_the_sun",
           "prevSize": 32,
@@ -335,7 +1091,7 @@
           "tempChar": ""
         },
         {
-          "order": 134,
+          "order": 0,
           "id": 21,
           "name": "the_tumbledown",
           "prevSize": 32,
@@ -343,7 +1099,7 @@
           "tempChar": ""
         },
         {
-          "order": 135,
+          "order": 0,
           "id": 20,
           "name": "headwaters_station_bg",
           "prevSize": 32,
@@ -351,7 +1107,7 @@
           "tempChar": ""
         },
         {
-          "order": 136,
+          "order": 0,
           "id": 19,
           "name": "headwaters_station",
           "prevSize": 32,
@@ -359,7 +1115,7 @@
           "tempChar": ""
         },
         {
-          "order": 137,
+          "order": 0,
           "id": 18,
           "name": "the_plummet",
           "prevSize": 32,
@@ -367,7 +1123,7 @@
           "tempChar": ""
         },
         {
-          "order": 138,
+          "order": 0,
           "id": 17,
           "name": "boulder_field_bg",
           "prevSize": 32,
@@ -382,7 +1138,7 @@
           ]
         },
         {
-          "order": 139,
+          "order": 0,
           "id": 16,
           "name": "boulder_field",
           "prevSize": 32,
@@ -390,7 +1146,7 @@
           "tempChar": ""
         },
         {
-          "order": 140,
+          "order": 0,
           "id": 15,
           "name": "kobos_market",
           "prevSize": 32,
@@ -398,7 +1154,7 @@
           "tempChar": ""
         },
         {
-          "order": 141,
+          "order": 0,
           "id": 14,
           "name": "ancestors_grove",
           "prevSize": 32,
@@ -406,7 +1162,7 @@
           "tempChar": ""
         },
         {
-          "order": 142,
+          "order": 0,
           "id": 13,
           "name": "the_philosophers_garden",
           "prevSize": 32,
@@ -414,7 +1170,7 @@
           "tempChar": ""
         },
         {
-          "order": 143,
+          "order": 0,
           "id": 12,
           "name": "the_fractured_wall",
           "prevSize": 32,
@@ -422,7 +1178,7 @@
           "tempChar": ""
         },
         {
-          "order": 144,
+          "order": 0,
           "id": 11,
           "name": "white_sky",
           "prevSize": 32,
@@ -430,7 +1186,7 @@
           "tempChar": ""
         },
         {
-          "order": 145,
+          "order": 0,
           "id": 10,
           "name": "mount_nim",
           "prevSize": 32,
@@ -438,7 +1194,7 @@
           "tempChar": ""
         },
         {
-          "order": 146,
+          "order": 0,
           "id": 7,
           "name": "northern_outpost",
           "prevSize": 32,
@@ -446,7 +1202,7 @@
           "tempChar": ""
         },
         {
-          "order": 147,
+          "order": 0,
           "id": 4,
           "name": "golden_shore",
           "prevSize": 32,
@@ -454,7 +1210,7 @@
           "tempChar": ""
         },
         {
-          "order": 148,
+          "order": 0,
           "id": 3,
           "name": "atrox_mountain_bg",
           "prevSize": 32,
@@ -462,7 +1218,7 @@
           "tempChar": ""
         },
         {
-          "order": 149,
+          "order": 0,
           "id": 2,
           "name": "atrox_mountain",
           "prevSize": 32,
@@ -470,7 +1226,7 @@
           "tempChar": ""
         },
         {
-          "order": 150,
+          "order": 0,
           "id": 1,
           "name": "lone_tree_station_bg",
           "prevSize": 32,
@@ -478,7 +1234,7 @@
           "tempChar": ""
         },
         {
-          "order": 151,
+          "order": 0,
           "id": 0,
           "name": "lone_tree_station",
           "prevSize": 32,
@@ -486,7 +1242,7 @@
           "tempChar": ""
         },
         {
-          "order": 152,
+          "order": 0,
           "id": 62,
           "name": "biologists_outpost_bg",
           "prevSize": 32,
@@ -6626,9 +7382,9 @@
     "showQuickUse2": true,
     "showSVGs": true,
     "fontPref": {
-      "prefix": "locations-",
+      "prefix": "moon-",
       "metadata": {
-        "fontFamily": "locations",
+        "fontFamily": "moon",
         "majorVersion": 1,
         "minorVersion": 0
       },

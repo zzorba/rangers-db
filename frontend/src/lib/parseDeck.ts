@@ -1,4 +1,4 @@
-import { forEach, map, flatMap, uniq, sumBy } from 'lodash';
+import { concat, forEach, map, flatMap, uniq, sumBy, keys, remove } from 'lodash';
 import { t } from '@lingui/macro';
 
 import { AspectStats, AWA, DeckCardError, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
@@ -26,6 +26,63 @@ export interface DescriptionItem {
 }
 export type Item = HeaderItem | CardItem | DescriptionItem;
 
+export interface DeckChanges {
+  addedCards: Slots;
+  removedCards: Slots;
+
+  addedCollectionCards: Slots;
+  returnedCollectionCards: Slots;
+}
+
+function computeDeckChanges(
+  slots: Slots,
+  sideSlots: Slots,
+  previousDeck?: {
+    slots?: Slots;
+    side_slots?: Slots;
+  }
+): DeckChanges | undefined {
+  if (!previousDeck) {
+    return undefined;
+  }
+  const previousSlots = previousDeck.slots || {};
+  const previousSideSlots = previousDeck.side_slots || {};
+  const addedCards: Slots = {};
+  const removedCards: Slots = {};
+  const addedCollectionCards: Slots = {};
+  const returnedCollectionCards: Slots = {};
+
+  forEach(uniq(concat(keys(slots), keys(sideSlots), keys(previousDeck.side_slots), keys(previousDeck.slots))), (code) => {
+    if (slots[code] === previousSlots[code] && sideSlots[code] === previousSideSlots[code]) {
+      // No change.
+      return;
+    }
+
+    if (((slots[code] || 0) + (sideSlots[code] || 0)) === ((previousSlots[code] || 0) + (previousSideSlots[code] || 0))) {
+      // Normal swaps.
+      const difference = (slots[code] || 0) - (previousSlots[code] || 0);
+      if (difference > 0) {
+        addedCards[code] = difference;
+      } else {
+        removedCards[code] = difference;
+      }
+    } else {
+      // Collection swaps
+      const difference = ((slots[code] || 0) + (sideSlots[code] || 0)) - ((previousSlots[code] || 0) + (previousSideSlots[code] || 0));
+      if (difference > 0) {
+        addedCollectionCards[code] = difference;
+      } else {
+        returnedCollectionCards[code] = difference;
+      }
+    }
+  });
+  return {
+    addedCards,
+    removedCards,
+    addedCollectionCards,
+    returnedCollectionCards,
+  };
+}
 export interface ParsedDeck {
   stats: AspectStats;
   background: string | undefined;
@@ -38,14 +95,17 @@ export interface ParsedDeck {
   loading: boolean;
   deckSize: number;
   maladyCount: number;
+
+  changes?: DeckChanges;
 }
 export default function parseDeck(
   aspects: AspectStats,
   meta: DeckMeta,
   slots: Slots,
+  sideSlots: Slots,
   cards: CardsMap,
   categoryTranslations: CategoryTranslations,
-  previousDeck: { meta?: DeckMeta; slots?: Slots } | undefined
+  previousDeck: { meta?: DeckMeta; slots?: Slots; side_slots?: Slots } | undefined
 ): ParsedDeck {
   const missingCards: string[] = [];
   const stats: { [key: string]: number } = {
@@ -344,5 +404,6 @@ export default function parseDeck(
     loading: missingCards.length > 0,
     deckSize,
     maladyCount: sumBy(items, i => i.type === 'card' && i.card.set_id === 'malady' ? i.count : 0),
+    changes: computeDeckChanges(slots, sideSlots, previousDeck),
   };
 }

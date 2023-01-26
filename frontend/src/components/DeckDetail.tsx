@@ -27,7 +27,7 @@ import NextLink from 'next/link';
 import { map, pick, values } from 'lodash';
 import { t, Trans } from '@lingui/macro';
 import { SlCalender } from 'react-icons/sl';
-import { FaComment, FaEdit, FaMoon, FaShare, FaShareAlt, FaTrash } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaComment, FaEdit, FaMoon, FaShare, FaShareAlt, FaTrash } from 'react-icons/fa';
 
 import { CardFragment, DeckDetailFragment, DeckFragment, useCloneDeckMutation, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
@@ -46,6 +46,7 @@ import SolidButton from './SolidButton';
 import LikeButton from './LikeButton';
 import CommentsComponent from './CommentsComponent';
 import UserLink from './UserLink';
+import DeckChanges from './DeckChanges';
 
 const SHOW_COMMENTS = process.env.NODE_ENV === 'development';
 
@@ -84,7 +85,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
   const [showCard, cardModal] = useCardModal(deck.slots);
   const specialty: string | undefined = typeof deck.meta.specialty === 'string' ? deck.meta.specialty : undefined;
   const hasCards = useMemo(() => values(cards).length > 0, [cards]);
-  const parsedDeck = useMemo(() => parseDeck(deck, deck.meta, deck.slots, cards, categories, deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots']) : undefined), [deck, cards, categories]);
+  const parsedDeck = useMemo(() => parseDeck(deck, deck.meta, deck.slots, deck.side_slots, cards, categories, deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots', 'side_slots']) : undefined), [deck, cards, categories]);
   const [upgradeDeck] = useUpgradeDeckMutation();
   const [upgrading, setUpgrading] = useState(false);
   const onUpgradeDeck = useCallback(async() => {
@@ -414,15 +415,31 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
           { !deck.published && (!!deck.previous_deck || !!deck.next_deck) && (
             <GridItem colSpan={6}>
               <Flex direction="column" marginTop={8}>
-                <Text borderBottomWidth={1} borderColor="gray.500" marginBottom={2} paddingBottom={1} fontWeight="600">
-                  {t`Campaign progress`}
-                </Text>
                 { !!deck.previous_deck && (
-                  <Link as={NextLink} href={`/decks/view/${deck.previous_deck.id}`}>{t`Previous deck (${deck.previous_deck.version})`}</Link>
+                  <Text fontSize="lg">
+                    { t`Changes` }
+                  </Text>
+
                 )}
-                { !!deck.next_deck && (
-                  <Link as={NextLink} href={`/decks/view/${deck.next_deck.id}`}>{t`Next deck (${deck.next_deck.version})`}</Link>
+                { !!parsedDeck.changes && (
+                  <DeckChanges
+                    cards={cards}
+                    changes={parsedDeck.changes}
+                    showCard={showCard}
+                    showCollectionCard={showCard}
+                    showDisplacedCard={showCard}
+                  />
                 )}
+                <ButtonGroup marginTop={2}>
+                  { !!deck.previous_deck && (
+                    <Button leftIcon={<FaArrowLeft />} as={NextLink} href={`/decks/view/${deck.previous_deck.id}`}>
+                      {t`Previous deck`}
+                    </Button>
+                  ) }
+                  { !!deck.next_deck && (
+                    <Button rightIcon={<FaArrowRight />} as={NextLink} href={`/decks/view/${deck.next_deck.id}`}>{t`Next deck`}</Button>
+                  ) }
+                </ButtonGroup>
               </Flex>
             </GridItem>
           ) }

@@ -63,7 +63,7 @@ msgstr ""
 msgid "Account Settings"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:294
+#: src/components/DeckDetail.tsx:295
 msgid "Actions"
 msgstr ""
 
@@ -84,6 +84,14 @@ msgstr ""
 
 #: src/components/FriendChooser.tsx:91
 msgid "Add to campaign"
+msgstr ""
+
+#: src/components/DeckChanges.tsx:103
+msgid "Added"
+msgstr ""
+
+#: src/components/DeckChanges.tsx:127
+msgid "Added from collection"
 msgstr ""
 
 #: src/components/CardList.tsx:193
@@ -132,7 +140,7 @@ msgstr ""
 #~ msgid "Are you sure you want to delete the '{0}' deck?"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:54
+#: src/components/DeckDetail.tsx:55
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
 msgstr ""
 
@@ -140,7 +148,7 @@ msgstr ""
 #~ msgid "Are you sure you want to delete the latest day's copy of this deck?"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:55
+#: src/components/DeckDetail.tsx:56
 msgid "Are you sure you want to delete this deck?"
 msgstr ""
 
@@ -178,11 +186,11 @@ msgid "Awareness"
 msgstr ""
 
 #: src/components/DeckEdit.tsx:442
-#: src/lib/parseDeck.ts:254
+#: src/lib/parseDeck.ts:314
 msgid "Background"
 msgstr ""
 
-#: src/lib/parseDeck.ts:254
+#: src/lib/parseDeck.ts:314
 msgid "Background: {backgroundName}"
 msgstr ""
 
@@ -203,7 +211,7 @@ msgid "Branch"
 msgstr ""
 
 #: src/components/Campaign.tsx:1664
-#: src/components/DeckDetail.tsx:305
+#: src/components/DeckDetail.tsx:306
 msgid "Camp"
 msgstr ""
 
@@ -215,8 +223,8 @@ msgid "Campaign"
 msgstr ""
 
 #: src/components/DeckDetail.tsx:418
-msgid "Campaign progress"
-msgstr ""
+#~ msgid "Campaign progress"
+#~ msgstr ""
 
 #: src/pages/campaigns/index.tsx:74
 msgid "Campaigns"
@@ -254,6 +262,15 @@ msgstr ""
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr ""
 
+#: src/components/DeckDetail.tsx:420
+#: src/components/DeckEdit.tsx:895
+msgid "Changes"
+msgstr ""
+
+#: src/components/DeckDetail.tsx:420
+#~ msgid "Changes from <0>{0}</0>"
+#~ msgstr ""
+
 #: src/components/Campaign.tsx:293
 #: src/components/Campaign.tsx:1470
 msgid "Choose deck"
@@ -265,7 +282,7 @@ msgid "Choose handle"
 msgstr ""
 
 #: src/components/DeckEdit.tsx:302
-#: src/components/DeckEdit.tsx:841
+#: src/components/DeckEdit.tsx:848
 msgid "Choose role"
 msgstr ""
 
@@ -277,7 +294,7 @@ msgstr ""
 msgid "Choose {0}"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:299
+#: src/components/DeckDetail.tsx:300
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
 msgstr ""
 
@@ -329,20 +346,20 @@ msgstr ""
 msgid "Copies"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:331
+#: src/components/DeckDetail.tsx:332
 msgid "Copy"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:282
+#: src/components/DeckDetail.tsx:283
 msgid "Copy deck"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:213
+#: src/components/DeckDetail.tsx:214
 msgid "Copy of {deckLink} by {authorLink}"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:280
-#: src/components/DeckDetail.tsx:325
+#: src/components/DeckDetail.tsx:281
+#: src/components/DeckDetail.tsx:326
 msgid "Copy this deck to make your own changes."
 msgstr ""
 
@@ -365,8 +382,8 @@ msgid "Could not find user {handle}"
 msgstr ""
 
 #: src/components/Campaign.tsx:2039
-#: src/components/DeckEdit.tsx:1103
-#: src/components/DeckEdit.tsx:1113
+#: src/components/DeckEdit.tsx:1122
+#: src/components/DeckEdit.tsx:1132
 msgid "Create"
 msgstr ""
 
@@ -382,7 +399,7 @@ msgstr ""
 msgid "Current Position"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:1029
+#: src/components/DeckEdit.tsx:1048
 msgid "Custom deck"
 msgstr ""
 
@@ -429,7 +446,7 @@ msgstr ""
 #: src/components/Campaign.tsx:186
 #: src/components/Campaign.tsx:865
 #: src/components/Campaign.tsx:984
-#: src/components/DeckDetail.tsx:347
+#: src/components/DeckDetail.tsx:348
 #: src/components/DeckList.tsx:84
 #: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
@@ -439,12 +456,12 @@ msgstr ""
 msgid "Delete campaign?"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:184
+#: src/components/DeckDetail.tsx:185
 #: src/components/DeckList.tsx:137
 msgid "Delete deck?"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:339
+#: src/components/DeckDetail.tsx:340
 msgid "Deleting this published deck will cause will remove it from search."
 msgstr ""
 
@@ -462,7 +479,7 @@ msgstr ""
 msgid "Departing {0}"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:408
+#: src/components/DeckDetail.tsx:409
 #: src/components/DeckEdit.tsx:445
 #: src/components/DeckEdit.tsx:613
 msgid "Description"
@@ -476,7 +493,7 @@ msgstr ""
 #~ msgid "Discard Changes"
 #~ msgstr ""
 
-#: src/components/DeckEdit.tsx:823
+#: src/components/DeckEdit.tsx:827
 msgid "Discard changes"
 msgstr ""
 
@@ -490,7 +507,7 @@ msgid "Don't have an account?"
 msgstr ""
 
 #: src/components/DeckEdit.tsx:344
-#: src/components/DeckEdit.tsx:823
+#: src/components/DeckEdit.tsx:827
 msgid "Done editing"
 msgstr ""
 
@@ -501,7 +518,7 @@ msgstr ""
 msgid "Downpour"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:324
+#: src/components/DeckDetail.tsx:325
 msgid "Duplicate this deck while preserving the original."
 msgstr ""
 
@@ -510,7 +527,7 @@ msgstr ""
 msgid "E-mail Address"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:257
+#: src/components/DeckDetail.tsx:258
 #: src/components/DeckList.tsx:77
 #: src/components/EditableTextInput.tsx:41
 msgid "Edit"
@@ -702,7 +719,7 @@ msgstr ""
 msgid "Like"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:263
+#: src/components/DeckDetail.tsx:264
 msgid "Like deck"
 msgstr ""
 
@@ -788,8 +805,8 @@ msgstr ""
 #: src/components/Campaign.tsx:1047
 #: src/components/Campaign.tsx:1075
 #: src/components/Campaign.tsx:2002
-#: src/components/DeckEdit.tsx:1039
-#: src/components/DeckEdit.tsx:1072
+#: src/components/DeckEdit.tsx:1058
+#: src/components/DeckEdit.tsx:1091
 msgid "Name"
 msgstr ""
 
@@ -800,7 +817,7 @@ msgstr ""
 msgid "Name and day are required."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:919
+#: src/components/DeckEdit.tsx:938
 msgid "Name your character"
 msgstr ""
 
@@ -813,7 +830,7 @@ msgstr ""
 msgid "New cards are available"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:1022
+#: src/components/DeckEdit.tsx:1041
 #: src/pages/decks/index.tsx:68
 msgid "New deck"
 msgstr ""
@@ -831,9 +848,13 @@ msgstr ""
 #~ msgid "Next day ({0})"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:424
-msgid "Next deck ({0})"
+#: src/components/DeckDetail.tsx:440
+msgid "Next deck"
 msgstr ""
+
+#: src/components/DeckDetail.tsx:436
+#~ msgid "Next deck ({0})"
+#~ msgstr ""
 
 #: src/components/CardList.tsx:163
 msgid "No matching cards"
@@ -879,7 +900,7 @@ msgstr ""
 msgid "Not enough specialty cards."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:376
+#: src/components/DeckDetail.tsx:377
 msgid "Not set"
 msgstr ""
 
@@ -907,11 +928,11 @@ msgstr ""
 msgid "One aspect must be set to 3."
 msgstr ""
 
-#: src/lib/parseDeck.ts:313
+#: src/lib/parseDeck.ts:373
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr ""
 
-#: src/lib/parseDeck.ts:320
+#: src/lib/parseDeck.ts:380
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr ""
 
@@ -929,7 +950,7 @@ msgid "Other"
 msgstr ""
 
 #: src/components/DeckEdit.tsx:444
-#: src/lib/parseDeck.ts:269
+#: src/lib/parseDeck.ts:329
 msgid "Outside Interest"
 msgstr ""
 
@@ -961,7 +982,7 @@ msgstr ""
 #: src/components/CardFilter.tsx:359
 #: src/components/CardFilter.tsx:360
 #: src/components/DeckEdit.tsx:441
-#: src/lib/parseDeck.ts:246
+#: src/lib/parseDeck.ts:306
 msgid "Personality"
 msgstr ""
 
@@ -973,7 +994,7 @@ msgstr ""
 msgid "Players"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:194
+#: src/components/DeckDetail.tsx:195
 msgid "Please address all deckbuilding errors before publishing."
 msgstr ""
 
@@ -989,9 +1010,13 @@ msgstr ""
 #~ msgid "Previous day ({0})"
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:421
-msgid "Previous deck ({0})"
+#: src/components/DeckDetail.tsx:436
+msgid "Previous deck"
 msgstr ""
+
+#: src/components/DeckDetail.tsx:421
+#~ msgid "Previous deck ({0})"
+#~ msgstr ""
 
 #: src/components/NavBar.tsx:230
 #: src/components/NavBar.tsx:381
@@ -1011,7 +1036,7 @@ msgstr ""
 msgid "Pseudo"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:317
+#: src/components/DeckDetail.tsx:318
 msgid "Publish"
 msgstr ""
 
@@ -1103,6 +1128,10 @@ msgstr ""
 msgid "Remove reward"
 msgstr ""
 
+#: src/components/DeckChanges.tsx:115
+msgid "Removed"
+msgstr ""
+
 #: src/components/Campaign.tsx:1812
 msgid "Removed Cards"
 msgstr ""
@@ -1127,6 +1156,10 @@ msgstr ""
 msgid "Return a copy to the collection"
 msgstr ""
 
+#: src/components/DeckChanges.tsx:139
+msgid "Returned to collection"
+msgstr ""
+
 #: src/components/FriendRequests.tsx:165
 #: src/components/FriendRequests.tsx:177
 msgid "Revoke"
@@ -1138,7 +1171,7 @@ msgid "Rewards"
 msgstr ""
 
 #: src/components/CardList.tsx:69
-#: src/lib/parseDeck.ts:278
+#: src/lib/parseDeck.ts:338
 msgid "Rewards and Maladies"
 msgstr ""
 
@@ -1150,8 +1183,8 @@ msgstr ""
 msgid "River"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:833
-#: src/components/DeckEdit.tsx:1054
+#: src/components/DeckEdit.tsx:840
+#: src/components/DeckEdit.tsx:1073
 #: src/pages/decks/search.tsx:76
 msgid "Role"
 msgstr ""
@@ -1181,7 +1214,7 @@ msgstr ""
 #~ msgid "Save Changes"
 #~ msgstr ""
 
-#: src/components/DeckEdit.tsx:822
+#: src/components/DeckEdit.tsx:823
 msgid "Save changes"
 msgstr ""
 
@@ -1195,7 +1228,7 @@ msgstr ""
 #~ msgid "Searching decks that have been shared with the community is still under construction."
 #~ msgstr ""
 
-#: src/components/DeckDetail.tsx:270
+#: src/components/DeckDetail.tsx:271
 msgid "See comments"
 msgstr ""
 
@@ -1291,11 +1324,11 @@ msgid "Some campaign events may allow you to permanently swap cards from your de
 msgstr ""
 
 #: src/components/DeckEdit.tsx:443
-#: src/lib/parseDeck.ts:262
+#: src/lib/parseDeck.ts:322
 msgid "Specialty"
 msgstr ""
 
-#: src/lib/parseDeck.ts:262
+#: src/lib/parseDeck.ts:322
 msgid "Specialty: {specialtyName}"
 msgstr ""
 
@@ -1307,8 +1340,8 @@ msgstr ""
 msgid "Spirit"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:1030
-#: src/components/DeckEdit.tsx:1081
+#: src/components/DeckEdit.tsx:1049
+#: src/components/DeckEdit.tsx:1100
 msgid "Starter deck"
 msgstr ""
 
@@ -1424,7 +1457,7 @@ msgstr ""
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:191
+#: src/components/DeckDetail.tsx:192
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr ""
 
@@ -1556,7 +1589,7 @@ msgstr ""
 msgid "You don't seem to have any decks."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:974
+#: src/components/DeckEdit.tsx:993
 msgid "You must choose a background."
 msgstr ""
 
@@ -1569,15 +1602,15 @@ msgstr ""
 msgid "You must choose a role card."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:980
+#: src/components/DeckEdit.tsx:999
 msgid "You must choose a role."
 msgstr ""
 
-#: src/components/DeckEdit.tsx:977
+#: src/components/DeckEdit.tsx:996
 msgid "You must choose a specialty."
 msgstr ""
 
-#: src/components/DeckDetail.tsx:299
+#: src/components/DeckDetail.tsx:300
 msgid "You must correct deck errors before upgrading."
 msgstr ""
 
@@ -1616,6 +1649,10 @@ msgstr ""
 #~ msgid "foc"
 #~ msgstr ""
 
+#: src/components/DeckDetail.tsx:421
+#~ msgid "previous deck"
+#~ msgstr ""
+
 #: src/components/AspectCounter.tsx:16
 #~ msgid "spi"
 #~ msgstr ""
@@ -1624,8 +1661,8 @@ msgstr ""
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr ""
 
-#: src/components/DeckDetail.tsx:136
-#: src/components/DeckDetail.tsx:136
+#: src/components/DeckDetail.tsx:137
+#: src/components/DeckDetail.tsx:137
 msgid "{0} (Copy)"
 msgstr ""
 
@@ -1637,7 +1674,7 @@ msgstr ""
 msgid "{0} of {1}"
 msgstr ""
 
-#: src/components/DeckEdit.tsx:991
+#: src/components/DeckEdit.tsx:1010
 msgid "{background} - {specialty} (Starter)"
 msgstr ""
 

@@ -60,9 +60,9 @@ import SubmitButton from './SubmitButton';
 import { StarterDeck, STARTER_DECKS } from '../lib/starterDeck';
 import { RoleImage } from './CardImage';
 import { useTheme } from '../lib/ThemeContext';
-import ListHeader from './ListHeader';
-import { FaArrowLeft, FaArrowRight, FaExclamationCircle, FaInbox, FaXing } from 'react-icons/fa';
+import { FaInbox } from 'react-icons/fa';
 import { useCardSearchControls } from './CardFilter';
+import DeckChanges from './DeckChanges';
 
 interface Props {
   deck: DeckDetailFragment;
@@ -725,16 +725,15 @@ export default function DeckEdit({ deck, cards }: Props) {
   const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
   const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
   const { categories } = useLocale();
-  const parsedDeck = useMemo(() => {
-    return parseDeck(
-      stats,
-      meta,
-      slots,
-      cards,
-      categories,
-      deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots']) : undefined
-    );
-  }, [stats, deck.previous_deck, categories, meta, slots, cards]);
+  const parsedDeck = useMemo(() => parseDeck(
+    stats,
+    meta,
+    slots,
+    sideSlots,
+    cards,
+    categories,
+    deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots', 'side_slots']) : undefined
+  ), [stats, deck.previous_deck, categories, meta, slots, sideSlots, cards]);
   const setRole = useCallback((role: string) => {
     setMeta({
       ...meta,
@@ -819,10 +818,18 @@ export default function DeckEdit({ deck, cards }: Props) {
             </Box>
           )}
           <ButtonGroup paddingBottom={2} paddingTop={2}>
-            { !!hasEdits && <SolidButton color="blue" onClick={saveChanges}>{t`Save changes`}</SolidButton> }
-            <Button as={NextLink} href={`/decks/view/${deck.id}`}>{hasEdits ? t`Discard changes` : t`Done editing`}</Button>
+            { !!hasEdits && (
+              <SolidButton color="blue" onClick={saveChanges}>
+                {t`Save changes`}
+              </SolidButton>
+            )}
+            <Button as={NextLink} href={`/decks/view/${deck.id}`}>
+              {hasEdits ? t`Discard changes` : t`Done editing`}
+            </Button>
           </ButtonGroup>
-          { !!saveError && <Text color="red.500" paddingTop={2} paddingBottom={4}>{saveError}</Text>}
+          { !!saveError && (
+            <Text color="red.500" paddingTop={2} paddingBottom={4}>{saveError}</Text>
+          )}
           <MetaControls
             meta={meta}
             setMeta={setMeta}
@@ -883,6 +890,18 @@ export default function DeckEdit({ deck, cards }: Props) {
             />
           ) }
         </Box>
+        { !!parsedDeck.changes && (
+          <Box>
+            <Text fontSize="lg">{t`Changes`}</Text>
+            <DeckChanges
+              cards={cards}
+              changes={parsedDeck.changes}
+              showCard={showCard}
+              showCollectionCard={showCollectionCard}
+              showDisplacedCard={showDisplacedCard}
+            />
+          </Box>
+        ) }
       </SimpleGrid>
       { cardModal }
       { collectionCardModal }
