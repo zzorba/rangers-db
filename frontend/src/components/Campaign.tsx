@@ -911,7 +911,9 @@ function MissionRow({ mission, index, showEdit }: { mission: MissionEntry; index
       </Td>
       <Td>
         <Flex direction="row">
-          { map(range(0, 3), (idx) => <ProgressChit marginRight="6px" key={idx} filled={(mission.progress || 0) > idx} />)}
+          { mission.completed ? (
+            <Text fontSize="sm">{t`Completed`}</Text>
+          ) : map(range(0, 3), (idx) => <ProgressChit marginRight="6px" key={idx} filled={(mission.progress || 0) > idx} />)}
         </Flex>
       </Td>
     </Tr>
