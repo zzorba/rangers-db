@@ -27,14 +27,14 @@ import NextLink from 'next/link';
 import { map, pick, values } from 'lodash';
 import { t, Trans } from '@lingui/macro';
 import { SlCalender } from 'react-icons/sl';
-import { FaComment, FaCopy, FaEdit, FaMoon, FaShare, FaShareAlt, FaTrash } from 'react-icons/fa';
+import { FaComment, FaEdit, FaMoon, FaShare, FaShareAlt, FaTrash } from 'react-icons/fa';
 
 import { CardFragment, DeckDetailFragment, DeckFragment, useCloneDeckMutation, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AWA, FIT, FOC, SPI } from '../types/types';
 import { CardsMap } from '../lib/hooks';
-import { CardHeader, CardRow, ShowCard, useCardModal } from './Card';
+import { CardHeader, ShowCard, useCardModal } from './Card';
 import DeckProblemComponent from './DeckProblemComponent';
 import { useLocale } from '../lib/TranslationProvider';
 import CoreIcon from '../icons/CoreIcon';
@@ -47,7 +47,7 @@ import LikeButton from './LikeButton';
 import CommentsComponent from './CommentsComponent';
 import UserLink from './UserLink';
 
-const SHOW_COMMENTS = false;
+const SHOW_COMMENTS = process.env.NODE_ENV === 'development';
 
 function deleteDeckMessage(d: DeckFragment) {
   return d.previous_deck ?
@@ -218,8 +218,8 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
   return (
     <>
       <Box>
-        <Box paddingTop="2rem" paddingBottom="2em">
-          <Flex direction="row" justifyContent="space-between">
+        <Box paddingTop={[0, '2rem']} paddingBottom="2em">
+          <Flex direction={['column-reverse', 'row']} alignItems={['flex-end', 'flex-start']} justifyContent="space-between">
             <Flex direction="column">
               <Heading>{deck?.name || 'Deck'}</Heading>
               <SimpleGrid columns={2}>
@@ -246,7 +246,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
               ) }
               <DeckCountLine parsedDeck={parsedDeck} />
             </Flex>
-            <ButtonGroup>
+            <ButtonGroup marginBottom={2}>
               { editable && (
                 <SolidButton
                   color="blue"
@@ -411,21 +411,27 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
               </Stack>
             </GridItem>
           ) }
+          { !deck.published && (!!deck.previous_deck || !!deck.next_deck) && (
+            <GridItem colSpan={6}>
+              <Flex direction="column" marginTop={8}>
+                <Text borderBottomWidth={1} borderColor="gray.500" marginBottom={2} paddingBottom={1} fontWeight="600">
+                  {t`Campaign progress`}
+                </Text>
+                { !!deck.previous_deck && (
+                  <Link as={NextLink} href={`/decks/view/${deck.previous_deck.id}`}>{t`Previous deck (${deck.previous_deck.version})`}</Link>
+                )}
+                { !!deck.next_deck && (
+                  <Link as={NextLink} href={`/decks/view/${deck.next_deck.id}`}>{t`Next deck (${deck.next_deck.version})`}</Link>
+                )}
+              </Flex>
+            </GridItem>
+          ) }
+          { SHOW_COMMENTS && !!deck.published && (
+            <GridItem colSpan={6}>
+              <CommentsComponent comments={deck.comments} deckId={deck.id} />
+            </GridItem>
+          ) }
         </Grid>
-        { !deck.published && (!!deck.previous_deck || !!deck.next_deck) && (
-          <Flex direction="column" marginTop={8}>
-            <Text borderBottomWidth={1} borderColor="gray.500" marginBottom={2} paddingBottom={1} fontWeight="600">{t`Campaign progress`}</Text>
-            { !!deck.previous_deck && (
-              <Link as={NextLink} href={`/decks/view/${deck.previous_deck.id}`}>{t`Previous deck (${deck.previous_deck.version})`}</Link>
-            )}
-            { !!deck.next_deck && (
-              <Link as={NextLink} href={`/decks/view/${deck.next_deck.id}`}>{t`Next deck (${deck.next_deck.version})`}</Link>
-            )}
-          </Flex>
-        )}
-        { SHOW_COMMENTS && !!deck.published && (
-          <CommentsComponent comments={deck.comments} deckId={deck.id} />
-        ) }
       </Box>
       {cardModal}
       {deleteDialog}

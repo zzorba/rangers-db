@@ -9,6 +9,36 @@ function tableName(t: string) {
 }
 
 console.log(`
+  CREATE OR REPLACE FUNCTION rangers_deck_comment_count_increment() RETURNS TRIGGER AS $$
+      BEGIN
+          UPDATE rangers.deck
+          SET comment_count = comment_count + 1
+          WHERE id = NEW.deck_id;
+
+          IF NEW.comment_id is not null THEN
+            UPDATE rangers.comment
+            SET response_count = response_count +1
+            WHERE id = NEW.comment_id;
+          END IF;
+          RETURN NEW;
+      END
+  $$ LANGUAGE plpgsql;
+
+  CREATE OR REPLACE FUNCTION rangers_deck_comment_count_decrement() RETURNS TRIGGER AS $$
+    BEGIN
+        UPDATE rangers.deck
+        SET comment_count = comment_count - 1
+        WHERE id = OLD.deck_id;
+
+        IF OLD.comment_id is not null THEN
+          UPDATE rangers.comment
+          SET response_count = response_count - 1
+          WHERE id = OLD.comment_id;
+        END IF;
+        RETURN OLD;
+    END
+  $$ LANGUAGE plpgsql;
+
   CREATE OR REPLACE FUNCTION rangers_deck_copy_count_increment() RETURNS TRIGGER AS $$
       BEGIN
           UPDATE rangers.deck

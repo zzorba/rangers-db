@@ -13,6 +13,7 @@ import {
   ModalFooter,
   AspectRatio,
   useColorMode,
+  Show,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
 import { t } from '@lingui/macro';
@@ -66,7 +67,7 @@ function AspectLevel({ card, mini }: { card: CardFragment; mini?: boolean }) {
 function FooterInfo({ card }: { card: CardFragment }) {
   return (
     <Flex direction="row" justifyContent="flex-start" alignItems="flex-end">
-      <Flex direction="row" justifyContent="flex-end" maxH="2em" flex={1}>
+      <Flex direction="row" justifyContent="flex-end" flex={1}>
         <AspectLevel card={card} />
         <Box padding={1} paddingLeft={2} paddingRight={2} backgroundColor="#888888" flexDirection="column">
           <Text fontSize="s" color="#EEEEEE" fontWeight={400}>
@@ -245,7 +246,7 @@ export function CardHeader({
         ) : (
           <Cost cost={card.cost} aspectId={card.aspect_id} aspect={aspect} />
         ) }
-        <Flex direction="column" justifyContent="flex-start">
+        <Flex direction="column"justifyContent="flex-start">
           <Flex direction="column" flex={1}>
             <DeckCardProblemTooltip errors={problem}>
               <Text
@@ -289,12 +290,24 @@ export function CardHeader({
   );
 }
 
+function CardImageSection({ card, detail }: { card: CardFragment; detail?: boolean }) {
+  return (
+    <Flex direction="column" alignItems="flex-start" justifyContent="space-between">
+      { !!card.imagesrc && (
+        <Box margin={2} marginLeft={detail ? 2 : [0, 0, 2]}>
+          <CardImage title={card.name || 'Card'} size={detail ? 'large' : 'small'} url={card.imagesrc} />
+        </Box>
+      ) }
+    </Flex>
+  );
+}
+
 function CardBody({ card, padding, problem, count, detail }: Props & { padding?: number; problem?: DeckError[]; count?: number; detail?: boolean }) {
   const { aspects } = useLocale();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
-    <Flex direction={['column', 'column', 'row']} >
-      <Flex direction="column" flex={1}>
+    <Flex direction={['column', 'column', 'row']} width="100%">
+      <Flex direction="column">
         <DeckProblemComponent card errors={problem} limit={1} />
         <Flex direction="row" alignItems="flex-start" padding={padding}>
           <Flex direction="column" flex={1}>
@@ -317,7 +330,6 @@ function CardBody({ card, padding, problem, count, detail }: Props & { padding?:
             </Box>
           ) }
         </Flex>
-
         { !!detail && (
           <Flex direction="column" flex={1} alignItems="flex-start" justifyContent="flex-end" margin={2}>
             <FooterInfo card={card} />
@@ -325,9 +337,9 @@ function CardBody({ card, padding, problem, count, detail }: Props & { padding?:
         )}
       </Flex>
       <Flex direction="column" alignItems="flex-start" justifyContent="space-between">
-        { !!card.imagesrc && (
-          <Box margin={2} marginLeft={detail ? 2 : [0, 0, 2]}>
-            <CardImage title={card.name || 'Card'} size={detail ? 'large' : 'small'} url={card.imagesrc} />
+        { !!card?.imagesrc && (
+          <Box marginTop={8}>
+            <CardImage title={card.name || 'Card'} size="small" url={card.imagesrc} />
           </Box>
         ) }
       </Flex>
@@ -348,7 +360,7 @@ export default function Card({ card }: Props) {
 
 export function CardRow({ card, problem, children, onClick, includeSet, includeText, last }: Props & { children?: React.ReactNode; problem?: DeckCardError[]; includeSet?: boolean; onClick?: () => void; includeText?: boolean; last?: boolean }) {
   return (
-    <Flex direction="row" padding={2} flex={1} alignItems="flex-start" borderBottomWidth={last ? undefined : 0.5} borderColor="#BBBBBB">
+    <Flex direction="row" padding={2} width="100%" alignItems="flex-start" justifyContent="space-between" borderBottomWidth={last ? undefined : 0.5} borderColor="#BBBBBB">
       <Flex direction="row" flex={1} onClick={onClick} cursor={onClick ? 'pointer' : undefined}>
         <CardHeader
           flex={1}
@@ -365,7 +377,8 @@ export function CardRow({ card, problem, children, onClick, includeSet, includeT
 }
 
 export type ShowCard = (card: CardFragment, problem?: DeckCardError[]) => void;
-export function useCardModal(slots?: Slots, renderControl?: (card: CardFragment, onClose?: () => void) => React.ReactNode): [
+export type RenderCardControl = (card: CardFragment, onClose?: () => void) => React.ReactNode;
+export function useCardModal(slots?: Slots, renderControl?: RenderCardControl, key: string = 'modal'): [
   ShowCard,
   React.ReactNode,
 ] {
@@ -380,9 +393,9 @@ export function useCardModal(slots?: Slots, renderControl?: (card: CardFragment,
   const count = (card?.id && slots?.[card.id]) || 0;
   return [
     showModal,
-    <Modal key="modal" isOpen={isOpen} onClose={onClose}>
+    <Modal key={key} scrollBehavior="inside" isCentered isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent maxW={['90%', '90%', '90%', '800px']}>
+      <ModalContent maxW={['95%', '90%', '90%', '800px']}>
         <ModalHeader>
           <Box paddingRight={8}>
             { !!card && <CardHeader card={card} problem={problem} /> }
@@ -394,9 +407,13 @@ export function useCardModal(slots?: Slots, renderControl?: (card: CardFragment,
             {!!card && <CardBody card={card} problem={problem} count={renderControl ? undefined : 1}/> }
           </Box>
         </ModalBody>
-        <ModalFooter justifyContent="space-between">
-          { !!card && <FooterInfo card={card} /> }
-          { !!card && card.type_id !== 'role' && !!slots && (!!renderControl ? renderControl(card, onClose) : <CardCount count={count} />) }
+        <ModalFooter>
+          <Flex flex={1} direction="row" alignItems="flex-end" justifyContent="space-between">
+            { !!card && <FooterInfo card={card} /> }
+            { !!card && card.type_id !== 'role' && !!slots && (
+              renderControl?.(card, onClose) || <CardCount count={count} />
+            ) }
+          </Flex>
         </ModalFooter>
       </ModalContent>
     </Modal>

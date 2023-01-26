@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Box, Button, Flex, Text, useColorModeValue, useRadio, useRadioGroup, UseRadioProps } from '@chakra-ui/react';
-import { map } from 'lodash';
+import { map, range } from 'lodash';
 
 import { Slots } from '../types/types';
 import { CardFragment } from '../generated/graphql/apollo-schema';
@@ -112,12 +112,13 @@ export function CountToggle({ code, slots, setSlots }: { code: string; slots: Sl
   );
 }
 
-export function CountControls({ card, slots, setSlots, onClose, countMode }: {
+export function CountControls({ card, slots, setSlots, onClose, countMode, max }: {
   onClose?: () => void;
   card: CardFragment;
   slots: Slots;
   setSlots: (card: CardFragment, count: number) => void;
   countMode?: 'noah';
+  max?: number;
 }) {
   const onChange = useCallback((value: string) => {
     if (value === '+') {
@@ -137,14 +138,16 @@ export function CountControls({ card, slots, setSlots, onClose, countMode }: {
   });
   return (
     <Flex direction="row">
-      { map(countMode === 'noah' ? ['0', '2'] : ['0', '1', '2'], value => {
-        const radio = getRadioProps({ value });
-        return (
-          <RadioCardCount key={value} {...radio}>
-            {value}
-          </RadioCardCount>
-        );
-      }) }
+      { map(
+        countMode === 'noah' ? ['0', '2'] : map(range(0, (max || 2) + 1), x => `${x}`),
+        value => {
+          const radio = getRadioProps({ value });
+          return (
+            <RadioCardCount key={value} {...radio}>
+              {value}
+            </RadioCardCount>
+          );
+        }) }
     </Flex>
   );
 }

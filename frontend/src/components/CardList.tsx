@@ -57,7 +57,7 @@ export default function CardList() {
     return partition(data?.cards, c => c.set_id !== 'reward' && c.set_id !== 'malady');
   }, [data]);
 
-  const [controls, hasFilters, filterCard] = useCardSearchControls(standardCards);
+  const [controls, hasFilters, filterCard] = useCardSearchControls(standardCards, 'all');
   if (!data?.cards) {
     return <LoadingPage />;
   }

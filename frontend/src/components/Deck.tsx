@@ -51,7 +51,7 @@ function DeckCardRow({ item, showCard }: { item: CardItem; showCard: (card: Card
   const onClick = useCallback(() => showCard(item.card, item.problem), [item, showCard]);
   return (
     <ListItem key={item.card.id} >
-      <Flex direction="row" alignItems="center">
+      <Flex direction="row" alignItems="flex-start" justifyContent="flex-start">
         <CardRow card={item.card} problem={item.problem} onClick={onClick}>
           <CardCount count={item.count} marginLeft={2} />
         </CardRow>

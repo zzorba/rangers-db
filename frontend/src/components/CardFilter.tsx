@@ -329,7 +329,7 @@ function useSearchQueryState<T>(name: string, options: UseQueryStateOptions<T>):
   ];
 }
 
-export function useCardSearchControls(allCards: CardFragment[]): [React.ReactNode, boolean, (card: CardFragment) => boolean] {
+export function useCardSearchControls(allCards: CardFragment[], controls: 'simple' | 'all'): [React.ReactNode, boolean, (card: CardFragment) => boolean] {
   const { approaches, aspects, categories } = useLocale();
   const allTraits = useMemo(() => {
     return map(
@@ -544,53 +544,57 @@ export function useCardSearchControls(allCards: CardFragment[]): [React.ReactNod
           setValue={setCost}
         />
       </FormControl>
-      <FormControl>
-        <FormLabel>{t`Approach icons`}</FormLabel>
-        <MultiSelect
-          placeholder={t`Filter by approach icons`}
-          value={approach}
-          setValue={setApproach}
-          options={allApproaches}
-        />
-      </FormControl>
-      <FormControl>
-        <FormLabel>{t`Equip`}</FormLabel>
-        <NumberCompareInput
-          value={equip}
-          setValue={setEquip}
-        />
-      </FormControl>
-      <Text fontWeight="600">{t`Aspect requirements`}</Text>
-      <SimpleGrid columns={[2, 4]} spacingX={2} spacingY={4}>
-        <FormControl>
-          <FormLabel>{aspects.AWA?.short_name}</FormLabel>
-          <NumberCompareInput
-            value={awa}
-            setValue={setAwa}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>{aspects.SPI?.short_name}</FormLabel>
-          <NumberCompareInput
-            value={spi}
-            setValue={setSpi}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>{aspects.FOC?.short_name}</FormLabel>
-          <NumberCompareInput
-            value={foc}
-            setValue={setFoc}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>{aspects.FIT?.short_name}</FormLabel>
-          <NumberCompareInput
-            value={fit}
-            setValue={setFit}
-          />
-        </FormControl>
-      </SimpleGrid>
+      { controls === 'all' && (
+        <>
+          <FormControl>
+            <FormLabel>{t`Approach icons`}</FormLabel>
+            <MultiSelect
+              placeholder={t`Filter by approach icons`}
+              value={approach}
+              setValue={setApproach}
+              options={allApproaches}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>{t`Equip`}</FormLabel>
+            <NumberCompareInput
+              value={equip}
+              setValue={setEquip}
+            />
+          </FormControl>
+          <Text fontWeight="600">{t`Aspect requirements`}</Text>
+          <SimpleGrid columns={[2, 4]} spacingX={2} spacingY={4}>
+            <FormControl>
+              <FormLabel>{aspects.AWA?.short_name}</FormLabel>
+              <NumberCompareInput
+                value={awa}
+                setValue={setAwa}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>{aspects.SPI?.short_name}</FormLabel>
+              <NumberCompareInput
+                value={spi}
+                setValue={setSpi}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>{aspects.FOC?.short_name}</FormLabel>
+              <NumberCompareInput
+                value={foc}
+                setValue={setFoc}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>{aspects.FIT?.short_name}</FormLabel>
+              <NumberCompareInput
+                value={fit}
+                setValue={setFit}
+              />
+            </FormControl>
+          </SimpleGrid>
+        </>
+      ) }
     </Stack>
   ), hasFilters, filterCard];
 }

@@ -33,6 +33,8 @@ const theme = extendTheme({
   styles,
   colors: {
     light: {
+      veryLightText: '#DDDDDD',
+      invertedVeryLightText: '#CCCCCC',
       lightText: '#666666',
       text: 'black',
       inverted: 'white',
@@ -47,6 +49,8 @@ const theme = extendTheme({
       },
     },
     dark: {
+      veryLightText: '#444444',
+      invertedVeryLightText: '#555555',
       lightText: '#AAAAAA',
       text: 'white',
       inverted: 'black',

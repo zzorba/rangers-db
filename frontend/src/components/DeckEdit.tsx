@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Box,
   Heading,
+  Link,
   Text,
   Flex,
   List,
@@ -35,15 +36,15 @@ import {
 import Router from 'next/router';
 import NextLink from 'next/link';
 import { sumBy, find, keys, union, omit, forEach, map, flatMap, pick, values, sortBy } from 'lodash';
-import { t } from '@lingui/macro';
+import { t, Trans } from '@lingui/macro';
 import { Select as ChakraReactSelect, chakraComponents, OptionProps, SingleValue, OptionBase } from 'chakra-react-select';
 
 import { CardFragment, DeckDetailFragment, DeckFragment, useCreateDeckMutation, useSaveDeckDescriptionMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
-import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
+import { AspectStats, AWA, DeckCardError, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap } from '../lib/hooks';
-import { CardRow, ShowCard, useCardModal } from './Card';
+import { CardRow, RenderCardControl, ShowCard, useCardModal } from './Card';
 import { SimpleCardList, SpoilerCardList } from './CardList';
 import { CountControls, IncDecCountControls } from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
@@ -59,6 +60,9 @@ import SubmitButton from './SubmitButton';
 import { StarterDeck, STARTER_DECKS } from '../lib/starterDeck';
 import { RoleImage } from './CardImage';
 import { useTheme } from '../lib/ThemeContext';
+import ListHeader from './ListHeader';
+import { FaArrowLeft, FaArrowRight, FaExclamationCircle, FaInbox, FaXing } from 'react-icons/fa';
+import { useCardSearchControls } from './CardFilter';
 
 interface Props {
   deck: DeckDetailFragment;
@@ -495,7 +499,7 @@ function BaseDeckbuildingTabs({
   );
 }
 
-function UpgradeDeckbuildingTabs({ showCard, deck, unlockedRewards, renderControl, sideSlots, stats, cards }: {
+function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCard, deck, unlockedRewards, renderControl, sideSlots, slots, stats, cards }: {
   cards: CardsMap;
   stats: AspectStats;
   slots: Slots;
@@ -503,12 +507,15 @@ function UpgradeDeckbuildingTabs({ showCard, deck, unlockedRewards, renderContro
   unlockedRewards: string[] | undefined;
   deck: DeckFragment;
   showCard: ShowCard;
-  renderControl: (card: CardFragment) => React.ReactNode;
+  showCollectionCard: ShowCard;
+  showDisplacedCard: ShowCard;
+  renderControl: RenderCardControl;
 }) {
-  const [rewardCards, maladyCards, sideCards] = useMemo(() => {
+  const [rewardCards, maladyCards, sideCards, collectionCards] = useMemo(() => {
     const rc: CardFragment[] = [];
     const mc: CardFragment[] = [];
     const sc: CardFragment[] = [];
+    const ac: CardFragment[] = [];
     forEach(sortBy(values(cards), c => c?.set_position || 0), c => {
       if (!c) {
         return;
@@ -533,51 +540,80 @@ function UpgradeDeckbuildingTabs({ showCard, deck, unlockedRewards, renderContro
         rc.push(c);
         return;
       }
+      if (c.id && (sideSlots[c.id] || 0) + (slots[c.id] || 0) < 2) {
+        // Include any card you can take based on aspect level that you don't
+        // already have a full set of in your deck.
+        ac.push(c);
+      }
       if (c.id && (sideSlots[c.id] || 0) > 0) {
         sc.push(c);
         return;
       }
     });
-    return [rc, mc, sc];
-  }, [cards, sideSlots, stats]);
+    return [rc, mc, sc, ac];
+  }, [cards, slots, sideSlots, stats]);
+  const [tabIndex, setTabIndex] = useState(0);
+  const focusDisplaced = useCallback(() => setTabIndex(3), [setTabIndex]);
+
+  const [controls, hasFilters, filterCard] = useCardSearchControls(collectionCards, 'simple');
   return (
-    <Tabs>
-      <TabList overflowX="scroll" overflowY="hidden">
-        <Tab>{t`Rewards`}</Tab>
-        <Tab>{t`Maladies`}</Tab>
-        <Tab>{t`Displaced cards`}</Tab>
-        <Tab>{t`Description`}</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>
-          <SpoilerCardList
-            unlocked={unlockedRewards}
-            cards={rewardCards}
-            showCard={showCard}
-            renderControl={renderControl}
-            upsellText={!unlockedRewards ? t`You can add this deck to a campaign to track rewards you have unlocked as a group.` : undefined}
-          />
-        </TabPanel>
-        <TabPanel>
-          <SpoilerCardList
-            cards={maladyCards}
-            showCard={showCard}
-            renderControl={renderControl}
-          />
-        </TabPanel>
-        <TabPanel>
-          <SimpleCardList
-            cards={sideCards}
-            showCard={showCard}
-            renderControl={renderControl}
-            emptyText={t`Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp.`}
-          />
-        </TabPanel>
-        <TabPanel>
-          <EditDescriptionTab deck={deck} />
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
+    <>
+      <Tabs onChange={setTabIndex} index={tabIndex} minHeight={[0, "50vh"]}>
+        <TabList overflowX="scroll" overflowY="hidden">
+          <Tab>{t`Rewards`}</Tab>
+          <Tab>{t`Maladies`}</Tab>
+          <Tab>{t`Collection`}</Tab>
+          <Tab>{t`Displaced cards`}</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <SpoilerCardList
+              unlocked={unlockedRewards}
+              cards={rewardCards}
+              showCard={showCard}
+              renderControl={renderControl}
+              upsellText={!unlockedRewards ? t`You can add this deck to a campaign to track rewards you have unlocked as a group.` : undefined}
+            />
+          </TabPanel>
+          <TabPanel>
+            <SpoilerCardList
+              cards={maladyCards}
+              showCard={showCard}
+              renderControl={renderControl}
+            />
+          </TabPanel>
+          <TabPanel>
+            <Text fontSize="sm" marginBottom={2}>
+              {t`Some campaign events may allow you to permanently swap cards from your deck with those from the collection.`}
+            </Text>
+            <Text fontSize="sm" marginBottom={2}>
+              <Trans>
+                After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <Link textDecorationLine="underline" onClick={focusDisplaced}>displaced cards</Link> tab.
+              </Trans>
+            </Text>
+            <SimpleCardList
+              cards={collectionCards}
+              showCard={showCollectionCard}
+              controls={controls}
+              filter={filterCard}
+              hasFilters={hasFilters}
+            />
+          </TabPanel>
+          <TabPanel>
+            <SimpleCardList
+              cards={sideCards}
+              showCard={showDisplacedCard}
+              renderControl={renderControl}
+              emptyText={t`Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp.`}
+            />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+      <Text fontSize="md" marginBottom={4} paddingBottom={1} borderBottomWidth="1px">
+        {t`Description`}
+      </Text>
+      <EditDescriptionTab deck={deck} />
+    </>
   );
 }
 
@@ -610,12 +646,16 @@ export default function DeckEdit({ deck, cards }: Props) {
       updateSlots(card, count);
     } else if (card.id) {
       const diff = count - (slots[card.id] || 0);
-      updateSideSlots(card, (sideSlots[card.id] || 0) - diff);
+      updateSideSlots(card, Math.max((sideSlots[card.id] || 0) - diff, 0));
       updateSlots(card, count);
     }
   }, [slots, sideSlots, updateSlots, updateSideSlots]);
   const isUpgrade = !!deck.previous_deck;
-  const renderControl = useCallback((card: CardFragment, onClose?: () => void) => {
+  const renderControl = useCallback((
+    card: CardFragment,
+    onClose?: () => void,
+    max?: number
+  ) => {
     if (card.set_id === 'malady') {
       return (
         <IncDecCountControls
@@ -625,6 +665,9 @@ export default function DeckEdit({ deck, cards }: Props) {
         />
       );
     }
+    const theMax = (isUpgrade && card.id) ? (max || (
+      (slots[card.id] || 0) + (sideSlots[card.id] || 0))) : undefined;
+
     return (
       <CountControls
         card={card}
@@ -632,11 +675,52 @@ export default function DeckEdit({ deck, cards }: Props) {
         setSlots={!isUpgrade ? updateSlots : updateUpgradeSlots}
         countMode={!isUpgrade ? 'noah' : undefined}
         onClose={onClose}
+        max={theMax}
       />
     );
-  }, [slots, updateSlots, updateUpgradeSlots, isUpgrade]);
+  }, [slots, sideSlots, updateSlots, updateUpgradeSlots, isUpgrade]);
+
+  const renderCollectionControl = useCallback(
+    (card: CardFragment, onClose?: () => void) => {
+      return (
+        <Flex direction="column" alignItems="flex-end">
+          <Text fontSize="sm" textAlign="right" marginBottom={2}>
+            {
+              t`When adding a card from the collection, remember to return a deck card.`
+            }
+          </Text>
+          { renderControl(card, onClose, 2) }
+        </Flex>
+      );
+    }, [renderControl]);
+  const renderDisplacedControl = useCallback(
+    (card: CardFragment, onClose?: () => void) => {
+      return (
+        <Flex direction="column" alignItems="flex-end">
+          { !!card.id && (sideSlots[card.id] || 0) > 0 && (
+            <Button
+              marginBottom={2}
+              leftIcon={<FaInbox />}
+              onClick={() => {
+              if (card.id) {
+                const newCount = Math.max((sideSlots[card.id] || 0) - 1, 0);
+                updateSideSlots(card, newCount);
+                if (newCount === 0 && onClose) {
+                  onClose();
+                }
+              }
+            }}>
+              { t`Return a copy to the collection` }
+            </Button>
+          ) }
+          { renderControl(card, onClose) }
+        </Flex>
+      );
+    }, [renderControl, updateSideSlots, sideSlots]);
 
   const [showCard, cardModal] = useCardModal(slots, renderControl);
+  const [showCollectionCard, collectionCardModal] = useCardModal(slots, renderCollectionControl, 'collectionModal');
+  const [showDisplacedCard, displacedCardModal] = useCardModal(slots, renderDisplacedControl, 'displacedModal');
   const [meta, setMeta] = useState<DeckMeta>(deck.meta || {});
   const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
   const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
@@ -721,7 +805,7 @@ export default function DeckEdit({ deck, cards }: Props) {
   const { colors } = useTheme();
   return (
     <>
-      <SimpleGrid minChildWidth="400px" spacingX={4} spacingY="4rem" columns={[1, 1, 1, 2]}>
+      <SimpleGrid spacingX={4} spacingY="4rem" columns={[1, 1, 1, 2]}>
         <Box>
           <EditableTextInput
             value={name}
@@ -787,11 +871,13 @@ export default function DeckEdit({ deck, cards }: Props) {
           ) : (
             <UpgradeDeckbuildingTabs
               showCard={showCard}
+              showCollectionCard={showCollectionCard}
+              showDisplacedCard={showDisplacedCard}
               stats={stats}
               cards={cards}
+              sideSlots={sideSlots}
               slots={slots}
               unlockedRewards={deck.campaign?.rewards}
-              sideSlots={sideSlots}
               renderControl={renderControl}
               deck={deck}
             />
@@ -799,6 +885,8 @@ export default function DeckEdit({ deck, cards }: Props) {
         </Box>
       </SimpleGrid>
       { cardModal }
+      { collectionCardModal }
+      { displacedCardModal }
       { roleModal }
     </>
   );

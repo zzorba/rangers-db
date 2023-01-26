@@ -36,7 +36,7 @@ export function MoonIcon({ day, size, currentDay }: MoonIconProps) {
     <AspectRatio key={day} minWidth={`${size}px`} ratio={1}>
       <Box borderRadius={`${size / 2}px`}
         borderWidth={currentDay === day ? '3px' : '1px'}
-        borderColor="gray.500"
+        borderColor={isPast ? 'gray.500' : `${colorMode}.text`}
         backgroundColor={currentDay > day ? `${colorMode}.veryLightText` : undefined}
         position="relative"
       >
