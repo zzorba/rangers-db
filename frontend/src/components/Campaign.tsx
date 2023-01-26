@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { plural, t } from '@lingui/macro';
-import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim } from 'lodash';
+import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last } from 'lodash';
 import NextLink from 'next/link';
 import Router from 'next/router';
 
@@ -12,7 +12,7 @@ import FriendChooser from './FriendChooser';
 import ListHeader from './ListHeader';
 import CoreIcon from '../icons/CoreIcon';
 import { CompactDeckRow } from './Deck';
-import { CardsMap } from '../lib/hooks';
+import { CardsMap, useCategoryTranslations } from '../lib/hooks';
 import SubmitButton, { SubmitIconButton } from './SubmitButton';
 import { SlCheck, SlClose, SlMinus, SlPlus } from 'react-icons/sl';
 import { useLocale } from '../lib/TranslationProvider';
@@ -23,14 +23,15 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { FaClock, FaMoon, FaTrash, FaWalking } from 'react-icons/fa';
+import { FaArrowRight, FaCalendar, FaClock, FaMoon, FaTrash, FaWalking } from 'react-icons/fa';
+import { GiCampingTent } from 'react-icons/gi';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
 import MapLocationSelect from './MapLocationSelect';
 import CardSetSelect from './CardSetSelect';
-import { CampaignCycle, MapLocation } from '../types/types';
-import { MoonIcon } from '../icons/MoonIcon';
+import { CampaignCycle, MapLocation, MapLocations } from '../types/types';
+import MoonIconWithDate, { MoonIcon } from '../icons/MoonIcon';
 
 interface MissionEntry {
   day: number;
@@ -72,6 +73,7 @@ export interface ParsedCampaign {
   missions: MissionEntry[];
   calendar: CalendarEntry[];
   events: NotableEvent[];
+  history: HistoryEntry[];
   rewards: string[];
   removed: RemovedEntry[];
   latest_decks: LatestDeck[];
@@ -89,6 +91,7 @@ export class CampaignWrapper implements ParsedCampaign {
   access: UserInfoFragment[];
 
   events: NotableEvent[];
+  history: HistoryEntry[];
   missions: MissionEntry[];
   calendar: CalendarEntry[];
   removed: RemovedEntry[];
@@ -108,6 +111,7 @@ export class CampaignWrapper implements ParsedCampaign {
     this.calendar = Array.isArray(campaign.calendar) ? (campaign.calendar as CalendarEntry[]) : [];
     this.rewards = Array.isArray(campaign.rewards) ? (campaign.rewards as string[]) : [];
     this.events = Array.isArray(campaign.events) ? (campaign.events as NotableEvent[]) : [];
+    this.history = Array.isArray(campaign.history) ? (campaign.history as HistoryEntry[]) : [];
     this.removed = Array.isArray(campaign.removed) ? (campaign.removed as RemovedEntry[]) : [];
     this.current_location = campaign.current_location || undefined;
     this.current_path_terrain = campaign.current_path_terrain || undefined;
@@ -1087,6 +1091,199 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
   );
 }
 
+interface TravelDay {
+  day: number;
+  startingLocation: string | undefined;
+  travel: (HistoryEntry & { camped: boolean })[];
+}
+
+function TravelDayRow({ entry: { day, startingLocation, travel } }: { entry: TravelDay }) {
+  const { locations, paths } = useLocale();
+  const start = startingLocation ? locations[startingLocation] : undefined;
+  return (
+    <ListItem>
+      <Flex direction="row" alignItems="flex-start" padding={2} flexWrap="wrap">
+        { !!start && (
+          <>
+            <Flex direction="column" width="75px" alignItems="center">
+              <LocationIcon location={start} size={58} />
+              <Text textAlign="center" fontSize="xs">{start.name}</Text>
+            </Flex>
+            { !travel.length && (
+              <>
+                <Flex minHeight={58} direction="row" alignItems="center" marginRight={2}>
+                  <FaArrowRight />
+                </Flex>
+                <Flex direction="column" width="75px" marginRight={2} alignItems="center">
+                  <Flex height="58px" direction="column" justifyContent="center">
+                    <FaMoon size={36} />
+                  </Flex>
+                  <Text textAlign="center" fontSize="xs">{t`Stayed at ${start.name}`}</Text>
+                </Flex>
+              </>
+            )}
+          </>
+        ) }
+        { map(travel, ({ location, path_terrain, camped }, idx) => {
+          const path = path_terrain ? paths[path_terrain] : undefined;
+          const current: MapLocation | undefined = location ? locations[location] : undefined;
+          return (
+            <>
+              { !!path && (
+                <Flex minHeight={58} direction="row" alignItems="center" marginRight={2}>
+                  <FaArrowRight />
+                </Flex>
+              ) }
+              { !!path && (
+                <Flex minHeight={58} direction="row" alignItems="center" marginRight={2}>
+                  <Box margin={2}>
+                    <PathIcon key={`${day}-path-${idx}`} path={path} size={42} />
+                  </Box>
+                </Flex>
+              ) }
+              { !!path && (!!current || !!camped) && (
+                <Flex minHeight={58} direction="row" alignItems="center" marginRight={2}>
+                  <FaArrowRight />
+                </Flex>
+              ) }
+              { !!current && (
+                <Flex direction="column" width="75px" marginRight={2} alignItems="center">
+                  { camped ? <Flex height="58px" direction="column" justifyContent="center"><GiCampingTent size={48} /></Flex> : <LocationIcon key={`${day}-location-${idx}`} location={current} size={58} /> }
+                  <Text textAlign="center" fontSize="xs">{camped ? t`En route to ${current.name}` : current.name}</Text>
+                </Flex>
+              )}
+            </>
+          );
+        }) }
+      </Flex>
+    </ListItem>
+  );
+}
+
+function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode, ] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const weatherLabels = useWeather();
+  const travelHistory = useMemo(() => {
+    const days: {
+      [day: string]: (HistoryEntry & { camped: boolean })[] | undefined;
+    } = {}
+    let currentLocation: string | undefined = undefined;
+    forEach(campaign.history, entry => {
+      if (!currentLocation) {
+        currentLocation = entry.location;
+      }
+      const day = `${entry.day}`;
+      if (days[day]) {
+        days[day] = [
+          ...(days[day] || []),
+          {
+            ...entry,
+            camped: false,
+          },
+        ];
+      } else {
+        // Correction for off by one on history entries:
+        // the first entry on any given day is actually the previous day's entry
+        const previous = `${entry.day - 1}`;
+        days[previous] = [
+          ...(days[previous] || []),
+          {
+            ...entry,
+            camped: true,
+          },
+        ];
+        days[day] = [];
+      }
+    });
+    if (!currentLocation) {
+      currentLocation = campaign.current_location;
+    } else if (campaign.current_location) {
+      const currentDay = `${campaign.day}`;
+      if (days[currentDay]) {
+        days[currentDay] = [
+          ...(days[currentDay] || []),
+          {
+            day: campaign.day,
+            location: campaign.current_location,
+            path_terrain: campaign.current_path_terrain,
+            camped: false,
+          },
+        ];
+      } else {
+        const previousDay = `${campaign.day - 1}`;
+        days[previousDay] = [
+          ...(days[previousDay] || []),
+          {
+            day: campaign.day,
+            location: campaign.current_location,
+            path_terrain: campaign.current_path_terrain,
+            camped: true,
+          },
+        ];
+      }
+    }
+    const result: TravelDay[] = [];
+    forEach(range(1, campaign.day + 1), day => {
+      const dayString = `${day}`;
+      const travel = days[dayString];
+      if (travel?.length) {
+        result.push({
+          day,
+          startingLocation: currentLocation,
+          travel,
+        });
+        const end = last(travel);
+        if (end?.location) {
+          currentLocation = end.location;
+        }
+      } else {
+        if (currentLocation) {
+          result.push({
+            day,
+            startingLocation: currentLocation,
+            travel: [],
+          });
+        }
+      }
+    });
+    return result;
+  }, [campaign.history, campaign.current_path_terrain, campaign.current_location, campaign.day]);
+  return [
+    onOpen,
+    <Modal key="deck" scrollBehavior="inside" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent maxW="600px">
+        <ModalHeader>
+          <Heading>{t`Journey`}</Heading>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <List>
+            { map(travelHistory, (entry) => {
+              const day = entry.day;
+              const weather = find(weatherLabels, e => (e.start <= day && e.end >= day));
+              return (
+                <>
+                  <ListItem  key={`day-${day}`} padding={2} paddingTop={4} paddingBottom={0} borderBottomWidth={0.5} borderColor="#888888">
+                    <Flex direction="row" flex={1} alignItems="center" justifyContent="space-between">
+                      <Flex direction="row" alignItems="center" justifyContent="flex-start">
+                        <Box marginRight={2} marginBottom={0.5}><MoonIcon day={day} size={18} /></Box>
+                        <Text fontSize="m">{t`Day ${day}`}</Text>
+                      </Flex>
+                      { !!weather && <Text fontSize="sm" fontStyle="italic">{weather.name}</Text> }
+                    </Flex>
+                  </ListItem>
+                  <TravelDayRow key={`day-${day}-locs`} entry={entry} />
+                </>
+              )
+            }) }
+          </List>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
 function useEditEventModal(onUpdate: (idx: number, event: NotableEvent) => Promise<void>): [(index: number, event: NotableEvent) => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [index, setIndex] = useState<number>(0);
@@ -1260,7 +1457,7 @@ function DayButton({ day, currentDay, onClick }: { day: number; currentDay: numb
       variant="ghost"
       aria-label={t`Day ${day}`}
       icon={
-        <MoonIcon day={day} currentDay={currentDay} size={size} />
+        <MoonIconWithDate day={day} currentDay={currentDay} size={size} />
       }
     />
   );
@@ -1736,6 +1933,7 @@ function CycleChiclet({ cycle }: { cycle: CampaignCycle }) {
 export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
   const { cycles } = useLocale();
   const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign.cycle_id]);
+  const [showHistory, historyModal] = useJourneyModal(campaign);
   const [setCampaignLocationMutation] = useSetCampaignLocationMutation();
   const setCampaignLocation = useCallback(async(value: string) => {
     setCampaignLocationMutation({
@@ -1764,9 +1962,11 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
         title={campaign.name}
         subHeader={!!cycle ? <CycleChiclet cycle={cycle} /> : undefined}
       >
-        <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
+        <ButtonGroup>
+          <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
+          <Button leftIcon={<FaCalendar />} onClick={showHistory}>{t`Journey`}</Button>
+        </ButtonGroup>
       </PageHeading>
-
       <Timeline campaign={campaign} />
       <SimpleGrid columns={[1,1,1,2]} spacingY="2em" spacingX="1em">
         <Flex direction="column" paddingLeft={[1,1,2]}>
@@ -1828,6 +2028,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
         </Tabs>
       </SimpleGrid>
       { travelModal }
+      { historyModal }
     </>
   );
 }

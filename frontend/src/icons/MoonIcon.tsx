@@ -28,7 +28,28 @@ interface MoonIconProps {
   currentDay: number;
 }
 
-export function MoonIcon({ day, size, currentDay }: MoonIconProps) {
+export function MoonIcon({ day, size }: { day: number; size: number }) {
+  const { colorMode } = useColorMode();
+  return (
+    <AspectRatio key={day} minWidth={`${size}px`} width={`${size}px`} ratio={1}>
+      <Flex
+        borderRadius={`${size / 2}px`}
+        borderWidth="1px"
+        borderColor={`${colorMode}.lightText`}
+        position="relative"
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <MoonPhaseIcon icon={`day_${day}`} size={size} color={
+          `var(--chakra-colors-${colorMode}-lightText`
+        } />
+      </Flex>
+    </AspectRatio>
+  );
+}
+
+export default function MoonIconWithDate({ day, size, currentDay }: MoonIconProps) {
   const { colorMode } = useColorMode();
   const isPast = currentDay > day;
   const position = currentDay === day ? '-3px' : "-1px";

@@ -15,6 +15,7 @@ fragment Campaign on rangers_campaign {
   events
   rewards
   removed
+  history
   calendar
   latest_decks {
     deck {
