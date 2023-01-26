@@ -1223,7 +1223,7 @@ function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode
       }
     }
     const result: TravelDay[] = [];
-    forEach(range(1, campaign.day + 1), day => {
+    forEach(range(1, campaign.day), day => {
       const dayString = `${day}`;
       const travel = days[dayString];
       if (travel?.length) {
