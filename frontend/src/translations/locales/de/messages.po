@@ -15,7 +15,7 @@ msgstr ""
 
 #: src/components/CommentsComponent.tsx:59
 msgid "(edited)"
-msgstr ""
+msgstr "(bearbeitet)"
 
 #: src/components/Campaign.tsx:1648
 #~ msgid "- Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
@@ -88,11 +88,11 @@ msgstr "Zur Kampagne hinzufügen"
 
 #: src/components/DeckChanges.tsx:103
 msgid "Added"
-msgstr ""
+msgstr "Hinzugefügt"
 
 #: src/components/DeckChanges.tsx:127
 msgid "Added from collection"
-msgstr ""
+msgstr "Aus der Sammlung hinzugefügt"
 
 #: src/components/CardList.tsx:193
 msgid "Advanced controls"
@@ -104,7 +104,7 @@ msgstr "Erweiterte Filter"
 
 #: src/components/DeckEdit.tsx:590
 msgid "After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <0>displaced cards</0> tab."
-msgstr ""
+msgstr "Nachdem du eine neue Karte aus der Sammlung gewählt und eine Karte aus deinem entfernt hast, kannst du die Karte zur Sammlung 'zurücklegen', indem du den <0>Herausgenommene Karten</0> Tab benutzt."
 
 #: src/components/Campaign.tsx:386
 #: src/components/CardList.tsx:261
@@ -222,7 +222,7 @@ msgstr "Kampagnen"
 
 #: src/components/Campaign.tsx:1900
 msgid "Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
-msgstr ""
+msgstr "Wenn das Nachtlager aufgeschlagen wird, endet Tag {currentDay} und verdiente Belohnungen können in die Decks getauscht werden."
 
 #: src/components/Campaign.tsx:1066
 #: src/components/Campaign.tsx:1427
@@ -255,7 +255,7 @@ msgstr "Karten die aus deinem Deck entfernt wurden werden hier abgelegt. Sie kö
 #: src/components/DeckDetail.tsx:420
 #: src/components/DeckEdit.tsx:895
 msgid "Changes"
-msgstr ""
+msgstr "Änderungen"
 
 #: src/components/DeckDetail.tsx:420
 #~ msgid "Changes from <0>{0}</0>"
@@ -294,7 +294,7 @@ msgstr "Die gewählten Aspekte sind nicht zulässig."
 
 #: src/components/DeckEdit.tsx:565
 msgid "Collection"
-msgstr ""
+msgstr "Sammlung"
 
 #: src/components/CommentsComponent.tsx:150
 #: src/components/CommentsComponent.tsx:266
@@ -426,7 +426,7 @@ msgstr "Decks suchen"
 
 #: src/components/NavBar.tsx:64
 msgid "Decklists"
-msgstr ""
+msgstr "Decks"
 
 #: src/components/NavBar.tsx:64
 #~ msgid "Decks"
@@ -467,7 +467,7 @@ msgstr "Demo"
 
 #: src/components/Campaign.tsx:1836
 msgid "Departing {0}"
-msgstr ""
+msgstr "Verlasse {0}"
 
 #: src/components/DeckDetail.tsx:409
 #: src/components/DeckEdit.tsx:445
@@ -525,7 +525,7 @@ msgstr "Bearbeiten"
 #: src/components/CommentsComponent.tsx:66
 #: src/components/CommentsComponent.tsx:221
 msgid "Edit comment"
-msgstr ""
+msgstr "Kommentar bearbeiten"
 
 #: src/components/DeckEdit.tsx:370
 msgid "Edit description"
@@ -554,7 +554,7 @@ msgstr "E-Mail"
 
 #: src/components/Campaign.tsx:1152
 msgid "En route to {0}"
-msgstr ""
+msgstr "Unterwegs nach {0}"
 
 #: src/components/NavBar.tsx:101
 msgid "English"
@@ -684,7 +684,7 @@ msgstr "Italienisch"
 #: src/components/Campaign.tsx:1257
 #: src/components/Campaign.tsx:1967
 msgid "Journey"
-msgstr ""
+msgstr "Reise"
 
 #: src/lib/hooks.ts:609
 msgid "Kobo's Market"
@@ -722,7 +722,7 @@ msgstr "Gefällt mir"
 
 #: src/components/LoadMorePager.tsx:55
 msgid "Load more"
-msgstr ""
+msgstr "Mehr laden"
 
 #: src/components/Campaign.tsx:1864
 #: src/components/Campaign.tsx:1988
@@ -837,7 +837,7 @@ msgstr "Nächste Seite"
 
 #: src/components/DeckDetail.tsx:440
 msgid "Next deck"
-msgstr ""
+msgstr "Nächstes Deck"
 
 #: src/components/DeckDetail.tsx:436
 #~ msgid "Next deck ({0})"
@@ -997,7 +997,7 @@ msgstr "Vorherige Seite"
 
 #: src/components/DeckDetail.tsx:436
 msgid "Previous deck"
-msgstr ""
+msgstr "Vorheriges Deck"
 
 #: src/components/DeckDetail.tsx:421
 #~ msgid "Previous deck ({0})"
@@ -1040,7 +1040,7 @@ msgstr "Ranger"
 
 #: src/components/Campaign.tsx:1900
 msgid "Rangers will continue day {currentDay} with their current decks."
-msgstr ""
+msgstr "Die Ranger werden Tag {currentDay} mit ihren aktuellen Decks fortsetzen."
 
 #: src/components/NavBar.tsx:185
 #: src/components/PageHeading.tsx:10
@@ -1113,7 +1113,7 @@ msgstr "Belohnung entfernen"
 
 #: src/components/DeckChanges.tsx:115
 msgid "Removed"
-msgstr ""
+msgstr "Entfernt"
 
 #: src/components/Campaign.tsx:2012
 msgid "Removed Cards"
@@ -1125,11 +1125,11 @@ msgstr "Entfernte Karten"
 
 #: src/components/CommentsComponent.tsx:72
 msgid "Reply comment"
-msgstr ""
+msgstr "Kommentar beantworten"
 
 #: src/components/CommentsComponent.tsx:150
 msgid "Reply to comment"
-msgstr ""
+msgstr "Auf Kommentar antworten"
 
 #: src/components/FriendSearch.tsx:36
 msgid "Request friend"
@@ -1137,11 +1137,11 @@ msgstr "Freundschaftsanfrage senden"
 
 #: src/components/DeckEdit.tsx:713
 msgid "Return a copy to the collection"
-msgstr ""
+msgstr "Lege eine Kopie zur Sammlung zurück"
 
 #: src/components/DeckChanges.tsx:139
 msgid "Returned to collection"
-msgstr ""
+msgstr "Zur Sammlung zurückgelegt"
 
 #: src/components/FriendRequests.tsx:165
 #: src/components/FriendRequests.tsx:177
@@ -1286,7 +1286,7 @@ msgstr "Registrieren"
 
 #: src/components/DeckEdit.tsx:587
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
-msgstr ""
+msgstr "Manche Ereignisse in der Kampagne erlauben es dir, Karten aus deinem Deck mit Karten aus der Sammlung permanent zu tauschen."
 
 #: src/components/DeckEdit.tsx:443
 #: src/lib/parseDeck.ts:322
@@ -1312,7 +1312,7 @@ msgstr "Starter-Deck"
 
 #: src/components/Campaign.tsx:1121
 msgid "Stayed at {0}"
-msgstr ""
+msgstr "Geblieben in {0}"
 
 #: src/lib/hooks.ts:748
 msgid "Stoneweaver Bridge"
@@ -1396,7 +1396,7 @@ msgstr "Es sind zu viele Hobby-Karten in deinem Deck."
 
 #: src/pages/index.tsx:30
 msgid "There is also a <0>campaign</0> tracking system that you can share with your friends and track rewards and events as you progress through the valley."
-msgstr "Es gibt auch einen <0>Kampagnen-Tracker</0> den du mit deinen Freunden teilen kannst um Belohnungen und Ereignisse zu verfolgen während ihr durch das Tal wandert."
+msgstr "Benutze den <0>Kampagnen-Tracker</0>, den du auch mit deinen Freunden teilen kannst, um Belohnungen und Ereignisse aufzuzeichnen während ihr durch das Tal wandert."
 
 #~ msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
 #~ msgstr "Die Webseite sollte aber schnell stabil laufen. Diese Notiz wird entfernt, sobald ich mit dem Stand der Dinge zufrieden bin."
@@ -1411,7 +1411,7 @@ msgstr "Die Aspekt-Voraussetzung dieser Karte wird von deinen gewählten Aspekte
 
 #: src/components/CommentsComponent.tsx:57
 msgid "This comment was edited on {updatedTime}."
-msgstr ""
+msgstr "Dieser Kommentar wurde am {updatedTime} bearbeitet."
 
 #: src/components/Campaign.tsx:577
 msgid "This day is in the past. It is currently day {0}."
@@ -1477,7 +1477,7 @@ msgstr "Merkmale"
 #: src/components/Campaign.tsx:1913
 #: src/components/Campaign.tsx:1966
 msgid "Travel"
-msgstr "Reisen"
+msgstr "Jetzt reisen"
 
 #: src/components/DeckEdit.tsx:257
 msgid "Two aspects must be set to 2."
@@ -1517,7 +1517,7 @@ msgstr "Was ist passiert?"
 
 #: src/components/DeckEdit.tsx:689
 msgid "When adding a card from the collection, remember to return a deck card."
-msgstr ""
+msgstr "Wenn du eine Karte aus der Sammlung hinzufügst, denke daran eine Karte aus dem Deck zurückzulegen."
 
 #: src/lib/hooks.ts:149
 msgid "When starting a campaign, you must include two of each card in your deck."
