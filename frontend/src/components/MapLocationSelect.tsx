@@ -19,8 +19,9 @@ interface Props {
   filter?: (location: MapLocation) => boolean;
   decoration?: (location: MapLocation) => React.ReactNode | null;
   setValue: (value: string) => void;
+  editable?: boolean;
 }
-export default function MapLocationSelect({ value, setValue, decoration, filter: filterLocation }: Props) {
+export default function MapLocationSelect({ value, setValue, decoration, filter: filterLocation, editable }: Props) {
   const { locations } = useLocale();
   const options: MapLocationOption[] = useMemo(() => {
     return sortBy(

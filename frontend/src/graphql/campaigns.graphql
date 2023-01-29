@@ -282,6 +282,27 @@ mutation setCampaignDay(
   }
 }
 
+mutation addCampaignHistory(
+  $campaignId: Int!,
+  $history: jsonb!
+  $day: Int!
+) {
+  campaign: update_rangers_campaign_by_pk(
+    pk_columns: {
+	    id: $campaignId
+    }
+    _set: {
+      day: $day
+    }
+    _append: {
+      history: $history
+    }
+  ) {
+    id
+    history
+  }
+}
+
 mutation campaignTravel(
   $campaignId: Int!,
   $day: Int!,

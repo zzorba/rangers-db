@@ -1,18 +1,17 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
-import { plural, t } from '@lingui/macro';
-import { forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last } from 'lodash';
+import { t } from '@lingui/macro';
+import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last } from 'lodash';
 import NextLink from 'next/link';
 import Router from 'next/router';
 
-import { CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignLocationMutation, useSetCampaignMissionsMutation, useSetCampaignPathTerrainMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation } from '../generated/graphql/apollo-schema';
+import { CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignMissionsMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation, useAddCampaignHistoryMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
-import SolidButton from './SolidButton';
 import FriendChooser from './FriendChooser';
 import ListHeader from './ListHeader';
 import CoreIcon from '../icons/CoreIcon';
 import { CompactDeckRow } from './Deck';
-import { CardsMap, useCategoryTranslations } from '../lib/hooks';
+import { CardsMap } from '../lib/hooks';
 import SubmitButton, { SubmitIconButton } from './SubmitButton';
 import { SlCheck, SlClose, SlMinus, SlPlus } from 'react-icons/sl';
 import { useLocale } from '../lib/TranslationProvider';
@@ -23,15 +22,20 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { FaArrowRight, FaCalendar, FaClock, FaMoon, FaTrash, FaWalking } from 'react-icons/fa';
+import { FaArrowRight, FaCalendar, FaClock, FaMoon, FaSun, FaTrash, FaWalking } from 'react-icons/fa';
 import { GiCampingTent } from 'react-icons/gi';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
 import MapLocationSelect from './MapLocationSelect';
 import CardSetSelect from './CardSetSelect';
-import { CampaignCycle, MapLocation, MapLocations } from '../types/types';
+import { CampaignCycle, MapLocation } from '../types/types';
 import MoonIconWithDate, { MoonIcon } from '../icons/MoonIcon';
+
+const STARTING_LOCATIONS: { [campaign: string]: string } = {
+  demo: 'lone_tree_station',
+  core: 'lone_tree_station',
+};
 
 interface MissionEntry {
   day: number;
@@ -59,6 +63,7 @@ interface HistoryEntry {
   day: number;
   location?: string;
   path_terrain?: string;
+  camped?: boolean;
 }
 
 export interface ParsedCampaign {
@@ -436,36 +441,6 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
   const [setCalendar] = useSetCampaignCalendarMutation();
   const [day, setDay] = useState<number>(1);
   const [entries, setEntries] = useState<string[]>([]);
-  const onSubmit = useCallback(async() => {
-    if (!day) {
-      return;
-    }
-    const newEntry: CalendarEntry = {
-      day,
-      guides: filter(map(entries, e => trim(e)), x => !!x),
-    };
-    const calendar: CalendarEntry[] = [
-      ...flatMap(campaign.calendar, c => {
-        if (c.day === day) {
-          return [];
-        }
-        return c;
-      }),
-      ...(newEntry.guides.length ? [newEntry] : []),
-    ];
-
-    const result = await setCalendar({
-      variables: {
-        campaignId: campaign.id,
-        calendar,
-      },
-    });
-    if (result.errors?.length) {
-      return result.errors[0].message;
-    }
-    onClose();
-    return undefined;
-  }, [setCalendar, day, entries, campaign.id, campaign.calendar, onClose]);
   const onShow = useCallback((day: number) => {
     setDay(day);
     setEntries(find(campaign.calendar, e => e.day === day)?.guides || []);
@@ -531,35 +506,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
     }
     setEntries(currentDay.guides);
   }, [campaign.id, entries, setCalendar, campaign.calendar, day]);
-  const [setCampaignDay] = useSetCampaignDayMutation();
-  const onAdvanceTime = useCallback(async(): Promise<string | undefined> => {
-    const r = await setCampaignDay({
-      variables: {
-        campaignId: campaign.id,
-        day: day + 1,
-      },
-    });
-    if (r.errors?.length) {
-      return r.errors[0].message;
-    }
-    onClose();
-    return undefined;
-  }, [campaign, onClose, day, setCampaignDay]);
-  const onRollbackTime = useCallback(async(): Promise<string | undefined> => {
-    const r = await setCampaignDay({
-      variables: {
-        campaignId: campaign.id,
-        day,
-      },
-    });
-    if (r.errors?.length) {
-      return r.errors[0].message;
-    }
-    onClose();
-    return undefined;
-  }, [campaign, onClose, day, setCampaignDay]);
   const editable = day >= campaign.day;
-  const dayChange = (day - campaign.day + 1);
   return [
     onShow,
     <Modal key="mission" isOpen={isOpen} onClose={onClose}>
@@ -575,7 +522,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
           <Flex direction="column">
             { !editable &&  (
               <Text>{t`This day is in the past. It is currently day ${campaign.day}.`}</Text>
-            )}
+            ) }
             { (editable || entries.length > 0 || FIXED_GUIDE_ENTRIES[day]?.length) && (
               <Flex direction="row">
                 <CoreIcon icon="guide" size={22} />
@@ -627,38 +574,6 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
               ) }
             </List>
           </Flex>
-          <FormControl>
-            { editable ? (
-              <>
-                <Text>{t`Mark day ${day} as complete.`}</Text>
-                { dayChange > 1 && (
-                  <Text>
-                    { plural(dayChange, {
-                      one: `This will advance the calendar ${dayChange} day.`,
-                      other: `This will advance the calendar ${dayChange} days.`,
-                    }) }
-                  </Text>
-                ) }
-                <SubmitButton
-                  leftIcon={<FaMoon />}
-                  marginTop={1}
-                  color="blue"
-                  onSubmit={onAdvanceTime}
-                >
-                  { t`Finish day` }
-                </SubmitButton>
-              </>
-            ) : (
-              <SubmitButton
-                leftIcon={<FaClock />}
-                marginTop={1}
-                color="blue"
-                onSubmit={onRollbackTime}
-              >
-                { t`Rollback time to here` }
-              </SubmitButton>
-            ) }
-          </FormControl>
         </ModalBody>
       </ModalContent>
     </Modal>
@@ -1094,12 +1009,15 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
 interface TravelDay {
   day: number;
   startingLocation: string | undefined;
-  travel: (HistoryEntry & { camped: boolean })[];
+  travel: HistoryEntry[];
 }
 
-function TravelDayRow({ entry: { day, startingLocation, travel } }: { entry: TravelDay }) {
+function TravelDayRow({ entry: { day, startingLocation, travel }, currentDay }: { entry: TravelDay; currentDay: number }) {
   const { locations, paths } = useLocale();
   const start = startingLocation ? locations[startingLocation] : undefined;
+  const finalLocationId = last(travel)?.location || startingLocation;
+  const finalLocation = finalLocationId ? locations[finalLocationId] : undefined;
+  const camped = !!last(travel)?.camped;
   return (
     <ListItem>
       <Flex direction="row" alignItems="flex-start" padding={2} flexWrap="wrap">
@@ -1109,22 +1027,9 @@ function TravelDayRow({ entry: { day, startingLocation, travel } }: { entry: Tra
               <LocationIcon location={start} size={58} />
               <Text textAlign="center" fontSize="xs">{start.name}</Text>
             </Flex>
-            { !travel.length && (
-              <>
-                <Flex minHeight={58} direction="row" alignItems="center" marginRight={2}>
-                  <FaArrowRight />
-                </Flex>
-                <Flex direction="column" width="75px" marginRight={2} alignItems="center">
-                  <Flex height="58px" direction="column" justifyContent="center">
-                    <FaMoon size={36} />
-                  </Flex>
-                  <Text textAlign="center" fontSize="xs">{t`Stayed at ${start.name}`}</Text>
-                </Flex>
-              </>
-            )}
           </>
         ) }
-        { map(travel, ({ location, path_terrain, camped }, idx) => {
+        { map(travel, ({ day, location, path_terrain, camped }, idx) => {
           const path = path_terrain ? paths[path_terrain] : undefined;
           const current: MapLocation | undefined = location ? locations[location] : undefined;
           return (
@@ -1141,39 +1046,119 @@ function TravelDayRow({ entry: { day, startingLocation, travel } }: { entry: Tra
                   </Box>
                 </Flex>
               ) }
-              { !!path && (!!current || !!camped) && (
+              { !camped && (
                 <Flex minHeight={58} direction="row" alignItems="center" marginRight={2}>
                   <FaArrowRight />
                 </Flex>
               ) }
-              { !!current && (
+              { !!current && !camped && (
                 <Flex direction="column" width="75px" marginRight={2} alignItems="center">
-                  { camped ? <Flex height="58px" direction="column" justifyContent="center"><GiCampingTent size={48} /></Flex> : <LocationIcon key={`${day}-location-${idx}`} location={current} size={58} /> }
-                  <Text textAlign="center" fontSize="xs">{camped ? t`En route to ${current.name}` : current.name}</Text>
+                  <LocationIcon key={`${day}-location-${idx}`} location={current} size={58} />
+                  <Text textAlign="center" fontSize="xs">{current.name}</Text>
                 </Flex>
               )}
             </>
           );
         }) }
+        { !!finalLocation && day < currentDay && (
+          <>
+            <Flex minHeight={58} direction="row" alignItems="center" marginRight={2}>
+              <FaArrowRight />
+            </Flex>
+            <Flex direction="column" width="75px" marginRight={2} alignItems="center">
+              <Flex height="58px" direction="column" justifyContent="center">
+                { camped ? <GiCampingTent size={48} /> :  <FaMoon size={36} /> }
+              </Flex>
+              <Text textAlign="center" fontSize="xs">
+                {camped ? t`En route to ${finalLocation.name}` : t`Stayed at ${finalLocation.name}`}
+              </Text>
+            </Flex>
+          </>
+        ) }
       </Flex>
     </ListItem>
   );
 }
 
-function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode, ] {
+function useEndDayModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const weatherLabels = useWeather();
-  const travelHistory = useMemo(() => {
-    const days: {
-      [day: string]: (HistoryEntry & { camped: boolean })[] | undefined;
-    } = {}
-    let currentLocation: string | undefined = undefined;
+  const { locations } = useLocale();
+  const showModal = useCallback(() => {
+    onOpen();
+  }, [onOpen]);
+  const [setCampaignDay] = useSetCampaignDayMutation();
+  const onEndDay = useCallback(async() => {
+    const r = await setCampaignDay({
+      variables: {
+        campaignId: campaign.id,
+        day: campaign.day + 1,
+      }
+    });
+    if (r.errors?.length) {
+      return r.errors[0].message;
+    }
+    return undefined;
+  }, [campaign, setCampaignDay]);
+  const currentLocation = campaign.current_location ? locations[campaign.current_location] : undefined;
+  return [
+    showModal,
+    <Modal key="end-day" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent maxW="600px">
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`End the day`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          { !!currentLocation && (
+            <Flex direction="column" alignItems="center">
+              <LocationIcon location={currentLocation} size={58} />
+              <Text>{t`Current location: ${currentLocation.name}`}</Text>
+            </Flex>
+          ) }
+          <Text marginBottom={2}>
+            { t`This will end day ${campaign.day}.`}
+          </Text>
+          <Text fontStyle="italic">
+            { t`This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission.`}
+          </Text>
+          <Text fontStyle="italic">
+            {t`If you intend to Camp while travelling to a new location, please use the Travel button instead.`}
+          </Text>
+        </ModalBody>
+        <ModalFooter>
+          <Flex direction="row" flex={1} justifyContent="flex-end">
+            <SubmitButton leftIcon={<FaMoon />} color="blue" onSubmit={onEndDay}>
+              { t`End the day` }
+            </SubmitButton>
+          </Flex>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ]
+}
+
+/*
+ let liveLocation: string | undefined = STARTING_LOCATIONS[campaign.cycle_id];
     forEach(campaign.history, entry => {
       if (!currentLocation) {
         currentLocation = entry.location;
       }
       const day = `${entry.day}`;
-      if (days[day]) {
+      if (entry.ended) {
+        console.log(entry);
+        if (liveLocation !== entry.location) {
+          days[day] = [
+            ...(days[day] || []),
+            {
+              ...entry,
+              camped: false,
+            },
+          ];
+        }
+      } else if (days[day]) {
         days[day] = [
           ...(days[day] || []),
           {
@@ -1195,9 +1180,12 @@ function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode
         days[day] = [];
       }
     });
+
     if (!currentLocation) {
       currentLocation = campaign.current_location;
     } else if (campaign.current_location) {
+      // Figure out how to handle camping for one day or otherwise ending
+      // a session not by travelling.
       const currentDay = `${campaign.day}`;
       if (days[currentDay]) {
         days[currentDay] = [
@@ -1211,46 +1199,80 @@ function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode
         ];
       } else {
         const previousDay = `${campaign.day - 1}`;
-        days[previousDay] = [
-          ...(days[previousDay] || []),
-          {
-            day: campaign.day,
-            location: campaign.current_location,
-            path_terrain: campaign.current_path_terrain,
-            camped: true,
-          },
-        ];
+        console.log(previousDay);
+        const lastEntry = last(days[previousDay] || []);
+        console.log(lastEntry);
+        if (lastEntry?.location !== campaign.current_location) {
+          days[previousDay] = [
+            ...(days[previousDay] || []),
+            {
+              day: campaign.day,
+              location: campaign.current_location,
+              path_terrain: campaign.current_path_terrain,
+              camped: true,
+            },
+          ];
+        }
       }
     }
+*/
+
+function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const weatherLabels = useWeather();
+  const hasOldData = useMemo(() => {
+    const firstEntry = head(campaign.history);
+    return !!firstEntry && !firstEntry.path_terrain && firstEntry.location === 'lone_tree_station';
+  }, [campaign.history]);
+  const travelHistory = useMemo(() => {
+    const days: {
+      [day: string]: HistoryEntry[] | undefined;
+    } = {};
+    let currentLocation: string | undefined = undefined;
+    forEach(campaign.history, entry => {
+      if (!currentLocation) {
+        currentLocation = entry.location;
+      }
+      const day = `${entry.day}`;
+      days[day] = [
+        ...(days[day] || []),
+        entry,
+      ];
+    });
+
+    if (!currentLocation) {
+      currentLocation = campaign.current_location;
+    }
     const result: TravelDay[] = [];
-    forEach(range(1, campaign.day), day => {
+    let liveLocation: string | undefined = STARTING_LOCATIONS[campaign.cycle_id];
+    forEach(range(1, campaign.day + 1), day => {
       const dayString = `${day}`;
       const travel = days[dayString];
       if (travel?.length) {
         result.push({
           day,
-          startingLocation: currentLocation,
+          startingLocation: liveLocation,
           travel,
         });
         const end = last(travel);
         if (end?.location) {
-          currentLocation = end.location;
+          liveLocation = end.location;
         }
       } else {
         if (currentLocation) {
           result.push({
             day,
-            startingLocation: currentLocation,
+            startingLocation: liveLocation,
             travel: [],
           });
         }
       }
     });
     return result;
-  }, [campaign.history, campaign.current_path_terrain, campaign.current_location, campaign.day]);
+  }, [campaign.history, campaign.cycle_id, campaign.current_location, campaign.day]);
   return [
     onOpen,
-    <Modal key="deck" scrollBehavior="inside" isOpen={isOpen} onClose={onClose}>
+    <Modal key="journey" scrollBehavior="inside" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent maxW="600px">
         <ModalHeader>
@@ -1258,6 +1280,16 @@ function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
+          { !!hasOldData && (
+            <>
+              <Text fontStyle="italic">
+                { t`Note: this campaign was created before the website recorded enough information to show the travel history correclty.` }
+              </Text>
+              <Text fontStyle="italic">
+                { t`If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you.` }
+              </Text>
+            </>
+          ) }
           <List>
             { map(travelHistory, (entry) => {
               const day = entry.day;
@@ -1267,13 +1299,19 @@ function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode
                   <ListItem  key={`day-${day}`} padding={2} paddingTop={4} paddingBottom={0} borderBottomWidth={0.5} borderColor="#888888">
                     <Flex direction="row" flex={1} alignItems="center" justifyContent="space-between">
                       <Flex direction="row" alignItems="center" justifyContent="flex-start">
-                        <Box marginRight={2} marginBottom={0.5}><MoonIcon day={day} size={18} /></Box>
+                        <Box marginRight={2} marginBottom={0.5}>
+                          { day < campaign.day ? <MoonIcon day={day} size={18} /> : <FaSun /> }
+                        </Box>
                         <Text fontSize="m">{t`Day ${day}`}</Text>
                       </Flex>
                       { !!weather && <Text fontSize="sm" fontStyle="italic">{weather.name}</Text> }
                     </Flex>
                   </ListItem>
-                  <TravelDayRow key={`day-${day}-locs`} entry={entry} />
+                  <TravelDayRow
+                    key={`day-${day}-locs`}
+                    entry={entry}
+                    currentDay={campaign.day}
+                  />
                 </>
               )
             }) }
@@ -1306,7 +1344,7 @@ function useEditEventModal(onUpdate: (idx: number, event: NotableEvent) => Promi
   }, [onUpdate, onClose, index, text, crossedOut, setSubmitting]);
   return [
     showModal,
-    <Modal key="deck" isOpen={isOpen} onClose={onClose}>
+    <Modal key="event" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent maxW="600px">
         <ModalHeader>
@@ -1758,8 +1796,9 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
     }
     const history: HistoryEntry = {
       day: campaign.day,
-      location: campaign.current_location || undefined,
-      path_terrain: campaign.current_path_terrain || undefined,
+      location,
+      path_terrain: terrain,
+      camped: camp,
     };
     const r = await campaignTravel({
       variables: {
@@ -1831,7 +1870,7 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
         <ModalHeader>
           { currentLocation ? (
             <Flex direction="row" alignItems="center">
-              <LocationIcon location={currentLocation} size={52} />
+              <LocationIcon location={currentLocation} size={78} />
               <Text fontSize="3xl" marginLeft={1}>
                 {t`Departing ${currentLocation.name}`}
               </Text>
@@ -1851,15 +1890,17 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
             onTravel();
           }}>
             <Stack>
-              <Checkbox
-                marginBottom={2}
-                isChecked={camp}
-                onChange={(event) => {
-                  setCamp(event.target.checked);
-                }}
-              >
-                { t`Camp` }
-              </Checkbox>
+              { !!locationName && !!currentLocation && (
+                <Checkbox
+                  marginBottom={2}
+                  isChecked={showAll}
+                  onChange={(event) => {
+                    setShowAll(event.target.checked);
+                  }}
+                >
+                  { t`Show all locations` }
+                </Checkbox>
+              ) }
               <FormControl marginBottom={4}>
                 <FormLabel>{showAll ? t`Location` : t`Connecting Location`}</FormLabel>
                 <MapLocationSelect
@@ -1885,19 +1926,20 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
                   </>
                 )
               ) }
-              { !!locationName && !!currentLocation && (
-                <Checkbox
-                  marginBottom={2}
-                  isChecked={showAll}
-                  onChange={(event) => {
-                    setShowAll(event.target.checked);
-                  }}
-                >
-                  { t`Show all locations` }
-                </Checkbox>
-              ) }
+              <Checkbox
+                marginBottom={2}
+                isChecked={camp}
+                onChange={(event) => {
+                  setCamp(event.target.checked);
+                }}
+              >
+                { t`Camp` }
+              </Checkbox>
               <Text>
-                { !!camp ? t`Camping will end day ${currentDay} and allow any earned rewards to be swapped into decks.` : t`Rangers will continue day ${currentDay} with their current decks.`}
+                { !!camp ?
+                  t`Camping will end day ${currentDay} and allow any earned rewards to be swapped into decks.` :
+                  t`Rangers will continue playing day ${currentDay} with their current decks.`
+                }
               </Text>
             </Stack>
           </form>
@@ -1910,7 +1952,7 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
               leftIcon={camp ? <FaMoon /> : <FaWalking />}
               onSubmit={onTravel}
             >
-              { t`Travel` }
+              { camp ? t`Travel & Camp` : t`Travel` }
             </SubmitButton>
           </Flex>
         </ModalFooter>
@@ -1931,31 +1973,13 @@ function CycleChiclet({ cycle }: { cycle: CampaignCycle }) {
 }
 
 export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
-  const { cycles } = useLocale();
+  const { cycles, locations, paths } = useLocale();
   const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign.cycle_id]);
   const [showHistory, historyModal] = useJourneyModal(campaign);
-  const [setCampaignLocationMutation] = useSetCampaignLocationMutation();
-  const setCampaignLocation = useCallback(async(value: string) => {
-    setCampaignLocationMutation({
-      variables: {
-        campaignId: campaign.id,
-        location: value,
-      },
-    });
-  }, [setCampaignLocationMutation, campaign.id]);
-  const [setCampaignPathTerrainMutation] = useSetCampaignPathTerrainMutation();
-  const setCampaignTerrain = useCallback(async(value: string) => {
-    setCampaignPathTerrainMutation({
-      variables: {
-        campaignId: campaign.id,
-        terrain: value,
-      },
-    });
-  }, [setCampaignPathTerrainMutation, campaign.id]);
   const [onTravel, travelModal] = useTravelModal(campaign);
-  const filterLocation = useCallback((location: MapLocation): boolean => {
-    return !location.cycles || !!find(location.cycles, x => x === campaign.cycle_id);
-  }, [campaign.cycle_id]);
+  const [onEndDay, endDayModal] = useEndDayModal(campaign);
+  const currentLocation = campaign.current_location ? locations[campaign.current_location] : undefined;
+  const currentPath = campaign.current_path_terrain ? paths[campaign.current_path_terrain] : undefined;
   return (
     <>
       <PageHeading
@@ -1964,7 +1988,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       >
         <ButtonGroup>
           <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
-          <Button leftIcon={<FaCalendar />} onClick={showHistory}>{t`Journey`}</Button>
+          <Button leftIcon={<FaMoon />} onClick={onEndDay}>{t`End the day`}</Button>
         </ButtonGroup>
       </PageHeading>
       <Timeline campaign={campaign} />
@@ -1973,7 +1997,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
           <Box
             marginBottom={2}
             paddingLeft={4}
-            paddingRight={4}
+            paddingRight={2}
             paddingTop={2}
             paddingBottom={2}
             borderRadius="8px"
@@ -1981,21 +2005,39 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
             borderColor="gray.500"
             width="100%"
           >
-            <Text textAlign="center" fontSize="lg" fontWeight="600">
-              { t`Current Position` }
-            </Text>
-            <FormControl marginBottom={4}>
-              <FormLabel>{t`Location`}</FormLabel>
-              <MapLocationSelect
-                value={campaign.current_location}
-                filter={filterLocation}
-                setValue={setCampaignLocation}
-              />
-            </FormControl>
-            <FormControl marginBottom={2}>
-              <FormLabel>{t`Path Terrain`}</FormLabel>
-              <PathTypeSelect value={campaign.current_path_terrain} setValue={setCampaignTerrain} />
-            </FormControl>
+            <Flex direction="row" alignItems="center" justifyContent="center">
+              <Text textAlign="center" fontSize="lg" fontWeight="600">
+                { t`Current Position` }
+              </Text>
+            </Flex>
+            <Box marginBottom={4}>
+              <Text marginBottom={2}>{t`Location`}</Text>
+              { !!currentLocation && (
+                <Flex direction="row" alignItems="center">
+                  <LocationIcon location={currentLocation} size={64} />
+                  <Flex direction="column" marginLeft={2} justifyContent="center" alignItems="flex-start">
+                    <Text>{currentLocation.name}</Text>
+                  </Flex>
+                </Flex>
+              ) }
+            </Box>
+            <Box marginBottom={2}>
+              <Text marginBottom={2}>{t`Path Terrain`}</Text>
+              { !!currentPath ? (
+                <Flex direction="row" alignItems="center">
+                  <Box marginLeft={1} marginRight={3}>
+                    <PathIcon path={currentPath} size={48} />
+                  </Box>
+                  <Text marginLeft={2}>{currentPath.name}</Text>
+                </Flex>
+              ) : <Text fontStyle="italic">{t`None`}</Text>}
+            </Box>
+            <ButtonGroup>
+              <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
+              { (campaign.day > 1 || campaign.history.length > 0) && (
+                <Button leftIcon={<FaCalendar />} onClick={showHistory}>{t`Recorded journey`}</Button>
+              ) }
+            </ButtonGroup>
           </Box>
           <CampaignRangersSection
             campaign={campaign}
@@ -2029,6 +2071,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       </SimpleGrid>
       { travelModal }
       { historyModal }
+      { endDayModal }
     </>
   );
 }
@@ -2152,7 +2195,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
       variables: {
         name,
         cycleId: cycle,
-        currentLocation: 'lone_tree_station',
+        currentLocation: STARTING_LOCATIONS[cycle],
       },
     });
     if (result.errors?.length) {

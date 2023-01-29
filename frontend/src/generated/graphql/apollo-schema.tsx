@@ -37885,6 +37885,15 @@ export type SetCampaignDayMutationVariables = Exact<{
 
 export type SetCampaignDayMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, day: number } | null };
 
+export type AddCampaignHistoryMutationVariables = Exact<{
+  campaignId: Scalars['Int'];
+  history: Scalars['jsonb'];
+  day: Scalars['Int'];
+}>;
+
+
+export type AddCampaignHistoryMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, history: any } | null };
+
 export type CampaignTravelMutationVariables = Exact<{
   campaignId: Scalars['Int'];
   day: Scalars['Int'];
@@ -39111,6 +39120,46 @@ export function useSetCampaignDayMutation(baseOptions?: Apollo.MutationHookOptio
 export type SetCampaignDayMutationHookResult = ReturnType<typeof useSetCampaignDayMutation>;
 export type SetCampaignDayMutationResult = Apollo.MutationResult<SetCampaignDayMutation>;
 export type SetCampaignDayMutationOptions = Apollo.BaseMutationOptions<SetCampaignDayMutation, SetCampaignDayMutationVariables>;
+export const AddCampaignHistoryDocument = gql`
+    mutation addCampaignHistory($campaignId: Int!, $history: jsonb!, $day: Int!) {
+  campaign: update_rangers_campaign_by_pk(
+    pk_columns: {id: $campaignId}
+    _set: {day: $day}
+    _append: {history: $history}
+  ) {
+    id
+    history
+  }
+}
+    `;
+export type AddCampaignHistoryMutationFn = Apollo.MutationFunction<AddCampaignHistoryMutation, AddCampaignHistoryMutationVariables>;
+
+/**
+ * __useAddCampaignHistoryMutation__
+ *
+ * To run a mutation, you first call `useAddCampaignHistoryMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCampaignHistoryMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCampaignHistoryMutation, { data, loading, error }] = useAddCampaignHistoryMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      history: // value for 'history'
+ *      day: // value for 'day'
+ *   },
+ * });
+ */
+export function useAddCampaignHistoryMutation(baseOptions?: Apollo.MutationHookOptions<AddCampaignHistoryMutation, AddCampaignHistoryMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddCampaignHistoryMutation, AddCampaignHistoryMutationVariables>(AddCampaignHistoryDocument, options);
+      }
+export type AddCampaignHistoryMutationHookResult = ReturnType<typeof useAddCampaignHistoryMutation>;
+export type AddCampaignHistoryMutationResult = Apollo.MutationResult<AddCampaignHistoryMutation>;
+export type AddCampaignHistoryMutationOptions = Apollo.BaseMutationOptions<AddCampaignHistoryMutation, AddCampaignHistoryMutationVariables>;
 export const CampaignTravelDocument = gql`
     mutation campaignTravel($campaignId: Int!, $day: Int!, $currentLocation: String!, $currentPathTerrain: String!, $history: jsonb!) {
   campaign: update_rangers_campaign_by_pk(
