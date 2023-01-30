@@ -17,17 +17,9 @@ msgstr ""
 msgid "(edited)"
 msgstr "(bearbeitet)"
 
-#: src/components/Campaign.tsx:1648
-#~ msgid "- Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
-#~ msgstr ""
-
 #: src/components/DeckEdit.tsx:354
 msgid "- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting."
 msgstr "- Werden Flavortexte mit <f>dies ist ein Flavortext</f> hinzugefügt, erhalten sie das gleiche Styling wie auf den Karten."
-
-#: src/components/Campaign.tsx:1648
-#~ msgid "- Rangers will continue day {currentDay} with their current decks."
-#~ msgstr ""
 
 #: src/components/DeckEdit.tsx:355
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
@@ -98,13 +90,9 @@ msgstr "Aus der Sammlung hinzugefügt"
 msgid "Advanced controls"
 msgstr "Erweiterte Filter"
 
-#: src/components/DeckEdit.tsx:587
-#~ msgid "After selecting a new collection card and removing one from your deck, you can &lsqu;return&rsqu; a card to the collection using the <0>displaced cards</0> tab."
-#~ msgstr ""
-
 #: src/components/DeckEdit.tsx:590
 msgid "After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <0>displaced cards</0> tab."
-msgstr "Nachdem du eine neue Karte aus der Sammlung gewählt und eine Karte aus deinem entfernt hast, kannst du die Karte zur Sammlung 'zurücklegen', indem du den <0>Herausgenommene Karten</0> Tab benutzt."
+msgstr "Nachdem du eine neue Karte aus der Sammlung gewählt und eine Karte aus deinem Deck entfernt hast, kannst du die Karte zur Sammlung 'zurücklegen', indem du den <0>Herausgenommene Karten</0> Tab benutzt."
 
 #: src/components/Campaign.tsx:391
 #: src/components/CardList.tsx:261
@@ -257,10 +245,6 @@ msgstr "Karten die aus deinem Deck entfernt wurden werden hier abgelegt. Sie kö
 msgid "Changes"
 msgstr "Änderungen"
 
-#: src/components/DeckDetail.tsx:420
-#~ msgid "Changes from <0>{0}</0>"
-#~ msgstr ""
-
 #: src/components/Campaign.tsx:302
 #: src/components/Campaign.tsx:1705
 msgid "Choose deck"
@@ -391,7 +375,7 @@ msgstr "Aktuelle Position"
 
 #: src/components/Campaign.tsx:1118
 msgid "Current location: {0}"
-msgstr ""
+msgstr "Aktueller Ort: {0}"
 
 #: src/components/DeckEdit.tsx:1048
 msgid "Custom deck"
@@ -408,9 +392,6 @@ msgstr "Dark Mode"
 #: src/components/Campaign.tsx:852
 msgid "Day"
 msgstr "Tag"
-
-#~ msgid "Day {0}"
-#~ msgstr "Tag {0}"
 
 #: src/components/Campaign.tsx:181
 #: src/components/Campaign.tsx:517
@@ -431,10 +412,6 @@ msgstr "Decks suchen"
 #: src/components/NavBar.tsx:64
 msgid "Decklists"
 msgstr "Decks"
-
-#: src/components/NavBar.tsx:64
-#~ msgid "Decks"
-#~ msgstr "Decks"
 
 #: src/components/Campaign.tsx:195
 #: src/components/Campaign.tsx:195
@@ -464,10 +441,6 @@ msgstr "Wenn du dieses veröffentlichte Deck entfernst, wird es auch aus der Suc
 #: src/pages/admin/map.tsx:70
 msgid "Demo"
 msgstr "Demo"
-
-#: src/components/Campaign.tsx:1646
-#~ msgid "Departing from {locationName}:"
-#~ msgstr ""
 
 #: src/components/Campaign.tsx:1875
 msgid "Departing {0}"
@@ -564,7 +537,7 @@ msgstr "Unterwegs nach {0}"
 #: src/components/Campaign.tsx:1134
 #: src/components/Campaign.tsx:1991
 msgid "End the day"
-msgstr ""
+msgstr "Tag beenden"
 
 #: src/components/NavBar.tsx:101
 msgid "English"
@@ -674,9 +647,6 @@ msgstr "Oberlauf-Station"
 msgid "Hide spoilers"
 msgstr "Spoiler verstecken"
 
-#~ msgid "However, you can share links to your individual decks to inspire others."
-#~ msgstr "Du kannst aber schon Links zu deinen eigenen Decks teilen, um  andere zu inspirieren."
-
 #: src/components/Campaign.tsx:1534
 #: src/components/Campaign.tsx:1544
 #: src/components/Campaign.tsx:1559
@@ -685,11 +655,11 @@ msgstr "Sturmböen"
 
 #: src/components/Campaign.tsx:1128
 msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
-msgstr ""
+msgstr "Wenn du dein Nachtlager aufschlagen möchtest während du an einen neuen Ort reist, nutze bitte den 'Reisen' Button."
 
 #: src/components/Campaign.tsx:1289
 msgid "If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
-msgstr ""
+msgstr "Wenn du das gerne korrigieren möchtest, schicke mir einen Link zu deiner Kampagne und was die korrekte Reise war an arkhamcards@gmail.com und ich korrigiere es für dich."
 
 #: src/components/Footer.tsx:29
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
@@ -882,7 +852,7 @@ msgstr "Kein Ergebnis"
 
 #: src/components/Campaign.tsx:2033
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: src/lib/hooks.ts:572
 msgid "Northern Outpost"
@@ -926,7 +896,7 @@ msgstr "Hinweis: Karten aus deiner gewählten Expertise/Vorgeschichte werden hie
 
 #: src/components/Campaign.tsx:1286
 msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
-msgstr ""
+msgstr "Hinweis: Diese Kampagne wurde erstellt bevor die Webseite ausreichend Informationen aufgezeichnet hat um die bisherige Reise korrekt anzuzeigen."
 
 #: src/lib/hooks.ts:182
 msgid "Old-growth"
@@ -1068,7 +1038,7 @@ msgstr "Ranger"
 
 #: src/components/Campaign.tsx:1941
 msgid "Rangers will continue playing day {currentDay} with their current decks."
-msgstr ">>>>>>> Stashed changes"
+msgstr "Die Ranger werden Tag {currentDay} mit ihren aktuellen Decks weiterspielen."
 
 #: src/components/NavBar.tsx:185
 #: src/components/PageHeading.tsx:10
@@ -1112,7 +1082,7 @@ msgstr "Kampagnenbucheintrag notieren"
 
 #: src/components/Campaign.tsx:2038
 msgid "Recorded journey"
-msgstr ""
+msgstr "Aufgezeichnete Reise"
 
 #: src/components/Register.tsx:53
 #: src/pages/register.tsx:14
@@ -1150,10 +1120,6 @@ msgstr "Entfernt"
 #: src/components/Campaign.tsx:2054
 msgid "Removed Cards"
 msgstr "Entfernte Karten"
-
-#: src/components/CommentsComponent.tsx:107
-#~ msgid "Reply"
-#~ msgstr ""
 
 #: src/components/CommentsComponent.tsx:72
 msgid "Reply comment"
@@ -1451,7 +1417,7 @@ msgstr "Dieser Tag liegt in der Vergangenheit. Es ist jetzt Tag {0}."
 
 #: src/components/Campaign.tsx:1125
 msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
-msgstr ""
+msgstr "Diese Option sollte gewählt werden, wenn ein Ranger zu müde oder zu verletzt ist oder wenn es von der Kampagne oder einer Mission verlangt wird."
 
 #: src/lib/hooks.ts:150
 msgid "This role card does not match your chosen specialty."
@@ -1463,7 +1429,7 @@ msgstr "Diese Webseite befindet sich noch im Aufbau, aber du kannst bereits die 
 
 #: src/components/Campaign.tsx:1122
 msgid "This will end day {0}."
-msgstr ""
+msgstr "Tag {0} wird beendet."
 
 #: src/components/DeckDetail.tsx:192
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
@@ -1518,11 +1484,11 @@ msgstr "Merkmale"
 #: src/components/Campaign.tsx:1990
 #: src/components/Campaign.tsx:2036
 msgid "Travel"
-msgstr "Jetzt reisen"
+msgstr "Reisen"
 
 #: src/components/Campaign.tsx:1955
 msgid "Travel & Camp"
-msgstr ""
+msgstr "Reisen & Nachtlager aufschlagen"
 
 #: src/components/DeckEdit.tsx:257
 msgid "Two aspects must be set to 2."
@@ -1630,17 +1596,6 @@ msgstr "Deine Hobby-Karte kann nicht das Experte-Merkmal haben."
 msgid "Your role card does not match your chosen specialty."
 msgstr "Deine Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 
-#: src/components/CardFilter.tsx:353
-#~ msgid "card_set.other"
-#~ msgstr "Andere"
-
-#~ msgid "card_set_header"
-#~ msgstr ""
-
-#: src/components/DeckDetail.tsx:421
-#~ msgid "previous deck"
-#~ msgstr ""
-
 #: src/components/Deck.tsx:68
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} Schwächung)} other {({2} Schwächungen)}}"
@@ -1661,18 +1616,6 @@ msgstr "{0}/{1}"
 #: src/components/DeckEdit.tsx:1010
 msgid "{background} - {specialty} (Starter)"
 msgstr "{background} - {specialty} (Starter)"
-
-#: src/components/Campaign.tsx:1643
-#~ msgid "{currentDay, plural, one {Departing from {locationName} to end day {currentDay}.} other {Departing from {locationName} to end day {currentDay}.}}"
-#~ msgstr "{currentDay, plural, one {Verlasse {locationName} um Tag {currentDay} zu beenden.} other {Verlasse {locationName} um Tag {currentDay} zu beenden.}}"
-
-#: src/components/Campaign.tsx:636
-#~ msgid "{dayChange, plural, one {This will advance the calendar {dayChange} day.} other {This will advance the calendar {dayChange} days.}}"
-#~ msgstr "{dayChange, plural, one {Das wird den Kalender {dayChange} Tag fortschreiten lassen.} other {Das wird den Kalender {dayChange} Tage fortschreiten lassen.}}"
-
-#: src/components/DeckDetail.tsx:190
-#~ msgid "{likeCount, plural, one {{likeCount} like} other {{likeCount} likes}}"
-#~ msgstr "{likeCount, plural, one {Gefällt {likeCount} Mal} other {Gefällt {likeCount} Mal}}"
 
 #: src/components/DeckProblemComponent.tsx:29
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
