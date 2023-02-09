@@ -23,12 +23,12 @@ const languageOptions: LanguageOption[] = [
     value: 'de',
     label: <DE />,
   },
-  /*
   {
     value: 'it',
     label: '🇮🇹',
     fullLabel: '🇮🇹 Italiano'
   },
+  /*
   {
     value: 'fr',
     label: '🇫🇷',

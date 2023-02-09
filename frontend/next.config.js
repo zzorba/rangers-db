@@ -27,7 +27,8 @@ const nextConfig = {
       {
         domain: process.env.NODE_ENV === 'development' ? 'it.localhost' : 'it.rangersdb.com',
         defaultLocale: 'it',
-        http: process.env.NODE_ENV === 'development',      },
+        http: process.env.NODE_ENV === 'development',
+      },
       {
         domain: process.env.NODE_ENV === 'development' ? 'pseudo.localhost' : 'pseudo.rangersdb.com',
         defaultLocale: 'pseudo',
