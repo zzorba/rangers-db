@@ -30,8 +30,7 @@ const languageOptions: LanguageOption[] = [
   /*
   {
     value: 'fr',
-    label: '🇫🇷',
-    fullLabel: '🇫🇷 Français'
+    label: <FR />,
   },
   */
 ];
@@ -52,8 +51,7 @@ const mobileLanguageOptions: LanguageOption[] = [
   /*
   {
     value: 'fr',
-    label: '🇫🇷',
-    fullLabel: '🇫🇷 Français'
+    label: <Flex direction="row"><FR width="20px" /><Text marginLeft={2}>Français</Text></Flex>,
   },
   */
 ];
