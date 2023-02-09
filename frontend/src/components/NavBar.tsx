@@ -105,7 +105,7 @@ export function LanguageSwitcher() {
 
   // enable 'pseudo' locale only for development environment
   if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') {
-    languages['pseudo'] = t`Pseudo`
+    languages['pseudo'] = 'Pseudo';
   }
 
   useEffect(() => {

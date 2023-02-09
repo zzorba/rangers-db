@@ -1013,8 +1013,8 @@ msgid "Progress {progressNumber}"
 msgstr "Fortschritt {progressNumber}"
 
 #: src/components/NavBar.tsx:108
-msgid "Pseudo"
-msgstr "Pseudonym"
+#~ msgid "Pseudo"
+#~ msgstr "Pseudonym"
 
 #: src/components/DeckDetail.tsx:318
 msgid "Publish"
