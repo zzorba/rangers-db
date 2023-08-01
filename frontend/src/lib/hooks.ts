@@ -289,7 +289,7 @@ const CONNECTIONS: { locA: string; locB: string; path: Path }[] = [
   {
     locA: 'kobos_market',
     locB: 'boulder_field',
-    path: Path.OLD_GROWTH,
+    path: Path.GRASSLAND,
   },
   {
     locA: 'kobos_market',

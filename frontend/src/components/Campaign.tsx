@@ -1097,8 +1097,9 @@ function useEndDayModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
     if (r.errors?.length) {
       return r.errors[0].message;
     }
+    onClose();
     return undefined;
-  }, [campaign, setCampaignDay]);
+  }, [campaign, setCampaignDay, onClose]);
   const currentLocation = campaign.current_location ? locations[campaign.current_location] : undefined;
   return [
     showModal,
