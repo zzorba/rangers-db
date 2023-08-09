@@ -29,7 +29,7 @@ export interface MapLocation {
   id: string;
   name: string;
   background?: boolean;
-  type: 'location' | 'trail';
+  type: 'location' | 'trail' | 'general';
   cycles?: string[];
   connections: MapLocationConnection[];
 }
