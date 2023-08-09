@@ -41,10 +41,10 @@ msgstr ""
 msgid "30 Cards"
 msgstr ""
 
-#: src/components/Campaign.tsx:1514
-#: src/components/Campaign.tsx:1524
-#: src/components/Campaign.tsx:1549
-#: src/components/Campaign.tsx:1564
+#: src/components/Campaign.tsx:1515
+#: src/components/Campaign.tsx:1525
+#: src/components/Campaign.tsx:1550
+#: src/components/Campaign.tsx:1565
 msgid "A Perfect Day"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgid "Actions"
 msgstr ""
 
 #: src/components/Campaign.tsx:648
-#: src/components/Campaign.tsx:1774
+#: src/components/Campaign.tsx:1775
 #: src/components/FriendChooser.tsx:44
 msgid "Add"
 msgstr ""
@@ -202,12 +202,12 @@ msgstr ""
 msgid "Branch"
 msgstr ""
 
-#: src/components/Campaign.tsx:1936
+#: src/components/Campaign.tsx:1937
 #: src/components/DeckDetail.tsx:306
 msgid "Camp"
 msgstr ""
 
-#: src/components/Campaign.tsx:2254
+#: src/components/Campaign.tsx:2255
 #: src/pages/admin/map.tsx:64
 #: src/pages/campaigns/[cid].tsx:83
 #: src/pages/campaigns/[cid].tsx:102
@@ -222,12 +222,12 @@ msgstr ""
 msgid "Campaigns"
 msgstr ""
 
-#: src/components/Campaign.tsx:1940
+#: src/components/Campaign.tsx:1941
 msgid "Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
 msgstr ""
 
 #: src/components/Campaign.tsx:981
-#: src/components/Campaign.tsx:1465
+#: src/components/Campaign.tsx:1466
 #: src/components/EditableTextInput.tsx:25
 #: src/components/useDeleteDialog.tsx:50
 msgid "Cancel"
@@ -264,7 +264,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/Campaign.tsx:302
-#: src/components/Campaign.tsx:1705
+#: src/components/Campaign.tsx:1706
 msgid "Choose deck"
 msgstr ""
 
@@ -321,7 +321,7 @@ msgstr ""
 msgid "Conflict"
 msgstr ""
 
-#: src/components/Campaign.tsx:1905
+#: src/components/Campaign.tsx:1906
 msgid "Connecting Location"
 msgstr ""
 
@@ -355,7 +355,7 @@ msgstr ""
 msgid "Copy this deck to make your own changes."
 msgstr ""
 
-#: src/components/Campaign.tsx:2261
+#: src/components/Campaign.tsx:2262
 #: src/pages/admin/map.tsx:71
 msgid "Core"
 msgstr ""
@@ -373,13 +373,13 @@ msgstr ""
 msgid "Could not find user {handle}"
 msgstr ""
 
-#: src/components/Campaign.tsx:2283
+#: src/components/Campaign.tsx:2284
 #: src/components/DeckEdit.tsx:1122
 #: src/components/DeckEdit.tsx:1132
 msgid "Create"
 msgstr ""
 
-#: src/components/Campaign.tsx:1372
+#: src/components/Campaign.tsx:1373
 msgid "Crossed-out"
 msgstr ""
 
@@ -387,11 +387,11 @@ msgstr ""
 msgid "Crossroads Station"
 msgstr ""
 
-#: src/components/Campaign.tsx:2010
+#: src/components/Campaign.tsx:2011
 msgid "Current Position"
 msgstr ""
 
-#: src/components/Campaign.tsx:1118
+#: src/components/Campaign.tsx:1119
 msgid "Current location: {0}"
 msgstr ""
 
@@ -417,8 +417,8 @@ msgstr ""
 
 #: src/components/Campaign.tsx:181
 #: src/components/Campaign.tsx:517
-#: src/components/Campaign.tsx:1305
-#: src/components/Campaign.tsx:1496
+#: src/components/Campaign.tsx:1306
+#: src/components/Campaign.tsx:1497
 msgid "Day {day}"
 msgstr ""
 
@@ -462,7 +462,7 @@ msgstr ""
 msgid "Deleting this published deck will cause will remove it from search."
 msgstr ""
 
-#: src/components/Campaign.tsx:2260
+#: src/components/Campaign.tsx:2261
 #: src/lib/hooks.ts:550
 #: src/pages/admin/map.tsx:70
 msgid "Demo"
@@ -472,7 +472,7 @@ msgstr ""
 #~ msgid "Departing from {locationName}:"
 #~ msgstr ""
 
-#: src/components/Campaign.tsx:1875
+#: src/components/Campaign.tsx:1876
 msgid "Departing {0}"
 msgstr ""
 
@@ -504,10 +504,10 @@ msgstr ""
 msgid "Done editing"
 msgstr ""
 
-#: src/components/Campaign.tsx:1519
-#: src/components/Campaign.tsx:1529
-#: src/components/Campaign.tsx:1539
-#: src/components/Campaign.tsx:1554
+#: src/components/Campaign.tsx:1520
+#: src/components/Campaign.tsx:1530
+#: src/components/Campaign.tsx:1540
+#: src/components/Campaign.tsx:1555
 msgid "Downpour"
 msgstr ""
 
@@ -539,11 +539,11 @@ msgstr ""
 msgid "Edit mission"
 msgstr ""
 
-#: src/components/Campaign.tsx:1352
+#: src/components/Campaign.tsx:1353
 msgid "Edit notable event"
 msgstr ""
 
-#: src/components/Campaign.tsx:2133
+#: src/components/Campaign.tsx:2134
 msgid "Edit players"
 msgstr ""
 
@@ -560,9 +560,9 @@ msgstr ""
 msgid "En route to {0}"
 msgstr ""
 
-#: src/components/Campaign.tsx:1110
-#: src/components/Campaign.tsx:1134
-#: src/components/Campaign.tsx:1991
+#: src/components/Campaign.tsx:1111
+#: src/components/Campaign.tsx:1135
+#: src/components/Campaign.tsx:1992
 msgid "End the day"
 msgstr ""
 
@@ -640,6 +640,10 @@ msgstr ""
 msgid "Friends"
 msgstr ""
 
+#: src/components/CardSetSelect.tsx:27
+msgid "General"
+msgstr ""
+
 #: src/components/NavBar.tsx:102
 msgid "German"
 msgstr ""
@@ -678,17 +682,17 @@ msgstr ""
 #~ msgid "However, you can share links to your individual decks to inspire others."
 #~ msgstr ""
 
-#: src/components/Campaign.tsx:1534
-#: src/components/Campaign.tsx:1544
-#: src/components/Campaign.tsx:1559
+#: src/components/Campaign.tsx:1535
+#: src/components/Campaign.tsx:1545
+#: src/components/Campaign.tsx:1560
 msgid "Howling Winds"
 msgstr ""
 
-#: src/components/Campaign.tsx:1128
+#: src/components/Campaign.tsx:1129
 msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
 msgstr ""
 
-#: src/components/Campaign.tsx:1289
+#: src/components/Campaign.tsx:1290
 msgid "If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 msgstr ""
 
@@ -704,7 +708,7 @@ msgstr ""
 msgid "Italian"
 msgstr ""
 
-#: src/components/Campaign.tsx:1279
+#: src/components/Campaign.tsx:1280
 msgid "Journey"
 msgstr ""
 
@@ -716,7 +720,7 @@ msgstr ""
 msgid "Lakeshore"
 msgstr ""
 
-#: src/components/LanguageChooser.tsx:134
+#: src/components/LanguageChooser.tsx:130
 msgid "Language"
 msgstr ""
 
@@ -746,12 +750,12 @@ msgstr ""
 msgid "Load more"
 msgstr ""
 
-#: src/components/Campaign.tsx:1905
-#: src/components/Campaign.tsx:2014
+#: src/components/Campaign.tsx:1906
+#: src/components/Campaign.tsx:2015
 msgid "Location"
 msgstr ""
 
-#: src/components/CardSetSelect.tsx:48
+#: src/components/CardSetSelect.tsx:65
 msgid "Locations"
 msgstr ""
 
@@ -788,7 +792,7 @@ msgstr ""
 msgid "Michael's Bog"
 msgstr ""
 
-#: src/components/Campaign.tsx:2051
+#: src/components/Campaign.tsx:2052
 msgid "Missions"
 msgstr ""
 
@@ -819,7 +823,7 @@ msgstr ""
 #: src/components/Campaign.tsx:853
 #: src/components/Campaign.tsx:966
 #: src/components/Campaign.tsx:994
-#: src/components/Campaign.tsx:2246
+#: src/components/Campaign.tsx:2247
 #: src/components/DeckEdit.tsx:1058
 #: src/components/DeckEdit.tsx:1091
 msgid "Name"
@@ -836,7 +840,7 @@ msgstr ""
 msgid "Name your character"
 msgstr ""
 
-#: src/components/Campaign.tsx:2236
+#: src/components/Campaign.tsx:2237
 #: src/pages/campaigns/index.tsx:75
 msgid "New campaign"
 msgstr ""
@@ -882,7 +886,7 @@ msgstr ""
 msgid "No results"
 msgstr ""
 
-#: src/components/Campaign.tsx:2033
+#: src/components/Campaign.tsx:2034
 msgid "None"
 msgstr ""
 
@@ -914,7 +918,7 @@ msgstr ""
 msgid "Not set"
 msgstr ""
 
-#: src/components/Campaign.tsx:2053
+#: src/components/Campaign.tsx:2054
 msgid "Notable Events"
 msgstr ""
 
@@ -926,7 +930,7 @@ msgstr ""
 msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
 msgstr ""
 
-#: src/components/Campaign.tsx:1286
+#: src/components/Campaign.tsx:1287
 msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 msgstr ""
 
@@ -979,15 +983,15 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: src/components/Campaign.tsx:1915
-#: src/components/Campaign.tsx:1921
-#: src/components/Campaign.tsx:2025
+#: src/components/Campaign.tsx:1916
+#: src/components/Campaign.tsx:1922
+#: src/components/Campaign.tsx:2026
 msgid "Path Terrain"
 msgstr ""
 
 #: src/components/CardSetSelect.tsx:26
-msgid "Paths"
-msgstr ""
+#~ msgid "Paths"
+#~ msgstr ""
 
 #: src/components/FriendRequests.tsx:162
 msgid "Pending Requests"
@@ -1004,7 +1008,7 @@ msgstr ""
 #~ msgid "Player"
 #~ msgstr ""
 
-#: src/components/Campaign.tsx:2265
+#: src/components/Campaign.tsx:2266
 msgid "Players"
 msgstr ""
 
@@ -1059,7 +1063,7 @@ msgid "Ranger"
 msgstr ""
 
 #: src/components/Campaign.tsx:233
-#: src/components/Campaign.tsx:1760
+#: src/components/Campaign.tsx:1761
 msgid "Rangers"
 msgstr ""
 
@@ -1067,7 +1071,7 @@ msgstr ""
 #~ msgid "Rangers will continue day {currentDay} with their current decks."
 #~ msgstr ""
 
-#: src/components/Campaign.tsx:1941
+#: src/components/Campaign.tsx:1942
 msgid "Rangers will continue playing day {currentDay} with their current decks."
 msgstr ""
 
@@ -1105,7 +1109,7 @@ msgstr ""
 #~ msgid "Record current path terrain"
 #~ msgstr ""
 
-#: src/components/Campaign.tsx:1469
+#: src/components/Campaign.tsx:1470
 msgid "Record event"
 msgstr ""
 
@@ -1113,7 +1117,7 @@ msgstr ""
 msgid "Record guide entry"
 msgstr ""
 
-#: src/components/Campaign.tsx:2038
+#: src/components/Campaign.tsx:2039
 msgid "Recorded journey"
 msgstr ""
 
@@ -1150,7 +1154,7 @@ msgstr ""
 msgid "Removed"
 msgstr ""
 
-#: src/components/Campaign.tsx:2054
+#: src/components/Campaign.tsx:2055
 msgid "Removed Cards"
 msgstr ""
 
@@ -1183,7 +1187,7 @@ msgstr ""
 msgid "Revoke"
 msgstr ""
 
-#: src/components/Campaign.tsx:2052
+#: src/components/Campaign.tsx:2053
 #: src/components/DeckEdit.tsx:563
 msgid "Rewards"
 msgstr ""
@@ -1219,9 +1223,9 @@ msgstr ""
 #: src/components/Campaign.tsx:568
 #: src/components/Campaign.tsx:785
 #: src/components/Campaign.tsx:979
-#: src/components/Campaign.tsx:1380
-#: src/components/Campaign.tsx:1464
-#: src/components/Campaign.tsx:2148
+#: src/components/Campaign.tsx:1381
+#: src/components/Campaign.tsx:1465
+#: src/components/Campaign.tsx:2149
 #: src/components/CommentsComponent.tsx:240
 #: src/components/Profile.tsx:88
 #: src/components/ProfileSettings.tsx:87
@@ -1266,7 +1270,7 @@ msgstr ""
 #~ msgid "Select approach icons"
 #~ msgstr ""
 
-#: src/components/Campaign.tsx:2257
+#: src/components/Campaign.tsx:2258
 #: src/pages/admin/map.tsx:67
 msgid "Select campaign"
 msgstr ""
@@ -1275,7 +1279,7 @@ msgstr ""
 #~ msgid "Select card set"
 #~ msgstr ""
 
-#: src/components/CardSetSelect.tsx:92
+#: src/components/CardSetSelect.tsx:126
 msgid "Select card set..."
 msgstr ""
 
@@ -1314,7 +1318,7 @@ msgstr ""
 msgid "Show all"
 msgstr ""
 
-#: src/components/Campaign.tsx:1901
+#: src/components/Campaign.tsx:1902
 msgid "Show all locations"
 msgstr ""
 
@@ -1379,6 +1383,10 @@ msgstr ""
 msgid "Swamp"
 msgstr ""
 
+#: src/components/CardSetSelect.tsx:43
+msgid "Terrain"
+msgstr ""
+
 #: src/lib/hooks.ts:664
 msgid "Terravore"
 msgstr ""
@@ -1427,6 +1435,10 @@ msgstr ""
 msgid "The Tumbledown"
 msgstr ""
 
+#: src/components/CardSetSelect.tsx:35
+msgid "The Valley"
+msgstr ""
+
 #: src/components/Footer.tsx:26
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr ""
@@ -1467,7 +1479,7 @@ msgstr ""
 msgid "This day is in the past. It is currently day {0}."
 msgstr ""
 
-#: src/components/Campaign.tsx:1125
+#: src/components/Campaign.tsx:1126
 msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
 msgstr ""
 
@@ -1479,7 +1491,7 @@ msgstr ""
 msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
 msgstr ""
 
-#: src/components/Campaign.tsx:1122
+#: src/components/Campaign.tsx:1123
 msgid "This will end day {0}."
 msgstr ""
 
@@ -1531,14 +1543,14 @@ msgstr ""
 msgid "Traits"
 msgstr ""
 
-#: src/components/Campaign.tsx:1881
-#: src/components/Campaign.tsx:1955
-#: src/components/Campaign.tsx:1990
-#: src/components/Campaign.tsx:2036
+#: src/components/Campaign.tsx:1882
+#: src/components/Campaign.tsx:1956
+#: src/components/Campaign.tsx:1991
+#: src/components/Campaign.tsx:2037
 msgid "Travel"
 msgstr ""
 
-#: src/components/Campaign.tsx:1955
+#: src/components/Campaign.tsx:1956
 msgid "Travel & Camp"
 msgstr ""
 
@@ -1550,7 +1562,7 @@ msgstr ""
 msgid "Types"
 msgstr ""
 
-#: src/components/Campaign.tsx:2206
+#: src/components/Campaign.tsx:2207
 msgid "Unable to create campaign at this time."
 msgstr ""
 
@@ -1574,8 +1586,8 @@ msgstr ""
 msgid "Welcome to RangersDB"
 msgstr ""
 
-#: src/components/Campaign.tsx:1362
-#: src/components/Campaign.tsx:1459
+#: src/components/Campaign.tsx:1363
+#: src/components/Campaign.tsx:1460
 msgid "What happened?"
 msgstr ""
 
@@ -1612,8 +1624,8 @@ msgstr ""
 msgid "You must choose a background."
 msgstr ""
 
-#: src/components/Campaign.tsx:1795
-#: src/components/Campaign.tsx:1795
+#: src/components/Campaign.tsx:1796
+#: src/components/Campaign.tsx:1796
 msgid "You must choose a location and path terrain to travel."
 msgstr ""
 
