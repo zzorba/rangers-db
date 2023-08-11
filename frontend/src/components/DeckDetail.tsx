@@ -20,14 +20,26 @@ import {
   MenuItem,
   ButtonGroup,
   SimpleGrid,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
 import NextLink from 'next/link';
-import { map, pick, values } from 'lodash';
+import { flatMap, map, pick, values } from 'lodash';
 import { t, Trans } from '@lingui/macro';
 import { SlCalender } from 'react-icons/sl';
-import { FaArrowLeft, FaArrowRight, FaComment, FaEdit, FaMoon, FaShare, FaShareAlt, FaTrash } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaComment, FaCopy, FaEdit, FaMoon, FaShare, FaShareAlt, FaTrash } from 'react-icons/fa';
 
 import { CardFragment, DeckDetailFragment, DeckFragment, useCloneDeckMutation, useCreateDeckMutation, useDeleteDeckMutation, usePublishDeckMutation, useUpgradeDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
@@ -38,7 +50,7 @@ import { CardHeader, ShowCard, useCardModal } from './Card';
 import DeckProblemComponent from './DeckProblemComponent';
 import { useLocale } from '../lib/TranslationProvider';
 import CoreIcon from '../icons/CoreIcon';
-import parseDeck from '../lib/parseDeck';
+import parseDeck, { ParsedDeck } from '../lib/parseDeck';
 import useDeleteDialog from './useDeleteDialog';
 import { DeckCountLine, DeckDescription, DeckItemComponent } from './Deck';
 import DeckDescriptionView from './DeckDescriptionView';
@@ -167,7 +179,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
       }
     }
   }, [createDeck, cloneDeck, authUser, deck]);
-
+  const [showShare, shareModal] = useShareableDeckModal(parsedDeck, deck.name);
   const [doDelete] = useDeleteDeckMutation();
   const deleteDeck = useCallback(async(d: DeckFragment) => {
     const r = await doDelete({
@@ -258,6 +270,13 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                   {t`Edit`}
                 </SolidButton>
               ) }
+              <SolidButton
+                color="gray"
+                leftIcon={<FaShareAlt />}
+                onClick={showShare}
+              >
+                {t`Share`}
+              </SolidButton>
               { !!deck.published && (
                 <>
                   <LikeButton
@@ -450,8 +469,105 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
           ) }
         </Grid>
       </Box>
+      {shareModal}
       {cardModal}
       {deleteDialog}
     </>
   );
+}
+
+
+export function useShareableDeckModal(deck: ParsedDeck, name: string): [() => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { aspects, categories } = useLocale();
+  const role = deck.role?.name;
+  const background = deck.background && categories.background?.options[deck.background];
+  const specialty = deck.specialty && categories.specialty?.options[deck.specialty];
+  const aspectList = [
+    `${deck.stats.awa} ${aspects.AWA?.short_name}`,
+    `${deck.stats.spi} ${aspects.SPI?.short_name}`,
+    `${deck.stats.fit} ${aspects.FIT?.short_name}`,
+    `${deck.stats.foc} ${aspects.FOC?.short_name}`,
+  ].join(', ');
+  return [
+    onOpen,
+    <Modal key="access" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Shareable Deck`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Tabs>
+            <TabList>
+              <Tab>{t`Print`}</Tab>
+              <Tab>{t`Markdown`}</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <Text fontSize="sm">
+                  {name}<br/>
+                  ----------------------------------------------------------------------<br/>
+                  {background} - {specialty} - {role}<br/>
+                  {aspectList}<br/>
+                  { flatMap(deck.cards, (item) => {
+                    if (item.type === 'header') {
+                      return (
+                        <>
+                          ----------------------------------------------------------------------<br/>
+                          {item.title}<br/><br/>
+                        </>
+                      );
+                    }
+                    if (item.type === 'description') {
+                      return null;
+                    }
+                    if (item.type === 'card') {
+                      return (
+                        <>
+                          {item.count}x {item.card.name}<br/>
+                        </>
+                      );
+                    }
+                  }) }
+                </Text>
+              </TabPanel>
+              <TabPanel>
+              <Text fontSize="sm">
+                  {name}<br/>
+                  ----------------------------------------------------------------------<br/>
+                  **{background}** - **{specialty}** - **{role}**<br/><br/>
+                  **{aspectList}**<br/><br/>
+                  { flatMap(deck.cards, (item) => {
+                    if (item.type === 'header') {
+                      return (
+                        <>
+                          ----------------------------------------------------------------------<br/><br/>
+                          _{item.title}_<br/><br/>
+                        </>
+                      );
+                    }
+                    if (item.type === 'description') {
+                      return null;
+                    }
+                    if (item.type === 'card') {
+                      return (
+                        <>
+                          * {item.count}x {item.card.name}<br/>
+                        </>
+                      );
+                    }
+                  }) }
+                </Text>
+
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ];
 }

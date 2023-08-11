@@ -252,10 +252,7 @@ export function CampaignList({ campaigns, roleCards, refetch }: { campaigns: Par
 
 function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }: { user: UserInfoFragment; campaign: ParsedCampaign; roleCards: CardsMap; showChooseDeck: () => void; removeDeck: (deck: DeckFragment) => void }) {
   const { authUser } = useAuth();
-  const deck = useMemo(() => find(campaign.latest_decks, d => d.user?.id === user.id)?.deck, [campaign.latest_decks, user.id]);
-  const onRemove = useCallback(() => {
-    !!deck && removeDeck(deck);
-  }, [removeDeck, deck]);
+  const decks = useMemo(() => map(filter(campaign.latest_decks, d => d.user?.id === user.id), d => d.deck), [campaign.latest_decks, user.id]);
   const [doLeaveCampaign] = useLeaveCampaignMutation();
   const leaveCampaign = useCallback(async() => {
     if (authUser?.uid) {
@@ -270,42 +267,52 @@ function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }:
   }, [doLeaveCampaign, authUser, campaign.id]);
   return (
     <ListItem key={user.id} padding={2} flexDirection="column">
-      <Flex direction="row">
-        { deck ? (
-          <CompactDeckRow
-            deck={deck}
-            roleCards={roleCards}
-            href={`/decks/view/${deck.id}`}
-            buttons={authUser?.uid === deck.user_id && (
-              <ButtonGroup marginTop={1}>
-                <Button onClick={onRemove} variant="ghost">
-                  { t`Remove deck` }
-                </Button>
-              </ButtonGroup>
-            )}
-          >
+      <Flex direction="column">
+        { !!decks.length  ? map(decks, deck => (
+          <Flex direction="row" key={deck.id}>
+            <CompactDeckRow
+              deck={deck}
+              roleCards={roleCards}
+              href={`/decks/view/${deck.id}`}
+              buttons={authUser?.uid === deck.user_id && (
+                <ButtonGroup marginTop={1}>
+                  <Button onClick={() => removeDeck(deck)} variant="ghost">
+                    { t`Remove deck` }
+                  </Button>
+                </ButtonGroup>
+              )}
+            >
+              <Text>
+                <CoreIcon icon="ranger" size={18} />&nbsp;
+                { user.handle || (user.id === authUser?.uid ? t`You` : user.id) }
+              </Text>
+            </CompactDeckRow>
+          </Flex>
+        )) : (
+          <Flex direction="row">
             <Text>
               <CoreIcon icon="ranger" size={18} />&nbsp;
               { user.handle || (user.id === authUser?.uid ? t`You` : user.id) }
             </Text>
-          </CompactDeckRow>
-        ) : (
-          <Text>
-            <CoreIcon icon="ranger" size={18} />&nbsp;
-            { user.handle || (user.id === authUser?.uid ? t`You` : user.id) }
-          </Text>
+          </Flex>
         ) }
       </Flex>
-      { authUser?.uid === user.id && !deck && (
+      { authUser?.uid === user.id && (
         <ButtonGroup marginTop={1}>
-          <Button onClick={showChooseDeck} variant="ghost">
-            { t`Choose deck` }
-          </Button>
-          { authUser.uid !== campaign.user_id && (
-            <Button onClick={leaveCampaign} variant="ghost" color="red.500">
-              { t`Leave campaign` }
+          { decks.length ? (
+            <Button onClick={showChooseDeck} variant="ghost">
+              { t`Add additional deck` }
             </Button>
-          ) }
+          ) : <>
+            <Button onClick={showChooseDeck} variant="ghost">
+              { t`Choose deck` }
+            </Button>
+            { authUser.uid !== campaign.user_id && (
+              <Button onClick={leaveCampaign} variant="ghost" color="red.500">
+                { t`Leave campaign` }
+              </Button>
+            ) }
+          </> }
         </ButtonGroup>
       ) }
     </ListItem>
@@ -1973,7 +1980,14 @@ function CycleChiclet({ cycle }: { cycle: CampaignCycle }) {
   );
 }
 
-export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
+interface CampaignDetailProps {
+  campaign: ParsedCampaign;
+  showEditFriends: () => void;
+  cards: CardsMap;
+  refetchCampaign: () => Promise<void>;
+}
+
+export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: CampaignDetailProps) {
   const { cycles, locations, paths } = useLocale();
   const [setCampaignTitle] = useSetCampaignTitleMutation();
   const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign.cycle_id]);
