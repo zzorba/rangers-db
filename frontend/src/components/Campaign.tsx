@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
-import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last, sumBy, slice } from 'lodash';
+import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last, sumBy, slice, zip, findIndex } from 'lodash';
 import NextLink from 'next/link';
 import Router from 'next/router';
 
@@ -43,6 +43,7 @@ interface MissionEntry {
   name: string;
   progress?: number;
   completed?: boolean;
+  checks?: boolean[];
 }
 
 interface LatestDeck {
@@ -660,6 +661,13 @@ function useAddMissionModal(campaign: ParsedCampaign): [() => void, React.ReactN
   ];
 }
 
+function progressToChecks(progress: number | undefined): boolean[] {
+  const checks = [false, false, false];
+  forEach(range(0, progress || 0), (idx) => {
+    checks[idx] = true;
+  });
+  return checks;
+}
 
 function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry, index: number) => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -667,23 +675,32 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
 
   const [name, setName] = useState('');
   const [day, setDay] = useState('');
-  const [progress, setProgress] = useState<number>(0);
+  const [progress, setProgress] = useState<boolean[]>([false, false, false]);
   const [completed, setCompleted] = useState<boolean>(false);
 
   const showModal = useCallback(async(mission: MissionEntry, index: number) => {
     setCurrent({ mission, index });
     setName(mission.name);
     setDay(`${mission.day}`);
-    setProgress(mission.progress || 0);
+    if (mission.checks) {
+      setProgress(mission.checks);
+    } else {
+      setProgress(progressToChecks(mission.progress));
+    }
     setCompleted(mission.completed || false);
     onOpen();
   }, [setName, setDay, setProgress, setCompleted, setCurrent, onOpen]);
 
   const hasChanges = useMemo(() => {
-    return !!current && (
+    if (!current) {
+      return false;
+    }
+    const currentChecks = current.mission.checks ?? progressToChecks(current?.mission.progress);
+    const checksChanged = findIndex(range(0, 3), (index) => currentChecks[index] !== progress[index]) !== -1;
+    return (
       trim(current.mission.name) !== trim(name) ||
       current.mission.day !== parseInt(trim(day)) ||
-      (current.mission.progress || 0) !== progress ||
+      checksChanged ||
       (current.mission.completed || false) !== completed
     );
   }, [current, name, day, progress, completed]);
@@ -717,7 +734,7 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
       name,
       day: parseInt(day),
       completed,
-      progress,
+      checks: progress,
     };
     const result = await setMissions({
       variables: {
@@ -767,14 +784,19 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
               <ButtonGroup>
                 { map(range(0, 3), p => {
                   const progressNumber = p + 1;
-                  const checked = progress > p;
+                  const checked = progress[p];
                   return (
                     <IconButton
                       key={p}
                       aria-label={t`Progress ${progressNumber}`}
                       variant="ghost"
                       icon={<ProgressChit filled={checked} />}
-                      onClick={() => setProgress(checked ? p : p + 1)}
+                      onClick={() => setProgress(progress.map((value, index) => {
+                        if (index !== p) {
+                          return value;
+                        }
+                        return !value;
+                      }))}
                     />
                   );
                 }) }
@@ -840,7 +862,7 @@ function MissionRow({ mission, index, showEdit }: { mission: MissionEntry; index
         <Flex direction="row">
           { mission.completed ? (
             <Text fontSize="sm">{t`Completed`}</Text>
-          ) : map(range(0, 3), (idx) => <ProgressChit marginRight="6px" key={idx} filled={(mission.progress || 0) > idx} />)}
+          ) : map(range(0, 3), (idx) => <ProgressChit marginRight="6px" key={idx} filled={mission.checks ? mission.checks[idx] : ((mission.progress || 0) > idx)} />)}
         </Flex>
       </Td>
     </Tr>
@@ -1174,7 +1196,7 @@ function useUndoModal(campaign: ParsedCampaign): [() => void, boolean, React.Rea
       onClose();
     }
     return undefined;
-  }, [campaign]);
+  }, [campaign, onClose, undoCampaignTravel]);
   const canUndoEndDay = campaign.day > 1 && (lastTravel == null || (lastTravel.camped ? (lastTravel.day + 1) : lastTravel.day)  < campaign.day);
   return [
     onOpen,
