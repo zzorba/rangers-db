@@ -67,7 +67,7 @@ msgstr "Hinzufügen"
 
 #: src/components/Campaign.tsx:305
 msgid "Add additional deck"
-msgstr ""
+msgstr "Ein weiteres Deck hinzufügen"
 
 #: src/components/Campaign.tsx:628
 #: src/components/Campaign.tsx:855
@@ -213,7 +213,7 @@ msgstr "Kampagnen"
 
 #: src/components/Campaign.tsx:1101
 msgid "Camped while travelling to {0}."
-msgstr ""
+msgstr "Nachtlager auf der Reise nach {0} aufgeschlagen."
 
 #: src/components/Campaign.tsx:1995
 msgid "Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
@@ -548,7 +548,7 @@ msgstr "Tag beenden"
 
 #: src/components/Campaign.tsx:1123
 msgid "Ended the day at {0}."
-msgstr ""
+msgstr "Tag bei {0} beendet."
 
 #: src/components/NavBar.tsx:101
 msgid "English"
@@ -673,7 +673,7 @@ msgstr "Wenn du dein Nachtlager aufschlagen möchtest während du an einen neuen
 
 #: src/components/Campaign.tsx:1193
 msgid "If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed."
-msgstr ""
+msgstr "Wenn dir beim Reisen oder am Tagesende ein Fehler unterlaufen ist, kannst du die letzten Bearbeitungen hier rückgängigmachen. Dies beeinflusst die Decks nicht."
 
 #: src/components/Campaign.tsx:1344
 msgid "If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
@@ -756,7 +756,7 @@ msgstr "Schwächungen"
 
 #: src/components/DeckDetail.tsx:507
 msgid "Markdown"
-msgstr ""
+msgstr "Markdown"
 
 #: src/lib/hooks.ts:691
 msgid "Marsh of Rebirth"
@@ -1018,7 +1018,7 @@ msgstr "Vorheriges Deck"
 
 #: src/components/DeckDetail.tsx:506
 msgid "Print"
-msgstr ""
+msgstr "Druckansicht"
 
 #: src/components/NavBar.tsx:230
 #: src/components/NavBar.tsx:381
@@ -1280,11 +1280,11 @@ msgstr "Einstellungen"
 
 #: src/components/DeckDetail.tsx:278
 msgid "Share"
-msgstr ""
+msgstr "Teilen"
 
 #: src/components/DeckDetail.tsx:499
 msgid "Shareable Deck"
-msgstr ""
+msgstr "Teilbares Deck"
 
 #: src/components/Campaign.tsx:412
 #: src/components/CardList.tsx:274
@@ -1358,7 +1358,7 @@ msgstr "Sumpf"
 
 #: src/components/CardSetSelect.tsx:43
 msgid "Terrain"
-msgstr ""
+msgstr "Terrain"
 
 #: src/lib/hooks.ts:664
 msgid "Terravore"
@@ -1461,7 +1461,7 @@ msgstr "Diese Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 
 #: src/pages/index.tsx:27
 msgid "This site is a digital companion for the excellent <0>Earthborne Rangers</0> adventure card game."
-msgstr ""
+msgstr "Diese Seite ist dein digitaler Begleiter für das wundervolle <0>Earthborne Rangers</0> Abenteuer Kartenspiel."
 
 #: src/pages/index.tsx:27
 #~ msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
@@ -1532,7 +1532,7 @@ msgstr "Reisen & Nachtlager aufschlagen"
 
 #: src/components/Campaign.tsx:1108
 msgid "Traveled to {0}."
-msgstr ""
+msgstr "Gereist zu {0}."
 
 #: src/components/DeckEdit.tsx:257
 msgid "Two aspects must be set to 2."
@@ -1549,15 +1549,15 @@ msgstr "Kampagne kann im Moment nicht erstellt werden."
 #: src/components/Campaign.tsx:1198
 #: src/components/Campaign.tsx:2069
 msgid "Undo"
-msgstr ""
+msgstr "Rückgängig machen"
 
 #: src/components/Campaign.tsx:1204
 msgid "Undo travel"
-msgstr ""
+msgstr "Reise rückgängig machen"
 
 #: src/components/Campaign.tsx:1187
 msgid "Undo travel changes"
-msgstr ""
+msgstr "Reiseschritte rückgängig machen"
 
 #: src/components/LikeButton.tsx:22
 msgid "Unlike"
@@ -1610,7 +1610,7 @@ msgstr "Du kannst dieses Deck zu einer Kampagne hinzufügen und Belohnungen, die
 
 #: src/pages/index.tsx:30
 msgid "You can view <0>player cards</0>, <1>build decks</1>, and use the digital <2>campaign tracker</2>."
-msgstr ""
+msgstr "Du kannst dir die <0>Ranger-Karten</0 ansehen, <1>Decks bauen</1> und den <2>Kampagnen-Tracker</2> nutzen."
 
 #: src/components/DeckList.tsx:142
 msgid "You don't seem to have any decks."
