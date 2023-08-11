@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
-import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last } from 'lodash';
+import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last, sumBy, slice } from 'lodash';
 import NextLink from 'next/link';
 import Router from 'next/router';
 
-import { CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignMissionsMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation, useAddCampaignHistoryMutation, useSetCampaignTitleMutation } from '../generated/graphql/apollo-schema';
+import { CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignMissionsMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation, useAddCampaignHistoryMutation, useSetCampaignTitleMutation, useCampaignUndoTravelMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import FriendChooser from './FriendChooser';
 import ListHeader from './ListHeader';
@@ -22,7 +22,7 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { FaArrowRight, FaCalendar, FaEdit, FaMoon, FaSun, FaTrash, FaWalking } from 'react-icons/fa';
+import { FaArrowRight, FaCalendar, FaEdit, FaMoon, FaSun, FaTrash, FaUndo, FaWalking } from 'react-icons/fa';
 import { GiCampingTent } from 'react-icons/gi';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
@@ -31,6 +31,7 @@ import MapLocationSelect from './MapLocationSelect';
 import CardSetSelect from './CardSetSelect';
 import { CampaignCycle, MapLocation } from '../types/types';
 import MoonIconWithDate, { MoonIcon } from '../icons/MoonIcon';
+import SolidButton from './SolidButton';
 
 const STARTING_LOCATIONS: { [campaign: string]: string } = {
   demo: 'lone_tree_station',
@@ -1087,6 +1088,129 @@ function TravelDayRow({ entry: { day, startingLocation, travel }, currentDay }: 
   );
 }
 
+function TravelSummary({ historyEntry }: { historyEntry: HistoryEntry }) {
+  const { locations } = useLocale();
+  const destination = historyEntry.location ? locations[historyEntry.location] : undefined;
+  if (historyEntry.camped) {
+    return (
+      <Flex direction="row" alignItems="center">
+        <Box marginRight={2}>
+          <GiCampingTent size={48} />
+        </Box>
+        { !!destination && <LocationIcon location={destination} size={60} /> }
+        <Text marginLeft={2}>{t`Camped while travelling to ${destination?.name}.`}</Text>
+      </Flex>
+    );
+  }
+  return (
+    <Flex direction="row" alignItems="center">
+      { !!destination && <LocationIcon location={destination} size={60} /> }
+      <Text marginLeft={2}>{t`Traveled to ${destination?.name}.`}</Text>
+    </Flex>
+  );
+}
+
+
+function EndDaySummary({ historyEntry, cycleId }: { historyEntry?: HistoryEntry; cycleId: string }) {
+  const { locations } = useLocale();
+  const destination = locations[historyEntry?.location ?? STARTING_LOCATIONS[cycleId]];
+  return (
+    <Flex direction="row" alignItems="center">
+      <Box marginRight={2}>
+        <FaMoon size={36} />
+      </Box>
+      { !!destination && <LocationIcon location={destination} size={60} /> }
+      <Text marginLeft={2}>{t`Ended the day at ${destination?.name}.`}</Text>
+    </Flex>
+  );
+}
+
+function useUndoModal(campaign: ParsedCampaign): [() => void, boolean, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [setCampaignDay] = useSetCampaignDayMutation();
+  const onUndoEndDay = useCallback(async() => {
+    if (campaign.day > 0) {
+      const r = await setCampaignDay({
+        variables: {
+          campaignId: campaign.id,
+          day: campaign.day - 1,
+        }
+      });
+      if (r.errors?.length) {
+        return r.errors[0].message;
+      }
+      onClose();
+    }
+    return undefined;
+  }, [campaign, setCampaignDay, onClose]);
+  const lastTravel = last(campaign.history);
+  const [undoCampaignTravel] = useCampaignUndoTravelMutation();
+  const onUndoTravel = useCallback(async() => {
+    const lastTravel = last(campaign.history);
+    if (lastTravel) {
+      let previousLocation: string = STARTING_LOCATIONS[campaign.cycle_id];
+      let previousPathTerrain: string | undefined = undefined;
+      if (campaign.history.length >= 2) {
+        const penultimateEntry = campaign.history[campaign.history.length - 2];
+        if (penultimateEntry.location) {
+          previousLocation = penultimateEntry.location;
+        }
+        previousPathTerrain = penultimateEntry.path_terrain;
+      }
+      const newHistory = slice(campaign.history, 0, campaign.history.length - 1);
+      console.log(`history goes from ${campaign.history.length} to ${newHistory.length}, with values of ${JSON.stringify(newHistory)}`);
+      const r = await undoCampaignTravel({
+        variables: {
+          campaignId: campaign.id,
+          previousDay: campaign.day - (lastTravel?.camped ? 1 : 0),
+          previousLocation,
+          previousPathTerrain,
+          history: newHistory,
+        }
+      });
+      if (r.errors?.length) {
+        return r.errors[0].message;
+      }
+      onClose();
+    }
+    return undefined;
+  }, [campaign]);
+  const canUndoEndDay = campaign.day > 1 && (lastTravel == null || (lastTravel.camped ? (lastTravel.day + 1) : lastTravel.day)  < campaign.day);
+  return [
+    onOpen,
+    !!lastTravel || canUndoEndDay,
+    <Modal key="undo" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent maxW="600px">
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Undo travel changes`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Text marginBottom={2}>
+            { t`If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed.` }
+          </Text>
+          { canUndoEndDay && (
+            <>
+              <EndDaySummary historyEntry={lastTravel} cycleId={campaign.cycle_id} />
+              <SolidButton marginTop={1} color="orange" variant="ghost" leftIcon={<FaMoon />} onClick={onUndoEndDay}>{t`Undo`}</SolidButton>
+            </>
+          ) }
+          { !!lastTravel && !canUndoEndDay && (
+            <>
+              <TravelSummary historyEntry={lastTravel} />
+              <SolidButton marginTop={2} color="orange" variant="ghost" leftIcon={<FaWalking />} onClick={onUndoTravel}>{t`Undo travel`}</SolidButton>
+            </>
+          ) }
+
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
 function useEndDayModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { locations } = useLocale();
@@ -1145,85 +1269,8 @@ function useEndDayModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
         </ModalFooter>
       </ModalContent>
     </Modal>
-  ]
+  ];
 }
-
-/*
- let liveLocation: string | undefined = STARTING_LOCATIONS[campaign.cycle_id];
-    forEach(campaign.history, entry => {
-      if (!currentLocation) {
-        currentLocation = entry.location;
-      }
-      const day = `${entry.day}`;
-      if (entry.ended) {
-        console.log(entry);
-        if (liveLocation !== entry.location) {
-          days[day] = [
-            ...(days[day] || []),
-            {
-              ...entry,
-              camped: false,
-            },
-          ];
-        }
-      } else if (days[day]) {
-        days[day] = [
-          ...(days[day] || []),
-          {
-            ...entry,
-            camped: false,
-          },
-        ];
-      } else {
-        // Correction for off by one on history entries:
-        // the first entry on any given day is actually the previous day's entry
-        const previous = `${entry.day - 1}`;
-        days[previous] = [
-          ...(days[previous] || []),
-          {
-            ...entry,
-            camped: true,
-          },
-        ];
-        days[day] = [];
-      }
-    });
-
-    if (!currentLocation) {
-      currentLocation = campaign.current_location;
-    } else if (campaign.current_location) {
-      // Figure out how to handle camping for one day or otherwise ending
-      // a session not by travelling.
-      const currentDay = `${campaign.day}`;
-      if (days[currentDay]) {
-        days[currentDay] = [
-          ...(days[currentDay] || []),
-          {
-            day: campaign.day,
-            location: campaign.current_location,
-            path_terrain: campaign.current_path_terrain,
-            camped: false,
-          },
-        ];
-      } else {
-        const previousDay = `${campaign.day - 1}`;
-        console.log(previousDay);
-        const lastEntry = last(days[previousDay] || []);
-        console.log(lastEntry);
-        if (lastEntry?.location !== campaign.current_location) {
-          days[previousDay] = [
-            ...(days[previousDay] || []),
-            {
-              day: campaign.day,
-              location: campaign.current_location,
-              path_terrain: campaign.current_path_terrain,
-              camped: true,
-            },
-          ];
-        }
-      }
-    }
-*/
 
 function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -1993,6 +2040,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
   const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign.cycle_id]);
   const [showHistory, historyModal] = useJourneyModal(campaign);
   const [onTravel, travelModal] = useTravelModal(campaign);
+  const [onUndo, undoEnabled, undoModal] = useUndoModal(campaign);
   const [onEndDay, endDayModal] = useEndDayModal(campaign);
   const currentLocation = campaign.current_location ? locations[campaign.current_location] : undefined;
   const currentPath = campaign.current_path_terrain ? paths[campaign.current_path_terrain] : undefined;
@@ -2018,6 +2066,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
         <ButtonGroup>
           <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
           <Button leftIcon={<FaMoon />} onClick={onEndDay}>{t`End the day`}</Button>
+          { !!undoEnabled && <Button variant="ghost" leftIcon={<FaUndo />} onClick={onUndo}>{t`Undo`}</Button> }
         </ButtonGroup>
       </PageHeading>
       <Timeline campaign={campaign} />
@@ -2101,6 +2150,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       { travelModal }
       { historyModal }
       { endDayModal }
+      { undoModal }
     </>
   );
 }

@@ -45232,6 +45232,17 @@ export type AddCampaignHistoryMutationVariables = Exact<{
 
 export type AddCampaignHistoryMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, history: any } | null };
 
+export type CampaignUndoTravelMutationVariables = Exact<{
+  campaignId: Scalars['Int'];
+  history: Scalars['jsonb'];
+  previousDay: Scalars['Int'];
+  previousLocation: Scalars['String'];
+  previousPathTerrain?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type CampaignUndoTravelMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, day: number, history: any, current_location?: string | null, current_path_terrain?: string | null } | null };
+
 export type CampaignTravelMutationVariables = Exact<{
   campaignId: Scalars['Int'];
   day: Scalars['Int'];
@@ -46536,6 +46547,50 @@ export function useAddCampaignHistoryMutation(baseOptions?: Apollo.MutationHookO
 export type AddCampaignHistoryMutationHookResult = ReturnType<typeof useAddCampaignHistoryMutation>;
 export type AddCampaignHistoryMutationResult = Apollo.MutationResult<AddCampaignHistoryMutation>;
 export type AddCampaignHistoryMutationOptions = Apollo.BaseMutationOptions<AddCampaignHistoryMutation, AddCampaignHistoryMutationVariables>;
+export const CampaignUndoTravelDocument = gql`
+    mutation campaignUndoTravel($campaignId: Int!, $history: jsonb!, $previousDay: Int!, $previousLocation: String!, $previousPathTerrain: String) {
+  campaign: update_rangers_campaign_by_pk(
+    pk_columns: {id: $campaignId}
+    _set: {day: $previousDay, current_location: $previousLocation, current_path_terrain: $previousPathTerrain, history: $history}
+  ) {
+    id
+    day
+    history
+    current_location
+    current_path_terrain
+  }
+}
+    `;
+export type CampaignUndoTravelMutationFn = Apollo.MutationFunction<CampaignUndoTravelMutation, CampaignUndoTravelMutationVariables>;
+
+/**
+ * __useCampaignUndoTravelMutation__
+ *
+ * To run a mutation, you first call `useCampaignUndoTravelMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCampaignUndoTravelMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [campaignUndoTravelMutation, { data, loading, error }] = useCampaignUndoTravelMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      history: // value for 'history'
+ *      previousDay: // value for 'previousDay'
+ *      previousLocation: // value for 'previousLocation'
+ *      previousPathTerrain: // value for 'previousPathTerrain'
+ *   },
+ * });
+ */
+export function useCampaignUndoTravelMutation(baseOptions?: Apollo.MutationHookOptions<CampaignUndoTravelMutation, CampaignUndoTravelMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CampaignUndoTravelMutation, CampaignUndoTravelMutationVariables>(CampaignUndoTravelDocument, options);
+      }
+export type CampaignUndoTravelMutationHookResult = ReturnType<typeof useCampaignUndoTravelMutation>;
+export type CampaignUndoTravelMutationResult = Apollo.MutationResult<CampaignUndoTravelMutation>;
+export type CampaignUndoTravelMutationOptions = Apollo.BaseMutationOptions<CampaignUndoTravelMutation, CampaignUndoTravelMutationVariables>;
 export const CampaignTravelDocument = gql`
     mutation campaignTravel($campaignId: Int!, $day: Int!, $currentLocation: String!, $currentPathTerrain: String!, $history: jsonb!) {
   campaign: update_rangers_campaign_by_pk(

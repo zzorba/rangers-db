@@ -24,10 +24,10 @@ function Home() {
             {t`Welcome to RangersDB`}
           </Heading>
           <Text paddingTop="2em">
-            <Trans>This site is still under construction, but you can view the list of <Link textDecorationLine="underline" as={NextLink} href="/cards">previewed cards</Link> and can <Link as={NextLink} href="/register" textDecorationLine="underline">register</Link> and start building <Link textDecorationLine="underline" as={NextLink} href="/decks">decks</Link>.</Trans>
-          </Text>
-          <Text paddingTop="1em">
-            <Trans>There is also a <Link textDecorationLine="underline" as={NextLink} href="/campaigns">campaign</Link> tracking system that you can share with your friends and track rewards and events as you progress through the valley.</Trans>
+            <Trans>This site is a digital companion for the excellent <Link textDecoration="underline" as={NextLink} href="https://earthbornegames.com/">Earthborne Rangers</Link> adventure card game.</Trans>
+            </Text>
+          <Text paddingTop="2em">
+            <Trans>You can view <Link textDecorationLine="underline" as={NextLink} href="/cards">player cards</Link>, <Link textDecorationLine="underline" as={NextLink} href="/decks">build decks</Link>, and use the digital <Link textDecorationLine="underline" as={NextLink} href="/campaigns">campaign tracker</Link>.</Trans>
           </Text>
         </Box>
       </Container>

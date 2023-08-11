@@ -318,6 +318,32 @@ mutation addCampaignHistory(
   }
 }
 
+mutation campaignUndoTravel(
+  $campaignId: Int!,
+  $history: jsonb!,
+  $previousDay: Int!,
+  $previousLocation: String!,
+  $previousPathTerrain: String
+) {
+  campaign: update_rangers_campaign_by_pk(
+    pk_columns: {
+	    id: $campaignId
+    }
+    _set: {
+      day: $previousDay
+      current_location: $previousLocation
+      current_path_terrain: $previousPathTerrain
+      history: $history
+    }
+  ) {
+    id
+    day
+    history
+    current_location
+    current_path_terrain
+  }
+}
+
 mutation campaignTravel(
   $campaignId: Int!,
   $day: Int!,
