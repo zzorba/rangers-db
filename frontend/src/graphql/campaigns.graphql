@@ -53,6 +53,21 @@ mutation createCampaign(
   }
 }
 
+mutation setCampaignTitle(
+  $name: String!,
+  $campaignId: Int!
+) {
+  update_rangers_campaign_by_pk(
+    pk_columns: { id: $campaignId }
+    _set: {
+      name: $name
+    }
+  ) {
+    id
+    name
+  }
+}
+
 mutation addFriendToCampaign(
   $campaignId: Int!,
   $userId: String!

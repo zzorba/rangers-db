@@ -8,7 +8,6 @@ import {
 } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { useAuth } from '../lib/AuthContext';
-import { useGraphql } from '../lib/GraphqlContext';
 import { useGetProfileQuery, useSetPrivateDecksMutation } from '../generated/graphql/apollo-schema';
 import useFirebaseFunction from '../lib/useFirebaseFunction';
 import LoadingPage from './LoadingPage';

@@ -5,7 +5,7 @@ import { head, forEach, uniq, filter, map, find, flatMap, difference, values, so
 import NextLink from 'next/link';
 import Router from 'next/router';
 
-import { CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignMissionsMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation, useAddCampaignHistoryMutation } from '../generated/graphql/apollo-schema';
+import { CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignMissionsMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation, useAddCampaignHistoryMutation, useSetCampaignTitleMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import FriendChooser from './FriendChooser';
 import ListHeader from './ListHeader';
@@ -22,7 +22,7 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { FaArrowRight, FaCalendar, FaClock, FaMoon, FaSun, FaTrash, FaWalking } from 'react-icons/fa';
+import { FaArrowRight, FaCalendar, FaEdit, FaMoon, FaSun, FaTrash, FaWalking } from 'react-icons/fa';
 import { GiCampingTent } from 'react-icons/gi';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
@@ -1975,16 +1975,30 @@ function CycleChiclet({ cycle }: { cycle: CampaignCycle }) {
 
 export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: { campaign: ParsedCampaign; showEditFriends: () => void; cards: CardsMap; refetchCampaign: () => Promise<void> }) {
   const { cycles, locations, paths } = useLocale();
+  const [setCampaignTitle] = useSetCampaignTitleMutation();
   const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign.cycle_id]);
   const [showHistory, historyModal] = useJourneyModal(campaign);
   const [onTravel, travelModal] = useTravelModal(campaign);
   const [onEndDay, endDayModal] = useEndDayModal(campaign);
   const currentLocation = campaign.current_location ? locations[campaign.current_location] : undefined;
   const currentPath = campaign.current_path_terrain ? paths[campaign.current_path_terrain] : undefined;
+  const onTitleChange = useCallback(async (title: string) => {
+    await setCampaignTitle({
+      variables: {
+        campaignId: campaign.id,
+        name: title,
+      },
+    });
+  }, [campaign.id, setCampaignTitle]);
   return (
     <>
       <PageHeading
         title={campaign.name}
+        titleNode={<EditableTextInput
+          value={campaign.name}
+          hideEditButton
+          onChange={onTitleChange}
+        />}
         subHeader={!!cycle ? <CycleChiclet cycle={cycle} /> : undefined}
       >
         <ButtonGroup>

@@ -3,7 +3,7 @@ import { Box, Flex, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
 import { t } from '@lingui/macro';
 
-export default function PageHeading({ title, children, subHeader }: { title: string; subHeader?: React.ReactNode; children?: React.ReactNode }) {
+export default function PageHeading({ title, titleNode, children, subHeader }: { title: string; titleNode?: React.ReactNode; subHeader?: React.ReactNode; children?: React.ReactNode }) {
   return (
     <>
       <Head>
@@ -13,7 +13,7 @@ export default function PageHeading({ title, children, subHeader }: { title: str
         { children ? (
           <Flex direction="row" justifyContent="space-between">
             <Flex direction="column">
-              <Heading>{title}</Heading>
+              <Heading>{titleNode ?? title}</Heading>
               { subHeader }
             </Flex>
             {children}

@@ -1887,7 +1887,7 @@ export type All_Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "all_card_text" */
 export enum All_Card_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   AllCardTextPkey = 'all_card_text_pkey'
 }
 
@@ -2170,6 +2170,7 @@ export enum All_Card_Text_Update_Column {
 export type All_Card_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<All_Card_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: All_Card_Text_Bool_Exp;
 };
 
@@ -2548,6 +2549,7 @@ export type All_Card_Updated_Updates = {
   _inc?: InputMaybe<All_Card_Updated_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<All_Card_Updated_Set_Input>;
+  /** filter the rows which have to be updated */
   where: All_Card_Updated_Bool_Exp;
 };
 
@@ -2584,6 +2586,7 @@ export type All_Card_Updates = {
   _prepend?: InputMaybe<All_Card_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<All_Card_Set_Input>;
+  /** filter the rows which have to be updated */
   where: All_Card_Bool_Exp;
 };
 
@@ -3014,6 +3017,7 @@ export type Base_Decks_Updates = {
   _inc?: InputMaybe<Base_Decks_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Base_Decks_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Base_Decks_Bool_Exp;
 };
 
@@ -3601,6 +3605,7 @@ export type Campaign_Access_Updates = {
   _inc?: InputMaybe<Campaign_Access_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Campaign_Access_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Campaign_Access_Bool_Exp;
 };
 
@@ -3963,7 +3968,7 @@ export type Campaign_Deck_Bool_Exp = {
 export enum Campaign_Deck_Constraint {
   /** unique or primary key constraint on columns "campaign_id", "arkhamdb_id" */
   DeckArkhamdbIdCampaignIdKey = 'deck_arkhamdb_id_campaign_id_key',
-  /** unique or primary key constraint on columns "local_uuid", "campaign_id" */
+  /** unique or primary key constraint on columns "campaign_id", "local_uuid" */
   DeckLocalUuidCampaignIdKey = 'deck_local_uuid_campaign_id_key',
   /** unique or primary key constraint on columns "id" */
   DeckPkey = 'deck_pkey'
@@ -4341,6 +4346,7 @@ export type Campaign_Deck_Updates = {
   _prepend?: InputMaybe<Campaign_Deck_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Campaign_Deck_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Campaign_Deck_Bool_Exp;
 };
 
@@ -4565,6 +4571,7 @@ export enum Campaign_Difficulty_Update_Column {
 export type Campaign_Difficulty_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Campaign_Difficulty_Bool_Exp;
 };
 
@@ -4836,6 +4843,7 @@ export type Campaign_Guide_Updates = {
   _inc?: InputMaybe<Campaign_Guide_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Campaign_Guide_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Campaign_Guide_Bool_Exp;
 };
 
@@ -5030,6 +5038,8 @@ export type Campaign_Investigator_Max_Fields = {
   __typename?: 'campaign_investigator_max_fields';
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  /** A computed field, executes function "campaign_investigator_id" */
+  id?: Maybe<Scalars['String']>;
   investigator?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -5047,6 +5057,8 @@ export type Campaign_Investigator_Min_Fields = {
   __typename?: 'campaign_investigator_min_fields';
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  /** A computed field, executes function "campaign_investigator_id" */
+  id?: Maybe<Scalars['String']>;
   investigator?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -5188,6 +5200,7 @@ export type Campaign_Investigator_Updates = {
   _inc?: InputMaybe<Campaign_Investigator_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Campaign_Investigator_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Campaign_Investigator_Bool_Exp;
 };
 
@@ -5544,6 +5557,7 @@ export type Campaign_Updates = {
   _prepend?: InputMaybe<Campaign_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Campaign_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Campaign_Bool_Exp;
 };
 
@@ -6051,7 +6065,7 @@ export type Card_Cycle_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_cycle" */
 export enum Card_Cycle_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   CardCyclePkey = 'card_cycle_pkey'
 }
 
@@ -6210,6 +6224,7 @@ export type Card_Cycle_Updates = {
   _inc?: InputMaybe<Card_Cycle_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Card_Cycle_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Card_Cycle_Bool_Exp;
 };
 
@@ -6337,7 +6352,7 @@ export type Card_Encounter_Set_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_encounter_set" */
 export enum Card_Encounter_Set_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   CardEncounterSetPkey = 'card_encounter_set_pkey'
 }
 
@@ -6472,6 +6487,7 @@ export enum Card_Encounter_Set_Update_Column {
 export type Card_Encounter_Set_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Card_Encounter_Set_Bool_Exp;
 };
 
@@ -6838,7 +6854,7 @@ export type Card_Pack_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_pack" */
 export enum Card_Pack_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   CardPackPkey = 'card_pack_pkey'
 }
 
@@ -7050,6 +7066,7 @@ export type Card_Pack_Updates = {
   _inc?: InputMaybe<Card_Pack_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Card_Pack_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Card_Pack_Bool_Exp;
 };
 
@@ -7441,7 +7458,7 @@ export type Card_Subtype_Name_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_subtype_name" */
 export enum Card_Subtype_Name_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   CardSubtypeNamePkey = 'card_subtype_name_pkey'
 }
 
@@ -7542,6 +7559,7 @@ export enum Card_Subtype_Name_Update_Column {
 export type Card_Subtype_Name_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Card_Subtype_Name_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Card_Subtype_Name_Bool_Exp;
 };
 
@@ -7657,9 +7675,9 @@ export type Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_text" */
 export enum Card_Text_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   CardTextCodeLocaleKey = 'card_text_code_locale_key',
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   CardTextPkey = 'card_text_pkey'
 }
 
@@ -7882,6 +7900,7 @@ export enum Card_Text_Update_Column {
 export type Card_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Card_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Card_Text_Bool_Exp;
 };
 
@@ -8034,6 +8053,7 @@ export enum Card_Type_Code_Update_Column {
 export type Card_Type_Code_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Card_Type_Code_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Card_Type_Code_Bool_Exp;
 };
 
@@ -8079,7 +8099,7 @@ export type Card_Type_Name_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_type_name" */
 export enum Card_Type_Name_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   TypeNamePkey = 'type_name_pkey'
 }
 
@@ -8178,6 +8198,7 @@ export enum Card_Type_Name_Update_Column {
 export type Card_Type_Name_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Card_Type_Name_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Card_Type_Name_Bool_Exp;
 };
 
@@ -8300,6 +8321,7 @@ export type Card_Updates = {
   _prepend?: InputMaybe<Card_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Card_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Card_Bool_Exp;
 };
 
@@ -8822,6 +8844,7 @@ export type Chaos_Bag_Result_Updates = {
   _prepend?: InputMaybe<Chaos_Bag_Result_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Chaos_Bag_Result_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Chaos_Bag_Result_Bool_Exp;
 };
 
@@ -9015,7 +9038,4631 @@ export enum Chaos_Bag_Tarot_Mode_Update_Column {
 export type Chaos_Bag_Tarot_Mode_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Chaos_Bag_Tarot_Mode_Bool_Exp;
+};
+
+/** columns and relationships of "conquest.card" */
+export type Conquest_Card = {
+  __typename?: 'conquest_card';
+  attack?: Maybe<Scalars['Int']>;
+  back_attack?: Maybe<Scalars['Int']>;
+  back_card_id?: Maybe<Scalars['String']>;
+  back_flavor?: Maybe<Scalars['String']>;
+  back_health?: Maybe<Scalars['Int']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  command_hammers?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  faction_id?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  loyalty_id?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  pack_id: Scalars['String'];
+  position: Scalars['Int'];
+  preparation: Scalars['Boolean'];
+  quantity?: Maybe<Scalars['Int']>;
+  shields?: Maybe<Scalars['Int']>;
+  signature_id?: Maybe<Scalars['Int']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  type_id: Scalars['String'];
+  unique: Scalars['Boolean'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "conquest.card" */
+export type Conquest_Card_Aggregate = {
+  __typename?: 'conquest_card_aggregate';
+  aggregate?: Maybe<Conquest_Card_Aggregate_Fields>;
+  nodes: Array<Conquest_Card>;
+};
+
+/** aggregate fields of "conquest.card" */
+export type Conquest_Card_Aggregate_Fields = {
+  __typename?: 'conquest_card_aggregate_fields';
+  avg?: Maybe<Conquest_Card_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Card_Max_Fields>;
+  min?: Maybe<Conquest_Card_Min_Fields>;
+  stddev?: Maybe<Conquest_Card_Stddev_Fields>;
+  stddev_pop?: Maybe<Conquest_Card_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Conquest_Card_Stddev_Samp_Fields>;
+  sum?: Maybe<Conquest_Card_Sum_Fields>;
+  var_pop?: Maybe<Conquest_Card_Var_Pop_Fields>;
+  var_samp?: Maybe<Conquest_Card_Var_Samp_Fields>;
+  variance?: Maybe<Conquest_Card_Variance_Fields>;
+};
+
+
+/** aggregate fields of "conquest.card" */
+export type Conquest_Card_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Card_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Conquest_Card_Avg_Fields = {
+  __typename?: 'conquest_card_avg_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.card". All fields are combined with a logical 'AND'. */
+export type Conquest_Card_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Card_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Card_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Card_Bool_Exp>>;
+  attack?: InputMaybe<Int_Comparison_Exp>;
+  back_attack?: InputMaybe<Int_Comparison_Exp>;
+  back_card_id?: InputMaybe<String_Comparison_Exp>;
+  back_flavor?: InputMaybe<String_Comparison_Exp>;
+  back_health?: InputMaybe<Int_Comparison_Exp>;
+  back_text?: InputMaybe<String_Comparison_Exp>;
+  back_traits?: InputMaybe<String_Comparison_Exp>;
+  command_hammers?: InputMaybe<Int_Comparison_Exp>;
+  cost?: InputMaybe<Int_Comparison_Exp>;
+  faction_id?: InputMaybe<String_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  health?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
+  keywords?: InputMaybe<String_Comparison_Exp>;
+  loyalty_id?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  pack_id?: InputMaybe<String_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  preparation?: InputMaybe<Boolean_Comparison_Exp>;
+  quantity?: InputMaybe<Int_Comparison_Exp>;
+  shields?: InputMaybe<Int_Comparison_Exp>;
+  signature_id?: InputMaybe<Int_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  traits?: InputMaybe<String_Comparison_Exp>;
+  type_id?: InputMaybe<String_Comparison_Exp>;
+  unique?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.card" */
+export enum Conquest_Card_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  CardPkey = 'card_pkey'
+}
+
+/** input type for incrementing numeric columns in table "conquest.card" */
+export type Conquest_Card_Inc_Input = {
+  attack?: InputMaybe<Scalars['Int']>;
+  back_attack?: InputMaybe<Scalars['Int']>;
+  back_health?: InputMaybe<Scalars['Int']>;
+  command_hammers?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  health?: InputMaybe<Scalars['Int']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  shields?: InputMaybe<Scalars['Int']>;
+  signature_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "conquest.card" */
+export type Conquest_Card_Insert_Input = {
+  attack?: InputMaybe<Scalars['Int']>;
+  back_attack?: InputMaybe<Scalars['Int']>;
+  back_card_id?: InputMaybe<Scalars['String']>;
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_health?: InputMaybe<Scalars['Int']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
+  command_hammers?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  faction_id?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  keywords?: InputMaybe<Scalars['String']>;
+  loyalty_id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+  preparation?: InputMaybe<Scalars['Boolean']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  shields?: InputMaybe<Scalars['Int']>;
+  signature_id?: InputMaybe<Scalars['Int']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  type_id?: InputMaybe<Scalars['String']>;
+  unique?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** columns and relationships of "conquest.card_localized" */
+export type Conquest_Card_Localized = {
+  __typename?: 'conquest_card_localized';
+  attack?: Maybe<Scalars['Int']>;
+  back_attack?: Maybe<Scalars['Int']>;
+  back_card_id?: Maybe<Scalars['String']>;
+  back_flavor?: Maybe<Scalars['String']>;
+  back_health?: Maybe<Scalars['Int']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  command_hammers?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  faction_id?: Maybe<Scalars['String']>;
+  faction_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  loyalty_id?: Maybe<Scalars['String']>;
+  loyalty_name?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
+  pack_name?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  preparation?: Maybe<Scalars['Boolean']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_back_traits?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
+  real_keywords?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  shields?: Maybe<Scalars['Int']>;
+  signature_id?: Maybe<Scalars['Int']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  type_id?: Maybe<Scalars['String']>;
+  type_name?: Maybe<Scalars['String']>;
+  unique?: Maybe<Scalars['Boolean']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "conquest.card_localized" */
+export type Conquest_Card_Localized_Aggregate = {
+  __typename?: 'conquest_card_localized_aggregate';
+  aggregate?: Maybe<Conquest_Card_Localized_Aggregate_Fields>;
+  nodes: Array<Conquest_Card_Localized>;
+};
+
+/** aggregate fields of "conquest.card_localized" */
+export type Conquest_Card_Localized_Aggregate_Fields = {
+  __typename?: 'conquest_card_localized_aggregate_fields';
+  avg?: Maybe<Conquest_Card_Localized_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Card_Localized_Max_Fields>;
+  min?: Maybe<Conquest_Card_Localized_Min_Fields>;
+  stddev?: Maybe<Conquest_Card_Localized_Stddev_Fields>;
+  stddev_pop?: Maybe<Conquest_Card_Localized_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Conquest_Card_Localized_Stddev_Samp_Fields>;
+  sum?: Maybe<Conquest_Card_Localized_Sum_Fields>;
+  var_pop?: Maybe<Conquest_Card_Localized_Var_Pop_Fields>;
+  var_samp?: Maybe<Conquest_Card_Localized_Var_Samp_Fields>;
+  variance?: Maybe<Conquest_Card_Localized_Variance_Fields>;
+};
+
+
+/** aggregate fields of "conquest.card_localized" */
+export type Conquest_Card_Localized_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Card_Localized_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Conquest_Card_Localized_Avg_Fields = {
+  __typename?: 'conquest_card_localized_avg_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.card_localized". All fields are combined with a logical 'AND'. */
+export type Conquest_Card_Localized_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Card_Localized_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Card_Localized_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Card_Localized_Bool_Exp>>;
+  attack?: InputMaybe<Int_Comparison_Exp>;
+  back_attack?: InputMaybe<Int_Comparison_Exp>;
+  back_card_id?: InputMaybe<String_Comparison_Exp>;
+  back_flavor?: InputMaybe<String_Comparison_Exp>;
+  back_health?: InputMaybe<Int_Comparison_Exp>;
+  back_text?: InputMaybe<String_Comparison_Exp>;
+  back_traits?: InputMaybe<String_Comparison_Exp>;
+  command_hammers?: InputMaybe<Int_Comparison_Exp>;
+  cost?: InputMaybe<Int_Comparison_Exp>;
+  faction_id?: InputMaybe<String_Comparison_Exp>;
+  faction_name?: InputMaybe<String_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  health?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
+  keywords?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  loyalty_id?: InputMaybe<String_Comparison_Exp>;
+  loyalty_name?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  pack_id?: InputMaybe<String_Comparison_Exp>;
+  pack_name?: InputMaybe<String_Comparison_Exp>;
+  pack_position?: InputMaybe<Int_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  preparation?: InputMaybe<Boolean_Comparison_Exp>;
+  quantity?: InputMaybe<Int_Comparison_Exp>;
+  real_back_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_back_text?: InputMaybe<String_Comparison_Exp>;
+  real_back_traits?: InputMaybe<String_Comparison_Exp>;
+  real_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_imagesrc?: InputMaybe<String_Comparison_Exp>;
+  real_keywords?: InputMaybe<String_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  real_text?: InputMaybe<String_Comparison_Exp>;
+  real_traits?: InputMaybe<String_Comparison_Exp>;
+  shields?: InputMaybe<Int_Comparison_Exp>;
+  signature_id?: InputMaybe<Int_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  traits?: InputMaybe<String_Comparison_Exp>;
+  type_id?: InputMaybe<String_Comparison_Exp>;
+  type_name?: InputMaybe<String_Comparison_Exp>;
+  unique?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Card_Localized_Max_Fields = {
+  __typename?: 'conquest_card_localized_max_fields';
+  attack?: Maybe<Scalars['Int']>;
+  back_attack?: Maybe<Scalars['Int']>;
+  back_card_id?: Maybe<Scalars['String']>;
+  back_flavor?: Maybe<Scalars['String']>;
+  back_health?: Maybe<Scalars['Int']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  command_hammers?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  faction_id?: Maybe<Scalars['String']>;
+  faction_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  loyalty_id?: Maybe<Scalars['String']>;
+  loyalty_name?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
+  pack_name?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_back_traits?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
+  real_keywords?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  shields?: Maybe<Scalars['Int']>;
+  signature_id?: Maybe<Scalars['Int']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  type_id?: Maybe<Scalars['String']>;
+  type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Card_Localized_Min_Fields = {
+  __typename?: 'conquest_card_localized_min_fields';
+  attack?: Maybe<Scalars['Int']>;
+  back_attack?: Maybe<Scalars['Int']>;
+  back_card_id?: Maybe<Scalars['String']>;
+  back_flavor?: Maybe<Scalars['String']>;
+  back_health?: Maybe<Scalars['Int']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  command_hammers?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  faction_id?: Maybe<Scalars['String']>;
+  faction_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  loyalty_id?: Maybe<Scalars['String']>;
+  loyalty_name?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
+  pack_name?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_back_traits?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_imagesrc?: Maybe<Scalars['String']>;
+  real_keywords?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  shields?: Maybe<Scalars['Int']>;
+  signature_id?: Maybe<Scalars['Int']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  type_id?: Maybe<Scalars['String']>;
+  type_name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** Ordering options when selecting data from "conquest.card_localized". */
+export type Conquest_Card_Localized_Order_By = {
+  attack?: InputMaybe<Order_By>;
+  back_attack?: InputMaybe<Order_By>;
+  back_card_id?: InputMaybe<Order_By>;
+  back_flavor?: InputMaybe<Order_By>;
+  back_health?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  back_traits?: InputMaybe<Order_By>;
+  command_hammers?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  faction_id?: InputMaybe<Order_By>;
+  faction_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
+  keywords?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  loyalty_id?: InputMaybe<Order_By>;
+  loyalty_name?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  pack_id?: InputMaybe<Order_By>;
+  pack_name?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  preparation?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  real_back_flavor?: InputMaybe<Order_By>;
+  real_back_text?: InputMaybe<Order_By>;
+  real_back_traits?: InputMaybe<Order_By>;
+  real_flavor?: InputMaybe<Order_By>;
+  real_imagesrc?: InputMaybe<Order_By>;
+  real_keywords?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  real_text?: InputMaybe<Order_By>;
+  real_traits?: InputMaybe<Order_By>;
+  shields?: InputMaybe<Order_By>;
+  signature_id?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
+  type_name?: InputMaybe<Order_By>;
+  unique?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "conquest.card_localized" */
+export enum Conquest_Card_Localized_Select_Column {
+  /** column name */
+  Attack = 'attack',
+  /** column name */
+  BackAttack = 'back_attack',
+  /** column name */
+  BackCardId = 'back_card_id',
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackHealth = 'back_health',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  BackTraits = 'back_traits',
+  /** column name */
+  CommandHammers = 'command_hammers',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  FactionId = 'faction_id',
+  /** column name */
+  FactionName = 'faction_name',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  Keywords = 'keywords',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  LoyaltyId = 'loyalty_id',
+  /** column name */
+  LoyaltyName = 'loyalty_name',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  PackId = 'pack_id',
+  /** column name */
+  PackName = 'pack_name',
+  /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Preparation = 'preparation',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackText = 'real_back_text',
+  /** column name */
+  RealBackTraits = 'real_back_traits',
+  /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
+  RealImagesrc = 'real_imagesrc',
+  /** column name */
+  RealKeywords = 'real_keywords',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  RealText = 'real_text',
+  /** column name */
+  RealTraits = 'real_traits',
+  /** column name */
+  Shields = 'shields',
+  /** column name */
+  SignatureId = 'signature_id',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits',
+  /** column name */
+  TypeId = 'type_id',
+  /** column name */
+  TypeName = 'type_name',
+  /** column name */
+  Unique = 'unique',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** aggregate stddev on columns */
+export type Conquest_Card_Localized_Stddev_Fields = {
+  __typename?: 'conquest_card_localized_stddev_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Conquest_Card_Localized_Stddev_Pop_Fields = {
+  __typename?: 'conquest_card_localized_stddev_pop_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Conquest_Card_Localized_Stddev_Samp_Fields = {
+  __typename?: 'conquest_card_localized_stddev_samp_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "conquest_card_localized" */
+export type Conquest_Card_Localized_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Card_Localized_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Card_Localized_Stream_Cursor_Value_Input = {
+  attack?: InputMaybe<Scalars['Int']>;
+  back_attack?: InputMaybe<Scalars['Int']>;
+  back_card_id?: InputMaybe<Scalars['String']>;
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_health?: InputMaybe<Scalars['Int']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
+  command_hammers?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  faction_id?: InputMaybe<Scalars['String']>;
+  faction_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  keywords?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  loyalty_id?: InputMaybe<Scalars['String']>;
+  loyalty_name?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
+  pack_name?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  position?: InputMaybe<Scalars['Int']>;
+  preparation?: InputMaybe<Scalars['Boolean']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_back_traits?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_imagesrc?: InputMaybe<Scalars['String']>;
+  real_keywords?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  shields?: InputMaybe<Scalars['Int']>;
+  signature_id?: InputMaybe<Scalars['Int']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  type_id?: InputMaybe<Scalars['String']>;
+  type_name?: InputMaybe<Scalars['String']>;
+  unique?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate sum on columns */
+export type Conquest_Card_Localized_Sum_Fields = {
+  __typename?: 'conquest_card_localized_sum_fields';
+  attack?: Maybe<Scalars['Int']>;
+  back_attack?: Maybe<Scalars['Int']>;
+  back_health?: Maybe<Scalars['Int']>;
+  command_hammers?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  health?: Maybe<Scalars['Int']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  shields?: Maybe<Scalars['Int']>;
+  signature_id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate var_pop on columns */
+export type Conquest_Card_Localized_Var_Pop_Fields = {
+  __typename?: 'conquest_card_localized_var_pop_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Conquest_Card_Localized_Var_Samp_Fields = {
+  __typename?: 'conquest_card_localized_var_samp_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Conquest_Card_Localized_Variance_Fields = {
+  __typename?: 'conquest_card_localized_variance_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Card_Max_Fields = {
+  __typename?: 'conquest_card_max_fields';
+  attack?: Maybe<Scalars['Int']>;
+  back_attack?: Maybe<Scalars['Int']>;
+  back_card_id?: Maybe<Scalars['String']>;
+  back_flavor?: Maybe<Scalars['String']>;
+  back_health?: Maybe<Scalars['Int']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  command_hammers?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  faction_id?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  loyalty_id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  shields?: Maybe<Scalars['Int']>;
+  signature_id?: Maybe<Scalars['Int']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  type_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Card_Min_Fields = {
+  __typename?: 'conquest_card_min_fields';
+  attack?: Maybe<Scalars['Int']>;
+  back_attack?: Maybe<Scalars['Int']>;
+  back_card_id?: Maybe<Scalars['String']>;
+  back_flavor?: Maybe<Scalars['String']>;
+  back_health?: Maybe<Scalars['Int']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  command_hammers?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  faction_id?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  loyalty_id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  pack_id?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  shields?: Maybe<Scalars['Int']>;
+  signature_id?: Maybe<Scalars['Int']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  type_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.card" */
+export type Conquest_Card_Mutation_Response = {
+  __typename?: 'conquest_card_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Card>;
+};
+
+/** on_conflict condition type for table "conquest.card" */
+export type Conquest_Card_On_Conflict = {
+  constraint: Conquest_Card_Constraint;
+  update_columns?: Array<Conquest_Card_Update_Column>;
+  where?: InputMaybe<Conquest_Card_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.card". */
+export type Conquest_Card_Order_By = {
+  attack?: InputMaybe<Order_By>;
+  back_attack?: InputMaybe<Order_By>;
+  back_card_id?: InputMaybe<Order_By>;
+  back_flavor?: InputMaybe<Order_By>;
+  back_health?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  back_traits?: InputMaybe<Order_By>;
+  command_hammers?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  faction_id?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
+  keywords?: InputMaybe<Order_By>;
+  loyalty_id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  pack_id?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  preparation?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  shields?: InputMaybe<Order_By>;
+  signature_id?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
+  unique?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.card */
+export type Conquest_Card_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "conquest.card" */
+export enum Conquest_Card_Select_Column {
+  /** column name */
+  Attack = 'attack',
+  /** column name */
+  BackAttack = 'back_attack',
+  /** column name */
+  BackCardId = 'back_card_id',
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackHealth = 'back_health',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  BackTraits = 'back_traits',
+  /** column name */
+  CommandHammers = 'command_hammers',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  FactionId = 'faction_id',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  Keywords = 'keywords',
+  /** column name */
+  LoyaltyId = 'loyalty_id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  PackId = 'pack_id',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Preparation = 'preparation',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  Shields = 'shields',
+  /** column name */
+  SignatureId = 'signature_id',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits',
+  /** column name */
+  TypeId = 'type_id',
+  /** column name */
+  Unique = 'unique',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.card" */
+export type Conquest_Card_Set_Input = {
+  attack?: InputMaybe<Scalars['Int']>;
+  back_attack?: InputMaybe<Scalars['Int']>;
+  back_card_id?: InputMaybe<Scalars['String']>;
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_health?: InputMaybe<Scalars['Int']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
+  command_hammers?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  faction_id?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  keywords?: InputMaybe<Scalars['String']>;
+  loyalty_id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+  preparation?: InputMaybe<Scalars['Boolean']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  shields?: InputMaybe<Scalars['Int']>;
+  signature_id?: InputMaybe<Scalars['Int']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  type_id?: InputMaybe<Scalars['String']>;
+  unique?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Conquest_Card_Stddev_Fields = {
+  __typename?: 'conquest_card_stddev_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Conquest_Card_Stddev_Pop_Fields = {
+  __typename?: 'conquest_card_stddev_pop_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Conquest_Card_Stddev_Samp_Fields = {
+  __typename?: 'conquest_card_stddev_samp_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "conquest_card" */
+export type Conquest_Card_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Card_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Card_Stream_Cursor_Value_Input = {
+  attack?: InputMaybe<Scalars['Int']>;
+  back_attack?: InputMaybe<Scalars['Int']>;
+  back_card_id?: InputMaybe<Scalars['String']>;
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_health?: InputMaybe<Scalars['Int']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
+  command_hammers?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  faction_id?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  keywords?: InputMaybe<Scalars['String']>;
+  loyalty_id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  pack_id?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+  preparation?: InputMaybe<Scalars['Boolean']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  shields?: InputMaybe<Scalars['Int']>;
+  signature_id?: InputMaybe<Scalars['Int']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  type_id?: InputMaybe<Scalars['String']>;
+  unique?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate sum on columns */
+export type Conquest_Card_Sum_Fields = {
+  __typename?: 'conquest_card_sum_fields';
+  attack?: Maybe<Scalars['Int']>;
+  back_attack?: Maybe<Scalars['Int']>;
+  back_health?: Maybe<Scalars['Int']>;
+  command_hammers?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  health?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  shields?: Maybe<Scalars['Int']>;
+  signature_id?: Maybe<Scalars['Int']>;
+};
+
+/** columns and relationships of "conquest.card_text" */
+export type Conquest_Card_Text = {
+  __typename?: 'conquest_card_text';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "conquest.card_text" */
+export type Conquest_Card_Text_Aggregate = {
+  __typename?: 'conquest_card_text_aggregate';
+  aggregate?: Maybe<Conquest_Card_Text_Aggregate_Fields>;
+  nodes: Array<Conquest_Card_Text>;
+};
+
+/** aggregate fields of "conquest.card_text" */
+export type Conquest_Card_Text_Aggregate_Fields = {
+  __typename?: 'conquest_card_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Card_Text_Max_Fields>;
+  min?: Maybe<Conquest_Card_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.card_text" */
+export type Conquest_Card_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Card_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.card_text". All fields are combined with a logical 'AND'. */
+export type Conquest_Card_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Card_Text_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Card_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Card_Text_Bool_Exp>>;
+  back_flavor?: InputMaybe<String_Comparison_Exp>;
+  back_text?: InputMaybe<String_Comparison_Exp>;
+  back_traits?: InputMaybe<String_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
+  keywords?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  traits?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.card_text" */
+export enum Conquest_Card_Text_Constraint {
+  /** unique or primary key constraint on columns "id", "locale" */
+  CardTextPkey = 'card_text_pkey'
+}
+
+/** input type for inserting data into table "conquest.card_text" */
+export type Conquest_Card_Text_Insert_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  keywords?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Card_Text_Max_Fields = {
+  __typename?: 'conquest_card_text_max_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Card_Text_Min_Fields = {
+  __typename?: 'conquest_card_text_min_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.card_text" */
+export type Conquest_Card_Text_Mutation_Response = {
+  __typename?: 'conquest_card_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Card_Text>;
+};
+
+/** on_conflict condition type for table "conquest.card_text" */
+export type Conquest_Card_Text_On_Conflict = {
+  constraint: Conquest_Card_Text_Constraint;
+  update_columns?: Array<Conquest_Card_Text_Update_Column>;
+  where?: InputMaybe<Conquest_Card_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.card_text". */
+export type Conquest_Card_Text_Order_By = {
+  back_flavor?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  back_traits?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
+  keywords?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.card_text */
+export type Conquest_Card_Text_Pk_Columns_Input = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "conquest.card_text" */
+export enum Conquest_Card_Text_Select_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  BackTraits = 'back_traits',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  Keywords = 'keywords',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.card_text" */
+export type Conquest_Card_Text_Set_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  keywords?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_card_text" */
+export type Conquest_Card_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Card_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Card_Text_Stream_Cursor_Value_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  keywords?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "conquest.card_text" */
+export enum Conquest_Card_Text_Update_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  BackTraits = 'back_traits',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  Keywords = 'keywords',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Card_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Card_Text_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Card_Text_Bool_Exp;
+};
+
+/** update columns of table "conquest.card" */
+export enum Conquest_Card_Update_Column {
+  /** column name */
+  Attack = 'attack',
+  /** column name */
+  BackAttack = 'back_attack',
+  /** column name */
+  BackCardId = 'back_card_id',
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackHealth = 'back_health',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  BackTraits = 'back_traits',
+  /** column name */
+  CommandHammers = 'command_hammers',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  FactionId = 'faction_id',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  Keywords = 'keywords',
+  /** column name */
+  LoyaltyId = 'loyalty_id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  PackId = 'pack_id',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Preparation = 'preparation',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  Shields = 'shields',
+  /** column name */
+  SignatureId = 'signature_id',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits',
+  /** column name */
+  TypeId = 'type_id',
+  /** column name */
+  Unique = 'unique',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** columns and relationships of "conquest.card_updated" */
+export type Conquest_Card_Updated = {
+  __typename?: 'conquest_card_updated';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "conquest.card_updated" */
+export type Conquest_Card_Updated_Aggregate = {
+  __typename?: 'conquest_card_updated_aggregate';
+  aggregate?: Maybe<Conquest_Card_Updated_Aggregate_Fields>;
+  nodes: Array<Conquest_Card_Updated>;
+};
+
+/** aggregate fields of "conquest.card_updated" */
+export type Conquest_Card_Updated_Aggregate_Fields = {
+  __typename?: 'conquest_card_updated_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Card_Updated_Max_Fields>;
+  min?: Maybe<Conquest_Card_Updated_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.card_updated" */
+export type Conquest_Card_Updated_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Card_Updated_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.card_updated". All fields are combined with a logical 'AND'. */
+export type Conquest_Card_Updated_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Card_Updated_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Card_Updated_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Card_Updated_Bool_Exp>>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Card_Updated_Max_Fields = {
+  __typename?: 'conquest_card_updated_max_fields';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Card_Updated_Min_Fields = {
+  __typename?: 'conquest_card_updated_min_fields';
+  locale?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** Ordering options when selecting data from "conquest.card_updated". */
+export type Conquest_Card_Updated_Order_By = {
+  locale?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "conquest.card_updated" */
+export enum Conquest_Card_Updated_Select_Column {
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** Streaming cursor of the table "conquest_card_updated" */
+export type Conquest_Card_Updated_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Card_Updated_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Card_Updated_Stream_Cursor_Value_Input = {
+  locale?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+export type Conquest_Card_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Conquest_Card_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Card_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Card_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Conquest_Card_Var_Pop_Fields = {
+  __typename?: 'conquest_card_var_pop_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Conquest_Card_Var_Samp_Fields = {
+  __typename?: 'conquest_card_var_samp_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Conquest_Card_Variance_Fields = {
+  __typename?: 'conquest_card_variance_fields';
+  attack?: Maybe<Scalars['Float']>;
+  back_attack?: Maybe<Scalars['Float']>;
+  back_health?: Maybe<Scalars['Float']>;
+  command_hammers?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  shields?: Maybe<Scalars['Float']>;
+  signature_id?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "conquest.comment" */
+export type Conquest_Comment = {
+  __typename?: 'conquest_comment';
+  comment_id?: Maybe<Scalars['uuid']>;
+  created_at: Scalars['timestamptz'];
+  /** An object relationship */
+  deck?: Maybe<Conquest_Deck>;
+  deck_id?: Maybe<Scalars['Int']>;
+  id: Scalars['uuid'];
+  response_count: Scalars['Int'];
+  /** An array relationship */
+  responses: Array<Conquest_Comment>;
+  /** An aggregate relationship */
+  responses_aggregate: Conquest_Comment_Aggregate;
+  text?: Maybe<Scalars['String']>;
+  updated_at: Scalars['timestamptz'];
+  /** An object relationship */
+  user: Conquest_Users;
+  user_id: Scalars['String'];
+};
+
+
+/** columns and relationships of "conquest.comment" */
+export type Conquest_CommentResponsesArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Comment_Order_By>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "conquest.comment" */
+export type Conquest_CommentResponses_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Comment_Order_By>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+/** aggregated selection of "conquest.comment" */
+export type Conquest_Comment_Aggregate = {
+  __typename?: 'conquest_comment_aggregate';
+  aggregate?: Maybe<Conquest_Comment_Aggregate_Fields>;
+  nodes: Array<Conquest_Comment>;
+};
+
+export type Conquest_Comment_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Conquest_Comment_Aggregate_Bool_Exp_Count>;
+};
+
+export type Conquest_Comment_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Conquest_Comment_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "conquest.comment" */
+export type Conquest_Comment_Aggregate_Fields = {
+  __typename?: 'conquest_comment_aggregate_fields';
+  avg?: Maybe<Conquest_Comment_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Comment_Max_Fields>;
+  min?: Maybe<Conquest_Comment_Min_Fields>;
+  stddev?: Maybe<Conquest_Comment_Stddev_Fields>;
+  stddev_pop?: Maybe<Conquest_Comment_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Conquest_Comment_Stddev_Samp_Fields>;
+  sum?: Maybe<Conquest_Comment_Sum_Fields>;
+  var_pop?: Maybe<Conquest_Comment_Var_Pop_Fields>;
+  var_samp?: Maybe<Conquest_Comment_Var_Samp_Fields>;
+  variance?: Maybe<Conquest_Comment_Variance_Fields>;
+};
+
+
+/** aggregate fields of "conquest.comment" */
+export type Conquest_Comment_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "conquest.comment" */
+export type Conquest_Comment_Aggregate_Order_By = {
+  avg?: InputMaybe<Conquest_Comment_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Conquest_Comment_Max_Order_By>;
+  min?: InputMaybe<Conquest_Comment_Min_Order_By>;
+  stddev?: InputMaybe<Conquest_Comment_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Conquest_Comment_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Conquest_Comment_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Conquest_Comment_Sum_Order_By>;
+  var_pop?: InputMaybe<Conquest_Comment_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Conquest_Comment_Var_Samp_Order_By>;
+  variance?: InputMaybe<Conquest_Comment_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "conquest.comment" */
+export type Conquest_Comment_Arr_Rel_Insert_Input = {
+  data: Array<Conquest_Comment_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Conquest_Comment_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Conquest_Comment_Avg_Fields = {
+  __typename?: 'conquest_comment_avg_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "conquest.comment" */
+export type Conquest_Comment_Avg_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.comment". All fields are combined with a logical 'AND'. */
+export type Conquest_Comment_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Comment_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Comment_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Comment_Bool_Exp>>;
+  comment_id?: InputMaybe<Uuid_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  deck?: InputMaybe<Conquest_Deck_Bool_Exp>;
+  deck_id?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  response_count?: InputMaybe<Int_Comparison_Exp>;
+  responses?: InputMaybe<Conquest_Comment_Bool_Exp>;
+  responses_aggregate?: InputMaybe<Conquest_Comment_Aggregate_Bool_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user?: InputMaybe<Conquest_Users_Bool_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.comment" */
+export enum Conquest_Comment_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  CommentPkey = 'comment_pkey'
+}
+
+/** input type for incrementing numeric columns in table "conquest.comment" */
+export type Conquest_Comment_Inc_Input = {
+  deck_id?: InputMaybe<Scalars['Int']>;
+  response_count?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "conquest.comment" */
+export type Conquest_Comment_Insert_Input = {
+  comment_id?: InputMaybe<Scalars['uuid']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck?: InputMaybe<Conquest_Deck_Obj_Rel_Insert_Input>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  response_count?: InputMaybe<Scalars['Int']>;
+  responses?: InputMaybe<Conquest_Comment_Arr_Rel_Insert_Input>;
+  text?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user?: InputMaybe<Conquest_Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Comment_Max_Fields = {
+  __typename?: 'conquest_comment_max_fields';
+  comment_id?: Maybe<Scalars['uuid']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['uuid']>;
+  response_count?: Maybe<Scalars['Int']>;
+  text?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "conquest.comment" */
+export type Conquest_Comment_Max_Order_By = {
+  comment_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Comment_Min_Fields = {
+  __typename?: 'conquest_comment_min_fields';
+  comment_id?: Maybe<Scalars['uuid']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['uuid']>;
+  response_count?: Maybe<Scalars['Int']>;
+  text?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "conquest.comment" */
+export type Conquest_Comment_Min_Order_By = {
+  comment_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "conquest.comment" */
+export type Conquest_Comment_Mutation_Response = {
+  __typename?: 'conquest_comment_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Comment>;
+};
+
+/** on_conflict condition type for table "conquest.comment" */
+export type Conquest_Comment_On_Conflict = {
+  constraint: Conquest_Comment_Constraint;
+  update_columns?: Array<Conquest_Comment_Update_Column>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.comment". */
+export type Conquest_Comment_Order_By = {
+  comment_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deck?: InputMaybe<Conquest_Deck_Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+  responses_aggregate?: InputMaybe<Conquest_Comment_Aggregate_Order_By>;
+  text?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user?: InputMaybe<Conquest_Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.comment */
+export type Conquest_Comment_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "conquest.comment" */
+export enum Conquest_Comment_Select_Column {
+  /** column name */
+  CommentId = 'comment_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  ResponseCount = 'response_count',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "conquest.comment" */
+export type Conquest_Comment_Set_Input = {
+  comment_id?: InputMaybe<Scalars['uuid']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  response_count?: InputMaybe<Scalars['Int']>;
+  text?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Conquest_Comment_Stddev_Fields = {
+  __typename?: 'conquest_comment_stddev_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "conquest.comment" */
+export type Conquest_Comment_Stddev_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Conquest_Comment_Stddev_Pop_Fields = {
+  __typename?: 'conquest_comment_stddev_pop_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "conquest.comment" */
+export type Conquest_Comment_Stddev_Pop_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Conquest_Comment_Stddev_Samp_Fields = {
+  __typename?: 'conquest_comment_stddev_samp_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "conquest.comment" */
+export type Conquest_Comment_Stddev_Samp_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "conquest_comment" */
+export type Conquest_Comment_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Comment_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Comment_Stream_Cursor_Value_Input = {
+  comment_id?: InputMaybe<Scalars['uuid']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  response_count?: InputMaybe<Scalars['Int']>;
+  text?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Conquest_Comment_Sum_Fields = {
+  __typename?: 'conquest_comment_sum_fields';
+  deck_id?: Maybe<Scalars['Int']>;
+  response_count?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "conquest.comment" */
+export type Conquest_Comment_Sum_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "conquest.comment" */
+export enum Conquest_Comment_Update_Column {
+  /** column name */
+  CommentId = 'comment_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  ResponseCount = 'response_count',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Conquest_Comment_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Conquest_Comment_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Comment_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Comment_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Conquest_Comment_Var_Pop_Fields = {
+  __typename?: 'conquest_comment_var_pop_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "conquest.comment" */
+export type Conquest_Comment_Var_Pop_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Conquest_Comment_Var_Samp_Fields = {
+  __typename?: 'conquest_comment_var_samp_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "conquest.comment" */
+export type Conquest_Comment_Var_Samp_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Conquest_Comment_Variance_Fields = {
+  __typename?: 'conquest_comment_variance_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+  response_count?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "conquest.comment" */
+export type Conquest_Comment_Variance_Order_By = {
+  deck_id?: InputMaybe<Order_By>;
+  response_count?: InputMaybe<Order_By>;
+};
+
+/** columns and relationships of "conquest.deck" */
+export type Conquest_Deck = {
+  __typename?: 'conquest_deck';
+  comment_count: Scalars['Int'];
+  /** An array relationship */
+  comments: Array<Conquest_Comment>;
+  /** An aggregate relationship */
+  comments_aggregate: Conquest_Comment_Aggregate;
+  copy_count: Scalars['Int'];
+  created_at: Scalars['timestamptz'];
+  description?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  like_count: Scalars['Int'];
+  /** A computed field, executes function "conquest.deck_liked_by_user" */
+  liked_by_user?: Maybe<Scalars['Boolean']>;
+  meta: Scalars['jsonb'];
+  name: Scalars['String'];
+  /** An object relationship */
+  original_deck?: Maybe<Conquest_Deck_Copy>;
+  published?: Maybe<Scalars['Boolean']>;
+  side_slots: Scalars['jsonb'];
+  slots: Scalars['jsonb'];
+  tags: Scalars['jsonb'];
+  updated_at: Scalars['timestamptz'];
+  /** An object relationship */
+  user: Conquest_Users;
+  user_id: Scalars['String'];
+};
+
+
+/** columns and relationships of "conquest.deck" */
+export type Conquest_DeckCommentsArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Comment_Order_By>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "conquest.deck" */
+export type Conquest_DeckComments_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Comment_Order_By>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "conquest.deck" */
+export type Conquest_DeckMetaArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "conquest.deck" */
+export type Conquest_DeckSide_SlotsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "conquest.deck" */
+export type Conquest_DeckSlotsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "conquest.deck" */
+export type Conquest_DeckTagsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregated selection of "conquest.deck" */
+export type Conquest_Deck_Aggregate = {
+  __typename?: 'conquest_deck_aggregate';
+  aggregate?: Maybe<Conquest_Deck_Aggregate_Fields>;
+  nodes: Array<Conquest_Deck>;
+};
+
+/** aggregate fields of "conquest.deck" */
+export type Conquest_Deck_Aggregate_Fields = {
+  __typename?: 'conquest_deck_aggregate_fields';
+  avg?: Maybe<Conquest_Deck_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Deck_Max_Fields>;
+  min?: Maybe<Conquest_Deck_Min_Fields>;
+  stddev?: Maybe<Conquest_Deck_Stddev_Fields>;
+  stddev_pop?: Maybe<Conquest_Deck_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Conquest_Deck_Stddev_Samp_Fields>;
+  sum?: Maybe<Conquest_Deck_Sum_Fields>;
+  var_pop?: Maybe<Conquest_Deck_Var_Pop_Fields>;
+  var_samp?: Maybe<Conquest_Deck_Var_Samp_Fields>;
+  variance?: Maybe<Conquest_Deck_Variance_Fields>;
+};
+
+
+/** aggregate fields of "conquest.deck" */
+export type Conquest_Deck_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Deck_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Conquest_Deck_Append_Input = {
+  meta?: InputMaybe<Scalars['jsonb']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** aggregate avg on columns */
+export type Conquest_Deck_Avg_Fields = {
+  __typename?: 'conquest_deck_avg_fields';
+  comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.deck". All fields are combined with a logical 'AND'. */
+export type Conquest_Deck_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Deck_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Deck_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Deck_Bool_Exp>>;
+  comment_count?: InputMaybe<Int_Comparison_Exp>;
+  comments?: InputMaybe<Conquest_Comment_Bool_Exp>;
+  comments_aggregate?: InputMaybe<Conquest_Comment_Aggregate_Bool_Exp>;
+  copy_count?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  like_count?: InputMaybe<Int_Comparison_Exp>;
+  liked_by_user?: InputMaybe<Boolean_Comparison_Exp>;
+  meta?: InputMaybe<Jsonb_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  original_deck?: InputMaybe<Conquest_Deck_Copy_Bool_Exp>;
+  published?: InputMaybe<Boolean_Comparison_Exp>;
+  side_slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  tags?: InputMaybe<Jsonb_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user?: InputMaybe<Conquest_Users_Bool_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.deck" */
+export enum Conquest_Deck_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  DeckPkey = 'deck_pkey'
+}
+
+/** columns and relationships of "conquest.deck_copy" */
+export type Conquest_Deck_Copy = {
+  __typename?: 'conquest_deck_copy';
+  copy_deck_id: Scalars['Int'];
+  created_at: Scalars['timestamptz'];
+  /** An object relationship */
+  deck: Conquest_Deck;
+  /** An object relationship */
+  deck_copy: Conquest_Deck;
+  deck_id: Scalars['Int'];
+  updated_at: Scalars['timestamptz'];
+  /** An object relationship */
+  user: Conquest_Users;
+  user_id: Scalars['String'];
+};
+
+/** aggregated selection of "conquest.deck_copy" */
+export type Conquest_Deck_Copy_Aggregate = {
+  __typename?: 'conquest_deck_copy_aggregate';
+  aggregate?: Maybe<Conquest_Deck_Copy_Aggregate_Fields>;
+  nodes: Array<Conquest_Deck_Copy>;
+};
+
+/** aggregate fields of "conquest.deck_copy" */
+export type Conquest_Deck_Copy_Aggregate_Fields = {
+  __typename?: 'conquest_deck_copy_aggregate_fields';
+  avg?: Maybe<Conquest_Deck_Copy_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Deck_Copy_Max_Fields>;
+  min?: Maybe<Conquest_Deck_Copy_Min_Fields>;
+  stddev?: Maybe<Conquest_Deck_Copy_Stddev_Fields>;
+  stddev_pop?: Maybe<Conquest_Deck_Copy_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Conquest_Deck_Copy_Stddev_Samp_Fields>;
+  sum?: Maybe<Conquest_Deck_Copy_Sum_Fields>;
+  var_pop?: Maybe<Conquest_Deck_Copy_Var_Pop_Fields>;
+  var_samp?: Maybe<Conquest_Deck_Copy_Var_Samp_Fields>;
+  variance?: Maybe<Conquest_Deck_Copy_Variance_Fields>;
+};
+
+
+/** aggregate fields of "conquest.deck_copy" */
+export type Conquest_Deck_Copy_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Deck_Copy_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Conquest_Deck_Copy_Avg_Fields = {
+  __typename?: 'conquest_deck_copy_avg_fields';
+  copy_deck_id?: Maybe<Scalars['Float']>;
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.deck_copy". All fields are combined with a logical 'AND'. */
+export type Conquest_Deck_Copy_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Deck_Copy_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Deck_Copy_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Deck_Copy_Bool_Exp>>;
+  copy_deck_id?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  deck?: InputMaybe<Conquest_Deck_Bool_Exp>;
+  deck_copy?: InputMaybe<Conquest_Deck_Bool_Exp>;
+  deck_id?: InputMaybe<Int_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user?: InputMaybe<Conquest_Users_Bool_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.deck_copy" */
+export enum Conquest_Deck_Copy_Constraint {
+  /** unique or primary key constraint on columns "copy_deck_id" */
+  DeckCopyPkey = 'deck_copy_pkey'
+}
+
+/** input type for incrementing numeric columns in table "conquest.deck_copy" */
+export type Conquest_Deck_Copy_Inc_Input = {
+  copy_deck_id?: InputMaybe<Scalars['Int']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "conquest.deck_copy" */
+export type Conquest_Deck_Copy_Insert_Input = {
+  copy_deck_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck?: InputMaybe<Conquest_Deck_Obj_Rel_Insert_Input>;
+  deck_copy?: InputMaybe<Conquest_Deck_Obj_Rel_Insert_Input>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user?: InputMaybe<Conquest_Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Deck_Copy_Max_Fields = {
+  __typename?: 'conquest_deck_copy_max_fields';
+  copy_deck_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Deck_Copy_Min_Fields = {
+  __typename?: 'conquest_deck_copy_min_fields';
+  copy_deck_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "conquest.deck_copy" */
+export type Conquest_Deck_Copy_Mutation_Response = {
+  __typename?: 'conquest_deck_copy_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Deck_Copy>;
+};
+
+/** input type for inserting object relation for remote table "conquest.deck_copy" */
+export type Conquest_Deck_Copy_Obj_Rel_Insert_Input = {
+  data: Conquest_Deck_Copy_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Conquest_Deck_Copy_On_Conflict>;
+};
+
+/** on_conflict condition type for table "conquest.deck_copy" */
+export type Conquest_Deck_Copy_On_Conflict = {
+  constraint: Conquest_Deck_Copy_Constraint;
+  update_columns?: Array<Conquest_Deck_Copy_Update_Column>;
+  where?: InputMaybe<Conquest_Deck_Copy_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.deck_copy". */
+export type Conquest_Deck_Copy_Order_By = {
+  copy_deck_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deck?: InputMaybe<Conquest_Deck_Order_By>;
+  deck_copy?: InputMaybe<Conquest_Deck_Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user?: InputMaybe<Conquest_Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.deck_copy */
+export type Conquest_Deck_Copy_Pk_Columns_Input = {
+  copy_deck_id: Scalars['Int'];
+};
+
+/** select columns of table "conquest.deck_copy" */
+export enum Conquest_Deck_Copy_Select_Column {
+  /** column name */
+  CopyDeckId = 'copy_deck_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "conquest.deck_copy" */
+export type Conquest_Deck_Copy_Set_Input = {
+  copy_deck_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Conquest_Deck_Copy_Stddev_Fields = {
+  __typename?: 'conquest_deck_copy_stddev_fields';
+  copy_deck_id?: Maybe<Scalars['Float']>;
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Conquest_Deck_Copy_Stddev_Pop_Fields = {
+  __typename?: 'conquest_deck_copy_stddev_pop_fields';
+  copy_deck_id?: Maybe<Scalars['Float']>;
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Conquest_Deck_Copy_Stddev_Samp_Fields = {
+  __typename?: 'conquest_deck_copy_stddev_samp_fields';
+  copy_deck_id?: Maybe<Scalars['Float']>;
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "conquest_deck_copy" */
+export type Conquest_Deck_Copy_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Deck_Copy_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Deck_Copy_Stream_Cursor_Value_Input = {
+  copy_deck_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Conquest_Deck_Copy_Sum_Fields = {
+  __typename?: 'conquest_deck_copy_sum_fields';
+  copy_deck_id?: Maybe<Scalars['Int']>;
+  deck_id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "conquest.deck_copy" */
+export enum Conquest_Deck_Copy_Update_Column {
+  /** column name */
+  CopyDeckId = 'copy_deck_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Conquest_Deck_Copy_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Conquest_Deck_Copy_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Deck_Copy_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Deck_Copy_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Conquest_Deck_Copy_Var_Pop_Fields = {
+  __typename?: 'conquest_deck_copy_var_pop_fields';
+  copy_deck_id?: Maybe<Scalars['Float']>;
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Conquest_Deck_Copy_Var_Samp_Fields = {
+  __typename?: 'conquest_deck_copy_var_samp_fields';
+  copy_deck_id?: Maybe<Scalars['Float']>;
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Conquest_Deck_Copy_Variance_Fields = {
+  __typename?: 'conquest_deck_copy_variance_fields';
+  copy_deck_id?: Maybe<Scalars['Float']>;
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Conquest_Deck_Delete_At_Path_Input = {
+  meta?: InputMaybe<Array<Scalars['String']>>;
+  side_slots?: InputMaybe<Array<Scalars['String']>>;
+  slots?: InputMaybe<Array<Scalars['String']>>;
+  tags?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Conquest_Deck_Delete_Elem_Input = {
+  meta?: InputMaybe<Scalars['Int']>;
+  side_slots?: InputMaybe<Scalars['Int']>;
+  slots?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Conquest_Deck_Delete_Key_Input = {
+  meta?: InputMaybe<Scalars['String']>;
+  side_slots?: InputMaybe<Scalars['String']>;
+  slots?: InputMaybe<Scalars['String']>;
+  tags?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for incrementing numeric columns in table "conquest.deck" */
+export type Conquest_Deck_Inc_Input = {
+  comment_count?: InputMaybe<Scalars['Int']>;
+  copy_count?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  like_count?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "conquest.deck" */
+export type Conquest_Deck_Insert_Input = {
+  comment_count?: InputMaybe<Scalars['Int']>;
+  comments?: InputMaybe<Conquest_Comment_Arr_Rel_Insert_Input>;
+  copy_count?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  like_count?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  original_deck?: InputMaybe<Conquest_Deck_Copy_Obj_Rel_Insert_Input>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user?: InputMaybe<Conquest_Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** columns and relationships of "conquest.deck_like" */
+export type Conquest_Deck_Like = {
+  __typename?: 'conquest_deck_like';
+  created_at: Scalars['timestamptz'];
+  deck_id: Scalars['Int'];
+  liked: Scalars['Boolean'];
+  user_id: Scalars['String'];
+};
+
+/** aggregated selection of "conquest.deck_like" */
+export type Conquest_Deck_Like_Aggregate = {
+  __typename?: 'conquest_deck_like_aggregate';
+  aggregate?: Maybe<Conquest_Deck_Like_Aggregate_Fields>;
+  nodes: Array<Conquest_Deck_Like>;
+};
+
+/** aggregate fields of "conquest.deck_like" */
+export type Conquest_Deck_Like_Aggregate_Fields = {
+  __typename?: 'conquest_deck_like_aggregate_fields';
+  avg?: Maybe<Conquest_Deck_Like_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Deck_Like_Max_Fields>;
+  min?: Maybe<Conquest_Deck_Like_Min_Fields>;
+  stddev?: Maybe<Conquest_Deck_Like_Stddev_Fields>;
+  stddev_pop?: Maybe<Conquest_Deck_Like_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Conquest_Deck_Like_Stddev_Samp_Fields>;
+  sum?: Maybe<Conquest_Deck_Like_Sum_Fields>;
+  var_pop?: Maybe<Conquest_Deck_Like_Var_Pop_Fields>;
+  var_samp?: Maybe<Conquest_Deck_Like_Var_Samp_Fields>;
+  variance?: Maybe<Conquest_Deck_Like_Variance_Fields>;
+};
+
+
+/** aggregate fields of "conquest.deck_like" */
+export type Conquest_Deck_Like_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Deck_Like_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Conquest_Deck_Like_Avg_Fields = {
+  __typename?: 'conquest_deck_like_avg_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.deck_like". All fields are combined with a logical 'AND'. */
+export type Conquest_Deck_Like_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Deck_Like_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Deck_Like_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Deck_Like_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  deck_id?: InputMaybe<Int_Comparison_Exp>;
+  liked?: InputMaybe<Boolean_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.deck_like" */
+export enum Conquest_Deck_Like_Constraint {
+  /** unique or primary key constraint on columns "user_id", "deck_id" */
+  DeckLikePkey = 'deck_like_pkey'
+}
+
+/** input type for incrementing numeric columns in table "conquest.deck_like" */
+export type Conquest_Deck_Like_Inc_Input = {
+  deck_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "conquest.deck_like" */
+export type Conquest_Deck_Like_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  liked?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Deck_Like_Max_Fields = {
+  __typename?: 'conquest_deck_like_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Deck_Like_Min_Fields = {
+  __typename?: 'conquest_deck_like_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  deck_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "conquest.deck_like" */
+export type Conquest_Deck_Like_Mutation_Response = {
+  __typename?: 'conquest_deck_like_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Deck_Like>;
+};
+
+/** on_conflict condition type for table "conquest.deck_like" */
+export type Conquest_Deck_Like_On_Conflict = {
+  constraint: Conquest_Deck_Like_Constraint;
+  update_columns?: Array<Conquest_Deck_Like_Update_Column>;
+  where?: InputMaybe<Conquest_Deck_Like_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.deck_like". */
+export type Conquest_Deck_Like_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  deck_id?: InputMaybe<Order_By>;
+  liked?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.deck_like */
+export type Conquest_Deck_Like_Pk_Columns_Input = {
+  deck_id: Scalars['Int'];
+  user_id: Scalars['String'];
+};
+
+/** select columns of table "conquest.deck_like" */
+export enum Conquest_Deck_Like_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  Liked = 'liked',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "conquest.deck_like" */
+export type Conquest_Deck_Like_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  liked?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Conquest_Deck_Like_Stddev_Fields = {
+  __typename?: 'conquest_deck_like_stddev_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Conquest_Deck_Like_Stddev_Pop_Fields = {
+  __typename?: 'conquest_deck_like_stddev_pop_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Conquest_Deck_Like_Stddev_Samp_Fields = {
+  __typename?: 'conquest_deck_like_stddev_samp_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "conquest_deck_like" */
+export type Conquest_Deck_Like_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Deck_Like_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Deck_Like_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deck_id?: InputMaybe<Scalars['Int']>;
+  liked?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Conquest_Deck_Like_Sum_Fields = {
+  __typename?: 'conquest_deck_like_sum_fields';
+  deck_id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "conquest.deck_like" */
+export enum Conquest_Deck_Like_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DeckId = 'deck_id',
+  /** column name */
+  Liked = 'liked',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Conquest_Deck_Like_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Conquest_Deck_Like_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Deck_Like_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Deck_Like_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Conquest_Deck_Like_Var_Pop_Fields = {
+  __typename?: 'conquest_deck_like_var_pop_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Conquest_Deck_Like_Var_Samp_Fields = {
+  __typename?: 'conquest_deck_like_var_samp_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Conquest_Deck_Like_Variance_Fields = {
+  __typename?: 'conquest_deck_like_variance_fields';
+  deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Deck_Max_Fields = {
+  __typename?: 'conquest_deck_max_fields';
+  comment_count?: Maybe<Scalars['Int']>;
+  copy_count?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  like_count?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Deck_Min_Fields = {
+  __typename?: 'conquest_deck_min_fields';
+  comment_count?: Maybe<Scalars['Int']>;
+  copy_count?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  like_count?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "conquest.deck" */
+export type Conquest_Deck_Mutation_Response = {
+  __typename?: 'conquest_deck_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Deck>;
+};
+
+/** input type for inserting object relation for remote table "conquest.deck" */
+export type Conquest_Deck_Obj_Rel_Insert_Input = {
+  data: Conquest_Deck_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Conquest_Deck_On_Conflict>;
+};
+
+/** on_conflict condition type for table "conquest.deck" */
+export type Conquest_Deck_On_Conflict = {
+  constraint: Conquest_Deck_Constraint;
+  update_columns?: Array<Conquest_Deck_Update_Column>;
+  where?: InputMaybe<Conquest_Deck_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.deck". */
+export type Conquest_Deck_Order_By = {
+  comment_count?: InputMaybe<Order_By>;
+  comments_aggregate?: InputMaybe<Conquest_Comment_Aggregate_Order_By>;
+  copy_count?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  like_count?: InputMaybe<Order_By>;
+  liked_by_user?: InputMaybe<Order_By>;
+  meta?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  original_deck?: InputMaybe<Conquest_Deck_Copy_Order_By>;
+  published?: InputMaybe<Order_By>;
+  side_slots?: InputMaybe<Order_By>;
+  slots?: InputMaybe<Order_By>;
+  tags?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user?: InputMaybe<Conquest_Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.deck */
+export type Conquest_Deck_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Conquest_Deck_Prepend_Input = {
+  meta?: InputMaybe<Scalars['jsonb']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "conquest.deck" */
+export enum Conquest_Deck_Select_Column {
+  /** column name */
+  CommentCount = 'comment_count',
+  /** column name */
+  CopyCount = 'copy_count',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  LikeCount = 'like_count',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Published = 'published',
+  /** column name */
+  SideSlots = 'side_slots',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "conquest.deck" */
+export type Conquest_Deck_Set_Input = {
+  comment_count?: InputMaybe<Scalars['Int']>;
+  copy_count?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  like_count?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Conquest_Deck_Stddev_Fields = {
+  __typename?: 'conquest_deck_stddev_fields';
+  comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Conquest_Deck_Stddev_Pop_Fields = {
+  __typename?: 'conquest_deck_stddev_pop_fields';
+  comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Conquest_Deck_Stddev_Samp_Fields = {
+  __typename?: 'conquest_deck_stddev_samp_fields';
+  comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "conquest_deck" */
+export type Conquest_Deck_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Deck_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Deck_Stream_Cursor_Value_Input = {
+  comment_count?: InputMaybe<Scalars['Int']>;
+  copy_count?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  like_count?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  published?: InputMaybe<Scalars['Boolean']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Conquest_Deck_Sum_Fields = {
+  __typename?: 'conquest_deck_sum_fields';
+  comment_count?: Maybe<Scalars['Int']>;
+  copy_count?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  like_count?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "conquest.deck" */
+export enum Conquest_Deck_Update_Column {
+  /** column name */
+  CommentCount = 'comment_count',
+  /** column name */
+  CopyCount = 'copy_count',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  LikeCount = 'like_count',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Published = 'published',
+  /** column name */
+  SideSlots = 'side_slots',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Conquest_Deck_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Conquest_Deck_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Conquest_Deck_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Conquest_Deck_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Conquest_Deck_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Conquest_Deck_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Conquest_Deck_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Deck_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Deck_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Conquest_Deck_Var_Pop_Fields = {
+  __typename?: 'conquest_deck_var_pop_fields';
+  comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Conquest_Deck_Var_Samp_Fields = {
+  __typename?: 'conquest_deck_var_samp_fields';
+  comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Conquest_Deck_Variance_Fields = {
+  __typename?: 'conquest_deck_variance_fields';
+  comment_count?: Maybe<Scalars['Float']>;
+  copy_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  like_count?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "conquest.faction" */
+export type Conquest_Faction = {
+  __typename?: 'conquest_faction';
+  id: Scalars['String'];
+  name: Scalars['String'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "conquest.faction" */
+export type Conquest_Faction_Aggregate = {
+  __typename?: 'conquest_faction_aggregate';
+  aggregate?: Maybe<Conquest_Faction_Aggregate_Fields>;
+  nodes: Array<Conquest_Faction>;
+};
+
+/** aggregate fields of "conquest.faction" */
+export type Conquest_Faction_Aggregate_Fields = {
+  __typename?: 'conquest_faction_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Faction_Max_Fields>;
+  min?: Maybe<Conquest_Faction_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.faction" */
+export type Conquest_Faction_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Faction_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.faction". All fields are combined with a logical 'AND'. */
+export type Conquest_Faction_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Faction_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Faction_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Faction_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.faction" */
+export enum Conquest_Faction_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  FactionPkey = 'faction_pkey'
+}
+
+/** input type for inserting data into table "conquest.faction" */
+export type Conquest_Faction_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Faction_Max_Fields = {
+  __typename?: 'conquest_faction_max_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Faction_Min_Fields = {
+  __typename?: 'conquest_faction_min_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.faction" */
+export type Conquest_Faction_Mutation_Response = {
+  __typename?: 'conquest_faction_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Faction>;
+};
+
+/** on_conflict condition type for table "conquest.faction" */
+export type Conquest_Faction_On_Conflict = {
+  constraint: Conquest_Faction_Constraint;
+  update_columns?: Array<Conquest_Faction_Update_Column>;
+  where?: InputMaybe<Conquest_Faction_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.faction". */
+export type Conquest_Faction_Order_By = {
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.faction */
+export type Conquest_Faction_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "conquest.faction" */
+export enum Conquest_Faction_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.faction" */
+export type Conquest_Faction_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_faction" */
+export type Conquest_Faction_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Faction_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Faction_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** columns and relationships of "conquest.faction_text" */
+export type Conquest_Faction_Text = {
+  __typename?: 'conquest_faction_text';
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "conquest.faction_text" */
+export type Conquest_Faction_Text_Aggregate = {
+  __typename?: 'conquest_faction_text_aggregate';
+  aggregate?: Maybe<Conquest_Faction_Text_Aggregate_Fields>;
+  nodes: Array<Conquest_Faction_Text>;
+};
+
+/** aggregate fields of "conquest.faction_text" */
+export type Conquest_Faction_Text_Aggregate_Fields = {
+  __typename?: 'conquest_faction_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Faction_Text_Max_Fields>;
+  min?: Maybe<Conquest_Faction_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.faction_text" */
+export type Conquest_Faction_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Faction_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.faction_text". All fields are combined with a logical 'AND'. */
+export type Conquest_Faction_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Faction_Text_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Faction_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Faction_Text_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.faction_text" */
+export enum Conquest_Faction_Text_Constraint {
+  /** unique or primary key constraint on columns "id", "locale" */
+  FactionTextPkey = 'faction_text_pkey'
+}
+
+/** input type for inserting data into table "conquest.faction_text" */
+export type Conquest_Faction_Text_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Faction_Text_Max_Fields = {
+  __typename?: 'conquest_faction_text_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Faction_Text_Min_Fields = {
+  __typename?: 'conquest_faction_text_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.faction_text" */
+export type Conquest_Faction_Text_Mutation_Response = {
+  __typename?: 'conquest_faction_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Faction_Text>;
+};
+
+/** on_conflict condition type for table "conquest.faction_text" */
+export type Conquest_Faction_Text_On_Conflict = {
+  constraint: Conquest_Faction_Text_Constraint;
+  update_columns?: Array<Conquest_Faction_Text_Update_Column>;
+  where?: InputMaybe<Conquest_Faction_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.faction_text". */
+export type Conquest_Faction_Text_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.faction_text */
+export type Conquest_Faction_Text_Pk_Columns_Input = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "conquest.faction_text" */
+export enum Conquest_Faction_Text_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.faction_text" */
+export type Conquest_Faction_Text_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_faction_text" */
+export type Conquest_Faction_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Faction_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Faction_Text_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "conquest.faction_text" */
+export enum Conquest_Faction_Text_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Faction_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Faction_Text_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Faction_Text_Bool_Exp;
+};
+
+/** update columns of table "conquest.faction" */
+export enum Conquest_Faction_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Faction_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Faction_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Faction_Bool_Exp;
+};
+
+/** columns and relationships of "conquest.loyalty" */
+export type Conquest_Loyalty = {
+  __typename?: 'conquest_loyalty';
+  id: Scalars['String'];
+  name: Scalars['String'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "conquest.loyalty" */
+export type Conquest_Loyalty_Aggregate = {
+  __typename?: 'conquest_loyalty_aggregate';
+  aggregate?: Maybe<Conquest_Loyalty_Aggregate_Fields>;
+  nodes: Array<Conquest_Loyalty>;
+};
+
+/** aggregate fields of "conquest.loyalty" */
+export type Conquest_Loyalty_Aggregate_Fields = {
+  __typename?: 'conquest_loyalty_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Loyalty_Max_Fields>;
+  min?: Maybe<Conquest_Loyalty_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.loyalty" */
+export type Conquest_Loyalty_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Loyalty_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.loyalty". All fields are combined with a logical 'AND'. */
+export type Conquest_Loyalty_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Loyalty_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Loyalty_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Loyalty_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.loyalty" */
+export enum Conquest_Loyalty_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  LoyaltyPkey = 'loyalty_pkey'
+}
+
+/** input type for inserting data into table "conquest.loyalty" */
+export type Conquest_Loyalty_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Loyalty_Max_Fields = {
+  __typename?: 'conquest_loyalty_max_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Loyalty_Min_Fields = {
+  __typename?: 'conquest_loyalty_min_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.loyalty" */
+export type Conquest_Loyalty_Mutation_Response = {
+  __typename?: 'conquest_loyalty_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Loyalty>;
+};
+
+/** on_conflict condition type for table "conquest.loyalty" */
+export type Conquest_Loyalty_On_Conflict = {
+  constraint: Conquest_Loyalty_Constraint;
+  update_columns?: Array<Conquest_Loyalty_Update_Column>;
+  where?: InputMaybe<Conquest_Loyalty_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.loyalty". */
+export type Conquest_Loyalty_Order_By = {
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.loyalty */
+export type Conquest_Loyalty_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "conquest.loyalty" */
+export enum Conquest_Loyalty_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.loyalty" */
+export type Conquest_Loyalty_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_loyalty" */
+export type Conquest_Loyalty_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Loyalty_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Loyalty_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** columns and relationships of "conquest.loyalty_text" */
+export type Conquest_Loyalty_Text = {
+  __typename?: 'conquest_loyalty_text';
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "conquest.loyalty_text" */
+export type Conquest_Loyalty_Text_Aggregate = {
+  __typename?: 'conquest_loyalty_text_aggregate';
+  aggregate?: Maybe<Conquest_Loyalty_Text_Aggregate_Fields>;
+  nodes: Array<Conquest_Loyalty_Text>;
+};
+
+/** aggregate fields of "conquest.loyalty_text" */
+export type Conquest_Loyalty_Text_Aggregate_Fields = {
+  __typename?: 'conquest_loyalty_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Loyalty_Text_Max_Fields>;
+  min?: Maybe<Conquest_Loyalty_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.loyalty_text" */
+export type Conquest_Loyalty_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Loyalty_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.loyalty_text". All fields are combined with a logical 'AND'. */
+export type Conquest_Loyalty_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Loyalty_Text_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Loyalty_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Loyalty_Text_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.loyalty_text" */
+export enum Conquest_Loyalty_Text_Constraint {
+  /** unique or primary key constraint on columns "id", "locale" */
+  LoyaltyTextPkey = 'loyalty_text_pkey'
+}
+
+/** input type for inserting data into table "conquest.loyalty_text" */
+export type Conquest_Loyalty_Text_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Loyalty_Text_Max_Fields = {
+  __typename?: 'conquest_loyalty_text_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Loyalty_Text_Min_Fields = {
+  __typename?: 'conquest_loyalty_text_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.loyalty_text" */
+export type Conquest_Loyalty_Text_Mutation_Response = {
+  __typename?: 'conquest_loyalty_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Loyalty_Text>;
+};
+
+/** on_conflict condition type for table "conquest.loyalty_text" */
+export type Conquest_Loyalty_Text_On_Conflict = {
+  constraint: Conquest_Loyalty_Text_Constraint;
+  update_columns?: Array<Conquest_Loyalty_Text_Update_Column>;
+  where?: InputMaybe<Conquest_Loyalty_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.loyalty_text". */
+export type Conquest_Loyalty_Text_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.loyalty_text */
+export type Conquest_Loyalty_Text_Pk_Columns_Input = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "conquest.loyalty_text" */
+export enum Conquest_Loyalty_Text_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.loyalty_text" */
+export type Conquest_Loyalty_Text_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_loyalty_text" */
+export type Conquest_Loyalty_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Loyalty_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Loyalty_Text_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "conquest.loyalty_text" */
+export enum Conquest_Loyalty_Text_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Loyalty_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Loyalty_Text_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Loyalty_Text_Bool_Exp;
+};
+
+/** update columns of table "conquest.loyalty" */
+export enum Conquest_Loyalty_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Loyalty_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Loyalty_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Loyalty_Bool_Exp;
+};
+
+/** columns and relationships of "conquest.pack" */
+export type Conquest_Pack = {
+  __typename?: 'conquest_pack';
+  id: Scalars['String'];
+  name: Scalars['String'];
+  position: Scalars['Int'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "conquest.pack" */
+export type Conquest_Pack_Aggregate = {
+  __typename?: 'conquest_pack_aggregate';
+  aggregate?: Maybe<Conquest_Pack_Aggregate_Fields>;
+  nodes: Array<Conquest_Pack>;
+};
+
+/** aggregate fields of "conquest.pack" */
+export type Conquest_Pack_Aggregate_Fields = {
+  __typename?: 'conquest_pack_aggregate_fields';
+  avg?: Maybe<Conquest_Pack_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Pack_Max_Fields>;
+  min?: Maybe<Conquest_Pack_Min_Fields>;
+  stddev?: Maybe<Conquest_Pack_Stddev_Fields>;
+  stddev_pop?: Maybe<Conquest_Pack_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Conquest_Pack_Stddev_Samp_Fields>;
+  sum?: Maybe<Conquest_Pack_Sum_Fields>;
+  var_pop?: Maybe<Conquest_Pack_Var_Pop_Fields>;
+  var_samp?: Maybe<Conquest_Pack_Var_Samp_Fields>;
+  variance?: Maybe<Conquest_Pack_Variance_Fields>;
+};
+
+
+/** aggregate fields of "conquest.pack" */
+export type Conquest_Pack_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Pack_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Conquest_Pack_Avg_Fields = {
+  __typename?: 'conquest_pack_avg_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.pack". All fields are combined with a logical 'AND'. */
+export type Conquest_Pack_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Pack_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Pack_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Pack_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.pack" */
+export enum Conquest_Pack_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  PackPkey = 'pack_pkey'
+}
+
+/** input type for incrementing numeric columns in table "conquest.pack" */
+export type Conquest_Pack_Inc_Input = {
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "conquest.pack" */
+export type Conquest_Pack_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Pack_Max_Fields = {
+  __typename?: 'conquest_pack_max_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Pack_Min_Fields = {
+  __typename?: 'conquest_pack_min_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.pack" */
+export type Conquest_Pack_Mutation_Response = {
+  __typename?: 'conquest_pack_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Pack>;
+};
+
+/** on_conflict condition type for table "conquest.pack" */
+export type Conquest_Pack_On_Conflict = {
+  constraint: Conquest_Pack_Constraint;
+  update_columns?: Array<Conquest_Pack_Update_Column>;
+  where?: InputMaybe<Conquest_Pack_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.pack". */
+export type Conquest_Pack_Order_By = {
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.pack */
+export type Conquest_Pack_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "conquest.pack" */
+export enum Conquest_Pack_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.pack" */
+export type Conquest_Pack_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Conquest_Pack_Stddev_Fields = {
+  __typename?: 'conquest_pack_stddev_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Conquest_Pack_Stddev_Pop_Fields = {
+  __typename?: 'conquest_pack_stddev_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Conquest_Pack_Stddev_Samp_Fields = {
+  __typename?: 'conquest_pack_stddev_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "conquest_pack" */
+export type Conquest_Pack_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Pack_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Pack_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate sum on columns */
+export type Conquest_Pack_Sum_Fields = {
+  __typename?: 'conquest_pack_sum_fields';
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** columns and relationships of "conquest.pack_text" */
+export type Conquest_Pack_Text = {
+  __typename?: 'conquest_pack_text';
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "conquest.pack_text" */
+export type Conquest_Pack_Text_Aggregate = {
+  __typename?: 'conquest_pack_text_aggregate';
+  aggregate?: Maybe<Conquest_Pack_Text_Aggregate_Fields>;
+  nodes: Array<Conquest_Pack_Text>;
+};
+
+/** aggregate fields of "conquest.pack_text" */
+export type Conquest_Pack_Text_Aggregate_Fields = {
+  __typename?: 'conquest_pack_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Pack_Text_Max_Fields>;
+  min?: Maybe<Conquest_Pack_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.pack_text" */
+export type Conquest_Pack_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Pack_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.pack_text". All fields are combined with a logical 'AND'. */
+export type Conquest_Pack_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Pack_Text_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Pack_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Pack_Text_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.pack_text" */
+export enum Conquest_Pack_Text_Constraint {
+  /** unique or primary key constraint on columns "id", "locale" */
+  PackTextPkey = 'pack_text_pkey'
+}
+
+/** input type for inserting data into table "conquest.pack_text" */
+export type Conquest_Pack_Text_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Pack_Text_Max_Fields = {
+  __typename?: 'conquest_pack_text_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Pack_Text_Min_Fields = {
+  __typename?: 'conquest_pack_text_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.pack_text" */
+export type Conquest_Pack_Text_Mutation_Response = {
+  __typename?: 'conquest_pack_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Pack_Text>;
+};
+
+/** on_conflict condition type for table "conquest.pack_text" */
+export type Conquest_Pack_Text_On_Conflict = {
+  constraint: Conquest_Pack_Text_Constraint;
+  update_columns?: Array<Conquest_Pack_Text_Update_Column>;
+  where?: InputMaybe<Conquest_Pack_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.pack_text". */
+export type Conquest_Pack_Text_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.pack_text */
+export type Conquest_Pack_Text_Pk_Columns_Input = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "conquest.pack_text" */
+export enum Conquest_Pack_Text_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.pack_text" */
+export type Conquest_Pack_Text_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_pack_text" */
+export type Conquest_Pack_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Pack_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Pack_Text_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "conquest.pack_text" */
+export enum Conquest_Pack_Text_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Pack_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Pack_Text_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Pack_Text_Bool_Exp;
+};
+
+/** update columns of table "conquest.pack" */
+export enum Conquest_Pack_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Pack_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Conquest_Pack_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Pack_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Pack_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Conquest_Pack_Var_Pop_Fields = {
+  __typename?: 'conquest_pack_var_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Conquest_Pack_Var_Samp_Fields = {
+  __typename?: 'conquest_pack_var_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Conquest_Pack_Variance_Fields = {
+  __typename?: 'conquest_pack_variance_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+export type Conquest_Publish_Deck_Args = {
+  deck_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** columns and relationships of "conquest.type" */
+export type Conquest_Type = {
+  __typename?: 'conquest_type';
+  id: Scalars['String'];
+  name: Scalars['String'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "conquest.type" */
+export type Conquest_Type_Aggregate = {
+  __typename?: 'conquest_type_aggregate';
+  aggregate?: Maybe<Conquest_Type_Aggregate_Fields>;
+  nodes: Array<Conquest_Type>;
+};
+
+/** aggregate fields of "conquest.type" */
+export type Conquest_Type_Aggregate_Fields = {
+  __typename?: 'conquest_type_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Type_Max_Fields>;
+  min?: Maybe<Conquest_Type_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.type" */
+export type Conquest_Type_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.type". All fields are combined with a logical 'AND'. */
+export type Conquest_Type_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Type_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Type_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.type" */
+export enum Conquest_Type_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  TypePkey = 'type_pkey'
+}
+
+/** input type for inserting data into table "conquest.type" */
+export type Conquest_Type_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Type_Max_Fields = {
+  __typename?: 'conquest_type_max_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Type_Min_Fields = {
+  __typename?: 'conquest_type_min_fields';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.type" */
+export type Conquest_Type_Mutation_Response = {
+  __typename?: 'conquest_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Type>;
+};
+
+/** on_conflict condition type for table "conquest.type" */
+export type Conquest_Type_On_Conflict = {
+  constraint: Conquest_Type_Constraint;
+  update_columns?: Array<Conquest_Type_Update_Column>;
+  where?: InputMaybe<Conquest_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.type". */
+export type Conquest_Type_Order_By = {
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.type */
+export type Conquest_Type_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "conquest.type" */
+export enum Conquest_Type_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.type" */
+export type Conquest_Type_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_type" */
+export type Conquest_Type_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Type_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Type_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** columns and relationships of "conquest.type_text" */
+export type Conquest_Type_Text = {
+  __typename?: 'conquest_type_text';
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "conquest.type_text" */
+export type Conquest_Type_Text_Aggregate = {
+  __typename?: 'conquest_type_text_aggregate';
+  aggregate?: Maybe<Conquest_Type_Text_Aggregate_Fields>;
+  nodes: Array<Conquest_Type_Text>;
+};
+
+/** aggregate fields of "conquest.type_text" */
+export type Conquest_Type_Text_Aggregate_Fields = {
+  __typename?: 'conquest_type_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Type_Text_Max_Fields>;
+  min?: Maybe<Conquest_Type_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.type_text" */
+export type Conquest_Type_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Type_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.type_text". All fields are combined with a logical 'AND'. */
+export type Conquest_Type_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Type_Text_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Type_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Type_Text_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.type_text" */
+export enum Conquest_Type_Text_Constraint {
+  /** unique or primary key constraint on columns "id", "locale" */
+  TypeTextPkey = 'type_text_pkey'
+}
+
+/** input type for inserting data into table "conquest.type_text" */
+export type Conquest_Type_Text_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Type_Text_Max_Fields = {
+  __typename?: 'conquest_type_text_max_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Type_Text_Min_Fields = {
+  __typename?: 'conquest_type_text_min_fields';
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.type_text" */
+export type Conquest_Type_Text_Mutation_Response = {
+  __typename?: 'conquest_type_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Type_Text>;
+};
+
+/** on_conflict condition type for table "conquest.type_text" */
+export type Conquest_Type_Text_On_Conflict = {
+  constraint: Conquest_Type_Text_Constraint;
+  update_columns?: Array<Conquest_Type_Text_Update_Column>;
+  where?: InputMaybe<Conquest_Type_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.type_text". */
+export type Conquest_Type_Text_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.type_text */
+export type Conquest_Type_Text_Pk_Columns_Input = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "conquest.type_text" */
+export enum Conquest_Type_Text_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.type_text" */
+export type Conquest_Type_Text_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_type_text" */
+export type Conquest_Type_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Type_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Type_Text_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "conquest.type_text" */
+export enum Conquest_Type_Text_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Type_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Type_Text_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Type_Text_Bool_Exp;
+};
+
+/** update columns of table "conquest.type" */
+export enum Conquest_Type_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Type_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Type_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Type_Bool_Exp;
+};
+
+/** columns and relationships of "conquest.user_role" */
+export type Conquest_User_Role = {
+  __typename?: 'conquest_user_role';
+  id: Scalars['String'];
+};
+
+/** aggregated selection of "conquest.user_role" */
+export type Conquest_User_Role_Aggregate = {
+  __typename?: 'conquest_user_role_aggregate';
+  aggregate?: Maybe<Conquest_User_Role_Aggregate_Fields>;
+  nodes: Array<Conquest_User_Role>;
+};
+
+/** aggregate fields of "conquest.user_role" */
+export type Conquest_User_Role_Aggregate_Fields = {
+  __typename?: 'conquest_user_role_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_User_Role_Max_Fields>;
+  min?: Maybe<Conquest_User_Role_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.user_role" */
+export type Conquest_User_Role_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_User_Role_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.user_role". All fields are combined with a logical 'AND'. */
+export type Conquest_User_Role_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_User_Role_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_User_Role_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_User_Role_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.user_role" */
+export enum Conquest_User_Role_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  UserRolePkey = 'user_role_pkey'
+}
+
+export enum Conquest_User_Role_Enum {
+  Admin = 'admin',
+  Moderator = 'moderator'
+}
+
+/** Boolean expression to compare columns of type "conquest_user_role_enum". All fields are combined with logical 'AND'. */
+export type Conquest_User_Role_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Conquest_User_Role_Enum>;
+  _in?: InputMaybe<Array<Conquest_User_Role_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Conquest_User_Role_Enum>;
+  _nin?: InputMaybe<Array<Conquest_User_Role_Enum>>;
+};
+
+/** input type for inserting data into table "conquest.user_role" */
+export type Conquest_User_Role_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_User_Role_Max_Fields = {
+  __typename?: 'conquest_user_role_max_fields';
+  id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_User_Role_Min_Fields = {
+  __typename?: 'conquest_user_role_min_fields';
+  id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "conquest.user_role" */
+export type Conquest_User_Role_Mutation_Response = {
+  __typename?: 'conquest_user_role_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_User_Role>;
+};
+
+/** on_conflict condition type for table "conquest.user_role" */
+export type Conquest_User_Role_On_Conflict = {
+  constraint: Conquest_User_Role_Constraint;
+  update_columns?: Array<Conquest_User_Role_Update_Column>;
+  where?: InputMaybe<Conquest_User_Role_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.user_role". */
+export type Conquest_User_Role_Order_By = {
+  id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.user_role */
+export type Conquest_User_Role_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "conquest.user_role" */
+export enum Conquest_User_Role_Select_Column {
+  /** column name */
+  Id = 'id'
+}
+
+/** input type for updating data in table "conquest.user_role" */
+export type Conquest_User_Role_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "conquest_user_role" */
+export type Conquest_User_Role_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_User_Role_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_User_Role_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "conquest.user_role" */
+export enum Conquest_User_Role_Update_Column {
+  /** column name */
+  Id = 'id'
+}
+
+export type Conquest_User_Role_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_User_Role_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_User_Role_Bool_Exp;
+};
+
+/** columns and relationships of "conquest.user_settings" */
+export type Conquest_User_Settings = {
+  __typename?: 'conquest_user_settings';
+  private_decks: Scalars['Boolean'];
+  user_id: Scalars['String'];
+};
+
+/** aggregated selection of "conquest.user_settings" */
+export type Conquest_User_Settings_Aggregate = {
+  __typename?: 'conquest_user_settings_aggregate';
+  aggregate?: Maybe<Conquest_User_Settings_Aggregate_Fields>;
+  nodes: Array<Conquest_User_Settings>;
+};
+
+/** aggregate fields of "conquest.user_settings" */
+export type Conquest_User_Settings_Aggregate_Fields = {
+  __typename?: 'conquest_user_settings_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_User_Settings_Max_Fields>;
+  min?: Maybe<Conquest_User_Settings_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.user_settings" */
+export type Conquest_User_Settings_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.user_settings". All fields are combined with a logical 'AND'. */
+export type Conquest_User_Settings_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_User_Settings_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_User_Settings_Bool_Exp>>;
+  private_decks?: InputMaybe<Boolean_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.user_settings" */
+export enum Conquest_User_Settings_Constraint {
+  /** unique or primary key constraint on columns "user_id" */
+  UserSettingsPkey = 'user_settings_pkey'
+}
+
+/** input type for inserting data into table "conquest.user_settings" */
+export type Conquest_User_Settings_Insert_Input = {
+  private_decks?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_User_Settings_Max_Fields = {
+  __typename?: 'conquest_user_settings_max_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_User_Settings_Min_Fields = {
+  __typename?: 'conquest_user_settings_min_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "conquest.user_settings" */
+export type Conquest_User_Settings_Mutation_Response = {
+  __typename?: 'conquest_user_settings_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_User_Settings>;
+};
+
+/** on_conflict condition type for table "conquest.user_settings" */
+export type Conquest_User_Settings_On_Conflict = {
+  constraint: Conquest_User_Settings_Constraint;
+  update_columns?: Array<Conquest_User_Settings_Update_Column>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.user_settings". */
+export type Conquest_User_Settings_Order_By = {
+  private_decks?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.user_settings */
+export type Conquest_User_Settings_Pk_Columns_Input = {
+  user_id: Scalars['String'];
+};
+
+/** select columns of table "conquest.user_settings" */
+export enum Conquest_User_Settings_Select_Column {
+  /** column name */
+  PrivateDecks = 'private_decks',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "conquest.user_settings" */
+export type Conquest_User_Settings_Set_Input = {
+  private_decks?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "conquest_user_settings" */
+export type Conquest_User_Settings_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_User_Settings_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_User_Settings_Stream_Cursor_Value_Input = {
+  private_decks?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "conquest.user_settings" */
+export enum Conquest_User_Settings_Update_Column {
+  /** column name */
+  PrivateDecks = 'private_decks',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Conquest_User_Settings_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_User_Settings_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_User_Settings_Bool_Exp;
+};
+
+/** columns and relationships of "conquest.users" */
+export type Conquest_Users = {
+  __typename?: 'conquest_users';
+  created_at: Scalars['timestamptz'];
+  handle?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  normalized_handle?: Maybe<Scalars['String']>;
+  role?: Maybe<Conquest_User_Role_Enum>;
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "conquest.users" */
+export type Conquest_Users_Aggregate = {
+  __typename?: 'conquest_users_aggregate';
+  aggregate?: Maybe<Conquest_Users_Aggregate_Fields>;
+  nodes: Array<Conquest_Users>;
+};
+
+/** aggregate fields of "conquest.users" */
+export type Conquest_Users_Aggregate_Fields = {
+  __typename?: 'conquest_users_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Conquest_Users_Max_Fields>;
+  min?: Maybe<Conquest_Users_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.users" */
+export type Conquest_Users_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Users_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.users". All fields are combined with a logical 'AND'. */
+export type Conquest_Users_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Users_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Users_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Users_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  handle?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  normalized_handle?: InputMaybe<String_Comparison_Exp>;
+  role?: InputMaybe<Conquest_User_Role_Enum_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.users" */
+export enum Conquest_Users_Constraint {
+  /** unique or primary key constraint on columns "normalized_handle" */
+  UsersNormalizedHandleKey = 'users_normalized_handle_key',
+  /** unique or primary key constraint on columns "id" */
+  UsersPkey = 'users_pkey'
+}
+
+/** input type for inserting data into table "conquest.users" */
+export type Conquest_Users_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Conquest_User_Role_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Users_Max_Fields = {
+  __typename?: 'conquest_users_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  handle?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  normalized_handle?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Users_Min_Fields = {
+  __typename?: 'conquest_users_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  handle?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  normalized_handle?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "conquest.users" */
+export type Conquest_Users_Mutation_Response = {
+  __typename?: 'conquest_users_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Users>;
+};
+
+/** input type for inserting object relation for remote table "conquest.users" */
+export type Conquest_Users_Obj_Rel_Insert_Input = {
+  data: Conquest_Users_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Conquest_Users_On_Conflict>;
+};
+
+/** on_conflict condition type for table "conquest.users" */
+export type Conquest_Users_On_Conflict = {
+  constraint: Conquest_Users_Constraint;
+  update_columns?: Array<Conquest_Users_Update_Column>;
+  where?: InputMaybe<Conquest_Users_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.users". */
+export type Conquest_Users_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  handle?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  normalized_handle?: InputMaybe<Order_By>;
+  role?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.users */
+export type Conquest_Users_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "conquest.users" */
+export enum Conquest_Users_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Handle = 'handle',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  NormalizedHandle = 'normalized_handle',
+  /** column name */
+  Role = 'role',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.users" */
+export type Conquest_Users_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Conquest_User_Role_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "conquest_users" */
+export type Conquest_Users_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Users_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Users_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Conquest_User_Role_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "conquest.users" */
+export enum Conquest_Users_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Handle = 'handle',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  NormalizedHandle = 'normalized_handle',
+  /** column name */
+  Role = 'role',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Users_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Users_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Users_Bool_Exp;
 };
 
 /** ordering argument of a cursor */
@@ -9249,7 +13896,7 @@ export type Cycle_Name_Bool_Exp = {
 
 /** unique or primary key constraints on table "cycle_name" */
 export enum Cycle_Name_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   CycleNamePkey = 'cycle_name_pkey'
 }
 
@@ -9376,6 +14023,7 @@ export enum Cycle_Name_Update_Column {
 export type Cycle_Name_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Cycle_Name_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Cycle_Name_Bool_Exp;
 };
 
@@ -9485,6 +14133,7 @@ export type Cycle_Updates = {
   _inc?: InputMaybe<Cycle_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Cycle_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Cycle_Bool_Exp;
 };
 
@@ -9548,7 +14197,7 @@ export type Faction_Name_Bool_Exp = {
 
 /** unique or primary key constraints on table "faction_name" */
 export enum Faction_Name_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   FactionNamePkey = 'faction_name_pkey'
 }
 
@@ -9649,6 +14298,7 @@ export enum Faction_Name_Update_Column {
 export type Faction_Name_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Faction_Name_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Faction_Name_Bool_Exp;
 };
 
@@ -9866,7 +14516,7 @@ export type Faq_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "faq_text" */
 export enum Faq_Text_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   FaqTextPkey = 'faq_text_pkey'
 }
 
@@ -9981,6 +14631,7 @@ export enum Faq_Text_Update_Column {
 export type Faq_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Faq_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Faq_Text_Bool_Exp;
 };
 
@@ -9995,6 +14646,7 @@ export enum Faq_Update_Column {
 export type Faq_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Faq_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Faq_Bool_Exp;
 };
 
@@ -10070,6 +14722,8 @@ export type Friend_Status_Insert_Input = {
 /** aggregate max on columns */
 export type Friend_Status_Max_Fields = {
   __typename?: 'friend_status_max_fields';
+  /** A computed field, executes function "friend_status_id" */
+  id?: Maybe<Scalars['String']>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
@@ -10077,6 +14731,8 @@ export type Friend_Status_Max_Fields = {
 /** aggregate min on columns */
 export type Friend_Status_Min_Fields = {
   __typename?: 'friend_status_min_fields';
+  /** A computed field, executes function "friend_status_id" */
+  id?: Maybe<Scalars['String']>;
   user_id_a?: Maybe<Scalars['String']>;
   user_id_b?: Maybe<Scalars['String']>;
 };
@@ -10277,6 +14933,7 @@ export enum Friend_Status_Type_Update_Column {
 export type Friend_Status_Type_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Friend_Status_Type_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Friend_Status_Type_Bool_Exp;
 };
 
@@ -10293,6 +14950,7 @@ export enum Friend_Status_Update_Column {
 export type Friend_Status_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Friend_Status_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Friend_Status_Bool_Exp;
 };
 
@@ -11410,7 +16068,7 @@ export type Full_Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "full_card_text" */
 export enum Full_Card_Text_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   FullCardTextPkey = 'full_card_text_pkey'
 }
 
@@ -11633,6 +16291,7 @@ export enum Full_Card_Text_Update_Column {
 export type Full_Card_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Full_Card_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Full_Card_Text_Bool_Exp;
 };
 
@@ -11779,6 +16438,7 @@ export type Full_Card_Updates = {
   _prepend?: InputMaybe<Full_Card_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Full_Card_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Full_Card_Bool_Exp;
 };
 
@@ -12005,6 +16665,7 @@ export enum Gender_Update_Column {
 export type Gender_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Gender_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Gender_Bool_Exp;
 };
 
@@ -12364,6 +17025,7 @@ export type Guide_Achievement_Updates = {
   _inc?: InputMaybe<Guide_Achievement_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Guide_Achievement_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Guide_Achievement_Bool_Exp;
 };
 
@@ -12803,6 +17465,7 @@ export type Guide_Input_Updates = {
   _prepend?: InputMaybe<Guide_Input_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Guide_Input_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Guide_Input_Bool_Exp;
 };
 
@@ -13111,6 +17774,8 @@ export type Investigator_Data_Max_Fields = {
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  /** A computed field, executes function "investigator_data_id" */
+  id?: Maybe<Scalars['String']>;
   investigator?: Maybe<Scalars['String']>;
   mental?: Maybe<Scalars['Int']>;
   physical?: Maybe<Scalars['Int']>;
@@ -13136,6 +17801,8 @@ export type Investigator_Data_Min_Fields = {
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  /** A computed field, executes function "investigator_data_id" */
+  id?: Maybe<Scalars['String']>;
   investigator?: Maybe<Scalars['String']>;
   mental?: Maybe<Scalars['Int']>;
   physical?: Maybe<Scalars['Int']>;
@@ -13443,6 +18110,7 @@ export type Investigator_Data_Updates = {
   _prepend?: InputMaybe<Investigator_Data_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Investigator_Data_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Investigator_Data_Bool_Exp;
 };
 
@@ -13781,6 +18449,7 @@ export type Latest_Decks_Updates = {
   _inc?: InputMaybe<Latest_Decks_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Latest_Decks_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Latest_Decks_Bool_Exp;
 };
 
@@ -14073,6 +18742,7 @@ export type Local_Decks_Updates = {
   _inc?: InputMaybe<Local_Decks_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Local_Decks_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Local_Decks_Bool_Exp;
 };
 
@@ -14118,6 +18788,8 @@ export type Local_Decks_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
+  /** execute VOLATILE function "conquest.publish_deck" which returns "conquest.deck" */
+  conquest_publish_deck?: Maybe<Conquest_Deck>;
   /** delete data from the table: "all_card" */
   delete_all_card?: Maybe<All_Card_Mutation_Response>;
   /** delete single row from the table: "all_card" */
@@ -14194,6 +18866,74 @@ export type Mutation_Root = {
   delete_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
   /** delete single row from the table: "chaos_bag_tarot_mode" */
   delete_chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** delete data from the table: "conquest.card" */
+  delete_conquest_card?: Maybe<Conquest_Card_Mutation_Response>;
+  /** delete single row from the table: "conquest.card" */
+  delete_conquest_card_by_pk?: Maybe<Conquest_Card>;
+  /** delete data from the table: "conquest.card_text" */
+  delete_conquest_card_text?: Maybe<Conquest_Card_Text_Mutation_Response>;
+  /** delete single row from the table: "conquest.card_text" */
+  delete_conquest_card_text_by_pk?: Maybe<Conquest_Card_Text>;
+  /** delete data from the table: "conquest.comment" */
+  delete_conquest_comment?: Maybe<Conquest_Comment_Mutation_Response>;
+  /** delete single row from the table: "conquest.comment" */
+  delete_conquest_comment_by_pk?: Maybe<Conquest_Comment>;
+  /** delete data from the table: "conquest.deck" */
+  delete_conquest_deck?: Maybe<Conquest_Deck_Mutation_Response>;
+  /** delete single row from the table: "conquest.deck" */
+  delete_conquest_deck_by_pk?: Maybe<Conquest_Deck>;
+  /** delete data from the table: "conquest.deck_copy" */
+  delete_conquest_deck_copy?: Maybe<Conquest_Deck_Copy_Mutation_Response>;
+  /** delete single row from the table: "conquest.deck_copy" */
+  delete_conquest_deck_copy_by_pk?: Maybe<Conquest_Deck_Copy>;
+  /** delete data from the table: "conquest.deck_like" */
+  delete_conquest_deck_like?: Maybe<Conquest_Deck_Like_Mutation_Response>;
+  /** delete single row from the table: "conquest.deck_like" */
+  delete_conquest_deck_like_by_pk?: Maybe<Conquest_Deck_Like>;
+  /** delete data from the table: "conquest.faction" */
+  delete_conquest_faction?: Maybe<Conquest_Faction_Mutation_Response>;
+  /** delete single row from the table: "conquest.faction" */
+  delete_conquest_faction_by_pk?: Maybe<Conquest_Faction>;
+  /** delete data from the table: "conquest.faction_text" */
+  delete_conquest_faction_text?: Maybe<Conquest_Faction_Text_Mutation_Response>;
+  /** delete single row from the table: "conquest.faction_text" */
+  delete_conquest_faction_text_by_pk?: Maybe<Conquest_Faction_Text>;
+  /** delete data from the table: "conquest.loyalty" */
+  delete_conquest_loyalty?: Maybe<Conquest_Loyalty_Mutation_Response>;
+  /** delete single row from the table: "conquest.loyalty" */
+  delete_conquest_loyalty_by_pk?: Maybe<Conquest_Loyalty>;
+  /** delete data from the table: "conquest.loyalty_text" */
+  delete_conquest_loyalty_text?: Maybe<Conquest_Loyalty_Text_Mutation_Response>;
+  /** delete single row from the table: "conquest.loyalty_text" */
+  delete_conquest_loyalty_text_by_pk?: Maybe<Conquest_Loyalty_Text>;
+  /** delete data from the table: "conquest.pack" */
+  delete_conquest_pack?: Maybe<Conquest_Pack_Mutation_Response>;
+  /** delete single row from the table: "conquest.pack" */
+  delete_conquest_pack_by_pk?: Maybe<Conquest_Pack>;
+  /** delete data from the table: "conquest.pack_text" */
+  delete_conquest_pack_text?: Maybe<Conquest_Pack_Text_Mutation_Response>;
+  /** delete single row from the table: "conquest.pack_text" */
+  delete_conquest_pack_text_by_pk?: Maybe<Conquest_Pack_Text>;
+  /** delete data from the table: "conquest.type" */
+  delete_conquest_type?: Maybe<Conquest_Type_Mutation_Response>;
+  /** delete single row from the table: "conquest.type" */
+  delete_conquest_type_by_pk?: Maybe<Conquest_Type>;
+  /** delete data from the table: "conquest.type_text" */
+  delete_conquest_type_text?: Maybe<Conquest_Type_Text_Mutation_Response>;
+  /** delete single row from the table: "conquest.type_text" */
+  delete_conquest_type_text_by_pk?: Maybe<Conquest_Type_Text>;
+  /** delete data from the table: "conquest.user_role" */
+  delete_conquest_user_role?: Maybe<Conquest_User_Role_Mutation_Response>;
+  /** delete single row from the table: "conquest.user_role" */
+  delete_conquest_user_role_by_pk?: Maybe<Conquest_User_Role>;
+  /** delete data from the table: "conquest.user_settings" */
+  delete_conquest_user_settings?: Maybe<Conquest_User_Settings_Mutation_Response>;
+  /** delete single row from the table: "conquest.user_settings" */
+  delete_conquest_user_settings_by_pk?: Maybe<Conquest_User_Settings>;
+  /** delete data from the table: "conquest.users" */
+  delete_conquest_users?: Maybe<Conquest_Users_Mutation_Response>;
+  /** delete single row from the table: "conquest.users" */
+  delete_conquest_users_by_pk?: Maybe<Conquest_Users>;
   /** delete data from the table: "cycle" */
   delete_cycle?: Maybe<Cycle_Mutation_Response>;
   /** delete single row from the table: "cycle" */
@@ -14310,6 +19050,10 @@ export type Mutation_Root = {
   delete_rangers_deck_like_count?: Maybe<Rangers_Deck_Like_Count_Mutation_Response>;
   /** delete single row from the table: "rangers.deck_like_count" */
   delete_rangers_deck_like_count_by_pk?: Maybe<Rangers_Deck_Like_Count>;
+  /** delete data from the table: "rangers.faq_entry" */
+  delete_rangers_faq_entry?: Maybe<Rangers_Faq_Entry_Mutation_Response>;
+  /** delete single row from the table: "rangers.faq_entry" */
+  delete_rangers_faq_entry_by_pk?: Maybe<Rangers_Faq_Entry>;
   /** delete data from the table: "rangers.friend_status" */
   delete_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
   /** delete single row from the table: "rangers.friend_status" */
@@ -14492,6 +19236,74 @@ export type Mutation_Root = {
   insert_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
   /** insert a single row into the table: "chaos_bag_tarot_mode" */
   insert_chaos_bag_tarot_mode_one?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** insert data into the table: "conquest.card" */
+  insert_conquest_card?: Maybe<Conquest_Card_Mutation_Response>;
+  /** insert a single row into the table: "conquest.card" */
+  insert_conquest_card_one?: Maybe<Conquest_Card>;
+  /** insert data into the table: "conquest.card_text" */
+  insert_conquest_card_text?: Maybe<Conquest_Card_Text_Mutation_Response>;
+  /** insert a single row into the table: "conquest.card_text" */
+  insert_conquest_card_text_one?: Maybe<Conquest_Card_Text>;
+  /** insert data into the table: "conquest.comment" */
+  insert_conquest_comment?: Maybe<Conquest_Comment_Mutation_Response>;
+  /** insert a single row into the table: "conquest.comment" */
+  insert_conquest_comment_one?: Maybe<Conquest_Comment>;
+  /** insert data into the table: "conquest.deck" */
+  insert_conquest_deck?: Maybe<Conquest_Deck_Mutation_Response>;
+  /** insert data into the table: "conquest.deck_copy" */
+  insert_conquest_deck_copy?: Maybe<Conquest_Deck_Copy_Mutation_Response>;
+  /** insert a single row into the table: "conquest.deck_copy" */
+  insert_conquest_deck_copy_one?: Maybe<Conquest_Deck_Copy>;
+  /** insert data into the table: "conquest.deck_like" */
+  insert_conquest_deck_like?: Maybe<Conquest_Deck_Like_Mutation_Response>;
+  /** insert a single row into the table: "conquest.deck_like" */
+  insert_conquest_deck_like_one?: Maybe<Conquest_Deck_Like>;
+  /** insert a single row into the table: "conquest.deck" */
+  insert_conquest_deck_one?: Maybe<Conquest_Deck>;
+  /** insert data into the table: "conquest.faction" */
+  insert_conquest_faction?: Maybe<Conquest_Faction_Mutation_Response>;
+  /** insert a single row into the table: "conquest.faction" */
+  insert_conquest_faction_one?: Maybe<Conquest_Faction>;
+  /** insert data into the table: "conquest.faction_text" */
+  insert_conquest_faction_text?: Maybe<Conquest_Faction_Text_Mutation_Response>;
+  /** insert a single row into the table: "conquest.faction_text" */
+  insert_conquest_faction_text_one?: Maybe<Conquest_Faction_Text>;
+  /** insert data into the table: "conquest.loyalty" */
+  insert_conquest_loyalty?: Maybe<Conquest_Loyalty_Mutation_Response>;
+  /** insert a single row into the table: "conquest.loyalty" */
+  insert_conquest_loyalty_one?: Maybe<Conquest_Loyalty>;
+  /** insert data into the table: "conquest.loyalty_text" */
+  insert_conquest_loyalty_text?: Maybe<Conquest_Loyalty_Text_Mutation_Response>;
+  /** insert a single row into the table: "conquest.loyalty_text" */
+  insert_conquest_loyalty_text_one?: Maybe<Conquest_Loyalty_Text>;
+  /** insert data into the table: "conquest.pack" */
+  insert_conquest_pack?: Maybe<Conquest_Pack_Mutation_Response>;
+  /** insert a single row into the table: "conquest.pack" */
+  insert_conquest_pack_one?: Maybe<Conquest_Pack>;
+  /** insert data into the table: "conquest.pack_text" */
+  insert_conquest_pack_text?: Maybe<Conquest_Pack_Text_Mutation_Response>;
+  /** insert a single row into the table: "conquest.pack_text" */
+  insert_conquest_pack_text_one?: Maybe<Conquest_Pack_Text>;
+  /** insert data into the table: "conquest.type" */
+  insert_conquest_type?: Maybe<Conquest_Type_Mutation_Response>;
+  /** insert a single row into the table: "conquest.type" */
+  insert_conquest_type_one?: Maybe<Conquest_Type>;
+  /** insert data into the table: "conquest.type_text" */
+  insert_conquest_type_text?: Maybe<Conquest_Type_Text_Mutation_Response>;
+  /** insert a single row into the table: "conquest.type_text" */
+  insert_conquest_type_text_one?: Maybe<Conquest_Type_Text>;
+  /** insert data into the table: "conquest.user_role" */
+  insert_conquest_user_role?: Maybe<Conquest_User_Role_Mutation_Response>;
+  /** insert a single row into the table: "conquest.user_role" */
+  insert_conquest_user_role_one?: Maybe<Conquest_User_Role>;
+  /** insert data into the table: "conquest.user_settings" */
+  insert_conquest_user_settings?: Maybe<Conquest_User_Settings_Mutation_Response>;
+  /** insert a single row into the table: "conquest.user_settings" */
+  insert_conquest_user_settings_one?: Maybe<Conquest_User_Settings>;
+  /** insert data into the table: "conquest.users" */
+  insert_conquest_users?: Maybe<Conquest_Users_Mutation_Response>;
+  /** insert a single row into the table: "conquest.users" */
+  insert_conquest_users_one?: Maybe<Conquest_Users>;
   /** insert data into the table: "cycle" */
   insert_cycle?: Maybe<Cycle_Mutation_Response>;
   /** insert data into the table: "cycle_name" */
@@ -14612,6 +19424,10 @@ export type Mutation_Root = {
   insert_rangers_deck_like_one?: Maybe<Rangers_Deck_Like>;
   /** insert a single row into the table: "rangers.deck" */
   insert_rangers_deck_one?: Maybe<Rangers_Deck>;
+  /** insert data into the table: "rangers.faq_entry" */
+  insert_rangers_faq_entry?: Maybe<Rangers_Faq_Entry_Mutation_Response>;
+  /** insert a single row into the table: "rangers.faq_entry" */
+  insert_rangers_faq_entry_one?: Maybe<Rangers_Faq_Entry>;
   /** insert data into the table: "rangers.friend_status" */
   insert_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
   /** insert a single row into the table: "rangers.friend_status" */
@@ -14856,6 +19672,108 @@ export type Mutation_Root = {
   update_chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
   /** update multiples rows of table: "chaos_bag_tarot_mode" */
   update_chaos_bag_tarot_mode_many?: Maybe<Array<Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>>>;
+  /** update data of the table: "conquest.card" */
+  update_conquest_card?: Maybe<Conquest_Card_Mutation_Response>;
+  /** update single row of the table: "conquest.card" */
+  update_conquest_card_by_pk?: Maybe<Conquest_Card>;
+  /** update multiples rows of table: "conquest.card" */
+  update_conquest_card_many?: Maybe<Array<Maybe<Conquest_Card_Mutation_Response>>>;
+  /** update data of the table: "conquest.card_text" */
+  update_conquest_card_text?: Maybe<Conquest_Card_Text_Mutation_Response>;
+  /** update single row of the table: "conquest.card_text" */
+  update_conquest_card_text_by_pk?: Maybe<Conquest_Card_Text>;
+  /** update multiples rows of table: "conquest.card_text" */
+  update_conquest_card_text_many?: Maybe<Array<Maybe<Conquest_Card_Text_Mutation_Response>>>;
+  /** update data of the table: "conquest.comment" */
+  update_conquest_comment?: Maybe<Conquest_Comment_Mutation_Response>;
+  /** update single row of the table: "conquest.comment" */
+  update_conquest_comment_by_pk?: Maybe<Conquest_Comment>;
+  /** update multiples rows of table: "conquest.comment" */
+  update_conquest_comment_many?: Maybe<Array<Maybe<Conquest_Comment_Mutation_Response>>>;
+  /** update data of the table: "conquest.deck" */
+  update_conquest_deck?: Maybe<Conquest_Deck_Mutation_Response>;
+  /** update single row of the table: "conquest.deck" */
+  update_conquest_deck_by_pk?: Maybe<Conquest_Deck>;
+  /** update data of the table: "conquest.deck_copy" */
+  update_conquest_deck_copy?: Maybe<Conquest_Deck_Copy_Mutation_Response>;
+  /** update single row of the table: "conquest.deck_copy" */
+  update_conquest_deck_copy_by_pk?: Maybe<Conquest_Deck_Copy>;
+  /** update multiples rows of table: "conquest.deck_copy" */
+  update_conquest_deck_copy_many?: Maybe<Array<Maybe<Conquest_Deck_Copy_Mutation_Response>>>;
+  /** update data of the table: "conquest.deck_like" */
+  update_conquest_deck_like?: Maybe<Conquest_Deck_Like_Mutation_Response>;
+  /** update single row of the table: "conquest.deck_like" */
+  update_conquest_deck_like_by_pk?: Maybe<Conquest_Deck_Like>;
+  /** update multiples rows of table: "conquest.deck_like" */
+  update_conquest_deck_like_many?: Maybe<Array<Maybe<Conquest_Deck_Like_Mutation_Response>>>;
+  /** update multiples rows of table: "conquest.deck" */
+  update_conquest_deck_many?: Maybe<Array<Maybe<Conquest_Deck_Mutation_Response>>>;
+  /** update data of the table: "conquest.faction" */
+  update_conquest_faction?: Maybe<Conquest_Faction_Mutation_Response>;
+  /** update single row of the table: "conquest.faction" */
+  update_conquest_faction_by_pk?: Maybe<Conquest_Faction>;
+  /** update multiples rows of table: "conquest.faction" */
+  update_conquest_faction_many?: Maybe<Array<Maybe<Conquest_Faction_Mutation_Response>>>;
+  /** update data of the table: "conquest.faction_text" */
+  update_conquest_faction_text?: Maybe<Conquest_Faction_Text_Mutation_Response>;
+  /** update single row of the table: "conquest.faction_text" */
+  update_conquest_faction_text_by_pk?: Maybe<Conquest_Faction_Text>;
+  /** update multiples rows of table: "conquest.faction_text" */
+  update_conquest_faction_text_many?: Maybe<Array<Maybe<Conquest_Faction_Text_Mutation_Response>>>;
+  /** update data of the table: "conquest.loyalty" */
+  update_conquest_loyalty?: Maybe<Conquest_Loyalty_Mutation_Response>;
+  /** update single row of the table: "conquest.loyalty" */
+  update_conquest_loyalty_by_pk?: Maybe<Conquest_Loyalty>;
+  /** update multiples rows of table: "conquest.loyalty" */
+  update_conquest_loyalty_many?: Maybe<Array<Maybe<Conquest_Loyalty_Mutation_Response>>>;
+  /** update data of the table: "conquest.loyalty_text" */
+  update_conquest_loyalty_text?: Maybe<Conquest_Loyalty_Text_Mutation_Response>;
+  /** update single row of the table: "conquest.loyalty_text" */
+  update_conquest_loyalty_text_by_pk?: Maybe<Conquest_Loyalty_Text>;
+  /** update multiples rows of table: "conquest.loyalty_text" */
+  update_conquest_loyalty_text_many?: Maybe<Array<Maybe<Conquest_Loyalty_Text_Mutation_Response>>>;
+  /** update data of the table: "conquest.pack" */
+  update_conquest_pack?: Maybe<Conquest_Pack_Mutation_Response>;
+  /** update single row of the table: "conquest.pack" */
+  update_conquest_pack_by_pk?: Maybe<Conquest_Pack>;
+  /** update multiples rows of table: "conquest.pack" */
+  update_conquest_pack_many?: Maybe<Array<Maybe<Conquest_Pack_Mutation_Response>>>;
+  /** update data of the table: "conquest.pack_text" */
+  update_conquest_pack_text?: Maybe<Conquest_Pack_Text_Mutation_Response>;
+  /** update single row of the table: "conquest.pack_text" */
+  update_conquest_pack_text_by_pk?: Maybe<Conquest_Pack_Text>;
+  /** update multiples rows of table: "conquest.pack_text" */
+  update_conquest_pack_text_many?: Maybe<Array<Maybe<Conquest_Pack_Text_Mutation_Response>>>;
+  /** update data of the table: "conquest.type" */
+  update_conquest_type?: Maybe<Conquest_Type_Mutation_Response>;
+  /** update single row of the table: "conquest.type" */
+  update_conquest_type_by_pk?: Maybe<Conquest_Type>;
+  /** update multiples rows of table: "conquest.type" */
+  update_conquest_type_many?: Maybe<Array<Maybe<Conquest_Type_Mutation_Response>>>;
+  /** update data of the table: "conquest.type_text" */
+  update_conquest_type_text?: Maybe<Conquest_Type_Text_Mutation_Response>;
+  /** update single row of the table: "conquest.type_text" */
+  update_conquest_type_text_by_pk?: Maybe<Conquest_Type_Text>;
+  /** update multiples rows of table: "conquest.type_text" */
+  update_conquest_type_text_many?: Maybe<Array<Maybe<Conquest_Type_Text_Mutation_Response>>>;
+  /** update data of the table: "conquest.user_role" */
+  update_conquest_user_role?: Maybe<Conquest_User_Role_Mutation_Response>;
+  /** update single row of the table: "conquest.user_role" */
+  update_conquest_user_role_by_pk?: Maybe<Conquest_User_Role>;
+  /** update multiples rows of table: "conquest.user_role" */
+  update_conquest_user_role_many?: Maybe<Array<Maybe<Conquest_User_Role_Mutation_Response>>>;
+  /** update data of the table: "conquest.user_settings" */
+  update_conquest_user_settings?: Maybe<Conquest_User_Settings_Mutation_Response>;
+  /** update single row of the table: "conquest.user_settings" */
+  update_conquest_user_settings_by_pk?: Maybe<Conquest_User_Settings>;
+  /** update multiples rows of table: "conquest.user_settings" */
+  update_conquest_user_settings_many?: Maybe<Array<Maybe<Conquest_User_Settings_Mutation_Response>>>;
+  /** update data of the table: "conquest.users" */
+  update_conquest_users?: Maybe<Conquest_Users_Mutation_Response>;
+  /** update single row of the table: "conquest.users" */
+  update_conquest_users_by_pk?: Maybe<Conquest_Users>;
+  /** update multiples rows of table: "conquest.users" */
+  update_conquest_users_many?: Maybe<Array<Maybe<Conquest_Users_Mutation_Response>>>;
   /** update data of the table: "cycle" */
   update_cycle?: Maybe<Cycle_Mutation_Response>;
   /** update single row of the table: "cycle" */
@@ -15032,6 +19950,12 @@ export type Mutation_Root = {
   update_rangers_deck_like_many?: Maybe<Array<Maybe<Rangers_Deck_Like_Mutation_Response>>>;
   /** update multiples rows of table: "rangers.deck" */
   update_rangers_deck_many?: Maybe<Array<Maybe<Rangers_Deck_Mutation_Response>>>;
+  /** update data of the table: "rangers.faq_entry" */
+  update_rangers_faq_entry?: Maybe<Rangers_Faq_Entry_Mutation_Response>;
+  /** update single row of the table: "rangers.faq_entry" */
+  update_rangers_faq_entry_by_pk?: Maybe<Rangers_Faq_Entry>;
+  /** update multiples rows of table: "rangers.faq_entry" */
+  update_rangers_faq_entry_many?: Maybe<Array<Maybe<Rangers_Faq_Entry_Mutation_Response>>>;
   /** update data of the table: "rangers.friend_status" */
   update_rangers_friend_status?: Maybe<Rangers_Friend_Status_Mutation_Response>;
   /** update single row of the table: "rangers.friend_status" */
@@ -15194,6 +20118,17 @@ export type Mutation_Root = {
   update_users_by_pk?: Maybe<Users>;
   /** update multiples rows of table: "users" */
   update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
+};
+
+
+/** mutation root */
+export type Mutation_RootConquest_Publish_DeckArgs = {
+  args: Conquest_Publish_Deck_Args;
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Bool_Exp>;
 };
 
 
@@ -15430,6 +20365,216 @@ export type Mutation_RootDelete_Chaos_Bag_Tarot_ModeArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Chaos_Bag_Tarot_Mode_By_PkArgs = {
   value: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_CardArgs = {
+  where: Conquest_Card_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Card_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Card_TextArgs = {
+  where: Conquest_Card_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Card_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_CommentArgs = {
+  where: Conquest_Comment_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Comment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_DeckArgs = {
+  where: Conquest_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Deck_CopyArgs = {
+  where: Conquest_Deck_Copy_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Deck_Copy_By_PkArgs = {
+  copy_deck_id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Deck_LikeArgs = {
+  where: Conquest_Deck_Like_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Deck_Like_By_PkArgs = {
+  deck_id: Scalars['Int'];
+  user_id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_FactionArgs = {
+  where: Conquest_Faction_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Faction_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Faction_TextArgs = {
+  where: Conquest_Faction_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Faction_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_LoyaltyArgs = {
+  where: Conquest_Loyalty_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Loyalty_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Loyalty_TextArgs = {
+  where: Conquest_Loyalty_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Loyalty_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_PackArgs = {
+  where: Conquest_Pack_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Pack_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Pack_TextArgs = {
+  where: Conquest_Pack_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Pack_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_TypeArgs = {
+  where: Conquest_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Type_TextArgs = {
+  where: Conquest_Type_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Type_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_User_RoleArgs = {
+  where: Conquest_User_Role_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_User_Role_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_User_SettingsArgs = {
+  where: Conquest_User_Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_User_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_UsersArgs = {
+  where: Conquest_Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Users_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -15792,6 +20937,18 @@ export type Mutation_RootDelete_Rangers_Deck_Like_CountArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Rangers_Deck_Like_Count_By_PkArgs = {
   deck_id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Faq_EntryArgs = {
+  where: Rangers_Faq_Entry_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Rangers_Faq_Entry_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -16385,6 +21542,244 @@ export type Mutation_RootInsert_Chaos_Bag_Tarot_Mode_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Conquest_CardArgs = {
+  objects: Array<Conquest_Card_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Card_OneArgs = {
+  object: Conquest_Card_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Card_TextArgs = {
+  objects: Array<Conquest_Card_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Card_Text_OneArgs = {
+  object: Conquest_Card_Text_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_CommentArgs = {
+  objects: Array<Conquest_Comment_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Comment_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Comment_OneArgs = {
+  object: Conquest_Comment_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Comment_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_DeckArgs = {
+  objects: Array<Conquest_Deck_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Deck_CopyArgs = {
+  objects: Array<Conquest_Deck_Copy_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Deck_Copy_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Deck_Copy_OneArgs = {
+  object: Conquest_Deck_Copy_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Deck_Copy_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Deck_LikeArgs = {
+  objects: Array<Conquest_Deck_Like_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Deck_Like_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Deck_Like_OneArgs = {
+  object: Conquest_Deck_Like_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Deck_Like_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Deck_OneArgs = {
+  object: Conquest_Deck_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_FactionArgs = {
+  objects: Array<Conquest_Faction_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Faction_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Faction_OneArgs = {
+  object: Conquest_Faction_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Faction_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Faction_TextArgs = {
+  objects: Array<Conquest_Faction_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Faction_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Faction_Text_OneArgs = {
+  object: Conquest_Faction_Text_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Faction_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_LoyaltyArgs = {
+  objects: Array<Conquest_Loyalty_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Loyalty_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Loyalty_OneArgs = {
+  object: Conquest_Loyalty_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Loyalty_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Loyalty_TextArgs = {
+  objects: Array<Conquest_Loyalty_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Loyalty_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Loyalty_Text_OneArgs = {
+  object: Conquest_Loyalty_Text_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Loyalty_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_PackArgs = {
+  objects: Array<Conquest_Pack_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Pack_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Pack_OneArgs = {
+  object: Conquest_Pack_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Pack_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Pack_TextArgs = {
+  objects: Array<Conquest_Pack_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Pack_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Pack_Text_OneArgs = {
+  object: Conquest_Pack_Text_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Pack_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_TypeArgs = {
+  objects: Array<Conquest_Type_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Type_OneArgs = {
+  object: Conquest_Type_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Type_TextArgs = {
+  objects: Array<Conquest_Type_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Type_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Type_Text_OneArgs = {
+  object: Conquest_Type_Text_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Type_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_User_RoleArgs = {
+  objects: Array<Conquest_User_Role_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_User_Role_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_User_Role_OneArgs = {
+  object: Conquest_User_Role_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_User_Role_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_User_SettingsArgs = {
+  objects: Array<Conquest_User_Settings_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_User_Settings_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_User_Settings_OneArgs = {
+  object: Conquest_User_Settings_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_User_Settings_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_UsersArgs = {
+  objects: Array<Conquest_Users_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Users_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Users_OneArgs = {
+  object: Conquest_Users_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Users_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_CycleArgs = {
   objects: Array<Cycle_Insert_Input>;
   on_conflict?: InputMaybe<Cycle_On_Conflict>;
@@ -16797,6 +22192,20 @@ export type Mutation_RootInsert_Rangers_Deck_Like_OneArgs = {
 export type Mutation_RootInsert_Rangers_Deck_OneArgs = {
   object: Rangers_Deck_Insert_Input;
   on_conflict?: InputMaybe<Rangers_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Faq_EntryArgs = {
+  objects: Array<Rangers_Faq_Entry_Insert_Input>;
+  on_conflict?: InputMaybe<Rangers_Faq_Entry_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Rangers_Faq_Entry_OneArgs = {
+  object: Rangers_Faq_Entry_Insert_Input;
+  on_conflict?: InputMaybe<Rangers_Faq_Entry_On_Conflict>;
 };
 
 
@@ -17705,6 +23114,368 @@ export type Mutation_RootUpdate_Chaos_Bag_Tarot_Mode_ManyArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Conquest_CardArgs = {
+  _inc?: InputMaybe<Conquest_Card_Inc_Input>;
+  _set?: InputMaybe<Conquest_Card_Set_Input>;
+  where: Conquest_Card_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Card_By_PkArgs = {
+  _inc?: InputMaybe<Conquest_Card_Inc_Input>;
+  _set?: InputMaybe<Conquest_Card_Set_Input>;
+  pk_columns: Conquest_Card_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Card_ManyArgs = {
+  updates: Array<Conquest_Card_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Card_TextArgs = {
+  _set?: InputMaybe<Conquest_Card_Text_Set_Input>;
+  where: Conquest_Card_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Card_Text_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Card_Text_Set_Input>;
+  pk_columns: Conquest_Card_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Card_Text_ManyArgs = {
+  updates: Array<Conquest_Card_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_CommentArgs = {
+  _inc?: InputMaybe<Conquest_Comment_Inc_Input>;
+  _set?: InputMaybe<Conquest_Comment_Set_Input>;
+  where: Conquest_Comment_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Comment_By_PkArgs = {
+  _inc?: InputMaybe<Conquest_Comment_Inc_Input>;
+  _set?: InputMaybe<Conquest_Comment_Set_Input>;
+  pk_columns: Conquest_Comment_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Comment_ManyArgs = {
+  updates: Array<Conquest_Comment_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_DeckArgs = {
+  _append?: InputMaybe<Conquest_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Conquest_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Conquest_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Conquest_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Conquest_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Conquest_Deck_Prepend_Input>;
+  _set?: InputMaybe<Conquest_Deck_Set_Input>;
+  where: Conquest_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Deck_By_PkArgs = {
+  _append?: InputMaybe<Conquest_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Conquest_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Conquest_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Conquest_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Conquest_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Conquest_Deck_Prepend_Input>;
+  _set?: InputMaybe<Conquest_Deck_Set_Input>;
+  pk_columns: Conquest_Deck_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Deck_CopyArgs = {
+  _inc?: InputMaybe<Conquest_Deck_Copy_Inc_Input>;
+  _set?: InputMaybe<Conquest_Deck_Copy_Set_Input>;
+  where: Conquest_Deck_Copy_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Deck_Copy_By_PkArgs = {
+  _inc?: InputMaybe<Conquest_Deck_Copy_Inc_Input>;
+  _set?: InputMaybe<Conquest_Deck_Copy_Set_Input>;
+  pk_columns: Conquest_Deck_Copy_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Deck_Copy_ManyArgs = {
+  updates: Array<Conquest_Deck_Copy_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Deck_LikeArgs = {
+  _inc?: InputMaybe<Conquest_Deck_Like_Inc_Input>;
+  _set?: InputMaybe<Conquest_Deck_Like_Set_Input>;
+  where: Conquest_Deck_Like_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Deck_Like_By_PkArgs = {
+  _inc?: InputMaybe<Conquest_Deck_Like_Inc_Input>;
+  _set?: InputMaybe<Conquest_Deck_Like_Set_Input>;
+  pk_columns: Conquest_Deck_Like_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Deck_Like_ManyArgs = {
+  updates: Array<Conquest_Deck_Like_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Deck_ManyArgs = {
+  updates: Array<Conquest_Deck_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_FactionArgs = {
+  _set?: InputMaybe<Conquest_Faction_Set_Input>;
+  where: Conquest_Faction_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Faction_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Faction_Set_Input>;
+  pk_columns: Conquest_Faction_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Faction_ManyArgs = {
+  updates: Array<Conquest_Faction_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Faction_TextArgs = {
+  _set?: InputMaybe<Conquest_Faction_Text_Set_Input>;
+  where: Conquest_Faction_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Faction_Text_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Faction_Text_Set_Input>;
+  pk_columns: Conquest_Faction_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Faction_Text_ManyArgs = {
+  updates: Array<Conquest_Faction_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_LoyaltyArgs = {
+  _set?: InputMaybe<Conquest_Loyalty_Set_Input>;
+  where: Conquest_Loyalty_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Loyalty_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Loyalty_Set_Input>;
+  pk_columns: Conquest_Loyalty_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Loyalty_ManyArgs = {
+  updates: Array<Conquest_Loyalty_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Loyalty_TextArgs = {
+  _set?: InputMaybe<Conquest_Loyalty_Text_Set_Input>;
+  where: Conquest_Loyalty_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Loyalty_Text_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Loyalty_Text_Set_Input>;
+  pk_columns: Conquest_Loyalty_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Loyalty_Text_ManyArgs = {
+  updates: Array<Conquest_Loyalty_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_PackArgs = {
+  _inc?: InputMaybe<Conquest_Pack_Inc_Input>;
+  _set?: InputMaybe<Conquest_Pack_Set_Input>;
+  where: Conquest_Pack_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Pack_By_PkArgs = {
+  _inc?: InputMaybe<Conquest_Pack_Inc_Input>;
+  _set?: InputMaybe<Conquest_Pack_Set_Input>;
+  pk_columns: Conquest_Pack_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Pack_ManyArgs = {
+  updates: Array<Conquest_Pack_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Pack_TextArgs = {
+  _set?: InputMaybe<Conquest_Pack_Text_Set_Input>;
+  where: Conquest_Pack_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Pack_Text_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Pack_Text_Set_Input>;
+  pk_columns: Conquest_Pack_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Pack_Text_ManyArgs = {
+  updates: Array<Conquest_Pack_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_TypeArgs = {
+  _set?: InputMaybe<Conquest_Type_Set_Input>;
+  where: Conquest_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Type_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Type_Set_Input>;
+  pk_columns: Conquest_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Type_ManyArgs = {
+  updates: Array<Conquest_Type_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Type_TextArgs = {
+  _set?: InputMaybe<Conquest_Type_Text_Set_Input>;
+  where: Conquest_Type_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Type_Text_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Type_Text_Set_Input>;
+  pk_columns: Conquest_Type_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Type_Text_ManyArgs = {
+  updates: Array<Conquest_Type_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_User_RoleArgs = {
+  _set?: InputMaybe<Conquest_User_Role_Set_Input>;
+  where: Conquest_User_Role_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_User_Role_By_PkArgs = {
+  _set?: InputMaybe<Conquest_User_Role_Set_Input>;
+  pk_columns: Conquest_User_Role_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_User_Role_ManyArgs = {
+  updates: Array<Conquest_User_Role_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_User_SettingsArgs = {
+  _set?: InputMaybe<Conquest_User_Settings_Set_Input>;
+  where: Conquest_User_Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_User_Settings_By_PkArgs = {
+  _set?: InputMaybe<Conquest_User_Settings_Set_Input>;
+  pk_columns: Conquest_User_Settings_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_User_Settings_ManyArgs = {
+  updates: Array<Conquest_User_Settings_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_UsersArgs = {
+  _set?: InputMaybe<Conquest_Users_Set_Input>;
+  where: Conquest_Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Users_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Users_Set_Input>;
+  pk_columns: Conquest_Users_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Users_ManyArgs = {
+  updates: Array<Conquest_Users_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_CycleArgs = {
   _inc?: InputMaybe<Cycle_Inc_Input>;
   _set?: InputMaybe<Cycle_Set_Input>;
@@ -18377,6 +24148,26 @@ export type Mutation_RootUpdate_Rangers_Deck_Like_ManyArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Rangers_Deck_ManyArgs = {
   updates: Array<Rangers_Deck_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Faq_EntryArgs = {
+  _set?: InputMaybe<Rangers_Faq_Entry_Set_Input>;
+  where: Rangers_Faq_Entry_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Faq_Entry_By_PkArgs = {
+  _set?: InputMaybe<Rangers_Faq_Entry_Set_Input>;
+  pk_columns: Rangers_Faq_Entry_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Rangers_Faq_Entry_ManyArgs = {
+  updates: Array<Rangers_Faq_Entry_Updates>;
 };
 
 
@@ -19258,7 +25049,7 @@ export type Pack_Name_Bool_Exp = {
 
 /** unique or primary key constraints on table "pack_name" */
 export enum Pack_Name_Constraint {
-  /** unique or primary key constraint on columns "code", "locale" */
+  /** unique or primary key constraint on columns "locale", "code" */
   PackNamePkey = 'pack_name_pkey'
 }
 
@@ -19385,6 +25176,7 @@ export enum Pack_Name_Update_Column {
 export type Pack_Name_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Pack_Name_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Pack_Name_Bool_Exp;
 };
 
@@ -19534,6 +25326,7 @@ export type Pack_Updates = {
   _inc?: InputMaybe<Pack_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Pack_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Pack_Bool_Exp;
 };
 
@@ -19692,6 +25485,116 @@ export type Query_Root = {
   chaos_bag_tarot_mode_aggregate: Chaos_Bag_Tarot_Mode_Aggregate;
   /** fetch data from the table: "chaos_bag_tarot_mode" using primary key columns */
   chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** fetch data from the table: "conquest.card" */
+  conquest_card: Array<Conquest_Card>;
+  /** fetch aggregated fields from the table: "conquest.card" */
+  conquest_card_aggregate: Conquest_Card_Aggregate;
+  /** fetch data from the table: "conquest.card" using primary key columns */
+  conquest_card_by_pk?: Maybe<Conquest_Card>;
+  /** fetch data from the table: "conquest.card_localized" */
+  conquest_card_localized: Array<Conquest_Card_Localized>;
+  /** fetch aggregated fields from the table: "conquest.card_localized" */
+  conquest_card_localized_aggregate: Conquest_Card_Localized_Aggregate;
+  /** fetch data from the table: "conquest.card_text" */
+  conquest_card_text: Array<Conquest_Card_Text>;
+  /** fetch aggregated fields from the table: "conquest.card_text" */
+  conquest_card_text_aggregate: Conquest_Card_Text_Aggregate;
+  /** fetch data from the table: "conquest.card_text" using primary key columns */
+  conquest_card_text_by_pk?: Maybe<Conquest_Card_Text>;
+  /** fetch data from the table: "conquest.card_updated" */
+  conquest_card_updated: Array<Conquest_Card_Updated>;
+  /** fetch aggregated fields from the table: "conquest.card_updated" */
+  conquest_card_updated_aggregate: Conquest_Card_Updated_Aggregate;
+  /** fetch data from the table: "conquest.comment" */
+  conquest_comment: Array<Conquest_Comment>;
+  /** fetch aggregated fields from the table: "conquest.comment" */
+  conquest_comment_aggregate: Conquest_Comment_Aggregate;
+  /** fetch data from the table: "conquest.comment" using primary key columns */
+  conquest_comment_by_pk?: Maybe<Conquest_Comment>;
+  /** fetch data from the table: "conquest.deck" */
+  conquest_deck: Array<Conquest_Deck>;
+  /** fetch aggregated fields from the table: "conquest.deck" */
+  conquest_deck_aggregate: Conquest_Deck_Aggregate;
+  /** fetch data from the table: "conquest.deck" using primary key columns */
+  conquest_deck_by_pk?: Maybe<Conquest_Deck>;
+  /** fetch data from the table: "conquest.deck_copy" */
+  conquest_deck_copy: Array<Conquest_Deck_Copy>;
+  /** fetch aggregated fields from the table: "conquest.deck_copy" */
+  conquest_deck_copy_aggregate: Conquest_Deck_Copy_Aggregate;
+  /** fetch data from the table: "conquest.deck_copy" using primary key columns */
+  conquest_deck_copy_by_pk?: Maybe<Conquest_Deck_Copy>;
+  /** fetch data from the table: "conquest.deck_like" */
+  conquest_deck_like: Array<Conquest_Deck_Like>;
+  /** fetch aggregated fields from the table: "conquest.deck_like" */
+  conquest_deck_like_aggregate: Conquest_Deck_Like_Aggregate;
+  /** fetch data from the table: "conquest.deck_like" using primary key columns */
+  conquest_deck_like_by_pk?: Maybe<Conquest_Deck_Like>;
+  /** fetch data from the table: "conquest.faction" */
+  conquest_faction: Array<Conquest_Faction>;
+  /** fetch aggregated fields from the table: "conquest.faction" */
+  conquest_faction_aggregate: Conquest_Faction_Aggregate;
+  /** fetch data from the table: "conquest.faction" using primary key columns */
+  conquest_faction_by_pk?: Maybe<Conquest_Faction>;
+  /** fetch data from the table: "conquest.faction_text" */
+  conquest_faction_text: Array<Conquest_Faction_Text>;
+  /** fetch aggregated fields from the table: "conquest.faction_text" */
+  conquest_faction_text_aggregate: Conquest_Faction_Text_Aggregate;
+  /** fetch data from the table: "conquest.faction_text" using primary key columns */
+  conquest_faction_text_by_pk?: Maybe<Conquest_Faction_Text>;
+  /** fetch data from the table: "conquest.loyalty" */
+  conquest_loyalty: Array<Conquest_Loyalty>;
+  /** fetch aggregated fields from the table: "conquest.loyalty" */
+  conquest_loyalty_aggregate: Conquest_Loyalty_Aggregate;
+  /** fetch data from the table: "conquest.loyalty" using primary key columns */
+  conquest_loyalty_by_pk?: Maybe<Conquest_Loyalty>;
+  /** fetch data from the table: "conquest.loyalty_text" */
+  conquest_loyalty_text: Array<Conquest_Loyalty_Text>;
+  /** fetch aggregated fields from the table: "conquest.loyalty_text" */
+  conquest_loyalty_text_aggregate: Conquest_Loyalty_Text_Aggregate;
+  /** fetch data from the table: "conquest.loyalty_text" using primary key columns */
+  conquest_loyalty_text_by_pk?: Maybe<Conquest_Loyalty_Text>;
+  /** fetch data from the table: "conquest.pack" */
+  conquest_pack: Array<Conquest_Pack>;
+  /** fetch aggregated fields from the table: "conquest.pack" */
+  conquest_pack_aggregate: Conquest_Pack_Aggregate;
+  /** fetch data from the table: "conquest.pack" using primary key columns */
+  conquest_pack_by_pk?: Maybe<Conquest_Pack>;
+  /** fetch data from the table: "conquest.pack_text" */
+  conquest_pack_text: Array<Conquest_Pack_Text>;
+  /** fetch aggregated fields from the table: "conquest.pack_text" */
+  conquest_pack_text_aggregate: Conquest_Pack_Text_Aggregate;
+  /** fetch data from the table: "conquest.pack_text" using primary key columns */
+  conquest_pack_text_by_pk?: Maybe<Conquest_Pack_Text>;
+  /** fetch data from the table: "conquest.type" */
+  conquest_type: Array<Conquest_Type>;
+  /** fetch aggregated fields from the table: "conquest.type" */
+  conquest_type_aggregate: Conquest_Type_Aggregate;
+  /** fetch data from the table: "conquest.type" using primary key columns */
+  conquest_type_by_pk?: Maybe<Conquest_Type>;
+  /** fetch data from the table: "conquest.type_text" */
+  conquest_type_text: Array<Conquest_Type_Text>;
+  /** fetch aggregated fields from the table: "conquest.type_text" */
+  conquest_type_text_aggregate: Conquest_Type_Text_Aggregate;
+  /** fetch data from the table: "conquest.type_text" using primary key columns */
+  conquest_type_text_by_pk?: Maybe<Conquest_Type_Text>;
+  /** fetch data from the table: "conquest.user_role" */
+  conquest_user_role: Array<Conquest_User_Role>;
+  /** fetch aggregated fields from the table: "conquest.user_role" */
+  conquest_user_role_aggregate: Conquest_User_Role_Aggregate;
+  /** fetch data from the table: "conquest.user_role" using primary key columns */
+  conquest_user_role_by_pk?: Maybe<Conquest_User_Role>;
+  /** fetch data from the table: "conquest.user_settings" */
+  conquest_user_settings: Array<Conquest_User_Settings>;
+  /** fetch aggregated fields from the table: "conquest.user_settings" */
+  conquest_user_settings_aggregate: Conquest_User_Settings_Aggregate;
+  /** fetch data from the table: "conquest.user_settings" using primary key columns */
+  conquest_user_settings_by_pk?: Maybe<Conquest_User_Settings>;
+  /** fetch data from the table: "conquest.users" */
+  conquest_users: Array<Conquest_Users>;
+  /** fetch aggregated fields from the table: "conquest.users" */
+  conquest_users_aggregate: Conquest_Users_Aggregate;
+  /** fetch data from the table: "conquest.users" using primary key columns */
+  conquest_users_by_pk?: Maybe<Conquest_Users>;
   /** fetch data from the table: "cycle" */
   cycle: Array<Cycle>;
   /** fetch aggregated fields from the table: "cycle" */
@@ -19888,6 +25791,12 @@ export type Query_Root = {
   rangers_deck_search: Array<Rangers_Search_Deck>;
   /** execute function "rangers.deck_search" and query aggregates on result of table type "rangers.search_deck" */
   rangers_deck_search_aggregate: Rangers_Search_Deck_Aggregate;
+  /** fetch data from the table: "rangers.faq_entry" */
+  rangers_faq_entry: Array<Rangers_Faq_Entry>;
+  /** fetch aggregated fields from the table: "rangers.faq_entry" */
+  rangers_faq_entry_aggregate: Rangers_Faq_Entry_Aggregate;
+  /** fetch data from the table: "rangers.faq_entry" using primary key columns */
+  rangers_faq_entry_by_pk?: Maybe<Rangers_Faq_Entry>;
   /** fetch data from the table: "rangers.friend_status" */
   rangers_friend_status: Array<Rangers_Friend_Status>;
   /** fetch aggregated fields from the table: "rangers.friend_status" */
@@ -20542,6 +26451,439 @@ export type Query_RootChaos_Bag_Tarot_Mode_AggregateArgs = {
 
 export type Query_RootChaos_Bag_Tarot_Mode_By_PkArgs = {
   value: Scalars['String'];
+};
+
+
+export type Query_RootConquest_CardArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Card_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Card_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootConquest_Card_LocalizedArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Localized_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Localized_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Card_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Localized_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Localized_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Card_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Card_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Card_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootConquest_Card_UpdatedArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Updated_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Card_Updated_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Updated_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_CommentArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Comment_Order_By>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Comment_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Comment_Order_By>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Comment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootConquest_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Query_RootConquest_Deck_CopyArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Copy_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Copy_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Copy_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Deck_Copy_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Copy_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Copy_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Copy_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Deck_Copy_By_PkArgs = {
+  copy_deck_id: Scalars['Int'];
+};
+
+
+export type Query_RootConquest_Deck_LikeArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Like_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Like_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Like_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Deck_Like_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Like_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Like_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Like_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Deck_Like_By_PkArgs = {
+  deck_id: Scalars['Int'];
+  user_id: Scalars['String'];
+};
+
+
+export type Query_RootConquest_FactionArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Faction_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Faction_Order_By>>;
+  where?: InputMaybe<Conquest_Faction_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Faction_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Faction_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Faction_Order_By>>;
+  where?: InputMaybe<Conquest_Faction_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Faction_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootConquest_Faction_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Faction_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Faction_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Faction_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Faction_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Faction_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Faction_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Faction_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Faction_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootConquest_LoyaltyArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Loyalty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Loyalty_Order_By>>;
+  where?: InputMaybe<Conquest_Loyalty_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Loyalty_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Loyalty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Loyalty_Order_By>>;
+  where?: InputMaybe<Conquest_Loyalty_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Loyalty_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootConquest_Loyalty_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Loyalty_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Loyalty_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Loyalty_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Loyalty_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Loyalty_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Loyalty_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Loyalty_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Loyalty_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootConquest_PackArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Pack_Order_By>>;
+  where?: InputMaybe<Conquest_Pack_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Pack_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Pack_Order_By>>;
+  where?: InputMaybe<Conquest_Pack_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Pack_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootConquest_Pack_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Pack_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Pack_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Pack_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Pack_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Pack_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Pack_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Pack_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Pack_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootConquest_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Type_Order_By>>;
+  where?: InputMaybe<Conquest_Type_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Type_Order_By>>;
+  where?: InputMaybe<Conquest_Type_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootConquest_Type_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Type_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Type_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Type_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Type_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Type_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Type_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Type_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Type_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootConquest_User_RoleArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Role_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Role_Order_By>>;
+  where?: InputMaybe<Conquest_User_Role_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_User_Role_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Role_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Role_Order_By>>;
+  where?: InputMaybe<Conquest_User_Role_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_User_Role_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootConquest_User_SettingsArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Settings_Order_By>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_User_Settings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Settings_Order_By>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_User_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+export type Query_RootConquest_UsersArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Users_Order_By>>;
+  where?: InputMaybe<Conquest_Users_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Users_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Users_Order_By>>;
+  where?: InputMaybe<Conquest_Users_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Users_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -21312,7 +27654,7 @@ export type Query_RootRangers_Deck_Rank_AggregateArgs = {
 
 
 export type Query_RootRangers_Deck_SearchArgs = {
-  args: Rangers_Deck_Search_Args;
+  args?: InputMaybe<Rangers_Deck_Search_Args>;
   distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -21322,12 +27664,35 @@ export type Query_RootRangers_Deck_SearchArgs = {
 
 
 export type Query_RootRangers_Deck_Search_AggregateArgs = {
-  args: Rangers_Deck_Search_Args;
+  args?: InputMaybe<Rangers_Deck_Search_Args>;
   distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Rangers_Search_Deck_Order_By>>;
   where?: InputMaybe<Rangers_Search_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Faq_EntryArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Faq_Entry_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Faq_Entry_Order_By>>;
+  where?: InputMaybe<Rangers_Faq_Entry_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Faq_Entry_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Faq_Entry_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Faq_Entry_Order_By>>;
+  where?: InputMaybe<Rangers_Faq_Entry_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Faq_Entry_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -22227,7 +28592,7 @@ export type Rangers_Area_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.area_text" */
 export enum Rangers_Area_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   AreaTextPkey = 'area_text_pkey'
 }
 
@@ -22338,6 +28703,7 @@ export enum Rangers_Area_Text_Update_Column {
 export type Rangers_Area_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Area_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Area_Text_Bool_Exp;
 };
 
@@ -22354,6 +28720,7 @@ export enum Rangers_Area_Update_Column {
 export type Rangers_Area_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Area_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Area_Bool_Exp;
 };
 
@@ -22662,7 +29029,7 @@ export type Rangers_Aspect_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.aspect_text" */
 export enum Rangers_Aspect_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   AspectTextPkey = 'aspect_text_pkey'
 }
 
@@ -22783,6 +29150,7 @@ export enum Rangers_Aspect_Text_Update_Column {
 export type Rangers_Aspect_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Aspect_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Aspect_Text_Bool_Exp;
 };
 
@@ -22801,6 +29169,7 @@ export enum Rangers_Aspect_Update_Column {
 export type Rangers_Aspect_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Aspect_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Aspect_Bool_Exp;
 };
 
@@ -23096,6 +29465,7 @@ export type Rangers_Campaign_Access_Updates = {
   _inc?: InputMaybe<Rangers_Campaign_Access_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Campaign_Access_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Campaign_Access_Bool_Exp;
 };
 
@@ -23500,6 +29870,7 @@ export type Rangers_Campaign_Updates = {
   _prepend?: InputMaybe<Rangers_Campaign_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Campaign_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Campaign_Bool_Exp;
 };
 
@@ -24912,7 +31283,7 @@ export type Rangers_Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.card_text" */
 export enum Rangers_Card_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   CardTextPkey = 'card_text_pkey'
 }
 
@@ -25099,6 +31470,7 @@ export enum Rangers_Card_Text_Update_Column {
 export type Rangers_Card_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Card_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Card_Text_Bool_Exp;
 };
 
@@ -25271,6 +31643,7 @@ export type Rangers_Card_Updates = {
   _prepend?: InputMaybe<Rangers_Card_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Card_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Card_Bool_Exp;
 };
 
@@ -25475,7 +31848,7 @@ export type Rangers_Comment_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.comment" */
 export enum Rangers_Comment_Constraint {
-  /** unique or primary key constraint on columns "id", "deck_id" */
+  /** unique or primary key constraint on columns "deck_id", "id" */
   CommentIdDeckIdKey = 'comment_id_deck_id_key',
   /** unique or primary key constraint on columns "id" */
   CommentPkey = 'comment_pkey'
@@ -25726,6 +32099,7 @@ export type Rangers_Comment_Updates = {
   _inc?: InputMaybe<Rangers_Comment_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Comment_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Comment_Bool_Exp;
 };
 
@@ -26214,6 +32588,7 @@ export type Rangers_Deck_Copy_Updates = {
   _inc?: InputMaybe<Rangers_Deck_Copy_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Deck_Copy_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Deck_Copy_Bool_Exp;
 };
 
@@ -26594,6 +32969,7 @@ export type Rangers_Deck_Like_Count_Updates = {
   _inc?: InputMaybe<Rangers_Deck_Like_Count_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Deck_Like_Count_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Deck_Like_Count_Bool_Exp;
 };
 
@@ -26756,6 +33132,7 @@ export type Rangers_Deck_Like_Updates = {
   _inc?: InputMaybe<Rangers_Deck_Like_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Deck_Like_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Deck_Like_Bool_Exp;
 };
 
@@ -27325,6 +33702,7 @@ export type Rangers_Deck_Updates = {
   _prepend?: InputMaybe<Rangers_Deck_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Deck_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Deck_Bool_Exp;
 };
 
@@ -27377,6 +33755,176 @@ export type Rangers_Deck_Variance_Fields = {
   next_deck_id?: Maybe<Scalars['Float']>;
   spi?: Maybe<Scalars['Float']>;
   version?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "rangers.faq_entry" */
+export type Rangers_Faq_Entry = {
+  __typename?: 'rangers_faq_entry';
+  card_id: Scalars['String'];
+  created_at: Scalars['timestamptz'];
+  id: Scalars['String'];
+  lang: Scalars['String'];
+  text: Scalars['String'];
+};
+
+/** aggregated selection of "rangers.faq_entry" */
+export type Rangers_Faq_Entry_Aggregate = {
+  __typename?: 'rangers_faq_entry_aggregate';
+  aggregate?: Maybe<Rangers_Faq_Entry_Aggregate_Fields>;
+  nodes: Array<Rangers_Faq_Entry>;
+};
+
+/** aggregate fields of "rangers.faq_entry" */
+export type Rangers_Faq_Entry_Aggregate_Fields = {
+  __typename?: 'rangers_faq_entry_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Rangers_Faq_Entry_Max_Fields>;
+  min?: Maybe<Rangers_Faq_Entry_Min_Fields>;
+};
+
+
+/** aggregate fields of "rangers.faq_entry" */
+export type Rangers_Faq_Entry_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Rangers_Faq_Entry_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "rangers.faq_entry". All fields are combined with a logical 'AND'. */
+export type Rangers_Faq_Entry_Bool_Exp = {
+  _and?: InputMaybe<Array<Rangers_Faq_Entry_Bool_Exp>>;
+  _not?: InputMaybe<Rangers_Faq_Entry_Bool_Exp>;
+  _or?: InputMaybe<Array<Rangers_Faq_Entry_Bool_Exp>>;
+  card_id?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lang?: InputMaybe<String_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rangers.faq_entry" */
+export enum Rangers_Faq_Entry_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  FaqEntryPkey = 'faq_entry_pkey'
+}
+
+/** input type for inserting data into table "rangers.faq_entry" */
+export type Rangers_Faq_Entry_Insert_Input = {
+  card_id?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  lang?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Rangers_Faq_Entry_Max_Fields = {
+  __typename?: 'rangers_faq_entry_max_fields';
+  card_id?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['String']>;
+  lang?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Rangers_Faq_Entry_Min_Fields = {
+  __typename?: 'rangers_faq_entry_min_fields';
+  card_id?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['String']>;
+  lang?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "rangers.faq_entry" */
+export type Rangers_Faq_Entry_Mutation_Response = {
+  __typename?: 'rangers_faq_entry_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Rangers_Faq_Entry>;
+};
+
+/** on_conflict condition type for table "rangers.faq_entry" */
+export type Rangers_Faq_Entry_On_Conflict = {
+  constraint: Rangers_Faq_Entry_Constraint;
+  update_columns?: Array<Rangers_Faq_Entry_Update_Column>;
+  where?: InputMaybe<Rangers_Faq_Entry_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "rangers.faq_entry". */
+export type Rangers_Faq_Entry_Order_By = {
+  card_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lang?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: rangers.faq_entry */
+export type Rangers_Faq_Entry_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "rangers.faq_entry" */
+export enum Rangers_Faq_Entry_Select_Column {
+  /** column name */
+  CardId = 'card_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lang = 'lang',
+  /** column name */
+  Text = 'text'
+}
+
+/** input type for updating data in table "rangers.faq_entry" */
+export type Rangers_Faq_Entry_Set_Input = {
+  card_id?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  lang?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "rangers_faq_entry" */
+export type Rangers_Faq_Entry_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Rangers_Faq_Entry_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Rangers_Faq_Entry_Stream_Cursor_Value_Input = {
+  card_id?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  lang?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "rangers.faq_entry" */
+export enum Rangers_Faq_Entry_Update_Column {
+  /** column name */
+  CardId = 'card_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lang = 'lang',
+  /** column name */
+  Text = 'text'
+}
+
+export type Rangers_Faq_Entry_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Rangers_Faq_Entry_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Rangers_Faq_Entry_Bool_Exp;
 };
 
 /** columns and relationships of "rangers.friend_status" */
@@ -27641,6 +34189,7 @@ export enum Rangers_Friend_Status_Type_Update_Column {
 export type Rangers_Friend_Status_Type_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Friend_Status_Type_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Friend_Status_Type_Bool_Exp;
 };
 
@@ -27657,6 +34206,7 @@ export enum Rangers_Friend_Status_Update_Column {
 export type Rangers_Friend_Status_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Friend_Status_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Friend_Status_Bool_Exp;
 };
 
@@ -27915,6 +34465,7 @@ export type Rangers_Latest_Deck_Updates = {
   _inc?: InputMaybe<Rangers_Latest_Deck_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Latest_Deck_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Latest_Deck_Bool_Exp;
 };
 
@@ -28075,6 +34626,7 @@ export enum Rangers_Locale_Update_Column {
 export type Rangers_Locale_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Locale_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Locale_Bool_Exp;
 };
 
@@ -28357,7 +34909,7 @@ export type Rangers_Pack_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.pack_text" */
 export enum Rangers_Pack_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   PackTextPkey = 'pack_text_pkey'
 }
 
@@ -28484,6 +35036,7 @@ export enum Rangers_Pack_Text_Update_Column {
 export type Rangers_Pack_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Pack_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Pack_Text_Bool_Exp;
 };
 
@@ -28504,6 +35057,7 @@ export type Rangers_Pack_Updates = {
   _inc?: InputMaybe<Rangers_Pack_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Pack_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Pack_Bool_Exp;
 };
 
@@ -29050,6 +35604,7 @@ export type Rangers_Search_Deck_Updates = {
   _prepend?: InputMaybe<Rangers_Search_Deck_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Search_Deck_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Search_Deck_Bool_Exp;
 };
 
@@ -29672,7 +36227,7 @@ export type Rangers_Set_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.set_text" */
 export enum Rangers_Set_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   SetTextPkey = 'set_text_pkey'
 }
 
@@ -29799,6 +36354,7 @@ export enum Rangers_Set_Text_Update_Column {
 export type Rangers_Set_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Set_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Set_Text_Bool_Exp;
 };
 
@@ -30159,7 +36715,7 @@ export type Rangers_Set_Type_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.set_type_text" */
 export enum Rangers_Set_Type_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   SetTypeTextPkey = 'set_type_text_pkey'
 }
 
@@ -30286,6 +36842,7 @@ export enum Rangers_Set_Type_Text_Update_Column {
 export type Rangers_Set_Type_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Set_Type_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Set_Type_Text_Bool_Exp;
 };
 
@@ -30302,6 +36859,7 @@ export enum Rangers_Set_Type_Update_Column {
 export type Rangers_Set_Type_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Set_Type_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Set_Type_Bool_Exp;
 };
 
@@ -30324,6 +36882,7 @@ export type Rangers_Set_Updates = {
   _inc?: InputMaybe<Rangers_Set_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Set_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Set_Bool_Exp;
 };
 
@@ -30530,7 +37089,7 @@ export type Rangers_Token_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.token_text" */
 export enum Rangers_Token_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   TokenTextPkey = 'token_text_pkey'
 }
 
@@ -30651,6 +37210,7 @@ export enum Rangers_Token_Text_Update_Column {
 export type Rangers_Token_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Token_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Token_Text_Bool_Exp;
 };
 
@@ -30669,6 +37229,7 @@ export enum Rangers_Token_Update_Column {
 export type Rangers_Token_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Token_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Token_Bool_Exp;
 };
 
@@ -30949,7 +37510,7 @@ export type Rangers_Type_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.type_text" */
 export enum Rangers_Type_Text_Constraint {
-  /** unique or primary key constraint on columns "locale", "id" */
+  /** unique or primary key constraint on columns "id", "locale" */
   TypeTextPkey = 'type_text_pkey'
 }
 
@@ -31060,6 +37621,7 @@ export enum Rangers_Type_Text_Update_Column {
 export type Rangers_Type_Text_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Type_Text_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Type_Text_Bool_Exp;
 };
 
@@ -31076,6 +37638,7 @@ export enum Rangers_Type_Update_Column {
 export type Rangers_Type_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Type_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Type_Bool_Exp;
 };
 
@@ -31486,6 +38049,7 @@ export type Rangers_User_Friends_Stream_Cursor_Value_Input = {
 export type Rangers_User_Friends_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_User_Friends_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_User_Friends_Bool_Exp;
 };
 
@@ -31645,6 +38209,7 @@ export type Rangers_User_Received_Friend_Requests_Stream_Cursor_Value_Input = {
 export type Rangers_User_Received_Friend_Requests_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_User_Received_Friend_Requests_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_User_Received_Friend_Requests_Bool_Exp;
 };
 
@@ -31780,6 +38345,7 @@ export enum Rangers_User_Role_Update_Column {
 export type Rangers_User_Role_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_User_Role_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_User_Role_Bool_Exp;
 };
 
@@ -31939,6 +38505,7 @@ export type Rangers_User_Sent_Friend_Requests_Stream_Cursor_Value_Input = {
 export type Rangers_User_Sent_Friend_Requests_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_User_Sent_Friend_Requests_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_User_Sent_Friend_Requests_Bool_Exp;
 };
 
@@ -32077,6 +38644,7 @@ export enum Rangers_User_Settings_Update_Column {
 export type Rangers_User_Settings_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_User_Settings_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_User_Settings_Bool_Exp;
 };
 
@@ -32382,6 +38950,7 @@ export enum Rangers_Users_Update_Column {
 export type Rangers_Users_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Rangers_Users_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Rangers_Users_Bool_Exp;
 };
 
@@ -32549,6 +39118,154 @@ export type Subscription_Root = {
   chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
   /** fetch data from the table in a streaming manner: "chaos_bag_tarot_mode" */
   chaos_bag_tarot_mode_stream: Array<Chaos_Bag_Tarot_Mode>;
+  /** fetch data from the table: "conquest.card" */
+  conquest_card: Array<Conquest_Card>;
+  /** fetch aggregated fields from the table: "conquest.card" */
+  conquest_card_aggregate: Conquest_Card_Aggregate;
+  /** fetch data from the table: "conquest.card" using primary key columns */
+  conquest_card_by_pk?: Maybe<Conquest_Card>;
+  /** fetch data from the table: "conquest.card_localized" */
+  conquest_card_localized: Array<Conquest_Card_Localized>;
+  /** fetch aggregated fields from the table: "conquest.card_localized" */
+  conquest_card_localized_aggregate: Conquest_Card_Localized_Aggregate;
+  /** fetch data from the table in a streaming manner: "conquest.card_localized" */
+  conquest_card_localized_stream: Array<Conquest_Card_Localized>;
+  /** fetch data from the table in a streaming manner: "conquest.card" */
+  conquest_card_stream: Array<Conquest_Card>;
+  /** fetch data from the table: "conquest.card_text" */
+  conquest_card_text: Array<Conquest_Card_Text>;
+  /** fetch aggregated fields from the table: "conquest.card_text" */
+  conquest_card_text_aggregate: Conquest_Card_Text_Aggregate;
+  /** fetch data from the table: "conquest.card_text" using primary key columns */
+  conquest_card_text_by_pk?: Maybe<Conquest_Card_Text>;
+  /** fetch data from the table in a streaming manner: "conquest.card_text" */
+  conquest_card_text_stream: Array<Conquest_Card_Text>;
+  /** fetch data from the table: "conquest.card_updated" */
+  conquest_card_updated: Array<Conquest_Card_Updated>;
+  /** fetch aggregated fields from the table: "conquest.card_updated" */
+  conquest_card_updated_aggregate: Conquest_Card_Updated_Aggregate;
+  /** fetch data from the table in a streaming manner: "conquest.card_updated" */
+  conquest_card_updated_stream: Array<Conquest_Card_Updated>;
+  /** fetch data from the table: "conquest.comment" */
+  conquest_comment: Array<Conquest_Comment>;
+  /** fetch aggregated fields from the table: "conquest.comment" */
+  conquest_comment_aggregate: Conquest_Comment_Aggregate;
+  /** fetch data from the table: "conquest.comment" using primary key columns */
+  conquest_comment_by_pk?: Maybe<Conquest_Comment>;
+  /** fetch data from the table in a streaming manner: "conquest.comment" */
+  conquest_comment_stream: Array<Conquest_Comment>;
+  /** fetch data from the table: "conquest.deck" */
+  conquest_deck: Array<Conquest_Deck>;
+  /** fetch aggregated fields from the table: "conquest.deck" */
+  conquest_deck_aggregate: Conquest_Deck_Aggregate;
+  /** fetch data from the table: "conquest.deck" using primary key columns */
+  conquest_deck_by_pk?: Maybe<Conquest_Deck>;
+  /** fetch data from the table: "conquest.deck_copy" */
+  conquest_deck_copy: Array<Conquest_Deck_Copy>;
+  /** fetch aggregated fields from the table: "conquest.deck_copy" */
+  conquest_deck_copy_aggregate: Conquest_Deck_Copy_Aggregate;
+  /** fetch data from the table: "conquest.deck_copy" using primary key columns */
+  conquest_deck_copy_by_pk?: Maybe<Conquest_Deck_Copy>;
+  /** fetch data from the table in a streaming manner: "conquest.deck_copy" */
+  conquest_deck_copy_stream: Array<Conquest_Deck_Copy>;
+  /** fetch data from the table: "conquest.deck_like" */
+  conquest_deck_like: Array<Conquest_Deck_Like>;
+  /** fetch aggregated fields from the table: "conquest.deck_like" */
+  conquest_deck_like_aggregate: Conquest_Deck_Like_Aggregate;
+  /** fetch data from the table: "conquest.deck_like" using primary key columns */
+  conquest_deck_like_by_pk?: Maybe<Conquest_Deck_Like>;
+  /** fetch data from the table in a streaming manner: "conquest.deck_like" */
+  conquest_deck_like_stream: Array<Conquest_Deck_Like>;
+  /** fetch data from the table in a streaming manner: "conquest.deck" */
+  conquest_deck_stream: Array<Conquest_Deck>;
+  /** fetch data from the table: "conquest.faction" */
+  conquest_faction: Array<Conquest_Faction>;
+  /** fetch aggregated fields from the table: "conquest.faction" */
+  conquest_faction_aggregate: Conquest_Faction_Aggregate;
+  /** fetch data from the table: "conquest.faction" using primary key columns */
+  conquest_faction_by_pk?: Maybe<Conquest_Faction>;
+  /** fetch data from the table in a streaming manner: "conquest.faction" */
+  conquest_faction_stream: Array<Conquest_Faction>;
+  /** fetch data from the table: "conquest.faction_text" */
+  conquest_faction_text: Array<Conquest_Faction_Text>;
+  /** fetch aggregated fields from the table: "conquest.faction_text" */
+  conquest_faction_text_aggregate: Conquest_Faction_Text_Aggregate;
+  /** fetch data from the table: "conquest.faction_text" using primary key columns */
+  conquest_faction_text_by_pk?: Maybe<Conquest_Faction_Text>;
+  /** fetch data from the table in a streaming manner: "conquest.faction_text" */
+  conquest_faction_text_stream: Array<Conquest_Faction_Text>;
+  /** fetch data from the table: "conquest.loyalty" */
+  conquest_loyalty: Array<Conquest_Loyalty>;
+  /** fetch aggregated fields from the table: "conquest.loyalty" */
+  conquest_loyalty_aggregate: Conquest_Loyalty_Aggregate;
+  /** fetch data from the table: "conquest.loyalty" using primary key columns */
+  conquest_loyalty_by_pk?: Maybe<Conquest_Loyalty>;
+  /** fetch data from the table in a streaming manner: "conquest.loyalty" */
+  conquest_loyalty_stream: Array<Conquest_Loyalty>;
+  /** fetch data from the table: "conquest.loyalty_text" */
+  conquest_loyalty_text: Array<Conquest_Loyalty_Text>;
+  /** fetch aggregated fields from the table: "conquest.loyalty_text" */
+  conquest_loyalty_text_aggregate: Conquest_Loyalty_Text_Aggregate;
+  /** fetch data from the table: "conquest.loyalty_text" using primary key columns */
+  conquest_loyalty_text_by_pk?: Maybe<Conquest_Loyalty_Text>;
+  /** fetch data from the table in a streaming manner: "conquest.loyalty_text" */
+  conquest_loyalty_text_stream: Array<Conquest_Loyalty_Text>;
+  /** fetch data from the table: "conquest.pack" */
+  conquest_pack: Array<Conquest_Pack>;
+  /** fetch aggregated fields from the table: "conquest.pack" */
+  conquest_pack_aggregate: Conquest_Pack_Aggregate;
+  /** fetch data from the table: "conquest.pack" using primary key columns */
+  conquest_pack_by_pk?: Maybe<Conquest_Pack>;
+  /** fetch data from the table in a streaming manner: "conquest.pack" */
+  conquest_pack_stream: Array<Conquest_Pack>;
+  /** fetch data from the table: "conquest.pack_text" */
+  conquest_pack_text: Array<Conquest_Pack_Text>;
+  /** fetch aggregated fields from the table: "conquest.pack_text" */
+  conquest_pack_text_aggregate: Conquest_Pack_Text_Aggregate;
+  /** fetch data from the table: "conquest.pack_text" using primary key columns */
+  conquest_pack_text_by_pk?: Maybe<Conquest_Pack_Text>;
+  /** fetch data from the table in a streaming manner: "conquest.pack_text" */
+  conquest_pack_text_stream: Array<Conquest_Pack_Text>;
+  /** fetch data from the table: "conquest.type" */
+  conquest_type: Array<Conquest_Type>;
+  /** fetch aggregated fields from the table: "conquest.type" */
+  conquest_type_aggregate: Conquest_Type_Aggregate;
+  /** fetch data from the table: "conquest.type" using primary key columns */
+  conquest_type_by_pk?: Maybe<Conquest_Type>;
+  /** fetch data from the table in a streaming manner: "conquest.type" */
+  conquest_type_stream: Array<Conquest_Type>;
+  /** fetch data from the table: "conquest.type_text" */
+  conquest_type_text: Array<Conquest_Type_Text>;
+  /** fetch aggregated fields from the table: "conquest.type_text" */
+  conquest_type_text_aggregate: Conquest_Type_Text_Aggregate;
+  /** fetch data from the table: "conquest.type_text" using primary key columns */
+  conquest_type_text_by_pk?: Maybe<Conquest_Type_Text>;
+  /** fetch data from the table in a streaming manner: "conquest.type_text" */
+  conquest_type_text_stream: Array<Conquest_Type_Text>;
+  /** fetch data from the table: "conquest.user_role" */
+  conquest_user_role: Array<Conquest_User_Role>;
+  /** fetch aggregated fields from the table: "conquest.user_role" */
+  conquest_user_role_aggregate: Conquest_User_Role_Aggregate;
+  /** fetch data from the table: "conquest.user_role" using primary key columns */
+  conquest_user_role_by_pk?: Maybe<Conquest_User_Role>;
+  /** fetch data from the table in a streaming manner: "conquest.user_role" */
+  conquest_user_role_stream: Array<Conquest_User_Role>;
+  /** fetch data from the table: "conquest.user_settings" */
+  conquest_user_settings: Array<Conquest_User_Settings>;
+  /** fetch aggregated fields from the table: "conquest.user_settings" */
+  conquest_user_settings_aggregate: Conquest_User_Settings_Aggregate;
+  /** fetch data from the table: "conquest.user_settings" using primary key columns */
+  conquest_user_settings_by_pk?: Maybe<Conquest_User_Settings>;
+  /** fetch data from the table in a streaming manner: "conquest.user_settings" */
+  conquest_user_settings_stream: Array<Conquest_User_Settings>;
+  /** fetch data from the table: "conquest.users" */
+  conquest_users: Array<Conquest_Users>;
+  /** fetch aggregated fields from the table: "conquest.users" */
+  conquest_users_aggregate: Conquest_Users_Aggregate;
+  /** fetch data from the table: "conquest.users" using primary key columns */
+  conquest_users_by_pk?: Maybe<Conquest_Users>;
+  /** fetch data from the table in a streaming manner: "conquest.users" */
+  conquest_users_stream: Array<Conquest_Users>;
   /** fetch data from the table: "cycle" */
   cycle: Array<Cycle>;
   /** fetch aggregated fields from the table: "cycle" */
@@ -32813,6 +39530,14 @@ export type Subscription_Root = {
   rangers_deck_search_aggregate: Rangers_Search_Deck_Aggregate;
   /** fetch data from the table in a streaming manner: "rangers.deck" */
   rangers_deck_stream: Array<Rangers_Deck>;
+  /** fetch data from the table: "rangers.faq_entry" */
+  rangers_faq_entry: Array<Rangers_Faq_Entry>;
+  /** fetch aggregated fields from the table: "rangers.faq_entry" */
+  rangers_faq_entry_aggregate: Rangers_Faq_Entry_Aggregate;
+  /** fetch data from the table: "rangers.faq_entry" using primary key columns */
+  rangers_faq_entry_by_pk?: Maybe<Rangers_Faq_Entry>;
+  /** fetch data from the table in a streaming manner: "rangers.faq_entry" */
+  rangers_faq_entry_stream: Array<Rangers_Faq_Entry>;
   /** fetch data from the table: "rangers.friend_status" */
   rangers_friend_status: Array<Rangers_Friend_Status>;
   /** fetch aggregated fields from the table: "rangers.friend_status" */
@@ -33682,6 +40407,572 @@ export type Subscription_RootChaos_Bag_Tarot_Mode_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Chaos_Bag_Tarot_Mode_Stream_Cursor_Input>>;
   where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_CardArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Card_LocalizedArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Localized_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Localized_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_Localized_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Card_Localized_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Card_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Card_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Card_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Card_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_UpdatedArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Updated_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_Updated_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Card_Updated_Order_By>>;
+  where?: InputMaybe<Conquest_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Card_Updated_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Card_Updated_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_CommentArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Comment_Order_By>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Comment_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Comment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Comment_Order_By>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Comment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootConquest_Comment_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Comment_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Subscription_RootConquest_Deck_CopyArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Copy_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Copy_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Copy_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Deck_Copy_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Copy_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Copy_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Copy_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Deck_Copy_By_PkArgs = {
+  copy_deck_id: Scalars['Int'];
+};
+
+
+export type Subscription_RootConquest_Deck_Copy_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Deck_Copy_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Deck_Copy_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Deck_LikeArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Like_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Like_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Like_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Deck_Like_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Deck_Like_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Deck_Like_Order_By>>;
+  where?: InputMaybe<Conquest_Deck_Like_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Deck_Like_By_PkArgs = {
+  deck_id: Scalars['Int'];
+  user_id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Deck_Like_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Deck_Like_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Deck_Like_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Deck_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Deck_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_FactionArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Faction_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Faction_Order_By>>;
+  where?: InputMaybe<Conquest_Faction_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Faction_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Faction_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Faction_Order_By>>;
+  where?: InputMaybe<Conquest_Faction_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Faction_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Faction_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Faction_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Faction_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Faction_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Faction_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Faction_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Faction_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Faction_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Faction_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Faction_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Faction_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Faction_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Faction_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Faction_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Faction_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_LoyaltyArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Loyalty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Loyalty_Order_By>>;
+  where?: InputMaybe<Conquest_Loyalty_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Loyalty_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Loyalty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Loyalty_Order_By>>;
+  where?: InputMaybe<Conquest_Loyalty_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Loyalty_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Loyalty_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Loyalty_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Loyalty_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Loyalty_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Loyalty_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Loyalty_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Loyalty_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Loyalty_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Loyalty_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Loyalty_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Loyalty_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Loyalty_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Loyalty_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Loyalty_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Loyalty_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_PackArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Pack_Order_By>>;
+  where?: InputMaybe<Conquest_Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Pack_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Pack_Order_By>>;
+  where?: InputMaybe<Conquest_Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Pack_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Pack_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Pack_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Pack_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Pack_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Pack_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Pack_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Pack_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Pack_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Pack_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Pack_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Pack_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Pack_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Pack_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Pack_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Type_Order_By>>;
+  where?: InputMaybe<Conquest_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Type_Order_By>>;
+  where?: InputMaybe<Conquest_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Type_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Type_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Type_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Type_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Type_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Type_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Type_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Type_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Type_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Type_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Type_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Type_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Type_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Type_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_User_RoleArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Role_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Role_Order_By>>;
+  where?: InputMaybe<Conquest_User_Role_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_User_Role_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Role_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Role_Order_By>>;
+  where?: InputMaybe<Conquest_User_Role_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_User_Role_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_User_Role_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_User_Role_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_User_Role_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_User_SettingsArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Settings_Order_By>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_User_Settings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Settings_Order_By>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_User_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_User_Settings_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_User_Settings_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_UsersArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Users_Order_By>>;
+  where?: InputMaybe<Conquest_Users_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Users_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_Users_Order_By>>;
+  where?: InputMaybe<Conquest_Users_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Users_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootConquest_Users_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Conquest_Users_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Users_Bool_Exp>;
 };
 
 
@@ -34683,7 +41974,7 @@ export type Subscription_RootRangers_Deck_Rank_StreamArgs = {
 
 
 export type Subscription_RootRangers_Deck_SearchArgs = {
-  args: Rangers_Deck_Search_Args;
+  args?: InputMaybe<Rangers_Deck_Search_Args>;
   distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -34693,7 +41984,7 @@ export type Subscription_RootRangers_Deck_SearchArgs = {
 
 
 export type Subscription_RootRangers_Deck_Search_AggregateArgs = {
-  args: Rangers_Deck_Search_Args;
+  args?: InputMaybe<Rangers_Deck_Search_Args>;
   distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -34706,6 +41997,36 @@ export type Subscription_RootRangers_Deck_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Deck_Stream_Cursor_Input>>;
   where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Faq_EntryArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Faq_Entry_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Faq_Entry_Order_By>>;
+  where?: InputMaybe<Rangers_Faq_Entry_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Faq_Entry_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Faq_Entry_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Faq_Entry_Order_By>>;
+  where?: InputMaybe<Rangers_Faq_Entry_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Faq_Entry_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootRangers_Faq_Entry_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Rangers_Faq_Entry_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Faq_Entry_Bool_Exp>;
 };
 
 
@@ -35942,6 +43263,7 @@ export type Taboo_Set_Updates = {
   _inc?: InputMaybe<Taboo_Set_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Taboo_Set_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Taboo_Set_Bool_Exp;
 };
 
@@ -36237,6 +43559,7 @@ export type User_Campaigns_Updates = {
   _inc?: InputMaybe<User_Campaigns_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<User_Campaigns_Set_Input>;
+  /** filter the rows which have to be updated */
   where: User_Campaigns_Bool_Exp;
 };
 
@@ -36347,7 +43670,7 @@ export type User_Flag_Bool_Exp = {
 
 /** unique or primary key constraints on table "user_flag" */
 export enum User_Flag_Constraint {
-  /** unique or primary key constraint on columns "flag", "user_id" */
+  /** unique or primary key constraint on columns "user_id", "flag" */
   UserFlagPkey = 'user_flag_pkey'
 }
 
@@ -36570,6 +43893,7 @@ export enum User_Flag_Type_Update_Column {
 export type User_Flag_Type_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<User_Flag_Type_Set_Input>;
+  /** filter the rows which have to be updated */
   where: User_Flag_Type_Bool_Exp;
 };
 
@@ -36584,6 +43908,7 @@ export enum User_Flag_Update_Column {
 export type User_Flag_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<User_Flag_Set_Input>;
+  /** filter the rows which have to be updated */
   where: User_Flag_Bool_Exp;
 };
 
@@ -36743,6 +44068,7 @@ export type User_Friends_Stream_Cursor_Value_Input = {
 export type User_Friends_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<User_Friends_Set_Input>;
+  /** filter the rows which have to be updated */
   where: User_Friends_Bool_Exp;
 };
 
@@ -36902,6 +44228,7 @@ export type User_Received_Friend_Requests_Stream_Cursor_Value_Input = {
 export type User_Received_Friend_Requests_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<User_Received_Friend_Requests_Set_Input>;
+  /** filter the rows which have to be updated */
   where: User_Received_Friend_Requests_Bool_Exp;
 };
 
@@ -37061,6 +44388,7 @@ export type User_Sent_Friend_Requests_Stream_Cursor_Value_Input = {
 export type User_Sent_Friend_Requests_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<User_Sent_Friend_Requests_Set_Input>;
+  /** filter the rows which have to be updated */
   where: User_Sent_Friend_Requests_Bool_Exp;
 };
 
@@ -37345,6 +44673,7 @@ export type User_Settings_Updates = {
   _prepend?: InputMaybe<User_Settings_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<User_Settings_Set_Input>;
+  /** filter the rows which have to be updated */
   where: User_Settings_Bool_Exp;
 };
 
@@ -37733,6 +45062,7 @@ export enum Users_Update_Column {
 export type Users_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Users_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Users_Bool_Exp;
 };
 
@@ -37780,6 +45110,14 @@ export type CreateCampaignMutationVariables = Exact<{
 
 
 export type CreateCampaignMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, day: number, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
+
+export type SetCampaignTitleMutationVariables = Exact<{
+  name: Scalars['String'];
+  campaignId: Scalars['Int'];
+}>;
+
+
+export type SetCampaignTitleMutation = { __typename?: 'mutation_root', update_rangers_campaign_by_pk?: { __typename?: 'rangers_campaign', id: number, name: string } | null };
 
 export type AddFriendToCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
@@ -38617,6 +45955,44 @@ export function useCreateCampaignMutation(baseOptions?: Apollo.MutationHookOptio
 export type CreateCampaignMutationHookResult = ReturnType<typeof useCreateCampaignMutation>;
 export type CreateCampaignMutationResult = Apollo.MutationResult<CreateCampaignMutation>;
 export type CreateCampaignMutationOptions = Apollo.BaseMutationOptions<CreateCampaignMutation, CreateCampaignMutationVariables>;
+export const SetCampaignTitleDocument = gql`
+    mutation setCampaignTitle($name: String!, $campaignId: Int!) {
+  update_rangers_campaign_by_pk(
+    pk_columns: {id: $campaignId}
+    _set: {name: $name}
+  ) {
+    id
+    name
+  }
+}
+    `;
+export type SetCampaignTitleMutationFn = Apollo.MutationFunction<SetCampaignTitleMutation, SetCampaignTitleMutationVariables>;
+
+/**
+ * __useSetCampaignTitleMutation__
+ *
+ * To run a mutation, you first call `useSetCampaignTitleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetCampaignTitleMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [setCampaignTitleMutation, { data, loading, error }] = useSetCampaignTitleMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      campaignId: // value for 'campaignId'
+ *   },
+ * });
+ */
+export function useSetCampaignTitleMutation(baseOptions?: Apollo.MutationHookOptions<SetCampaignTitleMutation, SetCampaignTitleMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SetCampaignTitleMutation, SetCampaignTitleMutationVariables>(SetCampaignTitleDocument, options);
+      }
+export type SetCampaignTitleMutationHookResult = ReturnType<typeof useSetCampaignTitleMutation>;
+export type SetCampaignTitleMutationResult = Apollo.MutationResult<SetCampaignTitleMutation>;
+export type SetCampaignTitleMutationOptions = Apollo.BaseMutationOptions<SetCampaignTitleMutation, SetCampaignTitleMutationVariables>;
 export const AddFriendToCampaignDocument = gql`
     mutation addFriendToCampaign($campaignId: Int!, $userId: String!) {
   insert_rangers_campaign_access_one(
