@@ -2074,6 +2074,8 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       },
     });
   }, [campaign.id, setCampaignTitle]);
+  const buttonOrientation = useBreakpointValue(['vertical', 'vertical', 'horizontal'])
+
   return (
     <>
       <PageHeading
@@ -2085,7 +2087,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
         />}
         subHeader={!!cycle ? <CycleChiclet cycle={cycle} /> : undefined}
       >
-        <ButtonGroup>
+        <ButtonGroup orientation={buttonOrientation}>
           <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
           <Button leftIcon={<FaMoon />} onClick={onEndDay}>{t`End the day`}</Button>
           { !!undoEnabled && <Button variant="ghost" leftIcon={<FaUndo />} onClick={onUndo}>{t`Undo`}</Button> }
