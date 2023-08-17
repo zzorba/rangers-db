@@ -2074,7 +2074,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
       },
     });
   }, [campaign.id, setCampaignTitle]);
-  const buttonOrientation = useBreakpointValue(['vertical', 'vertical', 'horizontal'])
+  const buttonOrientation = useBreakpointValue<'vertical' | 'horizontal'>(['vertical', 'vertical', 'horizontal'])
 
   return (
     <>
