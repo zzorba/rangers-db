@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [locale])
 
   return (
-    <I18nProvider i18n={i18n} forceRenderOnLocaleChange>
+    <I18nProvider i18n={i18n}>
       <ChakraProvider theme={theme}>
         <ThemeContextProvider>
           <AuthUserProvider>

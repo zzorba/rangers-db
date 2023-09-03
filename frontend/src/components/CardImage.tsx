@@ -1,5 +1,5 @@
 import React from 'react';
-import { AspectRatio, Box, Image } from '@chakra-ui/react';
+import { AspectRatio, Box, Image, Text } from '@chakra-ui/react';
 const CARD_RATIO = 1.42333333333;
 
 const MAX_WIDTH = {
@@ -15,6 +15,16 @@ export default function CardImage({ title, size, url }: { title: string; size: '
           objectFit="contain"
           alt={title}
         />
+      </AspectRatio>
+    </Box>
+  );
+}
+
+export function CardImagePlaceholder({ title, size }: { title: string; size: 'small' | 'large' }) {
+  return (
+    <Box flex={1}>
+      <AspectRatio width={MAX_WIDTH[size]} ratio={1 / CARD_RATIO}>
+        <Text>{title}</Text>
       </AspectRatio>
     </Box>
   );

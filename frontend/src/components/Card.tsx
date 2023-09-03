@@ -30,6 +30,7 @@ import CardImage, { RoleImage } from './CardImage';
 
 interface Props {
   card: CardFragment;
+  noImage?: boolean;
 }
 
 function renderNumber(value: number) {
@@ -302,7 +303,7 @@ function CardImageSection({ card, detail }: { card: CardFragment; detail?: boole
   );
 }
 
-function CardBody({ card, padding, problem, count, detail }: Props & { padding?: number; problem?: DeckError[]; count?: number; detail?: boolean }) {
+function CardBody({ card, padding, problem, count, detail, noImage }: Props & { padding?: number; problem?: DeckError[]; count?: number; detail?: boolean, noImage?: boolean }) {
   const { aspects } = useLocale();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
@@ -336,24 +337,26 @@ function CardBody({ card, padding, problem, count, detail }: Props & { padding?:
           </Flex>
         )}
       </Flex>
-      <Flex direction="column" alignItems="flex-start" justifyContent="space-between">
-        { !!card?.imagesrc && (
-          <Box marginTop={8}>
-            <CardImage title={card.name || 'Card'} size="small" url={card.imagesrc} />
-          </Box>
-        ) }
-      </Flex>
+      { !noImage && (
+        <Flex direction="column" alignItems="flex-start" justifyContent="space-between">
+          { !!card?.imagesrc && (
+            <Box marginTop={8}>
+              <CardImage title={card.name || 'Card'} size="small" url={card.imagesrc} />
+            </Box>
+          ) }
+        </Flex>
+      ) }
   </Flex>
   );
 }
 
-export default function Card({ card }: Props) {
+export default function Card({ card, noImage }: Props) {
   return (
     <Box borderWidth={1} margin={2} borderColor={card.aspect_id ? `aspect.${card.aspect_id}` : '#222222'}>
       <Box padding={2}>
         <CardHeader card={card} />
       </Box>
-      <CardBody card={card} padding={2} detail />
+      <CardBody card={card} padding={2} detail noImage={noImage} />
     </Box>
   );
 }
