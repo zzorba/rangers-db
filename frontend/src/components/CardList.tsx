@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { filter, find, trim, forEach, map, partition, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
 import { FaFilter } from 'react-icons/fa';
-import { Box, Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels, IconButton, Collapse, Select, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels, IconButton, Collapse, Select, Wrap, WrapItem, Stack } from '@chakra-ui/react';
 
 import { CardFragment, useGetAllCardsQuery } from '../generated/graphql/apollo-schema';
 import Card, { CardRow, useCardModal } from './Card';
@@ -215,22 +215,27 @@ export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard
   return (
     <>
       { !noSearch && (
-        <Flex direction="row">
-          <Input
-            flex={2}
-            type="search"
-            value={search}
-            placeholder={t`Search by name`}
-            onChange={e => setSearch(e.target.value)}
-          />
-          { !!hasOptions && (
-            <Select ml={2} flex={1} onChange={onRenderStyleChange}>
-              <option value="list">{t`View as Checklist`}</option>
-              <option value="cards">{t`View as Cards`}</option>
-              <option value="images">{t`View as Images`}</option>
-            </Select>
+        <Flex direction={{ base: 'column', md: 'row' }}>
+          <Box flex={2}>
+            <Input
+              type="search"
+              value={search}
+              placeholder={t`Search by name`}
+              onChange={e => setSearch(e.target.value)}
+            />
+          </Box>
+          { (!!hasOptions || !!controls) && (
+            <Flex direction="row" flex={1} ml={{ base: 0, md: 2 }} mt={{ base: 2, md: 0 }} >
+              { !!hasOptions && (
+                <Select onChange={onRenderStyleChange}>
+                  <option value="list">{t`View as Checklist`}</option>
+                  <option value="cards">{t`View as Cards`}</option>
+                  <option value="images">{t`View as Images`}</option>
+                </Select>
+              ) }
+              { !!controls && <IconButton marginLeft={2} onClick={onToggle} icon={<FaFilter />} aria-label={t`Advanced controls`} />}
+            </Flex>
           ) }
-          { !!controls && <IconButton marginLeft={2} onClick={onToggle} icon={<FaFilter />} aria-label={t`Advanced controls`} />}
         </Flex>
       ) }
       { !!controls && (
@@ -272,7 +277,7 @@ function CardListSection({ section, renderControl, renderStyle, showCard }: {
           <Wrap>
             { map(section.items, item => (
               <WrapItem key={item.card.id}>
-                <Box maxWidth={300}>
+                <Box maxWidth={{ base: undefined, md: 300 }}>
                   <Card card={item.card} noImage />
                 </Box>
               </WrapItem>)
