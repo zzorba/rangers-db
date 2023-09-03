@@ -59,7 +59,9 @@ export interface PathTypeMap {
 }
 
 export interface DeckMeta {
-  [key: string]: string | undefined;
+  background?: string;
+  specialty?: string;
+  [key: string]: string | boolean | number | undefined;
 }
 
 export interface Slots {

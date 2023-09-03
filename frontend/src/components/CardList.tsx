@@ -70,7 +70,7 @@ export default function CardList() {
   }
   return (
     <>
-      <Tabs>
+      <Tabs width="100%">
         <TabList>
           <Tab>{t`Ranger`}</Tab>
           <Tab>{t`Rewards and Maladies`}</Tab>
@@ -91,6 +91,7 @@ export default function CardList() {
               cards={rewardCards}
               showCard={showCard}
               header="set"
+              hasOptions
             />
           </TabPanel>
         </TabPanels>
@@ -101,6 +102,22 @@ export default function CardList() {
 }
 
 type CardRenderStyle = 'list' | 'cards' | 'images';
+
+function CardRenderStyleSelect({ value, onChange }: { value: CardRenderStyle; onChange: (value: CardRenderStyle) => void }) {
+  const onRenderStyleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newValue = e.currentTarget.value;
+    if (newValue !== value && (newValue === 'list' || newValue === 'cards' || newValue === 'images')) {
+      onChange(newValue);
+    }
+  }, [value, onChange]);
+  return (
+    <Select onChange={onRenderStyleChange}>
+      <option value="list">{t`View as Checklist`}</option>
+      <option value="cards">{t`View as Cards`}</option>
+      <option value="images">{t`View as Images`}</option>
+    </Select>
+  );
+}
 
 interface SimpleCardListProps {
   cards?: CardFragment[];
@@ -114,8 +131,9 @@ interface SimpleCardListProps {
   noSearch?: boolean;
   hasFilters?: boolean;
   hasOptions?: boolean;
+  renderStyle?: CardRenderStyle;
 }
-export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard, hasOptions }: SimpleCardListProps) {
+export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard, hasOptions, renderStyle: propRenderStyle }: SimpleCardListProps) {
   const { locale } = useLocale();
   const [search, setSearch] = useState('');
   const visibleCards = useMemo(() => {
@@ -206,12 +224,7 @@ export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard
   const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: hasFilters });
   const { colors } = useTheme();
   const [renderStyle, setRenderStyle] = useState<CardRenderStyle>('list');
-  const onRenderStyleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.currentTarget.value;
-    if (value !== renderStyle && (value === 'list' || value === 'cards' || value === 'images')) {
-      setRenderStyle(value);
-    }
-  }, [renderStyle, setRenderStyle]);
+
   return (
     <>
       { !noSearch && (
@@ -226,13 +239,7 @@ export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard
           </Box>
           { (!!hasOptions || !!controls) && (
             <Flex direction="row" flex={1} ml={{ base: 0, md: 2 }} mt={{ base: 2, md: 0 }} >
-              { !!hasOptions && (
-                <Select onChange={onRenderStyleChange}>
-                  <option value="list">{t`View as Checklist`}</option>
-                  <option value="cards">{t`View as Cards`}</option>
-                  <option value="images">{t`View as Images`}</option>
-                </Select>
-              ) }
+              { !!hasOptions && <CardRenderStyleSelect value={renderStyle} onChange={setRenderStyle} /> }
               { !!controls && <IconButton marginLeft={2} onClick={onToggle} icon={<FaFilter />} aria-label={t`Advanced controls`} />}
             </Flex>
           ) }
@@ -246,7 +253,7 @@ export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard
         </Collapse>
       )}
       { sections.length ?
-        map(sections, section => <CardListSection section={section} renderControl={renderControl} showCard={showCard} renderStyle={renderStyle} />)
+        map(sections, section => <CardListSection section={section} renderControl={renderControl} showCard={showCard} renderStyle={propRenderStyle ?? renderStyle} />)
         : emptyState }
     </>
   );
@@ -293,9 +300,11 @@ function CardListSection({ section, renderControl, renderStyle, showCard }: {
             { map(section.items, item => (
               <WrapItem padding={2} key={item.card.id}>
                 {item.card.imagesrc ?
-                  <CardImage title={item.card.name ?? ''} url={item.card.imagesrc} size="large" /> :
-                  <CardImagePlaceholder title={item.card.name ?? ''} size="large" />
-                }
+                  <CardImage title={item.card.name ?? ''} url={item.card.imagesrc} size="large" /> : (
+                  <CardImagePlaceholder card={item.card} size="large">
+                    <Card card={item.card} noImage />
+                  </CardImagePlaceholder>
+                )}
               </WrapItem>
             )) }
           </Wrap>
@@ -311,6 +320,7 @@ export function SpoilerCardList({
   renderControl,
   upsellText,
   header = 'none',
+  hasOptions,
 }: {
   unlocked?: string[];
   cards: CardFragment[] | undefined;
@@ -318,6 +328,7 @@ export function SpoilerCardList({
   renderControl?: (card: CardFragment) => React.ReactNode;
   upsellText?: string;
   header?: 'aspect' | 'set' | 'none';
+  hasOptions?: boolean,
 }) {
   const { locale } = useLocale();
   const [search, setSearch] = useState('');
@@ -332,6 +343,7 @@ export function SpoilerCardList({
       c.name && search.length >= 2 && c.name.toLocaleLowerCase(locale).indexOf(lowerSearch) !== -1)
     );
   }, [cards, search, showAll, locale]);
+  const [renderStyle, setRenderStyle] = useState<CardRenderStyle>('list');
   return (
     <List>
       { header !== 'set' && (
@@ -354,23 +366,33 @@ export function SpoilerCardList({
         <form onSubmit={e => {
           e.preventDefault();
         }}>
-          <Flex direction="row">
-            <Input
-              type="search"
-              value={search}
-              placeholder={t`Search by name`}
-              onChange={e => setSearch(e.target.value)}
-            />
-            <ButtonGroup marginLeft={2}>
-              <Button onClick={showAll ? onHide : onShow}>{showAll ? t`Hide spoilers` : t`Show all` }</Button>
-            </ButtonGroup>
+          <Flex direction={{ base: 'column', md: 'row' }}>
+            <Box flex={2}>
+              <Input
+                type="search"
+                value={search}
+                placeholder={t`Search by name`}
+                onChange={e => setSearch(e.target.value)}
+              />
+            </Box>
+            <Flex direction="row" flex={1} ml={{ base: 0, md: 2 }} mt={{ base: 2, md: 0 }} >
+              { !!hasOptions && <CardRenderStyleSelect value={renderStyle} onChange={setRenderStyle} /> }
+              <ButtonGroup marginLeft={2}>
+                <Button onClick={showAll ? onHide : onShow}>{showAll ? t`Hide spoilers` : t`Show all` }</Button>
+              </ButtonGroup>
+            </Flex>
           </Flex>
         </form>
       </ListItem>
       <SimpleCardList
         noSearch
         emptyText={!search ? t`Note: These cards might contain campaign spoilers.` : t`No matching cards found.`}
-        cards={visibleCards} showCard={showCard} renderControl={renderControl} header={header} />
+        cards={visibleCards}
+        showCard={showCard}
+        renderControl={renderControl}
+        header={header}
+        renderStyle={renderStyle}
+      />
     </List>
   );
 }

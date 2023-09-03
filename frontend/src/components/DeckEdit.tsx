@@ -43,7 +43,7 @@ import { CardFragment, DeckDetailFragment, DeckFragment, useCreateDeckMutation, 
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckCardError, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
-import { CardsMap } from '../lib/hooks';
+import { CardsMap, CategoryTranslation } from '../lib/hooks';
 import { CardRow, RenderCardControl, ShowCard, useCardModal } from './Card';
 import { SimpleCardList, SpoilerCardList } from './CardList';
 import { CountControls, IncDecCountControls } from './CardCount';
@@ -166,6 +166,10 @@ function StarterDeckSelect({ deck, onChange, roleCards }: {
   );
 }
 
+interface BackgroundOrSpeciality {
+  id: 'background' | 'specialty';
+  category: CategoryTranslation | undefined;
+}
 
 function MetaControls({ meta, setMeta, disabled, hideLabels }: { meta: DeckMeta; setMeta: (meta: DeckMeta) => void; disabled?: boolean; hideLabels?: boolean }) {
   const { categories } = useLocale();
@@ -181,30 +185,37 @@ function MetaControls({ meta, setMeta, disabled, hideLabels }: { meta: DeckMeta;
       setMeta(newMeta);
     }
   }, [setMeta, meta]);
+  const options: BackgroundOrSpeciality[] = useMemo(() => [{
+    id: 'background',
+    category: categories.background,
+  },
+  {
+    id: 'specialty',
+    category: categories.specialty,
+  }], [categories]);
   return (
     <>
-      { map([{
-        id: 'background',
-        category: categories.background,
-      },
-      {
-        id: 'specialty',
-        category: categories.specialty,
-      }], ({ category, id }) => !!category && (
-        <FormControl marginBottom={4} key={id} isRequired={!hideLabels}>
-          <FormLabel>{category.name}</FormLabel>
-          <Select
-            onChange={(event) => setMetaField(id, event.target.value)}
-            placeholder={t`Choose ${category.name}`}
-            value={meta[id] || undefined}
-            disabled={disabled}
-          >
-            { map(category.options, (name, setId) => (
-              <option key={setId} value={setId || ''}>{name}</option>
-            ))}
-          </Select>
-        </FormControl>
-      ))}
+      { map(options, ({ category, id }) => {
+        if (!category) {
+          return null;
+        }
+        const value = meta[id] || undefined;
+        return (
+          <FormControl marginBottom={4} key={id} isRequired={!hideLabels}>
+            <FormLabel>{category.name}</FormLabel>
+            <Select
+              onChange={(event) => setMetaField(id, event.target.value)}
+              placeholder={t`Choose ${category.name}`}
+              value={typeof value === 'string' ? value : undefined}
+              disabled={disabled}
+            >
+              { map(category.options, (name, setId) => (
+                <option key={setId} value={setId || ''}>{name}</option>
+              ))}
+            </Select>
+          </FormControl>
+        );
+      })}
     </>
   );
 }
@@ -640,6 +651,8 @@ export default function DeckEdit({ deck, cards }: Props) {
   const [stats, setStats] = useState<AspectStats>(pick(deck, ['awa', 'fit', 'foc', 'spi']));
   const [slots, updateSlots] = useSlots(deck.slots || {});
   const [sideSlots, updateSideSlots] = useSlots(deck.side_slots || {});
+  const [meta, setMeta] = useState<DeckMeta>(deck.meta || {});
+  const isUpgrade = !!deck.previous_deck || !!(typeof meta.campaign === 'boolean' ? meta.campaign : undefined);
 
   const updateUpgradeSlots = useCallback((card: CardFragment, count: number) => {
     if (card.set_id === 'reward' || card.set_id === 'malady') {
@@ -650,7 +663,6 @@ export default function DeckEdit({ deck, cards }: Props) {
       updateSlots(card, count);
     }
   }, [slots, sideSlots, updateSlots, updateSideSlots]);
-  const isUpgrade = !!deck.previous_deck;
   const renderControl = useCallback((
     card: CardFragment,
     onClose?: () => void,
@@ -721,7 +733,7 @@ export default function DeckEdit({ deck, cards }: Props) {
   const [showCard, cardModal] = useCardModal(slots, renderControl);
   const [showCollectionCard, collectionCardModal] = useCardModal(slots, renderCollectionControl, 'collectionModal');
   const [showDisplacedCard, displacedCardModal] = useCardModal(slots, renderDisplacedControl, 'displacedModal');
-  const [meta, setMeta] = useState<DeckMeta>(deck.meta || {});
+
   const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
   const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
   const { categories } = useLocale();
@@ -746,6 +758,12 @@ export default function DeckEdit({ deck, cards }: Props) {
     showCard,
     !deck.previous_deck ? setRole : undefined
   );
+  const setUpgrade = useCallback(() => {
+    setMeta({
+      ...meta,
+      campaign: true,
+    });
+  }, [setMeta, meta]);
   const [aspectEditor, aspectError] = useAspectEditor(stats, setStats);
 
   const [name, setName] = useState(deck.name);
@@ -826,6 +844,16 @@ export default function DeckEdit({ deck, cards }: Props) {
             <Button as={NextLink} href={`/decks/view/${deck.id}`}>
               {hasEdits ? t`Discard changes` : t`Done editing`}
             </Button>
+            { !isUpgrade && !hasEdits && (
+              <Tooltip
+                placement="right"
+                label={parsedDeck.problem?.length ? t`You must correct errors berfore switching to campaign mode.` : t`This will switch the deck controls to allow changes that are allowed while playing a campaign.`}
+              >
+                <SolidButton color={parsedDeck.problem?.length ? "gray" : 'orange'} disabled={!!parsedDeck.problem} onClick={setUpgrade}>
+                  { t`Start campaign` }
+                </SolidButton>
+              </Tooltip>
+            ) }
           </ButtonGroup>
           { !!saveError && (
             <Text color="red.500" paddingTop={2} paddingBottom={4}>{saveError}</Text>

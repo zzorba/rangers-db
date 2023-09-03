@@ -1,5 +1,6 @@
 import React from 'react';
 import { AspectRatio, Box, Image, Text } from '@chakra-ui/react';
+import { CardFragment } from '../generated/graphql/apollo-schema';
 const CARD_RATIO = 1.42333333333;
 
 const MAX_WIDTH = {
@@ -20,11 +21,13 @@ export default function CardImage({ title, size, url }: { title: string; size: '
   );
 }
 
-export function CardImagePlaceholder({ title, size }: { title: string; size: 'small' | 'large' }) {
+export function CardImagePlaceholder({ card, children, size }: { card: CardFragment; children: React.ReactNode; size: 'small' | 'large' }) {
   return (
     <Box flex={1}>
       <AspectRatio width={MAX_WIDTH[size]} ratio={1 / CARD_RATIO}>
-        <Text>{title}</Text>
+        <Box>
+          { children }
+        </Box>
       </AspectRatio>
     </Box>
   );

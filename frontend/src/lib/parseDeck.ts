@@ -118,6 +118,7 @@ export default function parseDeck(
   const roleCard = role ? cards[role] : undefined;
   const background = typeof meta.background === 'string' ? meta.background : undefined;
   const specialty = typeof meta.specialty === 'string' ? meta.specialty : undefined;
+  const isUpgrade = !!previousDeck || !!(typeof meta.campaign === 'boolean' ? meta.campaign : undefined);
   let items: CardItem[] = flatMap(slots, (count, code) => {
     if (typeof count !== 'number' || count === 0) {
       return [];
@@ -132,7 +133,7 @@ export default function parseDeck(
       if (card.set_id !== 'malady') {
         problems.push('too_many_duplicates');
       }
-    } else if (!previousDeck && count !== 2) {
+    } else if (!isUpgrade && count !== 2) {
       problems.push('need_two_cards');
     }
     if (card.aspect_id && card.level !== null && card.level !== undefined) {
@@ -162,7 +163,7 @@ export default function parseDeck(
   const personalityErrors: DeckError[] = [];
   let splashFaction: 'background' | 'specialty' | undefined = undefined;
   const deckSize = sumBy(items, i => i.type === 'card' && i.card.set_id !== 'malady' ? i.count : 0);
-  if (previousDeck) {
+  if (isUpgrade) {
     if (deckSize < 30) {
       globalProblems.push('too_few_cards');
     } else if (deckSize > 30) {
