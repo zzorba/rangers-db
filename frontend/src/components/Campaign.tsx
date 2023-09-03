@@ -22,7 +22,7 @@ import PaginationWrapper from './PaginationWrapper';
 import { AuthUser } from '../lib/useFirebaseAuth';
 import { RoleImage } from './CardImage';
 import useDeleteDialog from './useDeleteDialog';
-import { FaArrowRight, FaCalendar, FaEdit, FaMoon, FaSun, FaTrash, FaUndo, FaWalking } from 'react-icons/fa';
+import { FaArrowRight, FaCalendar, FaMoon, FaSort, FaSun, FaTrash, FaUndo, FaWalking } from 'react-icons/fa';
 import { GiCampingTent } from 'react-icons/gi';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
@@ -869,12 +869,30 @@ function MissionRow({ mission, index, showEdit }: { mission: MissionEntry; index
   );
 }
 
+interface CampaignMission {
+  mission: MissionEntry;
+  index: number;
+}
+
 function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
   const [showAddMission, addMissionModal] = useAddMissionModal(campaign);
   const [showEditMission, editMissionModal] = useEditMissionModal(campaign);
+  const [sort, setSort] = useState(false);
+  const toggleSort = useCallback(() => setSort(!sort), [setSort, sort]);
+  const missions: CampaignMission[] = useMemo(() =>
+    sortBy(
+      map(campaign.missions, (mission, index) => {
+        return { mission, index };
+      }),
+      mission => sort ? mission.index : (mission.mission.completed ? 1 : 0),
+    ), [campaign.missions, sort]);
+
   return (
     <>
-      <Button leftIcon={<SlPlus />} onClick={showAddMission} marginBottom={2}>{t`Add mission`}</Button>
+      <Flex justifyContent="space-between">
+        <Button leftIcon={<SlPlus />} onClick={showAddMission} marginBottom={2}>{t`Add mission`}</Button>
+        <IconButton icon={<FaSort />} aria-label={t`Sort`} onClick={toggleSort} />
+      </Flex>
       <TableContainer marginBottom={2}>
         <Table variant="simple">
           <Thead>
@@ -885,8 +903,8 @@ function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
             </Tr>
           </Thead>
           <Tbody>
-            { map(campaign.missions, (mission, idx) => (
-              <MissionRow key={idx} mission={mission} index={idx} showEdit={showEditMission} />
+            { map(missions, (mission) => (
+              <MissionRow key={mission.index} mission={mission.mission} index={mission.index} showEdit={showEditMission} />
             ))}
           </Tbody>
         </Table>
