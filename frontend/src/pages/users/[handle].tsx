@@ -3,12 +3,13 @@ import Head from 'next/head'
 import { t } from '@lingui/macro';
 import { Box, Heading, Flex, Text } from '@chakra-ui/react'
 
-import { useGetProfileByHandleQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
-import { useRoleCards, useRouterPathParam } from '../../lib/hooks';
+import { useGetProfileByHandleQuery } from '../../generated/graphql/apollo-schema';
+import { useRouterPathParam } from '../../lib/hooks';
 import LoadingPage from '../../components/LoadingPage';
 import CoreIcon from '../../icons/CoreIcon';
 import SearchDecks from '../../components/SearchDecks';
 import { useLocale } from '../../lib/TranslationProvider';
+import { useRoleCardsMap } from '../../lib/cards';
 
 export default function ProfilePage() {
   const [handle, isReady] = useRouterPathParam('handle', (s: string) => s, '/');
@@ -29,7 +30,7 @@ export default function ProfilePage() {
     }
     return [data.profile[0], undefined];
   }, [data, loading, isReady, handle]);
-  const roleCards = useRoleCards();
+  const roleCards = useRoleCardsMap();
   if (loading || !isReady) {
     return <LoadingPage />;
   }

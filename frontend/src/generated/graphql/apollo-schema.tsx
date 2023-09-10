@@ -159,6 +159,8 @@ export type All_Card = {
   real_pack_name: Scalars['String'];
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
+  real_taboo_original_back_text?: Maybe<Scalars['String']>;
+  real_taboo_original_text?: Maybe<Scalars['String']>;
   real_taboo_text_change?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
@@ -507,6 +509,8 @@ export type All_Card_Bool_Exp = {
   real_pack_name?: InputMaybe<String_Comparison_Exp>;
   real_slot?: InputMaybe<String_Comparison_Exp>;
   real_subname?: InputMaybe<String_Comparison_Exp>;
+  real_taboo_original_back_text?: InputMaybe<String_Comparison_Exp>;
+  real_taboo_original_text?: InputMaybe<String_Comparison_Exp>;
   real_taboo_text_change?: InputMaybe<String_Comparison_Exp>;
   real_text?: InputMaybe<String_Comparison_Exp>;
   real_traits?: InputMaybe<String_Comparison_Exp>;
@@ -671,6 +675,8 @@ export type All_Card_Insert_Input = {
   real_pack_name?: InputMaybe<Scalars['String']>;
   real_slot?: InputMaybe<Scalars['String']>;
   real_subname?: InputMaybe<Scalars['String']>;
+  real_taboo_original_back_text?: InputMaybe<Scalars['String']>;
+  real_taboo_original_text?: InputMaybe<Scalars['String']>;
   real_taboo_text_change?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
   real_traits?: InputMaybe<Scalars['String']>;
@@ -746,6 +752,8 @@ export type All_Card_Max_Fields = {
   real_pack_name?: Maybe<Scalars['String']>;
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
+  real_taboo_original_back_text?: Maybe<Scalars['String']>;
+  real_taboo_original_text?: Maybe<Scalars['String']>;
   real_taboo_text_change?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
@@ -812,6 +820,8 @@ export type All_Card_Max_Order_By = {
   real_pack_name?: InputMaybe<Order_By>;
   real_slot?: InputMaybe<Order_By>;
   real_subname?: InputMaybe<Order_By>;
+  real_taboo_original_back_text?: InputMaybe<Order_By>;
+  real_taboo_original_text?: InputMaybe<Order_By>;
   real_taboo_text_change?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
@@ -879,6 +889,8 @@ export type All_Card_Min_Fields = {
   real_pack_name?: Maybe<Scalars['String']>;
   real_slot?: Maybe<Scalars['String']>;
   real_subname?: Maybe<Scalars['String']>;
+  real_taboo_original_back_text?: Maybe<Scalars['String']>;
+  real_taboo_original_text?: Maybe<Scalars['String']>;
   real_taboo_text_change?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
@@ -945,6 +957,8 @@ export type All_Card_Min_Order_By = {
   real_pack_name?: InputMaybe<Order_By>;
   real_slot?: InputMaybe<Order_By>;
   real_subname?: InputMaybe<Order_By>;
+  real_taboo_original_back_text?: InputMaybe<Order_By>;
+  real_taboo_original_text?: InputMaybe<Order_By>;
   real_taboo_text_change?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
@@ -1057,6 +1071,8 @@ export type All_Card_Order_By = {
   real_pack_name?: InputMaybe<Order_By>;
   real_slot?: InputMaybe<Order_By>;
   real_subname?: InputMaybe<Order_By>;
+  real_taboo_original_back_text?: InputMaybe<Order_By>;
+  real_taboo_original_text?: InputMaybe<Order_By>;
   real_taboo_text_change?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
@@ -1226,6 +1242,10 @@ export enum All_Card_Select_Column {
   RealSlot = 'real_slot',
   /** column name */
   RealSubname = 'real_subname',
+  /** column name */
+  RealTabooOriginalBackText = 'real_taboo_original_back_text',
+  /** column name */
+  RealTabooOriginalText = 'real_taboo_original_text',
   /** column name */
   RealTabooTextChange = 'real_taboo_text_change',
   /** column name */
@@ -1416,6 +1436,8 @@ export type All_Card_Set_Input = {
   real_pack_name?: InputMaybe<Scalars['String']>;
   real_slot?: InputMaybe<Scalars['String']>;
   real_subname?: InputMaybe<Scalars['String']>;
+  real_taboo_original_back_text?: InputMaybe<Scalars['String']>;
+  real_taboo_original_text?: InputMaybe<Scalars['String']>;
   real_taboo_text_change?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
   real_traits?: InputMaybe<Scalars['String']>;
@@ -1703,6 +1725,8 @@ export type All_Card_Stream_Cursor_Value_Input = {
   real_pack_name?: InputMaybe<Scalars['String']>;
   real_slot?: InputMaybe<Scalars['String']>;
   real_subname?: InputMaybe<Scalars['String']>;
+  real_taboo_original_back_text?: InputMaybe<Scalars['String']>;
+  real_taboo_original_text?: InputMaybe<Scalars['String']>;
   real_taboo_text_change?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
   real_traits?: InputMaybe<Scalars['String']>;
@@ -1808,6 +1832,8 @@ export type All_Card_Text = {
   name: Scalars['String'];
   slot?: Maybe<Scalars['String']>;
   subname?: Maybe<Scalars['String']>;
+  taboo_original_back_text?: Maybe<Scalars['String']>;
+  taboo_original_text?: Maybe<Scalars['String']>;
   taboo_text_change?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
@@ -1879,6 +1905,8 @@ export type All_Card_Text_Bool_Exp = {
   name?: InputMaybe<String_Comparison_Exp>;
   slot?: InputMaybe<String_Comparison_Exp>;
   subname?: InputMaybe<String_Comparison_Exp>;
+  taboo_original_back_text?: InputMaybe<String_Comparison_Exp>;
+  taboo_original_text?: InputMaybe<String_Comparison_Exp>;
   taboo_text_change?: InputMaybe<String_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   traits?: InputMaybe<String_Comparison_Exp>;
@@ -1906,6 +1934,8 @@ export type All_Card_Text_Insert_Input = {
   name?: InputMaybe<Scalars['String']>;
   slot?: InputMaybe<Scalars['String']>;
   subname?: InputMaybe<Scalars['String']>;
+  taboo_original_back_text?: InputMaybe<Scalars['String']>;
+  taboo_original_text?: InputMaybe<Scalars['String']>;
   taboo_text_change?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
@@ -1928,6 +1958,8 @@ export type All_Card_Text_Max_Fields = {
   name?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['String']>;
   subname?: Maybe<Scalars['String']>;
+  taboo_original_back_text?: Maybe<Scalars['String']>;
+  taboo_original_text?: Maybe<Scalars['String']>;
   taboo_text_change?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
@@ -1949,6 +1981,8 @@ export type All_Card_Text_Max_Order_By = {
   name?: InputMaybe<Order_By>;
   slot?: InputMaybe<Order_By>;
   subname?: InputMaybe<Order_By>;
+  taboo_original_back_text?: InputMaybe<Order_By>;
+  taboo_original_text?: InputMaybe<Order_By>;
   taboo_text_change?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
@@ -1971,6 +2005,8 @@ export type All_Card_Text_Min_Fields = {
   name?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['String']>;
   subname?: Maybe<Scalars['String']>;
+  taboo_original_back_text?: Maybe<Scalars['String']>;
+  taboo_original_text?: Maybe<Scalars['String']>;
   taboo_text_change?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
@@ -1992,6 +2028,8 @@ export type All_Card_Text_Min_Order_By = {
   name?: InputMaybe<Order_By>;
   slot?: InputMaybe<Order_By>;
   subname?: InputMaybe<Order_By>;
+  taboo_original_back_text?: InputMaybe<Order_By>;
+  taboo_original_text?: InputMaybe<Order_By>;
   taboo_text_change?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
@@ -2029,6 +2067,8 @@ export type All_Card_Text_Order_By = {
   name?: InputMaybe<Order_By>;
   slot?: InputMaybe<Order_By>;
   subname?: InputMaybe<Order_By>;
+  taboo_original_back_text?: InputMaybe<Order_By>;
+  taboo_original_text?: InputMaybe<Order_By>;
   taboo_text_change?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
@@ -2070,6 +2110,10 @@ export enum All_Card_Text_Select_Column {
   /** column name */
   Subname = 'subname',
   /** column name */
+  TabooOriginalBackText = 'taboo_original_back_text',
+  /** column name */
+  TabooOriginalText = 'taboo_original_text',
+  /** column name */
   TabooTextChange = 'taboo_text_change',
   /** column name */
   Text = 'text',
@@ -2094,6 +2138,8 @@ export type All_Card_Text_Set_Input = {
   name?: InputMaybe<Scalars['String']>;
   slot?: InputMaybe<Scalars['String']>;
   subname?: InputMaybe<Scalars['String']>;
+  taboo_original_back_text?: InputMaybe<Scalars['String']>;
+  taboo_original_text?: InputMaybe<Scalars['String']>;
   taboo_text_change?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
@@ -2123,6 +2169,8 @@ export type All_Card_Text_Stream_Cursor_Value_Input = {
   name?: InputMaybe<Scalars['String']>;
   slot?: InputMaybe<Scalars['String']>;
   subname?: InputMaybe<Scalars['String']>;
+  taboo_original_back_text?: InputMaybe<Scalars['String']>;
+  taboo_original_text?: InputMaybe<Scalars['String']>;
   taboo_text_change?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
@@ -2157,6 +2205,10 @@ export enum All_Card_Text_Update_Column {
   Slot = 'slot',
   /** column name */
   Subname = 'subname',
+  /** column name */
+  TabooOriginalBackText = 'taboo_original_back_text',
+  /** column name */
+  TabooOriginalText = 'taboo_original_text',
   /** column name */
   TabooTextChange = 'taboo_text_change',
   /** column name */
@@ -2300,6 +2352,10 @@ export enum All_Card_Update_Column {
   RealSlot = 'real_slot',
   /** column name */
   RealSubname = 'real_subname',
+  /** column name */
+  RealTabooOriginalBackText = 'real_taboo_original_back_text',
+  /** column name */
+  RealTabooOriginalText = 'real_taboo_original_text',
   /** column name */
   RealTabooTextChange = 'real_taboo_text_change',
   /** column name */
@@ -3293,6 +3349,8 @@ export type CampaignWeaknessSetArgs = {
 /** columns and relationships of "campaign_access" */
 export type Campaign_Access = {
   __typename?: 'campaign_access';
+  /** An object relationship */
+  campaign: Campaign;
   campaign_id: Scalars['Int'];
   hidden?: Maybe<Scalars['Boolean']>;
   id: Scalars['Int'];
@@ -3398,6 +3456,7 @@ export type Campaign_Access_Bool_Exp = {
   _and?: InputMaybe<Array<Campaign_Access_Bool_Exp>>;
   _not?: InputMaybe<Campaign_Access_Bool_Exp>;
   _or?: InputMaybe<Array<Campaign_Access_Bool_Exp>>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   hidden?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
@@ -3421,6 +3480,7 @@ export type Campaign_Access_Inc_Input = {
 
 /** input type for inserting data into table "campaign_access" */
 export type Campaign_Access_Insert_Input = {
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: InputMaybe<Scalars['Int']>;
   hidden?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['Int']>;
@@ -3476,6 +3536,7 @@ export type Campaign_Access_On_Conflict = {
 
 /** Ordering options when selecting data from "campaign_access". */
 export type Campaign_Access_Order_By = {
+  campaign?: InputMaybe<Campaign_Order_By>;
   campaign_id?: InputMaybe<Order_By>;
   hidden?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
@@ -8416,6 +8477,7 @@ export type Chaos_Bag_Result = {
   curse: Scalars['Int'];
   difficulty?: Maybe<Campaign_Difficulty_Enum>;
   drawn: Scalars['jsonb'];
+  history: Scalars['jsonb'];
   id: Scalars['Int'];
   sealed: Scalars['jsonb'];
   tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
@@ -8428,6 +8490,12 @@ export type Chaos_Bag_Result = {
 
 /** columns and relationships of "chaos_bag_result" */
 export type Chaos_Bag_ResultDrawnArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "chaos_bag_result" */
+export type Chaos_Bag_ResultHistoryArgs = {
   path?: InputMaybe<Scalars['String']>;
 };
 
@@ -8496,6 +8564,7 @@ export type Chaos_Bag_Result_Aggregate_Order_By = {
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Chaos_Bag_Result_Append_Input = {
   drawn?: InputMaybe<Scalars['jsonb']>;
+  history?: InputMaybe<Scalars['jsonb']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
 };
 
@@ -8534,6 +8603,7 @@ export type Chaos_Bag_Result_Bool_Exp = {
   curse?: InputMaybe<Int_Comparison_Exp>;
   difficulty?: InputMaybe<Campaign_Difficulty_Enum_Comparison_Exp>;
   drawn?: InputMaybe<Jsonb_Comparison_Exp>;
+  history?: InputMaybe<Jsonb_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   sealed?: InputMaybe<Jsonb_Comparison_Exp>;
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum_Comparison_Exp>;
@@ -8553,18 +8623,21 @@ export enum Chaos_Bag_Result_Constraint {
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Chaos_Bag_Result_Delete_At_Path_Input = {
   drawn?: InputMaybe<Array<Scalars['String']>>;
+  history?: InputMaybe<Array<Scalars['String']>>;
   sealed?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Chaos_Bag_Result_Delete_Elem_Input = {
   drawn?: InputMaybe<Scalars['Int']>;
+  history?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['Int']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Chaos_Bag_Result_Delete_Key_Input = {
   drawn?: InputMaybe<Scalars['String']>;
+  history?: InputMaybe<Scalars['String']>;
   sealed?: InputMaybe<Scalars['String']>;
 };
 
@@ -8584,6 +8657,7 @@ export type Chaos_Bag_Result_Insert_Input = {
   curse?: InputMaybe<Scalars['Int']>;
   difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
+  history?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
@@ -8658,6 +8732,7 @@ export type Chaos_Bag_Result_Order_By = {
   curse?: InputMaybe<Order_By>;
   difficulty?: InputMaybe<Order_By>;
   drawn?: InputMaybe<Order_By>;
+  history?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   sealed?: InputMaybe<Order_By>;
   tarot?: InputMaybe<Order_By>;
@@ -8674,6 +8749,7 @@ export type Chaos_Bag_Result_Pk_Columns_Input = {
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Chaos_Bag_Result_Prepend_Input = {
   drawn?: InputMaybe<Scalars['jsonb']>;
+  history?: InputMaybe<Scalars['jsonb']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
 };
 
@@ -8689,6 +8765,8 @@ export enum Chaos_Bag_Result_Select_Column {
   Difficulty = 'difficulty',
   /** column name */
   Drawn = 'drawn',
+  /** column name */
+  History = 'history',
   /** column name */
   Id = 'id',
   /** column name */
@@ -8708,6 +8786,7 @@ export type Chaos_Bag_Result_Set_Input = {
   curse?: InputMaybe<Scalars['Int']>;
   difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
+  history?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
@@ -8781,6 +8860,7 @@ export type Chaos_Bag_Result_Stream_Cursor_Value_Input = {
   curse?: InputMaybe<Scalars['Int']>;
   difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
+  history?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
@@ -8817,6 +8897,8 @@ export enum Chaos_Bag_Result_Update_Column {
   Difficulty = 'difficulty',
   /** column name */
   Drawn = 'drawn',
+  /** column name */
+  History = 'history',
   /** column name */
   Id = 'id',
   /** column name */
@@ -13358,6 +13440,33 @@ export type Conquest_User_Settings_Aggregate = {
   nodes: Array<Conquest_User_Settings>;
 };
 
+export type Conquest_User_Settings_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Conquest_User_Settings_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Conquest_User_Settings_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Conquest_User_Settings_Aggregate_Bool_Exp_Count>;
+};
+
+export type Conquest_User_Settings_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Conquest_User_Settings_Select_Column_Conquest_User_Settings_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Conquest_User_Settings_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Conquest_User_Settings_Select_Column_Conquest_User_Settings_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Conquest_User_Settings_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "conquest.user_settings" */
 export type Conquest_User_Settings_Aggregate_Fields = {
   __typename?: 'conquest_user_settings_aggregate_fields';
@@ -13371,6 +13480,20 @@ export type Conquest_User_Settings_Aggregate_Fields = {
 export type Conquest_User_Settings_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
   distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "conquest.user_settings" */
+export type Conquest_User_Settings_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Conquest_User_Settings_Max_Order_By>;
+  min?: InputMaybe<Conquest_User_Settings_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "conquest.user_settings" */
+export type Conquest_User_Settings_Arr_Rel_Insert_Input = {
+  data: Array<Conquest_User_Settings_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Conquest_User_Settings_On_Conflict>;
 };
 
 /** Boolean expression to filter rows from the table "conquest.user_settings". All fields are combined with a logical 'AND'. */
@@ -13400,10 +13523,20 @@ export type Conquest_User_Settings_Max_Fields = {
   user_id?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "conquest.user_settings" */
+export type Conquest_User_Settings_Max_Order_By = {
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Conquest_User_Settings_Min_Fields = {
   __typename?: 'conquest_user_settings_min_fields';
   user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "conquest.user_settings" */
+export type Conquest_User_Settings_Min_Order_By = {
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "conquest.user_settings" */
@@ -13439,6 +13572,18 @@ export enum Conquest_User_Settings_Select_Column {
   PrivateDecks = 'private_decks',
   /** column name */
   UserId = 'user_id'
+}
+
+/** select "conquest_user_settings_aggregate_bool_exp_bool_and_arguments_columns" columns of table "conquest.user_settings" */
+export enum Conquest_User_Settings_Select_Column_Conquest_User_Settings_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  PrivateDecks = 'private_decks'
+}
+
+/** select "conquest_user_settings_aggregate_bool_exp_bool_or_arguments_columns" columns of table "conquest.user_settings" */
+export enum Conquest_User_Settings_Select_Column_Conquest_User_Settings_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  PrivateDecks = 'private_decks'
 }
 
 /** input type for updating data in table "conquest.user_settings" */
@@ -13484,7 +13629,31 @@ export type Conquest_Users = {
   id: Scalars['String'];
   normalized_handle?: Maybe<Scalars['String']>;
   role?: Maybe<Conquest_User_Role_Enum>;
+  /** An array relationship */
+  settings: Array<Conquest_User_Settings>;
+  /** An aggregate relationship */
+  settings_aggregate: Conquest_User_Settings_Aggregate;
   updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "conquest.users" */
+export type Conquest_UsersSettingsArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Settings_Order_By>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+};
+
+
+/** columns and relationships of "conquest.users" */
+export type Conquest_UsersSettings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Conquest_User_Settings_Order_By>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
 };
 
 /** aggregated selection of "conquest.users" */
@@ -13519,6 +13688,8 @@ export type Conquest_Users_Bool_Exp = {
   id?: InputMaybe<String_Comparison_Exp>;
   normalized_handle?: InputMaybe<String_Comparison_Exp>;
   role?: InputMaybe<Conquest_User_Role_Enum_Comparison_Exp>;
+  settings?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  settings_aggregate?: InputMaybe<Conquest_User_Settings_Aggregate_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -13537,6 +13708,7 @@ export type Conquest_Users_Insert_Input = {
   id?: InputMaybe<Scalars['String']>;
   normalized_handle?: InputMaybe<Scalars['String']>;
   role?: InputMaybe<Conquest_User_Role_Enum>;
+  settings?: InputMaybe<Conquest_User_Settings_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
@@ -13590,6 +13762,7 @@ export type Conquest_Users_Order_By = {
   id?: InputMaybe<Order_By>;
   normalized_handle?: InputMaybe<Order_By>;
   role?: InputMaybe<Order_By>;
+  settings_aggregate?: InputMaybe<Conquest_User_Settings_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -25743,6 +25916,10 @@ export type Query_Root = {
   rangers_card_localized: Array<Rangers_Card_Localized>;
   /** fetch aggregated fields from the table: "rangers.card_localized" */
   rangers_card_localized_aggregate: Rangers_Card_Localized_Aggregate;
+  /** execute function "rangers.card_search" which returns "rangers.card_localized" */
+  rangers_card_search: Array<Rangers_Card_Localized>;
+  /** execute function "rangers.card_search" and query aggregates on result of table type "rangers.card_localized" */
+  rangers_card_search_aggregate: Rangers_Card_Localized_Aggregate;
   /** fetch data from the table: "rangers.card_text" */
   rangers_card_text: Array<Rangers_Card_Text>;
   /** fetch aggregated fields from the table: "rangers.card_text" */
@@ -27469,6 +27646,26 @@ export type Query_RootRangers_Card_LocalizedArgs = {
 
 
 export type Query_RootRangers_Card_Localized_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Rangers_Card_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Localized_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Card_SearchArgs = {
+  args?: InputMaybe<Rangers_Card_Search_Args>;
+  distinct_on?: InputMaybe<Array<Rangers_Card_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Localized_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Card_Search_AggregateArgs = {
+  args?: InputMaybe<Rangers_Card_Search_Args>;
   distinct_on?: InputMaybe<Array<Rangers_Card_Localized_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -30962,6 +31159,23 @@ export type Rangers_Card_Pk_Columns_Input = {
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Rangers_Card_Prepend_Input = {
   locations?: InputMaybe<Scalars['jsonb']>;
+};
+
+export type Rangers_Card_Search_Args = {
+  _limit?: InputMaybe<Scalars['Int']>;
+  _offset?: InputMaybe<Scalars['Int']>;
+  aspect_in?: InputMaybe<Scalars['_text']>;
+  level_eq?: InputMaybe<Scalars['Int']>;
+  level_gt?: InputMaybe<Scalars['Int']>;
+  level_lt?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  pack_in?: InputMaybe<Scalars['_text']>;
+  search?: InputMaybe<Scalars['String']>;
+  search_flavor?: InputMaybe<Scalars['Boolean']>;
+  search_text?: InputMaybe<Scalars['Boolean']>;
+  search_traits?: InputMaybe<Scalars['Boolean']>;
+  set_in?: InputMaybe<Scalars['_text']>;
+  type_in?: InputMaybe<Scalars['_text']>;
 };
 
 /** select columns of table "rangers.card" */
@@ -39464,6 +39678,10 @@ export type Subscription_Root = {
   rangers_card_localized_aggregate: Rangers_Card_Localized_Aggregate;
   /** fetch data from the table in a streaming manner: "rangers.card_localized" */
   rangers_card_localized_stream: Array<Rangers_Card_Localized>;
+  /** execute function "rangers.card_search" which returns "rangers.card_localized" */
+  rangers_card_search: Array<Rangers_Card_Localized>;
+  /** execute function "rangers.card_search" and query aggregates on result of table type "rangers.card_localized" */
+  rangers_card_search_aggregate: Rangers_Card_Localized_Aggregate;
   /** fetch data from the table in a streaming manner: "rangers.card" */
   rangers_card_stream: Array<Rangers_Card>;
   /** fetch data from the table: "rangers.card_text" */
@@ -41737,6 +41955,26 @@ export type Subscription_RootRangers_Card_Localized_AggregateArgs = {
 export type Subscription_RootRangers_Card_Localized_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Card_Localized_Stream_Cursor_Input>>;
+  where?: InputMaybe<Rangers_Card_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Card_SearchArgs = {
+  args?: InputMaybe<Rangers_Card_Search_Args>;
+  distinct_on?: InputMaybe<Array<Rangers_Card_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Localized_Order_By>>;
+  where?: InputMaybe<Rangers_Card_Localized_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Card_Search_AggregateArgs = {
+  args?: InputMaybe<Rangers_Card_Search_Args>;
+  distinct_on?: InputMaybe<Array<Rangers_Card_Localized_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Card_Localized_Order_By>>;
   where?: InputMaybe<Rangers_Card_Localized_Bool_Exp>;
 };
 
@@ -45269,7 +45507,7 @@ export type DeleteCampaignMutationVariables = Exact<{
 
 export type DeleteCampaignMutation = { __typename?: 'mutation_root', delete_rangers_campaign_by_pk?: { __typename?: 'rangers_campaign', id: number } | null };
 
-export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null };
+export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null };
 
 export type AspectFragment = { __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null };
 
@@ -45278,21 +45516,21 @@ export type GetCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+export type GetCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
 
 export type GetAllCardsQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type GetAllCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+export type GetAllCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null }>, updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
 
 export type GetRoleCardsQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null }> };
+export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null }> };
 
 export type GetCardQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -45300,7 +45538,7 @@ export type GetCardQueryVariables = Exact<{
 }>;
 
 
-export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null }> };
+export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null }> };
 
 export type GetCardsUpdatedAtQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -45591,6 +45829,7 @@ export const CardFragmentDoc = gql`
   imagesrc
   position
   deck_limit
+  spoiler
 }
     `;
 export const AspectFragmentDoc = gql`

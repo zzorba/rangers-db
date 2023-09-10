@@ -5,22 +5,18 @@ import { Box, Button } from '@chakra-ui/react';
 import { useCardsMap, useRequireAuth } from '../../lib/hooks';
 import { useNewDeckModal } from '../../components/DeckEdit';
 import DeckList from '../../components/DeckList';
-import { DeckFragment, DeckWithCampaignFragment, useGetMyDecksQuery, useGetMyDecksTotalQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
+import { DeckFragment, DeckWithCampaignFragment, useGetMyDecksQuery, useGetMyDecksTotalQuery } from '../../generated/graphql/apollo-schema';
 import PageHeading from '../../components/PageHeading';
 import { useAuth } from '../../lib/AuthContext';
 import { useLocale } from '../../lib/TranslationProvider';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
+import { useRoleCardsMap } from '../../lib/cards';
 
 export default function DecksPage() {
   useRequireAuth();
   const { locale } = useLocale();
   const { authUser } = useAuth();
-  const { data: role } = useGetRoleCardsQuery({
-    variables: {
-      locale,
-    },
-  });
   const { data: totalDecks } = useGetMyDecksTotalQuery({
     variables: {
       userId: authUser?.uid || '',
@@ -53,7 +49,7 @@ export default function DecksPage() {
     }
     return [];
   }, [fetchMore]);
-  const roleCards = useCardsMap(role?.cards);
+  const roleCards = useRoleCardsMap();
   const [showNewDeck, newDeckModal] = useNewDeckModal(roleCards);
   console.log(data);
   return (

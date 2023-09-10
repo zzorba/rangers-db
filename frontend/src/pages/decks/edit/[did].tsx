@@ -4,12 +4,12 @@ import { t } from '@lingui/macro';
 import { Box } from '@chakra-ui/react'
 import Router from 'next/router';
 
-import { useGetAllCardsQuery, useGetDeckQuery } from '../../../generated/graphql/apollo-schema';
-import { useCardsMap, useRequireAuth, useRouterPathParam } from '../../../lib/hooks';
+import { useGetDeckQuery } from '../../../generated/graphql/apollo-schema';
+import { useRequireAuth, useRouterPathParam } from '../../../lib/hooks';
 import LoadingPage from '../../../components/LoadingPage';
 import DeckEdit  from '../../../components/DeckEdit';
 import { useAuth } from '../../../lib/AuthContext';
-import { useLocale } from '../../../lib/TranslationProvider';
+import { useAllCardsMap } from '../../../lib/cards';
 
 export default function EditDeckPage() {
   useRequireAuth();
@@ -22,13 +22,7 @@ export default function EditDeckPage() {
     },
     skip: !isReady || !deckId,
   });
-  const { locale } = useLocale();
-  const { data: cardsData } = useGetAllCardsQuery({
-    variables: {
-      locale,
-    },
-  });
-  const cards = useCardsMap(cardsData?.cards);
+  const cards = useAllCardsMap();
   const deck = data?.deck;
   useEffect(() => {
     if (loading) {

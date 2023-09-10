@@ -34,35 +34,13 @@ fragment Card on rangers_card_localized {
   imagesrc
   position
   deck_limit
+  spoiler
 }
 
 fragment Aspect on rangers_aspect_localized {
   id
   name
   short_name
-}
-
-query getCards($locale: String!) {
-  cards: rangers_card_localized(
-    where: {
-      locale: { _eq: $locale }
-      _or: [
-        {
-          spoiler: { _eq: false }
-        },
-        {
-          spoiler: { _is_null: true }
-        }
-      ]
-    }
-  ) {
-    ...Card
-  }
-  updated_at: rangers_card_updated(
-    where: { locale: { _eq: $locale }}
-  ) {
-    updated_at
-  }
 }
 
 query getAllCards($locale: String!) {

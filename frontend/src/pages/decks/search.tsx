@@ -6,9 +6,10 @@ import { flatMap, map, values, groupBy } from 'lodash';
 
 import PageHeading from '../../components/PageHeading';
 import { CardFragment } from '../../generated/graphql/apollo-schema';
-import { CardsMap, CategoryTranslation, useRoleCards } from '../../lib/hooks';
+import { CardsMap, CategoryTranslation } from '../../lib/hooks';
 import { useLocale } from '../../lib/TranslationProvider';
 import SearchDecks from '../../components/SearchDecks';
+import { useRoleCardsMap } from '../../lib/cards';
 
 function CategorySelect({ category, onChange }: { category: CategoryTranslation; onChange: (selection: string[]) => void }) {
   const options = useMemo(() => {
@@ -95,7 +96,7 @@ export default function Search() {
   const [background, setBackground] = useState<string[]>();
   const [specialty, setSpecialty] = useState<string[]>();
   const [roles, setRole] = useState<string[]>();
-  const roleCards = useRoleCards();
+  const roleCards = useRoleCardsMap();
   const { categories } = useLocale();
   const backgroundT = categories.background;
   const specialtyT = categories.specialty;

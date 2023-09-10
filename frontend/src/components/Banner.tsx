@@ -15,7 +15,7 @@ import { FiInfo } from 'react-icons/fi';
 export default function Banner({ title, detail, action, onClick }: { title: string; detail?: string; action: string; onClick: () => void }) {
   const isMobile = useBreakpointValue({ base: true, md: false })
   return (
-    <Box bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
+    <Box bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')} bgColor="blue.100">
       <Container py={{ base: '4', md: '2.5' }} position="relative">
         <Stack
           direction={{ base: 'column', sm: 'row' }}

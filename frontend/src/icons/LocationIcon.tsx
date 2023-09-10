@@ -1,5 +1,5 @@
 import React from 'react';
-import { AspectRatio, Box, useColorMode } from '@chakra-ui/react';
+import { AspectRatio, Box } from '@chakra-ui/react';
 import IcomoonReact from 'icomoon-react';
 
 import iconSet from './locations.json';

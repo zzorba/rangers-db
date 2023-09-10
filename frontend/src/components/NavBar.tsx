@@ -16,7 +16,6 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  Spinner,
   useColorMode,
   ButtonGroup,
   MenuButton,
@@ -38,13 +37,13 @@ import Router, { useRouter } from 'next/router';
 import NextLink from 'next/link';
 
 import { useAuth } from '../lib/AuthContext';
-import { NavProfileFragment, useGetCardsQuery, useGetCardsUpdatedAtQuery, useGetNavProfileQuery, useGetProfileQuery } from '../generated/graphql/apollo-schema';
+import { NavProfileFragment, useGetNavProfileQuery } from '../generated/graphql/apollo-schema';
 import Banner from './Banner';
 import { LOCALES } from '../lib/Lingui';
 import { AuthUser } from '../lib/useFirebaseAuth';
-import { useLocale } from '../lib/TranslationProvider';
 import { DesktopLanguageChooser, MobileLanguageChooser } from './LanguageChooser';
 import { useTheme } from '../lib/ThemeContext';
+import { useCardNeedUpdate } from '../lib/cards';
 
 function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
   return useMemo(() => [
@@ -66,31 +65,6 @@ function useNavItems(authUser: AuthUser | undefined): Array<NavItem> {
     },
   ], []);
 }
-function useCardNeedUpdate(): [boolean, () => void] {
-  const { locale } = useLocale();
-  const { data: cardData, refetch } = useGetCardsQuery({
-    variables: {
-      locale,
-    },
-    fetchPolicy: 'cache-only',
-  });
-  const { data: updatedData} = useGetCardsUpdatedAtQuery({
-    variables: {
-      locale,
-    },
-    fetchPolicy: 'network-only',
-  });
-  const forceRefresh = useCallback(() => {
-    refetch({
-      locale,
-    });
-  }, [refetch, locale]);
-  return [
-    !!(cardData?.updated_at.length && updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at),
-    forceRefresh,
-  ];
-}
-
 export function LanguageSwitcher() {
   const router = useRouter();
   const [locale, setLocale] = useState<LOCALES>(
@@ -274,6 +248,7 @@ export default function WithSubnavigation() {
         <Banner
           title={t`New cards are available`}
           action={t`Update now`}
+
           onClick={forceCardUpdate}
         />
       ) }

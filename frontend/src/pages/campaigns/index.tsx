@@ -5,12 +5,13 @@ import { flatMap, map } from 'lodash';
 
 import PageHeading from '../../components/PageHeading';
 import { useCardsMap, useRequireAuth } from '../../lib/hooks';
-import { useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery, useGetRoleCardsQuery } from '../../generated/graphql/apollo-schema';
+import { useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery } from '../../generated/graphql/apollo-schema';
 import { useAuth } from '../../lib/AuthContext';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
 import { CampaignList, CampaignWrapper, ParsedCampaign, useNewCampaignModal } from '../../components/Campaign';
 import { useLocale } from '../../lib/TranslationProvider';
+import { useRoleCardsMap } from '../../lib/cards';
 
 export default function CampaignsList() {
   useRequireAuth();
@@ -47,12 +48,7 @@ export default function CampaignsList() {
     return [];
   }, [fetchMore]);
   const { locale } = useLocale();
-  const { data: role } = useGetRoleCardsQuery({
-    variables: {
-      locale,
-    },
-  });
-  const roleCards = useCardsMap(role?.cards);
+  const roleCards = useRoleCardsMap();
   const campaigns = useMemo(() => {
     if (!data?.campaigns) {
       return undefined;

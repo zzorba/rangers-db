@@ -4,9 +4,10 @@ import Router,{ useRouter } from 'next/router';
 import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
-import { CardFragment, SetTypeFragment, useGetRoleCardsQuery, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
+import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
 import { AspectMap, CampaignCycle, DeckCardError, DeckError, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
 import { useLocale } from './TranslationProvider';
+import { useRoleCardsMap } from './cards';
 
 export function useRequireAuth() {
   const { authUser, loading } = useAuth();
@@ -829,12 +830,3 @@ export function useLikeAction<T extends BasicDeck>(updateCache: (d: T, liked: bo
   }, [doLike, doUnlike, updateCache, authUser]);
 }
 
-export function useRoleCards(): CardsMap {
-  const { locale } = useLocale();
-  const { data: role } = useGetRoleCardsQuery({
-    variables: {
-      locale,
-    },
-  });
-  return useCardsMap(role?.cards);
-}

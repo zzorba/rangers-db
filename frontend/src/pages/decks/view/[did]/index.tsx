@@ -3,13 +3,13 @@ import { Box } from '@chakra-ui/react'
 import { t } from '@lingui/macro';
 import Head from 'next/head';
 
-import { DeckDetailFragment, DeckDetailFragmentDoc, useGetAllCardsQuery, useGetDeckQuery } from '../../../../generated/graphql/apollo-schema';
+import { DeckDetailFragment, DeckDetailFragmentDoc, useGetDeckQuery } from '../../../../generated/graphql/apollo-schema';
 import { useCardsMap, useLikeAction, useRouterPathParam } from '../../../../lib/hooks';
 import LoadingPage from '../../../../components/LoadingPage';
 import DeckDetail from '../../../../components/DeckDetail';
-import { useLocale } from '../../../../lib/TranslationProvider';
 import { useApolloClient } from '@apollo/client';
 import { useAuth } from '../../../../lib/AuthContext';
+import { useAllCards } from '../../../../lib/cards';
 
 export default function ViewDeckPage() {
   const { authUser } = useAuth();
@@ -21,13 +21,8 @@ export default function ViewDeckPage() {
     },
     skip: !isReady || !deckId,
   });
-  const { locale } = useLocale();
-  const { data: cardsData } = useGetAllCardsQuery({
-    variables: {
-      locale,
-    },
-  });
-  const cards = useCardsMap(cardsData?.cards);
+  const cardsData = useAllCards();
+  const cards = useCardsMap(cardsData);
   const deck = data?.deck;
   const client = useApolloClient();
   const updateLikeCache = useCallback((deck: DeckDetailFragment, liked: boolean) => {

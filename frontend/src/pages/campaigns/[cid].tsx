@@ -4,11 +4,11 @@ import { t } from '@lingui/macro';
 import { Box, Text } from '@chakra-ui/react'
 import { filter, flatMap } from 'lodash';
 
-import { useGetCampaignQuery, useAddFriendToCampaignMutation, useGetAllCardsQuery, useRemoveFriendFromCampaignMutation } from '../../generated/graphql/apollo-schema';
-import { useCardsMap, useRequireAuth, useRouterPathParam } from '../../lib/hooks';
+import { useGetCampaignQuery, useAddFriendToCampaignMutation, useRemoveFriendFromCampaignMutation } from '../../generated/graphql/apollo-schema';
+import { useRequireAuth, useRouterPathParam } from '../../lib/hooks';
 import LoadingPage from '../../components/LoadingPage';
-import { useLocale } from '../../lib/TranslationProvider';
 import Campaign, { CampaignWrapper, useEditCampaignAccessModal } from '../../components/Campaign';
+import { useAllCardsMap } from '../../lib/cards';
 
 export default function CampaignPage() {
   useRequireAuth();
@@ -20,13 +20,7 @@ export default function CampaignPage() {
     },
     skip: !isReady || !campaignId,
   });
-  const { locale } = useLocale();
-  const { data: cardsData } = useGetAllCardsQuery({
-    variables: {
-      locale,
-    },
-  });
-  const cards = useCardsMap(cardsData?.cards);
+  const cards = useAllCardsMap();
   const campaign = useMemo(() => data?.campaign ? new CampaignWrapper(data.campaign) : undefined, [data]);
   const handleRefresh = useCallback(async() => {
     await refetch({ campaignId });

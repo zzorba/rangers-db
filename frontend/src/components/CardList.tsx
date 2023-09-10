@@ -4,7 +4,7 @@ import { t } from '@lingui/macro';
 import { FaFilter } from 'react-icons/fa';
 import { Box, Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels, IconButton, Collapse, Select, Wrap, WrapItem, Stack } from '@chakra-ui/react';
 
-import { CardFragment, useGetAllCardsQuery } from '../generated/graphql/apollo-schema';
+import { CardFragment } from '../generated/graphql/apollo-schema';
 import Card, { CardRow, useCardModal } from './Card';
 import LoadingPage from './LoadingPage';
 import { useLocale } from '../lib/TranslationProvider';
@@ -13,6 +13,7 @@ import { useCardSearchControls } from './CardFilter';
 import { useTheme } from '../lib/ThemeContext';
 import { BaseOptions } from 'vm';
 import CardImage, { CardImagePlaceholder } from './CardImage';
+import { useAllCards } from '../lib/cards';
 
 function CardButtonRow({ card, showModal, children }: { card: CardFragment; showModal: (card: CardFragment) => void; children?: React.ReactNode }) {
   const onClick = useCallback(() => showModal(card), [card, showModal]);
@@ -53,19 +54,14 @@ type ItemSection = {
 
 
 export default function CardList() {
-  const { locale } = useLocale();
-  const { data } = useGetAllCardsQuery({
-    variables: {
-      locale,
-    },
-  });
+  const cards = useAllCards();
   const [showCard, modal] = useCardModal();
   const [standardCards, rewardCards] = useMemo(() => {
-    return partition(data?.cards, c => c.set_id !== 'reward' && c.set_id !== 'malady');
-  }, [data]);
+    return partition(cards, c => c.set_id !== 'reward' && c.set_id !== 'malady');
+  }, [cards]);
 
   const [controls, hasFilters, filterCard] = useCardSearchControls(standardCards, 'all');
-  if (!data?.cards) {
+  if (!cards) {
     return <LoadingPage />;
   }
   return (
