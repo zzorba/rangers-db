@@ -51,7 +51,6 @@ export default function DecksPage() {
   }, [fetchMore]);
   const roleCards = useRoleCardsMap();
   const [showNewDeck, newDeckModal] = useNewDeckModal(roleCards);
-  console.log(data);
   return (
     <>
       <Box

@@ -24,7 +24,6 @@ export function GraphqlProvider({ children }: { children: React.ReactNode }) {
   const [anonClient, setAnonClient] = useState<ApolloClient<NormalizedCacheObject>>();
   const [anonPurge, setAnonPurge] = useState<() => Promise<void>>();
   const [authClient, setAuthClient] = useState<ApolloClient<NormalizedCacheObject>>();
-  const [authPersistor, setAuthPersistor] = useState<CachePersistor<NormalizedCacheObject>>();
   useEffect(() => {
     initAnonClient().then(([client, anonPurge]) => {
       setAnonClient(client);
@@ -34,16 +33,14 @@ export function GraphqlProvider({ children }: { children: React.ReactNode }) {
   const { authUser, loading } = useAuth();
   useEffect(() => {
     if (authUser) {
-      initAuthClient(authUser).then(([cachePersistor, client]) => {
-        setAuthPersistor(cachePersistor);
+      initAuthClient(authUser).then((client) => {
         setAuthClient(client);
       }, console.error);
     }
   }, [authUser]);
   const purge = useCallback(() => {
-    authPersistor?.purge();
     anonPurge?.();
-  }, [authPersistor, anonPurge]);
+  }, [anonPurge]);
   if (!anonClient || loading || (authUser && !authClient)) {
     return <LoadingPage />;
   }

@@ -4,27 +4,36 @@ import { CardFragment, useGetAllCardsQuery, useGetCardsUpdatedAtQuery } from '..
 import { useLocale } from '../lib/TranslationProvider';
 import { filter } from 'lodash';
 import { CardsMap, useCardsMap } from './hooks';
+import { useGraphql } from './GraphqlContext';
 
 
 export function useCardNeedUpdate(): [boolean, () => void] {
   const { locale } = useLocale();
+  const { anonClient } = useGraphql();
   const { data: cardData, refetch, loading, error } = useGetAllCardsQuery({
     variables: {
       locale,
     },
+    client: anonClient,
     fetchPolicy: 'cache-only',
   });
   const { data: updatedData} = useGetCardsUpdatedAtQuery({
     variables: {
       locale,
     },
+    client: anonClient,
     fetchPolicy: 'network-only',
   });
 
   useEffect(() => {
-    if (!loading && !error && !cardData?.cards.length) {
-      // This is our initial fetch of data.
-      refetch();
+    if (!loading && !error) {
+      if (!cardData?.cards.length) {
+        console.log('Fetching cards');
+        // This is our initial fetch of data.
+        refetch();
+      } else {
+        console.log('Cards are cached.');
+      }
     }
   }, [loading, error, cardData, refetch]);
   const forceRefresh = useCallback(() => {
@@ -40,10 +49,12 @@ export function useCardNeedUpdate(): [boolean, () => void] {
 
 export function useAllCards(): CardFragment[] | undefined {
   const { locale } = useLocale();
+  const { anonClient } = useGraphql();
   const { data } = useGetAllCardsQuery({
     variables: {
       locale,
     },
+    client: anonClient,
     fetchPolicy: 'cache-only',
   });
   return data?.cards;

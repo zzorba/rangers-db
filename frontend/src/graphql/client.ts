@@ -68,7 +68,7 @@ export async function initAnonClient(forceNew?: boolean): Promise<[ApolloClient<
   return [ANON_CLIENT, ANON_PURGE];
 }
 
-export async function initAuthClient(user: AuthUser): Promise<[CachePersistor<NormalizedCacheObject>, ApolloClient<NormalizedCacheObject>]> {
+export async function initAuthClient(user: AuthUser): Promise<ApolloClient<NormalizedCacheObject>> {
   const cache = new InMemoryCache(CACHE_CONFIG);
   const authLink = setContext(async(req, { headers }) => {
     const hasuraToken = await user.user.getIdToken();
@@ -87,16 +87,9 @@ export async function initAuthClient(user: AuthUser): Promise<[CachePersistor<No
     uri: `https://gapi.rangersdb.com/v1/graphql`,
   }));
 
-  let newPersistor = new CachePersistor({
-    cache,
-    storage: new LocalStorageWrapper(window.localStorage),
-    debug: true,
-    trigger: 'background',
-  });
-  await newPersistor.restore();
   const client = new ApolloClient({
     link: httpsLink,
     cache,
   });
-  return [newPersistor, client];
+  return client;
 }

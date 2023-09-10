@@ -486,8 +486,6 @@ export function useCardSearchControls(allCards: CardFragment[], controls: 'simpl
           ...(!!card.approach_reason ? ['reason'] : []),
           ...(!!card.approach_exploration ? ['exploration'] : []),
         ]);
-        console.log(approach);
-        console.log(cardApproaches);
         if (!find(approach, app => cardApproaches.has(app))) {
           return false;
         }

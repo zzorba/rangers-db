@@ -33,7 +33,6 @@ export default function SearchDecks({
   const [decks, setDecks] = useState<SearchDeckFragment[]>();
   const [total, setTotal] = useState<number>(pageSize);
   const doSearchDecks = useCallback(async(authUser: AuthUser | undefined, pageSize: number, offset: number): Promise<SearchDeckFragment[]> => {
-    console.log('Searching decks')
     const variables: SearchDecksQueryVariables = {
       limit: pageSize,
       offset,

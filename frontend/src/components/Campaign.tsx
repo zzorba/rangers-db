@@ -1198,7 +1198,6 @@ function useUndoModal(campaign: ParsedCampaign): [() => void, boolean, React.Rea
         previousPathTerrain = penultimateEntry.path_terrain;
       }
       const newHistory = slice(campaign.history, 0, campaign.history.length - 1);
-      console.log(`history goes from ${campaign.history.length} to ${newHistory.length}, with values of ${JSON.stringify(newHistory)}`);
       const r = await undoCampaignTravel({
         variables: {
           campaignId: campaign.id,
@@ -1763,7 +1762,6 @@ export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign
           offset,
         },
         updateQuery(_, { fetchMoreResult }) {
-          console.log(fetchMoreResult);
           return fetchMoreResult;
         },
       });

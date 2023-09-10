@@ -249,7 +249,7 @@ export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard
         </Collapse>
       )}
       { sections.length ?
-        map(sections, section => <CardListSection section={section} renderControl={renderControl} showCard={showCard} renderStyle={propRenderStyle ?? renderStyle} />)
+        map(sections, (section, idx) => <CardListSection key={idx} section={section} renderControl={renderControl} showCard={showCard} renderStyle={propRenderStyle ?? renderStyle} />)
         : emptyState }
     </>
   );
