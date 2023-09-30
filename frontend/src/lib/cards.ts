@@ -43,11 +43,10 @@ export function useCardNeedUpdate(): [boolean, () => void] {
   }, [refetch, locale]);
   const needsUpdate = useMemo(() => {
     const noUpdateData = !updatedLoading && !updatedData?.updated_at.length;
-    const noCardData = !cardData?.updated_at.length;
+    const noCardData = !loading && !cardData?.updated_at.length;
     const outOfDate = !!cardData?.updated_at.length && !!updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at;
-    console.log({ noUpdateData, noCardData, outOfDate, cardUpdatedAt: cardData?.updated_at, updatedAt: updatedData?.updated_at });
     return noUpdateData || noCardData || outOfDate;
-  }, [updatedLoading, updatedData, cardData]);
+  }, [updatedLoading, updatedData, cardData, loading]);
   return [
     needsUpdate,
     forceRefresh,

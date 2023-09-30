@@ -13,1840 +13,1110 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/Card.tsx:274
 msgid "- {0} Specialty"
 msgstr "- {0} Specialty"
 
-#: src/components/Campaign.tsx:1648
-#~ msgid "- Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
-#~ msgstr "- Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
-
-#: src/components/DeckEdit.tsx:365
 msgid "- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting."
 msgstr "- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting."
 
-#: src/components/Campaign.tsx:1648
-#~ msgid "- Rangers will continue day {currentDay} with their current decks."
-#~ msgstr "- Rangers will continue day {currentDay} with their current decks."
-
-#: src/components/DeckEdit.tsx:366
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
 msgstr "- You can use the following game specific icons by enclosing them in square brackets:"
 
-#: src/components/CommentsComponent.tsx:59
 msgid "(edited)"
 msgstr "(edited)"
 
-#: src/components/Deck.tsx:68
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 
-#: src/components/DeckDetail.tsx:149
 msgid "{0} (Copy)"
 msgstr "{0} (Copy)"
 
-#: src/components/Deck.tsx:67
 msgid "{0} / 30 Cards"
 msgstr "{0} / 30 Cards"
 
-#: src/components/Card.tsx:75
 msgid "{0} of {1}"
 msgstr "{0} of {1}"
 
-#: src/components/DeckEdit.tsx:1038
 msgid "{background} - {specialty} (Starter)"
 msgstr "{background} - {specialty} (Starter)"
 
-#: src/components/Campaign.tsx:1643
-#~ msgid "{currentDay, plural, one {Departing from {locationName} to end day {currentDay}.} other {Departing from {locationName} to end day {currentDay}.}}"
-#~ msgstr "{currentDay, plural, one {Departing from {locationName} to end day {currentDay}.} other {Departing from {locationName} to end day {currentDay}.}}"
-
-#: src/components/Campaign.tsx:386
-#~ msgid "{dayChange, plural, one {This will advance the calendar {dayChange} day.} many {This will advance the calendar {dayChange} days.}}"
-#~ msgstr "{dayChange, plural, one {This will advance the calendar {dayChange} day.} many {This will advance the calendar {dayChange} days.}}"
-
-#: src/components/Campaign.tsx:636
-#~ msgid "{dayChange, plural, one {This will advance the calendar {dayChange} day.} other {This will advance the calendar {dayChange} days.}}"
-#~ msgstr "{dayChange, plural, one {This will advance the calendar {dayChange} day.} other {This will advance the calendar {dayChange} days.}}"
-
-#: src/components/DeckDetail.tsx:190
-#~ msgid "{likeCount, plural, one {{likeCount} like} other {{likeCount} likes}}"
-#~ msgstr "{likeCount, plural, one {{likeCount} like} other {{likeCount} likes}}"
-
-#: src/components/DeckProblemComponent.tsx:29
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 msgstr "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 
-#: src/components/Deck.tsx:67
 msgid "30 Cards"
 msgstr "30 Cards"
 
-#: src/components/Campaign.tsx:1609
-#: src/components/Campaign.tsx:1619
-#: src/components/Campaign.tsx:1644
-#: src/components/Campaign.tsx:1659
 msgid "A Perfect Day"
 msgstr "A Perfect Day"
 
-#: src/components/FriendRequests.tsx:148
 msgid "Accept"
 msgstr "Accept"
 
-#: src/components/NavBar.tsx:238
-#: src/components/NavBar.tsx:386
-#: src/pages/profile.tsx:13
 msgid "Account Settings"
 msgstr "Account Settings"
 
-#: src/components/DeckDetail.tsx:314
 msgid "Actions"
 msgstr "Actions"
 
-#: src/components/Campaign.tsx:657
-#: src/components/Campaign.tsx:1869
-#: src/components/FriendChooser.tsx:44
 msgid "Add"
 msgstr "Add"
 
-#: src/components/Campaign.tsx:306
 msgid "Add additional deck"
 msgstr "Add additional deck"
 
-#: src/components/Campaign.tsx:629
-#: src/components/Campaign.tsx:893
 msgid "Add mission"
 msgstr "Add mission"
 
-#: src/components/Campaign.tsx:336
 msgid "Add reward"
 msgstr "Add reward"
 
-#: src/components/FriendChooser.tsx:91
 msgid "Add to campaign"
 msgstr "Add to campaign"
 
-#: src/components/DeckChanges.tsx:103
 msgid "Added"
 msgstr "Added"
 
-#: src/components/DeckChanges.tsx:127
 msgid "Added from collection"
 msgstr "Added from collection"
 
-#: src/components/CardList.tsx:243
 msgid "Advanced controls"
 msgstr "Advanced controls"
 
-#: src/components/DeckEdit.tsx:601
 msgid "After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <0>displaced cards</0> tab."
 msgstr "After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <0>displaced cards</0> tab."
 
-#: src/components/DeckEdit.tsx:587
-#~ msgid "After selecting a new collection card and removing one from your deck, you can &lsqu;return&rsqu; a card to the collection using the <0>displaced cards</0> tab."
-#~ msgstr "After selecting a new collection card and removing one from your deck, you can &lsqu;return&rsqu; a card to the collection using the <0>displaced cards</0> tab."
-
-#: src/components/Campaign.tsx:400
-#: src/components/CardList.tsx:364
 msgid "All"
 msgstr "All"
 
-#: src/components/Profile.tsx:99
-#: src/components/ProfileSettings.tsx:99
 msgid "Allow people to view my decks"
 msgstr "Allow people to view my decks"
 
-#: src/components/Register.tsx:57
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Already have an account? <0>Login</0> now."
 
-#: src/lib/hooks.ts:603
 msgid "Ancestor's Grove"
 msgstr "Ancestor's Grove"
 
-#: src/components/CardFilter.tsx:550
 msgid "Approach icons"
 msgstr "Approach icons"
 
-#: src/lib/hooks.ts:727
 msgid "Archeological Outpost"
 msgstr "Archeological Outpost"
 
-#: src/components/DeckList.tsx:65
-#~ msgid "Are you sure you want to delete the '{0}' deck?"
-#~ msgstr "Are you sure you want to delete the '{0}' deck?"
-
-#: src/components/DeckList.tsx:111
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "Are you sure you want to delete the \"{0}\" deck?"
 
-#: src/components/DeckDetail.tsx:67
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
 msgstr "Are you sure you want to delete the latest day ({0}) of this deck?"
 
-#: src/components/Deck.tsx:101
-#~ msgid "Are you sure you want to delete the latest day's copy of this deck?"
-#~ msgstr "Are you sure you want to delete the latest day's copy of this deck?"
-
-#: src/components/DeckDetail.tsx:68
 msgid "Are you sure you want to delete this deck?"
 msgstr "Are you sure you want to delete this deck?"
 
-#: src/components/Campaign.tsx:206
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 
-#: src/pages/index.tsx:26
-#~ msgid "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
-#~ msgstr "As the site is still very young, features might be added or removed during these early days, and the site is likely to go down for maintenance and data <0>might be lost</0> during these early days."
-
-#: src/components/DeckEdit.tsx:169
-#~ msgid "Aspect"
-#~ msgstr "Aspect"
-
-#: src/components/CardFilter.tsx:565
 msgid "Aspect requirements"
 msgstr "Aspect requirements"
 
-#: src/components/DeckEdit.tsx:274
 msgid "Aspects"
 msgstr "Aspects"
 
-#: src/lib/hooks.ts:565
 msgid "Atrox Mountain"
 msgstr "Atrox Mountain"
 
-#: src/components/Campaign.tsx:398
-#: src/components/CardList.tsx:351
 msgid "Available"
 msgstr "Available"
 
-#: src/components/AspectCounter.tsx:13
-#~ msgid "awa"
-#~ msgstr "AWA"
-
-#: src/components/AspectCounter.tsx:11
-#: src/lib/hooks.ts:160
 msgid "AWA"
 msgstr "AWA"
 
-#: src/lib/hooks.ts:159
 msgid "Awareness"
 msgstr "Awareness"
 
-#: src/components/DeckEdit.tsx:453
-#: src/lib/parseDeck.ts:315
 msgid "Background"
 msgstr "Background"
 
-#: src/lib/parseDeck.ts:315
 msgid "Background: {backgroundName}"
 msgstr "Background: {backgroundName}"
 
-#: src/lib/hooks.ts:658
 msgid "Biologist's Outpost"
 msgstr "Biologist's Outpost"
 
-#: src/lib/hooks.ts:615
 msgid "Boulder Field"
 msgstr "Boulder Field"
 
-#: src/lib/hooks.ts:707
 msgid "Bowl of the Sun"
 msgstr "Bowl of the Sun"
 
-#: src/lib/hooks.ts:637
 msgid "Branch"
 msgstr "Branch"
 
-#: src/components/Campaign.tsx:2031
-#: src/components/DeckDetail.tsx:325
 msgid "Camp"
 msgstr "Camp"
 
-#: src/components/Campaign.tsx:2375
-#: src/pages/admin/map.tsx:64
-#: src/pages/campaigns/[cid].tsx:83
-#: src/pages/campaigns/[cid].tsx:102
 msgid "Campaign"
 msgstr "Campaign"
 
-#: src/components/DeckDetail.tsx:418
-#~ msgid "Campaign progress"
-#~ msgstr "Campaign progress"
-
-#: src/pages/campaigns/index.tsx:74
 msgid "Campaigns"
 msgstr "Campaigns"
 
-#: src/components/Campaign.tsx:1141
 msgid "Camped while travelling to {0}."
 msgstr "Camped while travelling to {0}."
 
-#: src/components/Campaign.tsx:2035
 msgid "Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
 msgstr "Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
 
-#: src/components/Campaign.tsx:1029
-#: src/components/Campaign.tsx:1560
-#: src/components/EditableTextInput.tsx:25
-#: src/components/useDeleteDialog.tsx:50
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/FriendStatusComponent.tsx:63
 msgid "Cancel Friend Request"
 msgstr "Cancel Friend Request"
 
-#: src/components/FriendStatusComponent.tsx:69
 msgid "Cancel Friendship"
 msgstr "Cancel Friendship"
 
-#: src/components/CardFilter.tsx:532
 msgid "Card set"
 msgstr "Card set"
 
-#~ msgid "card_set_header"
-#~ msgstr "card_set_header"
-
-#: src/components/CardFilter.tsx:353
-#~ msgid "card_set.other"
-#~ msgstr "Other"
-
-#: src/components/NavBar.tsx:60
-#: src/pages/cards/index.tsx:16
 msgid "Cards"
 msgstr "Cards"
 
-#: src/components/DeckEdit.tsx:618
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 
-#: src/components/DeckDetail.tsx:439
-#: src/components/DeckEdit.tsx:923
 msgid "Changes"
 msgstr "Changes"
 
-#: src/components/DeckDetail.tsx:420
-#~ msgid "Changes from <0>{0}</0>"
-#~ msgstr "Changes from <0>{0}</0>"
-
-#: src/components/DeckEdit.tsx:208
 msgid "Choose {0}"
 msgstr "Choose {0}"
 
-#: src/components/Campaign.tsx:310
-#: src/components/Campaign.tsx:1800
 msgid "Choose deck"
 msgstr "Choose deck"
 
-#: src/components/Profile.tsx:83
-#: src/components/ProfileSettings.tsx:83
 msgid "Choose handle"
 msgstr "Choose handle"
 
-#: src/components/DeckEdit.tsx:313
-#: src/components/DeckEdit.tsx:876
 msgid "Choose role"
 msgstr "Choose role"
 
-#: src/components/DeckEdit.tsx:159
 msgid "Choose starter deck"
 msgstr "Choose starter deck"
 
-#: src/components/DeckDetail.tsx:319
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
 msgstr "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
 
-#: src/lib/hooks.ts:122
 msgid "Chosen aspects are invalid."
 msgstr "Chosen aspects are invalid."
 
-#: src/components/DeckEdit.tsx:576
 msgid "Collection"
 msgstr "Collection"
 
-#: src/components/CommentsComponent.tsx:150
-#: src/components/CommentsComponent.tsx:266
 msgid "Comment"
 msgstr "Comment"
 
-#: src/components/CommentsComponent.tsx:265
-#: src/components/DeckList.tsx:184
 msgid "Comments"
 msgstr "Comments"
 
-#: src/components/Campaign.tsx:807
-#: src/components/Campaign.tsx:864
 msgid "Completed"
 msgstr "Completed"
 
-#: src/components/FriendStatusComponent.tsx:57
 msgid "Confirm Friend"
 msgstr "Confirm Friend"
 
-#: src/lib/TranslationProvider.tsx:51
 msgid "Conflict"
 msgstr "Conflict"
 
-#: src/components/Campaign.tsx:2000
 msgid "Connecting Location"
 msgstr "Connecting Location"
 
-#: src/lib/TranslationProvider.tsx:52
 msgid "Connection"
 msgstr "Connection"
 
-#: src/lib/hooks.ts:136
-#: src/lib/hooks.ts:137
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Contains too many cards that do not match your chosen background."
 
-#: src/components/DeckList.tsx:192
 msgid "Copies"
 msgstr "Copies"
 
-#: src/components/DeckDetail.tsx:351
 msgid "Copy"
 msgstr "Copy"
 
-#: src/components/DeckDetail.tsx:302
 msgid "Copy deck"
 msgstr "Copy deck"
 
-#: src/components/DeckDetail.tsx:226
 msgid "Copy of {deckLink} by {authorLink}"
 msgstr "Copy of {deckLink} by {authorLink}"
 
-#: src/components/DeckDetail.tsx:300
-#: src/components/DeckDetail.tsx:345
 msgid "Copy this deck to make your own changes."
 msgstr "Copy this deck to make your own changes."
 
-#: src/components/Campaign.tsx:2382
-#: src/pages/admin/map.tsx:71
 msgid "Core"
 msgstr "Core"
 
-#: src/lib/hooks.ts:554
 msgid "Core set"
 msgstr "Core set"
 
-#: src/components/CardFilter.tsx:541
 msgid "Cost"
 msgstr "Cost"
 
-#: src/pages/users/[handle].tsx:28
-#: src/pages/users/[handle].tsx:48
 msgid "Could not find user {handle}"
 msgstr "Could not find user {handle}"
 
-#: src/components/Campaign.tsx:2404
-#: src/components/DeckEdit.tsx:1150
-#: src/components/DeckEdit.tsx:1160
 msgid "Create"
 msgstr "Create"
 
-#: src/components/Campaign.tsx:1467
 msgid "Crossed-out"
 msgstr "Crossed-out"
 
-#: src/lib/hooks.ts:648
 msgid "Crossroads Station"
 msgstr "Crossroads Station"
 
-#: src/components/Campaign.tsx:1290
 msgid "Current location: {0}"
 msgstr "Current location: {0}"
 
-#: src/components/Campaign.tsx:2130
 msgid "Current Position"
 msgstr "Current Position"
 
-#: src/components/DeckEdit.tsx:1076
 msgid "Custom deck"
 msgstr "Custom deck"
 
-#: src/components/NavBar.tsx:203
-#: src/components/NavBar.tsx:435
-#: src/components/NavBar.tsx:440
 msgid "Dark mode"
 msgstr "Dark mode"
 
-#: src/components/Campaign.tsx:640
-#: src/components/Campaign.tsx:768
-#: src/components/Campaign.tsx:900
 msgid "Day"
 msgstr "Day"
 
-#: src/components/Campaign.tsx:155
-#~ msgid "Day {0}"
-#~ msgstr "Day {0}"
-
-#: src/components/Campaign.tsx:183
-#: src/components/Campaign.tsx:526
-#: src/components/Campaign.tsx:1400
-#: src/components/Campaign.tsx:1591
 msgid "Day {day}"
 msgstr "Day {day}"
 
-#: src/pages/decks/edit/[did].tsx:52
-#: src/pages/decks/view/[did]/index.tsx:58
 msgid "Deck"
 msgstr "Deck"
 
-#: src/pages/decks/search.tsx:109
 msgid "Deck search"
 msgstr "Deck search"
 
-#: src/components/NavBar.tsx:64
 msgid "Decklists"
 msgstr "Decklists"
 
-#: src/components/NavBar.tsx:64
-#~ msgid "Decks"
-#~ msgstr "Decks"
-
-#: src/components/Campaign.tsx:197
-#: src/components/Campaign.tsx:197
-#: src/components/Campaign.tsx:814
-#: src/components/Campaign.tsx:951
-#: src/components/DeckDetail.tsx:367
-#: src/components/DeckList.tsx:84
-#: src/components/useDeleteDialog.tsx:53
 msgid "Delete"
 msgstr "Delete"
 
-#: src/components/Campaign.tsx:224
 msgid "Delete campaign?"
 msgstr "Delete campaign?"
 
-#: src/components/DeckDetail.tsx:197
-#: src/components/DeckList.tsx:137
 msgid "Delete deck?"
 msgstr "Delete deck?"
 
-#: src/components/DeckDetail.tsx:359
 msgid "Deleting this published deck will cause will remove it from search."
 msgstr "Deleting this published deck will cause will remove it from search."
 
-#: src/components/Campaign.tsx:2381
-#: src/lib/hooks.ts:550
-#: src/pages/admin/map.tsx:70
 msgid "Demo"
 msgstr "Demo"
 
-#: src/components/Campaign.tsx:1970
 msgid "Departing {0}"
 msgstr "Departing {0}"
 
-#: src/components/Campaign.tsx:1646
-#~ msgid "Departing from {locationName}:"
-#~ msgstr "Departing from {locationName}:"
-
-#: src/components/DeckDetail.tsx:428
-#: src/components/DeckEdit.tsx:456
-#: src/components/DeckEdit.tsx:624
 msgid "Description"
 msgstr "Description"
 
-#: src/components/DeckEdit.tsx:363
 msgid "Descriptions support basic markdown and html formatting."
 msgstr "Descriptions support basic markdown and html formatting."
 
-#: src/components/DeckEdit.tsx:845
 msgid "Discard changes"
 msgstr "Discard changes"
 
-#: src/components/DeckEdit.tsx:453
-#~ msgid "Discard Changes"
-#~ msgstr "Discard Changes"
-
-#: src/components/DeckEdit.tsx:577
 msgid "Displaced cards"
 msgstr "Displaced cards"
 
-#: src/components/Login.tsx:54
-#: src/components/ResetPassword.tsx:34
 msgid "Don't have an account?"
 msgstr "Don't have an account?"
 
-#: src/components/DeckEdit.tsx:355
-#: src/components/DeckEdit.tsx:845
 msgid "Done editing"
 msgstr "Done editing"
 
-#: src/components/Campaign.tsx:1614
-#: src/components/Campaign.tsx:1624
-#: src/components/Campaign.tsx:1634
-#: src/components/Campaign.tsx:1649
 msgid "Downpour"
 msgstr "Downpour"
 
-#: src/components/DeckDetail.tsx:344
 msgid "Duplicate this deck while preserving the original."
 msgstr "Duplicate this deck while preserving the original."
 
-#: src/components/Login.tsx:33
-#: src/components/Register.tsx:36
 msgid "E-mail Address"
 msgstr "E-mail Address"
 
-#: src/components/DeckDetail.tsx:270
-#: src/components/DeckList.tsx:77
-#: src/components/EditableTextInput.tsx:41
 msgid "Edit"
 msgstr "Edit"
 
-#: src/components/CommentsComponent.tsx:66
-#: src/components/CommentsComponent.tsx:221
 msgid "Edit comment"
 msgstr "Edit comment"
 
-#: src/components/DeckEdit.tsx:381
 msgid "Edit description"
 msgstr "Edit description"
 
-#: src/components/Campaign.tsx:758
 msgid "Edit mission"
 msgstr "Edit mission"
 
-#: src/components/Campaign.tsx:1447
 msgid "Edit notable event"
 msgstr "Edit notable event"
 
-#: src/components/Campaign.tsx:2254
 msgid "Edit players"
 msgstr "Edit players"
 
-#: src/components/Login.tsx:29
-#: src/components/Profile.tsx:63
-#: src/components/Profile.tsx:67
-#: src/components/ProfileSettings.tsx:63
-#: src/components/ProfileSettings.tsx:67
-#: src/components/Register.tsx:32
 msgid "Email"
 msgstr "Email"
 
-#: src/components/Campaign.tsx:1121
 msgid "En route to {0}"
 msgstr "En route to {0}"
 
-#: src/components/Campaign.tsx:1282
-#: src/components/Campaign.tsx:1306
-#: src/components/Campaign.tsx:2110
 msgid "End the day"
 msgstr "End the day"
 
-#: src/components/Campaign.tsx:1163
 msgid "Ended the day at {0}."
 msgstr "Ended the day at {0}."
 
-#: src/components/NavBar.tsx:101
 msgid "English"
 msgstr "English"
 
-#: src/components/CardFilter.tsx:559
 msgid "Equip"
 msgstr "Equip"
 
-#: src/lib/TranslationProvider.tsx:53
 msgid "Exploration"
 msgstr "Exploration"
 
-#: src/pages/decks/search.tsx:28
 msgid "Filter by {0}"
 msgstr "Filter by {0}"
 
-#: src/components/CardFilter.tsx:552
 msgid "Filter by approach icons"
 msgstr "Filter by approach icons"
 
-#: src/components/CardFilter.tsx:534
 msgid "Filter by card set"
 msgstr "Filter by card set"
 
-#: src/components/CardFilter.tsx:517
 msgid "Filter by card type"
 msgstr "Filter by card type"
 
-#: src/pages/decks/search.tsx:82
 msgid "Filter by Role"
 msgstr "Filter by Role"
 
-#: src/components/CardFilter.tsx:525
 msgid "Filter by trait"
 msgstr "Filter by trait"
 
-#: src/components/FriendSearch.tsx:63
 msgid "Find new friends"
 msgstr "Find new friends"
 
-#: src/components/Campaign.tsx:648
-#~ msgid "Finish day"
-#~ msgstr "Finish day"
-
-#: src/components/AspectCounter.tsx:14
-#~ msgid "fit"
-#~ msgstr "FIT"
-
-#: src/components/AspectCounter.tsx:12
-#: src/lib/hooks.ts:168
 msgid "FIT"
 msgstr "FIT"
 
-#: src/lib/hooks.ts:167
 msgid "Fitness"
 msgstr "Fitness"
 
-#: src/components/AspectCounter.tsx:15
-#~ msgid "foc"
-#~ msgstr "FOC"
-
-#: src/components/AspectCounter.tsx:13
-#: src/lib/hooks.ts:164
 msgid "FOC"
 msgstr "FOC"
 
-#: src/lib/hooks.ts:163
 msgid "Focus"
 msgstr "Focus"
 
-#: src/components/Login.tsx:52
 msgid "Forgot Password"
 msgstr "Forgot Password"
 
-#: src/components/FriendRequests.tsx:144
 msgid "Friend Requests"
 msgstr "Friend Requests"
 
-#: src/components/FriendRequests.tsx:173
 msgid "Friends"
 msgstr "Friends"
 
-#: src/components/CardSetSelect.tsx:27
 msgid "General"
 msgstr "General"
 
-#: src/components/NavBar.tsx:102
 msgid "German"
 msgstr "German"
 
-#: src/lib/hooks.ts:591
 msgid "Golden Shore"
 msgstr "Golden Shore"
 
-#: src/lib/hooks.ts:202
 msgid "Grassland"
 msgstr "Grassland"
 
-#: src/lib/hooks.ts:754
 msgid "Greenbriar Knoll"
 msgstr "Greenbriar Knoll"
 
-#: src/components/Campaign.tsx:539
 msgid "Guide entries"
 msgstr "Guide entries"
 
-#: src/components/Profile.tsx:77
-#: src/components/ProfileSettings.tsx:77
 msgid "Handle"
 msgstr "Handle"
 
-#: src/lib/hooks.ts:764
 msgid "Headwaters Station"
 msgstr "Headwaters Station"
 
-#: src/components/Campaign.tsx:413
-#: src/components/CardList.tsx:381
 msgid "Hide spoilers"
 msgstr "Hide spoilers"
 
-#: src/pages/decks/search.tsx:19
-#~ msgid "However, you can share links to your individual decks to inspire others."
-#~ msgstr "However, you can share links to your individual decks to inspire others."
-
-#: src/components/Campaign.tsx:1629
-#: src/components/Campaign.tsx:1639
-#: src/components/Campaign.tsx:1654
 msgid "Howling Winds"
 msgstr "Howling Winds"
 
-#: src/components/Campaign.tsx:1300
 msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
 msgstr "If you intend to Camp while travelling to a new location, please use the Travel button instead."
 
-#: src/components/Campaign.tsx:1233
 msgid "If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed."
 msgstr "If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed."
 
-#: src/components/Campaign.tsx:1384
 msgid "If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 msgstr "If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 
-#: src/components/Footer.tsx:27
-#~ msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
-#~ msgstr "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
-
-#: src/components/Footer.tsx:29
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 
-#: src/components/NavBar.tsx:103
 msgid "Italian"
 msgstr "Italian"
 
-#: src/components/Campaign.tsx:1374
 msgid "Journey"
 msgstr "Journey"
 
-#: src/lib/hooks.ts:609
 msgid "Kobo's Market"
 msgstr "Kobo's Market"
 
-#: src/lib/hooks.ts:197
 msgid "Lakeshore"
 msgstr "Lakeshore"
 
-#: src/components/LanguageChooser.tsx:130
 msgid "Language"
 msgstr "Language"
 
-#: src/components/Campaign.tsx:314
 msgid "Leave campaign"
 msgstr "Leave campaign"
 
-#: src/components/NavBar.tsx:203
-#: src/components/NavBar.tsx:435
-#: src/components/NavBar.tsx:440
 msgid "Light mode"
 msgstr "Light mode"
 
-#: src/components/LikeButton.tsx:22
 msgid "Like"
 msgstr "Like"
 
-#: src/components/DeckDetail.tsx:283
 msgid "Like deck"
 msgstr "Like deck"
 
-#: src/components/DeckList.tsx:176
 msgid "Likes"
 msgstr "Likes"
 
-#: src/components/LoadMorePager.tsx:55
 msgid "Load more"
 msgstr "Load more"
 
-#: src/components/Campaign.tsx:2000
-#: src/components/Campaign.tsx:2134
 msgid "Location"
 msgstr "Location"
 
-#: src/components/CardSetSelect.tsx:65
 msgid "Locations"
 msgstr "Locations"
 
-#: src/components/Login.tsx:49
-#: src/pages/login.tsx:14
 msgid "Login"
 msgstr "Login"
 
-#: src/lib/hooks.ts:578
 msgid "Lone Tree Station"
 msgstr "Lone Tree Station"
 
-#: src/components/DeckEdit.tsx:575
 msgid "Maladies"
 msgstr "Maladies"
 
-#: src/components/Campaign.tsx:633
-#~ msgid "Mark day {day} as complete."
-#~ msgstr "Mark day {day} as complete."
-
-#: src/components/DeckDetail.tsx:507
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/lib/hooks.ts:691
 msgid "Marsh of Rebirth"
 msgstr "Marsh of Rebirth"
 
-#: src/lib/hooks.ts:743
 msgid "Meadow"
 msgstr "Meadow"
 
-#: src/pages/users/[handle].tsx:69
 msgid "Member since {joinDate}"
 msgstr "Member since {joinDate}"
 
-#: src/lib/hooks.ts:681
 msgid "Michael's Bog"
 msgstr "Michael's Bog"
 
-#: src/components/Campaign.tsx:2171
 msgid "Missions"
 msgstr "Missions"
 
-#: src/lib/hooks.ts:669
 msgid "Mound of the Navigator"
 msgstr "Mound of the Navigator"
 
-#: src/lib/hooks.ts:597
 msgid "Mount Nim"
 msgstr "Mount Nim"
 
-#: src/lib/hooks.ts:187
 msgid "Mountain Pass"
 msgstr "Mountain Pass"
 
-#: src/components/NavBar.tsx:56
 msgid "My Campaigns"
 msgstr "My Campaigns"
 
-#: src/components/NavBar.tsx:52
-#: src/pages/decks/index.tsx:67
 msgid "My Decks"
 msgstr "My Decks"
 
-#: src/components/Campaign.tsx:234
-#: src/components/Campaign.tsx:648
-#: src/components/Campaign.tsx:776
-#: src/components/Campaign.tsx:901
-#: src/components/Campaign.tsx:1014
-#: src/components/Campaign.tsx:1042
-#: src/components/Campaign.tsx:2367
-#: src/components/DeckEdit.tsx:1086
-#: src/components/DeckEdit.tsx:1119
 msgid "Name"
 msgstr "Name"
 
-#: src/components/Campaign.tsx:599
-#: src/components/Campaign.tsx:731
 msgid "Name and day are required."
 msgstr "Name and day are required."
 
-#: src/components/DeckEdit.tsx:966
 msgid "Name your character"
 msgstr "Name your character"
 
-#: src/components/Campaign.tsx:2357
-#: src/pages/campaigns/index.tsx:75
 msgid "New campaign"
 msgstr "New campaign"
 
-#: src/components/NavBar.tsx:275
 msgid "New cards are available"
 msgstr "New cards are available"
 
-#: src/components/DeckEdit.tsx:1069
-#: src/pages/decks/index.tsx:68
 msgid "New deck"
 msgstr "New deck"
 
-#: src/components/Campaign.tsx:492
-#: src/components/Campaign.tsx:734
-#~ msgid "New mission"
-#~ msgstr "New mission"
-
-#: src/components/PaginationWrapper.tsx:65
 msgid "Next"
 msgstr "Next"
 
-#: src/components/Deck.tsx:279
-#~ msgid "Next day ({0})"
-#~ msgstr "Next day ({0})"
-
-#: src/components/DeckDetail.tsx:459
 msgid "Next deck"
 msgstr "Next deck"
 
-#: src/components/DeckDetail.tsx:436
-#~ msgid "Next deck ({0})"
-#~ msgstr "Next deck ({0})"
-
-#: src/components/CardList.tsx:205
 msgid "No matching cards"
 msgstr "No matching cards"
 
-#: src/components/CardList.tsx:389
 msgid "No matching cards found."
 msgstr "No matching cards found."
 
-#: src/pages/decks/search.tsx:128
 msgid "No matching decks."
 msgstr "No matching decks."
 
-#: src/pages/users/[handle].tsx:77
 msgid "No published decks."
 msgstr "No published decks."
 
-#: src/components/FriendSearch.tsx:99
 msgid "No results"
 msgstr "No results"
 
-#: src/components/Campaign.tsx:2153
 msgid "None"
 msgstr "None"
 
-#: src/lib/hooks.ts:572
 msgid "Northern Outpost"
 msgstr "Northern Outpost"
 
-#: src/lib/hooks.ts:130
 msgid "Not enough background cards."
 msgstr "Not enough background cards."
 
-#: src/lib/hooks.ts:143
 msgid "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
 msgstr "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
 
-#: src/lib/hooks.ts:135
 msgid "Not enough outside interest cards."
 msgstr "Not enough outside interest cards."
 
-#: src/lib/hooks.ts:125
 msgid "Not enough personality cards."
 msgstr "Not enough personality cards."
 
-#: src/lib/hooks.ts:132
 msgid "Not enough specialty cards."
 msgstr "Not enough specialty cards."
 
-#: src/components/DeckDetail.tsx:396
 msgid "Not set"
 msgstr "Not set"
 
-#: src/components/Campaign.tsx:2173
 msgid "Notable Events"
 msgstr "Notable Events"
 
-#: src/components/DeckEdit.tsx:497
 msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
 msgstr "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
 
-#: src/components/CardList.tsx:389
 msgid "Note: These cards might contain campaign spoilers."
 msgstr "Note: These cards might contain campaign spoilers."
 
-#: src/components/Campaign.tsx:1381
 msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 msgstr "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 
-#: src/lib/hooks.ts:182
 msgid "Old-growth"
 msgstr "Old-growth"
 
-#: src/components/DeckEdit.tsx:256
 msgid "One aspect must be set to 1."
 msgstr "One aspect must be set to 1."
 
-#: src/components/DeckEdit.tsx:263
 msgid "One aspect must be set to 3."
 msgstr "One aspect must be set to 3."
 
-#: src/lib/parseDeck.ts:374
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "One of the chosen background cards is counting towards outside interest."
 
-#: src/lib/parseDeck.ts:381
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "One of the chosen specialty cards is counting towards outside interest."
 
-#: src/components/DeckEdit.tsx:258
 msgid "Only one aspect can be set to 1."
 msgstr "Only one aspect can be set to 1."
 
-#: src/components/DeckEdit.tsx:265
 msgid "Only one aspect can be set to 3."
 msgstr "Only one aspect can be set to 3."
 
 #. card_set_header
-#: src/components/CardFilter.tsx:353
 msgid "Other"
 msgstr "Other"
 
-#: src/components/DeckEdit.tsx:455
-#: src/lib/parseDeck.ts:330
 msgid "Outside Interest"
 msgstr "Outside Interest"
 
-#: src/lib/hooks.ts:152
 msgid "Outside interest cards cannot have the Expert trait."
 msgstr "Outside interest cards cannot have the Expert trait."
 
-#: src/components/Login.tsx:39
-#: src/components/Login.tsx:44
-#: src/components/Register.tsx:42
-#: src/components/Register.tsx:47
 msgid "Password"
 msgstr "Password"
 
-#: src/components/Campaign.tsx:2010
-#: src/components/Campaign.tsx:2016
-#: src/components/Campaign.tsx:2145
 msgid "Path Terrain"
 msgstr "Path Terrain"
 
-#: src/components/CardSetSelect.tsx:26
-#~ msgid "Paths"
-#~ msgstr "Paths"
-
-#: src/components/FriendRequests.tsx:162
 msgid "Pending Requests"
 msgstr "Pending Requests"
 
-#: src/components/CardFilter.tsx:359
-#: src/components/CardFilter.tsx:360
-#: src/components/DeckEdit.tsx:452
-#: src/lib/parseDeck.ts:307
 msgid "Personality"
 msgstr "Personality"
 
-#: src/components/CardList.tsx:62
-#~ msgid "Player"
-#~ msgstr "Player"
-
-#: src/components/Campaign.tsx:2386
 msgid "Players"
 msgstr "Players"
 
-#: src/components/DeckDetail.tsx:207
 msgid "Please address all deckbuilding errors before publishing."
 msgstr "Please address all deckbuilding errors before publishing."
 
-#: src/components/CommentsComponent.tsx:172
 msgid "Post"
 msgstr "Post"
 
-#: src/components/PaginationWrapper.tsx:61
 msgid "Previous"
 msgstr "Previous"
 
-#: src/components/Deck.tsx:276
-#~ msgid "Previous day ({0})"
-#~ msgstr "Previous day ({0})"
-
-#: src/components/DeckDetail.tsx:421
-#~ msgid "previous deck"
-#~ msgstr "previous deck"
-
-#: src/components/DeckDetail.tsx:455
 msgid "Previous deck"
 msgstr "Previous deck"
 
-#: src/components/DeckDetail.tsx:421
-#~ msgid "Previous deck ({0})"
-#~ msgstr "Previous deck ({0})"
-
-#: src/components/DeckDetail.tsx:506
 msgid "Print"
 msgstr "Print"
 
-#: src/components/NavBar.tsx:230
-#: src/components/NavBar.tsx:381
 msgid "Profile"
 msgstr "Profile"
 
-#: src/components/Campaign.tsx:783
-#: src/components/Campaign.tsx:902
 msgid "Progress"
 msgstr "Progress"
 
-#: src/components/Campaign.tsx:791
 msgid "Progress {progressNumber}"
 msgstr "Progress {progressNumber}"
 
-#: src/components/NavBar.tsx:108
-#~ msgid "Pseudo"
-#~ msgstr "Pseudo"
-
-#: src/components/DeckDetail.tsx:337
 msgid "Publish"
 msgstr "Publish"
 
-#: src/pages/users/[handle].tsx:71
 msgid "Published decks"
 msgstr "Published decks"
 
-#: src/components/CardList.tsx:75
 msgid "Ranger"
 msgstr "Ranger"
 
-#: src/components/Campaign.tsx:235
-#: src/components/Campaign.tsx:1855
 msgid "Rangers"
 msgstr "Rangers"
 
-#: src/components/Campaign.tsx:1900
-#~ msgid "Rangers will continue day {currentDay} with their current decks."
-#~ msgstr "Rangers will continue day {currentDay} with their current decks."
-
-#: src/components/Campaign.tsx:2036
 msgid "Rangers will continue playing day {currentDay} with their current decks."
 msgstr "Rangers will continue playing day {currentDay} with their current decks."
 
-#: src/components/NavBar.tsx:185
-#: src/components/PageHeading.tsx:10
-#: src/pages/campaigns/[cid].tsx:83
-#: src/pages/campaigns/[cid].tsx:102
-#: src/pages/cards/[cid].tsx:30
-#: src/pages/cards/[cid].tsx:31
-#: src/pages/decks/edit/[did].tsx:52
-#: src/pages/decks/view/[did]/index.tsx:58
-#: src/pages/index.tsx:13
-#: src/pages/users/[handle].tsx:40
-#: src/pages/users/[handle].tsx:57
 msgid "RangersDB"
 msgstr "RangersDB"
 
-#: src/pages/register.tsx:16
 msgid "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
 msgstr "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
 
-#: src/lib/hooks.ts:207
 msgid "Ravine"
 msgstr "Ravine"
 
-#: src/lib/TranslationProvider.tsx:54
 msgid "Reason"
 msgstr "Reason"
 
-#: src/components/Campaign.tsx:1396
-#~ msgid "Record current location"
-#~ msgstr "Record current location"
-
-#: src/components/Campaign.tsx:1400
-#~ msgid "Record current path terrain"
-#~ msgstr "Record current path terrain"
-
-#: src/components/Campaign.tsx:1564
 msgid "Record event"
 msgstr "Record event"
 
-#: src/components/Campaign.tsx:572
 msgid "Record guide entry"
 msgstr "Record guide entry"
 
-#: src/components/Campaign.tsx:2158
 msgid "Recorded journey"
 msgstr "Recorded journey"
 
-#: src/components/Register.tsx:53
-#: src/pages/register.tsx:14
 msgid "Register"
 msgstr "Register"
 
-#: src/components/Login.tsx:54
 msgid "Register now"
 msgstr "Register now"
 
-#: src/components/FriendRequests.tsx:153
 msgid "Reject"
 msgstr "Reject"
 
-#: src/components/FriendChooser.tsx:45
 msgid "Remove"
 msgstr "Remove"
 
-#: src/components/Campaign.tsx:1034
 msgid "Remove card"
 msgstr "Remove card"
 
-#: src/components/Campaign.tsx:282
 msgid "Remove deck"
 msgstr "Remove deck"
 
-#: src/components/Campaign.tsx:336
 msgid "Remove reward"
 msgstr "Remove reward"
 
-#: src/components/DeckChanges.tsx:115
 msgid "Removed"
 msgstr "Removed"
 
-#: src/components/Campaign.tsx:2174
 msgid "Removed Cards"
 msgstr "Removed Cards"
 
-#: src/components/CommentsComponent.tsx:107
-#~ msgid "Reply"
-#~ msgstr "Reply"
-
-#: src/components/CommentsComponent.tsx:72
 msgid "Reply comment"
 msgstr "Reply comment"
 
-#: src/components/CommentsComponent.tsx:150
 msgid "Reply to comment"
 msgstr "Reply to comment"
 
-#: src/components/FriendSearch.tsx:36
 msgid "Request friend"
 msgstr "Request friend"
 
-#: src/components/DeckEdit.tsx:725
 msgid "Return a copy to the collection"
 msgstr "Return a copy to the collection"
 
-#: src/components/DeckChanges.tsx:139
 msgid "Returned to collection"
 msgstr "Returned to collection"
 
-#: src/components/FriendRequests.tsx:165
-#: src/components/FriendRequests.tsx:177
 msgid "Revoke"
 msgstr "Revoke"
 
-#: src/components/Campaign.tsx:2172
-#: src/components/DeckEdit.tsx:574
 msgid "Rewards"
 msgstr "Rewards"
 
-#: src/components/CardList.tsx:76
-#: src/lib/parseDeck.ts:339
 msgid "Rewards and Maladies"
 msgstr "Rewards and Maladies"
 
-#: src/lib/hooks.ts:733
 msgid "Rings of the Moon"
 msgstr "Rings of the Moon"
 
-#: src/lib/hooks.ts:217
 msgid "River"
 msgstr "River"
 
-#: src/components/DeckEdit.tsx:868
-#: src/components/DeckEdit.tsx:1101
-#: src/pages/decks/search.tsx:76
 msgid "Role"
 msgstr "Role"
 
-#: src/components/Campaign.tsx:658
-#~ msgid "Rollback time to here"
-#~ msgstr "Rollback time to here"
-
-#: src/components/Campaign.tsx:577
-#: src/components/Campaign.tsx:815
-#: src/components/Campaign.tsx:1027
-#: src/components/Campaign.tsx:1475
-#: src/components/Campaign.tsx:1559
-#: src/components/Campaign.tsx:2269
-#: src/components/CommentsComponent.tsx:240
-#: src/components/Profile.tsx:87
-#: src/components/ProfileSettings.tsx:87
 msgid "Save"
 msgstr "Save"
 
-#: src/components/DeckEdit.tsx:841
 msgid "Save changes"
 msgstr "Save changes"
 
-#: src/components/DeckEdit.tsx:452
-#~ msgid "Save Changes"
-#~ msgstr "Save Changes"
-
-#: src/components/Campaign.tsx:409
-#: src/components/CardList.tsx:236
-#: src/components/CardList.tsx:374
 msgid "Search by name"
 msgstr "Search by name"
 
-#: src/pages/decks/search.tsx:16
-#~ msgid "Searching decks that have been shared with the community is still under construction."
-#~ msgstr "Searching decks that have been shared with the community is still under construction."
-
-#: src/components/DeckDetail.tsx:290
 msgid "See comments"
 msgstr "See comments"
 
-#: src/components/DeckEdit.tsx:494
 msgid "Select 1 cards from any background of specialty as your outside interest."
 msgstr "Select 1 cards from any background of specialty as your outside interest."
 
-#: src/components/DeckEdit.tsx:461
 msgid "Select 4 different personality cards, 1 from each aspect."
 msgstr "Select 4 different personality cards, 1 from each aspect."
 
-#: src/components/DeckEdit.tsx:472
 msgid "Select 5 different cards from your chosen background."
 msgstr "Select 5 different cards from your chosen background."
 
-#: src/components/DeckEdit.tsx:483
 msgid "Select 5 different cards from your chosen specialty."
 msgstr "Select 5 different cards from your chosen specialty."
 
-#: src/components/CardFilter.tsx:541
-#~ msgid "Select approach icons"
-#~ msgstr "Select approach icons"
-
-#: src/components/Campaign.tsx:2378
-#: src/pages/admin/map.tsx:67
 msgid "Select campaign"
 msgstr "Select campaign"
 
-#: src/components/CardFilter.tsx:525
-#~ msgid "Select card set"
-#~ msgstr "Select card set"
-
-#: src/components/CardSetSelect.tsx:126
 msgid "Select card set..."
 msgstr "Select card set..."
 
-#: src/components/CardFilter.tsx:508
-#~ msgid "Select card type"
-#~ msgstr "Select card type"
-
-#: src/components/MapLocationSelect.tsx:76
 msgid "Select location..."
 msgstr "Select location..."
 
-#: src/components/PathTypeSelect.tsx:56
 msgid "Select path terrain..."
 msgstr "Select path terrain..."
 
-#: src/components/CardFilter.tsx:516
-#~ msgid "Select trait"
-#~ msgstr "Select trait"
-
-#: src/components/FriendStatusComponent.tsx:51
 msgid "Send Friend Request"
 msgstr "Send Friend Request"
 
-#: src/components/Campaign.tsx:1022
-#: src/components/Campaign.tsx:1041
 msgid "Set"
 msgstr "Set"
 
-#: src/components/Profile.tsx:94
-#: src/components/ProfileSettings.tsx:94
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/DeckDetail.tsx:278
 msgid "Share"
 msgstr "Share"
 
-#: src/components/DeckDetail.tsx:499
 msgid "Shareable Deck"
 msgstr "Shareable Deck"
 
-#: src/components/Campaign.tsx:413
-#: src/components/CardList.tsx:381
 msgid "Show all"
 msgstr "Show all"
 
-#: src/components/Campaign.tsx:1996
 msgid "Show all locations"
 msgstr "Show all locations"
 
-#: src/components/NavBar.tsx:254
-#: src/components/NavBar.tsx:405
 msgid "Sign In"
 msgstr "Sign In"
 
-#: src/components/NavBar.tsx:244
-#: src/components/NavBar.tsx:431
 msgid "Sign Out"
 msgstr "Sign Out"
 
-#: src/components/NavBar.tsx:261
-#: src/components/NavBar.tsx:417
 msgid "Sign Up"
 msgstr "Sign Up"
 
-#: src/components/DeckEdit.tsx:598
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 
-#: src/components/Campaign.tsx:894
 msgid "Sort"
 msgstr "Sort"
 
-#: src/components/DeckEdit.tsx:454
-#: src/lib/parseDeck.ts:323
 msgid "Specialty"
 msgstr "Specialty"
 
-#: src/lib/parseDeck.ts:323
 msgid "Specialty: {specialtyName}"
 msgstr "Specialty: {specialtyName}"
 
-#: src/components/AspectCounter.tsx:16
-#~ msgid "spi"
-#~ msgstr "SPI"
-
-#: src/components/AspectCounter.tsx:14
-#: src/lib/hooks.ts:172
 msgid "SPI"
 msgstr "SPI"
 
-#: src/lib/hooks.ts:642
 msgid "Spire"
 msgstr "Spire"
 
-#: src/lib/hooks.ts:171
 msgid "Spirit"
 msgstr "Spirit"
 
-#: src/components/DeckEdit.tsx:853
 msgid "Start campaign"
 msgstr "Start campaign"
 
-#: src/components/DeckEdit.tsx:1077
-#: src/components/DeckEdit.tsx:1128
 msgid "Starter deck"
 msgstr "Starter deck"
 
-#: src/components/Campaign.tsx:1121
 msgid "Stayed at {0}"
 msgstr "Stayed at {0}"
 
-#: src/lib/hooks.ts:748
 msgid "Stoneweaver Bridge"
 msgstr "Stoneweaver Bridge"
 
-#: src/components/EditableTextInput.tsx:20
 msgid "Submit"
 msgstr "Submit"
 
-#: src/lib/hooks.ts:696
 msgid "Sunken Outpost"
 msgstr "Sunken Outpost"
 
-#: src/lib/hooks.ts:212
 msgid "Swamp"
 msgstr "Swamp"
 
-#: src/components/CardSetSelect.tsx:43
 msgid "Terrain"
 msgstr "Terrain"
 
-#: src/lib/hooks.ts:664
 msgid "Terravore"
 msgstr "Terravore"
 
-#: src/lib/hooks.ts:712
 msgid "The Alluvial Ruins"
 msgstr "The Alluvial Ruins"
 
-#: src/lib/hooks.ts:738
 msgid "The Concordant Ziggurats"
 msgstr "The Concordant Ziggurats"
 
-#: src/lib/hooks.ts:686
 msgid "The Cypress Citadel"
 msgstr "The Cypress Citadel"
 
-#: src/lib/hooks.ts:622
 msgid "The Fractured Wall"
 msgstr "The Fractured Wall"
 
-#: src/lib/hooks.ts:702
 msgid "The Frowning Gate"
 msgstr "The Frowning Gate"
 
-#: src/lib/hooks.ts:653
 msgid "The Furrow"
 msgstr "The Furrow"
 
-#: src/lib/hooks.ts:675
 msgid "The Greenbridge"
 msgstr "The Greenbridge"
 
-#: src/lib/hooks.ts:632
 msgid "The High Basin"
 msgstr "The High Basin"
 
-#: src/components/Footer.tsx:26
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 
-#: src/lib/hooks.ts:627
 msgid "The Philosopher's Garden"
 msgstr "The Philosopher's Garden"
 
-#: src/lib/hooks.ts:759
 msgid "The Plummet"
 msgstr "The Plummet"
 
-#: src/pages/register.tsx:19
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "The site is likely to go down for maintenance and data might be lost during these early days."
 
-#: src/lib/hooks.ts:717
 msgid "The Tumbledown"
 msgstr "The Tumbledown"
 
-#: src/components/CardSetSelect.tsx:35
 msgid "The Valley"
 msgstr "The Valley"
 
-#: src/lib/hooks.ts:148
 msgid "There are too many cards with this card's name in your deck."
 msgstr "There are too many cards with this card's name in your deck."
 
-#: src/lib/hooks.ts:141
 msgid "There are too many outside interest cards in the deck."
 msgstr "There are too many outside interest cards in the deck."
 
-#: src/pages/index.tsx:30
-#~ msgid "There is also a <0>campaign</0> tracking system that you can share with your friends and track rewards and events as you progress through the valley."
-#~ msgstr "There is also a <0>campaign</0> tracking system that you can share with your friends and track rewards and events as you progress through the valley."
-
-#: src/pages/index.tsx:29
-#~ msgid "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
-#~ msgstr "Things should stabilize quickly though, and I will take down this notice when I feel confident about the state of things."
-
-#: src/pages/campaigns/[cid].tsx:91
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr "This campaign is not accessible. Are you sure you are signed into the correct account?"
 
-#: src/lib/hooks.ts:151
 msgid "This card's aspect requirement is not satisfied by your chosen aspects."
 msgstr "This card's aspect requirement is not satisfied by your chosen aspects."
 
-#: src/components/CommentsComponent.tsx:57
 msgid "This comment was edited on {updatedTime}."
 msgstr "This comment was edited on {updatedTime}."
 
-#: src/components/Campaign.tsx:533
 msgid "This day is in the past. It is currently day {0}."
 msgstr "This day is in the past. It is currently day {0}."
 
-#: src/components/Campaign.tsx:1297
 msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
 msgstr "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
 
-#: src/lib/hooks.ts:150
 msgid "This role card does not match your chosen specialty."
 msgstr "This role card does not match your chosen specialty."
 
-#: src/pages/index.tsx:27
 msgid "This site is a digital companion for the excellent <0>Earthborne Rangers</0> adventure card game."
 msgstr "This site is a digital companion for the excellent <0>Earthborne Rangers</0> adventure card game."
 
-#: src/pages/index.tsx:27
-#~ msgid "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
-#~ msgstr "This site is still under construction, but you can view the list of <0>previewed cards</0> and can <1>register</1> and start building <2>decks</2>."
-
-#: src/components/Campaign.tsx:1294
 msgid "This will end day {0}."
 msgstr "This will end day {0}."
 
-#: src/components/DeckEdit.tsx:850
 msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 msgstr "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 
-#: src/components/DeckDetail.tsx:204
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "To avoid spoilers for other players, you cannot publish decks that have camped."
 
-#: src/components/NavBar.tsx:174
 msgid "Toggle Navigation"
 msgstr "Toggle Navigation"
 
-#: src/lib/hooks.ts:126
 msgid "Too many AWA personality cards."
 msgstr "Too many AWA personality cards."
 
-#: src/lib/hooks.ts:131
 msgid "Too many cards of the chosen background."
 msgstr "Too many cards of the chosen background."
 
-#: src/lib/hooks.ts:133
 msgid "Too many cards of the chosen specialty."
 msgstr "Too many cards of the chosen specialty."
 
-#: src/lib/hooks.ts:123
 msgid "Too many cards with the same name."
 msgstr "Too many cards with the same name."
 
-#: src/lib/hooks.ts:141
-#~ msgid "Too many cards. When making deck changes while camping, you must remove cards to make room for rewards to maintain a 30 card deck."
-#~ msgstr "Too many cards. When making deck changes while camping, you must remove cards to make room for rewards to maintain a 30 card deck."
-
-#: src/lib/hooks.ts:142
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 
-#: src/lib/hooks.ts:129
 msgid "Too many FIT personality cards."
 msgstr "Too many FIT personality cards."
 
-#: src/lib/hooks.ts:128
 msgid "Too many FOC personality cards."
 msgstr "Too many FOC personality cards."
 
-#: src/lib/hooks.ts:127
 msgid "Too many SPI personality cards."
 msgstr "Too many SPI personality cards."
 
-#: src/components/Campaign.tsx:1004
 msgid "Track cards that are removed permanently from the path deck here."
 msgstr "Track cards that are removed permanently from the path deck here."
 
-#: src/components/CardFilter.tsx:523
 msgid "Traits"
 msgstr "Traits"
 
-#: src/components/Campaign.tsx:1976
-#: src/components/Campaign.tsx:2050
-#: src/components/Campaign.tsx:2109
-#: src/components/Campaign.tsx:2156
 msgid "Travel"
 msgstr "Travel"
 
-#: src/components/Campaign.tsx:2050
 msgid "Travel & Camp"
 msgstr "Travel & Camp"
 
-#: src/components/Campaign.tsx:1148
 msgid "Traveled to {0}."
 msgstr "Traveled to {0}."
 
-#: src/components/DeckEdit.tsx:268
 msgid "Two aspects must be set to 2."
 msgstr "Two aspects must be set to 2."
 
-#: src/components/CardFilter.tsx:514
 msgid "Types"
 msgstr "Types"
 
-#: src/components/Campaign.tsx:2327
 msgid "Unable to create campaign at this time."
 msgstr "Unable to create campaign at this time."
 
-#: src/components/Campaign.tsx:1238
-#: src/components/Campaign.tsx:2111
 msgid "Undo"
 msgstr "Undo"
 
-#: src/components/Campaign.tsx:1244
 msgid "Undo travel"
 msgstr "Undo travel"
 
-#: src/components/Campaign.tsx:1227
 msgid "Undo travel changes"
 msgstr "Undo travel changes"
 
-#: src/components/LikeButton.tsx:22
 msgid "Unlike"
 msgstr "Unlike"
 
-#: src/components/DeckEdit.tsx:328
-#~ msgid "Unlocked rewards"
-#~ msgstr "Unlocked rewards"
-
-#: src/components/NavBar.tsx:276
 msgid "Update now"
 msgstr "Update now"
 
-#: src/components/Deck.tsx:512
-#~ msgid "Upgrade"
-#~ msgstr "Upgrade"
-
-#: src/components/Campaign.tsx:985
-#~ msgid "Use this section to track cards that are removed permanently from the path decks."
-#~ msgstr "Use this section to track cards that are removed permanently from the path decks."
-
-#: src/components/CardList.tsx:116
 msgid "View as Cards"
 msgstr "View as Cards"
 
-#: src/components/CardList.tsx:115
 msgid "View as Checklist"
 msgstr "View as Checklist"
 
-#: src/components/CardList.tsx:117
 msgid "View as Images"
 msgstr "View as Images"
 
-#: src/lib/hooks.ts:722
 msgid "Watcher's Rock"
 msgstr "Watcher's Rock"
 
-#: src/pages/index.tsx:24
 msgid "Welcome to RangersDB"
 msgstr "Welcome to RangersDB"
 
-#: src/components/Campaign.tsx:1457
-#: src/components/Campaign.tsx:1554
 msgid "What happened?"
 msgstr "What happened?"
 
-#: src/components/DeckEdit.tsx:701
 msgid "When adding a card from the collection, remember to return a deck card."
 msgstr "When adding a card from the collection, remember to return a deck card."
 
-#: src/lib/hooks.ts:149
 msgid "When starting a campaign, you must include two of each card in your deck."
 msgstr "When starting a campaign, you must include two of each card in your deck."
 
-#: src/lib/hooks.ts:585
 msgid "White Sky"
 msgstr "White Sky"
 
-#: src/lib/hooks.ts:192
 msgid "Woods"
 msgstr "Woods"
 
-#: src/components/Campaign.tsx:289
-#: src/components/Campaign.tsx:297
 msgid "You"
 msgstr "You"
 
-#: src/components/DeckEdit.tsx:586
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr "You can add this deck to a campaign to track rewards you have unlocked as a group."
 
-#: src/pages/index.tsx:30
 msgid "You can view <0>player cards</0>, <1>build decks</1>, and use the digital <2>campaign tracker</2>."
 msgstr "You can view <0>player cards</0>, <1>build decks</1>, and use the digital <2>campaign tracker</2>."
 
-#: src/components/DeckList.tsx:142
 msgid "You don't seem to have any decks."
 msgstr "You don't seem to have any decks."
 
-#: src/components/DeckEdit.tsx:1021
 msgid "You must choose a background."
 msgstr "You must choose a background."
 
-#: src/components/Campaign.tsx:1890
 msgid "You must choose a location and path terrain to travel."
 msgstr "You must choose a location and path terrain to travel."
 
-#: src/lib/hooks.ts:134
 msgid "You must choose a role card."
 msgstr "You must choose a role card."
 
-#: src/components/DeckEdit.tsx:1027
 msgid "You must choose a role."
 msgstr "You must choose a role."
 
-#: src/components/DeckEdit.tsx:1024
 msgid "You must choose a specialty."
 msgstr "You must choose a specialty."
 
-#: src/components/DeckDetail.tsx:319
 msgid "You must correct deck errors before upgrading."
 msgstr "You must correct deck errors before upgrading."
 
-#: src/components/DeckEdit.tsx:850
 msgid "You must correct errors berfore switching to campaign mode."
 msgstr "You must correct errors berfore switching to campaign mode."
 
-#: src/lib/hooks.ts:124
 msgid "You must include two of each card in your starting deck."
 msgstr "You must include two of each card in your starting deck."
 
-#: src/lib/hooks.ts:139
 msgid "Your deck contains cards with aspect requirements that are not allowed."
 msgstr "Your deck contains cards with aspect requirements that are not allowed."
 
-#: src/lib/hooks.ts:140
 msgid "Your outside interest card cannot have the Expert trait."
 msgstr "Your outside interest card cannot have the Expert trait."
 
-#: src/lib/hooks.ts:138
 msgid "Your role card does not match your chosen specialty."
 msgstr "Your role card does not match your chosen specialty."

@@ -1,12 +1,14 @@
 const path = require('path');
+const linguiConfig = require('./lingui.config');
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ['de', 'fr', 'en', 'it', 'pseudo'],
-    defaultLocale: 'en',
+    locales: linguiConfig.locales,
+    defaultLocale: linguiConfig.sourceLocale,
     localeDetection: false,
     domains: [
       {

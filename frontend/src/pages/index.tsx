@@ -4,6 +4,8 @@ import { t, Trans } from '@lingui/macro';
 
 import { Box, Container, Heading, Text, Link } from '@chakra-ui/react'
 import NextLink from 'next/link';
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import { loadCatalog } from '../lib/Lingui';
 
 function Home() {
   return (
@@ -37,3 +39,15 @@ function Home() {
 
 
 export default Home;
+
+export async function getServerSideProps(
+  ctx: GetServerSidePropsContext
+): Promise<GetServerSidePropsResult<any>> {
+  // some server side logic
+
+  return {
+    props: {
+      i18n: await loadCatalog(ctx.locale as string),
+    },
+  };
+}

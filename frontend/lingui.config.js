@@ -1,7 +1,14 @@
+const { formatter } = require('@lingui/format-po');
+
+const locales = ['en', 'de', 'fr', 'it'];
+
+if (process.env.NODE_ENV !== "production") {
+  locales.push("pseudo")
+}
 module.exports = {
-  locales: ['en', 'de', 'fr', 'it', 'pseudo'],
-  pseudoLocale: 'pseudo',
+  locales,
   sourceLocale: 'en',
+  pseudoLocale: 'pseudo',
   fallbackLocales: {
     default: 'en'
   },
@@ -13,5 +20,5 @@ module.exports = {
     }
   ],
   compileNamespace: 'ts',
-  format: 'po'
-}
+  format: formatter({ origins: false }),
+};

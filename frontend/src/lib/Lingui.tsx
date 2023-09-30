@@ -1,33 +1,34 @@
-import type { I18n } from '@lingui/core'
-import { en, de, it, fr } from 'make-plural/plurals'
+import { i18n, Messages } from "@lingui/core"
+import { useRouter } from "next/router"
+import { useEffect } from "react";
 
 export type LOCALES = 'en' | 'de' | 'it' | 'fr' | 'pseudo';
-//anounce which locales we are going to use and connect them to approprite plural rules
-export function initTranslation(i18n: I18n): void {
-  i18n.loadLocaleData({
-    en: { plurals: en },
-    de: { plurals: de },
-    it: { plurals: it },
-    fr: { plurals: fr },
-    pseudo: { plurals: en }
-  })
+
+export async function loadCatalog(locale: string) {
+  const { messages } = await import(`@lingui/loader!../translations/locales/${locale}/messages.po`);
+  return messages;
 }
 
-export async function loadTranslation(locale: string = 'en', isProduction = true) {
-  let data
-  if (isProduction) {
-    data = await import(`../translations/locales/${locale}/messages`)
-  } else {
-    data = await import(
-      `@lingui/loader!../translations/locales/${locale}/messages.po`
-    )
+export function useLinguiInit(messages: Messages) {
+  const router = useRouter();
+  const locale = router.locale || router.defaultLocale!;
+  const isClient = typeof window !== "undefined";
+
+  if (!isClient && locale !== i18n.locale) {
+    // there is single instance of i18n on the server
+    i18n.loadAndActivate({ locale, messages });
   }
-  return data.messages
-}
+  if (isClient && i18n.locale === undefined) {
+    // first client render
+    i18n.loadAndActivate({ locale, messages });
+  }
 
-export async function getTranslation(locale: string) {
-  return await loadTranslation(
-    locale,
-    process.env.NODE_ENV === 'production'
-  );
+  useEffect(() => {
+    const localeDidChange = locale !== i18n.locale;
+    if (localeDidChange) {
+      i18n.loadAndActivate({ locale, messages });
+    }
+  }, [locale, messages]);
+
+  return i18n;
 }
