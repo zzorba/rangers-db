@@ -51,7 +51,7 @@ query getAllCards($locale: String!) {
   ) {
     ...Card
   }
-  updated_at: rangers_card_updated(
+  all_updated_at: rangers_card_updated(
     where: { locale: { _eq: $locale }}
   ) {
     updated_at
@@ -81,7 +81,7 @@ query getCard($locale: String!, $cid: String!) {
 }
 
 query getCardsUpdatedAt($locale: String!) {
-  updated_at: rangers_card_updated(
+  card_updated_at: rangers_card_updated(
     where: {
       locale: { _eq: $locale }
     }
