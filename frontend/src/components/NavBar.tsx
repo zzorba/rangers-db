@@ -248,7 +248,6 @@ export default function WithSubnavigation() {
         <Banner
           title={t`New cards are available`}
           action={t`Update now`}
-
           onClick={forceCardUpdate}
         />
       ) }

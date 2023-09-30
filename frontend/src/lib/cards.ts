@@ -17,7 +17,7 @@ export function useCardNeedUpdate(): [boolean, () => void] {
     client: anonClient,
     fetchPolicy: 'cache-only',
   });
-  const { data: updatedData} = useGetCardsUpdatedAtQuery({
+  const { data: updatedData, loading: updatedLoading} = useGetCardsUpdatedAtQuery({
     variables: {
       locale,
     },
@@ -32,7 +32,7 @@ export function useCardNeedUpdate(): [boolean, () => void] {
         // This is our initial fetch of data.
         refetch();
       } else {
-        console.log('Cards are cached.');
+        console.log(`Cards are cached.`);
       }
     }
   }, [loading, error, cardData, refetch]);
@@ -41,8 +41,9 @@ export function useCardNeedUpdate(): [boolean, () => void] {
       locale,
     });
   }, [refetch, locale]);
+  const needsUpdate = (!updatedLoading && !updatedData?.updated_at.length) || !!(cardData?.updated_at.length && updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at);
   return [
-    !!(cardData?.updated_at.length && updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at),
+    needsUpdate,
     forceRefresh,
   ];
 }
