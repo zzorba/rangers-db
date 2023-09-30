@@ -5,6 +5,7 @@ import { t } from '@lingui/macro';
 import Register from '../components/Register';
 import { usePostLoginRedirect } from '../lib/hooks';
 import PageHeading from '../components/PageHeading';
+import { getLocalizationServerSideProps } from '../lib/Lingui';
 
 
 function RegisterPage() {
@@ -25,3 +26,5 @@ function RegisterPage() {
 
 
 export default RegisterPage;
+
+export const getServerSideProps = getLocalizationServerSideProps;

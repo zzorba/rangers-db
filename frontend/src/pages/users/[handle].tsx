@@ -10,6 +10,7 @@ import CoreIcon from '../../icons/CoreIcon';
 import SearchDecks from '../../components/SearchDecks';
 import { useLocale } from '../../lib/TranslationProvider';
 import { useRoleCardsMap } from '../../lib/cards';
+import { getLocalizationServerSideProps } from '../../lib/Lingui';
 
 export default function ProfilePage() {
   const [handle, isReady] = useRouterPathParam('handle', (s: string) => s, '/');
@@ -84,4 +85,4 @@ export default function ProfilePage() {
   );
 }
 
-
+export const getServerSideProps = getLocalizationServerSideProps;

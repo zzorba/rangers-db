@@ -9,6 +9,7 @@ import Card from '../../components/Card';
 import { useRouterPathParam } from '../../lib/hooks';
 import LoadingPage from '../../components/LoadingPage';
 import { useLocale } from '../../lib/TranslationProvider';
+import { getLocalizationServerSideProps } from '../../lib/Lingui';
 
 export default function CardPage() {
   const [cardId, isReady] = useRouterPathParam<string>('cid', identity, '/cards')
@@ -44,3 +45,4 @@ export default function CardPage() {
   );
 }
 
+export const getServerSideProps = getLocalizationServerSideProps;

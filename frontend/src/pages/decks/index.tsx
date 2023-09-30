@@ -12,6 +12,7 @@ import { useLocale } from '../../lib/TranslationProvider';
 import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
 import { useRoleCardsMap } from '../../lib/cards';
+import { getLocalizationServerSideProps } from '../../lib/Lingui';
 
 export default function DecksPage() {
   useRequireAuth();
@@ -81,4 +82,4 @@ export default function DecksPage() {
   );
 }
 
-
+export const getServerSideProps = getLocalizationServerSideProps;

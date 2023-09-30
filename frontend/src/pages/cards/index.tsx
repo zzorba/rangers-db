@@ -4,6 +4,8 @@ import { t } from '@lingui/macro';
 
 import CardList from '../../components/CardList';
 import PageHeading from '../../components/PageHeading';
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import { loadCatalog, getLocalizationServerSideProps } from '../../lib/Lingui';
 
 export default function CardsPage() {
   return (
@@ -19,3 +21,4 @@ export default function CardsPage() {
   );
 }
 
+export const getServerSideProps = getLocalizationServerSideProps;

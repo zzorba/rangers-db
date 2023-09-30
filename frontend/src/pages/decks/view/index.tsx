@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 
 import LoadingPage from '../../../components/LoadingPage';
+import { getLocalizationServerSideProps } from '../../../lib/Lingui';
 
 export default function ViewIndex() {
   useEffect(() => {
@@ -10,4 +11,4 @@ export default function ViewIndex() {
   return <LoadingPage />;
 }
 
-
+export const getServerSideProps = getLocalizationServerSideProps;

@@ -10,6 +10,7 @@ import LoadingPage from '../../../components/LoadingPage';
 import DeckEdit  from '../../../components/DeckEdit';
 import { useAuth } from '../../../lib/AuthContext';
 import { useAllCardsMap } from '../../../lib/cards';
+import { getLocalizationServerSideProps } from '../../../lib/Lingui';
 
 export default function EditDeckPage() {
   useRequireAuth();
@@ -57,4 +58,4 @@ export default function EditDeckPage() {
   );
 }
 
-
+export const getServerSideProps = getLocalizationServerSideProps;

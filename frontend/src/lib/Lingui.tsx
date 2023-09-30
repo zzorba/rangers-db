@@ -1,4 +1,5 @@
 import { i18n, Messages } from "@lingui/core"
+import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { useRouter } from "next/router"
 import { useEffect } from "react";
 
@@ -26,9 +27,22 @@ export function useLinguiInit(messages: Messages) {
   useEffect(() => {
     const localeDidChange = locale !== i18n.locale;
     if (localeDidChange) {
+      console.log('Locale changed');
       i18n.loadAndActivate({ locale, messages });
     }
   }, [locale, messages]);
 
   return i18n;
+}
+
+
+export async function getLocalizationServerSideProps(
+  ctx: GetServerSidePropsContext
+): Promise<GetServerSidePropsResult<any>> {
+  // some server side logic
+  return {
+    props: {
+      i18n: await loadCatalog(ctx.locale as string),
+    },
+  };
 }

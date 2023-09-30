@@ -5,6 +5,7 @@ import { Container } from '@chakra-ui/react';
 import { useRequireAuth } from '../lib/hooks';
 import PageHeading from '../components/PageHeading';
 import ProfileSettings from '../components/ProfileSettings';
+import { getLocalizationServerSideProps } from '../lib/Lingui';
 
 function ProfilePage() {
   useRequireAuth();
@@ -17,3 +18,5 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
+
+export const getServerSideProps = getLocalizationServerSideProps;

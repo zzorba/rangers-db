@@ -3,6 +3,7 @@ import { Container } from '@chakra-ui/react';
 
 import ResetPassword from '../components/ResetPassword';
 import { usePostLoginRedirect } from '../lib/hooks';
+import { getLocalizationServerSideProps } from '../lib/Lingui';
 
 function ResetPasswordPage() {
   const redirect = usePostLoginRedirect();
@@ -15,3 +16,5 @@ function ResetPasswordPage() {
 
 
 export default ResetPasswordPage;
+
+export const getServerSideProps = getLocalizationServerSideProps;

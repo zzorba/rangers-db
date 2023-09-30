@@ -5,6 +5,7 @@ import { t } from '@lingui/macro';
 import Login from '../components/Login';
 import { usePostLoginRedirect } from '../lib/hooks';
 import PageHeading from '../components/PageHeading';
+import { getLocalizationServerSideProps } from '../lib/Lingui';
 
 
 function LoginPage() {
@@ -18,3 +19,6 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
+export const getServerSideProps = getLocalizationServerSideProps;
+

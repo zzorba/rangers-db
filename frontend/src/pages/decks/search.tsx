@@ -10,6 +10,7 @@ import { CardsMap, CategoryTranslation } from '../../lib/hooks';
 import { useLocale } from '../../lib/TranslationProvider';
 import SearchDecks from '../../components/SearchDecks';
 import { useRoleCardsMap } from '../../lib/cards';
+import { getLocalizationServerSideProps } from '../../lib/Lingui';
 
 function CategorySelect({ category, onChange }: { category: CategoryTranslation; onChange: (selection: string[]) => void }) {
   const options = useMemo(() => {
@@ -132,3 +133,4 @@ export default function Search() {
   );
 }
 
+export const getServerSideProps = getLocalizationServerSideProps;

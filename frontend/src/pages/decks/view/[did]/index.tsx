@@ -10,6 +10,7 @@ import DeckDetail from '../../../../components/DeckDetail';
 import { useApolloClient } from '@apollo/client';
 import { useAuth } from '../../../../lib/AuthContext';
 import { useAllCards } from '../../../../lib/cards';
+import { getLocalizationServerSideProps } from '../../../../lib/Lingui';
 
 export default function ViewDeckPage() {
   const { authUser } = useAuth();
@@ -64,4 +65,4 @@ export default function ViewDeckPage() {
   );
 }
 
-
+export const getServerSideProps = getLocalizationServerSideProps;
