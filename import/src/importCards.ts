@@ -156,7 +156,11 @@ async function importMetadata() {
   const packs = await readDir(`${BASE_DIR}/packs/`);
   const allFields = concat(CARD_DATA.fields, CARD_DATA.textFields || []);
   for (let i = 0; i < packs.length; i++) {
-    const cardPacks = await readDir(`${BASE_DIR}/packs/${packs[i]}`);
+    const packName = packs[i];
+    if (packName === '.DS_Store') {
+      continue;
+    }
+    const cardPacks = await readDir(`${BASE_DIR}/packs/${packName}`);
 
     for (let j = 0; j < cardPacks.length; j++) {
       const pack = cardPacks[j];
