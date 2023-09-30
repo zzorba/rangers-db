@@ -64,7 +64,6 @@
     "@lingui/cli": "^4.4.2",
     "@lingui/loader": "^4.4.2",
     "@lingui/macro": "^4.4.2",
-    "@lingui/swc-plugin": "^4.4.2",
     "@types/dompurify": "^2.4.0",
     "@types/marked": "^4.0.7",
     "babel-plugin-macros": "^3.1.0"
