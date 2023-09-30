@@ -41,7 +41,11 @@ export function useCardNeedUpdate(): [boolean, () => void] {
       locale,
     });
   }, [refetch, locale]);
-  const needsUpdate = (!updatedLoading && !updatedData?.updated_at.length) || !!(cardData?.updated_at.length && updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at);
+  const needsUpdate = (
+    !updatedLoading && !updatedData?.updated_at.length
+  ) || (
+    !cardData?.updated_at.length
+  ) || !!(cardData?.updated_at.length && updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at);
   return [
     needsUpdate,
     forceRefresh,
