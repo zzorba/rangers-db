@@ -70,7 +70,8 @@ const I18nProvider: FunctionComponent<I18nProviderProps & { forceRenderOnLocaleC
       )
     }
     return () => unsubscribe()
-  }, [])
+    // eslint-disable-next-line
+  }, []);
 
   if (forceRenderOnLocaleChange && renderKey === "default") return null
 
