@@ -41,11 +41,13 @@ export function useCardNeedUpdate(): [boolean, () => void] {
       locale,
     });
   }, [refetch, locale]);
-  const needsUpdate = (
-    !updatedLoading && !updatedData?.updated_at.length
-  ) || (
-    !cardData?.updated_at.length
-  ) || !!(cardData?.updated_at.length && updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at);
+  const needsUpdate = useMemo(() => {
+    const noUpdateData = !updatedLoading && !updatedData?.updated_at.length;
+    const noCardData = !cardData?.updated_at.length;
+    const outOfDate = !!cardData?.updated_at.length && !!updatedData?.updated_at.length && cardData.updated_at[0].updated_at !== updatedData.updated_at[0].updated_at;
+    console.log({ noUpdateData, noCardData, outOfDate });
+    return noUpdateData || noCardData || outOfDate;
+  }, [updatedLoading, updatedData, cardData]);
   return [
     needsUpdate,
     forceRefresh,
