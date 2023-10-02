@@ -4,7 +4,7 @@ import { t } from '@lingui/macro';
 import { flatMap, map } from 'lodash';
 
 import PageHeading from '../../components/PageHeading';
-import { useCardsMap, useRequireAuth } from '../../lib/hooks';
+import { useRequireAuth } from '../../lib/hooks';
 import { useGetMyCampaignsQuery, useGetMyCampaignsTotalQuery } from '../../generated/graphql/apollo-schema';
 import { useAuth } from '../../lib/AuthContext';
 import PaginationWrapper from '../../components/PaginationWrapper';
@@ -12,6 +12,7 @@ import { AuthUser } from '../../lib/useFirebaseAuth';
 import { CampaignList, CampaignWrapper, ParsedCampaign, useNewCampaignModal } from '../../components/Campaign';
 import { useLocale } from '../../lib/TranslationProvider';
 import { useRoleCardsMap } from '../../lib/cards';
+import { getLocalizationServerSideProps } from '../../lib/Lingui';
 
 export default function CampaignsList() {
   useRequireAuth();
@@ -89,3 +90,5 @@ export default function CampaignsList() {
     </>
   );
 }
+
+export const getServerSideProps = getLocalizationServerSideProps;

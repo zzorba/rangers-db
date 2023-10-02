@@ -9,6 +9,7 @@ import { useRequireAuth, useRouterPathParam } from '../../lib/hooks';
 import LoadingPage from '../../components/LoadingPage';
 import Campaign, { CampaignWrapper, useEditCampaignAccessModal } from '../../components/Campaign';
 import { useAllCardsMap } from '../../lib/cards';
+import { getLocalizationServerSideProps } from '../../lib/Lingui';
 
 export default function CampaignPage() {
   useRequireAuth();
@@ -108,4 +109,4 @@ export default function CampaignPage() {
   );
 }
 
-
+export const getServerSideProps = getLocalizationServerSideProps;
