@@ -47,7 +47,7 @@ msgid "30 Cards"
 msgstr ""
 
 msgid "A Perfect Day"
-msgstr ""
+msgstr "Une journée parfaite"
 
 msgid "Accept"
 msgstr ""
@@ -278,16 +278,16 @@ msgid "Current Position"
 msgstr ""
 
 msgid "Custom deck"
-msgstr ""
+msgstr "Deck personnalisé"
 
 msgid "Dark mode"
-msgstr ""
+msgstr "Mode sombre"
 
 msgid "Day"
-msgstr ""
+msgstr "Jour"
 
 msgid "Day {day}"
-msgstr ""
+msgstr "Jour {day}"
 
 msgid "Deck"
 msgstr ""
@@ -374,7 +374,7 @@ msgid "Ended the day at {0}."
 msgstr ""
 
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 msgid "Equip"
 msgstr ""
@@ -383,22 +383,22 @@ msgid "Exploration"
 msgstr ""
 
 msgid "Filter by {0}"
-msgstr ""
+msgstr "Filtrer par {0]"
 
 msgid "Filter by approach icons"
-msgstr ""
+msgstr "Filtrer par icône d'approche"
 
 msgid "Filter by card set"
-msgstr ""
+msgstr "Filtrer par paquet de carte"
 
 msgid "Filter by card type"
-msgstr ""
+msgstr "Filtrer par type de carte"
 
 msgid "Filter by Role"
-msgstr ""
+msgstr "Filtrer par rôle"
 
 msgid "Filter by trait"
-msgstr ""
+msgstr "Filtrer par caractèristique"
 
 msgid "Find new friends"
 msgstr ""
@@ -524,7 +524,7 @@ msgid "Meadow"
 msgstr ""
 
 msgid "Member since {joinDate}"
-msgstr ""
+msgstr "Membre depuis le {joinDate}"
 
 msgid "Michael's Bog"
 msgstr ""
@@ -542,52 +542,52 @@ msgid "Mountain Pass"
 msgstr ""
 
 msgid "My Campaigns"
-msgstr ""
+msgstr "Mes campagnes"
 
 msgid "My Decks"
-msgstr ""
+msgstr "Mes decks"
 
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 msgid "Name and day are required."
-msgstr ""
+msgstr "Le nom et le jour sont requis."
 
 msgid "Name your character"
-msgstr ""
+msgstr "Nommer votre personnage"
 
 msgid "New campaign"
-msgstr ""
+msgstr "Nouvelle campagne"
 
 msgid "New cards are available"
-msgstr ""
+msgstr "Nouvelles cartes disponibles"
 
 msgid "New deck"
-msgstr ""
+msgstr "Nouveau deck"
 
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
 msgid "Next deck"
-msgstr ""
+msgstr "Deck suivant"
 
 msgid "No matching cards"
-msgstr ""
+msgstr "Aucune carte correspondante"
 
 msgid "No matching cards found."
-msgstr ""
+msgstr "Aucune carte trouvée."
 
 msgid "No matching decks."
-msgstr ""
+msgstr "Aucun deck trouvé."
 
 msgid "No published decks."
-msgstr ""
+msgstr "Aucun deck publié."
 
 msgid "No results"
-msgstr ""
+msgstr "Pas de résultat"
 
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 msgid "Northern Outpost"
 msgstr ""
@@ -684,7 +684,7 @@ msgid "Print"
 msgstr ""
 
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 msgid "Progress"
 msgstr ""
@@ -738,7 +738,7 @@ msgid "Reject"
 msgstr ""
 
 msgid "Remove"
-msgstr ""
+msgstr "Supprimer"
 
 msgid "Remove card"
 msgstr ""
@@ -756,10 +756,10 @@ msgid "Removed Cards"
 msgstr ""
 
 msgid "Reply comment"
-msgstr ""
+msgstr "Répondre"
 
 msgid "Reply to comment"
-msgstr ""
+msgstr "Répondre"
 
 msgid "Request friend"
 msgstr ""
@@ -1047,13 +1047,13 @@ msgid "Update now"
 msgstr ""
 
 msgid "View as Cards"
-msgstr ""
+msgstr "Affichage en cartes"
 
 msgid "View as Checklist"
-msgstr ""
+msgstr "Affichage en liste"
 
 msgid "View as Images"
-msgstr ""
+msgstr "Affichage en images"
 
 msgid "Watcher's Rock"
 msgstr ""
