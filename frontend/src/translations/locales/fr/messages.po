@@ -14,10 +14,10 @@ msgstr ""
 "Plural-Forms: \n"
 
 msgid "- {0} Specialty"
-msgstr ""
+msgstr "- Spécialisation {0}"
 
 msgid "- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting."
-msgstr ""
+msgstr "- Entourer le texte d'ambiance avec la balise <f>ceci est un texte descriptif</f> pour obtenir le même formattage que les cartes"
 
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
 msgstr ""
@@ -26,58 +26,58 @@ msgid "(edited)"
 msgstr ""
 
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
-msgstr ""
+msgstr "{0, plural, one {({1} maladie)} other {({2} maladies)}}"
 
 msgid "{0} (Copy)"
-msgstr ""
+msgstr "{0} (Copie)"
 
 msgid "{0} / 30 Cards"
-msgstr ""
+msgstr "{0} / 30 cartes"
 
 msgid "{0} of {1}"
-msgstr ""
+msgstr "{0} sur {1}"
 
 msgid "{background} - {specialty} (Starter)"
-msgstr ""
+msgstr "{background} - {specialty} (Deck de base)"
 
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
-msgstr ""
+msgstr "{otherErrorCount, plural, one {+ {otherErrorCount} autre problème} other {+ {otherErrorCount} autres problèmes}}"
 
 msgid "30 Cards"
-msgstr ""
+msgstr "30 cartes"
 
 msgid "A Perfect Day"
 msgstr "Une journée parfaite"
 
 msgid "Accept"
-msgstr ""
+msgstr "Accepter"
 
 msgid "Account Settings"
-msgstr ""
+msgstr "Paramètres"
 
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 msgid "Add additional deck"
-msgstr ""
+msgstr "Ajouter un deck"
 
 msgid "Add mission"
-msgstr ""
+msgstr "Ajouter une mission"
 
 msgid "Add reward"
-msgstr ""
+msgstr "Ajouter une récompense"
 
 msgid "Add to campaign"
-msgstr ""
+msgstr "Ajouter à la campagne"
 
 msgid "Added"
-msgstr ""
+msgstr "Ajouté"
 
 msgid "Added from collection"
-msgstr ""
+msgstr "Ajouté de la collection"
 
 msgid "Advanced controls"
 msgstr ""
@@ -86,16 +86,16 @@ msgid "After selecting a new collection card and removing one from your deck, yo
 msgstr ""
 
 msgid "All"
-msgstr ""
+msgstr "Tous"
 
 msgid "Allow people to view my decks"
-msgstr ""
+msgstr "Permettre aux autres de voir mon deck"
 
 msgid "Already have an account? <0>Login</0> now."
-msgstr ""
+msgstr "Vous avez déjà un compte ? <0>Se connecter</0>"
 
 msgid "Ancestor's Grove"
-msgstr ""
+msgstr "Bosquet des Ancêtres"
 
 msgid "Approach icons"
 msgstr ""
@@ -104,40 +104,40 @@ msgid "Archeological Outpost"
 msgstr ""
 
 msgid "Are you sure you want to delete the \"{0}\" deck?"
-msgstr ""
+msgstr "Êtes vous sûr de vouloir supprimer ce deck \"{0}\" ?"
 
 msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
-msgstr ""
+msgstr "Êtes vous sûr de vouloir supprimer le dernier jour ({0}) de ce deck"
 
 msgid "Are you sure you want to delete this deck?"
-msgstr ""
+msgstr "Êtes vous sûr de vouloir supprimer ce deck ?"
 
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
-msgstr ""
+msgstr "Êtes vous sûr de vouloir supprimer votre campagne : {0} ? Cette action ne peut être annulée."
 
 msgid "Aspect requirements"
 msgstr ""
 
 msgid "Aspects"
-msgstr ""
+msgstr "Aspects"
 
 msgid "Atrox Mountain"
-msgstr ""
+msgstr "Montagne des Atrox"
 
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 msgid "AWA"
-msgstr ""
+msgstr "VIG"
 
 msgid "Awareness"
-msgstr ""
+msgstr "Vigilance"
 
 msgid "Background"
-msgstr ""
+msgstr "Antécédent"
 
 msgid "Background: {backgroundName}"
-msgstr ""
+msgstr "Antécédent: {backgroundName}"
 
 msgid "Biologist's Outpost"
 msgstr ""
@@ -155,10 +155,10 @@ msgid "Camp"
 msgstr ""
 
 msgid "Campaign"
-msgstr ""
+msgstr "Campagne"
 
 msgid "Campaigns"
-msgstr ""
+msgstr "Campagnes"
 
 msgid "Camped while travelling to {0}."
 msgstr ""
@@ -167,7 +167,7 @@ msgid "Camping will end day {currentDay} and allow any earned rewards to be swap
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 msgid "Cancel Friend Request"
 msgstr ""
@@ -176,10 +176,10 @@ msgid "Cancel Friendship"
 msgstr ""
 
 msgid "Card set"
-msgstr ""
+msgstr "Ensemble de cartes"
 
 msgid "Cards"
-msgstr ""
+msgstr "Cartes"
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr ""
@@ -188,16 +188,16 @@ msgid "Changes"
 msgstr ""
 
 msgid "Choose {0}"
-msgstr ""
+msgstr "Choisir {0}"
 
 msgid "Choose deck"
-msgstr ""
+msgstr "Choisir le deck"
 
 msgid "Choose handle"
 msgstr ""
 
 msgid "Choose role"
-msgstr ""
+msgstr "Choisir le rôle"
 
 msgid "Choose starter deck"
 msgstr ""
@@ -212,13 +212,13 @@ msgid "Collection"
 msgstr ""
 
 msgid "Comment"
-msgstr ""
+msgstr "Commentaire"
 
 msgid "Comments"
-msgstr ""
+msgstr "Commentaires"
 
 msgid "Completed"
-msgstr ""
+msgstr "Complété"
 
 msgid "Confirm Friend"
 msgstr ""
@@ -236,19 +236,19 @@ msgid "Contains too many cards that do not match your chosen background."
 msgstr ""
 
 msgid "Copies"
-msgstr ""
+msgstr "copies"
 
 msgid "Copy"
-msgstr ""
+msgstr "Copier"
 
 msgid "Copy deck"
-msgstr ""
+msgstr "Copier le deck"
 
 msgid "Copy of {deckLink} by {authorLink}"
-msgstr ""
+msgstr "Copie de {deckLink} par {authorLink}"
 
 msgid "Copy this deck to make your own changes."
-msgstr ""
+msgstr "Copier le deck pour faire vos propres changements."
 
 msgid "Core"
 msgstr ""
@@ -404,16 +404,16 @@ msgid "Find new friends"
 msgstr ""
 
 msgid "FIT"
-msgstr ""
+msgstr "PHY"
 
 msgid "Fitness"
-msgstr ""
+msgstr "Physique"
 
 msgid "FOC"
-msgstr ""
+msgstr "CON"
 
 msgid "Focus"
-msgstr ""
+msgstr "Concentration"
 
 msgid "Forgot Password"
 msgstr ""
@@ -422,16 +422,16 @@ msgid "Friend Requests"
 msgstr ""
 
 msgid "Friends"
-msgstr ""
+msgstr "Amis"
 
 msgid "General"
 msgstr ""
 
 msgid "German"
-msgstr ""
+msgstr "Allemand"
 
 msgid "Golden Shore"
-msgstr ""
+msgstr "Rivage Doré"
 
 msgid "Grassland"
 msgstr ""
@@ -467,7 +467,7 @@ msgid "If you‘d like to support the development and maintenance of this site, 
 msgstr ""
 
 msgid "Italian"
-msgstr ""
+msgstr "Italien"
 
 msgid "Journey"
 msgstr ""
@@ -509,7 +509,7 @@ msgid "Login"
 msgstr ""
 
 msgid "Lone Tree Station"
-msgstr ""
+msgstr "Base de l'arbre solitaire"
 
 msgid "Maladies"
 msgstr ""
@@ -536,7 +536,7 @@ msgid "Mound of the Navigator"
 msgstr ""
 
 msgid "Mount Nim"
-msgstr ""
+msgstr "Mont Nim"
 
 msgid "Mountain Pass"
 msgstr ""
@@ -590,10 +590,10 @@ msgid "None"
 msgstr "Aucun"
 
 msgid "Northern Outpost"
-msgstr ""
+msgstr "Avant-Poste du Nord"
 
 msgid "Not enough background cards."
-msgstr ""
+msgstr "Pas assez de cartes Antécédent."
 
 msgid "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
 msgstr ""
@@ -602,10 +602,10 @@ msgid "Not enough outside interest cards."
 msgstr ""
 
 msgid "Not enough personality cards."
-msgstr ""
+msgstr "Pas assez de cartes Personnalité."
 
 msgid "Not enough specialty cards."
-msgstr ""
+msgstr "Pas assez de cartes Spécialisation."
 
 msgid "Not set"
 msgstr ""
@@ -858,28 +858,28 @@ msgid "Some campaign events may allow you to permanently swap cards from your de
 msgstr ""
 
 msgid "Sort"
-msgstr ""
+msgstr "Tri"
 
 msgid "Specialty"
-msgstr ""
+msgstr "Spécialisation"
 
 msgid "Specialty: {specialtyName}"
-msgstr ""
+msgstr "Spécialisation : {specialtyName}"
 
 msgid "SPI"
-msgstr ""
+msgstr "ESP"
 
 msgid "Spire"
 msgstr ""
 
 msgid "Spirit"
-msgstr ""
+msgstr "Esprit"
 
 msgid "Start campaign"
-msgstr ""
+msgstr "Démarrer la campagne"
 
 msgid "Starter deck"
-msgstr ""
+msgstr "Deck de base"
 
 msgid "Stayed at {0}"
 msgstr ""
@@ -888,16 +888,16 @@ msgid "Stoneweaver Bridge"
 msgstr ""
 
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 msgid "Sunken Outpost"
 msgstr ""
 
 msgid "Swamp"
-msgstr ""
+msgstr "Marais"
 
 msgid "Terrain"
-msgstr ""
+msgstr "Terrain"
 
 msgid "Terravore"
 msgstr ""
@@ -930,7 +930,7 @@ msgid "The information presented on this site about Earthborne Rangers, both lit
 msgstr ""
 
 msgid "The Philosopher's Garden"
-msgstr ""
+msgstr "Le Jardin du Philosophe"
 
 msgid "The Plummet"
 msgstr ""
@@ -984,28 +984,28 @@ msgid "Toggle Navigation"
 msgstr ""
 
 msgid "Too many AWA personality cards."
-msgstr ""
+msgstr "Trop de cartes personnalités de type VIG."
 
 msgid "Too many cards of the chosen background."
-msgstr ""
+msgstr "Trop de cartes de l'antécédent choisi."
 
 msgid "Too many cards of the chosen specialty."
-msgstr ""
+msgstr "Trop de cartes de la personnalité choisie."
 
 msgid "Too many cards with the same name."
-msgstr ""
+msgstr "Trop de cartes avec le même nom."
 
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr ""
 
 msgid "Too many FIT personality cards."
-msgstr ""
+msgstr "Trop de cartes personnalités de type PHY."
 
 msgid "Too many FOC personality cards."
-msgstr ""
+msgstr "Trop de cartes personnalités de type CON."
 
 msgid "Too many SPI personality cards."
-msgstr ""
+msgstr "Trop de cartes personnalités de type ESP."
 
 msgid "Track cards that are removed permanently from the path deck here."
 msgstr ""
@@ -1044,7 +1044,7 @@ msgid "Unlike"
 msgstr ""
 
 msgid "Update now"
-msgstr ""
+msgstr "Mettre à jour"
 
 msgid "View as Cards"
 msgstr "Affichage en cartes"
@@ -1059,7 +1059,7 @@ msgid "Watcher's Rock"
 msgstr ""
 
 msgid "Welcome to RangersDB"
-msgstr ""
+msgstr "Bienvenue à RangersDB"
 
 msgid "What happened?"
 msgstr ""
@@ -1068,16 +1068,16 @@ msgid "When adding a card from the collection, remember to return a deck card."
 msgstr ""
 
 msgid "When starting a campaign, you must include two of each card in your deck."
-msgstr ""
+msgstr "Pour démarrer une campagne, vous devez inclure deux copies de chaque carte dans votre deck."
 
 msgid "White Sky"
-msgstr ""
+msgstr "Blanc-Ciel"
 
 msgid "Woods"
-msgstr ""
+msgstr "Bois"
 
 msgid "You"
-msgstr ""
+msgstr "Vous"
 
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr ""
@@ -1086,37 +1086,37 @@ msgid "You can view <0>player cards</0>, <1>build decks</1>, and use the digital
 msgstr ""
 
 msgid "You don't seem to have any decks."
-msgstr ""
+msgstr "Vous ne semblez pas avoir de decks."
 
 msgid "You must choose a background."
-msgstr ""
+msgstr "Vous devez choisir un antécédent."
 
 msgid "You must choose a location and path terrain to travel."
-msgstr ""
+msgstr "Vous devez choisir un endroit et un type de terrain pour voyager."
 
 msgid "You must choose a role card."
-msgstr ""
+msgstr "Vous devez choisir une carte rôle"
 
 msgid "You must choose a role."
-msgstr ""
+msgstr "Vous devez choisir un rôle."
 
 msgid "You must choose a specialty."
-msgstr ""
+msgstr "Vous devez choisir une spécialisation."
 
 msgid "You must correct deck errors before upgrading."
-msgstr ""
+msgstr "Vous devez corriger les erreurs du deck avant de l'améliorer."
 
 msgid "You must correct errors berfore switching to campaign mode."
-msgstr ""
+msgstr "Vous devez corriger les erreurs avant de passer en mode campagne."
 
 msgid "You must include two of each card in your starting deck."
-msgstr ""
+msgstr "Vous devez inclure deux de chaque carte dans votre deck de départ."
 
 msgid "Your deck contains cards with aspect requirements that are not allowed."
-msgstr ""
+msgstr "Votre deck contient des cartes qui ne respectent pas les limites de votre carte d'aspect."
 
 msgid "Your outside interest card cannot have the Expert trait."
 msgstr ""
 
 msgid "Your role card does not match your chosen specialty."
-msgstr ""
+msgstr "Votre carte rôle ne correspond pas à la spécialisation choisie."
