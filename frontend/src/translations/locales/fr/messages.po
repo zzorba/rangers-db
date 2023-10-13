@@ -296,16 +296,16 @@ msgid "Deck search"
 msgstr ""
 
 msgid "Decklists"
-msgstr ""
+msgstr "Liste des decks"
 
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 msgid "Delete campaign?"
-msgstr ""
+msgstr "Supprimer la campagne ?"
 
 msgid "Delete deck?"
-msgstr ""
+msgstr "Supprimer le deck ?"
 
 msgid "Deleting this published deck will cause will remove it from search."
 msgstr ""
@@ -341,7 +341,7 @@ msgid "Duplicate this deck while preserving the original."
 msgstr ""
 
 msgid "E-mail Address"
-msgstr ""
+msgstr "Courriel"
 
 msgid "Edit"
 msgstr ""
@@ -362,13 +362,13 @@ msgid "Edit players"
 msgstr ""
 
 msgid "Email"
-msgstr ""
+msgstr "Courriel"
 
 msgid "En route to {0}"
 msgstr ""
 
 msgid "End the day"
-msgstr ""
+msgstr "Fin de la journée"
 
 msgid "Ended the day at {0}."
 msgstr ""
