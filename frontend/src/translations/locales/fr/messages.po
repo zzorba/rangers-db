@@ -20,10 +20,10 @@ msgid "- Flavor text can be denoted using <f>this is flavor</f> tags, to get car
 msgstr "- Entourer le texte d'ambiance avec la balise <f>ceci est un texte descriptif</f> pour obtenir le même formattage que les cartes"
 
 msgid "- You can use the following game specific icons by enclosing them in square brackets:"
-msgstr ""
+msgstr "- Vous pouvez utiliser les icônes de ce jeu en les entourant de crochets:"
 
 msgid "(edited)"
-msgstr ""
+msgstr "(édité)"
 
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} maladie)} other {({2} maladies)}}"
@@ -80,10 +80,10 @@ msgid "Added from collection"
 msgstr "Ajouté de la collection"
 
 msgid "Advanced controls"
-msgstr ""
+msgstr "Contrôle avancé"
 
 msgid "After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <0>displaced cards</0> tab."
-msgstr ""
+msgstr "Après avoir sélectioné une nouvelle carte de la collection et retiré une de votre deck, vous pouvez \"ramener\" une carte de la collection en utilisant l'onglet <0>Cartes conservées</0>"
 
 msgid "All"
 msgstr "Tous"
@@ -98,7 +98,7 @@ msgid "Ancestor's Grove"
 msgstr "Bosquet des Ancêtres"
 
 msgid "Approach icons"
-msgstr ""
+msgstr "Icônes d'approche"
 
 msgid "Archeological Outpost"
 msgstr ""
@@ -116,7 +116,7 @@ msgid "Are you sure you want to delete your campaign: {0}? This action cannot be
 msgstr "Êtes vous sûr de vouloir supprimer votre campagne : {0} ? Cette action ne peut être annulée."
 
 msgid "Aspect requirements"
-msgstr ""
+msgstr "Aspects requis"
 
 msgid "Aspects"
 msgstr "Aspects"
@@ -161,10 +161,10 @@ msgid "Campaigns"
 msgstr "Campagnes"
 
 msgid "Camped while travelling to {0}."
-msgstr ""
+msgstr "Camper pendant le voyage vers {0}"
 
 msgid "Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
-msgstr ""
+msgstr "Camper finira le jour {currentDay} et permettra les échanges des récompenses dans les decks."
 
 msgid "Cancel"
 msgstr "Annuler"
@@ -182,10 +182,10 @@ msgid "Cards"
 msgstr "Cartes"
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
-msgstr ""
+msgstr "Les cartes qui sont retirées de votre deck seront garder ici. Elles peuvent être remises dans votre deck quand vous campez."
 
 msgid "Changes"
-msgstr ""
+msgstr "Changements"
 
 msgid "Choose {0}"
 msgstr "Choisir {0}"
@@ -200,16 +200,16 @@ msgid "Choose role"
 msgstr "Choisir le rôle"
 
 msgid "Choose starter deck"
-msgstr ""
+msgstr "Choisir le deck de départ"
 
 msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
-msgstr ""
+msgstr "Choisir de camper créera une copie de votre deck pour vous laisser suivre les changements à votre deck tout au long de la campagne."
 
 msgid "Chosen aspects are invalid."
-msgstr ""
+msgstr "Les aspects choisis sont invalides."
 
 msgid "Collection"
-msgstr ""
+msgstr "Collection"
 
 msgid "Comment"
 msgstr "Commentaire"
@@ -224,13 +224,13 @@ msgid "Confirm Friend"
 msgstr ""
 
 msgid "Conflict"
-msgstr ""
+msgstr "Conflit"
 
 msgid "Connecting Location"
 msgstr ""
 
 msgid "Connection"
-msgstr ""
+msgstr "Connexion"
 
 msgid "Contains too many cards that do not match your chosen background."
 msgstr ""
@@ -263,7 +263,7 @@ msgid "Could not find user {handle}"
 msgstr ""
 
 msgid "Create"
-msgstr ""
+msgstr "Créer"
 
 msgid "Crossed-out"
 msgstr ""
@@ -275,7 +275,7 @@ msgid "Current location: {0}"
 msgstr ""
 
 msgid "Current Position"
-msgstr ""
+msgstr "Position"
 
 msgid "Custom deck"
 msgstr "Deck personnalisé"
@@ -290,10 +290,10 @@ msgid "Day {day}"
 msgstr "Jour {day}"
 
 msgid "Deck"
-msgstr ""
+msgstr "Deck"
 
 msgid "Deck search"
-msgstr ""
+msgstr "Recherche dans le deck"
 
 msgid "Decklists"
 msgstr "Liste des decks"
@@ -311,76 +311,76 @@ msgid "Deleting this published deck will cause will remove it from search."
 msgstr ""
 
 msgid "Demo"
-msgstr ""
+msgstr "Démo"
 
 msgid "Departing {0}"
-msgstr ""
+msgstr "Départ {0}"
 
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 msgid "Descriptions support basic markdown and html formatting."
-msgstr ""
+msgstr "La description supporte le formattage markdown et html de base."
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Annuler les modifications"
 
 msgid "Displaced cards"
-msgstr ""
+msgstr "Cartes conservées"
 
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Pas de compte?"
 
 msgid "Done editing"
-msgstr ""
+msgstr "Terminer l'édition"
 
 msgid "Downpour"
 msgstr ""
 
 msgid "Duplicate this deck while preserving the original."
-msgstr ""
+msgstr "Dupliquer ce deck en conservant l'original."
 
 msgid "E-mail Address"
 msgstr "Courriel"
 
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 msgid "Edit comment"
-msgstr ""
+msgstr "Modifier le commentaire"
 
 msgid "Edit description"
-msgstr ""
+msgstr "Modifier la description"
 
 msgid "Edit mission"
-msgstr ""
+msgstr "Modifier la mission"
 
 msgid "Edit notable event"
-msgstr ""
+msgstr "Modifier l'événement"
 
 msgid "Edit players"
-msgstr ""
+msgstr "Modifier les joueurs"
 
 msgid "Email"
 msgstr "Courriel"
 
 msgid "En route to {0}"
-msgstr ""
+msgstr "En route vers {0}"
 
 msgid "End the day"
 msgstr "Fin de la journée"
 
 msgid "Ended the day at {0}."
-msgstr ""
+msgstr "Jour termnié à {0}."
 
 msgid "English"
 msgstr "Anglais"
 
 msgid "Equip"
-msgstr ""
+msgstr "Équiper"
 
 msgid "Exploration"
-msgstr ""
+msgstr "Exploration"
 
 msgid "Filter by {0}"
 msgstr "Filtrer par {0]"
@@ -401,7 +401,7 @@ msgid "Filter by trait"
 msgstr "Filtrer par caractèristique"
 
 msgid "Find new friends"
-msgstr ""
+msgstr "Trouver de nouveau amis"
 
 msgid "FIT"
 msgstr "PHY"
@@ -449,7 +449,7 @@ msgid "Headwaters Station"
 msgstr ""
 
 msgid "Hide spoilers"
-msgstr ""
+msgstr "Masquer les spoilers"
 
 msgid "Howling Winds"
 msgstr ""
