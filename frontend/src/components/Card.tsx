@@ -14,6 +14,7 @@ import {
   AspectRatio,
   useColorMode,
   Show,
+  Button,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
 import { t } from '@lingui/macro';
@@ -27,6 +28,7 @@ import CardCount from './CardCount';
 import DeckProblemComponent, { DeckCardProblemTooltip } from './DeckProblemComponent';
 import { useLocale } from '../lib/TranslationProvider';
 import CardImage, { RoleImage } from './CardImage';
+import { BiBookmark, BiBookmarkAlt, BiSolidBookmark, BiSolidBookmarkAlt } from 'react-icons/bi';
 
 interface Props {
   card: CardFragment;
@@ -303,7 +305,7 @@ function CardImageSection({ card, detail }: { card: CardFragment; detail?: boole
   );
 }
 
-function CardBody({ card, padding, problem, count, detail, noImage }: Props & { padding?: number; problem?: DeckError[]; count?: number; detail?: boolean, noImage?: boolean }) {
+function CardBody({ card, padding, problem, detail, noImage }: Props & { padding?: number; problem?: DeckError[]; detail?: boolean, noImage?: boolean }) {
   const { aspects } = useLocale();
   const aspect = (card.aspect_id && aspects[card.aspect_id]) || undefined;
   return (
@@ -380,8 +382,24 @@ export function CardRow({ card, problem, children, onClick, includeSet, includeT
 }
 
 export type ShowCard = (card: CardFragment, problem?: DeckCardError[]) => void;
-export type RenderCardControl = (card: CardFragment, onClose?: () => void) => React.ReactNode;
-export function useCardModal(slots?: Slots, renderControl?: RenderCardControl, key: string = 'modal'): [
+export type RenderCardControl = (
+  card: CardFragment,
+  args?: {
+    onClose?: () => void;
+    context?: 'modal' | 'extra';
+  }
+) => React.ReactNode;
+export function useCardModal({
+  slots,
+  extraSlots,
+  renderControl,
+  key = 'modal',
+}: {
+  slots?: Slots;
+  extraSlots?: Slots;
+  renderControl?: RenderCardControl;
+  key?: string;
+} = {}): [
   ShowCard,
   React.ReactNode,
 ] {
@@ -393,7 +411,9 @@ export function useCardModal(slots?: Slots, renderControl?: RenderCardControl, k
     setProblem(problem);
     onOpen();
   }, [onOpen, setCard, setProblem]);
+
   const count = (card?.id && slots?.[card.id]) || 0;
+  const starred = !!(card?.id && extraSlots?.[card.id]);
   return [
     showModal,
     <Modal key={key} scrollBehavior="inside" isCentered isOpen={isOpen} onClose={onClose}>
@@ -407,14 +427,21 @@ export function useCardModal(slots?: Slots, renderControl?: RenderCardControl, k
         <ModalCloseButton />
         <ModalBody overflowY="scroll">
           <Box paddingBottom={2}>
-            {!!card && <CardBody card={card} problem={problem} count={renderControl ? undefined : 1}/> }
+            { !!card && <CardBody card={card} problem={problem} /> }
           </Box>
         </ModalBody>
         <ModalFooter>
           <Flex flex={1} direction="row" alignItems="flex-end" justifyContent="space-between">
             { !!card && <FooterInfo card={card} /> }
             { !!card && card.type_id !== 'role' && !!slots && (
-              renderControl?.(card, onClose) || <CardCount count={count} />
+              <Flex direction="row">
+                { renderControl?.(card, { onClose, context: 'modal' }) || (
+                  <>
+                    { !!starred && <BiSolidBookmarkAlt size={40} /> }
+                    <CardCount key="count" count={count} starred={starred} />
+                  </>
+                ) }
+              </Flex>
             ) }
           </Flex>
         </ModalFooter>

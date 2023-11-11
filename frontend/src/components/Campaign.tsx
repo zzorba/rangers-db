@@ -1876,7 +1876,7 @@ function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampa
 function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { locations, paths } = useLocale();
-  const [camp, setCamp] = useState<boolean>(true);
+  const [camp, setCamp] = useState<boolean>(false);
   const [location, setLocation] = useState<string>();
   const [terrain, setTerrain] = useState<string>();
   const [showAll, setShowAll] = useState(false);
@@ -2304,7 +2304,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     setSelectedFriends(filter(selectedFriends, f => f !== id));
     return undefined;
   }, [selectedFriends, setSelectedFriends]);
-  const [cycle, setCycle] = useState<string>('demo');
+  const [cycle, setCycle] = useState<string>('core');
   const onCreateCampaign = useCallback(async() => {
     if (!authUser) {
       return;

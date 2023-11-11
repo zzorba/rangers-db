@@ -42,9 +42,8 @@ function LocationRow({ location, cycle }: { location: MapLocation; cycle: string
 }
 
 export default function MapPage() {
-  const { locations, paths } = useLocale();
-
-  const [cycle, setCycle] = useState('demo');
+  const { locations } = useLocale();
+  const [cycle, setCycle] = useState('core');
   const selectedLocations = useMemo(() => {
     return filter(locations, loc => {
       if (loc?.cycles && !find(loc.cycles, c => c === cycle)) {

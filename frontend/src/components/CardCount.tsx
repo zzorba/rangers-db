@@ -4,26 +4,35 @@ import { map, range } from 'lodash';
 
 import { Slots } from '../types/types';
 import { CardFragment } from '../generated/graphql/apollo-schema';
-
+import { BiBookmark, BiBookmarkAlt, BiSolidBookmark, BiSolidBookmarkAlt } from 'react-icons/bi';
 export default function CardCount({
   count,
+  starred,
   marginLeft,
   delta,
-}: { count: number; marginLeft?: number; delta?: boolean }) {
+}: {
+  count: number;
+  starred?: boolean;
+  marginLeft?: number;
+  delta?: boolean;
+}) {
   return (
-    <Box fontFamily="mono"
-      borderRadius="md"
-      borderWidth="1px"
-      bg={useColorModeValue('gray.100', 'gray.600')}
-      borderColor="gray.300"
-      color={useColorModeValue('gray.800', 'white')}
-      padding={2}
-      marginLeft={marginLeft}
-      px={2}
-      py={3}
-    >
-      { delta ? (count > 0 ? `+${count}` : `${count}`) : `×${count}` }
-    </Box>
+    <Flex direction="row">
+      <Box fontFamily="mono"
+        borderRadius="md"
+        borderWidth="1px"
+        bg={useColorModeValue('gray.100', 'gray.600')}
+        borderColor="gray.300"
+        color={useColorModeValue('gray.800', 'white')}
+        padding={2}
+        marginLeft={marginLeft}
+        px={2}
+        py={3}
+      >
+        { delta ? (count > 0 ? `+${count}` : `${count}`) : `×${count}` }
+      </Box>
+      { !!starred && <BiSolidBookmark /> }
+    </Flex>
   );
 }
 
@@ -113,13 +122,16 @@ export function CountToggle({ code, slots, setSlots }: { code: string; slots: Sl
   );
 }
 
-export function CountControls({ card, slots, setSlots, onClose, countMode, max }: {
+export function CountControls({ card, slots, extraSlots, setSlots, onClose, countMode, max, context, setExtraSlots }: {
   onClose?: () => void;
   card: CardFragment;
   slots: Slots;
+  extraSlots: Slots;
   setSlots: (card: CardFragment, count: number) => void;
+  setExtraSlots: (card: CardFragment, count: number) => void;
   countMode?: 'noah';
   max?: number;
+  context?: 'modal' | 'extra';
 }) {
   const onChange = useCallback((value: string) => {
     if (value === '+') {
@@ -137,9 +149,15 @@ export function CountControls({ card, slots, setSlots, onClose, countMode, max }
     value: currentCount,
     onChange: onChange,
   });
+  const toggleSaved = useCallback(() => {
+    setExtraSlots(card, (card.id && extraSlots[card.id]) ? 0 : 1);
+  }, [setExtraSlots, extraSlots, card]);
+  const starred = !!(card.id && extraSlots[card.id]);
+
   return (
     <Flex direction="row">
-      { map(
+      { !!context && <Button variant="unstyled" onClick={toggleSaved}>{starred ? <BiSolidBookmarkAlt size={40}/> : <BiBookmarkAlt size={40} />}</Button>  }
+      { (context !== 'extra') && map(
         countMode === 'noah' ? ['0', '2'] : map(range(0, (max || 2) + 1), x => `${x}`),
         value => {
           const radio = getRadioProps({ value });

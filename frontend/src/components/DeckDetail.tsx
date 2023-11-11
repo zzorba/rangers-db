@@ -59,6 +59,8 @@ import LikeButton from './LikeButton';
 import CommentsComponent from './CommentsComponent';
 import UserLink from './UserLink';
 import DeckChanges from './DeckChanges';
+import { SimpleCardList } from './CardList';
+import { BiBookmarkAlt, BiSolidBookmarkAlt } from 'react-icons/bi';
 
 const SHOW_COMMENTS = process.env.NODE_ENV === 'development';
 
@@ -94,10 +96,10 @@ function ChosenRole({ role, showCard, children }: { role: CardFragment; showCard
 export default function DeckDetail({ deck, cards, onLike }: Props) {
   const { authUser } = useAuth();
   const { categories, i18n } = useLocale();
-  const [showCard, cardModal] = useCardModal(deck.slots);
+  const [showCard, cardModal] = useCardModal({ slots: deck.slots, extraSlots: deck.extra_slots });
   const specialty: string | undefined = typeof deck.meta.specialty === 'string' ? deck.meta.specialty : undefined;
   const hasCards = useMemo(() => values(cards).length > 0, [cards]);
-  const parsedDeck = useMemo(() => parseDeck(deck, deck.meta, deck.slots, deck.side_slots, cards, categories, deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots', 'side_slots']) : undefined), [deck, cards, categories]);
+  const parsedDeck = useMemo(() => parseDeck(deck, deck.meta, deck.slots, deck.side_slots, deck.extra_slots, cards, categories, deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots', 'side_slots']) : undefined), [deck, cards, categories]);
   const [upgradeDeck] = useUpgradeDeckMutation();
   const [upgrading, setUpgrading] = useState(false);
   const onUpgradeDeck = useCallback(async() => {
@@ -153,6 +155,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
             spi: deck.spi,
             meta: deck.meta,
             slots: deck.slots,
+            extraSlots: deck.extra_slots,
             description: deck.description,
           },
         });
@@ -431,11 +434,26 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
               </Stack>
             </GridItem>
           ) }
+          { !!parsedDeck.extraCards.length && (
+            <GridItem colSpan={6}>
+              <Stack>
+                <Flex direction="row">
+                  <Box paddingTop={0.5} paddingRight={1}>
+                    <BiSolidBookmarkAlt size={18} color="#888888" />
+                  </Box>
+                  <Text fontSize="lg" paddingBottom={1} textDecorationLine="underline">
+                    {t`Side deck`}
+                  </Text>
+                </Flex>
+                <SimpleCardList cards={parsedDeck.extraCards} showCard={showCard} />
+              </Stack>
+            </GridItem>
+          )}
           { !deck.published && (!!deck.previous_deck || !!deck.next_deck) && (
             <GridItem colSpan={6}>
               <Flex direction="column" marginTop={8}>
                 { !!deck.previous_deck && (
-                  <Text fontSize="lg">
+                  <Text fontSize="lg" textDecorationLine="underline">
                     { t`Changes` }
                   </Text>
 

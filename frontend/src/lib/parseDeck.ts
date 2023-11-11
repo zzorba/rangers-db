@@ -95,6 +95,7 @@ export interface ParsedDeck {
   loading: boolean;
   deckSize: number;
   maladyCount: number;
+  extraCards: CardFragment[];
 
   changes?: DeckChanges;
 }
@@ -103,6 +104,7 @@ export default function parseDeck(
   meta: DeckMeta,
   slots: Slots,
   sideSlots: Slots,
+  extraSlots: Slots,
   cards: CardsMap,
   categoryTranslations: CategoryTranslations,
   previousDeck: { meta?: DeckMeta; slots?: Slots; side_slots?: Slots } | undefined
@@ -340,6 +342,13 @@ export default function parseDeck(
       problem: undefined,
     },
   ];
+  const extraCards: CardFragment[] = flatMap(keys(extraSlots), (code) => {
+    const card = cards[code];
+    if (extraSlots[code] && card && card.id) {
+      return card;
+    }
+    return [];
+  });
   forEach(items, i => {
     if (i.type === 'card') {
       if (i.card.set_id === 'personality') {
@@ -400,6 +409,7 @@ export default function parseDeck(
       ...globalProblems,
       ...flatMap(result, i => i.problem || []),
     ]),
+    extraCards,
     roleProblems,
     cards: result,
     loading: missingCards.length > 0,

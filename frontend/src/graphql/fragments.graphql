@@ -61,6 +61,7 @@ fragment Deck on rangers_deck {
   user_id
   slots
   side_slots
+  extra_slots
   version
   name
   description

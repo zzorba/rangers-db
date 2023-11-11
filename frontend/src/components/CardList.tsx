@@ -5,7 +5,7 @@ import { FaFilter } from 'react-icons/fa';
 import { Box, Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels, IconButton, Collapse, Select, Wrap, WrapItem, Stack } from '@chakra-ui/react';
 
 import { CardFragment } from '../generated/graphql/apollo-schema';
-import Card, { CardRow, useCardModal } from './Card';
+import Card, { CardRow, RenderCardControl, useCardModal } from './Card';
 import LoadingPage from './LoadingPage';
 import { useLocale } from '../lib/TranslationProvider';
 import ListHeader from './ListHeader';
@@ -121,15 +121,16 @@ interface SimpleCardListProps {
   header?: 'aspect' | 'set' | 'none';
   advancedControls?: React.ReactNode;
   filter?: (card: CardFragment) => boolean;
-  renderControl?: (card: CardFragment) => React.ReactNode;
+  renderControl?: RenderCardControl;
   emptyText?: string;
   controls?: React.ReactNode;
   noSearch?: boolean;
   hasFilters?: boolean;
   hasOptions?: boolean;
   renderStyle?: CardRenderStyle;
+  context?: 'extra';
 }
-export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard, hasOptions, renderStyle: propRenderStyle }: SimpleCardListProps) {
+export function SimpleCardList({ context, noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard, hasOptions, renderStyle: propRenderStyle }: SimpleCardListProps) {
   const { locale } = useLocale();
   const [search, setSearch] = useState('');
   const visibleCards = useMemo(() => {
@@ -223,7 +224,7 @@ export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard
 
   return (
     <>
-      { !noSearch && (
+      { !noSearch && !!cards?.length && (
         <Flex direction={{ base: 'column', md: 'row' }}>
           <Box flex={2}>
             <Input
@@ -249,17 +250,27 @@ export function SimpleCardList({ noSearch, hasFilters, cards, controls, showCard
         </Collapse>
       )}
       { sections.length ?
-        map(sections, (section, idx) => <CardListSection key={idx} section={section} renderControl={renderControl} showCard={showCard} renderStyle={propRenderStyle ?? renderStyle} />)
+        map(sections, (section, idx) => (
+          <CardListSection
+            key={idx}
+            section={section}
+            renderControl={renderControl}
+            showCard={showCard}
+            renderStyle={propRenderStyle ?? renderStyle}
+            context={context}
+          />)
+        )
         : emptyState }
     </>
   );
 }
 
-function CardListSection({ section, renderControl, renderStyle, showCard }: {
+function CardListSection({ section, renderControl, renderStyle, showCard, context}: {
   section: ItemSection;
-  renderControl?: (card: CardFragment) => React.ReactNode;
+  renderControl?: RenderCardControl;
   renderStyle: CardRenderStyle;
   showCard: (card: CardFragment) => void;
+  context?: 'extra';
 }) {
   switch (renderStyle) {
     case 'list':
@@ -268,7 +279,7 @@ function CardListSection({ section, renderControl, renderStyle, showCard }: {
           { !!section.title &&  <CardHeader key={section.title} title={section.title} /> }
           { map(section.items, item => (
             <CardButtonRow key={item.card.id} card={item.card} showModal={showCard}>
-              { !!renderControl && !!item.card.id && renderControl(item.card)}
+              { !!renderControl && !!item.card.id && renderControl(item.card, { context })}
             </CardButtonRow>
           )) }
         </List>
@@ -321,7 +332,7 @@ export function SpoilerCardList({
   unlocked?: string[];
   cards: CardFragment[] | undefined;
   showCard: (card: CardFragment) => void;
-  renderControl?: (card: CardFragment) => React.ReactNode;
+  renderControl?: RenderCardControl;
   upsellText?: string;
   header?: 'aspect' | 'set' | 'none';
   hasOptions?: boolean,

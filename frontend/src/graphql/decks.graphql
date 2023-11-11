@@ -255,6 +255,7 @@ mutation createDeck(
   $spi: Int!,
   $meta: jsonb!,
   $slots: jsonb!,
+  $extraSlots: jsonb!,
   $description: String
 ) {
   deck: insert_rangers_deck_one(
@@ -266,6 +267,7 @@ mutation createDeck(
       spi: $spi
       meta: $meta
       slots: $slots
+      extra_slots: $extraSlots
       description: $description
     }
   ) {
@@ -306,7 +308,8 @@ mutation saveDeck(
   $spi: Int!,
   $meta: jsonb!,
   $slots: jsonb!,
-  $sideSlots: jsonb!
+  $sideSlots: jsonb!,
+  $extraSlots: jsonb!,
 ) {
   update_rangers_deck_by_pk(
     pk_columns: { id: $id }
@@ -319,6 +322,7 @@ mutation saveDeck(
       meta: $meta,
       slots: $slots
       side_slots: $sideSlots,
+      extra_slots: $extraSlots,
     }
   ) {
     ...Deck

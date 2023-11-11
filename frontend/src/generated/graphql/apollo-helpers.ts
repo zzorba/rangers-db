@@ -1,5 +1,5 @@
 import { FieldPolicy, FieldReadFunction, TypePolicies, TypePolicy } from '@apollo/client/cache';
-export type all_cardKeySpecifier = ('alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'heals_damage' | 'heals_horror' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'tags' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
+export type all_cardKeySpecifier = ('alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'heals_damage' | 'heals_horror' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'side_deck_options' | 'side_deck_requirements' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'tags' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
 export type all_cardFieldPolicy = {
 	alt_art_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -77,6 +77,8 @@ export type all_cardFieldPolicy = {
 	restrictions?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
 	shroud?: FieldPolicy<any> | FieldReadFunction<any>,
+	side_deck_options?: FieldPolicy<any> | FieldReadFunction<any>,
+	side_deck_requirements?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_agility?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2244,7 +2246,7 @@ export type chaos_bag_tarot_mode_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type conquest_cardKeySpecifier = ('attack' | 'back_attack' | 'back_card_id' | 'back_flavor' | 'back_health' | 'back_imagesrc' | 'back_text' | 'back_traits' | 'back_tts_sheet_url' | 'command_hammers' | 'cost' | 'faction_id' | 'flavor' | 'health' | 'horizontal' | 'id' | 'illustrator' | 'imagesrc' | 'keywords' | 'loyalty_id' | 'name' | 'pack_id' | 'position' | 'preparation' | 'quantity' | 'shields' | 'signature_id' | 'text' | 'traits' | 'tts_sheet_position' | 'tts_sheet_url' | 'type_id' | 'unique' | 'updated_at' | conquest_cardKeySpecifier)[];
+export type conquest_cardKeySpecifier = ('attack' | 'back_attack' | 'back_card_id' | 'back_flavor' | 'back_health' | 'back_imagesrc' | 'back_text' | 'back_traits' | 'back_tts_sheet_url' | 'command_hammers' | 'cost' | 'deck_rules' | 'faction_id' | 'flavor' | 'health' | 'horizontal' | 'id' | 'illustrator' | 'imagesrc' | 'keywords' | 'loyalty_id' | 'name' | 'pack_id' | 'position' | 'preparation' | 'quantity' | 'shields' | 'signature_id' | 'text' | 'traits' | 'tts_sheet_position' | 'tts_sheet_url' | 'type_id' | 'unique' | 'updated_at' | conquest_cardKeySpecifier)[];
 export type conquest_cardFieldPolicy = {
 	attack?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_attack?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2257,6 +2259,7 @@ export type conquest_cardFieldPolicy = {
 	back_tts_sheet_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	command_hammers?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_rules?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2314,7 +2317,7 @@ export type conquest_card_avg_fieldsFieldPolicy = {
 	signature_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	tts_sheet_position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type conquest_card_localizedKeySpecifier = ('attack' | 'back_attack' | 'back_card_id' | 'back_flavor' | 'back_health' | 'back_imagesrc' | 'back_text' | 'back_traits' | 'command_hammers' | 'cost' | 'faction_id' | 'faction_name' | 'flavor' | 'health' | 'horizontal' | 'id' | 'illustrator' | 'imagesrc' | 'keywords' | 'locale' | 'loyalty_id' | 'loyalty_name' | 'name' | 'pack_cycle_id' | 'pack_cycle_name' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'preparation' | 'quantity' | 'real_back_flavor' | 'real_back_imagesrc' | 'real_back_text' | 'real_back_traits' | 'real_flavor' | 'real_imagesrc' | 'real_keywords' | 'real_name' | 'real_text' | 'real_traits' | 'shields' | 'signature_id' | 'text' | 'traits' | 'tts_sheet_position' | 'tts_sheet_url' | 'type_id' | 'type_name' | 'unique' | 'updated_at' | conquest_card_localizedKeySpecifier)[];
+export type conquest_card_localizedKeySpecifier = ('attack' | 'back_attack' | 'back_card_id' | 'back_flavor' | 'back_health' | 'back_imagesrc' | 'back_text' | 'back_traits' | 'command_hammers' | 'cost' | 'deck_rules' | 'faction_id' | 'faction_name' | 'flavor' | 'health' | 'horizontal' | 'id' | 'illustrator' | 'imagesrc' | 'keywords' | 'locale' | 'loyalty_id' | 'loyalty_name' | 'name' | 'pack_cycle_id' | 'pack_cycle_name' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'preparation' | 'quantity' | 'real_back_flavor' | 'real_back_imagesrc' | 'real_back_text' | 'real_back_traits' | 'real_flavor' | 'real_imagesrc' | 'real_keywords' | 'real_name' | 'real_text' | 'real_traits' | 'shields' | 'signature_id' | 'text' | 'traits' | 'tts_sheet_position' | 'tts_sheet_url' | 'type_id' | 'type_name' | 'unique' | 'updated_at' | conquest_card_localizedKeySpecifier)[];
 export type conquest_card_localizedFieldPolicy = {
 	attack?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_attack?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2326,6 +2329,7 @@ export type conquest_card_localizedFieldPolicy = {
 	back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	command_hammers?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_rules?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7386,7 +7390,7 @@ export type rangers_comment_variance_fieldsFieldPolicy = {
 	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	response_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_deckKeySpecifier = ('awa' | 'base_deck' | 'base_deck_id' | 'campaign' | 'campaign_id' | 'comment_count' | 'comments' | 'comments_aggregate' | 'copy_count' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'like_count' | 'liked_by_user' | 'likes' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'original_deck' | 'previous_deck' | 'published' | 'rank' | 'side_slots' | 'slots' | 'spi' | 'tags' | 'updated_at' | 'upgrade' | 'user' | 'user_id' | 'version' | rangers_deckKeySpecifier)[];
+export type rangers_deckKeySpecifier = ('awa' | 'base_deck' | 'base_deck_id' | 'campaign' | 'campaign_id' | 'comment_count' | 'comments' | 'comments_aggregate' | 'copy_count' | 'created_at' | 'description' | 'extra_slots' | 'fit' | 'foc' | 'id' | 'like_count' | 'liked_by_user' | 'likes' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'original_deck' | 'previous_deck' | 'published' | 'rank' | 'side_slots' | 'slots' | 'spi' | 'tags' | 'updated_at' | 'upgrade' | 'user' | 'user_id' | 'version' | rangers_deckKeySpecifier)[];
 export type rangers_deckFieldPolicy = {
 	awa?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_deck?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7399,6 +7403,7 @@ export type rangers_deckFieldPolicy = {
 	copy_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	extra_slots?: FieldPolicy<any> | FieldReadFunction<any>,
 	fit?: FieldPolicy<any> | FieldReadFunction<any>,
 	foc?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,

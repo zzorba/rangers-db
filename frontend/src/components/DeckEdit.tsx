@@ -42,7 +42,7 @@ import { Select as ChakraReactSelect, chakraComponents, OptionProps, SingleValue
 import { CardFragment, DeckDetailFragment, DeckFragment, useCreateDeckMutation, useSaveDeckDescriptionMutation, useSaveDeckMutation } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import AspectCounter from './AspectCounter';
-import { AspectStats, AWA, DeckCardError, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
+import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap, CategoryTranslation } from '../lib/hooks';
 import { CardRow, RenderCardControl, ShowCard, useCardModal } from './Card';
 import { SimpleCardList, SpoilerCardList } from './CardList';
@@ -63,6 +63,7 @@ import { useTheme } from '../lib/ThemeContext';
 import { FaInbox } from 'react-icons/fa';
 import { useCardSearchControls } from './CardFilter';
 import DeckChanges from './DeckChanges';
+import { BiSolidBookmarkAlt } from 'react-icons/bi';
 
 interface Props {
   deck: DeckDetailFragment;
@@ -326,8 +327,10 @@ function useChooseRoleModal(
   ];
 }
 
-const icons = ['conflict', 'connection', 'reason', 'exploration', 'harm', 'progress', 'ranger', 'reshuffle', 'guide', 'per_ranger', 'sun', 'crest', 'mountain',
-'conditional', 'AWA', 'FIT', 'SPI', 'FOC']
+const icons = [
+  'conflict', 'connection', 'reason', 'exploration', 'harm', 'progress', 'ranger', 'reshuffle', 'guide', 'per_ranger', 'sun', 'crest', 'mountain',
+  'conditional', 'AWA', 'FIT', 'SPI', 'FOC',
+];
 function EditDescriptionTab({ deck }: { deck: DeckFragment }) {
   const { isOpen: editing, onOpen, onClose } = useDisclosure();
   const [saveDescription] = useSaveDeckDescriptionMutation();
@@ -390,6 +393,7 @@ function BaseDeckbuildingTabs({
   stats,
   background,
   specialty,
+  extraSlots,
   showCard,
   deck,
 }: {
@@ -398,15 +402,17 @@ function BaseDeckbuildingTabs({
   background: string | undefined;
   specialty: string | undefined;
   slots: Slots;
+  extraSlots: Slots;
   deck: DeckFragment,
   showCard: ShowCard;
-  renderControl: (card: CardFragment) => React.ReactNode;
+  renderControl: RenderCardControl;
 }) {
-  const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards] = useMemo(() => {
+  const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards, extraCards] = useMemo(() => {
     const pc: CardFragment[] = [];
     const bc: CardFragment[] = [];
     const sc: CardFragment[] = [];
     const oic: CardFragment[] = [];
+    const ec: CardFragment[] = [];
     forEach(sortBy(values(cards), c => c?.set_position || 0), c => {
       if (!c) {
         return;
@@ -422,6 +428,9 @@ function BaseDeckbuildingTabs({
             return;
           }
         }
+      }
+      if (c.id && extraSlots[c.id]) {
+        ec.push(c);
       }
       if (c.set_id === 'personality') {
         pc.push(c);
@@ -443,8 +452,8 @@ function BaseDeckbuildingTabs({
         }
       }
     });
-    return [pc, bc, sc, oic];
-  }, [cards, specialty, background, stats]);
+    return [pc, bc, sc, oic, ec];
+  }, [cards, specialty, background, stats, extraSlots]);
   const { colors } = useTheme();
   return (
     <Tabs>
@@ -453,7 +462,7 @@ function BaseDeckbuildingTabs({
         <Tab>{t`Background`}</Tab>
         <Tab>{t`Specialty`}</Tab>
         <Tab>{t`Outside Interest`}</Tab>
-        <Tab>{t`Description`}</Tab>
+        <Tab>{t`Notes`}</Tab>
       </TabList>
       <TabPanels>
         <TabPanel>
@@ -504,16 +513,30 @@ function BaseDeckbuildingTabs({
         </TabPanel>
         <TabPanel>
           <EditDescriptionTab deck={deck} />
+          <Flex direction="row">
+            <Box paddingTop={0.5} paddingRight={1}>
+              <BiSolidBookmarkAlt size={18} color="#888888" />
+            </Box>
+            <Text fontSize="md" className='lightText' paddingBottom={1}>
+              {t`Side deck`}
+            </Text>
+          </Flex>
+          <SimpleCardList
+            cards={extraCards}
+            showCard={showCard}
+            renderControl={renderControl}
+          />
         </TabPanel>
       </TabPanels>
     </Tabs>
   );
 }
 
-function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCard, deck, unlockedRewards, renderControl, sideSlots, slots, stats, cards }: {
+function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCard, deck, unlockedRewards, renderControl, sideSlots, slots, stats, cards, extraSlots }: {
   cards: CardsMap;
   stats: AspectStats;
   slots: Slots;
+  extraSlots: Slots;
   sideSlots: Slots;
   unlockedRewards: string[] | undefined;
   deck: DeckFragment;
@@ -522,11 +545,12 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
   showDisplacedCard: ShowCard;
   renderControl: RenderCardControl;
 }) {
-  const [rewardCards, maladyCards, sideCards, collectionCards] = useMemo(() => {
+  const [rewardCards, maladyCards, sideCards, collectionCards, extraCards] = useMemo(() => {
     const rc: CardFragment[] = [];
     const mc: CardFragment[] = [];
     const sc: CardFragment[] = [];
     const ac: CardFragment[] = [];
+    const ec: CardFragment[] = [];
     forEach(sortBy(values(cards), c => c?.set_position || 0), c => {
       if (!c) {
         return;
@@ -547,6 +571,9 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
           }
         }
       }
+      if (c.id && extraSlots[c.id]) {
+        ec.push(c);
+      }
       if (c.set_id === 'reward') {
         rc.push(c);
         return;
@@ -561,8 +588,8 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
         return;
       }
     });
-    return [rc, mc, sc, ac];
-  }, [cards, slots, sideSlots, stats]);
+    return [rc, mc, sc, ac, ec];
+  }, [cards, slots, sideSlots, stats, extraSlots]);
   const [tabIndex, setTabIndex] = useState(0);
   const focusDisplaced = useCallback(() => setTabIndex(3), [setTabIndex]);
 
@@ -623,7 +650,23 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
       <Text fontSize="md" marginBottom={4} paddingBottom={1} borderBottomWidth="1px">
         {t`Description`}
       </Text>
-      <EditDescriptionTab deck={deck} />
+      <Box>
+        <EditDescriptionTab deck={deck} />
+        <Flex direction="row">
+          <Box paddingTop={0.5} paddingRight={1}>
+            <BiSolidBookmarkAlt size={18} color="#888888" />
+          </Box>
+          <Text fontSize="md" className='lightText' paddingBottom={1}>
+            {t`Side deck`}
+          </Text>
+        </Flex>
+        <SimpleCardList
+          cards={extraCards}
+          showCard={showCard}
+          renderControl={renderControl}
+          context='extra'
+        />
+      </Box>
     </>
   );
 }
@@ -649,9 +692,10 @@ function useSlots(originalSlots: Slots) : [Slots, (card: CardFragment, count: nu
 
 export default function DeckEdit({ deck, cards }: Props) {
   const [stats, setStats] = useState<AspectStats>(pick(deck, ['awa', 'fit', 'foc', 'spi']));
-  const [slots, updateSlots] = useSlots(deck.slots || {});
-  const [sideSlots, updateSideSlots] = useSlots(deck.side_slots || {});
-  const [meta, setMeta] = useState<DeckMeta>(deck.meta || {});
+  const [slots, updateSlots] = useSlots(deck.slots ?? {});
+  const [sideSlots, updateSideSlots] = useSlots(deck.side_slots ?? {});
+  const [extraSlots, updateExtraSlots] = useSlots(deck.extra_slots ?? {});
+  const [meta, setMeta] = useState<DeckMeta>(deck.meta ?? {});
   const isUpgrade = !!deck.previous_deck || !!(typeof meta.campaign === 'boolean' ? meta.campaign : undefined);
 
   const updateUpgradeSlots = useCallback((card: CardFragment, count: number) => {
@@ -663,10 +707,14 @@ export default function DeckEdit({ deck, cards }: Props) {
       updateSlots(card, count);
     }
   }, [slots, sideSlots, updateSlots, updateSideSlots]);
+
   const renderControl = useCallback((
     card: CardFragment,
-    onClose?: () => void,
-    max?: number
+    { onClose, max, context }: {
+      onClose?: () => void,
+      max?: number;
+      context?: 'modal' | 'extra';
+    } = {}
   ) => {
     if (card.set_id === 'malady') {
       return (
@@ -679,21 +727,23 @@ export default function DeckEdit({ deck, cards }: Props) {
     }
     const theMax = (isUpgrade && card.id) ? (max || (
       (slots[card.id] || 0) + (sideSlots[card.id] || 0))) : undefined;
-
     return (
       <CountControls
         card={card}
         slots={slots}
+        extraSlots={extraSlots}
         setSlots={!isUpgrade ? updateSlots : updateUpgradeSlots}
+        setExtraSlots={updateExtraSlots}
         countMode={!isUpgrade ? 'noah' : undefined}
         onClose={onClose}
         max={theMax}
+        context={context}
       />
     );
-  }, [slots, sideSlots, updateSlots, updateUpgradeSlots, isUpgrade]);
+  }, [slots, extraSlots, sideSlots, updateSlots, updateUpgradeSlots, updateExtraSlots, isUpgrade]);
 
   const renderCollectionControl = useCallback(
-    (card: CardFragment, onClose?: () => void) => {
+    (card: CardFragment, { onClose, context }: { onClose?: () => void; context?: 'modal' | 'extra' } = {}) => {
       return (
         <Flex direction="column" alignItems="flex-end">
           <Text fontSize="sm" textAlign="right" marginBottom={2}>
@@ -701,12 +751,12 @@ export default function DeckEdit({ deck, cards }: Props) {
               t`When adding a card from the collection, remember to return a deck card.`
             }
           </Text>
-          { renderControl(card, onClose, 2) }
+          { renderControl(card, { onClose, context, max: 2 }) }
         </Flex>
       );
     }, [renderControl]);
   const renderDisplacedControl = useCallback(
-    (card: CardFragment, onClose?: () => void) => {
+    (card: CardFragment, { onClose, context }: { onClose?: () => void; context?: 'modal' | 'extra' } = {}) => {
       return (
         <Flex direction="column" alignItems="flex-end">
           { !!card.id && (sideSlots[card.id] || 0) > 0 && (
@@ -725,14 +775,14 @@ export default function DeckEdit({ deck, cards }: Props) {
               { t`Return a copy to the collection` }
             </Button>
           ) }
-          { renderControl(card, onClose) }
+          { renderControl(card, { onClose, context }) }
         </Flex>
       );
     }, [renderControl, updateSideSlots, sideSlots]);
 
-  const [showCard, cardModal] = useCardModal(slots, renderControl);
-  const [showCollectionCard, collectionCardModal] = useCardModal(slots, renderCollectionControl, 'collectionModal');
-  const [showDisplacedCard, displacedCardModal] = useCardModal(slots, renderDisplacedControl, 'displacedModal');
+  const [showCard, cardModal] = useCardModal({ slots, extraSlots, renderControl });
+  const [showCollectionCard, collectionCardModal] = useCardModal({ slots, extraSlots, renderControl: renderCollectionControl, key: 'collectionModal' });
+  const [showDisplacedCard, displacedCardModal] = useCardModal({ slots, extraSlots, renderControl: renderDisplacedControl, key: 'displacedModal' });
 
   const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
   const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
@@ -742,10 +792,11 @@ export default function DeckEdit({ deck, cards }: Props) {
     meta,
     slots,
     sideSlots,
+    extraSlots,
     cards,
     categories,
     deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots', 'side_slots']) : undefined
-  ), [stats, deck.previous_deck, categories, meta, slots, sideSlots, cards]);
+  ), [stats, deck.previous_deck, categories, meta, slots, sideSlots, extraSlots, cards]);
   const setRole = useCallback((role: string) => {
     setMeta({
       ...meta,
@@ -783,9 +834,15 @@ export default function DeckEdit({ deck, cards }: Props) {
     });
     const slotChange = !!find(union(keys(deck.slots), keys(slots)), (key) => {
       return (!!deck.slots[key] !== !!slots[key]) || deck.slots[key] !== slots[key];
-    })
-    return statChange || metaChange || slotChange || name !== deck.name;
-  }, [deck, stats, meta, slots, name]);
+    });
+    const sideSlotChange = !!find(union(keys(deck.side_slots), keys(sideSlots)), (key) => {
+      return (!!deck.side_slots[key] !== !!sideSlots[key]) || deck.side_slots[key] !== sideSlots[key];
+    });
+    const extraSlotChange = !!find(union(keys(deck.extra_slots), (keys(extraSlots))), (key) => {
+      return (!!deck.extra_slots[key] !== !!extraSlots[key]) || deck.extra_slots[key] !== extraSlots[key];
+    });
+    return statChange || metaChange || slotChange || sideSlotChange || extraSlotChange || name !== deck.name;
+  }, [deck, stats, meta, slots, extraSlots, sideSlots, name]);
   const [saveDeck] = useSaveDeckMutation();
   const [saveError, setSaveError] = useState<string | undefined>();
   const saveChanges = useCallback(async() => {
@@ -806,6 +863,7 @@ export default function DeckEdit({ deck, cards }: Props) {
         },
         slots,
         sideSlots,
+        extraSlots,
         name,
         awa: stats.awa,
         foc: stats.foc,
@@ -818,7 +876,7 @@ export default function DeckEdit({ deck, cards }: Props) {
       return;
     }
     setSaveError(r.errors[0].message);
-  }, [saveDeck, stats, meta, slots, sideSlots, name, deck, parsedDeck.problem, parsedDeck.roleProblems, aspectError]);
+  }, [saveDeck, stats, meta, slots, sideSlots, extraSlots, name, deck, parsedDeck.problem, parsedDeck.roleProblems, aspectError]);
   const { colors } = useTheme();
   return (
     <>
@@ -899,6 +957,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               specialty={specialty}
               stats={stats}
               slots={slots}
+              extraSlots={extraSlots}
               renderControl={renderControl}
               showCard={showCard}
               deck={deck}
@@ -910,6 +969,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               showDisplacedCard={showDisplacedCard}
               stats={stats}
               cards={cards}
+              extraSlots={extraSlots}
               sideSlots={sideSlots}
               slots={slots}
               unlockedRewards={deck.campaign?.rewards}
@@ -989,6 +1049,7 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
           problem,
         },
         slots: {},
+        extraSlots: {},
       },
     });
     setSubmitting(false);
@@ -1047,6 +1108,7 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
         fit: starter.fit,
         meta: starter.meta,
         slots: starter.slots,
+        extraSlots: {},
       },
     });
     setSubmitting(false);
