@@ -622,6 +622,9 @@ msgstr ""
 msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 msgstr ""
 
+msgid "Notes"
+msgstr ""
+
 msgid "Old-growth"
 msgstr ""
 
@@ -843,6 +846,9 @@ msgid "Show all"
 msgstr ""
 
 msgid "Show all locations"
+msgstr ""
+
+msgid "Side deck"
 msgstr ""
 
 msgid "Sign In"

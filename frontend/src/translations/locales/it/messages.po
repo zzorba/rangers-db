@@ -622,6 +622,9 @@ msgstr "Nota: queste carte potrebbero contenere spoiler."
 msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 msgstr "Nota: questa campagna è stata creata prima che il sito raccogliesse informazioni a sufficienza per mostrare un diario di viaggio in modo corretto."
 
+msgid "Notes"
+msgstr ""
+
 msgid "Old-growth"
 msgstr "Germoglio Antico"
 
@@ -844,6 +847,9 @@ msgstr "Mostra tutti"
 
 msgid "Show all locations"
 msgstr "Mostra tutti i Luoghi"
+
+msgid "Side deck"
+msgstr ""
 
 msgid "Sign In"
 msgstr "Accedi"

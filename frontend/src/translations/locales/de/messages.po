@@ -622,6 +622,9 @@ msgstr "Hinweis: Diese Karten könnten Spoiler für die Kampagne enthalten."
 msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 msgstr "Hinweis: Diese Kampagne wurde erstellt bevor die Webseite ausreichend Informationen aufgezeichnet hat um die bisherige Reise korrekt anzuzeigen."
 
+msgid "Notes"
+msgstr ""
+
 msgid "Old-growth"
 msgstr "Ur-Wald"
 
@@ -844,6 +847,9 @@ msgstr "Alle anzeigen"
 
 msgid "Show all locations"
 msgstr "Alle Orte anzeigen"
+
+msgid "Side deck"
+msgstr ""
 
 msgid "Sign In"
 msgstr "Einloggen"

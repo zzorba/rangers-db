@@ -622,6 +622,9 @@ msgstr "Note: These cards might contain campaign spoilers."
 msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 msgstr "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 
+msgid "Notes"
+msgstr "Notes"
+
 msgid "Old-growth"
 msgstr "Old-growth"
 
@@ -844,6 +847,9 @@ msgstr "Show all"
 
 msgid "Show all locations"
 msgstr "Show all locations"
+
+msgid "Side deck"
+msgstr "Side deck"
 
 msgid "Sign In"
 msgstr "Sign In"
