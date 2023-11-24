@@ -101,7 +101,7 @@ msgid "Approach icons"
 msgstr "Icônes d'approche"
 
 msgid "Archeological Outpost"
-msgstr ""
+msgstr "Avant-Poste Archéologique"
 
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "Êtes vous sûr de vouloir supprimer ce deck \"{0}\" ?"
@@ -140,19 +140,19 @@ msgid "Background: {backgroundName}"
 msgstr "Antécédent: {backgroundName}"
 
 msgid "Biologist's Outpost"
-msgstr ""
+msgstr "Avant-Poste Biologique"
 
 msgid "Boulder Field"
-msgstr ""
+msgstr "Chaos Rocheux"
 
 msgid "Bowl of the Sun"
-msgstr ""
+msgstr "Vasque du Soleil"
 
 msgid "Branch"
-msgstr ""
+msgstr "Branche"
 
 msgid "Camp"
-msgstr ""
+msgstr "Camper"
 
 msgid "Campaign"
 msgstr "Campagne"
@@ -170,10 +170,10 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgid "Cancel Friend Request"
-msgstr ""
+msgstr "Annuler la demander d'amitié"
 
 msgid "Cancel Friendship"
-msgstr ""
+msgstr "Annulé amitié"
 
 msgid "Card set"
 msgstr "Ensemble de cartes"
@@ -221,7 +221,7 @@ msgid "Completed"
 msgstr "Complété"
 
 msgid "Confirm Friend"
-msgstr ""
+msgstr "Ami confirmé"
 
 msgid "Conflict"
 msgstr "Conflit"
@@ -257,7 +257,7 @@ msgid "Core set"
 msgstr ""
 
 msgid "Cost"
-msgstr ""
+msgstr "Coût"
 
 msgid "Could not find user {handle}"
 msgstr ""
@@ -269,7 +269,7 @@ msgid "Crossed-out"
 msgstr ""
 
 msgid "Crossroads Station"
-msgstr ""
+msgstr "Base de la Croisée des Chemins"
 
 msgid "Current location: {0}"
 msgstr ""
@@ -437,7 +437,7 @@ msgid "Grassland"
 msgstr ""
 
 msgid "Greenbriar Knoll"
-msgstr ""
+msgstr "Tertre de Verbuyère"
 
 msgid "Guide entries"
 msgstr ""
@@ -446,7 +446,7 @@ msgid "Handle"
 msgstr ""
 
 msgid "Headwaters Station"
-msgstr ""
+msgstr "Base de la Source"
 
 msgid "Hide spoilers"
 msgstr "Masquer les spoilers"
@@ -473,7 +473,7 @@ msgid "Journey"
 msgstr ""
 
 msgid "Kobo's Market"
-msgstr ""
+msgstr "Marché de Kobo"
 
 msgid "Lakeshore"
 msgstr ""
@@ -518,22 +518,22 @@ msgid "Markdown"
 msgstr ""
 
 msgid "Marsh of Rebirth"
-msgstr ""
+msgstr "Marais de la Renaissance"
 
 msgid "Meadow"
-msgstr ""
+msgstr "Prairie"
 
 msgid "Member since {joinDate}"
 msgstr "Membre depuis le {joinDate}"
 
 msgid "Michael's Bog"
-msgstr ""
+msgstr "Marais de Michael"
 
 msgid "Missions"
 msgstr ""
 
 msgid "Mound of the Navigator"
-msgstr ""
+msgstr "Le piton du navigateur"
 
 msgid "Mount Nim"
 msgstr "Mont Nim"
@@ -783,7 +783,7 @@ msgid "Rewards and Maladies"
 msgstr ""
 
 msgid "Rings of the Moon"
-msgstr ""
+msgstr "Anneaux Lunaires"
 
 msgid "River"
 msgstr ""
@@ -876,7 +876,7 @@ msgid "SPI"
 msgstr "ESP"
 
 msgid "Spire"
-msgstr ""
+msgstr "Flèche"
 
 msgid "Spirit"
 msgstr "Esprit"
@@ -891,13 +891,13 @@ msgid "Stayed at {0}"
 msgstr ""
 
 msgid "Stoneweaver Bridge"
-msgstr ""
+msgstr "Pont de pierre tissée"
 
 msgid "Submit"
 msgstr "Soumettre"
 
 msgid "Sunken Outpost"
-msgstr ""
+msgstr "Avant-Poste Submergé"
 
 msgid "Swamp"
 msgstr "Marais"
@@ -906,31 +906,31 @@ msgid "Terrain"
 msgstr "Terrain"
 
 msgid "Terravore"
-msgstr ""
+msgstr "Terravore"
 
 msgid "The Alluvial Ruins"
-msgstr ""
+msgstr "Les Ruines Alluviales"
 
 msgid "The Concordant Ziggurats"
-msgstr ""
+msgstr "Les Ziggourats Jumelles"
 
 msgid "The Cypress Citadel"
-msgstr ""
+msgstr "La Citadelle de Cyprès"
 
 msgid "The Fractured Wall"
-msgstr ""
+msgstr "Le Mur Fracturé"
 
 msgid "The Frowning Gate"
-msgstr ""
+msgstr "Le Passage Torve"
 
 msgid "The Furrow"
-msgstr ""
+msgstr "Le Sillon"
 
 msgid "The Greenbridge"
-msgstr ""
+msgstr "Le Pont Végétal"
 
 msgid "The High Basin"
-msgstr ""
+msgstr "Le Haut Bassin"
 
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr ""
@@ -939,16 +939,16 @@ msgid "The Philosopher's Garden"
 msgstr "Le Jardin du Philosophe"
 
 msgid "The Plummet"
-msgstr ""
+msgstr "L'Escarpement"
 
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr ""
 
 msgid "The Tumbledown"
-msgstr ""
+msgstr "Culbute"
 
 msgid "The Valley"
-msgstr ""
+msgstr "La Vallée"
 
 msgid "There are too many cards with this card's name in your deck."
 msgstr ""
@@ -1062,7 +1062,7 @@ msgid "View as Images"
 msgstr "Affichage en images"
 
 msgid "Watcher's Rock"
-msgstr ""
+msgstr "Rocher de la Vigie"
 
 msgid "Welcome to RangersDB"
 msgstr "Bienvenue à RangersDB"
