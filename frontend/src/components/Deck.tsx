@@ -236,7 +236,7 @@ export function DeckStats({ deck, columns = 1 }: { deck: ParsedDeck; columns?: R
   }, [deck.cards]);
   return (
     <SimpleGrid columns={columns}>
-      <GridItem>
+      <GridItem colSpan={1}>
         <TableContainer m={2}>
           <Table variant="simple">
             <TableCaption placement="top">{t`Icons`}</TableCaption>
@@ -272,7 +272,7 @@ export function DeckStats({ deck, columns = 1 }: { deck: ParsedDeck; columns?: R
           </Table>
         </TableContainer>
       </GridItem>
-      <GridItem>
+      <GridItem colSpan={1}>
         <TableContainer m={2}>
           <Table variant="simple">
             <TableCaption placement="top">{t`Cost`}</TableCaption>

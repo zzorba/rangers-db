@@ -423,9 +423,8 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                 {map(parsedDeck.cards, item => <DeckItemComponent key={item.id} item={item} showCard={showCard} />)}
               </List>
             ) : <Spinner size="md" /> }
-          </GridItem>
-          <GridItem colSpan={6}>
-            <DeckStats deck={parsedDeck} columns={[1,2]} />
+            <DeckStats deck={parsedDeck} columns={deck.description ? 1 : [1, 2]} />
+
           </GridItem>
           { !!deck.description && (
             <GridItem colSpan={[6, 6, 2, 3]}>
