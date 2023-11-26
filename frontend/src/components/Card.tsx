@@ -13,8 +13,6 @@ import {
   ModalFooter,
   AspectRatio,
   useColorMode,
-  Show,
-  Button,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
 import { t } from '@lingui/macro';
