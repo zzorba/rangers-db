@@ -812,6 +812,9 @@ msgstr "Salva modifiche"
 msgid "Search by name"
 msgstr "Cerca per nome"
 
+msgid "Search card text"
+msgstr ""
+
 msgid "See comments"
 msgstr "Vedi commenti"
 
@@ -919,6 +922,9 @@ msgstr ""
 
 msgid "Terravore"
 msgstr "Terravoro"
+
+msgid "Text"
+msgstr ""
 
 msgid "The Alluvial Ruins"
 msgstr "Rovine Alluvionali"

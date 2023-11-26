@@ -812,6 +812,9 @@ msgstr "Änderungen speichern"
 msgid "Search by name"
 msgstr "Nach Name suchen"
 
+msgid "Search card text"
+msgstr ""
+
 msgid "See comments"
 msgstr "Kommentare ansehen"
 
@@ -919,6 +922,9 @@ msgstr "Terrain"
 
 msgid "Terravore"
 msgstr "Erdfresser"
+
+msgid "Text"
+msgstr ""
 
 msgid "The Alluvial Ruins"
 msgstr "Schwemmland-Ruinen"
