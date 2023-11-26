@@ -11,6 +11,18 @@ import { useLocale } from '../lib/TranslationProvider';
 import { AWA, FIT, FOC, SPI } from '../types/types';
 import CoreIcon from '../icons/CoreIcon';
 
+function parseString(value: string): string | null {
+  if (!value.trim()) {
+    return null;
+  }
+  return value;
+}
+function serializeString(value: string): string {
+  if (value.trim()) {
+    return value.trim();
+  }
+  return '';
+}
 function serializeArray(value: string[]): string {
   return value.join(',');
 }
@@ -319,18 +331,30 @@ function aspectLevelFilter(level: NumberCompare | null, aspectLevel: number | nu
   return true;
 }
 
-function useSearchQueryState<T>(name: string, options: UseQueryStateOptions<T>): [T | null, (value: null | NonNullable<ReturnType<typeof options.parse>>) => Promise<boolean>] {
+function useSearchQueryState<T>(
+  name: string,
+  options: UseQueryStateOptions<T> & { disabled?: boolean },
+): [
+  T | null,
+  (value: null | NonNullable<T>) => void,
+] {
   const [value, setValue] = useQueryState<T>(name, options);
   const mySetValue = useCallback(async(value: null | NonNullable<T>) => {
-    return await setValue(value, { scroll: false, shallow: true });
+    await setValue(value, { scroll: false, shallow: true });
   }, [setValue]);
-  return [
-    value,
-    mySetValue,
-  ];
+  const [localValue, setLocalValue] = useState<T | null>(null);
+
+  const mySetLocalValue = useCallback((value: null | NonNullable<T>) => {
+    setLocalValue(value);
+  }, [setLocalValue]);
+
+  if (options.disabled) {
+    return [localValue, mySetLocalValue];
+  }
+  return [value, mySetValue];
 }
 
-export function useCardSearchControls(allCards: CardFragment[] | undefined, controls: 'simple' | 'all'): [React.ReactNode, boolean, (card: CardFragment) => boolean] {
+export function useCardSearchControls(allCards: CardFragment[] | undefined, controls: 'simple' | 'all' | 'local'): [React.ReactNode, boolean, (card: CardFragment) => boolean] {
   const { approaches, aspects, categories, locale } = useLocale();
   const allTraits = useMemo(() => {
     return map(
@@ -374,14 +398,19 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
   }, [allCards]);
   const [searchText, setSearchText] = useSearchQueryState<string>('x', {
     history: 'replace',
-    parse: identity,
-    serialize: identity,
+    parse: parseString,
+    serialize: serializeString,
+    disabled: controls === 'local',
   });
   const [search, setSearch] = useState(searchText ?? '');
   const debouncedSearch = useDebounce(search, 500);
   useEffect(() => {
     if (search !== searchText) {
-      setSearchText(search);
+      if (!search) {
+        setSearchText(null);
+      } else {
+        setSearchText(search);
+      }
     }
     // eslint-disable-next-line
   }, [debouncedSearch]);
@@ -389,52 +418,62 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
     history: 'replace',
     parse: parseArray,
     serialize: serializeArray,
+    disabled: controls === 'local',
   });
   const [types, setTypes] = useSearchQueryState<string[]>('t', {
     history: 'replace',
     parse: parseArray,
     serialize: serializeArray,
+    disabled: controls === 'local',
   });
   const [cardSets, setCardSets] = useSearchQueryState<string[]>('set', {
     history: 'replace',
     parse: parseArray,
     serialize: serializeArray,
+    disabled: controls === 'local',
   });
   const [cost, setCost] = useSearchQueryState<NumberCompare>('c', {
     history: 'replace',
     parse: parseNumberCompare,
     serialize: serializeNumberCompare,
+    disabled: controls === 'local',
   });
   const [equip, setEquip] = useSearchQueryState<NumberCompare>('e', {
     history: 'replace',
     parse: parseNumberCompare,
     serialize: serializeNumberCompare,
+    disabled: controls === 'local',
   });
   const [awa, setAwa] = useSearchQueryState<NumberCompare>('awa', {
     history: 'replace',
     parse: parseNumberCompare,
     serialize: serializeNumberCompare,
+    disabled: controls === 'local',
   });
   const [fit, setFit] = useSearchQueryState<NumberCompare>('fit', {
     history: 'replace',
     parse: parseNumberCompare,
     serialize: serializeNumberCompare,
+    disabled: controls === 'local',
   });
   const [foc, setFoc] = useSearchQueryState<NumberCompare>('foc', {
     history: 'replace',
     parse: parseNumberCompare,
     serialize: serializeNumberCompare,
+    disabled: controls === 'local',
   });
   const [spi, setSpi] = useSearchQueryState<NumberCompare>('spi', {
     history: 'replace',
     parse: parseNumberCompare,
     serialize: serializeNumberCompare,
+    disabled: controls === 'local',
   });
 
   const [approach, setApproach] = useSearchQueryState<string[]>('a', {
     history: 'replace',
     parse: parseArray,
     serialize: serializeArray,
+    disabled: controls === 'local',
   });
 
   const [hasFilters, filterCard] = useMemo(() => {

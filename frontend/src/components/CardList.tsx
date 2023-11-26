@@ -132,7 +132,7 @@ interface SimpleCardListProps {
 }
 
 export function CardListWithFilters({ cards, ...props  }: Omit<SimpleCardListProps, 'hasFilters' | 'filter' | 'controls'>) {
-  const [controls, hasFilters, filterCard] = useCardSearchControls(cards, 'simple');
+  const [controls, hasFilters, filterCard] = useCardSearchControls(cards, 'local');
   return  (
     <SimpleCardList
       cards={cards}

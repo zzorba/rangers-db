@@ -456,7 +456,6 @@ function BaseDeckbuildingTabs({
     });
     return [pc, bc, sc, oic, ec];
   }, [cards, specialty, background, stats, extraSlots]);
-  const { colors } = useTheme();
   return (
     <Tabs>
       <TabList overflowX="scroll" overflowY="hidden">
