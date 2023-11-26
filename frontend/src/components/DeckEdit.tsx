@@ -45,7 +45,7 @@ import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap, CategoryTranslation } from '../lib/hooks';
 import { CardRow, RenderCardControl, ShowCard, useCardModal } from './Card';
-import { SimpleCardList, SpoilerCardList } from './CardList';
+import { SimpleCardList, SpoilerCardList, CardListWithFilters } from './CardList';
 import { CountControls, IncDecCountControls } from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
@@ -468,10 +468,10 @@ function BaseDeckbuildingTabs({
       </TabList>
       <TabPanels>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+          <Text fontSize="md" className='lightText' paddingBottom={2}>
             {t`Select 4 different personality cards, 1 from each aspect.`}
           </Text>
-          <SimpleCardList
+          <CardListWithFilters
             cards={personalityCards}
             showCard={showCard}
             header="none"
@@ -479,10 +479,10 @@ function BaseDeckbuildingTabs({
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+          <Text fontSize="md" className='lightText' paddingBottom={2}>
             {t`Select 5 different cards from your chosen background.`}
           </Text>
-          <SimpleCardList
+          <CardListWithFilters
             cards={backgroundCards}
             showCard={showCard}
             header="aspect"
@@ -490,10 +490,10 @@ function BaseDeckbuildingTabs({
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+          <Text fontSize="md" className='lightText' paddingBottom={2}>
             {t`Select 5 different cards from your chosen specialty.`}
           </Text>
-          <SimpleCardList
+          <CardListWithFilters
             cards={specialtyCards}
             showCard={showCard}
             header="aspect"
@@ -504,10 +504,10 @@ function BaseDeckbuildingTabs({
           <Text fontSize="md" className='lightText' paddingBottom={1}>
             {t`Select 1 cards from any background of specialty as your outside interest.`}
           </Text>
-          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2}>
             {t`Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.`}
           </Text>
-          <SimpleCardList
+          <CardListWithFilters
             cards={outsideInterestCards}
             showCard={showCard}
             renderControl={renderControl}
@@ -524,7 +524,7 @@ function BaseDeckbuildingTabs({
               {t`Side deck`}
             </Text>
           </Flex>
-          <SimpleCardList
+          <CardListWithFilters
             cards={extraCards}
             showCard={showCard}
             renderControl={renderControl}

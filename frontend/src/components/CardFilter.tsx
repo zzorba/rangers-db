@@ -330,7 +330,7 @@ function useSearchQueryState<T>(name: string, options: UseQueryStateOptions<T>):
   ];
 }
 
-export function useCardSearchControls(allCards: CardFragment[], controls: 'simple' | 'all'): [React.ReactNode, boolean, (card: CardFragment) => boolean] {
+export function useCardSearchControls(allCards: CardFragment[] | undefined, controls: 'simple' | 'all'): [React.ReactNode, boolean, (card: CardFragment) => boolean] {
   const { approaches, aspects, categories, locale } = useLocale();
   const allTraits = useMemo(() => {
     return map(

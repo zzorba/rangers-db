@@ -130,6 +130,20 @@ interface SimpleCardListProps {
   renderStyle?: CardRenderStyle;
   context?: 'extra';
 }
+
+export function CardListWithFilters({ cards, ...props  }: Omit<SimpleCardListProps, 'hasFilters' | 'filter' | 'controls'>) {
+  const [controls, hasFilters, filterCard] = useCardSearchControls(cards, 'simple');
+  return  (
+    <SimpleCardList
+      cards={cards}
+      filter={filterCard}
+      controls={controls}
+      hasFilters={hasFilters}
+      {...props}
+    />
+  );
+}
+
 export function SimpleCardList({ context, noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard, hasOptions, renderStyle: propRenderStyle }: SimpleCardListProps) {
   const { locale } = useLocale();
   const [search, setSearch] = useState('');
@@ -221,12 +235,11 @@ export function SimpleCardList({ context, noSearch, hasFilters, cards, controls,
   const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: hasFilters });
   const { colors } = useTheme();
   const [renderStyle, setRenderStyle] = useState<CardRenderStyle>('list');
-
   return (
     <>
       { !noSearch && !!cards?.length && (
         <Flex direction={{ base: 'column', md: 'row' }}>
-          <Box flex={2}>
+          <Box flex={1}>
             <Input
               type="search"
               value={search}
@@ -235,7 +248,7 @@ export function SimpleCardList({ context, noSearch, hasFilters, cards, controls,
             />
           </Box>
           { (!!hasOptions || !!controls) && (
-            <Flex direction="row" flex={1} ml={{ base: 0, md: 2 }} mt={{ base: 2, md: 0 }} >
+            <Flex direction="row" ml={{ base: 0, md: 2 }} mt={{ base: 2, md: 0 }} >
               { !!hasOptions && <CardRenderStyleSelect value={renderStyle} onChange={setRenderStyle} /> }
               { !!controls && <IconButton marginLeft={2} onClick={onToggle} icon={<FaFilter />} aria-label={t`Advanced controls`} />}
             </Flex>
