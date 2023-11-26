@@ -288,25 +288,25 @@ export function DeckStats({ deck, columns = 1 }: { deck: ParsedDeck; columns?: R
               <Tr>
                 <Td><CardText text={`[AWA]`} noPadding /></Td>
                 <Td><Text>{awa_count}</Text></Td>
-                <Td><Text>{awa_count > 0 ? awa * 1.0 / awa_count : 'N/A'}</Text></Td>
+                <Td><Text>{awa_count > 0 ? (awa * 1.0 / awa_count).toFixed(2) : 'N/A'}</Text></Td>
                 <Td><Text>{awa}</Text></Td>
               </Tr>
               <Tr>
                 <Td><CardText text={`[SPI]`} noPadding /></Td>
                 <Td><Text>{spi_count}</Text></Td>
-                <Td><Text>{spi_count > 0 ? spi * 1.0 / spi_count : 'N/A'}</Text></Td>
+                <Td><Text>{spi_count > 0 ? (spi * 1.0 / spi_count).toFixed(2) : 'N/A'}</Text></Td>
                 <Td><Text>{spi}</Text></Td>
               </Tr>
               <Tr>
                 <Td><CardText text={`[FIT]`} noPadding /></Td>
                 <Td><Text>{fit_count}</Text></Td>
-                <Td><Text>{fit_count > 0 ? fit * 1.0 / fit_count : 'N/A'}</Text></Td>
+                <Td><Text>{fit_count > 0 ? (fit * 1.0 / fit_count).toFixed(2) : 'N/A'}</Text></Td>
                 <Td><Text>{fit}</Text></Td>
               </Tr>
               <Tr>
                 <Td><CardText text={`[FOC]`} noPadding /></Td>
                 <Td><Text>{foc_count}</Text></Td>
-                <Td><Text>{foc_count > 0 ? foc * 1.0 / foc_count : 'N/A'}</Text></Td>
+                <Td><Text>{foc_count > 0 ? (foc * 1.0 / foc_count).toFixed(2) : 'N/A'}</Text></Td>
                 <Td><Text>{foc}</Text></Td>
               </Tr>
             </Tbody>
