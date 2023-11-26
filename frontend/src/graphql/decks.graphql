@@ -62,7 +62,7 @@ query getMyCampaignDecks(
       next_deck_id: { _is_null: true }
       campaign_id: { _is_null: true }
     }
-    order_by: { updated_at: desc, id: asc }
+    order_by: { updated_at: desc }
     limit: $limit
     offset: $offset
   ) {
@@ -132,7 +132,7 @@ query getMyDecks(
         }
       ]
     }
-    order_by: { updated_at: desc, id: asc }
+    order_by: { updated_at: desc }
     limit: $limit
     offset: $offset
   ) {

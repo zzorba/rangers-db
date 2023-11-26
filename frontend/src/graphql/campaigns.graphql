@@ -7,7 +7,7 @@ query getMyCampaigns(
 ) {
   campaigns: rangers_user_campaign(
     where: { user_id: { _eq: $userId }}
-    order_by: { updated_at: desc, campaign_id: asc }
+    order_by: { updated_at: desc }
     limit: $limit
     offset: $offset
   ) {
