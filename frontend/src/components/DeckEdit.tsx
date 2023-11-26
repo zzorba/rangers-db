@@ -51,7 +51,7 @@ import DeckProblemComponent from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
 import SolidButton from './SolidButton';
 import { useLocale } from '../lib/TranslationProvider';
-import { DeckCountLine, DeckItemComponent, MiniAspect } from './Deck';
+import { DeckCountLine, DeckItemComponent, DeckStats, MiniAspect } from './Deck';
 import { WarningIcon } from '@chakra-ui/icons';
 import parseDeck, { ParsedDeck } from '../lib/parseDeck';
 import DeckDescriptionView from './DeckDescriptionView';
@@ -396,6 +396,7 @@ function BaseDeckbuildingTabs({
   extraSlots,
   showCard,
   deck,
+  parsedDeck,
 }: {
   cards: CardsMap;
   stats: AspectStats;
@@ -406,6 +407,7 @@ function BaseDeckbuildingTabs({
   deck: DeckFragment,
   showCard: ShowCard;
   renderControl: RenderCardControl;
+  parsedDeck: ParsedDeck;
 }) {
   const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards, extraCards] = useMemo(() => {
     const pc: CardFragment[] = [];
@@ -512,6 +514,7 @@ function BaseDeckbuildingTabs({
           />
         </TabPanel>
         <TabPanel>
+          <DeckStats deck={parsedDeck} />
           <EditDescriptionTab deck={deck} />
           <Flex direction="row">
             <Box paddingTop={0.5} paddingRight={1}>
@@ -961,6 +964,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               renderControl={renderControl}
               showCard={showCard}
               deck={deck}
+              parsedDeck={parsedDeck}
             />
           ) : (
             <UpgradeDeckbuildingTabs

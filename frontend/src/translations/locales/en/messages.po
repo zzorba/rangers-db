@@ -97,6 +97,9 @@ msgstr "Already have an account? <0>Login</0> now."
 msgid "Ancestor's Grove"
 msgstr "Ancestor's Grove"
 
+msgid "Approach"
+msgstr "Approach"
+
 msgid "Approach icons"
 msgstr "Approach icons"
 
@@ -115,6 +118,9 @@ msgstr "Are you sure you want to delete this deck?"
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 
+msgid "Aspect"
+msgstr "Aspect"
+
 msgid "Aspect requirements"
 msgstr "Aspect requirements"
 
@@ -126,6 +132,9 @@ msgstr "Atrox Mountain"
 
 msgid "Available"
 msgstr "Available"
+
+msgid "Average"
+msgstr "Average"
 
 msgid "AWA"
 msgstr "AWA"
@@ -453,6 +462,9 @@ msgstr "Hide spoilers"
 
 msgid "Howling Winds"
 msgstr "Howling Winds"
+
+msgid "Icons"
+msgstr "Icons"
 
 msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
 msgstr "If you intend to Camp while travelling to a new location, please use the Travel button instead."
@@ -1012,6 +1024,9 @@ msgstr "Too many FOC personality cards."
 
 msgid "Too many SPI personality cards."
 msgstr "Too many SPI personality cards."
+
+msgid "Total"
+msgstr "Total"
 
 msgid "Track cards that are removed permanently from the path deck here."
 msgstr "Track cards that are removed permanently from the path deck here."

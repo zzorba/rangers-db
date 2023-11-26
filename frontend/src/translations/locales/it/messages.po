@@ -97,6 +97,9 @@ msgstr "Hai già un account? <0>Accedi</0> ora."
 msgid "Ancestor's Grove"
 msgstr "Boschetto degli Antenati"
 
+msgid "Approach"
+msgstr ""
+
 msgid "Approach icons"
 msgstr "Icone Approccio"
 
@@ -115,6 +118,9 @@ msgstr "Vuoi davvero cancellare questo mazzo?"
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Vuoi davvero cancellare la tua campagna: {0}? Questa azione è permanente."
 
+msgid "Aspect"
+msgstr ""
+
 msgid "Aspect requirements"
 msgstr "Requisiti d'aspetto"
 
@@ -126,6 +132,9 @@ msgstr "Monte Atrox"
 
 msgid "Available"
 msgstr "Disponibili"
+
+msgid "Average"
+msgstr ""
 
 msgid "AWA"
 msgstr "PER"
@@ -453,6 +462,9 @@ msgstr "Nascondi spoiler"
 
 msgid "Howling Winds"
 msgstr "Venti Impetuosi"
+
+msgid "Icons"
+msgstr ""
 
 msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
 msgstr "Se desideri accamparti mentre viaggi verso un luogo diverso, usa il bottone Viaggia."
@@ -1012,6 +1024,9 @@ msgstr "Troppe carte personalità CON."
 
 msgid "Too many SPI personality cards."
 msgstr "Troppe carte personalità SPI."
+
+msgid "Total"
+msgstr ""
 
 msgid "Track cards that are removed permanently from the path deck here."
 msgstr "Tieni traccia qui delle carte che sono state rimosse permanentemente dal mazzo percorso."

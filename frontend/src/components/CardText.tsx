@@ -36,7 +36,7 @@ export function useIconedText(
   }, [text, aspectId, noLines, flavor, aspects, colorMode]);
 }
 
-export default function CardText({ text, flavor, aspectId, noPadding }: { text: string | undefined | null; flavor?: string | undefined | null, aspectId: string | undefined | null; noPadding?: boolean }) {
+export default function CardText({ text, flavor, aspectId, noPadding }: { text: string | undefined | null; flavor?: string | undefined | null, aspectId?: string | undefined | null; noPadding?: boolean }) {
   const { colorMode } = useColorMode();
   const parsed = useIconedText(text, { aspectId }, flavor);
   if (noPadding) {
