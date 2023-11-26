@@ -169,7 +169,7 @@ export function CompactDeckRow({ deck, roleCards, onClick, children, buttons, hr
   );
 }
 
-export function DeckStats({ deck, columns = 1 }: { deck: ParsedDeck; columns: ResponsiveValue<number> }) {
+export function DeckStats({ deck, columns = 1 }: { deck: ParsedDeck; columns?: ResponsiveValue<number> }) {
   const [{ conflict, reason, connection, exploration,  conflict_count, reason_count, connection_count, exploration_count }, { awa, spi, fit, foc, awa_count, spi_count, fit_count, foc_count }] = useMemo(() => {
     let conflict = 0;
     let reason = 0;
