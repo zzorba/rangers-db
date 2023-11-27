@@ -175,6 +175,27 @@ export function getAspectMap(): AspectMap {
   };
 }
 
+export function getGeneralSets(): MapLocations {
+  return {
+    general: {
+      id: 'general',
+      name: t`General`,
+      type: 'trail',
+      background: false,
+      cycles: ['core', 'demo'],
+      connections: [],
+    },
+    the_valley: {
+      id: 'the_valley',
+      name: t`The Valley`,
+      type: 'trail',
+      background: false,
+      cycles: ['core', 'demo'],
+      connections: [],
+    },
+  };
+}
+
 export function getPathTypes(): PathTypeMap {
   const r: PathTypeMap = {};
   const paths: PathType[] = [

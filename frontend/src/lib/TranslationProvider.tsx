@@ -4,7 +4,7 @@ import { AspectMap, CampaignCycle, MapLocations, PathTypeMap } from '../types/ty
 import { useLingui, } from '@lingui/react';
 import { I18n } from '@lingui/core';
 import { t } from '@lingui/macro';
-import { CategoryTranslations, DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getCampaignCycles, getDeckCardErrors, getDeckErrors, getMapLocations, getPathTypes, useCategoryTranslations } from './hooks';
+import { CategoryTranslations, DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getCampaignCycles, getDeckCardErrors, getDeckErrors, getGeneralSets, getMapLocations, getPathTypes, useCategoryTranslations } from './hooks';
 
 interface TranslationContextType {
   deckErrors: DeckErrorTranslations;
@@ -13,6 +13,7 @@ interface TranslationContextType {
   approaches: { [approach: string]: string };
   paths: PathTypeMap;
   locations: MapLocations;
+  generalSets: MapLocations;
   categories: CategoryTranslations;
   locale: string;
   i18n: I18n | null;
@@ -23,6 +24,7 @@ const TranslationContext = createContext<TranslationContextType>({
   cardErrors: getDeckCardErrors(),
   aspects: getAspectMap(),
   paths: getPathTypes(),
+  generalSets: getGeneralSets(),
   locations: getMapLocations(),
   cycles: getCampaignCycles(),
   approaches: {},
@@ -47,6 +49,7 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
       paths: getPathTypes(),
       locations: getMapLocations(),
       cycles: getCampaignCycles(),
+      generalSets: getGeneralSets(),
       approaches: {
         conflict: t`Conflict`,
         connection: t`Connection`,

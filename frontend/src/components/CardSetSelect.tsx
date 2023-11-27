@@ -20,24 +20,8 @@ interface Props {
   setValue: (value: string) => void;
 }
 export default function CardSetSelect({ value, setValue }: Props) {
-  const { locations, paths } = useLocale();
+  const { locations, generalSets, paths } = useLocale();
   const options: CardSetGroupOption[] = useMemo(() => {
-    const generalSet: MapLocation = {
-      id: 'general',
-      name: t`General`,
-      type: 'trail',
-      background: false,
-      cycles: ['core', 'demo'],
-      connections: [],
-    };
-    const valleySet: MapLocation = {
-      id: 'the_valley',
-      name: t`The Valley`,
-      type: 'trail',
-      background: false,
-      cycles: ['core', 'demo'],
-      connections: [],
-    };
     return [
       {
         label: t`Terrain`,
@@ -81,7 +65,10 @@ export default function CardSetSelect({ value, setValue }: Props) {
                 ),
               };
             }),
-            ...map([generalSet, valleySet], loc => {
+            ...flatMap(Object.values(generalSets), loc => {
+              if (!loc) {
+                return [];
+              }
               return {
                 value: loc.id,
                 name: loc.name,

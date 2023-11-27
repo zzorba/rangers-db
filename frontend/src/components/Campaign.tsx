@@ -916,11 +916,12 @@ function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
 }
 
 function RemoveRow({ remove, index, onRemove }: { remove: RemovedEntry; index: number; onRemove: (index: number) => Promise<string | undefined> }) {
-  const { paths, locations } = useLocale();
+  const { paths, generalSets, locations } = useLocale();
   const removeEntry = useCallback(() => {
     return onRemove(index);
   }, [index, onRemove]);
   const path = remove.set_id && paths[remove.set_id];
+  const generalSet = remove.set_id && generalSets[remove.set_id];
   const location = remove.set_id && locations[remove.set_id];
   return (
     <Tr>
@@ -929,6 +930,12 @@ function RemoveRow({ remove, index, onRemove }: { remove: RemovedEntry; index: n
           <Flex direction="row" alignItems="center">
             <PathIcon path={path} size={42} />
             <Text marginLeft={3} fontSize="sm">{path.name}</Text>
+          </Flex>
+        )}
+        { !!generalSet && (
+          <Flex direction="row" alignItems="center">
+            <LocationIcon location={generalSet} size={48} />
+            <Text marginLeft={2} fontSize="sm">{generalSet.name}</Text>
           </Flex>
         )}
         { !!location && (
