@@ -1,14 +1,13 @@
 import React, { useCallback, useMemo } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 import { createFilter, Select, SingleValue } from 'chakra-react-select';
-import { find, flatMap, sortBy, map } from 'lodash';
+import { find, flatMap, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
 
 import { useLocale } from '../lib/TranslationProvider';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
 import { MapLocationOption } from './MapLocationSelect';
 import { PathOption } from './PathTypeSelect';
-import { MapLocation } from '../types/types';
 
 interface CardSetGroupOption {
   readonly label: string;
@@ -86,7 +85,7 @@ export default function CardSetSelect({ value, setValue }: Props) {
         ),
       },
     ];
-  }, [paths, locations]);
+  }, [paths, locations, generalSets]);
 
   const onChange = useCallback((option: SingleValue<MapLocationOption | PathOption>) => {
     if (option && option.value !== value) {

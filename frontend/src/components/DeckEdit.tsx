@@ -613,6 +613,7 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
               showCard={showCard}
               renderControl={renderControl}
               upsellText={!unlockedRewards ? t`You can add this deck to a campaign to track rewards you have unlocked as a group.` : undefined}
+              tab="reward"
             />
           </TabPanel>
           <TabPanel>
@@ -645,6 +646,7 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
               showCard={showDisplacedCard}
               renderControl={renderControl}
               emptyText={t`Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp.`}
+              tab="displaced"
             />
           </TabPanel>
         </TabPanels>
@@ -712,10 +714,11 @@ export default function DeckEdit({ deck, cards }: Props) {
 
   const renderControl = useCallback((
     card: CardFragment,
-    { onClose, max, context }: {
+    { onClose, max, context, tab }: {
       onClose?: () => void,
       max?: number;
       context?: 'modal' | 'extra';
+      tab?: 'reward' | 'displaced';
     } = {}
   ) => {
     if (card.set_id === 'malady') {
@@ -727,8 +730,8 @@ export default function DeckEdit({ deck, cards }: Props) {
         />
       );
     }
-    const theMax = (isUpgrade && card.id) ? (max || (
-      (slots[card.id] || 0) + (sideSlots[card.id] || 0))) : undefined;
+    const theMax = (isUpgrade && card.id && tab !== 'reward') ?
+      (max ?? ((slots[card.id] || 0) + (sideSlots[card.id] || 0))) : undefined;
     return (
       <CountControls
         card={card}
@@ -749,9 +752,7 @@ export default function DeckEdit({ deck, cards }: Props) {
       return (
         <Flex direction="column" alignItems="flex-end">
           <Text fontSize="sm" textAlign="right" marginBottom={2}>
-            {
-              t`When adding a card from the collection, remember to return a deck card.`
-            }
+            { t`When adding a card from the collection, remember to return a deck card.` }
           </Text>
           { renderControl(card, { onClose, context, max: 2 }) }
         </Flex>
@@ -777,7 +778,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               { t`Return a copy to the collection` }
             </Button>
           ) }
-          { renderControl(card, { onClose, context }) }
+          { renderControl(card, { onClose, context, tab: 'displaced' }) }
         </Flex>
       );
     }, [renderControl, updateSideSlots, sideSlots]);

@@ -11,12 +11,16 @@ import { useLocale } from '../lib/TranslationProvider';
 import ListHeader from './ListHeader';
 import { useCardSearchControls } from './CardFilter';
 import { useTheme } from '../lib/ThemeContext';
-import { BaseOptions } from 'vm';
 import CardImage, { CardImagePlaceholder } from './CardImage';
 import { useAllCards } from '../lib/cards';
 
-function CardButtonRow({ card, showModal, children }: { card: CardFragment; showModal: (card: CardFragment) => void; children?: React.ReactNode }) {
-  const onClick = useCallback(() => showModal(card), [card, showModal]);
+function CardButtonRow({ card, showModal, children, tab }: {
+  card: CardFragment;
+  showModal: (card: CardFragment, tab?: 'displaced' | 'reward') => void;
+  children?: React.ReactNode;
+  tab?: 'displaced' | 'reward';
+}) {
+  const onClick = useCallback(() => showModal(card, tab), [card, tab, showModal]);
 
   return (
     <ListItem>
@@ -129,6 +133,7 @@ interface SimpleCardListProps {
   hasOptions?: boolean;
   renderStyle?: CardRenderStyle;
   context?: 'extra';
+  tab?: 'displaced' | 'reward';
 }
 
 export function CardListWithFilters({ cards, ...props  }: Omit<SimpleCardListProps, 'hasFilters' | 'filter' | 'controls'>) {
@@ -144,7 +149,7 @@ export function CardListWithFilters({ cards, ...props  }: Omit<SimpleCardListPro
   );
 }
 
-export function SimpleCardList({ context, noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard, hasOptions, renderStyle: propRenderStyle }: SimpleCardListProps) {
+export function SimpleCardList({ tab, context, noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard, hasOptions, renderStyle: propRenderStyle }: SimpleCardListProps) {
   const { locale } = useLocale();
   const [search, setSearch] = useState('');
   const visibleCards = useMemo(() => {
@@ -271,6 +276,7 @@ export function SimpleCardList({ context, noSearch, hasFilters, cards, controls,
             showCard={showCard}
             renderStyle={propRenderStyle ?? renderStyle}
             context={context}
+            tab={tab}
           />)
         )
         : emptyState }
@@ -278,12 +284,13 @@ export function SimpleCardList({ context, noSearch, hasFilters, cards, controls,
   );
 }
 
-function CardListSection({ section, renderControl, renderStyle, showCard, context}: {
+function CardListSection({ section, renderControl, renderStyle, showCard, context, tab}: {
   section: ItemSection;
   renderControl?: RenderCardControl;
   renderStyle: CardRenderStyle;
   showCard: (card: CardFragment) => void;
   context?: 'extra';
+  tab?: 'reward' | 'displaced';
 }) {
   switch (renderStyle) {
     case 'list':
@@ -291,8 +298,8 @@ function CardListSection({ section, renderControl, renderStyle, showCard, contex
         <List>
           { !!section.title &&  <CardHeader key={section.title} title={section.title} /> }
           { map(section.items, item => (
-            <CardButtonRow key={item.card.id} card={item.card} showModal={showCard}>
-              { !!renderControl && !!item.card.id && renderControl(item.card, { context })}
+            <CardButtonRow key={item.card.id} card={item.card} showModal={showCard} tab={tab}>
+              { !!renderControl && !!item.card.id && renderControl(item.card, { context, tab })}
             </CardButtonRow>
           )) }
         </List>
@@ -341,14 +348,16 @@ export function SpoilerCardList({
   upsellText,
   header = 'none',
   hasOptions,
+  tab,
 }: {
   unlocked?: string[];
   cards: CardFragment[] | undefined;
-  showCard: (card: CardFragment) => void;
+  showCard: (card: CardFragment, tab?: 'reward' | 'displaced') => void;
   renderControl?: RenderCardControl;
   upsellText?: string;
   header?: 'aspect' | 'set' | 'none';
   hasOptions?: boolean,
+  tab?: 'displaced' | 'reward';
 }) {
   const { locale } = useLocale();
   const [search, setSearch] = useState('');
@@ -377,7 +386,7 @@ export function SpoilerCardList({
         </>
       ) }
       { map(unlockedCards, c => (
-        <CardButtonRow key={c.id} card={c} showModal={showCard}>
+        <CardButtonRow key={c.id} card={c} showModal={showCard} tab={tab}>
           { renderControl && renderControl(c) }
         </CardButtonRow>
       )) }
@@ -412,6 +421,7 @@ export function SpoilerCardList({
         renderControl={renderControl}
         header={header}
         renderStyle={renderStyle}
+        tab={tab}
       />
     </List>
   );

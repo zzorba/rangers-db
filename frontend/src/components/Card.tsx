@@ -379,12 +379,13 @@ export function CardRow({ card, problem, children, onClick, includeSet, includeT
   );
 }
 
-export type ShowCard = (card: CardFragment, problem?: DeckCardError[]) => void;
+export type ShowCard = (card: CardFragment, tab?: 'reward' | 'displaced', problem?: DeckCardError[]) => void;
 export type RenderCardControl = (
   card: CardFragment,
   args?: {
     onClose?: () => void;
     context?: 'modal' | 'extra';
+    tab?: 'reward' | 'displaced';
   }
 ) => React.ReactNode;
 export function useCardModal({
@@ -403,12 +404,14 @@ export function useCardModal({
 ] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [card, setCard] = useState<CardFragment>();
+  const [tab, setTab] = useState<'reward' | 'displaced' | undefined>();
   const [problem, setProblem] = useState<DeckCardError[] | undefined>();
-  const showModal = useCallback((card: CardFragment, problem?: DeckCardError[]) => {
+  const showModal = useCallback((card: CardFragment, tab?: 'reward' | 'displaced', problem?: DeckCardError[]) => {
     setCard(card);
     setProblem(problem);
+    setTab(tab);
     onOpen();
-  }, [onOpen, setCard, setProblem]);
+  }, [onOpen, setCard, setProblem, setTab]);
 
   const count = (card?.id && slots?.[card.id]) || 0;
   const starred = !!(card?.id && extraSlots?.[card.id]);
@@ -433,7 +436,7 @@ export function useCardModal({
             { !!card && <FooterInfo card={card} /> }
             { !!card && card.type_id !== 'role' && !!slots && (
               <Flex direction="row">
-                { renderControl?.(card, { onClose, context: 'modal' }) || (
+                { renderControl?.(card, { onClose, context: 'modal', tab }) || (
                   <>
                     { !!starred && <BiSolidBookmarkAlt size={40} /> }
                     <CardCount key="count" count={count} starred={starred} />

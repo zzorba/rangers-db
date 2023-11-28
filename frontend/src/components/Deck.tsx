@@ -58,8 +58,8 @@ export function DeckItemComponent({ item, showCard }: { item: Item; showCard: Sh
   }
 }
 
-function DeckCardRow({ item, showCard }: { item: CardItem; showCard: (card: CardFragment, problem?: DeckCardError[]) => void }) {
-  const onClick = useCallback(() => showCard(item.card, item.problem), [item, showCard]);
+function DeckCardRow({ item, showCard }: { item: CardItem; showCard: ShowCard }) {
+  const onClick = useCallback(() => showCard(item.card, undefined, item.problem), [item, showCard]);
   return (
     <ListItem key={item.card.id} >
       <Flex direction="row" alignItems="flex-start" justifyContent="flex-start">
