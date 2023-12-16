@@ -46980,7 +46980,7 @@ export const GetMyCampaignsDocument = gql`
     query getMyCampaigns($userId: String!, $limit: Int!, $offset: Int!) {
   campaigns: rangers_user_campaign(
     where: {user_id: {_eq: $userId}}
-    order_by: {updated_at: desc, campaign_id: asc}
+    order_by: {updated_at: desc}
     limit: $limit
     offset: $offset
   ) {
@@ -48194,7 +48194,7 @@ export const GetMyCampaignDecksDocument = gql`
     query getMyCampaignDecks($userId: String!, $limit: Int!, $offset: Int!) {
   decks: rangers_deck(
     where: {user_id: {_eq: $userId}, next_deck_id: {_is_null: true}, campaign_id: {_is_null: true}}
-    order_by: {updated_at: desc, id: asc}
+    order_by: {updated_at: desc}
     limit: $limit
     offset: $offset
   ) {
@@ -48321,7 +48321,7 @@ export const GetMyDecksDocument = gql`
     query getMyDecks($userId: String!, $limit: Int!, $offset: Int!) {
   decks: rangers_deck(
     where: {user_id: {_eq: $userId}, next_deck_id: {_is_null: true}, _or: [{published: {_is_null: true}}, {published: {_eq: false}}]}
-    order_by: {updated_at: desc, id: asc}
+    order_by: {updated_at: desc}
     limit: $limit
     offset: $offset
   ) {

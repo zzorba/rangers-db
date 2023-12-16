@@ -97,6 +97,9 @@ msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 msgid "Ancestor's Grove"
 msgstr "Wurzeln der Ältesten"
 
+msgid "Approach"
+msgstr ""
+
 msgid "Approach icons"
 msgstr "Herangehensweise-Symbole"
 
@@ -115,6 +118,9 @@ msgstr "Willst du dieses Deck wirklich löschen?"
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Willst du deine Kampagne {0} wirklich löschen? Das lässt sich nicht rückgängig machen."
 
+msgid "Aspect"
+msgstr ""
+
 msgid "Aspect requirements"
 msgstr "Aspekt-Voraussetzungen"
 
@@ -126,6 +132,9 @@ msgstr "Atrox-Berg"
 
 msgid "Available"
 msgstr "Verfügbar"
+
+msgid "Average"
+msgstr ""
 
 msgid "AWA"
 msgstr "WAH"
@@ -453,6 +462,9 @@ msgstr "Spoiler verstecken"
 
 msgid "Howling Winds"
 msgstr "Sturmböen"
+
+msgid "Icons"
+msgstr ""
 
 msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
 msgstr "Wenn du dein Nachtlager aufschlagen möchtest während du an einen neuen Ort reist, nutze bitte den 'Reisen' Button."
@@ -800,6 +812,9 @@ msgstr "Änderungen speichern"
 msgid "Search by name"
 msgstr "Nach Name suchen"
 
+msgid "Search card text"
+msgstr ""
+
 msgid "See comments"
 msgstr "Kommentare ansehen"
 
@@ -908,6 +923,9 @@ msgstr "Terrain"
 msgid "Terravore"
 msgstr "Erdfresser"
 
+msgid "Text"
+msgstr ""
+
 msgid "The Alluvial Ruins"
 msgstr "Schwemmland-Ruinen"
 
@@ -1012,6 +1030,9 @@ msgstr "Zu viele RUH-Eigenarten-Karten."
 
 msgid "Too many SPI personality cards."
 msgstr "Zu viele SOV-Eigenarten-Karten."
+
+msgid "Total"
+msgstr ""
 
 msgid "Track cards that are removed permanently from the path deck here."
 msgstr "Hier kannst du permanent entfernte Pfadkarten nachverfolgen."

@@ -52,7 +52,7 @@ import { useLocale } from '../lib/TranslationProvider';
 import CoreIcon from '../icons/CoreIcon';
 import parseDeck, { ParsedDeck } from '../lib/parseDeck';
 import useDeleteDialog from './useDeleteDialog';
-import { DeckCountLine, DeckDescription, DeckItemComponent } from './Deck';
+import { DeckCountLine, DeckDescription, DeckItemComponent, DeckStats } from './Deck';
 import DeckDescriptionView from './DeckDescriptionView';
 import SolidButton from './SolidButton';
 import LikeButton from './LikeButton';
@@ -423,6 +423,8 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                 {map(parsedDeck.cards, item => <DeckItemComponent key={item.id} item={item} showCard={showCard} />)}
               </List>
             ) : <Spinner size="md" /> }
+            <DeckStats deck={parsedDeck} columns={deck.description ? 1 : [1, 2]} />
+
           </GridItem>
           { !!deck.description && (
             <GridItem colSpan={[6, 6, 2, 3]}>

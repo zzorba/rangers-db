@@ -45,13 +45,13 @@ import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap, CategoryTranslation } from '../lib/hooks';
 import { CardRow, RenderCardControl, ShowCard, useCardModal } from './Card';
-import { SimpleCardList, SpoilerCardList } from './CardList';
+import { SimpleCardList, SpoilerCardList, CardListWithFilters } from './CardList';
 import { CountControls, IncDecCountControls } from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
 import SolidButton from './SolidButton';
 import { useLocale } from '../lib/TranslationProvider';
-import { DeckCountLine, DeckItemComponent, MiniAspect } from './Deck';
+import { DeckCountLine, DeckItemComponent, DeckStats, MiniAspect } from './Deck';
 import { WarningIcon } from '@chakra-ui/icons';
 import parseDeck, { ParsedDeck } from '../lib/parseDeck';
 import DeckDescriptionView from './DeckDescriptionView';
@@ -396,6 +396,7 @@ function BaseDeckbuildingTabs({
   extraSlots,
   showCard,
   deck,
+  parsedDeck,
 }: {
   cards: CardsMap;
   stats: AspectStats;
@@ -406,6 +407,7 @@ function BaseDeckbuildingTabs({
   deck: DeckFragment,
   showCard: ShowCard;
   renderControl: RenderCardControl;
+  parsedDeck: ParsedDeck;
 }) {
   const [personalityCards, backgroundCards, specialtyCards, outsideInterestCards, extraCards] = useMemo(() => {
     const pc: CardFragment[] = [];
@@ -454,7 +456,6 @@ function BaseDeckbuildingTabs({
     });
     return [pc, bc, sc, oic, ec];
   }, [cards, specialty, background, stats, extraSlots]);
-  const { colors } = useTheme();
   return (
     <Tabs>
       <TabList overflowX="scroll" overflowY="hidden">
@@ -466,10 +467,10 @@ function BaseDeckbuildingTabs({
       </TabList>
       <TabPanels>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+          <Text fontSize="md" className='lightText' paddingBottom={2}>
             {t`Select 4 different personality cards, 1 from each aspect.`}
           </Text>
-          <SimpleCardList
+          <CardListWithFilters
             cards={personalityCards}
             showCard={showCard}
             header="none"
@@ -477,10 +478,10 @@ function BaseDeckbuildingTabs({
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+          <Text fontSize="md" className='lightText' paddingBottom={2}>
             {t`Select 5 different cards from your chosen background.`}
           </Text>
-          <SimpleCardList
+          <CardListWithFilters
             cards={backgroundCards}
             showCard={showCard}
             header="aspect"
@@ -488,10 +489,10 @@ function BaseDeckbuildingTabs({
           />
         </TabPanel>
         <TabPanel>
-          <Text fontSize="md" className='lightText' paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+          <Text fontSize="md" className='lightText' paddingBottom={2}>
             {t`Select 5 different cards from your chosen specialty.`}
           </Text>
-          <SimpleCardList
+          <CardListWithFilters
             cards={specialtyCards}
             showCard={showCard}
             header="aspect"
@@ -502,16 +503,17 @@ function BaseDeckbuildingTabs({
           <Text fontSize="md" className='lightText' paddingBottom={1}>
             {t`Select 1 cards from any background of specialty as your outside interest.`}
           </Text>
-          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2} borderBottomWidth="1px" borderBottomColor={colors.divider}>
+          <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2}>
             {t`Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.`}
           </Text>
-          <SimpleCardList
+          <CardListWithFilters
             cards={outsideInterestCards}
             showCard={showCard}
             renderControl={renderControl}
           />
         </TabPanel>
         <TabPanel>
+          <DeckStats deck={parsedDeck} />
           <EditDescriptionTab deck={deck} />
           <Flex direction="row">
             <Box paddingTop={0.5} paddingRight={1}>
@@ -521,7 +523,7 @@ function BaseDeckbuildingTabs({
               {t`Side deck`}
             </Text>
           </Flex>
-          <SimpleCardList
+          <CardListWithFilters
             cards={extraCards}
             showCard={showCard}
             renderControl={renderControl}
@@ -611,6 +613,7 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
               showCard={showCard}
               renderControl={renderControl}
               upsellText={!unlockedRewards ? t`You can add this deck to a campaign to track rewards you have unlocked as a group.` : undefined}
+              tab="reward"
             />
           </TabPanel>
           <TabPanel>
@@ -643,6 +646,7 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
               showCard={showDisplacedCard}
               renderControl={renderControl}
               emptyText={t`Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp.`}
+              tab="displaced"
             />
           </TabPanel>
         </TabPanels>
@@ -710,10 +714,11 @@ export default function DeckEdit({ deck, cards }: Props) {
 
   const renderControl = useCallback((
     card: CardFragment,
-    { onClose, max, context }: {
+    { onClose, max, context, tab }: {
       onClose?: () => void,
       max?: number;
       context?: 'modal' | 'extra';
+      tab?: 'reward' | 'displaced';
     } = {}
   ) => {
     if (card.set_id === 'malady') {
@@ -725,8 +730,8 @@ export default function DeckEdit({ deck, cards }: Props) {
         />
       );
     }
-    const theMax = (isUpgrade && card.id) ? (max || (
-      (slots[card.id] || 0) + (sideSlots[card.id] || 0))) : undefined;
+    const theMax = (isUpgrade && card.id && tab !== 'reward') ?
+      (max ?? ((slots[card.id] || 0) + (sideSlots[card.id] || 0))) : undefined;
     return (
       <CountControls
         card={card}
@@ -747,9 +752,7 @@ export default function DeckEdit({ deck, cards }: Props) {
       return (
         <Flex direction="column" alignItems="flex-end">
           <Text fontSize="sm" textAlign="right" marginBottom={2}>
-            {
-              t`When adding a card from the collection, remember to return a deck card.`
-            }
+            { t`When adding a card from the collection, remember to return a deck card.` }
           </Text>
           { renderControl(card, { onClose, context, max: 2 }) }
         </Flex>
@@ -775,7 +778,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               { t`Return a copy to the collection` }
             </Button>
           ) }
-          { renderControl(card, { onClose, context }) }
+          { renderControl(card, { onClose, context, tab: 'displaced' }) }
         </Flex>
       );
     }, [renderControl, updateSideSlots, sideSlots]);
@@ -961,6 +964,7 @@ export default function DeckEdit({ deck, cards }: Props) {
               renderControl={renderControl}
               showCard={showCard}
               deck={deck}
+              parsedDeck={parsedDeck}
             />
           ) : (
             <UpgradeDeckbuildingTabs

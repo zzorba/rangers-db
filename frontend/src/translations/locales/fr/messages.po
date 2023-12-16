@@ -97,6 +97,9 @@ msgstr "Vous avez déjà un compte ? <0>Se connecter</0>"
 msgid "Ancestor's Grove"
 msgstr "Bosquet des Ancêtres"
 
+msgid "Approach"
+msgstr ""
+
 msgid "Approach icons"
 msgstr "Icônes d'approche"
 
@@ -115,6 +118,9 @@ msgstr "Êtes vous sûr de vouloir supprimer ce deck ?"
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Êtes vous sûr de vouloir supprimer votre campagne : {0} ? Cette action ne peut être annulée."
 
+msgid "Aspect"
+msgstr ""
+
 msgid "Aspect requirements"
 msgstr "Aspects requis"
 
@@ -126,6 +132,9 @@ msgstr "Montagne des Atrox"
 
 msgid "Available"
 msgstr "Disponible"
+
+msgid "Average"
+msgstr ""
 
 msgid "AWA"
 msgstr "VIG"
@@ -452,6 +461,9 @@ msgid "Hide spoilers"
 msgstr "Masquer les spoilers"
 
 msgid "Howling Winds"
+msgstr ""
+
+msgid "Icons"
 msgstr ""
 
 msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
@@ -800,6 +812,9 @@ msgstr ""
 msgid "Search by name"
 msgstr ""
 
+msgid "Search card text"
+msgstr ""
+
 msgid "See comments"
 msgstr ""
 
@@ -908,6 +923,9 @@ msgstr "Terrain"
 msgid "Terravore"
 msgstr "Terravore"
 
+msgid "Text"
+msgstr ""
+
 msgid "The Alluvial Ruins"
 msgstr "Les Ruines Alluviales"
 
@@ -1012,6 +1030,9 @@ msgstr "Trop de cartes personnalités de type CON."
 
 msgid "Too many SPI personality cards."
 msgstr "Trop de cartes personnalités de type ESP."
+
+msgid "Total"
+msgstr ""
 
 msgid "Track cards that are removed permanently from the path deck here."
 msgstr ""

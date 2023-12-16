@@ -1,14 +1,13 @@
 import React, { useCallback, useMemo } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 import { createFilter, Select, SingleValue } from 'chakra-react-select';
-import { find, flatMap, sortBy, map } from 'lodash';
+import { find, flatMap, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
 
 import { useLocale } from '../lib/TranslationProvider';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
 import { MapLocationOption } from './MapLocationSelect';
 import { PathOption } from './PathTypeSelect';
-import { MapLocation } from '../types/types';
 
 interface CardSetGroupOption {
   readonly label: string;
@@ -20,24 +19,8 @@ interface Props {
   setValue: (value: string) => void;
 }
 export default function CardSetSelect({ value, setValue }: Props) {
-  const { locations, paths } = useLocale();
+  const { locations, generalSets, paths } = useLocale();
   const options: CardSetGroupOption[] = useMemo(() => {
-    const generalSet: MapLocation = {
-      id: 'general',
-      name: t`General`,
-      type: 'trail',
-      background: false,
-      cycles: ['core', 'demo'],
-      connections: [],
-    };
-    const valleySet: MapLocation = {
-      id: 'the_valley',
-      name: t`The Valley`,
-      type: 'trail',
-      background: false,
-      cycles: ['core', 'demo'],
-      connections: [],
-    };
     return [
       {
         label: t`Terrain`,
@@ -81,7 +64,10 @@ export default function CardSetSelect({ value, setValue }: Props) {
                 ),
               };
             }),
-            ...map([generalSet, valleySet], loc => {
+            ...flatMap(Object.values(generalSets), loc => {
+              if (!loc) {
+                return [];
+              }
               return {
                 value: loc.id,
                 name: loc.name,
@@ -99,7 +85,7 @@ export default function CardSetSelect({ value, setValue }: Props) {
         ),
       },
     ];
-  }, [paths, locations]);
+  }, [paths, locations, generalSets]);
 
   const onChange = useCallback((option: SingleValue<MapLocationOption | PathOption>) => {
     if (option && option.value !== value) {

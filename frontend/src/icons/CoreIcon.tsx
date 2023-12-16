@@ -1,9 +1,8 @@
 import React from 'react';
-import { AspectRatio, Box, useColorMode } from '@chakra-ui/react';
+import { useColorMode } from '@chakra-ui/react';
 import IcomoonReact from 'icomoon-react';
 
 import iconSet from './core.json';
-import { PathType } from '../types/types';
 
 const CoreIcon: React.FC<{
   color?: string,
