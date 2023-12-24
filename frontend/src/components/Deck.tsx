@@ -207,7 +207,7 @@ export function DeckStats({ deck, columns = 1 }: { deck: ParsedDeck; columns?: R
           exploration_count += item.count;
         }
 
-        if (item.card.cost !== null && item.card.cost !== undefined) {
+        if (item.card.cost !== null && item.card.cost !== undefined && item.card.cost !== -2) {
           switch (item.card.aspect_id) {
             case 'AWA':
               awa += item.count * (item.card.cost ?? 0);
