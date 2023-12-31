@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useCallback, useState } from 'react';
 import {
   Button,
   Flex,
@@ -17,14 +17,21 @@ export default function Login({ redirect }: { redirect: string | undefined }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signInWithEmailAndPassword } = useAuth();
+  const onSubmit = useCallback((e: FormEvent) => {
+    try {
+      e.preventDefault();
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      window.alert((error as Error).message);
+    }
+  }, [email, password, signInWithEmailAndPassword]);
   return (
     <Flex direction="column" m="2">
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          signInWithEmailAndPassword(email, password);
-        }}
-      >
+      <form onSubmit={onSubmit}>
         <FormControl isRequired>
           <FormLabel htmlFor="email">{t`Email`}</FormLabel>
           <Input
