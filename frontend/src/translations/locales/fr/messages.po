@@ -475,7 +475,7 @@ msgstr "Si vous avez fait une erreur en voyageant ou terminant la journée, vous
 msgid "If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 msgstr "Si vous voulez qu'elle soit corrigée, envoyez-moi le lien vers votre campagne et ce que devrait être votre voyage (en anglais de préférence) à arkhamcards@gmail.com. Je vais faire la correction pour vous."
 
-msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Si vous voulez supporter le développement et la maintenance du site, vous pouvez nous supporter sur {patreon}"
 
 msgid "Italian"
@@ -631,8 +631,8 @@ msgstr "Note : les cartes de votre Spécialisation et Antécédent ne sont pas m
 msgid "Note: These cards might contain campaign spoilers."
 msgstr "Note : Ces cartes pourraient contenir des spoilers de campagne."
 
-msgid "Note: this campaign was created before the website recorded enough information to show the travel history correctly."
-msgstr "Note : cette campagne a été crée avant que ce site n'enregistre assez d'information pour visualiser votre historique de Voyage correctement."
+msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
+msgstr "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 
 msgid "Notes"
 msgstr "Notes"

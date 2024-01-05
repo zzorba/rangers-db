@@ -475,8 +475,8 @@ msgstr "If you made a mistake when travelling or ending the day, you can undo yo
 msgid "If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 msgstr "If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 
-msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
-msgstr "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgstr "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 
 msgid "Italian"
 msgstr "Italian"
@@ -631,8 +631,8 @@ msgstr "Note: cards from your chosen specialty/background are not shown here, bu
 msgid "Note: These cards might contain campaign spoilers."
 msgstr "Note: These cards might contain campaign spoilers."
 
-msgid "Note: this campaign was created before the website recorded enough information to show the travel history correctly."
-msgstr "Note: this campaign was created before the website recorded enough information to show the travel history correctly."
+msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
+msgstr "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
 
 msgid "Notes"
 msgstr "Notes"
