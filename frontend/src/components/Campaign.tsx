@@ -1387,7 +1387,7 @@ function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode
                 { t`Note: this campaign was created before the website recorded enough information to show the travel history correclty.` }
               </Text>
               <Text fontStyle="italic">
-                { t`If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you.` }
+                { t`If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you.` }
               </Text>
             </>
           ) }

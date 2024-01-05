@@ -316,7 +316,7 @@ msgstr "Kampagne löschen?"
 msgid "Delete deck?"
 msgstr "Deck löschen?"
 
-msgid "Deleting this published deck will cause will remove it from search."
+msgid "Deleting this published deck will remove it from search."
 msgstr "Wenn du dieses veröffentlichte Deck entfernst, wird es auch aus der Suche entfernt."
 
 msgid "Demo"
@@ -472,10 +472,10 @@ msgstr "Wenn du dein Nachtlager aufschlagen möchtest während du an einen neuen
 msgid "If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed."
 msgstr "Wenn dir beim Reisen oder am Tagesende ein Fehler unterlaufen ist, kannst du die letzten Bearbeitungen hier rückgängigmachen. Dies beeinflusst die Decks nicht."
 
-msgid "If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
+msgid "If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 msgstr "Wenn du das gerne korrigieren möchtest, schicke mir einen Link zu deiner Kampagne und was die korrekte Reise war an arkhamcards@gmail.com und ich korrigiere es für dich."
 
-msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Du kannst die Entwicklung und den Unterhalt dieser Webseite auf {patreon} unterstützen."
 
 msgid "Italian"
@@ -631,7 +631,7 @@ msgstr "Hinweis: Karten aus deiner gewählten Expertise/Vorgeschichte werden hie
 msgid "Note: These cards might contain campaign spoilers."
 msgstr "Hinweis: Diese Karten könnten Spoiler für die Kampagne enthalten."
 
-msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
+msgid "Note: this campaign was created before the website recorded enough information to show the travel history correctly."
 msgstr "Hinweis: Diese Kampagne wurde erstellt bevor die Webseite ausreichend Informationen aufgezeichnet hat um die bisherige Reise korrekt anzuzeigen."
 
 msgid "Notes"
@@ -818,7 +818,7 @@ msgstr ""
 msgid "See comments"
 msgstr "Kommentare ansehen"
 
-msgid "Select 1 cards from any background of specialty as your outside interest."
+msgid "Select 1 card from any background of specialty as your outside interest."
 msgstr "Wähle 1 Karte aus einem beliebigen Vorgeschichte- oder Expertise-Set als dein Hobby aus."
 
 msgid "Select 4 different personality cards, 1 from each aspect."

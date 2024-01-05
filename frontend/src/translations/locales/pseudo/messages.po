@@ -316,7 +316,7 @@ msgstr ""
 msgid "Delete deck?"
 msgstr ""
 
-msgid "Deleting this published deck will cause will remove it from search."
+msgid "Deleting this published deck will remove it from search."
 msgstr ""
 
 msgid "Demo"
@@ -472,10 +472,10 @@ msgstr ""
 msgid "If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed."
 msgstr ""
 
-msgid "If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
+msgid "If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 msgstr ""
 
-msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr ""
 
 msgid "Italian"
@@ -631,7 +631,7 @@ msgstr ""
 msgid "Note: These cards might contain campaign spoilers."
 msgstr ""
 
-msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
+msgid "Note: this campaign was created before the website recorded enough information to show the travel history correctly."
 msgstr ""
 
 msgid "Notes"
@@ -818,7 +818,7 @@ msgstr ""
 msgid "See comments"
 msgstr ""
 
-msgid "Select 1 cards from any background of specialty as your outside interest."
+msgid "Select 1 card from any background of specialty as your outside interest."
 msgstr ""
 
 msgid "Select 4 different personality cards, 1 from each aspect."
