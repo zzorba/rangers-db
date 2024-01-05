@@ -501,7 +501,7 @@ function BaseDeckbuildingTabs({
         </TabPanel>
         <TabPanel>
           <Text fontSize="md" className='lightText' paddingBottom={1}>
-            {t`Select 1 cards from any background of specialty as your outside interest.`}
+            {t`Select 1 card from any background of specialty as your outside interest.`}
           </Text>
           <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2}>
             {t`Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.`}

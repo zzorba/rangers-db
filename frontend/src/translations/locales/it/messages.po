@@ -316,7 +316,7 @@ msgstr "Cancellare campagna?"
 msgid "Delete deck?"
 msgstr "Cancellare mazzo?"
 
-msgid "Deleting this published deck will cause will remove it from search."
+msgid "Deleting this published deck will remove it from search."
 msgstr "Cancellare questo mazzo pubblico lo rimuoverà dalle ricerche."
 
 msgid "Demo"
@@ -472,10 +472,10 @@ msgstr "Se desideri accamparti mentre viaggi verso un luogo diverso, usa il bott
 msgid "If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed."
 msgstr ""
 
-msgid "If you would like it to be correcrted, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
+msgid "If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
 msgstr "Se desiderate venga corretto, posso pensarci io. Mandatemi un link alla vostra campagna indicando qual è il percorso corretto ad arkhamcards@gmail.com."
 
-msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgid "If you'd like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Se volete aiutare a supportare e mantenere questo sito, potete trovarci su {patreon}."
 
 msgid "Italian"
@@ -631,7 +631,7 @@ msgstr "Nota: le carte della specialità/origine prescelte non sono mostrate qui
 msgid "Note: These cards might contain campaign spoilers."
 msgstr "Nota: queste carte potrebbero contenere spoiler."
 
-msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
+msgid "Note: this campaign was created before the website recorded enough information to show the travel history correctly."
 msgstr "Nota: questa campagna è stata creata prima che il sito raccogliesse informazioni a sufficienza per mostrare un diario di viaggio in modo corretto."
 
 msgid "Notes"
@@ -818,7 +818,7 @@ msgstr ""
 msgid "See comments"
 msgstr "Vedi commenti"
 
-msgid "Select 1 cards from any background of specialty as your outside interest."
+msgid "Select 1 card from any background of specialty as your outside interest."
 msgstr "Scegli 1 carta da una origine o da una specialità qualsiasi come interesse personale."
 
 msgid "Select 4 different personality cards, 1 from each aspect."

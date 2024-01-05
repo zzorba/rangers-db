@@ -359,7 +359,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                       <Tooltip
                         placement="left"
                         label={deck.published ?
-                          t`Deleting this published deck will cause will remove it from search.` :
+                          t`Deleting this published deck will remove it from search.` :
                           undefined}
                       >
                         <MenuItem
