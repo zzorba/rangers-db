@@ -148,7 +148,7 @@ msgstr ""
 msgid "Background: {backgroundName}"
 msgstr ""
 
-msgid "Biologist's Outpost"
+msgid "Biological Outpost"
 msgstr ""
 
 msgid "Boulder Field"

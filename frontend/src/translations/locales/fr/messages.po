@@ -148,7 +148,7 @@ msgstr "Antécédent"
 msgid "Background: {backgroundName}"
 msgstr "Antécédent : {backgroundName}"
 
-msgid "Biologist's Outpost"
+msgid "Biological Outpost"
 msgstr "Avant-Poste Biologique"
 
 msgid "Boulder Field"

@@ -148,7 +148,7 @@ msgstr "Vorgeschichte"
 msgid "Background: {backgroundName}"
 msgstr "Vorgeschichte: {backgroundName}"
 
-msgid "Biologist's Outpost"
+msgid "Biological Outpost"
 msgstr "Biologie-Stützpunkt"
 
 msgid "Boulder Field"

@@ -148,7 +148,7 @@ msgstr "Origine"
 msgid "Background: {backgroundName}"
 msgstr "Origine: {backgroundName}"
 
-msgid "Biologist's Outpost"
+msgid "Biological Outpost"
 msgstr "Avamposto Biologico"
 
 msgid "Boulder Field"
