@@ -858,7 +858,7 @@ msgid "Shareable Deck"
 msgstr "Deck partageable"
 
 msgid "Show all"
-msgstr "Voir tous"
+msgstr "Voir tout"
 
 msgid "Show all locations"
 msgstr "Voir tous les lieux"
