@@ -98,7 +98,7 @@ msgid "Ancestor's Grove"
 msgstr "Wurzeln der Ältesten"
 
 msgid "Approach"
-msgstr ""
+msgstr "Herangehensweise"
 
 msgid "Approach icons"
 msgstr "Herangehensweise-Symbole"
@@ -119,7 +119,7 @@ msgid "Are you sure you want to delete your campaign: {0}? This action cannot be
 msgstr "Willst du deine Kampagne {0} wirklich löschen? Das lässt sich nicht rückgängig machen."
 
 msgid "Aspect"
-msgstr ""
+msgstr "Aspekt"
 
 msgid "Aspect requirements"
 msgstr "Aspekt-Voraussetzungen"
@@ -134,7 +134,7 @@ msgid "Available"
 msgstr "Verfügbar"
 
 msgid "Average"
-msgstr ""
+msgstr "Durchschnitt"
 
 msgid "AWA"
 msgstr "WAH"
@@ -464,7 +464,7 @@ msgid "Howling Winds"
 msgstr "Sturmböen"
 
 msgid "Icons"
-msgstr ""
+msgstr "Symbole"
 
 msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
 msgstr "Wenn du dein Nachtlager aufschlagen möchtest während du an einen neuen Ort reist, nutze bitte den 'Reisen' Button."
@@ -635,7 +635,7 @@ msgid "Note: this campaign was created before the website recorded enough inform
 msgstr "Hinweis: Diese Kampagne wurde erstellt bevor die Webseite ausreichend Informationen aufgezeichnet hat um die bisherige Reise korrekt anzuzeigen."
 
 msgid "Notes"
-msgstr ""
+msgstr "Notizen"
 
 msgid "Old-growth"
 msgstr "Ur-Wald"
@@ -813,7 +813,7 @@ msgid "Search by name"
 msgstr "Nach Name suchen"
 
 msgid "Search card text"
-msgstr ""
+msgstr "Kartentext durchsuchen"
 
 msgid "See comments"
 msgstr "Kommentare ansehen"
@@ -864,7 +864,7 @@ msgid "Show all locations"
 msgstr "Alle Orte anzeigen"
 
 msgid "Side deck"
-msgstr ""
+msgstr "Extra Karten"
 
 msgid "Sign In"
 msgstr "Einloggen"
@@ -879,7 +879,7 @@ msgid "Some campaign events may allow you to permanently swap cards from your de
 msgstr "Manche Ereignisse in der Kampagne erlauben es dir, Karten aus deinem Deck mit Karten aus der Sammlung permanent zu tauschen."
 
 msgid "Sort"
-msgstr ""
+msgstr "Sortieren"
 
 msgid "Specialty"
 msgstr "Expertise"
@@ -897,7 +897,7 @@ msgid "Spirit"
 msgstr "Souveränität"
 
 msgid "Start campaign"
-msgstr ""
+msgstr "Kampagne starten"
 
 msgid "Starter deck"
 msgstr "Starter-Deck"
@@ -924,7 +924,7 @@ msgid "Terravore"
 msgstr "Erdfresser"
 
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 msgid "The Alluvial Ruins"
 msgstr "Schwemmland-Ruinen"
@@ -999,7 +999,7 @@ msgid "This will end day {0}."
 msgstr "Tag {0} wird beendet."
 
 msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
-msgstr ""
+msgstr "Wechselt die Steuerung um Änderungen am Deck, die während einer Kampagne möglich sind, zu erlauben."
 
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "Um Spoiler für andere Spieler zu vermeiden kannst du keine Decks veröffentlichen, mit denen du dein Nachtlager aufgeschlagen hast."
@@ -1032,10 +1032,10 @@ msgid "Too many SPI personality cards."
 msgstr "Zu viele SOV-Eigenarten-Karten."
 
 msgid "Total"
-msgstr ""
+msgstr "Gesamt"
 
 msgid "Track cards that are removed permanently from the path deck here."
-msgstr "Hier kannst du permanent entfernte Pfadkarten nachverfolgen."
+msgstr "Hier findest du deine permanent entfernten Pfadkarten."
 
 msgid "Traits"
 msgstr "Merkmale"
@@ -1074,13 +1074,13 @@ msgid "Update now"
 msgstr "Jetzt bearbeiten"
 
 msgid "View as Cards"
-msgstr ""
+msgstr "Ansicht: Karten"
 
 msgid "View as Checklist"
-msgstr ""
+msgstr "Ansicht: Liste"
 
 msgid "View as Images"
-msgstr ""
+msgstr "Ansicht: Bilder"
 
 msgid "Watcher's Rock"
 msgstr "Das Auge Am Rand"
@@ -1134,7 +1134,7 @@ msgid "You must correct deck errors before upgrading."
 msgstr "Du musst die Fehler in deinem Deck korrigieren, bevor du es verbessern kannst."
 
 msgid "You must correct errors berfore switching to campaign mode."
-msgstr ""
+msgstr "Du musst zuerst alle Fehler korrigieren bevor du in den Kampagnen-Modus wechseln kannst."
 
 msgid "You must include two of each card in your starting deck."
 msgstr "Dein Start-Deck muss zwei Kopien jeder Karte beinhalten."
