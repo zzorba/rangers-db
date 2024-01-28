@@ -11,6 +11,8 @@
     "i18n-extract-en": "ttag update assets/i18n/en.po src/core/* src/*.ts",
     "i18n-extract-it": "ttag update assets/i18n/it.po src/core/* src/*.ts",
     "i18n-extract-de": "ttag update assets/i18n/de.po src/core/* src/*.ts",
+    "i18n-extract-fr": "ttag update assets/i18n/fr.po src/core/* src/*.ts",
+    "i18n-extract-ru": "ttag update assets/i18n/ru.po src/core/* src/*.ts",
     "codegen": "graphql-codegen --config codegen.yml",
     "s3-upload": "s3-upload"
   },
