@@ -5,7 +5,8 @@ export function getPlural(lang: string, plurals: string, count: number) {
     case 'de':
     case 'it':
     case 'fr':
-    default:
+    case 'ru':
+      default:
       if (count !== 1 && plurals.length) {
         return p[1];
       }

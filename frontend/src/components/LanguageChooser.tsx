@@ -3,7 +3,7 @@ import { Text, Flex } from '@chakra-ui/react';
 import { ChakraStylesConfig, OptionBase, Select as ChakraReactSelect, SingleValue } from 'chakra-react-select';
 import { useRouter } from 'next/router';
 import { t } from '@lingui/macro';
-import { US, DE, IT, FR } from 'country-flag-icons/react/3x2'
+import { US, DE, IT, FR, RU } from 'country-flag-icons/react/3x2'
 import { MdLanguage } from 'react-icons/md';
 
 import { useLocale } from '../lib/TranslationProvider';
@@ -49,6 +49,10 @@ const mobileLanguageOptions: LanguageOption[] = [
   {
     value: 'fr',
     label: <Flex direction="row"><FR width="20px" /><Text marginLeft={2}>Français</Text></Flex>,
+  },
+  {
+    value: 'ru',
+    label: <Flex direction="row"><RU width="20px" /><Text marginLeft={2}>Pусский</Text></Flex>,
   },
 ];
 export function DesktopLanguageChooser() {
