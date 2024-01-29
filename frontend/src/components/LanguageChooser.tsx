@@ -31,6 +31,10 @@ const languageOptions: LanguageOption[] = [
     value: 'fr',
     label: <FR />,
   },
+  {
+    value: 'ru',
+    label: <RU />,
+  },
 ];
 
 const mobileLanguageOptions: LanguageOption[] = [
