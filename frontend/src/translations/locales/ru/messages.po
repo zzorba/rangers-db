@@ -10,6 +10,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"Plural-Forms: \n"
 
 msgid "- {0} Specialty"
 msgstr "- {0} Специализация"
@@ -64,6 +66,9 @@ msgstr "Добавить дополнительную колоду"
 
 msgid "Add mission"
 msgstr "Добавить миссию"
+
+msgid "Add note"
+msgstr ""
 
 msgid "Add reward"
 msgstr "Добавить награду"
@@ -365,6 +370,9 @@ msgstr "Редактировать миссию"
 msgid "Edit notable event"
 msgstr "Редактирование важного события"
 
+msgid "Edit note"
+msgstr ""
+
 msgid "Edit players"
 msgstr "Редактирование игроков"
 
@@ -388,6 +396,9 @@ msgstr "Экипировка"
 
 msgid "Exploration"
 msgstr "Разведка"
+
+msgid "Extend campaign"
+msgstr ""
 
 msgid "Filter by {0}"
 msgstr "Фильтр по {0}"

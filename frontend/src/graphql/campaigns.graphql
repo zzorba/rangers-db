@@ -142,6 +142,25 @@ mutation addCampaignEvent(
   }
 }
 
+
+mutation addCampaignNote(
+  $campaignId: Int!,
+  $note: jsonb!
+) {
+  update_rangers_campaign_by_pk(
+    pk_columns: {
+	    id: $campaignId
+    }
+    _append: {
+      notes: $note
+    }
+  ) {
+    id
+    notes
+  }
+}
+
+
 mutation updateCampaignRemoved(
   $campaignId: Int!,
   $removed: jsonb!
@@ -176,6 +195,39 @@ mutation addCampaignRemoved(
   }
 }
 
+mutation updateCampaignNotes(
+  $campaignId: Int!,
+  $notes: jsonb!
+) {
+  update_rangers_campaign_by_pk(
+    pk_columns: {
+	    id: $campaignId
+    }
+    _set: {
+      notes: $notes
+    }
+  ) {
+    id
+    notes
+  }
+}
+
+mutation extendCampaign(
+  $campaignId: Int!,
+) {
+  update_rangers_campaign_by_pk(
+    pk_columns: {
+	    id: $campaignId
+    }
+    _set: {
+      extended_calendar: true
+    }
+  ) {
+    id
+    extended_calendar
+  }
+}
+
 mutation updateCampaignEvents(
   $campaignId: Int!,
   $events: jsonb!
@@ -192,7 +244,6 @@ mutation updateCampaignEvents(
     events
   }
 }
-
 
 mutation setCampaignLocation(
   $campaignId: Int!,

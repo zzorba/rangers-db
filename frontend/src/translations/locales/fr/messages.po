@@ -67,6 +67,9 @@ msgstr "Ajouter un deck"
 msgid "Add mission"
 msgstr "Ajouter une mission"
 
+msgid "Add note"
+msgstr ""
+
 msgid "Add reward"
 msgstr "Ajouter une récompense"
 
@@ -367,6 +370,9 @@ msgstr "Modifier la mission"
 msgid "Edit notable event"
 msgstr "Modifier l'événement"
 
+msgid "Edit note"
+msgstr ""
+
 msgid "Edit players"
 msgstr "Modifier les joueurs"
 
@@ -390,6 +396,9 @@ msgstr "Équiper"
 
 msgid "Exploration"
 msgstr "Exploration"
+
+msgid "Extend campaign"
+msgstr ""
 
 msgid "Filter by {0}"
 msgstr "Filtrer par {0}"

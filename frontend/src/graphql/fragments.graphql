@@ -7,7 +7,9 @@ fragment Campaign on rangers_campaign {
   id
   user_id
   name
+  notes
   day
+  extended_calendar
   cycle_id
   current_location
   current_path_terrain
