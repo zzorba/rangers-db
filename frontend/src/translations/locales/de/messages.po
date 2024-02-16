@@ -827,7 +827,7 @@ msgstr "Kartentext durchsuchen"
 msgid "See comments"
 msgstr "Kommentare ansehen"
 
-msgid "Select 1 card from any background of specialty as your outside interest."
+msgid "Select 1 card from any background or specialty as your outside interest."
 msgstr "Wähle 1 Karte aus einem beliebigen Vorgeschichte- oder Expertise-Set als dein Hobby aus."
 
 msgid "Select 4 different personality cards, 1 from each aspect."

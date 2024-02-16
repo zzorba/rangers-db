@@ -827,7 +827,7 @@ msgstr ""
 msgid "See comments"
 msgstr ""
 
-msgid "Select 1 card from any background of specialty as your outside interest."
+msgid "Select 1 card from any background or specialty as your outside interest."
 msgstr ""
 
 msgid "Select 4 different personality cards, 1 from each aspect."
