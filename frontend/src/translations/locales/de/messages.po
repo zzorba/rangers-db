@@ -196,6 +196,9 @@ msgstr "Karten"
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Karten die aus deinem Deck entfernt wurden werden hier abgelegt. Sie können zurück in dein Deck genommen werden wenn du dein Nachtlager aufschlägst."
 
+msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr ""
+
 msgid "Changes"
 msgstr "Änderungen"
 

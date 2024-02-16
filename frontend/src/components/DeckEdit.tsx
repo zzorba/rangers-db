@@ -503,6 +503,9 @@ function BaseDeckbuildingTabs({
           <Text fontSize="md" className='lightText' paddingBottom={1}>
             {t`Select 1 card from any background or specialty as your outside interest.`}
           </Text>
+          <Text fontSize="sm" fontStyle="italic" className="lightText">
+            {t`Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically.`}
+          </Text>
           <Text fontSize="sm" className='lightText' fontStyle="italic" paddingBottom={2}>
             {t`Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it.`}
           </Text>

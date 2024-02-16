@@ -196,6 +196,9 @@ msgstr "Carte"
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Le carte rimosse dal mazzo saranno conservate qui. Possono essere aggiunte nuovamente al mazzo quando ti accampi."
 
+msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr ""
+
 msgid "Changes"
 msgstr "Cambiamenti"
 
