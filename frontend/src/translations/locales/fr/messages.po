@@ -488,7 +488,7 @@ msgid "Kobo's Market"
 msgstr "Marché de Kobo"
 
 msgid "Lakeshore"
-msgstr "Bord du lac"
+msgstr "Tourbière"
 
 msgid "Language"
 msgstr "Langue"
@@ -915,7 +915,7 @@ msgid "Sunken Outpost"
 msgstr "Avant-Poste Submergé"
 
 msgid "Swamp"
-msgstr "Marais"
+msgstr "Marécage"
 
 msgid "Terrain"
 msgstr "Terrain"
@@ -1101,7 +1101,7 @@ msgid "White Sky"
 msgstr "Blanc-Ciel"
 
 msgid "Woods"
-msgstr "Bois"
+msgstr "Fôret"
 
 msgid "You"
 msgstr "Vous"
