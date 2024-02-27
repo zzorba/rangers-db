@@ -677,7 +677,7 @@ export function getMapLocations(): MapLocations {
     },
     {
       id: 'biologists_outpost',
-      name: t`Biologist's Outpost`,
+      name: t`Biological Outpost`,
       type: 'trail',
       background: true,
     },

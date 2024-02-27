@@ -67,6 +67,9 @@ msgstr "Add additional deck"
 msgid "Add mission"
 msgstr "Add mission"
 
+msgid "Add note"
+msgstr "Add note"
+
 msgid "Add reward"
 msgstr "Add reward"
 
@@ -148,8 +151,8 @@ msgstr "Background"
 msgid "Background: {backgroundName}"
 msgstr "Background: {backgroundName}"
 
-msgid "Biologist's Outpost"
-msgstr "Biologist's Outpost"
+msgid "Biological Outpost"
+msgstr "Biological Outpost"
 
 msgid "Boulder Field"
 msgstr "Boulder Field"
@@ -192,6 +195,9 @@ msgstr "Cards"
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
+
+msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
 
 msgid "Changes"
 msgstr "Changes"
@@ -367,6 +373,9 @@ msgstr "Edit mission"
 msgid "Edit notable event"
 msgstr "Edit notable event"
 
+msgid "Edit note"
+msgstr "Edit note"
+
 msgid "Edit players"
 msgstr "Edit players"
 
@@ -390,6 +399,9 @@ msgstr "Equip"
 
 msgid "Exploration"
 msgstr "Exploration"
+
+msgid "Extend campaign"
+msgstr "Extend campaign"
 
 msgid "Filter by {0}"
 msgstr "Filter by {0}"
@@ -818,8 +830,8 @@ msgstr "Search card text"
 msgid "See comments"
 msgstr "See comments"
 
-msgid "Select 1 card from any background of specialty as your outside interest."
-msgstr "Select 1 card from any background of specialty as your outside interest."
+msgid "Select 1 card from any background or specialty as your outside interest."
+msgstr "Select 1 card from any background or specialty as your outside interest."
 
 msgid "Select 4 different personality cards, 1 from each aspect."
 msgstr "Select 4 different personality cards, 1 from each aspect."

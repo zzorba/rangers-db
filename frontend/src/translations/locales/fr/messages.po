@@ -67,6 +67,9 @@ msgstr "Ajouter un deck"
 msgid "Add mission"
 msgstr "Ajouter une mission"
 
+msgid "Add note"
+msgstr ""
+
 msgid "Add reward"
 msgstr "Ajouter une récompense"
 
@@ -148,7 +151,7 @@ msgstr "Antécédent"
 msgid "Background: {backgroundName}"
 msgstr "Antécédent : {backgroundName}"
 
-msgid "Biologist's Outpost"
+msgid "Biological Outpost"
 msgstr "Avant-Poste Biologique"
 
 msgid "Boulder Field"
@@ -192,6 +195,9 @@ msgstr "Cartes"
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Les cartes qui sont retirées de votre deck seront garder ici. Elles peuvent être remises dans votre deck quand vous campez."
+
+msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr ""
 
 msgid "Changes"
 msgstr "Changements"
@@ -367,6 +373,9 @@ msgstr "Modifier la mission"
 msgid "Edit notable event"
 msgstr "Modifier l'événement"
 
+msgid "Edit note"
+msgstr ""
+
 msgid "Edit players"
 msgstr "Modifier les joueurs"
 
@@ -390,6 +399,9 @@ msgstr "Équiper"
 
 msgid "Exploration"
 msgstr "Exploration"
+
+msgid "Extend campaign"
+msgstr ""
 
 msgid "Filter by {0}"
 msgstr "Filtrer par {0}"
@@ -818,7 +830,7 @@ msgstr "Rechercher le texte sur la carte"
 msgid "See comments"
 msgstr "Voir les commentaires"
 
-msgid "Select 1 card from any background of specialty as your outside interest."
+msgid "Select 1 card from any background or specialty as your outside interest."
 msgstr "Sélectionner 1 carte de n'importe quel Antécédent ou Spécialisation comme Centre d'intérêt."
 
 msgid "Select 4 different personality cards, 1 from each aspect."

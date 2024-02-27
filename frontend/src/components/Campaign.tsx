@@ -1,11 +1,21 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
-import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last, sumBy, slice, zip, findIndex } from 'lodash';
+import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last, sumBy, slice, zip, findIndex, extend } from 'lodash';
 import NextLink from 'next/link';
 import Router from 'next/router';
 
-import { CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation, useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation, useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery, useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation, useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation, useSetCampaignDayMutation, useSetCampaignMissionsMutation, useSetDeckCampaignMutation, useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation, useAddCampaignHistoryMutation, useSetCampaignTitleMutation, useCampaignUndoTravelMutation } from '../generated/graphql/apollo-schema';
+import {
+  CampaignFragment, CardFragment, DeckFragment, useCampaignTravelMutation, useAddCampaignEventMutation,
+  useAddCampaignMissionMutation, useAddCampaignRemovedMutation, useAddFriendToCampaignMutation,
+  useCreateCampaignMutation, useDeleteCampaignMutation, useGetMyCampaignDecksQuery,
+  useGetMyCampaignDecksTotalQuery, useGetProfileQuery, useLeaveCampaignMutation,
+  useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation,
+  useSetCampaignDayMutation, useSetCampaignMissionsMutation, useSetDeckCampaignMutation,
+  useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation,
+  useAddCampaignHistoryMutation, useSetCampaignTitleMutation, useCampaignUndoTravelMutation,
+  useUpdateCampaignNotesMutation, useAddCampaignNoteMutation, useExtendCampaignMutation,
+} from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import FriendChooser from './FriendChooser';
 import ListHeader from './ListHeader';
@@ -56,6 +66,12 @@ interface NotableEvent {
   crossed_out?: boolean;
 }
 
+interface CampaignNote {
+  note: string;
+  day: number;
+  crossed_out?: boolean;
+}
+
 interface RemovedEntry {
   set_id?: string;
   name: string;
@@ -74,12 +90,14 @@ export interface ParsedCampaign {
   day: number;
   user_id: string;
   cycle_id: string;
+  extended_calendar: boolean;
 
   access: UserInfoFragment[];
 
   missions: MissionEntry[];
   calendar: CalendarEntry[];
   events: NotableEvent[];
+  notes: CampaignNote[];
   history: HistoryEntry[];
   rewards: string[];
   removed: RemovedEntry[];
@@ -94,10 +112,12 @@ export class CampaignWrapper implements ParsedCampaign {
   name: string;
   day: number;
   cycle_id: string;
+  extended_calendar: boolean;
 
   access: UserInfoFragment[];
 
   events: NotableEvent[];
+  notes: CampaignNote[];
   history: HistoryEntry[];
   missions: MissionEntry[];
   calendar: CalendarEntry[];
@@ -113,10 +133,12 @@ export class CampaignWrapper implements ParsedCampaign {
     this.name = campaign.name;
     this.day = campaign.day;
     this.cycle_id = campaign.cycle_id;
+    this.extended_calendar = campaign.extended_calendar ?? false;
 
     this.missions = Array.isArray(campaign.missions) ? (campaign.missions as MissionEntry[]) : [];
     this.calendar = Array.isArray(campaign.calendar) ? (campaign.calendar as CalendarEntry[]) : [];
     this.rewards = Array.isArray(campaign.rewards) ? (campaign.rewards as string[]) : [];
+    this.notes = Array.isArray(campaign.notes) ? (campaign.notes as CampaignNote[]) : [];
     this.events = Array.isArray(campaign.events) ? (campaign.events as NotableEvent[]) : [];
     this.history = Array.isArray(campaign.history) ? (campaign.history as HistoryEntry[]) : [];
     this.removed = Array.isArray(campaign.removed) ? (campaign.removed as RemovedEntry[]) : [];
@@ -1487,7 +1509,6 @@ function useEditEventModal(onUpdate: (idx: number, event: NotableEvent) => Promi
   ];
 }
 
-
 function EventLine({ event, idx, onClick }: {
   event: NotableEvent;
   idx: number;
@@ -1502,6 +1523,7 @@ function EventLine({ event, idx, onClick }: {
     </ListItem>
   );
 }
+
 
 function EventsTab({ campaign }: { campaign: ParsedCampaign }) {
   const [event, setEvent] = useState('');
@@ -1577,6 +1599,168 @@ function EventsTab({ campaign }: { campaign: ParsedCampaign }) {
           />)) }
       </List>
       { eventModal }
+    </>
+  );
+}
+function useEditNoteModal(onUpdate: (idx: number, note: CampaignNote) => Promise<void>): [(index: number, note: CampaignNote) => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [index, setIndex] = useState<number>(0);
+  const [day, setDay] = useState<number>(0);
+  const [text, setText] = useState('');
+  const [crossedOut, setCrossedOut] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const showModal = useCallback((index: number, note: CampaignNote) => {
+    setText(note.note);
+    setIndex(index);
+    setDay(note.day);
+    setCrossedOut(note.crossed_out || false);
+    onOpen();
+  }, [onOpen, setText, setDay, setIndex, setCrossedOut]);
+  const onSaveNote = useCallback(async() => {
+    setSubmitting(true);
+    await onUpdate(index, { note: text, day, crossed_out: crossedOut });
+    setSubmitting(false);
+    onClose();
+    return undefined;
+  }, [onUpdate, onClose, day, index, text, crossedOut, setSubmitting]);
+  return [
+    showModal,
+    <Modal key="note" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent maxW="600px">
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Edit note`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <form onSubmit={e => {
+            e.preventDefault();
+            onSaveNote();
+          }}>
+            <FormControl marginBottom={4}>
+              <FormLabel>{t`What happened?`}</FormLabel>
+              <Input
+                type="text"
+                textDecorationLine={crossedOut ? 'line-through' : undefined}
+                value={text}
+                onChange={e => setText(e.target.value)}
+              />
+            </FormControl>
+            <FormControl>
+              <Checkbox isChecked={crossedOut} onChange={(event) => setCrossedOut(event.target.checked)}>
+                { t`Crossed-out` }
+              </Checkbox>
+            </FormControl>
+          </form>
+        </ModalBody>
+        <ModalFooter>
+          <Flex direction="row" flex={1} justifyContent="flex-end">
+            <SubmitButton color="blue" onSubmit={onSaveNote}>
+              { t`Save` }
+            </SubmitButton>
+          </Flex>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
+function NoteLine({ note, idx, onClick }: {
+  note: CampaignNote;
+  idx: number;
+  onClick: (idx: number, event: CampaignNote) => void;
+}) {
+  const handleClick = useCallback(() => onClick(idx, note), [onClick, idx, note]);
+  return (
+    <ListItem key={idx} paddingTop={2} paddingBottom={2} onClick={handleClick} cursor="pointer">
+      <Text padding={2} borderBottomWidth={1} borderColor="gray.500" textDecorationLine={note.crossed_out ? 'line-through' : undefined}>
+        { note.note }
+      </Text>
+    </ListItem>
+  );
+}
+
+function NotesTab({ campaign }: { campaign: ParsedCampaign }) {
+  const [note, setNote] = useState('');
+  const [addNote] = useAddCampaignNoteMutation();
+  const onSubmitNewNote = useCallback(async() => {
+    if (note) {
+      const newNote: CampaignNote = {
+        note: trim(note),
+        day: campaign.day,
+      };
+      const r = await addNote({
+        variables: {
+          campaignId: campaign.id,
+          note: newNote,
+        }
+      });
+      if (r.errors?.length) {
+        return r.errors[0].message;
+      }
+    }
+    setNote('');
+    return undefined;
+  }, [note, campaign.id, campaign.day, setNote, addNote]);
+  const [updateNotes] = useUpdateCampaignNotesMutation();
+  const onUpdateNote = useCallback(async(idx: number, value: CampaignNote) => {
+    const newNotes = flatMap(campaign.notes, (n, i) => {
+      if (idx === i) {
+        if (value.note) {
+          return value;
+        }
+        return [];
+      }
+      return n;
+    });
+    await updateNotes({
+      variables: {
+        campaignId: campaign.id,
+        notes: newNotes,
+      }
+    });
+  }, [updateNotes, campaign.notes, campaign.id]);
+  const { onOpen, onClose, isOpen } = useDisclosure();
+  const [showEditNote, noteModal] = useEditNoteModal(onUpdateNote);
+  return (
+    <>
+      <Flex direction="column">
+        <Text fontSize="md">{t`Notes`}</Text>
+        <List key="notes-list">
+          { map(campaign.notes, (n, idx) => (
+            <NoteLine
+              key={idx}
+              idx={idx}
+              note={n}
+              onClick={showEditNote}
+            />)) }
+          { isOpen ? (
+            <form onSubmit={e => {
+              e.preventDefault();
+              onSubmitNewNote();
+            }}>
+              <Flex direction="row">
+                <FormControl>
+                  <Input
+                    value={note}
+                    autoFocus
+                    placeholder={t`What happened?`}
+                    onChange={e => setNote(e.target.value)}
+                  />
+                </FormControl>
+                <ButtonGroup marginLeft={2}>
+                  { !!note && <SubmitIconButton aria-label={t`Save`} onSubmit={onSubmitNewNote} icon={<SlCheck />} /> }
+                  <IconButton aria-label={t`Cancel`} icon={<SlClose />} onClick={onClose} />
+                </ButtonGroup>
+              </Flex>
+            </form>
+          ) : <Button leftIcon={<SlPlus />} onClick={onOpen}>{t`Add note`}</Button>}
+        </List>
+      </Flex>
+      { noteModal }
     </>
   );
 }
@@ -1674,7 +1858,20 @@ const FIXED_GUIDE_ENTRIES: { [day: string]: string[] | undefined } = {
 };
 
 function Timeline({ campaign }: { campaign: ParsedCampaign }) {
-  const weatherLabels = useWeather();
+  const singleWeatherLabels = useWeather();
+  const weatherLabels = useMemo(() => {
+    return [
+      ...singleWeatherLabels,
+      ...(campaign.extended_calendar ?
+        singleWeatherLabels.map(weather => {
+          return {
+            start: weather.start + 30,
+            end: weather.end + 30,
+            name: weather.name,
+          };
+        }) : []),
+    ];
+  }, [campaign.extended_calendar, singleWeatherLabels]);
   const [showDayModal, editDayModal] = useEditDayModal(campaign);
   const entriesByDay = useMemo(() => {
     const r: { [key: string]: string[] | undefined } = {};
@@ -1697,9 +1894,8 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
       <Box maxW="100vw">
         <Flex direction="column"  overflowX="scroll" paddingBottom="16px">
           <Flex direction="row" alignItems="flex-end">
-            { map(range(1, 31), (day) => {
+            { map(range(1, 31 + (campaign.extended_calendar ? 30 : 0)), (day) => {
               const entries = entriesByDay[day];
-
               return (
                 <Flex key={day} direction="column" marginRight="4px" alignItems="center">
                   { !!entries?.length && (
@@ -1708,7 +1904,11 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
                       <Text textAlign="center" fontSize="xs">{entries.join(', ')}</Text>
                     </>
                   ) }
-                  <DayButton onClick={showDayModal} currentDay={campaign.day} day={day} />
+                  <DayButton
+                    onClick={showDayModal}
+                    currentDay={campaign.day}
+                    day={day}
+                  />
                 </Flex>
               );
             })}
@@ -1717,7 +1917,13 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
             { map(weatherLabels, ({ start, end, name }) => {
               const current = campaign.day >= start && campaign.day <= end;
               return (
-                <Flex key={start} direction="column" minWidth={`${(end - start) * (size + 4) + (size - 10)}px`} marginLeft="5px" marginRight="9px">
+                <Flex
+                  key={start}
+                  direction="column"
+                  minWidth={`${(end - start) * (size + 4) + (size - 10)}px`}
+                  marginLeft="5px"
+                  marginRight="9px"
+                >
                   <Box
                     borderLeftWidth="1px"
                     borderRightWidth="1px"
@@ -2081,6 +2287,14 @@ interface CampaignDetailProps {
 
 export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: CampaignDetailProps) {
   const { cycles, locations, paths } = useLocale();
+  const [extendCampaign] = useExtendCampaignMutation();
+  const onExtendCampaign = useCallback(async() => {
+    extendCampaign({
+      variables: {
+        campaignId: campaign.id,
+      },
+    });
+  }, [extendCampaign, campaign]);
   const [setCampaignTitle] = useSetCampaignTitleMutation();
   const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign.cycle_id]);
   const [showHistory, historyModal] = useJourneyModal(campaign);
@@ -2114,6 +2328,11 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
           <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
           <Button leftIcon={<FaMoon />} onClick={onEndDay}>{t`End the day`}</Button>
           { !!undoEnabled && <Button variant="ghost" leftIcon={<FaUndo />} onClick={onUndo}>{t`Undo`}</Button> }
+          { (campaign.day === 30 && !campaign.extended_calendar) && (
+          <SolidButton color="blue" onClick={onExtendCampaign}>
+            {t`Extend campaign`}
+          </SolidButton>
+        )}
         </ButtonGroup>
       </PageHeading>
       <Timeline campaign={campaign} />
@@ -2193,6 +2412,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
             </TabPanel>
           </TabPanels>
         </Tabs>
+        <NotesTab campaign={campaign} />
       </SimpleGrid>
       { travelModal }
       { historyModal }

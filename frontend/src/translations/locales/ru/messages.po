@@ -1,0 +1,1161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2024-01-28 16:43-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"Plural-Forms: \n"
+
+msgid "- {0} Specialty"
+msgstr "- {0} Специализация"
+
+msgid "- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting."
+msgstr "- Художественный текст можно обозначить с помощью тегов <f>это художественный текст</f>, чтобы получить форматирование в стиле карты."
+
+msgid "- You can use the following game specific icons by enclosing them in square brackets:"
+msgstr "- Вы можете использовать следующие игровые значки, заключив их в квадратные скобки:"
+
+msgid "(edited)"
+msgstr "(изменено)"
+
+msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
+msgstr "{0, plural, one {({1} Недуг)} other {({2} Недуга)}}"
+
+msgid "{0} (Copy)"
+msgstr "{0} (Копия)"
+
+msgid "{0} / 30 Cards"
+msgstr "{0} / 30 карт"
+
+msgid "{0} of {1}"
+msgstr "{0} из {1}"
+
+msgid "{background} - {specialty} (Starter)"
+msgstr "{background} - {specialty} (Стартовый)"
+
+msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
+msgstr "{otherErrorCount, plural, one {+ ещё {otherErrorCount} проблема} few {+ ещё {otherErrorCount} проблемы} other {+ ещё {otherErrorCount} проблем}}"
+
+msgid "30 Cards"
+msgstr "30 карт"
+
+msgid "A Perfect Day"
+msgstr "Ясный день"
+
+msgid "Accept"
+msgstr "Принять"
+
+msgid "Account Settings"
+msgstr "Настройки аккаунта"
+
+msgid "Actions"
+msgstr "Действия"
+
+msgid "Add"
+msgstr "Добавить игрока"
+
+msgid "Add additional deck"
+msgstr "Добавить дополнительную колоду"
+
+msgid "Add mission"
+msgstr "Добавить миссию"
+
+msgid "Add note"
+msgstr ""
+
+msgid "Add reward"
+msgstr "Добавить награду"
+
+msgid "Add to campaign"
+msgstr "Добавить в кампанию"
+
+msgid "Added"
+msgstr "Добавлено"
+
+msgid "Added from collection"
+msgstr "Добавлено из коллекции"
+
+msgid "Advanced controls"
+msgstr "Расшире"
+
+msgid "After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <0>displaced cards</0> tab."
+msgstr "Выбрав новую карту коллекции и удалив одну из своей колоды, вы можете \"вернуть\" ее в коллекцию, используя вкладку <0>отложенные карты</0>."
+
+msgid "All"
+msgstr "Все"
+
+msgid "Allow people to view my decks"
+msgstr "Разрешить людям просмотр моих колод"
+
+msgid "Already have an account? <0>Login</0> now."
+msgstr "Уже есть аккаунт? <0>Войти</0>."
+
+msgid "Ancestor's Grove"
+msgstr "Роща предков"
+
+msgid "Approach"
+msgstr "Подход"
+
+msgid "Approach icons"
+msgstr "Символы подхода"
+
+msgid "Archeological Outpost"
+msgstr "Застава археологов"
+
+msgid "Are you sure you want to delete the \"{0}\" deck?"
+msgstr "Вы уверены, что хотите удалить колоду \"{0}\"?"
+
+msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
+msgstr "Вы уверены, что хотите удалить последний день ({0}) этой колоды?"
+
+msgid "Are you sure you want to delete this deck?"
+msgstr "Вы уверены, что хотите удалить эту колоду?"
+
+msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
+msgstr "Вы уверены, что хотите удалить свою кампанию: {0}? Это действие нельзя отменить."
+
+msgid "Aspect"
+msgstr "Черта"
+
+msgid "Aspect requirements"
+msgstr "Требования черт"
+
+msgid "Aspects"
+msgstr "Черты"
+
+msgid "Atrox Mountain"
+msgstr "Гора Атрокс"
+
+msgid "Available"
+msgstr "Доступные"
+
+msgid "Average"
+msgstr "Среднее значение"
+
+msgid "AWA"
+msgstr "ВОС"
+
+msgid "Awareness"
+msgstr "Восприятие"
+
+msgid "Background"
+msgstr "Квалификация"
+
+msgid "Background: {backgroundName}"
+msgstr "Квалификация: {backgroundName}"
+
+msgid "Biological Outpost"
+msgstr "Застава биологов"
+
+msgid "Boulder Field"
+msgstr "Поле Валунов"
+
+msgid "Bowl of the Sun"
+msgstr "Солнечный бассейн"
+
+msgid "Branch"
+msgstr "Ветви"
+
+msgid "Camp"
+msgstr "Разбить лагерь"
+
+msgid "Campaign"
+msgstr "Кампания"
+
+msgid "Campaigns"
+msgstr "Кампании"
+
+msgid "Camped while travelling to {0}."
+msgstr "Разбили лагерь во время путешествия в {0}."
+
+msgid "Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
+msgstr "Решение разбить лагерь закончит день {currentDay} и позволит обменять карты из колоды на заработанные награды."
+
+msgid "Cancel"
+msgstr "Отменить"
+
+msgid "Cancel Friend Request"
+msgstr "Отменить запрос в друзья"
+
+msgid "Cancel Friendship"
+msgstr "Удалить из друзей"
+
+msgid "Card set"
+msgstr "Набор карт"
+
+msgid "Cards"
+msgstr "Карты"
+
+msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
+msgstr "Карты, удаленные из вашей колоды, будут храниться здесь. Их можно будет вернуть в колоду, когда вы разбиваете лагерь."
+
+msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr ""
+
+msgid "Changes"
+msgstr "Изменения"
+
+msgid "Choose {0}"
+msgstr "Выберите {0}"
+
+msgid "Choose deck"
+msgstr "Выберите колоду"
+
+msgid "Choose handle"
+msgstr "Выберите ник"
+
+msgid "Choose role"
+msgstr "Выберите роль"
+
+msgid "Choose starter deck"
+msgstr "Выберите стартовую колоду"
+
+msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
+msgstr "Разбив лагерь, вы создадите копию своей колоды, чтобы отслеживать её изменения по мере прохождения кампании."
+
+msgid "Chosen aspects are invalid."
+msgstr "Выбранные черты недопустимы."
+
+msgid "Collection"
+msgstr "Коллекция"
+
+msgid "Comment"
+msgstr "Комментарий"
+
+msgid "Comments"
+msgstr "Комментарии"
+
+msgid "Completed"
+msgstr "Завершена"
+
+msgid "Confirm Friend"
+msgstr "Принять запрос в друзья"
+
+msgid "Conflict"
+msgstr "Конфликт"
+
+msgid "Connecting Location"
+msgstr "Связанная локация"
+
+msgid "Connection"
+msgstr "Контакт"
+
+msgid "Contains too many cards that do not match your chosen background."
+msgstr "Содержит слишком много карт, которые не соответствую выбранной квалификации."
+
+msgid "Copies"
+msgstr "Копии"
+
+msgid "Copy"
+msgstr "Копировать"
+
+msgid "Copy deck"
+msgstr "Копировать колоду"
+
+msgid "Copy of {deckLink} by {authorLink}"
+msgstr "Копия {deckLink} от {authorLink}"
+
+msgid "Copy this deck to make your own changes."
+msgstr "Скопируйте эту колоду, чтобы вносить свои изменения."
+
+msgid "Core"
+msgstr "База"
+
+msgid "Core set"
+msgstr "Базовый набор"
+
+msgid "Cost"
+msgstr "Стоимость"
+
+msgid "Could not find user {handle}"
+msgstr "Не получилось найти пользователя {handle}"
+
+msgid "Create"
+msgstr "Создать"
+
+msgid "Crossed-out"
+msgstr "Зачёркнуто"
+
+msgid "Crossroads Station"
+msgstr "Станция Перекрёсток"
+
+msgid "Current location: {0}"
+msgstr "Текущая локация: {0}"
+
+msgid "Current Position"
+msgstr "Местоположение"
+
+msgid "Custom deck"
+msgstr "Пользовательская колода"
+
+msgid "Dark mode"
+msgstr "Тёмная тема"
+
+msgid "Day"
+msgstr "День"
+
+msgid "Day {day}"
+msgstr "День {day}"
+
+msgid "Deck"
+msgstr "Колода"
+
+msgid "Deck search"
+msgstr "Поиск колоды"
+
+msgid "Decklists"
+msgstr "Деклисты"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Delete campaign?"
+msgstr "Удалить кампанию?"
+
+msgid "Delete deck?"
+msgstr "Удалить колоду?"
+
+msgid "Deleting this published deck will remove it from search."
+msgstr "Удалив эту опубликованную колоду, вы удалите её из поиска."
+
+msgid "Demo"
+msgstr "Демо"
+
+msgid "Departing {0}"
+msgstr "Отправление {0}"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Descriptions support basic markdown and html formatting."
+msgstr "Описания поддерживают базовое форматирование в формате markdown и html."
+
+msgid "Discard changes"
+msgstr "Отменить изменения"
+
+msgid "Displaced cards"
+msgstr "Отложенные карты"
+
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+msgid "Done editing"
+msgstr "Редактирование завершено"
+
+msgid "Downpour"
+msgstr "Ливень"
+
+msgid "Duplicate this deck while preserving the original."
+msgstr "Продублируйте эту колоду, сохранив оригинал."
+
+msgid "E-mail Address"
+msgstr "Электронная почта"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Edit comment"
+msgstr "Редактировать комментарий"
+
+msgid "Edit description"
+msgstr "Редактировать описание"
+
+msgid "Edit mission"
+msgstr "Редактировать миссию"
+
+msgid "Edit notable event"
+msgstr "Редактирование важного события"
+
+msgid "Edit note"
+msgstr ""
+
+msgid "Edit players"
+msgstr "Редактирование игроков"
+
+msgid "Email"
+msgstr "Почта"
+
+msgid "En route to {0}"
+msgstr "По пути к {0}"
+
+msgid "End the day"
+msgstr "Закончить день"
+
+msgid "Ended the day at {0}."
+msgstr "День закончился на {0}."
+
+msgid "English"
+msgstr "Английский"
+
+msgid "Equip"
+msgstr "Экипировка"
+
+msgid "Exploration"
+msgstr "Разведка"
+
+msgid "Extend campaign"
+msgstr ""
+
+msgid "Filter by {0}"
+msgstr "Фильтр по {0}"
+
+msgid "Filter by approach icons"
+msgstr "Фильтр по символам подхода"
+
+msgid "Filter by card set"
+msgstr "Фильтр по набору карты"
+
+msgid "Filter by card type"
+msgstr "Фильтр по типу карты"
+
+msgid "Filter by Role"
+msgstr "Фильтр по роли"
+
+msgid "Filter by trait"
+msgstr "Фильтр по признаку"
+
+msgid "Find new friends"
+msgstr "Найти новых друзей"
+
+msgid "FIT"
+msgstr "ВЫН"
+
+msgid "Fitness"
+msgstr "Выносливость"
+
+msgid "FOC"
+msgstr "КОН"
+
+msgid "Focus"
+msgstr "Концентрация"
+
+msgid "Forgot Password"
+msgstr "Забыл пароль"
+
+msgid "Friend Requests"
+msgstr "Запросы в друзья"
+
+msgid "Friends"
+msgstr "Друзья"
+
+msgid "General"
+msgstr "Общее"
+
+msgid "German"
+msgstr "Немецкий"
+
+msgid "Golden Shore"
+msgstr "Золотой берег"
+
+msgid "Grassland"
+msgstr "Пастбище"
+
+msgid "Greenbriar Knoll"
+msgstr "Смилаксовый холм"
+
+msgid "Guide entries"
+msgstr "Записи в путеводителе"
+
+msgid "Handle"
+msgstr "Никнейм"
+
+msgid "Headwaters Station"
+msgstr "База Верховодье"
+
+msgid "Hide spoilers"
+msgstr "Скрыть спойлеры"
+
+msgid "Howling Winds"
+msgstr "Шквальный ветер"
+
+msgid "Icons"
+msgstr "Символы"
+
+msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
+msgstr "Если вы собираетесь разбить лагерь во время путешествия в новое место, воспользуйтесь кнопкой \"Путешествие\"."
+
+msgid "If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed."
+msgstr "Если вы допустили ошибку во время путешествия или завершения дня, вы можете отменить свои последние правки здесь. Колоды не будут изменены."
+
+msgid "If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
+msgstr ""
+
+msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgstr ""
+
+msgid "Italian"
+msgstr "Итальянский"
+
+msgid "Journey"
+msgstr "Путешествие"
+
+msgid "Kobo's Market"
+msgstr "Рынок Кобо"
+
+msgid "Lakeshore"
+msgstr "Берег озера"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Leave campaign"
+msgstr "Покинуть кампанию"
+
+msgid "Light mode"
+msgstr "Светлая тема"
+
+msgid "Like"
+msgstr "Лайк"
+
+msgid "Like deck"
+msgstr "Лайкнуть колоду"
+
+msgid "Likes"
+msgstr "Лайки"
+
+msgid "Load more"
+msgstr "Загрузить ещё"
+
+msgid "Location"
+msgstr "Локация"
+
+msgid "Locations"
+msgstr "Локации"
+
+msgid "Login"
+msgstr "Вход"
+
+msgid "Lone Tree Station"
+msgstr "Станция Одиноко дерево"
+
+msgid "Maladies"
+msgstr "Недуги"
+
+msgid "Markdown"
+msgstr "Markdown"
+
+msgid "Marsh of Rebirth"
+msgstr "Топь возрождения"
+
+msgid "Meadow"
+msgstr "Луга"
+
+msgid "Member since {joinDate}"
+msgstr "Участник с {joinDate}"
+
+msgid "Michael's Bog"
+msgstr "Гать Майкла"
+
+msgid "Missions"
+msgstr "Миссии"
+
+msgid "Mound of the Navigator"
+msgstr "Курган навигатора"
+
+msgid "Mount Nim"
+msgstr "Гора Ним"
+
+msgid "Mountain Pass"
+msgstr "Горный перевал"
+
+msgid "My Campaigns"
+msgstr "Мои кампании"
+
+msgid "My Decks"
+msgstr "Мои колоды"
+
+msgid "Name"
+msgstr "Название"
+
+msgid "Name and day are required."
+msgstr "Название и день обязательны."
+
+msgid "Name your character"
+msgstr "Имя вашего персонажа"
+
+msgid "New campaign"
+msgstr "Новая кампания"
+
+msgid "New cards are available"
+msgstr "Доступны новые карты"
+
+msgid "New deck"
+msgstr "Новая колода"
+
+msgid "Next"
+msgstr "Далее"
+
+msgid "Next deck"
+msgstr "Следующая колода"
+
+msgid "No matching cards"
+msgstr "Нет подходящих карт"
+
+msgid "No matching cards found."
+msgstr "Не найдено ни одной подходящей карты."
+
+msgid "No matching decks."
+msgstr "Нет подходящих колод."
+
+msgid "No published decks."
+msgstr "Нет опубликованных колод."
+
+msgid "No results"
+msgstr "Нет результатов"
+
+msgid "None"
+msgstr "Отсутствует"
+
+msgid "Northern Outpost"
+msgstr "Северная застава"
+
+msgid "Not enough background cards."
+msgstr "Недостаточно карт квалификации."
+
+msgid "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
+msgstr "Слишком много карт. При замене наград следует вернуть обратно карту из вашей изначальной колоды, чтобы сохранить размер колоды в 30 карт."
+
+msgid "Not enough outside interest cards."
+msgstr "Недостаточно карт хобби."
+
+msgid "Not enough personality cards."
+msgstr "Недостаточно карт личности."
+
+msgid "Not enough specialty cards."
+msgstr "Недостаточно карт специализации."
+
+msgid "Not set"
+msgstr "Не задано"
+
+msgid "Notable Events"
+msgstr "Важные события"
+
+msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
+msgstr "Примечание: карты из выбранной вами специальности/квалификации здесь не показаны, но ваше хобби может быть из выбранного вами класса, если вы используете другие вкладки для его выбора."
+
+msgid "Note: These cards might contain campaign spoilers."
+msgstr "Примечание: эти карты могут содержать спойлеры к кампании."
+
+msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
+msgstr "Примечание: эта кампания была создана до того, как сайт записал достаточно информации, чтобы показать историю путешествий в корректном виде."
+
+msgid "Notes"
+msgstr "Заметки"
+
+msgid "Old-growth"
+msgstr "Реликтовый лес"
+
+msgid "One aspect must be set to 1."
+msgstr "Одна из черт должна иметь значение 1."
+
+msgid "One aspect must be set to 3."
+msgstr "Одна из черт должна иметь значение 3."
+
+msgid "One of the chosen background cards is counting towards outside interest."
+msgstr "Одна из выбранных карт квалификации идет в счёт карт хобби."
+
+msgid "One of the chosen specialty cards is counting towards outside interest."
+msgstr "Одна из выбранных карт специализации идет в счёт карт хобби."
+
+msgid "Only one aspect can be set to 1."
+msgstr "Только одна черта может иметь значение 1."
+
+msgid "Only one aspect can be set to 3."
+msgstr "Только одна черта может иметь значение 3."
+
+#. card_set_header
+msgid "Other"
+msgstr "Другие"
+
+msgid "Outside Interest"
+msgstr "Хобби"
+
+msgid "Outside interest cards cannot have the Expert trait."
+msgstr "Карты хобби не могут иметь признак."
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Path Terrain"
+msgstr "Тип местности"
+
+msgid "Pending Requests"
+msgstr "Отправленные запросы"
+
+msgid "Personality"
+msgstr "Личность"
+
+msgid "Players"
+msgstr "Игроки"
+
+msgid "Please address all deckbuilding errors before publishing."
+msgstr "Пожалуйста, исправьте все ошибки в колоде перед публикацией."
+
+msgid "Post"
+msgstr ""
+
+msgid "Previous"
+msgstr "Назад"
+
+msgid "Previous deck"
+msgstr "Предыдущая колода"
+
+msgid "Print"
+msgstr ""
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Progress"
+msgstr "Прогресс"
+
+msgid "Progress {progressNumber}"
+msgstr "Прогресс {progressNumber}"
+
+msgid "Publish"
+msgstr "Опубликовать"
+
+msgid "Published decks"
+msgstr "Опубликованные колоды"
+
+msgid "Ranger"
+msgstr "Рейнджер"
+
+msgid "Rangers"
+msgstr "Рейнджеры"
+
+msgid "Rangers will continue playing day {currentDay} with their current decks."
+msgstr "Рейнджеры продолжат играть {currentDay} день с текущими колодами."
+
+msgid "RangersDB"
+msgstr "RangersDB"
+
+msgid "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
+msgstr "RangersDB все еще находится на стадии разработки, поэтому многие функции могут быть добавлены или удалены в первые дни работы."
+
+msgid "Ravine"
+msgstr "Ущелье"
+
+msgid "Reason"
+msgstr "Интеллект"
+
+msgid "Record event"
+msgstr "Записать событие"
+
+msgid "Record guide entry"
+msgstr "Запись в путеводителе"
+
+msgid "Recorded journey"
+msgstr "Записанное путешествие"
+
+msgid "Register"
+msgstr "Регистрация"
+
+msgid "Register now"
+msgstr "Зарегистрироваться"
+
+msgid "Reject"
+msgstr "Отклонить"
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid "Remove card"
+msgstr "Удалить карту"
+
+msgid "Remove deck"
+msgstr "Удалить колоду"
+
+msgid "Remove reward"
+msgstr "Удалить награду"
+
+msgid "Removed"
+msgstr "Удалено"
+
+msgid "Removed Cards"
+msgstr "Удалённые карты"
+
+msgid "Reply comment"
+msgstr "Ответить на комментарий"
+
+msgid "Reply to comment"
+msgstr "Ответ на комментарий"
+
+msgid "Request friend"
+msgstr "Запрос в друзья"
+
+msgid "Return a copy to the collection"
+msgstr "Верните копию в коллекцию"
+
+msgid "Returned to collection"
+msgstr "Возвращены в коллекцию"
+
+msgid "Revoke"
+msgstr "Отозвать"
+
+msgid "Rewards"
+msgstr "Награды"
+
+msgid "Rewards and Maladies"
+msgstr "Награды и Недуги"
+
+msgid "Rings of the Moon"
+msgstr "Лунные кольца"
+
+msgid "River"
+msgstr "Река"
+
+msgid "Role"
+msgstr "Роль"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+msgid "Search by name"
+msgstr "Поиск по названию"
+
+msgid "Search card text"
+msgstr "Поиск текста карты"
+
+msgid "See comments"
+msgstr "Посмотреть комментарии"
+
+msgid "Select 1 card from any background or specialty as your outside interest."
+msgstr "Выберите 1 карту из любой квалификации или специализации как ваше хобби."
+
+msgid "Select 4 different personality cards, 1 from each aspect."
+msgstr "Выберите 4 уникальных карт личности: по 1 карте от каждой из 4 разных черт."
+
+msgid "Select 5 different cards from your chosen background."
+msgstr "Выберите 5 уникальных карт из карт вашей квалификации."
+
+msgid "Select 5 different cards from your chosen specialty."
+msgstr "Выберите 5 уникальных карт из карт вашей специализации."
+
+msgid "Select campaign"
+msgstr "Выберите кампанию"
+
+msgid "Select card set..."
+msgstr "Выберите набор карт"
+
+msgid "Select location..."
+msgstr "Выберите локацию"
+
+msgid "Select path terrain..."
+msgstr "Выберите тип местности"
+
+msgid "Send Friend Request"
+msgstr "Отправить запрос в друзья"
+
+msgid "Set"
+msgstr "Набор"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Share"
+msgstr "Поделиться"
+
+msgid "Shareable Deck"
+msgstr "Поделиться колодой"
+
+msgid "Show all"
+msgstr "Показать все"
+
+msgid "Show all locations"
+msgstr "Показать все локации"
+
+msgid "Side deck"
+msgstr "Сайд карты"
+
+msgid "Sign In"
+msgstr "Войти"
+
+msgid "Sign Out"
+msgstr "Выйти"
+
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
+msgstr "Некоторые события кампании могут позволить вам навсегда поменять карты из своей колоды на карты из коллекции."
+
+msgid "Sort"
+msgstr "Сортировка"
+
+msgid "Specialty"
+msgstr "Специализация"
+
+msgid "Specialty: {specialtyName}"
+msgstr "Специализация: {specialtyName}"
+
+msgid "SPI"
+msgstr "ДУХ"
+
+msgid "Spire"
+msgstr "Шпиль"
+
+msgid "Spirit"
+msgstr "Духовность"
+
+msgid "Start campaign"
+msgstr "Начать кампанию"
+
+msgid "Starter deck"
+msgstr "Стартовая колода"
+
+msgid "Stayed at {0}"
+msgstr "Останавливались в {0}"
+
+msgid "Stoneweaver Bridge"
+msgstr "Кружевной мост"
+
+msgid "Submit"
+msgstr "Подтвердить"
+
+msgid "Sunken Outpost"
+msgstr "Затонувшая застава"
+
+msgid "Swamp"
+msgstr "Болото"
+
+msgid "Terrain"
+msgstr "Тип местности"
+
+msgid "Terravore"
+msgstr "Грязеед"
+
+msgid "Text"
+msgstr "Текст"
+
+msgid "The Alluvial Ruins"
+msgstr "Россыпь руин"
+
+msgid "The Concordant Ziggurats"
+msgstr "Созвучные зиккураты"
+
+msgid "The Cypress Citadel"
+msgstr "Кипарисовая цитадель"
+
+msgid "The Fractured Wall"
+msgstr "Разрушенная стена"
+
+msgid "The Frowning Gate"
+msgstr "Хмурые ворота"
+
+msgid "The Furrow"
+msgstr "Борозда"
+
+msgid "The Greenbridge"
+msgstr "Зелёный мост"
+
+msgid "The High Basin"
+msgstr "Горный водоём"
+
+msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
+msgstr "Все права на представленную на этом сайте информацию о Earthborne рейнджеры — как текстовую, так и графическую — принадлежат компании Earthborne Games. Создатели этого сайта не аффилированы и никоим образом не поддерживаются Earthborne Games."
+
+msgid "The Philosopher's Garden"
+msgstr "Философский сад"
+
+msgid "The Plummet"
+msgstr "Утёс"
+
+msgid "The site is likely to go down for maintenance and data might be lost during these early days."
+msgstr "В первые дни работы сайт может быть закрыт на техническое обслуживание, и данные могут быть потеряны."
+
+msgid "The Tumbledown"
+msgstr "Пропасть"
+
+msgid "The Valley"
+msgstr "Долина"
+
+msgid "There are too many cards with this card's name in your deck."
+msgstr "В вашей колоде слишком много карт с именем этой карты."
+
+msgid "There are too many outside interest cards in the deck."
+msgstr "Слишком много карт хобби в вашей колоде."
+
+msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
+msgstr "Эта кампания недоступна. Вы уверены, что вошли в нужную учетную запись?"
+
+msgid "This card's aspect requirement is not satisfied by your chosen aspects."
+msgstr "Требование черты этой карты не удовлетворяется выбранными вами чертами."
+
+msgid "This comment was edited on {updatedTime}."
+msgstr "Этот комментарий был отредактирован в {updatedTime}."
+
+msgid "This day is in the past. It is currently day {0}."
+msgstr "Этот день уже в прошлом. В настоящее время это день {0}."
+
+msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
+msgstr "Эту опцию следует использовать, если рейнджер слишком устал, слишком ранен, а также по указанию руководства кампании или задания."
+
+msgid "This role card does not match your chosen specialty."
+msgstr "Эта карта роли не соответствует вашей выбранной специализации."
+
+msgid "This site is a digital companion for the excellent <0>Earthborne Rangers</0> adventure card game."
+msgstr "Этот сайт является цифровым компаньоном для превосходной карточной игры <0>Earthborne Рейнджеры</0>."
+
+msgid "This will end day {0}."
+msgstr "Это закончит {0} день."
+
+msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
+msgstr "Это переключит управление колодой на изменения, которые разрешены во время игры в кампании."
+
+msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
+msgstr "Чтобы избежать спойлеров для других игроков, вы не можете публиковать колоды после лагеря."
+
+msgid "Toggle Navigation"
+msgstr "Переключатель навигации"
+
+msgid "Too many AWA personality cards."
+msgstr "Слишком много карт личности с чертой ВОС."
+
+msgid "Too many cards of the chosen background."
+msgstr "Слишком много карт выбранной квалификации."
+
+msgid "Too many cards of the chosen specialty."
+msgstr "Слишком много карт выбранной специализации."
+
+msgid "Too many cards with the same name."
+msgstr "Слишком много карт с одинаковым названием."
+
+msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
+msgstr "Слишком много карт. При замене карт на награды следует удалить любую карту (кроме карты с признаком недуг), чтобы сохранить размер колоды в 30 карт."
+
+msgid "Too many FIT personality cards."
+msgstr "Слишком много карт личности с чертой ЫН."
+
+msgid "Too many FOC personality cards."
+msgstr "Слишком много карт личности с чертой КОН."
+
+msgid "Too many SPI personality cards."
+msgstr "Слишком много карт личности с чертой ДУХ."
+
+msgid "Total"
+msgstr "Всего"
+
+msgid "Track cards that are removed permanently from the path deck here."
+msgstr "Отслеживайте здесь карты, которые навсегда убираются из колоды пути."
+
+msgid "Traits"
+msgstr "Признаки"
+
+msgid "Travel"
+msgstr "Путешествие"
+
+msgid "Travel & Camp"
+msgstr "Путешествовать и разбить лагерь"
+
+msgid "Traveled to {0}."
+msgstr "Путешествие в {0}."
+
+msgid "Two aspects must be set to 2."
+msgstr "Две черты должны иметь значение 2."
+
+msgid "Types"
+msgstr "Типы"
+
+msgid "Unable to create campaign at this time."
+msgstr "Невозможно создать кампанию в данный момент."
+
+msgid "Undo"
+msgstr "Отменить"
+
+msgid "Undo travel"
+msgstr "Отменить путешествие"
+
+msgid "Undo travel changes"
+msgstr "Отменить изменения в путешествии"
+
+msgid "Unlike"
+msgstr "Убрать лайк"
+
+msgid "Update now"
+msgstr "Обновить"
+
+msgid "View as Cards"
+msgstr "В виде карт"
+
+msgid "View as Checklist"
+msgstr "В виде списка"
+
+msgid "View as Images"
+msgstr "В виде изображений"
+
+msgid "Watcher's Rock"
+msgstr "Скала дозорного"
+
+msgid "Welcome to RangersDB"
+msgstr "Приветствуем в RangersDB"
+
+msgid "What happened?"
+msgstr "Что произошло?"
+
+msgid "When adding a card from the collection, remember to return a deck card."
+msgstr "Добавляя карту из коллекции, не забудьте вернуть карту колоды."
+
+msgid "When starting a campaign, you must include two of each card in your deck."
+msgstr "Начиная кампанию, вы должны включить в свою колоду по две копии каждой карты."
+
+msgid "White Sky"
+msgstr "Белое небо"
+
+msgid "Woods"
+msgstr "Лес"
+
+msgid "You"
+msgstr "Вы"
+
+msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
+msgstr "Вы можете добавить эту колоду в кампанию, чтобы отслеживать награды, которые вы разблокировали всей группой."
+
+msgid "You can view <0>player cards</0>, <1>build decks</1>, and use the digital <2>campaign tracker</2>."
+msgstr "Вы можете просматривать <0>карты игроков</0>, <1>собирать колоды</1> и пользоваться цифровым <3>трекером кампании</3>."
+
+msgid "You don't seem to have any decks."
+msgstr "Похоже, у вас нет ни одной колоды."
+
+msgid "You must choose a background."
+msgstr "Вы должны выбрать квалификацию."
+
+msgid "You must choose a location and path terrain to travel."
+msgstr "Вы должны выбрать локацию и тип местности для путешествия."
+
+msgid "You must choose a role card."
+msgstr "Вы должны выбрать карту роли."
+
+msgid "You must choose a role."
+msgstr "Вы должны выбрать роль."
+
+msgid "You must choose a specialty."
+msgstr "Вы должны выбрать специализацию."
+
+msgid "You must correct deck errors before upgrading."
+msgstr "Перед улучшением необходимо исправить ошибки в колоде."
+
+msgid "You must correct errors berfore switching to campaign mode."
+msgstr "Перед переходом в режим кампании необходимо исправить ошибки."
+
+msgid "You must include two of each card in your starting deck."
+msgstr "Вы должны включить в свою стартовую колоду по две копии каждой карты."
+
+msgid "Your deck contains cards with aspect requirements that are not allowed."
+msgstr "В вашей колоде есть карты с недопустимыми требованиями к чертам."
+
+msgid "Your outside interest card cannot have the Expert trait."
+msgstr "Выбранная карта хобби не может иметь признак «Эксперт»."
+
+msgid "Your role card does not match your chosen specialty."
+msgstr "Ваша карта роли не соответствует выбранной специализации."

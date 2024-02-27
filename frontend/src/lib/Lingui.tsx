@@ -3,7 +3,7 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { useRouter } from "next/router"
 import { useEffect } from "react";
 
-export type LOCALES = 'en' | 'de' | 'it' | 'fr' | 'pseudo';
+export type LOCALES = 'en' | 'de' | 'it' | 'fr' | 'ru' | 'pseudo';
 
 export async function loadCatalog(locale: string) {
   const { messages } = await import(`@lingui/loader!../translations/locales/${locale}/messages.po`);
