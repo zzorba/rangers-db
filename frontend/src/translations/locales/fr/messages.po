@@ -83,7 +83,7 @@ msgid "Advanced controls"
 msgstr "Contrôle avancé"
 
 msgid "After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <0>displaced cards</0> tab."
-msgstr "Après avoir sélectioné une nouvelle carte de la collection et retiré une de votre deck, vous pouvez \"ramener\" une carte de la collection en utilisant l'onglet <0>Cartes écartées</0>"
+msgstr "Après avoir sélectionné une nouvelle carte de la collection et retiré une de votre deck, vous pouvez \"ramener\" une carte de la collection en utilisant l'onglet <0>Cartes écartées</0>"
 
 msgid "All"
 msgstr "Tous"
@@ -350,7 +350,7 @@ msgid "Duplicate this deck while preserving the original."
 msgstr "Dupliquer ce deck en conservant l'original."
 
 msgid "E-mail Address"
-msgstr "Courriel"
+msgstr "Addresse électronique"
 
 msgid "Edit"
 msgstr "Modifier"
@@ -632,7 +632,7 @@ msgid "Note: These cards might contain campaign spoilers."
 msgstr "Note : Ces cartes pourraient contenir des spoilers de campagne."
 
 msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
-msgstr "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
+msgstr "Note: cette campagne a été créée avant que ce site n'enregistre assez d'informations pour afficher l'historique de déplacement correctement."
 
 msgid "Notes"
 msgstr "Notes"
@@ -813,37 +813,37 @@ msgid "Search by name"
 msgstr "Rechercher par nom"
 
 msgid "Search card text"
-msgstr "Recherchier par texte sur la carte"
+msgstr "Rechercher le texte sur la carte"
 
 msgid "See comments"
 msgstr "Voir les commentaires"
 
 msgid "Select 1 card from any background of specialty as your outside interest."
-msgstr "Choisir 1 carte de n'importe quel Antécédent ou Spécialisation comme Centre d'intérêt."
+msgstr "Sélectionner 1 carte de n'importe quel Antécédent ou Spécialisation comme Centre d'intérêt."
 
 msgid "Select 4 different personality cards, 1 from each aspect."
-msgstr "Choisir 4 cartes personnalités différentes, 1 de chaque aspect."
+msgstr "Sélectionner 4 cartes Personnalités différentes, 1 de chaque aspect."
 
 msgid "Select 5 different cards from your chosen background."
-msgstr "Choisir 5 cartes différentes de l'Antécédent choisi."
+msgstr "Sélectionner 5 cartes différentes de l'Antécédent choisi."
 
 msgid "Select 5 different cards from your chosen specialty."
-msgstr "Choisir 5 cartes différentes de la Spécialisation choisie."
+msgstr "Sélectionner 5 cartes différentes de la Spécialisation choisie."
 
 msgid "Select campaign"
-msgstr "Choisir la campagne"
+msgstr "Sélectionner la campagne"
 
 msgid "Select card set..."
-msgstr "Choisir le set de cartes"
+msgstr "Sélectionner le set de cartes"
 
 msgid "Select location..."
-msgstr "Choisir le lieu..."
+msgstr "Sélectionner le lieu..."
 
 msgid "Select path terrain..."
-msgstr "Choisir le type de terrain"
+msgstr "Sélectionner le type de terrain"
 
 msgid "Send Friend Request"
-msgstr "Envoyer une demande à un ami"
+msgstr "Envoyer une demande d'amitié"
 
 msgid "Set"
 msgstr "Set"
@@ -873,7 +873,7 @@ msgid "Sign Out"
 msgstr "Se déconnecter"
 
 msgid "Sign Up"
-msgstr "Se créer un compte"
+msgstr "Créer un compte"
 
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Certains évènements de campagne peuvent vous permettre d'échanger de façon permanente des cartes de votre Deck avec celles de votre collection."
@@ -1008,13 +1008,13 @@ msgid "Toggle Navigation"
 msgstr "Basculer la navigation"
 
 msgid "Too many AWA personality cards."
-msgstr "Trop de cartes personnalités de type VIG."
+msgstr "Trop de cartes Personnalités de type VIG."
 
 msgid "Too many cards of the chosen background."
 msgstr "Trop de cartes de l'Antécédent choisi."
 
 msgid "Too many cards of the chosen specialty."
-msgstr "Trop de cartes de la personnalité choisie."
+msgstr "Trop de cartes de la Personnalité choisie."
 
 msgid "Too many cards with the same name."
 msgstr "Trop de cartes avec le même nom."
@@ -1023,13 +1023,13 @@ msgid "Too many cards. When making deck changes while camping, you should remove
 msgstr "Trop de cartes. Quand vous mettez à jour votre deck, vous devez retirer autant de cartes que vous en mettez pour maintenir 30 cartes dans votre deck."
 
 msgid "Too many FIT personality cards."
-msgstr "Trop de cartes personnalités de type PHY."
+msgstr "Trop de cartes Personnalités de type PHY."
 
 msgid "Too many FOC personality cards."
-msgstr "Trop de cartes personnalités de type CON."
+msgstr "Trop de cartes Personnalités de type CON."
 
 msgid "Too many SPI personality cards."
-msgstr "Trop de cartes personnalités de type ESP."
+msgstr "Trop de cartes Personnalités de type ESP."
 
 msgid "Total"
 msgstr "Total"
@@ -1065,7 +1065,7 @@ msgid "Undo travel"
 msgstr "Annuler le voyage"
 
 msgid "Undo travel changes"
-msgstr "Annuler les changements lié au voyage"
+msgstr "Annuler les changements liés au voyage"
 
 msgid "Unlike"
 msgstr "Ne plus aimer"
@@ -1089,7 +1089,7 @@ msgid "Welcome to RangersDB"
 msgstr "Bienvenue sur RangersDB"
 
 msgid "What happened?"
-msgstr "Qu'est t'il arrivé ?"
+msgstr "Qu'est'il arrivé ?"
 
 msgid "When adding a card from the collection, remember to return a deck card."
 msgstr "Quand vous ajoutez une carte de votre collection, souvenez-vous de retirer une carte de votre deck."
@@ -1143,7 +1143,7 @@ msgid "Your deck contains cards with aspect requirements that are not allowed."
 msgstr "Votre deck contient des cartes qui ne respectent pas les limites de votre carte d'aspect."
 
 msgid "Your outside interest card cannot have the Expert trait."
-msgstr "L'Intérêt"
+msgstr "La carte de votre Centre d'Intérêt ne doit pas avoir le trait Expert."
 
 msgid "Your role card does not match your chosen specialty."
 msgstr "Votre carte rôle ne correspond pas à la Spécialisation choisie."
