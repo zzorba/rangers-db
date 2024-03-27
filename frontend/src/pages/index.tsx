@@ -26,7 +26,7 @@ function Home() {
             {t`Welcome to RangersDB`}
           </Heading>
           <Text paddingTop="2em">
-            <Trans>This site is a digital companion for the excellent <Link textDecoration="underline" as={NextLink} href="https://earthbornegames.com/">Earthborne Rangers</Link> adventure card game.</Trans>
+            <Trans>This site is a digital companion for the excellent <Link textDecoration="underline" href="https://earthbornegames.com/">Earthborne Rangers</Link> adventure card game.</Trans>
             </Text>
           <Text paddingTop="2em">
             <Trans>You can view <Link textDecorationLine="underline" as={NextLink} href="/cards">player cards</Link>, <Link textDecorationLine="underline" as={NextLink} href="/decks">build decks</Link>, and use the digital <Link textDecorationLine="underline" as={NextLink} href="/campaigns">campaign tracker</Link>.</Trans>
