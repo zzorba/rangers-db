@@ -790,7 +790,7 @@ export function getMapLocations(): MapLocations {
     {
       id: 'marsh_of_rebirth',
       name: t`Marsh of Rebirth`,
-      type: 'trail',
+      type: 'location',
     },
   ];
   forEach(paths, p => {
