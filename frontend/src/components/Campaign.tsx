@@ -591,6 +591,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
                       <Input
                         value={newEntry}
                         type="number"
+                        step="any"
                         placeholder={t`Record guide entry`}
                         onChange={e => setNewEntry(e.target.value)}
                       />
