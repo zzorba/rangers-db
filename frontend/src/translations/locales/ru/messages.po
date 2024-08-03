@@ -753,7 +753,7 @@ msgid "Record guide entry"
 msgstr "Запись в путеводителе"
 
 msgid "Recorded journey"
-msgstr "Записанное путешествие"
+msgstr "Путевые заметки"
 
 msgid "Register"
 msgstr "Регистрация"
