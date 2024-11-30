@@ -339,10 +339,10 @@ function CardBody({ card, padding, problem, detail, noImage }: Props & { padding
               aspectId={card.aspect_id}
             />
           ) }
-          { !!card.harm && (
+          { ((card.type_id === 'being') || !!card.harm) && (
             <Box padding={1} paddingLeft={3} paddingRight={3} marginLeft={2} marginBottom={2} backgroundColor="#ad1b23">
               <Text color="#FFFFFF" fontSize="xl" fontWeight={900} >
-                { card.harm }
+                { card.harm ?? '/' }
               </Text>
             </Box>
           ) }
