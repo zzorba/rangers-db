@@ -88,7 +88,7 @@ async function translateMetadata(locale: string) {
 };
 
 async function run() {
-  const LOCALES = ['de', 'fr', 'it', 'pseudo'];
+  const LOCALES = ['de', 'fr', 'ru', 'it', 'pseudo'];
   for(let i = 0; i < LOCALES.length; i++) {
     await translateMetadata(LOCALES[i]);
   }

@@ -52,20 +52,30 @@ a {
   border-color: #da6e17;
 }
 
-.card-text {
+.card-light-text {
   font-family: source-sans-pro, sans-serif;
   font-style: normal;
   font-weight: 500;
+  color: #000000;
 }
-.card-text i.card-light-flavor {
+.card-dark-text {
+  font-family: source-sans-pro, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: #ffffff;
+}
+.card-light-text i.card-flavor {
   color: #666666;
   font-weight: 500;
 }
-.card-text i.card-dark-flavor {
+.card-dark-text i.card-flavor {
   color: #AAAAAA;
   font-weight: 500;
 }
-.card-text b {
+.card-light-text b {
+  font-weight: 900;
+}
+.card-dark-text b {
   font-weight: 900;
 }
 .card-line {

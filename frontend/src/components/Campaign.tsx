@@ -13,7 +13,7 @@ import {
   useRemoveDeckCampaignMutation, UserInfoFragment, useSetCampaignCalendarMutation,
   useSetCampaignDayMutation, useSetCampaignMissionsMutation, useSetDeckCampaignMutation,
   useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation,
-  useAddCampaignHistoryMutation, useSetCampaignTitleMutation, useCampaignUndoTravelMutation,
+  useSetCampaignTitleMutation, useCampaignUndoTravelMutation,
   useUpdateCampaignNotesMutation, useAddCampaignNoteMutation, useExtendCampaignMutation,
 } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';

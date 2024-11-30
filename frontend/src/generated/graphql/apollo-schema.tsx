@@ -36,6 +36,95 @@ export type Boolean_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['Boolean']>>;
 };
 
+export type CreateCampaignInput = {
+  campaignId: Scalars['String'];
+  guided?: InputMaybe<Scalars['Boolean']>;
+  linked?: InputMaybe<LinkedCampaignId>;
+};
+
+export type CreateCampaignOutput = {
+  __typename?: 'CreateCampaignOutput';
+  campaignId: Scalars['Int'];
+  campaignIdA?: Maybe<Scalars['Int']>;
+  campaignIdB?: Maybe<Scalars['Int']>;
+};
+
+export type CreateDeckInput = {
+  description?: InputMaybe<Scalars['String']>;
+  ignoreDeckLimitSlots: Scalars['jsonb'];
+  investigator: Scalars['String'];
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name: Scalars['String'];
+  problem?: InputMaybe<Scalars['String']>;
+  slots: Scalars['jsonb'];
+  tabooSetId?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['String']>;
+};
+
+export type CreateDeckOutput = {
+  __typename?: 'CreateDeckOutput';
+  deck?: Maybe<Arkhamdb_Deck>;
+  deckId: Scalars['String'];
+};
+
+export type DeckId = {
+  __typename?: 'DeckId';
+  campaignId: Scalars['Int'];
+  id: Scalars['Int'];
+};
+
+export type DeleteCampaignInput = {
+  campaignId: Scalars['String'];
+  serverId: Scalars['Int'];
+};
+
+export type DeleteCampaignOutput = {
+  __typename?: 'DeleteCampaignOutput';
+  campaignId: Scalars['Int'];
+};
+
+export type DeleteDeckInput = {
+  deckId: Scalars['Int'];
+  deleteAllVersions: Scalars['Boolean'];
+};
+
+export type DeleteDeckOutput = {
+  __typename?: 'DeleteDeckOutput';
+  success: Scalars['Boolean'];
+};
+
+export enum EditAccessAction {
+  Grant = 'grant',
+  Revoke = 'revoke'
+}
+
+export type EditCampaignAccessInput = {
+  action: EditAccessAction;
+  campaignId: Scalars['String'];
+  serverId: Scalars['Int'];
+  users: Array<Scalars['String']>;
+};
+
+export type EditCampaignAccessOutput = {
+  __typename?: 'EditCampaignAccessOutput';
+  campaignId: Scalars['Int'];
+};
+
+export enum FriendRequestAction {
+  Request = 'request',
+  Revoke = 'revoke'
+}
+
+export type FriendRequestInput = {
+  action: FriendRequestAction;
+  userId: Scalars['String'];
+};
+
+export type FriendRequestOutput = {
+  __typename?: 'FriendRequestOutput';
+  success: Scalars['Boolean'];
+};
+
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['Int']>;
@@ -47,6 +136,46 @@ export type Int_Comparison_Exp = {
   _lte?: InputMaybe<Scalars['Int']>;
   _neq?: InputMaybe<Scalars['Int']>;
   _nin?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+export type LinkedCampaignId = {
+  campaignIdA: Scalars['String'];
+  campaignIdB: Scalars['String'];
+};
+
+export type LoginInput = {
+  code: Scalars['String'];
+  redirectUri: Scalars['String'];
+  state: Scalars['String'];
+};
+
+export type LoginOutput = {
+  __typename?: 'LoginOutput';
+  success: Scalars['Boolean'];
+};
+
+export type LogoutOutput = {
+  __typename?: 'LogoutOutput';
+  success: Scalars['Boolean'];
+};
+
+export type MigrateLoginInput = {
+  accessToken: Scalars['String'];
+  refreshToken: Scalars['String'];
+};
+
+export type MigrateLoginOutput = {
+  __typename?: 'MigrateLoginOutput';
+  success: Scalars['Boolean'];
+};
+
+export type RefreshDecksInput = {
+  force: Scalars['Boolean'];
+};
+
+export type RefreshDecksOutput = {
+  __typename?: 'RefreshDecksOutput';
+  updated: Scalars['Boolean'];
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -80,6 +209,57 @@ export type String_Comparison_Exp = {
   _regex?: InputMaybe<Scalars['String']>;
   /** does the column match the given SQL regular expression */
   _similar?: InputMaybe<Scalars['String']>;
+};
+
+export type UpdateHandleInput = {
+  handle: Scalars['String'];
+  userId?: InputMaybe<Scalars['String']>;
+};
+
+export type UpdateHandleOutput = {
+  __typename?: 'UpdateHandleOutput';
+  success: Scalars['Boolean'];
+  user?: Maybe<Users>;
+  userId: Scalars['String'];
+};
+
+export type UpgradeDeckInput = {
+  deckId: Scalars['Int'];
+  exiles?: InputMaybe<Scalars['jsonb']>;
+  xp: Scalars['Int'];
+};
+
+export type UpgradeDeckOutput = {
+  __typename?: 'UpgradeDeckOutput';
+  deckId: Scalars['Int'];
+  upgradedDeckId: Scalars['Int'];
+};
+
+export type UploadLocalCampaignDeckInput = {
+  arkhamDbId: Scalars['Int'];
+  localDeckId: Scalars['String'];
+};
+
+export type UploadLocalCampaignDeckOutput = {
+  __typename?: 'UploadLocalCampaignDeckOutput';
+  deckIds: Array<DeckId>;
+};
+
+export type UserSearchResult = {
+  __typename?: 'UserSearchResult';
+  handle: Scalars['String'];
+  id: Scalars['String'];
+};
+
+export type UsersSearchInput = {
+  continueToken?: InputMaybe<Scalars['String']>;
+  search: Scalars['String'];
+};
+
+export type UsersSearchOutput = {
+  __typename?: 'UsersSearchOutput';
+  hasMore: Scalars['String'];
+  users: Array<UserSearchResult>;
 };
 
 /** columns and relationships of "all_card" */
@@ -1861,11 +2041,13 @@ export type All_Card_Text = {
   back_name?: Maybe<Scalars['String']>;
   back_text?: Maybe<Scalars['String']>;
   back_traits?: Maybe<Scalars['String']>;
+  backimageurl?: Maybe<Scalars['String']>;
   customization_change?: Maybe<Scalars['String']>;
   customization_text?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   id: Scalars['String'];
+  imageurl?: Maybe<Scalars['String']>;
   locale: Scalars['String'];
   name: Scalars['String'];
   slot?: Maybe<Scalars['String']>;
@@ -1934,11 +2116,13 @@ export type All_Card_Text_Bool_Exp = {
   back_name?: InputMaybe<String_Comparison_Exp>;
   back_text?: InputMaybe<String_Comparison_Exp>;
   back_traits?: InputMaybe<String_Comparison_Exp>;
+  backimageurl?: InputMaybe<String_Comparison_Exp>;
   customization_change?: InputMaybe<String_Comparison_Exp>;
   customization_text?: InputMaybe<String_Comparison_Exp>;
   encounter_name?: InputMaybe<String_Comparison_Exp>;
   flavor?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
+  imageurl?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   slot?: InputMaybe<String_Comparison_Exp>;
@@ -1963,11 +2147,13 @@ export type All_Card_Text_Insert_Input = {
   back_name?: InputMaybe<Scalars['String']>;
   back_text?: InputMaybe<Scalars['String']>;
   back_traits?: InputMaybe<Scalars['String']>;
+  backimageurl?: InputMaybe<Scalars['String']>;
   customization_change?: InputMaybe<Scalars['String']>;
   customization_text?: InputMaybe<Scalars['String']>;
   encounter_name?: InputMaybe<Scalars['String']>;
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  imageurl?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   slot?: InputMaybe<Scalars['String']>;
@@ -1987,11 +2173,13 @@ export type All_Card_Text_Max_Fields = {
   back_name?: Maybe<Scalars['String']>;
   back_text?: Maybe<Scalars['String']>;
   back_traits?: Maybe<Scalars['String']>;
+  backimageurl?: Maybe<Scalars['String']>;
   customization_change?: Maybe<Scalars['String']>;
   customization_text?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
+  imageurl?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['String']>;
@@ -2010,11 +2198,13 @@ export type All_Card_Text_Max_Order_By = {
   back_name?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
+  backimageurl?: InputMaybe<Order_By>;
   customization_change?: InputMaybe<Order_By>;
   customization_text?: InputMaybe<Order_By>;
   encounter_name?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  imageurl?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   slot?: InputMaybe<Order_By>;
@@ -2034,11 +2224,13 @@ export type All_Card_Text_Min_Fields = {
   back_name?: Maybe<Scalars['String']>;
   back_text?: Maybe<Scalars['String']>;
   back_traits?: Maybe<Scalars['String']>;
+  backimageurl?: Maybe<Scalars['String']>;
   customization_change?: Maybe<Scalars['String']>;
   customization_text?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
+  imageurl?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['String']>;
@@ -2057,11 +2249,13 @@ export type All_Card_Text_Min_Order_By = {
   back_name?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
+  backimageurl?: InputMaybe<Order_By>;
   customization_change?: InputMaybe<Order_By>;
   customization_text?: InputMaybe<Order_By>;
   encounter_name?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  imageurl?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   slot?: InputMaybe<Order_By>;
@@ -2096,11 +2290,13 @@ export type All_Card_Text_Order_By = {
   back_name?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
+  backimageurl?: InputMaybe<Order_By>;
   customization_change?: InputMaybe<Order_By>;
   customization_text?: InputMaybe<Order_By>;
   encounter_name?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  imageurl?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   slot?: InputMaybe<Order_By>;
@@ -2130,6 +2326,8 @@ export enum All_Card_Text_Select_Column {
   /** column name */
   BackTraits = 'back_traits',
   /** column name */
+  Backimageurl = 'backimageurl',
+  /** column name */
   CustomizationChange = 'customization_change',
   /** column name */
   CustomizationText = 'customization_text',
@@ -2139,6 +2337,8 @@ export enum All_Card_Text_Select_Column {
   Flavor = 'flavor',
   /** column name */
   Id = 'id',
+  /** column name */
+  Imageurl = 'imageurl',
   /** column name */
   Locale = 'locale',
   /** column name */
@@ -2167,11 +2367,13 @@ export type All_Card_Text_Set_Input = {
   back_name?: InputMaybe<Scalars['String']>;
   back_text?: InputMaybe<Scalars['String']>;
   back_traits?: InputMaybe<Scalars['String']>;
+  backimageurl?: InputMaybe<Scalars['String']>;
   customization_change?: InputMaybe<Scalars['String']>;
   customization_text?: InputMaybe<Scalars['String']>;
   encounter_name?: InputMaybe<Scalars['String']>;
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  imageurl?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   slot?: InputMaybe<Scalars['String']>;
@@ -2198,11 +2400,13 @@ export type All_Card_Text_Stream_Cursor_Value_Input = {
   back_name?: InputMaybe<Scalars['String']>;
   back_text?: InputMaybe<Scalars['String']>;
   back_traits?: InputMaybe<Scalars['String']>;
+  backimageurl?: InputMaybe<Scalars['String']>;
   customization_change?: InputMaybe<Scalars['String']>;
   customization_text?: InputMaybe<Scalars['String']>;
   encounter_name?: InputMaybe<Scalars['String']>;
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  imageurl?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   slot?: InputMaybe<Scalars['String']>;
@@ -2226,6 +2430,8 @@ export enum All_Card_Text_Update_Column {
   /** column name */
   BackTraits = 'back_traits',
   /** column name */
+  Backimageurl = 'backimageurl',
+  /** column name */
   CustomizationChange = 'customization_change',
   /** column name */
   CustomizationText = 'customization_text',
@@ -2235,6 +2441,8 @@ export enum All_Card_Text_Update_Column {
   Flavor = 'flavor',
   /** column name */
   Id = 'id',
+  /** column name */
+  Imageurl = 'imageurl',
   /** column name */
   Locale = 'locale',
   /** column name */
@@ -2502,6 +2710,249 @@ export type All_Card_Updated_Bool_Exp = {
   cards_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   translation_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+};
+
+/** columns and relationships of "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version = {
+  __typename?: 'all_card_updated_by_version';
+  card_count: Scalars['Int'];
+  cards_updated_at: Scalars['timestamp'];
+  locale: Scalars['String'];
+  translation_updated_at: Scalars['timestamp'];
+  version: Scalars['Int'];
+};
+
+/** aggregated selection of "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Aggregate = {
+  __typename?: 'all_card_updated_by_version_aggregate';
+  aggregate?: Maybe<All_Card_Updated_By_Version_Aggregate_Fields>;
+  nodes: Array<All_Card_Updated_By_Version>;
+};
+
+/** aggregate fields of "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Aggregate_Fields = {
+  __typename?: 'all_card_updated_by_version_aggregate_fields';
+  avg?: Maybe<All_Card_Updated_By_Version_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<All_Card_Updated_By_Version_Max_Fields>;
+  min?: Maybe<All_Card_Updated_By_Version_Min_Fields>;
+  stddev?: Maybe<All_Card_Updated_By_Version_Stddev_Fields>;
+  stddev_pop?: Maybe<All_Card_Updated_By_Version_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<All_Card_Updated_By_Version_Stddev_Samp_Fields>;
+  sum?: Maybe<All_Card_Updated_By_Version_Sum_Fields>;
+  var_pop?: Maybe<All_Card_Updated_By_Version_Var_Pop_Fields>;
+  var_samp?: Maybe<All_Card_Updated_By_Version_Var_Samp_Fields>;
+  variance?: Maybe<All_Card_Updated_By_Version_Variance_Fields>;
+};
+
+
+/** aggregate fields of "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type All_Card_Updated_By_Version_Avg_Fields = {
+  __typename?: 'all_card_updated_by_version_avg_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "all_card_updated_by_version". All fields are combined with a logical 'AND'. */
+export type All_Card_Updated_By_Version_Bool_Exp = {
+  _and?: InputMaybe<Array<All_Card_Updated_By_Version_Bool_Exp>>;
+  _not?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+  _or?: InputMaybe<Array<All_Card_Updated_By_Version_Bool_Exp>>;
+  card_count?: InputMaybe<Int_Comparison_Exp>;
+  cards_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  translation_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  version?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "all_card_updated_by_version" */
+export enum All_Card_Updated_By_Version_Constraint {
+  /** unique or primary key constraint on columns "locale", "version" */
+  AllCardUpdatedByVersionPkey = 'all_card_updated_by_version_pkey'
+}
+
+/** input type for incrementing numeric columns in table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Inc_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Insert_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']>;
+  locale?: InputMaybe<Scalars['String']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']>;
+  version?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type All_Card_Updated_By_Version_Max_Fields = {
+  __typename?: 'all_card_updated_by_version_max_fields';
+  card_count?: Maybe<Scalars['Int']>;
+  cards_updated_at?: Maybe<Scalars['timestamp']>;
+  locale?: Maybe<Scalars['String']>;
+  translation_updated_at?: Maybe<Scalars['timestamp']>;
+  version?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate min on columns */
+export type All_Card_Updated_By_Version_Min_Fields = {
+  __typename?: 'all_card_updated_by_version_min_fields';
+  card_count?: Maybe<Scalars['Int']>;
+  cards_updated_at?: Maybe<Scalars['timestamp']>;
+  locale?: Maybe<Scalars['String']>;
+  translation_updated_at?: Maybe<Scalars['timestamp']>;
+  version?: Maybe<Scalars['Int']>;
+};
+
+/** response of any mutation on the table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Mutation_Response = {
+  __typename?: 'all_card_updated_by_version_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<All_Card_Updated_By_Version>;
+};
+
+/** on_conflict condition type for table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_On_Conflict = {
+  constraint: All_Card_Updated_By_Version_Constraint;
+  update_columns?: Array<All_Card_Updated_By_Version_Update_Column>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "all_card_updated_by_version". */
+export type All_Card_Updated_By_Version_Order_By = {
+  card_count?: InputMaybe<Order_By>;
+  cards_updated_at?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  translation_updated_at?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: all_card_updated_by_version */
+export type All_Card_Updated_By_Version_Pk_Columns_Input = {
+  locale: Scalars['String'];
+  version: Scalars['Int'];
+};
+
+/** select columns of table "all_card_updated_by_version" */
+export enum All_Card_Updated_By_Version_Select_Column {
+  /** column name */
+  CardCount = 'card_count',
+  /** column name */
+  CardsUpdatedAt = 'cards_updated_at',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  TranslationUpdatedAt = 'translation_updated_at',
+  /** column name */
+  Version = 'version'
+}
+
+/** input type for updating data in table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Set_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']>;
+  locale?: InputMaybe<Scalars['String']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']>;
+  version?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type All_Card_Updated_By_Version_Stddev_Fields = {
+  __typename?: 'all_card_updated_by_version_stddev_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type All_Card_Updated_By_Version_Stddev_Pop_Fields = {
+  __typename?: 'all_card_updated_by_version_stddev_pop_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type All_Card_Updated_By_Version_Stddev_Samp_Fields = {
+  __typename?: 'all_card_updated_by_version_stddev_samp_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: All_Card_Updated_By_Version_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type All_Card_Updated_By_Version_Stream_Cursor_Value_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']>;
+  locale?: InputMaybe<Scalars['String']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']>;
+  version?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate sum on columns */
+export type All_Card_Updated_By_Version_Sum_Fields = {
+  __typename?: 'all_card_updated_by_version_sum_fields';
+  card_count?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "all_card_updated_by_version" */
+export enum All_Card_Updated_By_Version_Update_Column {
+  /** column name */
+  CardCount = 'card_count',
+  /** column name */
+  CardsUpdatedAt = 'cards_updated_at',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  TranslationUpdatedAt = 'translation_updated_at',
+  /** column name */
+  Version = 'version'
+}
+
+export type All_Card_Updated_By_Version_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<All_Card_Updated_By_Version_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<All_Card_Updated_By_Version_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: All_Card_Updated_By_Version_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type All_Card_Updated_By_Version_Var_Pop_Fields = {
+  __typename?: 'all_card_updated_by_version_var_pop_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type All_Card_Updated_By_Version_Var_Samp_Fields = {
+  __typename?: 'all_card_updated_by_version_var_samp_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type All_Card_Updated_By_Version_Variance_Fields = {
+  __typename?: 'all_card_updated_by_version_variance_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
 };
 
 /** unique or primary key constraints on table "all_card_updated" */
@@ -2875,6 +3326,742 @@ export type All_Card_Variance_Order_By = {
   version?: InputMaybe<Order_By>;
   victory?: InputMaybe<Order_By>;
   xp?: InputMaybe<Order_By>;
+};
+
+/** columns and relationships of "arkhamdb_auth" */
+export type Arkhamdb_Auth = {
+  __typename?: 'arkhamdb_auth';
+  access_token: Scalars['String'];
+  access_token_expiration: Scalars['timestamptz'];
+  account_id?: Maybe<Scalars['Int']>;
+  account_name?: Maybe<Scalars['String']>;
+  decks_cache_key?: Maybe<Scalars['String']>;
+  reauthorization_required: Scalars['Boolean'];
+  refresh_token: Scalars['String'];
+  refresh_token_expiration?: Maybe<Scalars['timestamptz']>;
+  user_id: Scalars['String'];
+};
+
+/** aggregated selection of "arkhamdb_auth" */
+export type Arkhamdb_Auth_Aggregate = {
+  __typename?: 'arkhamdb_auth_aggregate';
+  aggregate?: Maybe<Arkhamdb_Auth_Aggregate_Fields>;
+  nodes: Array<Arkhamdb_Auth>;
+};
+
+/** aggregate fields of "arkhamdb_auth" */
+export type Arkhamdb_Auth_Aggregate_Fields = {
+  __typename?: 'arkhamdb_auth_aggregate_fields';
+  avg?: Maybe<Arkhamdb_Auth_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Arkhamdb_Auth_Max_Fields>;
+  min?: Maybe<Arkhamdb_Auth_Min_Fields>;
+  stddev?: Maybe<Arkhamdb_Auth_Stddev_Fields>;
+  stddev_pop?: Maybe<Arkhamdb_Auth_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Arkhamdb_Auth_Stddev_Samp_Fields>;
+  sum?: Maybe<Arkhamdb_Auth_Sum_Fields>;
+  var_pop?: Maybe<Arkhamdb_Auth_Var_Pop_Fields>;
+  var_samp?: Maybe<Arkhamdb_Auth_Var_Samp_Fields>;
+  variance?: Maybe<Arkhamdb_Auth_Variance_Fields>;
+};
+
+
+/** aggregate fields of "arkhamdb_auth" */
+export type Arkhamdb_Auth_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Arkhamdb_Auth_Avg_Fields = {
+  __typename?: 'arkhamdb_auth_avg_fields';
+  account_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "arkhamdb_auth". All fields are combined with a logical 'AND'. */
+export type Arkhamdb_Auth_Bool_Exp = {
+  _and?: InputMaybe<Array<Arkhamdb_Auth_Bool_Exp>>;
+  _not?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+  _or?: InputMaybe<Array<Arkhamdb_Auth_Bool_Exp>>;
+  access_token?: InputMaybe<String_Comparison_Exp>;
+  access_token_expiration?: InputMaybe<Timestamptz_Comparison_Exp>;
+  account_id?: InputMaybe<Int_Comparison_Exp>;
+  account_name?: InputMaybe<String_Comparison_Exp>;
+  decks_cache_key?: InputMaybe<String_Comparison_Exp>;
+  reauthorization_required?: InputMaybe<Boolean_Comparison_Exp>;
+  refresh_token?: InputMaybe<String_Comparison_Exp>;
+  refresh_token_expiration?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "arkhamdb_auth" */
+export enum Arkhamdb_Auth_Constraint {
+  /** unique or primary key constraint on columns "user_id" */
+  ArkhamdbAuthPkey = 'arkhamdb_auth_pkey'
+}
+
+/** input type for incrementing numeric columns in table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Inc_Input = {
+  account_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Insert_Input = {
+  access_token?: InputMaybe<Scalars['String']>;
+  access_token_expiration?: InputMaybe<Scalars['timestamptz']>;
+  account_id?: InputMaybe<Scalars['Int']>;
+  account_name?: InputMaybe<Scalars['String']>;
+  decks_cache_key?: InputMaybe<Scalars['String']>;
+  reauthorization_required?: InputMaybe<Scalars['Boolean']>;
+  refresh_token?: InputMaybe<Scalars['String']>;
+  refresh_token_expiration?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Arkhamdb_Auth_Max_Fields = {
+  __typename?: 'arkhamdb_auth_max_fields';
+  access_token?: Maybe<Scalars['String']>;
+  access_token_expiration?: Maybe<Scalars['timestamptz']>;
+  account_id?: Maybe<Scalars['Int']>;
+  account_name?: Maybe<Scalars['String']>;
+  decks_cache_key?: Maybe<Scalars['String']>;
+  refresh_token?: Maybe<Scalars['String']>;
+  refresh_token_expiration?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Arkhamdb_Auth_Min_Fields = {
+  __typename?: 'arkhamdb_auth_min_fields';
+  access_token?: Maybe<Scalars['String']>;
+  access_token_expiration?: Maybe<Scalars['timestamptz']>;
+  account_id?: Maybe<Scalars['Int']>;
+  account_name?: Maybe<Scalars['String']>;
+  decks_cache_key?: Maybe<Scalars['String']>;
+  refresh_token?: Maybe<Scalars['String']>;
+  refresh_token_expiration?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Mutation_Response = {
+  __typename?: 'arkhamdb_auth_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Arkhamdb_Auth>;
+};
+
+/** on_conflict condition type for table "arkhamdb_auth" */
+export type Arkhamdb_Auth_On_Conflict = {
+  constraint: Arkhamdb_Auth_Constraint;
+  update_columns?: Array<Arkhamdb_Auth_Update_Column>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "arkhamdb_auth". */
+export type Arkhamdb_Auth_Order_By = {
+  access_token?: InputMaybe<Order_By>;
+  access_token_expiration?: InputMaybe<Order_By>;
+  account_id?: InputMaybe<Order_By>;
+  account_name?: InputMaybe<Order_By>;
+  decks_cache_key?: InputMaybe<Order_By>;
+  reauthorization_required?: InputMaybe<Order_By>;
+  refresh_token?: InputMaybe<Order_By>;
+  refresh_token_expiration?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: arkhamdb_auth */
+export type Arkhamdb_Auth_Pk_Columns_Input = {
+  user_id: Scalars['String'];
+};
+
+/** select columns of table "arkhamdb_auth" */
+export enum Arkhamdb_Auth_Select_Column {
+  /** column name */
+  AccessToken = 'access_token',
+  /** column name */
+  AccessTokenExpiration = 'access_token_expiration',
+  /** column name */
+  AccountId = 'account_id',
+  /** column name */
+  AccountName = 'account_name',
+  /** column name */
+  DecksCacheKey = 'decks_cache_key',
+  /** column name */
+  ReauthorizationRequired = 'reauthorization_required',
+  /** column name */
+  RefreshToken = 'refresh_token',
+  /** column name */
+  RefreshTokenExpiration = 'refresh_token_expiration',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Set_Input = {
+  access_token?: InputMaybe<Scalars['String']>;
+  access_token_expiration?: InputMaybe<Scalars['timestamptz']>;
+  account_id?: InputMaybe<Scalars['Int']>;
+  account_name?: InputMaybe<Scalars['String']>;
+  decks_cache_key?: InputMaybe<Scalars['String']>;
+  reauthorization_required?: InputMaybe<Scalars['Boolean']>;
+  refresh_token?: InputMaybe<Scalars['String']>;
+  refresh_token_expiration?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Arkhamdb_Auth_Stddev_Fields = {
+  __typename?: 'arkhamdb_auth_stddev_fields';
+  account_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Arkhamdb_Auth_Stddev_Pop_Fields = {
+  __typename?: 'arkhamdb_auth_stddev_pop_fields';
+  account_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Arkhamdb_Auth_Stddev_Samp_Fields = {
+  __typename?: 'arkhamdb_auth_stddev_samp_fields';
+  account_id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Arkhamdb_Auth_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Arkhamdb_Auth_Stream_Cursor_Value_Input = {
+  access_token?: InputMaybe<Scalars['String']>;
+  access_token_expiration?: InputMaybe<Scalars['timestamptz']>;
+  account_id?: InputMaybe<Scalars['Int']>;
+  account_name?: InputMaybe<Scalars['String']>;
+  decks_cache_key?: InputMaybe<Scalars['String']>;
+  reauthorization_required?: InputMaybe<Scalars['Boolean']>;
+  refresh_token?: InputMaybe<Scalars['String']>;
+  refresh_token_expiration?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Arkhamdb_Auth_Sum_Fields = {
+  __typename?: 'arkhamdb_auth_sum_fields';
+  account_id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "arkhamdb_auth" */
+export enum Arkhamdb_Auth_Update_Column {
+  /** column name */
+  AccessToken = 'access_token',
+  /** column name */
+  AccessTokenExpiration = 'access_token_expiration',
+  /** column name */
+  AccountId = 'account_id',
+  /** column name */
+  AccountName = 'account_name',
+  /** column name */
+  DecksCacheKey = 'decks_cache_key',
+  /** column name */
+  ReauthorizationRequired = 'reauthorization_required',
+  /** column name */
+  RefreshToken = 'refresh_token',
+  /** column name */
+  RefreshTokenExpiration = 'refresh_token_expiration',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Arkhamdb_Auth_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Arkhamdb_Auth_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Arkhamdb_Auth_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Arkhamdb_Auth_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Arkhamdb_Auth_Var_Pop_Fields = {
+  __typename?: 'arkhamdb_auth_var_pop_fields';
+  account_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Arkhamdb_Auth_Var_Samp_Fields = {
+  __typename?: 'arkhamdb_auth_var_samp_fields';
+  account_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Arkhamdb_Auth_Variance_Fields = {
+  __typename?: 'arkhamdb_auth_variance_fields';
+  account_id?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_Deck = {
+  __typename?: 'arkhamdb_deck';
+  archived?: Maybe<Scalars['Boolean']>;
+  created_at: Scalars['timestamptz'];
+  deleted: Scalars['Boolean'];
+  description: Scalars['String'];
+  id: Scalars['Int'];
+  ignore_deck_limit_slots: Scalars['jsonb'];
+  investigator: Scalars['String'];
+  meta: Scalars['jsonb'];
+  name: Scalars['String'];
+  /** An object relationship */
+  next_deck?: Maybe<Arkhamdb_Deck>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  /** An object relationship */
+  owner: Users;
+  owner_id: Scalars['String'];
+  /** An object relationship */
+  previous_deck?: Maybe<Arkhamdb_Deck>;
+  side_slots: Scalars['jsonb'];
+  slots: Scalars['jsonb'];
+  tags: Scalars['jsonb'];
+  updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckIgnore_Deck_Limit_SlotsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckMetaArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckSide_SlotsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckSlotsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckTagsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregated selection of "arkhamdb_deck" */
+export type Arkhamdb_Deck_Aggregate = {
+  __typename?: 'arkhamdb_deck_aggregate';
+  aggregate?: Maybe<Arkhamdb_Deck_Aggregate_Fields>;
+  nodes: Array<Arkhamdb_Deck>;
+};
+
+/** aggregate fields of "arkhamdb_deck" */
+export type Arkhamdb_Deck_Aggregate_Fields = {
+  __typename?: 'arkhamdb_deck_aggregate_fields';
+  avg?: Maybe<Arkhamdb_Deck_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Arkhamdb_Deck_Max_Fields>;
+  min?: Maybe<Arkhamdb_Deck_Min_Fields>;
+  stddev?: Maybe<Arkhamdb_Deck_Stddev_Fields>;
+  stddev_pop?: Maybe<Arkhamdb_Deck_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Arkhamdb_Deck_Stddev_Samp_Fields>;
+  sum?: Maybe<Arkhamdb_Deck_Sum_Fields>;
+  var_pop?: Maybe<Arkhamdb_Deck_Var_Pop_Fields>;
+  var_samp?: Maybe<Arkhamdb_Deck_Var_Samp_Fields>;
+  variance?: Maybe<Arkhamdb_Deck_Variance_Fields>;
+};
+
+
+/** aggregate fields of "arkhamdb_deck" */
+export type Arkhamdb_Deck_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Arkhamdb_Deck_Append_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** aggregate avg on columns */
+export type Arkhamdb_Deck_Avg_Fields = {
+  __typename?: 'arkhamdb_deck_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "arkhamdb_deck". All fields are combined with a logical 'AND'. */
+export type Arkhamdb_Deck_Bool_Exp = {
+  _and?: InputMaybe<Array<Arkhamdb_Deck_Bool_Exp>>;
+  _not?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+  _or?: InputMaybe<Array<Arkhamdb_Deck_Bool_Exp>>;
+  archived?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  deleted?: InputMaybe<Boolean_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  ignore_deck_limit_slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  investigator?: InputMaybe<String_Comparison_Exp>;
+  meta?: InputMaybe<Jsonb_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  next_deck?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+  next_deck_id?: InputMaybe<Int_Comparison_Exp>;
+  owner?: InputMaybe<Users_Bool_Exp>;
+  owner_id?: InputMaybe<String_Comparison_Exp>;
+  previous_deck?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+  side_slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  tags?: InputMaybe<Jsonb_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "arkhamdb_deck" */
+export enum Arkhamdb_Deck_Constraint {
+  /** unique or primary key constraint on columns "next_deck_id" */
+  DeckNextDeckIdKey = 'deck_next_deck_id_key',
+  /** unique or primary key constraint on columns "id" */
+  DeckPkey1 = 'deck_pkey1'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Arkhamdb_Deck_Delete_At_Path_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Array<Scalars['String']>>;
+  meta?: InputMaybe<Array<Scalars['String']>>;
+  side_slots?: InputMaybe<Array<Scalars['String']>>;
+  slots?: InputMaybe<Array<Scalars['String']>>;
+  tags?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Arkhamdb_Deck_Delete_Elem_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Scalars['Int']>;
+  meta?: InputMaybe<Scalars['Int']>;
+  side_slots?: InputMaybe<Scalars['Int']>;
+  slots?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Arkhamdb_Deck_Delete_Key_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Scalars['String']>;
+  meta?: InputMaybe<Scalars['String']>;
+  side_slots?: InputMaybe<Scalars['String']>;
+  slots?: InputMaybe<Scalars['String']>;
+  tags?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for incrementing numeric columns in table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Inc_Input = {
+  id?: InputMaybe<Scalars['Int']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Insert_Input = {
+  archived?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck?: InputMaybe<Arkhamdb_Deck_Obj_Rel_Insert_Input>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  owner?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  previous_deck?: InputMaybe<Arkhamdb_Deck_Obj_Rel_Insert_Input>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Arkhamdb_Deck_Max_Fields = {
+  __typename?: 'arkhamdb_deck_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  investigator?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Arkhamdb_Deck_Min_Fields = {
+  __typename?: 'arkhamdb_deck_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  investigator?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Mutation_Response = {
+  __typename?: 'arkhamdb_deck_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Arkhamdb_Deck>;
+};
+
+/** input type for inserting object relation for remote table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Obj_Rel_Insert_Input = {
+  data: Arkhamdb_Deck_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Arkhamdb_Deck_On_Conflict>;
+};
+
+/** on_conflict condition type for table "arkhamdb_deck" */
+export type Arkhamdb_Deck_On_Conflict = {
+  constraint: Arkhamdb_Deck_Constraint;
+  update_columns?: Array<Arkhamdb_Deck_Update_Column>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "arkhamdb_deck". */
+export type Arkhamdb_Deck_Order_By = {
+  archived?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deleted?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  ignore_deck_limit_slots?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  meta?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  next_deck?: InputMaybe<Arkhamdb_Deck_Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
+  owner?: InputMaybe<Users_Order_By>;
+  owner_id?: InputMaybe<Order_By>;
+  previous_deck?: InputMaybe<Arkhamdb_Deck_Order_By>;
+  side_slots?: InputMaybe<Order_By>;
+  slots?: InputMaybe<Order_By>;
+  tags?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: arkhamdb_deck */
+export type Arkhamdb_Deck_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Arkhamdb_Deck_Prepend_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "arkhamdb_deck" */
+export enum Arkhamdb_Deck_Select_Column {
+  /** column name */
+  Archived = 'archived',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Deleted = 'deleted',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  IgnoreDeckLimitSlots = 'ignore_deck_limit_slots',
+  /** column name */
+  Investigator = 'investigator',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  SideSlots = 'side_slots',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Set_Input = {
+  archived?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Arkhamdb_Deck_Stddev_Fields = {
+  __typename?: 'arkhamdb_deck_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Arkhamdb_Deck_Stddev_Pop_Fields = {
+  __typename?: 'arkhamdb_deck_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Arkhamdb_Deck_Stddev_Samp_Fields = {
+  __typename?: 'arkhamdb_deck_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Arkhamdb_Deck_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Arkhamdb_Deck_Stream_Cursor_Value_Input = {
+  archived?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  meta?: InputMaybe<Scalars['jsonb']>;
+  name?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  side_slots?: InputMaybe<Scalars['jsonb']>;
+  slots?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate sum on columns */
+export type Arkhamdb_Deck_Sum_Fields = {
+  __typename?: 'arkhamdb_deck_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+  next_deck_id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "arkhamdb_deck" */
+export enum Arkhamdb_Deck_Update_Column {
+  /** column name */
+  Archived = 'archived',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Deleted = 'deleted',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  IgnoreDeckLimitSlots = 'ignore_deck_limit_slots',
+  /** column name */
+  Investigator = 'investigator',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  SideSlots = 'side_slots',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Arkhamdb_Deck_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Arkhamdb_Deck_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Arkhamdb_Deck_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Arkhamdb_Deck_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Arkhamdb_Deck_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Arkhamdb_Deck_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Arkhamdb_Deck_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Arkhamdb_Deck_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Arkhamdb_Deck_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Arkhamdb_Deck_Var_Pop_Fields = {
+  __typename?: 'arkhamdb_deck_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Arkhamdb_Deck_Var_Samp_Fields = {
+  __typename?: 'arkhamdb_deck_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Arkhamdb_Deck_Variance_Fields = {
+  __typename?: 'arkhamdb_deck_variance_fields';
+  id?: Maybe<Scalars['Float']>;
+  next_deck_id?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "base_decks" */
@@ -8082,6 +9269,7 @@ export enum Card_Type_Code_Enum {
   Agenda = 'agenda',
   Asset = 'asset',
   Enemy = 'enemy',
+  EnemyLocation = 'enemy_location',
   Event = 'event',
   Investigator = 'investigator',
   Key = 'key',
@@ -14994,432 +16182,6 @@ export type Cycle_Variance_Fields = {
   position?: Maybe<Scalars['Float']>;
 };
 
-/** columns and relationships of "deck" */
-export type Deck = {
-  __typename?: 'deck';
-  archived?: Maybe<Scalars['Boolean']>;
-  created_at: Scalars['timestamptz'];
-  description: Scalars['String'];
-  id: Scalars['Int'];
-  investigator: Scalars['String'];
-  meta: Scalars['jsonb'];
-  name: Scalars['String'];
-  /** An object relationship */
-  next_deck?: Maybe<Deck>;
-  next_deck_id?: Maybe<Scalars['Int']>;
-  /** An object relationship */
-  owner: Users;
-  owner_id: Scalars['String'];
-  /** An object relationship */
-  previous_deck?: Maybe<Deck>;
-  side_slots: Scalars['jsonb'];
-  slots: Scalars['jsonb'];
-  tags: Scalars['jsonb'];
-  updated_at: Scalars['timestamptz'];
-};
-
-
-/** columns and relationships of "deck" */
-export type DeckMetaArgs = {
-  path?: InputMaybe<Scalars['String']>;
-};
-
-
-/** columns and relationships of "deck" */
-export type DeckSide_SlotsArgs = {
-  path?: InputMaybe<Scalars['String']>;
-};
-
-
-/** columns and relationships of "deck" */
-export type DeckSlotsArgs = {
-  path?: InputMaybe<Scalars['String']>;
-};
-
-
-/** columns and relationships of "deck" */
-export type DeckTagsArgs = {
-  path?: InputMaybe<Scalars['String']>;
-};
-
-/** aggregated selection of "deck" */
-export type Deck_Aggregate = {
-  __typename?: 'deck_aggregate';
-  aggregate?: Maybe<Deck_Aggregate_Fields>;
-  nodes: Array<Deck>;
-};
-
-/** aggregate fields of "deck" */
-export type Deck_Aggregate_Fields = {
-  __typename?: 'deck_aggregate_fields';
-  avg?: Maybe<Deck_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Deck_Max_Fields>;
-  min?: Maybe<Deck_Min_Fields>;
-  stddev?: Maybe<Deck_Stddev_Fields>;
-  stddev_pop?: Maybe<Deck_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Deck_Stddev_Samp_Fields>;
-  sum?: Maybe<Deck_Sum_Fields>;
-  var_pop?: Maybe<Deck_Var_Pop_Fields>;
-  var_samp?: Maybe<Deck_Var_Samp_Fields>;
-  variance?: Maybe<Deck_Variance_Fields>;
-};
-
-
-/** aggregate fields of "deck" */
-export type Deck_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Deck_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** append existing jsonb value of filtered columns with new jsonb value */
-export type Deck_Append_Input = {
-  meta?: InputMaybe<Scalars['jsonb']>;
-  side_slots?: InputMaybe<Scalars['jsonb']>;
-  slots?: InputMaybe<Scalars['jsonb']>;
-  tags?: InputMaybe<Scalars['jsonb']>;
-};
-
-/** aggregate avg on columns */
-export type Deck_Avg_Fields = {
-  __typename?: 'deck_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-  next_deck_id?: Maybe<Scalars['Float']>;
-};
-
-/** Boolean expression to filter rows from the table "deck". All fields are combined with a logical 'AND'. */
-export type Deck_Bool_Exp = {
-  _and?: InputMaybe<Array<Deck_Bool_Exp>>;
-  _not?: InputMaybe<Deck_Bool_Exp>;
-  _or?: InputMaybe<Array<Deck_Bool_Exp>>;
-  archived?: InputMaybe<Boolean_Comparison_Exp>;
-  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-  description?: InputMaybe<String_Comparison_Exp>;
-  id?: InputMaybe<Int_Comparison_Exp>;
-  investigator?: InputMaybe<String_Comparison_Exp>;
-  meta?: InputMaybe<Jsonb_Comparison_Exp>;
-  name?: InputMaybe<String_Comparison_Exp>;
-  next_deck?: InputMaybe<Deck_Bool_Exp>;
-  next_deck_id?: InputMaybe<Int_Comparison_Exp>;
-  owner?: InputMaybe<Users_Bool_Exp>;
-  owner_id?: InputMaybe<String_Comparison_Exp>;
-  previous_deck?: InputMaybe<Deck_Bool_Exp>;
-  side_slots?: InputMaybe<Jsonb_Comparison_Exp>;
-  slots?: InputMaybe<Jsonb_Comparison_Exp>;
-  tags?: InputMaybe<Jsonb_Comparison_Exp>;
-  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "deck" */
-export enum Deck_Constraint {
-  /** unique or primary key constraint on columns "next_deck_id" */
-  DeckNextDeckIdKey = 'deck_next_deck_id_key',
-  /** unique or primary key constraint on columns "id" */
-  DeckPkey1 = 'deck_pkey1'
-}
-
-/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-export type Deck_Delete_At_Path_Input = {
-  meta?: InputMaybe<Array<Scalars['String']>>;
-  side_slots?: InputMaybe<Array<Scalars['String']>>;
-  slots?: InputMaybe<Array<Scalars['String']>>;
-  tags?: InputMaybe<Array<Scalars['String']>>;
-};
-
-/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
-export type Deck_Delete_Elem_Input = {
-  meta?: InputMaybe<Scalars['Int']>;
-  side_slots?: InputMaybe<Scalars['Int']>;
-  slots?: InputMaybe<Scalars['Int']>;
-  tags?: InputMaybe<Scalars['Int']>;
-};
-
-/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-export type Deck_Delete_Key_Input = {
-  meta?: InputMaybe<Scalars['String']>;
-  side_slots?: InputMaybe<Scalars['String']>;
-  slots?: InputMaybe<Scalars['String']>;
-  tags?: InputMaybe<Scalars['String']>;
-};
-
-/** input type for incrementing numeric columns in table "deck" */
-export type Deck_Inc_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-  next_deck_id?: InputMaybe<Scalars['Int']>;
-};
-
-/** input type for inserting data into table "deck" */
-export type Deck_Insert_Input = {
-  archived?: InputMaybe<Scalars['Boolean']>;
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['Int']>;
-  investigator?: InputMaybe<Scalars['String']>;
-  meta?: InputMaybe<Scalars['jsonb']>;
-  name?: InputMaybe<Scalars['String']>;
-  next_deck?: InputMaybe<Deck_Obj_Rel_Insert_Input>;
-  next_deck_id?: InputMaybe<Scalars['Int']>;
-  owner?: InputMaybe<Users_Obj_Rel_Insert_Input>;
-  owner_id?: InputMaybe<Scalars['String']>;
-  previous_deck?: InputMaybe<Deck_Obj_Rel_Insert_Input>;
-  side_slots?: InputMaybe<Scalars['jsonb']>;
-  slots?: InputMaybe<Scalars['jsonb']>;
-  tags?: InputMaybe<Scalars['jsonb']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** aggregate max on columns */
-export type Deck_Max_Fields = {
-  __typename?: 'deck_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  investigator?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  next_deck_id?: Maybe<Scalars['Int']>;
-  owner_id?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** aggregate min on columns */
-export type Deck_Min_Fields = {
-  __typename?: 'deck_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  investigator?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  next_deck_id?: Maybe<Scalars['Int']>;
-  owner_id?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** response of any mutation on the table "deck" */
-export type Deck_Mutation_Response = {
-  __typename?: 'deck_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Deck>;
-};
-
-/** input type for inserting object relation for remote table "deck" */
-export type Deck_Obj_Rel_Insert_Input = {
-  data: Deck_Insert_Input;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Deck_On_Conflict>;
-};
-
-/** on_conflict condition type for table "deck" */
-export type Deck_On_Conflict = {
-  constraint: Deck_Constraint;
-  update_columns?: Array<Deck_Update_Column>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-/** Ordering options when selecting data from "deck". */
-export type Deck_Order_By = {
-  archived?: InputMaybe<Order_By>;
-  created_at?: InputMaybe<Order_By>;
-  description?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  investigator?: InputMaybe<Order_By>;
-  meta?: InputMaybe<Order_By>;
-  name?: InputMaybe<Order_By>;
-  next_deck?: InputMaybe<Deck_Order_By>;
-  next_deck_id?: InputMaybe<Order_By>;
-  owner?: InputMaybe<Users_Order_By>;
-  owner_id?: InputMaybe<Order_By>;
-  previous_deck?: InputMaybe<Deck_Order_By>;
-  side_slots?: InputMaybe<Order_By>;
-  slots?: InputMaybe<Order_By>;
-  tags?: InputMaybe<Order_By>;
-  updated_at?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: deck */
-export type Deck_Pk_Columns_Input = {
-  id: Scalars['Int'];
-};
-
-/** prepend existing jsonb value of filtered columns with new jsonb value */
-export type Deck_Prepend_Input = {
-  meta?: InputMaybe<Scalars['jsonb']>;
-  side_slots?: InputMaybe<Scalars['jsonb']>;
-  slots?: InputMaybe<Scalars['jsonb']>;
-  tags?: InputMaybe<Scalars['jsonb']>;
-};
-
-/** select columns of table "deck" */
-export enum Deck_Select_Column {
-  /** column name */
-  Archived = 'archived',
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  Description = 'description',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Investigator = 'investigator',
-  /** column name */
-  Meta = 'meta',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  NextDeckId = 'next_deck_id',
-  /** column name */
-  OwnerId = 'owner_id',
-  /** column name */
-  SideSlots = 'side_slots',
-  /** column name */
-  Slots = 'slots',
-  /** column name */
-  Tags = 'tags',
-  /** column name */
-  UpdatedAt = 'updated_at'
-}
-
-/** input type for updating data in table "deck" */
-export type Deck_Set_Input = {
-  archived?: InputMaybe<Scalars['Boolean']>;
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['Int']>;
-  investigator?: InputMaybe<Scalars['String']>;
-  meta?: InputMaybe<Scalars['jsonb']>;
-  name?: InputMaybe<Scalars['String']>;
-  next_deck_id?: InputMaybe<Scalars['Int']>;
-  owner_id?: InputMaybe<Scalars['String']>;
-  side_slots?: InputMaybe<Scalars['jsonb']>;
-  slots?: InputMaybe<Scalars['jsonb']>;
-  tags?: InputMaybe<Scalars['jsonb']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** aggregate stddev on columns */
-export type Deck_Stddev_Fields = {
-  __typename?: 'deck_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-  next_deck_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Deck_Stddev_Pop_Fields = {
-  __typename?: 'deck_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-  next_deck_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Deck_Stddev_Samp_Fields = {
-  __typename?: 'deck_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-  next_deck_id?: Maybe<Scalars['Float']>;
-};
-
-/** Streaming cursor of the table "deck" */
-export type Deck_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Deck_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Deck_Stream_Cursor_Value_Input = {
-  archived?: InputMaybe<Scalars['Boolean']>;
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['Int']>;
-  investigator?: InputMaybe<Scalars['String']>;
-  meta?: InputMaybe<Scalars['jsonb']>;
-  name?: InputMaybe<Scalars['String']>;
-  next_deck_id?: InputMaybe<Scalars['Int']>;
-  owner_id?: InputMaybe<Scalars['String']>;
-  side_slots?: InputMaybe<Scalars['jsonb']>;
-  slots?: InputMaybe<Scalars['jsonb']>;
-  tags?: InputMaybe<Scalars['jsonb']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** aggregate sum on columns */
-export type Deck_Sum_Fields = {
-  __typename?: 'deck_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-  next_deck_id?: Maybe<Scalars['Int']>;
-};
-
-/** update columns of table "deck" */
-export enum Deck_Update_Column {
-  /** column name */
-  Archived = 'archived',
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  Description = 'description',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Investigator = 'investigator',
-  /** column name */
-  Meta = 'meta',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  NextDeckId = 'next_deck_id',
-  /** column name */
-  OwnerId = 'owner_id',
-  /** column name */
-  SideSlots = 'side_slots',
-  /** column name */
-  Slots = 'slots',
-  /** column name */
-  Tags = 'tags',
-  /** column name */
-  UpdatedAt = 'updated_at'
-}
-
-export type Deck_Updates = {
-  /** append existing jsonb value of filtered columns with new jsonb value */
-  _append?: InputMaybe<Deck_Append_Input>;
-  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
-  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
-  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
-  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
-  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
-  /** increments the numeric columns with given value of the filtered values */
-  _inc?: InputMaybe<Deck_Inc_Input>;
-  /** prepend existing jsonb value of filtered columns with new jsonb value */
-  _prepend?: InputMaybe<Deck_Prepend_Input>;
-  /** sets the columns of the filtered rows to the given values */
-  _set?: InputMaybe<Deck_Set_Input>;
-  /** filter the rows which have to be updated */
-  where: Deck_Bool_Exp;
-};
-
-/** aggregate var_pop on columns */
-export type Deck_Var_Pop_Fields = {
-  __typename?: 'deck_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-  next_deck_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Deck_Var_Samp_Fields = {
-  __typename?: 'deck_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-  next_deck_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Deck_Variance_Fields = {
-  __typename?: 'deck_variance_fields';
-  id?: Maybe<Scalars['Float']>;
-  next_deck_id?: Maybe<Scalars['Float']>;
-};
-
 /** columns and relationships of "faction_name" */
 export type Faction_Name = {
   __typename?: 'faction_name';
@@ -20053,8 +20815,12 @@ export type Local_Decks_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
+  apiDeleteArkhamDbDeck?: Maybe<DeleteDeckOutput>;
   /** execute VOLATILE function "conquest.publish_deck" which returns "conquest.deck" */
   conquest_publish_deck?: Maybe<Conquest_Deck>;
+  createArkhamDbDeck?: Maybe<CreateDeckOutput>;
+  createCampaign?: Maybe<CreateCampaignOutput>;
+  deleteCampaign?: Maybe<DeleteCampaignOutput>;
   /** delete data from the table: "all_card" */
   delete_all_card?: Maybe<All_Card_Mutation_Response>;
   /** delete single row from the table: "all_card" */
@@ -20067,6 +20833,18 @@ export type Mutation_Root = {
   delete_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
   /** delete single row from the table: "all_card_updated" */
   delete_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** delete data from the table: "all_card_updated_by_version" */
+  delete_all_card_updated_by_version?: Maybe<All_Card_Updated_By_Version_Mutation_Response>;
+  /** delete single row from the table: "all_card_updated_by_version" */
+  delete_all_card_updated_by_version_by_pk?: Maybe<All_Card_Updated_By_Version>;
+  /** delete data from the table: "arkhamdb_auth" */
+  delete_arkhamdb_auth?: Maybe<Arkhamdb_Auth_Mutation_Response>;
+  /** delete single row from the table: "arkhamdb_auth" */
+  delete_arkhamdb_auth_by_pk?: Maybe<Arkhamdb_Auth>;
+  /** delete data from the table: "arkhamdb_deck" */
+  delete_arkhamdb_deck?: Maybe<Arkhamdb_Deck_Mutation_Response>;
+  /** delete single row from the table: "arkhamdb_deck" */
+  delete_arkhamdb_deck_by_pk?: Maybe<Arkhamdb_Deck>;
   /** delete data from the table: "base_decks" */
   delete_base_decks?: Maybe<Base_Decks_Mutation_Response>;
   /** delete data from the table: "campaign" */
@@ -20215,10 +20993,6 @@ export type Mutation_Root = {
   delete_cycle_name?: Maybe<Cycle_Name_Mutation_Response>;
   /** delete single row from the table: "cycle_name" */
   delete_cycle_name_by_pk?: Maybe<Cycle_Name>;
-  /** delete data from the table: "deck" */
-  delete_deck?: Maybe<Deck_Mutation_Response>;
-  /** delete single row from the table: "deck" */
-  delete_deck_by_pk?: Maybe<Deck>;
   /** delete data from the table: "faction_name" */
   delete_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** delete single row from the table: "faction_name" */
@@ -20433,6 +21207,7 @@ export type Mutation_Root = {
   delete_users?: Maybe<Users_Mutation_Response>;
   /** delete single row from the table: "users" */
   delete_users_by_pk?: Maybe<Users>;
+  editCampaignAccess?: Maybe<EditCampaignAccessOutput>;
   /** insert data into the table: "all_card" */
   insert_all_card?: Maybe<All_Card_Mutation_Response>;
   /** insert a single row into the table: "all_card" */
@@ -20443,8 +21218,20 @@ export type Mutation_Root = {
   insert_all_card_text_one?: Maybe<All_Card_Text>;
   /** insert data into the table: "all_card_updated" */
   insert_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
+  /** insert data into the table: "all_card_updated_by_version" */
+  insert_all_card_updated_by_version?: Maybe<All_Card_Updated_By_Version_Mutation_Response>;
+  /** insert a single row into the table: "all_card_updated_by_version" */
+  insert_all_card_updated_by_version_one?: Maybe<All_Card_Updated_By_Version>;
   /** insert a single row into the table: "all_card_updated" */
   insert_all_card_updated_one?: Maybe<All_Card_Updated>;
+  /** insert data into the table: "arkhamdb_auth" */
+  insert_arkhamdb_auth?: Maybe<Arkhamdb_Auth_Mutation_Response>;
+  /** insert a single row into the table: "arkhamdb_auth" */
+  insert_arkhamdb_auth_one?: Maybe<Arkhamdb_Auth>;
+  /** insert data into the table: "arkhamdb_deck" */
+  insert_arkhamdb_deck?: Maybe<Arkhamdb_Deck_Mutation_Response>;
+  /** insert a single row into the table: "arkhamdb_deck" */
+  insert_arkhamdb_deck_one?: Maybe<Arkhamdb_Deck>;
   /** insert data into the table: "base_decks" */
   insert_base_decks?: Maybe<Base_Decks_Mutation_Response>;
   /** insert a single row into the table: "base_decks" */
@@ -20597,10 +21384,6 @@ export type Mutation_Root = {
   insert_cycle_name_one?: Maybe<Cycle_Name>;
   /** insert a single row into the table: "cycle" */
   insert_cycle_one?: Maybe<Cycle>;
-  /** insert data into the table: "deck" */
-  insert_deck?: Maybe<Deck_Mutation_Response>;
-  /** insert a single row into the table: "deck" */
-  insert_deck_one?: Maybe<Deck>;
   /** insert data into the table: "faction_name" */
   insert_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** insert a single row into the table: "faction_name" */
@@ -20837,6 +21620,9 @@ export type Mutation_Root = {
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
   insert_users_one?: Maybe<Users>;
+  loginToArkhamDb?: Maybe<LoginOutput>;
+  logoutFromArkhamDb?: Maybe<LogoutOutput>;
+  migrateLoginToArkhamDb?: Maybe<MigrateLoginOutput>;
   /** execute VOLATILE function "rangers.publish_deck" which returns "rangers.deck" */
   rangers_publish_deck?: Maybe<Rangers_Deck>;
   /** execute VOLATILE function "rangers.remove_campaign_deck" which returns "rangers.campaign" */
@@ -20845,6 +21631,9 @@ export type Mutation_Root = {
   rangers_set_campaign_deck: Array<Rangers_Campaign>;
   /** execute VOLATILE function "rangers.upgrade_deck" which returns "rangers.deck" */
   rangers_upgrade_deck?: Maybe<Rangers_Deck>;
+  refreshArkhamDbDecks?: Maybe<RefreshDecksOutput>;
+  updateFriendRequest?: Maybe<FriendRequestOutput>;
+  updateHandle?: Maybe<UpdateHandleOutput>;
   /** update data of the table: "all_card" */
   update_all_card?: Maybe<All_Card_Mutation_Response>;
   /** update single row of the table: "all_card" */
@@ -20861,8 +21650,26 @@ export type Mutation_Root = {
   update_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
   /** update single row of the table: "all_card_updated" */
   update_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** update data of the table: "all_card_updated_by_version" */
+  update_all_card_updated_by_version?: Maybe<All_Card_Updated_By_Version_Mutation_Response>;
+  /** update single row of the table: "all_card_updated_by_version" */
+  update_all_card_updated_by_version_by_pk?: Maybe<All_Card_Updated_By_Version>;
+  /** update multiples rows of table: "all_card_updated_by_version" */
+  update_all_card_updated_by_version_many?: Maybe<Array<Maybe<All_Card_Updated_By_Version_Mutation_Response>>>;
   /** update multiples rows of table: "all_card_updated" */
   update_all_card_updated_many?: Maybe<Array<Maybe<All_Card_Updated_Mutation_Response>>>;
+  /** update data of the table: "arkhamdb_auth" */
+  update_arkhamdb_auth?: Maybe<Arkhamdb_Auth_Mutation_Response>;
+  /** update single row of the table: "arkhamdb_auth" */
+  update_arkhamdb_auth_by_pk?: Maybe<Arkhamdb_Auth>;
+  /** update multiples rows of table: "arkhamdb_auth" */
+  update_arkhamdb_auth_many?: Maybe<Array<Maybe<Arkhamdb_Auth_Mutation_Response>>>;
+  /** update data of the table: "arkhamdb_deck" */
+  update_arkhamdb_deck?: Maybe<Arkhamdb_Deck_Mutation_Response>;
+  /** update single row of the table: "arkhamdb_deck" */
+  update_arkhamdb_deck_by_pk?: Maybe<Arkhamdb_Deck>;
+  /** update multiples rows of table: "arkhamdb_deck" */
+  update_arkhamdb_deck_many?: Maybe<Array<Maybe<Arkhamdb_Deck_Mutation_Response>>>;
   /** update data of the table: "base_decks" */
   update_base_decks?: Maybe<Base_Decks_Mutation_Response>;
   /** update multiples rows of table: "base_decks" */
@@ -21087,12 +21894,6 @@ export type Mutation_Root = {
   update_cycle_name_by_pk?: Maybe<Cycle_Name>;
   /** update multiples rows of table: "cycle_name" */
   update_cycle_name_many?: Maybe<Array<Maybe<Cycle_Name_Mutation_Response>>>;
-  /** update data of the table: "deck" */
-  update_deck?: Maybe<Deck_Mutation_Response>;
-  /** update single row of the table: "deck" */
-  update_deck_by_pk?: Maybe<Deck>;
-  /** update multiples rows of table: "deck" */
-  update_deck_many?: Maybe<Array<Maybe<Deck_Mutation_Response>>>;
   /** update data of the table: "faction_name" */
   update_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** update single row of the table: "faction_name" */
@@ -21425,6 +22226,14 @@ export type Mutation_Root = {
   update_users_by_pk?: Maybe<Users>;
   /** update multiples rows of table: "users" */
   update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
+  upgradeArkhamDbDeck?: Maybe<UpgradeDeckOutput>;
+  uploadLocalCampaignDeck?: Maybe<UploadLocalCampaignDeckOutput>;
+};
+
+
+/** mutation root */
+export type Mutation_RootApiDeleteArkhamDbDeckArgs = {
+  args: DeleteDeckInput;
 };
 
 
@@ -21436,6 +22245,24 @@ export type Mutation_RootConquest_Publish_DeckArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Conquest_Deck_Order_By>>;
   where?: InputMaybe<Conquest_Deck_Bool_Exp>;
+};
+
+
+/** mutation root */
+export type Mutation_RootCreateArkhamDbDeckArgs = {
+  args: CreateDeckInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootCreateCampaignArgs = {
+  args: CreateCampaignInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootDeleteCampaignArgs = {
+  args: DeleteCampaignInput;
 };
 
 
@@ -21473,6 +22300,43 @@ export type Mutation_RootDelete_All_Card_UpdatedArgs = {
 /** mutation root */
 export type Mutation_RootDelete_All_Card_Updated_By_PkArgs = {
   locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_Updated_By_VersionArgs = {
+  where: All_Card_Updated_By_Version_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_Updated_By_Version_By_PkArgs = {
+  locale: Scalars['String'];
+  version: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Arkhamdb_AuthArgs = {
+  where: Arkhamdb_Auth_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Arkhamdb_Auth_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Arkhamdb_DeckArgs = {
+  where: Arkhamdb_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Arkhamdb_Deck_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -21932,18 +22796,6 @@ export type Mutation_RootDelete_Cycle_NameArgs = {
 export type Mutation_RootDelete_Cycle_Name_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_DeckArgs = {
-  where: Deck_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Deck_By_PkArgs = {
-  id: Scalars['Int'];
 };
 
 
@@ -22610,6 +23462,12 @@ export type Mutation_RootDelete_Users_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootEditCampaignAccessArgs = {
+  args: EditCampaignAccessInput;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_All_CardArgs = {
   objects: Array<All_Card_Insert_Input>;
   on_conflict?: InputMaybe<All_Card_On_Conflict>;
@@ -22645,9 +23503,51 @@ export type Mutation_RootInsert_All_Card_UpdatedArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_All_Card_Updated_By_VersionArgs = {
+  objects: Array<All_Card_Updated_By_Version_Insert_Input>;
+  on_conflict?: InputMaybe<All_Card_Updated_By_Version_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_All_Card_Updated_By_Version_OneArgs = {
+  object: All_Card_Updated_By_Version_Insert_Input;
+  on_conflict?: InputMaybe<All_Card_Updated_By_Version_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_All_Card_Updated_OneArgs = {
   object: All_Card_Updated_Insert_Input;
   on_conflict?: InputMaybe<All_Card_Updated_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Arkhamdb_AuthArgs = {
+  objects: Array<Arkhamdb_Auth_Insert_Input>;
+  on_conflict?: InputMaybe<Arkhamdb_Auth_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Arkhamdb_Auth_OneArgs = {
+  object: Arkhamdb_Auth_Insert_Input;
+  on_conflict?: InputMaybe<Arkhamdb_Auth_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Arkhamdb_DeckArgs = {
+  objects: Array<Arkhamdb_Deck_Insert_Input>;
+  on_conflict?: InputMaybe<Arkhamdb_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Arkhamdb_Deck_OneArgs = {
+  object: Arkhamdb_Deck_Insert_Input;
+  on_conflict?: InputMaybe<Arkhamdb_Deck_On_Conflict>;
 };
 
 
@@ -23176,20 +24076,6 @@ export type Mutation_RootInsert_Cycle_Name_OneArgs = {
 export type Mutation_RootInsert_Cycle_OneArgs = {
   object: Cycle_Insert_Input;
   on_conflict?: InputMaybe<Cycle_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_DeckArgs = {
-  objects: Array<Deck_Insert_Input>;
-  on_conflict?: InputMaybe<Deck_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Deck_OneArgs = {
-  object: Deck_Insert_Input;
-  on_conflict?: InputMaybe<Deck_On_Conflict>;
 };
 
 
@@ -23998,6 +24884,18 @@ export type Mutation_RootInsert_Users_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootLoginToArkhamDbArgs = {
+  args: LoginInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootMigrateLoginToArkhamDbArgs = {
+  args: MigrateLoginInput;
+};
+
+
+/** mutation root */
 export type Mutation_RootRangers_Publish_DeckArgs = {
   args: Rangers_Publish_Deck_Args;
   distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
@@ -24038,6 +24936,24 @@ export type Mutation_RootRangers_Upgrade_DeckArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
   where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+/** mutation root */
+export type Mutation_RootRefreshArkhamDbDecksArgs = {
+  args: RefreshDecksInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdateFriendRequestArgs = {
+  args: FriendRequestInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdateHandleArgs = {
+  args: UpdateHandleInput;
 };
 
 
@@ -24110,8 +25026,84 @@ export type Mutation_RootUpdate_All_Card_Updated_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_By_VersionArgs = {
+  _inc?: InputMaybe<All_Card_Updated_By_Version_Inc_Input>;
+  _set?: InputMaybe<All_Card_Updated_By_Version_Set_Input>;
+  where: All_Card_Updated_By_Version_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_By_Version_By_PkArgs = {
+  _inc?: InputMaybe<All_Card_Updated_By_Version_Inc_Input>;
+  _set?: InputMaybe<All_Card_Updated_By_Version_Set_Input>;
+  pk_columns: All_Card_Updated_By_Version_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_By_Version_ManyArgs = {
+  updates: Array<All_Card_Updated_By_Version_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_All_Card_Updated_ManyArgs = {
   updates: Array<All_Card_Updated_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_AuthArgs = {
+  _inc?: InputMaybe<Arkhamdb_Auth_Inc_Input>;
+  _set?: InputMaybe<Arkhamdb_Auth_Set_Input>;
+  where: Arkhamdb_Auth_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_Auth_By_PkArgs = {
+  _inc?: InputMaybe<Arkhamdb_Auth_Inc_Input>;
+  _set?: InputMaybe<Arkhamdb_Auth_Set_Input>;
+  pk_columns: Arkhamdb_Auth_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_Auth_ManyArgs = {
+  updates: Array<Arkhamdb_Auth_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_DeckArgs = {
+  _append?: InputMaybe<Arkhamdb_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Arkhamdb_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Arkhamdb_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Arkhamdb_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Arkhamdb_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Arkhamdb_Deck_Prepend_Input>;
+  _set?: InputMaybe<Arkhamdb_Deck_Set_Input>;
+  where: Arkhamdb_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_Deck_By_PkArgs = {
+  _append?: InputMaybe<Arkhamdb_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Arkhamdb_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Arkhamdb_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Arkhamdb_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Arkhamdb_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Arkhamdb_Deck_Prepend_Input>;
+  _set?: InputMaybe<Arkhamdb_Deck_Set_Input>;
+  pk_columns: Arkhamdb_Deck_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_Deck_ManyArgs = {
+  updates: Array<Arkhamdb_Deck_Updates>;
 };
 
 
@@ -24952,38 +25944,6 @@ export type Mutation_RootUpdate_Cycle_Name_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Cycle_Name_ManyArgs = {
   updates: Array<Cycle_Name_Updates>;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_DeckArgs = {
-  _append?: InputMaybe<Deck_Append_Input>;
-  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
-  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
-  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
-  _inc?: InputMaybe<Deck_Inc_Input>;
-  _prepend?: InputMaybe<Deck_Prepend_Input>;
-  _set?: InputMaybe<Deck_Set_Input>;
-  where: Deck_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Deck_By_PkArgs = {
-  _append?: InputMaybe<Deck_Append_Input>;
-  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
-  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
-  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
-  _inc?: InputMaybe<Deck_Inc_Input>;
-  _prepend?: InputMaybe<Deck_Prepend_Input>;
-  _set?: InputMaybe<Deck_Set_Input>;
-  pk_columns: Deck_Pk_Columns_Input;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Deck_ManyArgs = {
-  updates: Array<Deck_Updates>;
 };
 
 
@@ -26201,6 +27161,18 @@ export type Mutation_RootUpdate_Users_ManyArgs = {
   updates: Array<Users_Updates>;
 };
 
+
+/** mutation root */
+export type Mutation_RootUpgradeArkhamDbDeckArgs = {
+  args: UpgradeDeckInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootUploadLocalCampaignDeckArgs = {
+  args: UploadLocalCampaignDeckInput;
+};
+
 /** column ordering options */
 export enum Order_By {
   /** in ascending order, nulls last */
@@ -26853,6 +27825,24 @@ export type Query_Root = {
   all_card_updated_aggregate: All_Card_Updated_Aggregate;
   /** fetch data from the table: "all_card_updated" using primary key columns */
   all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** fetch data from the table: "all_card_updated_by_version" */
+  all_card_updated_by_version: Array<All_Card_Updated_By_Version>;
+  /** fetch aggregated fields from the table: "all_card_updated_by_version" */
+  all_card_updated_by_version_aggregate: All_Card_Updated_By_Version_Aggregate;
+  /** fetch data from the table: "all_card_updated_by_version" using primary key columns */
+  all_card_updated_by_version_by_pk?: Maybe<All_Card_Updated_By_Version>;
+  /** fetch data from the table: "arkhamdb_auth" */
+  arkhamdb_auth: Array<Arkhamdb_Auth>;
+  /** fetch aggregated fields from the table: "arkhamdb_auth" */
+  arkhamdb_auth_aggregate: Arkhamdb_Auth_Aggregate;
+  /** fetch data from the table: "arkhamdb_auth" using primary key columns */
+  arkhamdb_auth_by_pk?: Maybe<Arkhamdb_Auth>;
+  /** fetch data from the table: "arkhamdb_deck" */
+  arkhamdb_deck: Array<Arkhamdb_Deck>;
+  /** fetch aggregated fields from the table: "arkhamdb_deck" */
+  arkhamdb_deck_aggregate: Arkhamdb_Deck_Aggregate;
+  /** fetch data from the table: "arkhamdb_deck" using primary key columns */
+  arkhamdb_deck_by_pk?: Maybe<Arkhamdb_Deck>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
@@ -27089,12 +28079,6 @@ export type Query_Root = {
   cycle_name_aggregate: Cycle_Name_Aggregate;
   /** fetch data from the table: "cycle_name" using primary key columns */
   cycle_name_by_pk?: Maybe<Cycle_Name>;
-  /** fetch data from the table: "deck" */
-  deck: Array<Deck>;
-  /** fetch aggregated fields from the table: "deck" */
-  deck_aggregate: Deck_Aggregate;
-  /** fetch data from the table: "deck" using primary key columns */
-  deck_by_pk?: Maybe<Deck>;
   /** fetch data from the table: "faction_name" */
   faction_name: Array<Faction_Name>;
   /** fetch aggregated fields from the table: "faction_name" */
@@ -27463,6 +28447,7 @@ export type Query_Root = {
   user_settings_by_pk?: Maybe<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
+  usersSearch?: Maybe<UsersSearchOutput>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
@@ -27537,6 +28522,76 @@ export type Query_RootAll_Card_Updated_AggregateArgs = {
 
 export type Query_RootAll_Card_Updated_By_PkArgs = {
   locale: Scalars['String'];
+};
+
+
+export type Query_RootAll_Card_Updated_By_VersionArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_By_Version_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_Updated_By_Version_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_By_Version_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_Updated_By_Version_By_PkArgs = {
+  locale: Scalars['String'];
+  version: Scalars['Int'];
+};
+
+
+export type Query_RootArkhamdb_AuthArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Auth_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Query_RootArkhamdb_Auth_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Auth_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Query_RootArkhamdb_Auth_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+export type Query_RootArkhamdb_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Deck_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootArkhamdb_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Deck_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootArkhamdb_Deck_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -28470,29 +29525,6 @@ export type Query_RootCycle_Name_AggregateArgs = {
 export type Query_RootCycle_Name_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
-};
-
-
-export type Query_RootDeckArgs = {
-  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Deck_Order_By>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-
-export type Query_RootDeck_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Deck_Order_By>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-
-export type Query_RootDeck_By_PkArgs = {
-  id: Scalars['Int'];
 };
 
 
@@ -29985,6 +31017,11 @@ export type Query_RootUsersArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
+};
+
+
+export type Query_RootUsersSearchArgs = {
+  args: UsersSearchInput;
 };
 
 
@@ -31519,6 +32556,7 @@ export type Rangers_Card = {
   aspect_id?: Maybe<Scalars['String']>;
   back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
+  crest_challenge?: Maybe<Scalars['String']>;
   deck_limit?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
   flavor?: Maybe<Scalars['String']>;
@@ -31529,6 +32567,7 @@ export type Rangers_Card = {
   imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   locations?: Maybe<Scalars['jsonb']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   objective?: Maybe<Scalars['String']>;
   pack_id?: Maybe<Scalars['String']>;
@@ -31540,6 +32579,7 @@ export type Rangers_Card = {
   set_id: Scalars['String'];
   set_position: Scalars['Int'];
   spoiler?: Maybe<Scalars['Boolean']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   token_count?: Maybe<Scalars['Int']>;
   token_id?: Maybe<Scalars['String']>;
@@ -31646,6 +32686,7 @@ export type Rangers_Card_Bool_Exp = {
   aspect_id?: InputMaybe<String_Comparison_Exp>;
   back_card_id?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
+  crest_challenge?: InputMaybe<String_Comparison_Exp>;
   deck_limit?: InputMaybe<Int_Comparison_Exp>;
   equip?: InputMaybe<Int_Comparison_Exp>;
   flavor?: InputMaybe<String_Comparison_Exp>;
@@ -31656,6 +32697,7 @@ export type Rangers_Card_Bool_Exp = {
   imagesrc?: InputMaybe<String_Comparison_Exp>;
   level?: InputMaybe<Int_Comparison_Exp>;
   locations?: InputMaybe<Jsonb_Comparison_Exp>;
+  mountain_challenge?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   objective?: InputMaybe<String_Comparison_Exp>;
   pack_id?: InputMaybe<String_Comparison_Exp>;
@@ -31667,6 +32709,7 @@ export type Rangers_Card_Bool_Exp = {
   set_id?: InputMaybe<String_Comparison_Exp>;
   set_position?: InputMaybe<Int_Comparison_Exp>;
   spoiler?: InputMaybe<Boolean_Comparison_Exp>;
+  sun_challenge?: InputMaybe<String_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   token_count?: InputMaybe<Int_Comparison_Exp>;
   token_id?: InputMaybe<String_Comparison_Exp>;
@@ -31727,6 +32770,7 @@ export type Rangers_Card_Insert_Input = {
   aspect_id?: InputMaybe<Scalars['String']>;
   back_card_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
+  crest_challenge?: InputMaybe<Scalars['String']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
   flavor?: InputMaybe<Scalars['String']>;
@@ -31737,6 +32781,7 @@ export type Rangers_Card_Insert_Input = {
   imagesrc?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
   locations?: InputMaybe<Scalars['jsonb']>;
+  mountain_challenge?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
   pack_id?: InputMaybe<Scalars['String']>;
@@ -31748,6 +32793,7 @@ export type Rangers_Card_Insert_Input = {
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
   spoiler?: InputMaybe<Scalars['Boolean']>;
+  sun_challenge?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   token_count?: InputMaybe<Scalars['Int']>;
   token_id?: InputMaybe<Scalars['String']>;
@@ -31771,6 +32817,7 @@ export type Rangers_Card_Localized = {
   aspect_short_name?: Maybe<Scalars['String']>;
   back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
+  crest_challenge?: Maybe<Scalars['String']>;
   deck_limit?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
   flavor?: Maybe<Scalars['String']>;
@@ -31782,6 +32829,7 @@ export type Rangers_Card_Localized = {
   level?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
   locations?: Maybe<Scalars['jsonb']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
   pack_id?: Maybe<Scalars['String']>;
@@ -31792,10 +32840,13 @@ export type Rangers_Card_Localized = {
   progress?: Maybe<Scalars['Int']>;
   progress_fixed?: Maybe<Scalars['Boolean']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_crest_challenge?: Maybe<Scalars['String']>;
   real_flavor?: Maybe<Scalars['String']>;
   real_imagesrc?: Maybe<Scalars['String']>;
+  real_mountain_challenge?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
+  real_sun_challenge?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   set_id?: Maybe<Scalars['String']>;
@@ -31805,6 +32856,7 @@ export type Rangers_Card_Localized = {
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
   spoiler?: Maybe<Scalars['Boolean']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   token_count?: Maybe<Scalars['Int']>;
   token_id?: Maybe<Scalars['String']>;
@@ -31890,6 +32942,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   aspect_short_name?: InputMaybe<String_Comparison_Exp>;
   back_card_id?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
+  crest_challenge?: InputMaybe<String_Comparison_Exp>;
   deck_limit?: InputMaybe<Int_Comparison_Exp>;
   equip?: InputMaybe<Int_Comparison_Exp>;
   flavor?: InputMaybe<String_Comparison_Exp>;
@@ -31901,6 +32954,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   level?: InputMaybe<Int_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   locations?: InputMaybe<Jsonb_Comparison_Exp>;
+  mountain_challenge?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   objective?: InputMaybe<String_Comparison_Exp>;
   pack_id?: InputMaybe<String_Comparison_Exp>;
@@ -31911,10 +32965,13 @@ export type Rangers_Card_Localized_Bool_Exp = {
   progress?: InputMaybe<Int_Comparison_Exp>;
   progress_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
+  real_crest_challenge?: InputMaybe<String_Comparison_Exp>;
   real_flavor?: InputMaybe<String_Comparison_Exp>;
   real_imagesrc?: InputMaybe<String_Comparison_Exp>;
+  real_mountain_challenge?: InputMaybe<String_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
   real_objective?: InputMaybe<String_Comparison_Exp>;
+  real_sun_challenge?: InputMaybe<String_Comparison_Exp>;
   real_text?: InputMaybe<String_Comparison_Exp>;
   real_traits?: InputMaybe<String_Comparison_Exp>;
   set_id?: InputMaybe<String_Comparison_Exp>;
@@ -31924,6 +32981,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   set_type_id?: InputMaybe<String_Comparison_Exp>;
   set_type_name?: InputMaybe<String_Comparison_Exp>;
   spoiler?: InputMaybe<Boolean_Comparison_Exp>;
+  sun_challenge?: InputMaybe<String_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   token_count?: InputMaybe<Int_Comparison_Exp>;
   token_id?: InputMaybe<String_Comparison_Exp>;
@@ -31949,6 +33007,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   aspect_short_name?: Maybe<Scalars['String']>;
   back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
+  crest_challenge?: Maybe<Scalars['String']>;
   deck_limit?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
   flavor?: Maybe<Scalars['String']>;
@@ -31959,6 +33018,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
   pack_id?: Maybe<Scalars['String']>;
@@ -31968,10 +33028,13 @@ export type Rangers_Card_Localized_Max_Fields = {
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_crest_challenge?: Maybe<Scalars['String']>;
   real_flavor?: Maybe<Scalars['String']>;
   real_imagesrc?: Maybe<Scalars['String']>;
+  real_mountain_challenge?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
+  real_sun_challenge?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   set_id?: Maybe<Scalars['String']>;
@@ -31980,6 +33043,7 @@ export type Rangers_Card_Localized_Max_Fields = {
   set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   token_count?: Maybe<Scalars['Int']>;
   token_id?: Maybe<Scalars['String']>;
@@ -32005,6 +33069,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   aspect_short_name?: Maybe<Scalars['String']>;
   back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
+  crest_challenge?: Maybe<Scalars['String']>;
   deck_limit?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
   flavor?: Maybe<Scalars['String']>;
@@ -32015,6 +33080,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
   pack_id?: Maybe<Scalars['String']>;
@@ -32024,10 +33090,13 @@ export type Rangers_Card_Localized_Min_Fields = {
   presence?: Maybe<Scalars['Int']>;
   progress?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
+  real_crest_challenge?: Maybe<Scalars['String']>;
   real_flavor?: Maybe<Scalars['String']>;
   real_imagesrc?: Maybe<Scalars['String']>;
+  real_mountain_challenge?: Maybe<Scalars['String']>;
   real_name?: Maybe<Scalars['String']>;
   real_objective?: Maybe<Scalars['String']>;
+  real_sun_challenge?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   set_id?: Maybe<Scalars['String']>;
@@ -32036,6 +33105,7 @@ export type Rangers_Card_Localized_Min_Fields = {
   set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   token_count?: Maybe<Scalars['Int']>;
   token_id?: Maybe<Scalars['String']>;
@@ -32060,6 +33130,7 @@ export type Rangers_Card_Localized_Order_By = {
   aspect_short_name?: InputMaybe<Order_By>;
   back_card_id?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
+  crest_challenge?: InputMaybe<Order_By>;
   deck_limit?: InputMaybe<Order_By>;
   equip?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
@@ -32071,6 +33142,7 @@ export type Rangers_Card_Localized_Order_By = {
   level?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   locations?: InputMaybe<Order_By>;
+  mountain_challenge?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   objective?: InputMaybe<Order_By>;
   pack_id?: InputMaybe<Order_By>;
@@ -32081,10 +33153,13 @@ export type Rangers_Card_Localized_Order_By = {
   progress?: InputMaybe<Order_By>;
   progress_fixed?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
+  real_crest_challenge?: InputMaybe<Order_By>;
   real_flavor?: InputMaybe<Order_By>;
   real_imagesrc?: InputMaybe<Order_By>;
+  real_mountain_challenge?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
   real_objective?: InputMaybe<Order_By>;
+  real_sun_challenge?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
   set_id?: InputMaybe<Order_By>;
@@ -32094,6 +33169,7 @@ export type Rangers_Card_Localized_Order_By = {
   set_type_id?: InputMaybe<Order_By>;
   set_type_name?: InputMaybe<Order_By>;
   spoiler?: InputMaybe<Order_By>;
+  sun_challenge?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   token_count?: InputMaybe<Order_By>;
   token_id?: InputMaybe<Order_By>;
@@ -32130,6 +33206,8 @@ export enum Rangers_Card_Localized_Select_Column {
   /** column name */
   Cost = 'cost',
   /** column name */
+  CrestChallenge = 'crest_challenge',
+  /** column name */
   DeckLimit = 'deck_limit',
   /** column name */
   Equip = 'equip',
@@ -32152,6 +33230,8 @@ export enum Rangers_Card_Localized_Select_Column {
   /** column name */
   Locations = 'locations',
   /** column name */
+  MountainChallenge = 'mountain_challenge',
+  /** column name */
   Name = 'name',
   /** column name */
   Objective = 'objective',
@@ -32172,13 +33252,19 @@ export enum Rangers_Card_Localized_Select_Column {
   /** column name */
   Quantity = 'quantity',
   /** column name */
+  RealCrestChallenge = 'real_crest_challenge',
+  /** column name */
   RealFlavor = 'real_flavor',
   /** column name */
   RealImagesrc = 'real_imagesrc',
   /** column name */
+  RealMountainChallenge = 'real_mountain_challenge',
+  /** column name */
   RealName = 'real_name',
   /** column name */
   RealObjective = 'real_objective',
+  /** column name */
+  RealSunChallenge = 'real_sun_challenge',
   /** column name */
   RealText = 'real_text',
   /** column name */
@@ -32197,6 +33283,8 @@ export enum Rangers_Card_Localized_Select_Column {
   SetTypeName = 'set_type_name',
   /** column name */
   Spoiler = 'spoiler',
+  /** column name */
+  SunChallenge = 'sun_challenge',
   /** column name */
   Text = 'text',
   /** column name */
@@ -32304,6 +33392,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   aspect_short_name?: InputMaybe<Scalars['String']>;
   back_card_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
+  crest_challenge?: InputMaybe<Scalars['String']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
   flavor?: InputMaybe<Scalars['String']>;
@@ -32315,6 +33404,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   level?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   locations?: InputMaybe<Scalars['jsonb']>;
+  mountain_challenge?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
   pack_id?: InputMaybe<Scalars['String']>;
@@ -32325,10 +33415,13 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   progress?: InputMaybe<Scalars['Int']>;
   progress_fixed?: InputMaybe<Scalars['Boolean']>;
   quantity?: InputMaybe<Scalars['Int']>;
+  real_crest_challenge?: InputMaybe<Scalars['String']>;
   real_flavor?: InputMaybe<Scalars['String']>;
   real_imagesrc?: InputMaybe<Scalars['String']>;
+  real_mountain_challenge?: InputMaybe<Scalars['String']>;
   real_name?: InputMaybe<Scalars['String']>;
   real_objective?: InputMaybe<Scalars['String']>;
+  real_sun_challenge?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
   real_traits?: InputMaybe<Scalars['String']>;
   set_id?: InputMaybe<Scalars['String']>;
@@ -32338,6 +33431,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   set_type_id?: InputMaybe<Scalars['String']>;
   set_type_name?: InputMaybe<Scalars['String']>;
   spoiler?: InputMaybe<Scalars['Boolean']>;
+  sun_challenge?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   token_count?: InputMaybe<Scalars['Int']>;
   token_id?: InputMaybe<Scalars['String']>;
@@ -32448,6 +33542,7 @@ export type Rangers_Card_Max_Fields = {
   aspect_id?: Maybe<Scalars['String']>;
   back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
+  crest_challenge?: Maybe<Scalars['String']>;
   deck_limit?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
   flavor?: Maybe<Scalars['String']>;
@@ -32457,6 +33552,7 @@ export type Rangers_Card_Max_Fields = {
   illustrator?: Maybe<Scalars['String']>;
   imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
   pack_id?: Maybe<Scalars['String']>;
@@ -32466,6 +33562,7 @@ export type Rangers_Card_Max_Fields = {
   quantity?: Maybe<Scalars['Int']>;
   set_id?: Maybe<Scalars['String']>;
   set_position?: Maybe<Scalars['Int']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   token_count?: Maybe<Scalars['Int']>;
   token_id?: Maybe<Scalars['String']>;
@@ -32485,6 +33582,7 @@ export type Rangers_Card_Min_Fields = {
   aspect_id?: Maybe<Scalars['String']>;
   back_card_id?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
+  crest_challenge?: Maybe<Scalars['String']>;
   deck_limit?: Maybe<Scalars['Int']>;
   equip?: Maybe<Scalars['Int']>;
   flavor?: Maybe<Scalars['String']>;
@@ -32494,6 +33592,7 @@ export type Rangers_Card_Min_Fields = {
   illustrator?: Maybe<Scalars['String']>;
   imagesrc?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
   pack_id?: Maybe<Scalars['String']>;
@@ -32503,6 +33602,7 @@ export type Rangers_Card_Min_Fields = {
   quantity?: Maybe<Scalars['Int']>;
   set_id?: Maybe<Scalars['String']>;
   set_position?: Maybe<Scalars['Int']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   token_count?: Maybe<Scalars['Int']>;
   token_id?: Maybe<Scalars['String']>;
@@ -32537,6 +33637,7 @@ export type Rangers_Card_Order_By = {
   aspect_id?: InputMaybe<Order_By>;
   back_card_id?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
+  crest_challenge?: InputMaybe<Order_By>;
   deck_limit?: InputMaybe<Order_By>;
   equip?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
@@ -32547,6 +33648,7 @@ export type Rangers_Card_Order_By = {
   imagesrc?: InputMaybe<Order_By>;
   level?: InputMaybe<Order_By>;
   locations?: InputMaybe<Order_By>;
+  mountain_challenge?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   objective?: InputMaybe<Order_By>;
   pack_id?: InputMaybe<Order_By>;
@@ -32558,6 +33660,7 @@ export type Rangers_Card_Order_By = {
   set_id?: InputMaybe<Order_By>;
   set_position?: InputMaybe<Order_By>;
   spoiler?: InputMaybe<Order_By>;
+  sun_challenge?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   token_count?: InputMaybe<Order_By>;
   token_id?: InputMaybe<Order_By>;
@@ -32613,6 +33716,8 @@ export enum Rangers_Card_Select_Column {
   /** column name */
   Cost = 'cost',
   /** column name */
+  CrestChallenge = 'crest_challenge',
+  /** column name */
   DeckLimit = 'deck_limit',
   /** column name */
   Equip = 'equip',
@@ -32632,6 +33737,8 @@ export enum Rangers_Card_Select_Column {
   Level = 'level',
   /** column name */
   Locations = 'locations',
+  /** column name */
+  MountainChallenge = 'mountain_challenge',
   /** column name */
   Name = 'name',
   /** column name */
@@ -32654,6 +33761,8 @@ export enum Rangers_Card_Select_Column {
   SetPosition = 'set_position',
   /** column name */
   Spoiler = 'spoiler',
+  /** column name */
+  SunChallenge = 'sun_challenge',
   /** column name */
   Text = 'text',
   /** column name */
@@ -32678,6 +33787,7 @@ export type Rangers_Card_Set_Input = {
   aspect_id?: InputMaybe<Scalars['String']>;
   back_card_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
+  crest_challenge?: InputMaybe<Scalars['String']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
   flavor?: InputMaybe<Scalars['String']>;
@@ -32688,6 +33798,7 @@ export type Rangers_Card_Set_Input = {
   imagesrc?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
   locations?: InputMaybe<Scalars['jsonb']>;
+  mountain_challenge?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
   pack_id?: InputMaybe<Scalars['String']>;
@@ -32699,6 +33810,7 @@ export type Rangers_Card_Set_Input = {
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
   spoiler?: InputMaybe<Scalars['Boolean']>;
+  sun_challenge?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   token_count?: InputMaybe<Scalars['Int']>;
   token_id?: InputMaybe<Scalars['String']>;
@@ -32785,6 +33897,7 @@ export type Rangers_Card_Stream_Cursor_Value_Input = {
   aspect_id?: InputMaybe<Scalars['String']>;
   back_card_id?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
+  crest_challenge?: InputMaybe<Scalars['String']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
   equip?: InputMaybe<Scalars['Int']>;
   flavor?: InputMaybe<Scalars['String']>;
@@ -32795,6 +33908,7 @@ export type Rangers_Card_Stream_Cursor_Value_Input = {
   imagesrc?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['Int']>;
   locations?: InputMaybe<Scalars['jsonb']>;
+  mountain_challenge?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
   pack_id?: InputMaybe<Scalars['String']>;
@@ -32806,6 +33920,7 @@ export type Rangers_Card_Stream_Cursor_Value_Input = {
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
   spoiler?: InputMaybe<Scalars['Boolean']>;
+  sun_challenge?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   token_count?: InputMaybe<Scalars['Int']>;
   token_id?: InputMaybe<Scalars['String']>;
@@ -32837,12 +33952,15 @@ export type Rangers_Card_Sum_Fields = {
 /** columns and relationships of "rangers.card_text" */
 export type Rangers_Card_Text = {
   __typename?: 'rangers_card_text';
+  crest_challenge?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   imagesrc?: Maybe<Scalars['String']>;
   locale: Scalars['String'];
+  mountain_challenge?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -32900,12 +34018,15 @@ export type Rangers_Card_Text_Bool_Exp = {
   _and?: InputMaybe<Array<Rangers_Card_Text_Bool_Exp>>;
   _not?: InputMaybe<Rangers_Card_Text_Bool_Exp>;
   _or?: InputMaybe<Array<Rangers_Card_Text_Bool_Exp>>;
+  crest_challenge?: InputMaybe<String_Comparison_Exp>;
   flavor?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   imagesrc?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
+  mountain_challenge?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   objective?: InputMaybe<String_Comparison_Exp>;
+  sun_challenge?: InputMaybe<String_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   traits?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -32919,12 +34040,15 @@ export enum Rangers_Card_Text_Constraint {
 
 /** input type for inserting data into table "rangers.card_text" */
 export type Rangers_Card_Text_Insert_Input = {
+  crest_challenge?: InputMaybe<Scalars['String']>;
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   imagesrc?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
+  mountain_challenge?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
+  sun_challenge?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -32933,12 +34057,15 @@ export type Rangers_Card_Text_Insert_Input = {
 /** aggregate max on columns */
 export type Rangers_Card_Text_Max_Fields = {
   __typename?: 'rangers_card_text_max_fields';
+  crest_challenge?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   imagesrc?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -32946,12 +34073,15 @@ export type Rangers_Card_Text_Max_Fields = {
 
 /** order by max() on columns of table "rangers.card_text" */
 export type Rangers_Card_Text_Max_Order_By = {
+  crest_challenge?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   imagesrc?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
+  mountain_challenge?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   objective?: InputMaybe<Order_By>;
+  sun_challenge?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -32960,12 +34090,15 @@ export type Rangers_Card_Text_Max_Order_By = {
 /** aggregate min on columns */
 export type Rangers_Card_Text_Min_Fields = {
   __typename?: 'rangers_card_text_min_fields';
+  crest_challenge?: Maybe<Scalars['String']>;
   flavor?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   imagesrc?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
+  sun_challenge?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -32973,12 +34106,15 @@ export type Rangers_Card_Text_Min_Fields = {
 
 /** order by min() on columns of table "rangers.card_text" */
 export type Rangers_Card_Text_Min_Order_By = {
+  crest_challenge?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   imagesrc?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
+  mountain_challenge?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   objective?: InputMaybe<Order_By>;
+  sun_challenge?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -33002,12 +34138,15 @@ export type Rangers_Card_Text_On_Conflict = {
 
 /** Ordering options when selecting data from "rangers.card_text". */
 export type Rangers_Card_Text_Order_By = {
+  crest_challenge?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   imagesrc?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
+  mountain_challenge?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   objective?: InputMaybe<Order_By>;
+  sun_challenge?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -33022,6 +34161,8 @@ export type Rangers_Card_Text_Pk_Columns_Input = {
 /** select columns of table "rangers.card_text" */
 export enum Rangers_Card_Text_Select_Column {
   /** column name */
+  CrestChallenge = 'crest_challenge',
+  /** column name */
   Flavor = 'flavor',
   /** column name */
   Id = 'id',
@@ -33030,9 +34171,13 @@ export enum Rangers_Card_Text_Select_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
+  MountainChallenge = 'mountain_challenge',
+  /** column name */
   Name = 'name',
   /** column name */
   Objective = 'objective',
+  /** column name */
+  SunChallenge = 'sun_challenge',
   /** column name */
   Text = 'text',
   /** column name */
@@ -33043,12 +34188,15 @@ export enum Rangers_Card_Text_Select_Column {
 
 /** input type for updating data in table "rangers.card_text" */
 export type Rangers_Card_Text_Set_Input = {
+  crest_challenge?: InputMaybe<Scalars['String']>;
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   imagesrc?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
+  mountain_challenge?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
+  sun_challenge?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -33064,12 +34212,15 @@ export type Rangers_Card_Text_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Rangers_Card_Text_Stream_Cursor_Value_Input = {
+  crest_challenge?: InputMaybe<Scalars['String']>;
   flavor?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   imagesrc?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
+  mountain_challenge?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   objective?: InputMaybe<Scalars['String']>;
+  sun_challenge?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   traits?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -33077,6 +34228,8 @@ export type Rangers_Card_Text_Stream_Cursor_Value_Input = {
 
 /** update columns of table "rangers.card_text" */
 export enum Rangers_Card_Text_Update_Column {
+  /** column name */
+  CrestChallenge = 'crest_challenge',
   /** column name */
   Flavor = 'flavor',
   /** column name */
@@ -33086,9 +34239,13 @@ export enum Rangers_Card_Text_Update_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
+  MountainChallenge = 'mountain_challenge',
+  /** column name */
   Name = 'name',
   /** column name */
   Objective = 'objective',
+  /** column name */
+  SunChallenge = 'sun_challenge',
   /** column name */
   Text = 'text',
   /** column name */
@@ -33123,6 +34280,8 @@ export enum Rangers_Card_Update_Column {
   /** column name */
   Cost = 'cost',
   /** column name */
+  CrestChallenge = 'crest_challenge',
+  /** column name */
   DeckLimit = 'deck_limit',
   /** column name */
   Equip = 'equip',
@@ -33142,6 +34301,8 @@ export enum Rangers_Card_Update_Column {
   Level = 'level',
   /** column name */
   Locations = 'locations',
+  /** column name */
+  MountainChallenge = 'mountain_challenge',
   /** column name */
   Name = 'name',
   /** column name */
@@ -33164,6 +34325,8 @@ export enum Rangers_Card_Update_Column {
   SetPosition = 'set_position',
   /** column name */
   Spoiler = 'spoiler',
+  /** column name */
+  SunChallenge = 'sun_challenge',
   /** column name */
   Text = 'text',
   /** column name */
@@ -40629,8 +41792,32 @@ export type Subscription_Root = {
   all_card_updated_aggregate: All_Card_Updated_Aggregate;
   /** fetch data from the table: "all_card_updated" using primary key columns */
   all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** fetch data from the table: "all_card_updated_by_version" */
+  all_card_updated_by_version: Array<All_Card_Updated_By_Version>;
+  /** fetch aggregated fields from the table: "all_card_updated_by_version" */
+  all_card_updated_by_version_aggregate: All_Card_Updated_By_Version_Aggregate;
+  /** fetch data from the table: "all_card_updated_by_version" using primary key columns */
+  all_card_updated_by_version_by_pk?: Maybe<All_Card_Updated_By_Version>;
+  /** fetch data from the table in a streaming manner: "all_card_updated_by_version" */
+  all_card_updated_by_version_stream: Array<All_Card_Updated_By_Version>;
   /** fetch data from the table in a streaming manner: "all_card_updated" */
   all_card_updated_stream: Array<All_Card_Updated>;
+  /** fetch data from the table: "arkhamdb_auth" */
+  arkhamdb_auth: Array<Arkhamdb_Auth>;
+  /** fetch aggregated fields from the table: "arkhamdb_auth" */
+  arkhamdb_auth_aggregate: Arkhamdb_Auth_Aggregate;
+  /** fetch data from the table: "arkhamdb_auth" using primary key columns */
+  arkhamdb_auth_by_pk?: Maybe<Arkhamdb_Auth>;
+  /** fetch data from the table in a streaming manner: "arkhamdb_auth" */
+  arkhamdb_auth_stream: Array<Arkhamdb_Auth>;
+  /** fetch data from the table: "arkhamdb_deck" */
+  arkhamdb_deck: Array<Arkhamdb_Deck>;
+  /** fetch aggregated fields from the table: "arkhamdb_deck" */
+  arkhamdb_deck_aggregate: Arkhamdb_Deck_Aggregate;
+  /** fetch data from the table: "arkhamdb_deck" using primary key columns */
+  arkhamdb_deck_by_pk?: Maybe<Arkhamdb_Deck>;
+  /** fetch data from the table in a streaming manner: "arkhamdb_deck" */
+  arkhamdb_deck_stream: Array<Arkhamdb_Deck>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
@@ -40949,14 +42136,6 @@ export type Subscription_Root = {
   cycle_name_stream: Array<Cycle_Name>;
   /** fetch data from the table in a streaming manner: "cycle" */
   cycle_stream: Array<Cycle>;
-  /** fetch data from the table: "deck" */
-  deck: Array<Deck>;
-  /** fetch aggregated fields from the table: "deck" */
-  deck_aggregate: Deck_Aggregate;
-  /** fetch data from the table: "deck" using primary key columns */
-  deck_by_pk?: Maybe<Deck>;
-  /** fetch data from the table in a streaming manner: "deck" */
-  deck_stream: Array<Deck>;
   /** fetch data from the table: "faction_name" */
   faction_name: Array<Faction_Name>;
   /** fetch aggregated fields from the table: "faction_name" */
@@ -41550,10 +42729,101 @@ export type Subscription_RootAll_Card_Updated_By_PkArgs = {
 };
 
 
+export type Subscription_RootAll_Card_Updated_By_VersionArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_By_Version_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_Updated_By_Version_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_By_Version_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_Updated_By_Version_By_PkArgs = {
+  locale: Scalars['String'];
+  version: Scalars['Int'];
+};
+
+
+export type Subscription_RootAll_Card_Updated_By_Version_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<All_Card_Updated_By_Version_Stream_Cursor_Input>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
 export type Subscription_RootAll_Card_Updated_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<All_Card_Updated_Stream_Cursor_Input>>;
   where?: InputMaybe<All_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_AuthArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Auth_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_Auth_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Auth_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_Auth_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
+export type Subscription_RootArkhamdb_Auth_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Arkhamdb_Auth_Stream_Cursor_Input>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Deck_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Deck_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_Deck_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Subscription_RootArkhamdb_Deck_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Arkhamdb_Deck_Stream_Cursor_Input>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
 };
 
 
@@ -42774,36 +44044,6 @@ export type Subscription_RootCycle_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Cycle_Stream_Cursor_Input>>;
   where?: InputMaybe<Cycle_Bool_Exp>;
-};
-
-
-export type Subscription_RootDeckArgs = {
-  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Deck_Order_By>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-
-export type Subscription_RootDeck_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Deck_Order_By>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-
-export type Subscription_RootDeck_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
-
-export type Subscription_RootDeck_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Deck_Stream_Cursor_Input>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
 };
 
 
@@ -46497,6 +47737,7 @@ export type Users = {
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
+  normalized_handle?: Maybe<Scalars['String']>;
   /** An array relationship */
   received_requests: Array<User_Received_Friend_Requests>;
   /** An aggregate relationship */
@@ -46710,6 +47951,7 @@ export type Users_Bool_Exp = {
   id?: InputMaybe<String_Comparison_Exp>;
   local_decks?: InputMaybe<Local_Decks_Bool_Exp>;
   local_decks_aggregate?: InputMaybe<Local_Decks_Aggregate_Bool_Exp>;
+  normalized_handle?: InputMaybe<String_Comparison_Exp>;
   received_requests?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
   received_requests_aggregate?: InputMaybe<User_Received_Friend_Requests_Aggregate_Bool_Exp>;
   sent_requests?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
@@ -46719,6 +47961,8 @@ export type Users_Bool_Exp = {
 
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
+  /** unique or primary key constraint on columns "normalized_handle" */
+  UsersNormalizedHandleKey = 'users_normalized_handle_key',
   /** unique or primary key constraint on columns "id" */
   UsersPkey = 'users_pkey'
 }
@@ -46734,6 +47978,7 @@ export type Users_Insert_Input = {
   handle?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   local_decks?: InputMaybe<Local_Decks_Arr_Rel_Insert_Input>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
   received_requests?: InputMaybe<User_Received_Friend_Requests_Arr_Rel_Insert_Input>;
   sent_requests?: InputMaybe<User_Sent_Friend_Requests_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamp']>;
@@ -46745,6 +47990,7 @@ export type Users_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   handle?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
+  normalized_handle?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamp']>;
 };
 
@@ -46754,6 +48000,7 @@ export type Users_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   handle?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
+  normalized_handle?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamp']>;
 };
 
@@ -46791,6 +48038,7 @@ export type Users_Order_By = {
   handle?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   local_decks_aggregate?: InputMaybe<Local_Decks_Aggregate_Order_By>;
+  normalized_handle?: InputMaybe<Order_By>;
   received_requests_aggregate?: InputMaybe<User_Received_Friend_Requests_Aggregate_Order_By>;
   sent_requests_aggregate?: InputMaybe<User_Sent_Friend_Requests_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -46810,6 +48058,8 @@ export enum Users_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  NormalizedHandle = 'normalized_handle',
+  /** column name */
   UpdatedAt = 'updated_at'
 }
 
@@ -46818,6 +48068,7 @@ export type Users_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   handle?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamp']>;
 };
 
@@ -46834,6 +48085,7 @@ export type Users_Stream_Cursor_Value_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   handle?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  normalized_handle?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamp']>;
 };
 
@@ -46845,6 +48097,8 @@ export enum Users_Update_Column {
   Handle = 'handle',
   /** column name */
   Id = 'id',
+  /** column name */
+  NormalizedHandle = 'normalized_handle',
   /** column name */
   UpdatedAt = 'updated_at'
 }
@@ -47082,8 +48336,6 @@ export type DeleteCampaignMutationVariables = Exact<{
 
 export type DeleteCampaignMutation = { __typename?: 'mutation_root', delete_rangers_campaign_by_pk?: { __typename?: 'rangers_campaign', id: number } | null };
 
-export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null };
-
 export type AspectFragment = { __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null };
 
 export type GetAllCardsQueryVariables = Exact<{
@@ -47091,14 +48343,14 @@ export type GetAllCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetAllCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null }>, all_updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+export type GetAllCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null }>, all_updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
 
 export type GetRoleCardsQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null }> };
+export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null }> };
 
 export type GetCardQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -47106,7 +48358,7 @@ export type GetCardQueryVariables = Exact<{
 }>;
 
 
-export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null }> };
+export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null }> };
 
 export type GetCardsUpdatedAtQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -47329,6 +48581,8 @@ export type DeckDetailFragment = { __typename?: 'rangers_deck', copy_count: numb
 
 export type DeckCommentFragment = { __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
+export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null };
+
 export type UserProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
 export type NavProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, received_requests_aggregate: { __typename?: 'rangers_user_received_friend_requests_aggregate', aggregate?: { __typename?: 'rangers_user_received_friend_requests_aggregate_fields', count: number } | null } };
@@ -47362,46 +48616,6 @@ export type SetPrivateDecksMutationVariables = Exact<{
 
 export type SetPrivateDecksMutation = { __typename?: 'mutation_root', update_rangers_user_settings_by_pk?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean } | null };
 
-export const CardFragmentDoc = gql`
-    fragment Card on rangers_card_localized {
-  id
-  name
-  real_traits
-  traits
-  equip
-  presence
-  token_id
-  token_name
-  token_plurals
-  token_count
-  harm
-  approach_conflict
-  approach_reason
-  approach_exploration
-  approach_connection
-  text
-  set_id
-  set_name
-  set_type_id
-  set_size
-  set_type_name
-  set_position
-  quantity
-  level
-  flavor
-  type_id
-  type_name
-  cost
-  aspect_id
-  aspect_name
-  aspect_short_name
-  progress
-  imagesrc
-  position
-  deck_limit
-  spoiler
-}
-    `;
 export const AspectFragmentDoc = gql`
     fragment Aspect on rangers_aspect_localized {
   id
@@ -47592,6 +48806,49 @@ export const DeckCommentFragmentDoc = gql`
   }
 }
     ${BasicDeckCommentFragmentDoc}`;
+export const CardFragmentDoc = gql`
+    fragment Card on rangers_card_localized {
+  id
+  name
+  real_traits
+  traits
+  equip
+  presence
+  token_id
+  token_name
+  token_plurals
+  token_count
+  harm
+  approach_conflict
+  approach_reason
+  approach_exploration
+  approach_connection
+  text
+  set_id
+  set_name
+  set_type_id
+  set_size
+  set_type_name
+  set_position
+  quantity
+  level
+  flavor
+  type_id
+  type_name
+  cost
+  aspect_id
+  aspect_name
+  aspect_short_name
+  progress
+  imagesrc
+  position
+  deck_limit
+  spoiler
+  sun_challenge
+  mountain_challenge
+  crest_challenge
+}
+    `;
 export const UserProfileFragmentDoc = gql`
     fragment UserProfile on rangers_users {
   id

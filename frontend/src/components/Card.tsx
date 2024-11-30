@@ -17,7 +17,7 @@ import {
 import { map, range } from 'lodash';
 import { t } from '@lingui/macro';
 
-import CardText from './CardText';
+import CardText, { ChallengeText } from './CardText';
 import { CardFragment } from '../generated/graphql/apollo-schema';
 import { Aspect, DeckCardError, DeckError, Slots } from '../types/types';
 import { getPlural } from '../lib/lang';
@@ -312,8 +312,24 @@ function CardBody({ card, padding, problem, detail, noImage }: Props & { padding
         <DeckProblemComponent card errors={problem} limit={1} />
         <Flex direction="row" alignItems="flex-start" padding={padding}>
           <Flex direction="column" flex={1}>
-            { !!(card.text || card.flavor) && <CardText text={card.text} flavor={card.flavor} aspectId={card.aspect_id} /> }
+            { !!(card.text || card.flavor) && (
+              <CardText
+                text={card.text}
+                flavor={card.flavor}
+                aspectId={card.aspect_id}
+              />
+            )}
+            { !!card.mountain_challenge && (
+              <ChallengeText challenge="mountain" text={card.mountain_challenge} />
+            )}
+            { !!card.sun_challenge  && (
+              <ChallengeText challenge="sun" text={card.sun_challenge} />
+            )}
+            { !!card.crest_challenge && (
+              <ChallengeText challenge="crest" text={card.crest_challenge} />
+            )}
           </Flex>
+
           { card.token_name && card.token_plurals && (
             <Tokens
               count={card.token_count || 0}

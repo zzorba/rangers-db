@@ -21,7 +21,7 @@
     "s3-upload": "s3-upload"
   },
   "engines": {
-    "node": "20"
+    "node": "18"
   },
   "main": "lib/index.js",
   "dependencies": {

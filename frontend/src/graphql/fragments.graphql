@@ -201,4 +201,7 @@ fragment Card on rangers_card_localized {
   position
   deck_limit
   spoiler
+  sun_challenge
+  mountain_challenge
+  crest_challenge
 }

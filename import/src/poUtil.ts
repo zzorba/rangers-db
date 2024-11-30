@@ -19,6 +19,10 @@ const SETTINGS_FOR_LANGUAGE: any = {
     'Language': 'it',
     'Plural-Forms': 'nplurals=2; plural=(n != 1);',
   },
+  ru: {
+    'Language': 'ru',
+    'Plural-Forms': 'nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);',
+  },
   pseudo: {
     'Language': 'pseudo',
     'Plural-Forms': 'nplurals=2l plural=(n != 1);',

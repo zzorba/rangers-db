@@ -1,7 +1,7 @@
 import client from './graphql/client';
 import { GetLocaleTextQuery, GetMetadataQuery } from './graphql/schema';
 
-export const LOCALES = ['de', 'it', 'fr', 'pseudo'];
+export const LOCALES = ['de', 'it', 'fr', 'ru', 'pseudo'];
 
 export interface Table {
   collection: string;
@@ -80,7 +80,7 @@ export const TABLES: { [key: string]: Table } = {
       'back_card_id',
       'position',
       'deck_limit',
-      'spoiler',
+      'spoiler'
     ],
     textFields: [
       'name',
@@ -89,6 +89,9 @@ export const TABLES: { [key: string]: Table } = {
       'flavor',
       'objective',
       'imagesrc',
+      'sun_challenge',
+      'mountain_challenge',
+      'crest_challenge'
     ],
     foreignKeys: {
       token_id: 'token',

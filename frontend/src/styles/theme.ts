@@ -47,6 +47,16 @@ const theme = extendTheme({
         SPI: '#da6e17',
         NEUTRAL: '#888888',
       },
+      challengeBackground: {
+        mountain: '#1a3266',
+        crest: '#841f0b',
+        sun: '#cc6d1f',
+      },
+      challengeIcon: {
+        mountain: '#1e397e',
+        crest: '#c00b23',
+        sun: '#ef871a',
+      },
     },
     dark: {
       veryLightText: '#444444',
@@ -70,6 +80,16 @@ const theme = extendTheme({
       FIT: '#811019',
       SPI: '#da6e17',
       NEUTRAL: '#888888',
+    },
+    challengeBackground: {
+      mountain: '#1a3266',
+      crest: '#841f0b',
+      sun: '#cc6d1f',
+    },
+    challengeIcon: {
+      mountain: '#1e397e',
+      crest: '#c00b23',
+      sun: '#ef871a',
     },
   },
 });

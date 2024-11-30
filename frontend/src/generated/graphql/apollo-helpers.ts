@@ -1,4 +1,77 @@
 import { FieldPolicy, FieldReadFunction, TypePolicies, TypePolicy } from '@apollo/client/cache';
+export type CreateCampaignOutputKeySpecifier = ('campaignId' | 'campaignIdA' | 'campaignIdB' | CreateCampaignOutputKeySpecifier)[];
+export type CreateCampaignOutputFieldPolicy = {
+	campaignId?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaignIdA?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaignIdB?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CreateDeckOutputKeySpecifier = ('deck' | 'deckId' | CreateDeckOutputKeySpecifier)[];
+export type CreateDeckOutputFieldPolicy = {
+	deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	deckId?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DeckIdKeySpecifier = ('campaignId' | 'id' | DeckIdKeySpecifier)[];
+export type DeckIdFieldPolicy = {
+	campaignId?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DeleteCampaignOutputKeySpecifier = ('campaignId' | DeleteCampaignOutputKeySpecifier)[];
+export type DeleteCampaignOutputFieldPolicy = {
+	campaignId?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DeleteDeckOutputKeySpecifier = ('success' | DeleteDeckOutputKeySpecifier)[];
+export type DeleteDeckOutputFieldPolicy = {
+	success?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EditCampaignAccessOutputKeySpecifier = ('campaignId' | EditCampaignAccessOutputKeySpecifier)[];
+export type EditCampaignAccessOutputFieldPolicy = {
+	campaignId?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type FriendRequestOutputKeySpecifier = ('success' | FriendRequestOutputKeySpecifier)[];
+export type FriendRequestOutputFieldPolicy = {
+	success?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type LoginOutputKeySpecifier = ('success' | LoginOutputKeySpecifier)[];
+export type LoginOutputFieldPolicy = {
+	success?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type LogoutOutputKeySpecifier = ('success' | LogoutOutputKeySpecifier)[];
+export type LogoutOutputFieldPolicy = {
+	success?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MigrateLoginOutputKeySpecifier = ('success' | MigrateLoginOutputKeySpecifier)[];
+export type MigrateLoginOutputFieldPolicy = {
+	success?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RefreshDecksOutputKeySpecifier = ('updated' | RefreshDecksOutputKeySpecifier)[];
+export type RefreshDecksOutputFieldPolicy = {
+	updated?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UpdateHandleOutputKeySpecifier = ('success' | 'user' | 'userId' | UpdateHandleOutputKeySpecifier)[];
+export type UpdateHandleOutputFieldPolicy = {
+	success?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>,
+	userId?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UpgradeDeckOutputKeySpecifier = ('deckId' | 'upgradedDeckId' | UpgradeDeckOutputKeySpecifier)[];
+export type UpgradeDeckOutputFieldPolicy = {
+	deckId?: FieldPolicy<any> | FieldReadFunction<any>,
+	upgradedDeckId?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UploadLocalCampaignDeckOutputKeySpecifier = ('deckIds' | UploadLocalCampaignDeckOutputKeySpecifier)[];
+export type UploadLocalCampaignDeckOutputFieldPolicy = {
+	deckIds?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UserSearchResultKeySpecifier = ('handle' | 'id' | UserSearchResultKeySpecifier)[];
+export type UserSearchResultFieldPolicy = {
+	handle?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UsersSearchOutputKeySpecifier = ('hasMore' | 'users' | UsersSearchOutputKeySpecifier)[];
+export type UsersSearchOutputFieldPolicy = {
+	hasMore?: FieldPolicy<any> | FieldReadFunction<any>,
+	users?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type all_cardKeySpecifier = ('alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'heals_damage' | 'heals_horror' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'side_deck_options' | 'side_deck_requirements' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'tags' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
 export type all_cardFieldPolicy = {
 	alt_art_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -410,17 +483,19 @@ export type all_card_sum_fieldsFieldPolicy = {
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_textKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_original_back_text' | 'taboo_original_text' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_textKeySpecifier)[];
+export type all_card_textKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'backimageurl' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'imageurl' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_original_back_text' | 'taboo_original_text' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_textKeySpecifier)[];
 export type all_card_textFieldPolicy = {
 	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	backimageurl?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	imageurl?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	slot?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -443,17 +518,19 @@ export type all_card_text_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_text_max_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_original_back_text' | 'taboo_original_text' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_text_max_fieldsKeySpecifier)[];
+export type all_card_text_max_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'backimageurl' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'imageurl' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_original_back_text' | 'taboo_original_text' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_text_max_fieldsKeySpecifier)[];
 export type all_card_text_max_fieldsFieldPolicy = {
 	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	backimageurl?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	imageurl?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	slot?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -465,17 +542,19 @@ export type all_card_text_max_fieldsFieldPolicy = {
 	traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_text_min_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_original_back_text' | 'taboo_original_text' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_text_min_fieldsKeySpecifier)[];
+export type all_card_text_min_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'backimageurl' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'imageurl' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_original_back_text' | 'taboo_original_text' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_text_min_fieldsKeySpecifier)[];
 export type all_card_text_min_fieldsFieldPolicy = {
 	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	backimageurl?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	imageurl?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	slot?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -521,6 +600,94 @@ export type all_card_updated_aggregate_fieldsFieldPolicy = {
 export type all_card_updated_avg_fieldsKeySpecifier = ('card_count' | all_card_updated_avg_fieldsKeySpecifier)[];
 export type all_card_updated_avg_fieldsFieldPolicy = {
 	card_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_versionKeySpecifier = ('card_count' | 'cards_updated_at' | 'locale' | 'translation_updated_at' | 'version' | all_card_updated_by_versionKeySpecifier)[];
+export type all_card_updated_by_versionFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	cards_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	translation_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_aggregateKeySpecifier = ('aggregate' | 'nodes' | all_card_updated_by_version_aggregateKeySpecifier)[];
+export type all_card_updated_by_version_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | all_card_updated_by_version_aggregate_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_avg_fieldsKeySpecifier = ('card_count' | 'version' | all_card_updated_by_version_avg_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_avg_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_max_fieldsKeySpecifier = ('card_count' | 'cards_updated_at' | 'locale' | 'translation_updated_at' | 'version' | all_card_updated_by_version_max_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_max_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	cards_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	translation_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_min_fieldsKeySpecifier = ('card_count' | 'cards_updated_at' | 'locale' | 'translation_updated_at' | 'version' | all_card_updated_by_version_min_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_min_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	cards_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	translation_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | all_card_updated_by_version_mutation_responseKeySpecifier)[];
+export type all_card_updated_by_version_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_stddev_fieldsKeySpecifier = ('card_count' | 'version' | all_card_updated_by_version_stddev_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_stddev_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_stddev_pop_fieldsKeySpecifier = ('card_count' | 'version' | all_card_updated_by_version_stddev_pop_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_stddev_pop_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_stddev_samp_fieldsKeySpecifier = ('card_count' | 'version' | all_card_updated_by_version_stddev_samp_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_stddev_samp_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_sum_fieldsKeySpecifier = ('card_count' | 'version' | all_card_updated_by_version_sum_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_sum_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_var_pop_fieldsKeySpecifier = ('card_count' | 'version' | all_card_updated_by_version_var_pop_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_var_pop_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_var_samp_fieldsKeySpecifier = ('card_count' | 'version' | all_card_updated_by_version_var_samp_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_var_samp_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_by_version_variance_fieldsKeySpecifier = ('card_count' | 'version' | all_card_updated_by_version_variance_fieldsKeySpecifier)[];
+export type all_card_updated_by_version_variance_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type all_card_updated_max_fieldsKeySpecifier = ('card_count' | 'cards_updated_at' | 'locale' | 'translation_updated_at' | all_card_updated_max_fieldsKeySpecifier)[];
 export type all_card_updated_max_fieldsFieldPolicy = {
@@ -658,6 +825,203 @@ export type all_card_variance_fieldsFieldPolicy = {
 	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_authKeySpecifier = ('access_token' | 'access_token_expiration' | 'account_id' | 'account_name' | 'decks_cache_key' | 'reauthorization_required' | 'refresh_token' | 'refresh_token_expiration' | 'user_id' | arkhamdb_authKeySpecifier)[];
+export type arkhamdb_authFieldPolicy = {
+	access_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	access_token_expiration?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	decks_cache_key?: FieldPolicy<any> | FieldReadFunction<any>,
+	reauthorization_required?: FieldPolicy<any> | FieldReadFunction<any>,
+	refresh_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	refresh_token_expiration?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_aggregateKeySpecifier = ('aggregate' | 'nodes' | arkhamdb_auth_aggregateKeySpecifier)[];
+export type arkhamdb_auth_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | arkhamdb_auth_aggregate_fieldsKeySpecifier)[];
+export type arkhamdb_auth_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_avg_fieldsKeySpecifier = ('account_id' | arkhamdb_auth_avg_fieldsKeySpecifier)[];
+export type arkhamdb_auth_avg_fieldsFieldPolicy = {
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_max_fieldsKeySpecifier = ('access_token' | 'access_token_expiration' | 'account_id' | 'account_name' | 'decks_cache_key' | 'refresh_token' | 'refresh_token_expiration' | 'user_id' | arkhamdb_auth_max_fieldsKeySpecifier)[];
+export type arkhamdb_auth_max_fieldsFieldPolicy = {
+	access_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	access_token_expiration?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	decks_cache_key?: FieldPolicy<any> | FieldReadFunction<any>,
+	refresh_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	refresh_token_expiration?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_min_fieldsKeySpecifier = ('access_token' | 'access_token_expiration' | 'account_id' | 'account_name' | 'decks_cache_key' | 'refresh_token' | 'refresh_token_expiration' | 'user_id' | arkhamdb_auth_min_fieldsKeySpecifier)[];
+export type arkhamdb_auth_min_fieldsFieldPolicy = {
+	access_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	access_token_expiration?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	decks_cache_key?: FieldPolicy<any> | FieldReadFunction<any>,
+	refresh_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	refresh_token_expiration?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | arkhamdb_auth_mutation_responseKeySpecifier)[];
+export type arkhamdb_auth_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_stddev_fieldsKeySpecifier = ('account_id' | arkhamdb_auth_stddev_fieldsKeySpecifier)[];
+export type arkhamdb_auth_stddev_fieldsFieldPolicy = {
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_stddev_pop_fieldsKeySpecifier = ('account_id' | arkhamdb_auth_stddev_pop_fieldsKeySpecifier)[];
+export type arkhamdb_auth_stddev_pop_fieldsFieldPolicy = {
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_stddev_samp_fieldsKeySpecifier = ('account_id' | arkhamdb_auth_stddev_samp_fieldsKeySpecifier)[];
+export type arkhamdb_auth_stddev_samp_fieldsFieldPolicy = {
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_sum_fieldsKeySpecifier = ('account_id' | arkhamdb_auth_sum_fieldsKeySpecifier)[];
+export type arkhamdb_auth_sum_fieldsFieldPolicy = {
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_var_pop_fieldsKeySpecifier = ('account_id' | arkhamdb_auth_var_pop_fieldsKeySpecifier)[];
+export type arkhamdb_auth_var_pop_fieldsFieldPolicy = {
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_var_samp_fieldsKeySpecifier = ('account_id' | arkhamdb_auth_var_samp_fieldsKeySpecifier)[];
+export type arkhamdb_auth_var_samp_fieldsFieldPolicy = {
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_auth_variance_fieldsKeySpecifier = ('account_id' | arkhamdb_auth_variance_fieldsKeySpecifier)[];
+export type arkhamdb_auth_variance_fieldsFieldPolicy = {
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deckKeySpecifier = ('archived' | 'created_at' | 'deleted' | 'description' | 'id' | 'ignore_deck_limit_slots' | 'investigator' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'owner' | 'owner_id' | 'previous_deck' | 'side_slots' | 'slots' | 'tags' | 'updated_at' | arkhamdb_deckKeySpecifier)[];
+export type arkhamdb_deckFieldPolicy = {
+	archived?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleted?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ignore_deck_limit_slots?: FieldPolicy<any> | FieldReadFunction<any>,
+	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
+	meta?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	previous_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	side_slots?: FieldPolicy<any> | FieldReadFunction<any>,
+	slots?: FieldPolicy<any> | FieldReadFunction<any>,
+	tags?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_aggregateKeySpecifier = ('aggregate' | 'nodes' | arkhamdb_deck_aggregateKeySpecifier)[];
+export type arkhamdb_deck_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | arkhamdb_deck_aggregate_fieldsKeySpecifier)[];
+export type arkhamdb_deck_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_avg_fieldsKeySpecifier = ('id' | 'next_deck_id' | arkhamdb_deck_avg_fieldsKeySpecifier)[];
+export type arkhamdb_deck_avg_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_max_fieldsKeySpecifier = ('created_at' | 'description' | 'id' | 'investigator' | 'name' | 'next_deck_id' | 'owner_id' | 'updated_at' | arkhamdb_deck_max_fieldsKeySpecifier)[];
+export type arkhamdb_deck_max_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_min_fieldsKeySpecifier = ('created_at' | 'description' | 'id' | 'investigator' | 'name' | 'next_deck_id' | 'owner_id' | 'updated_at' | arkhamdb_deck_min_fieldsKeySpecifier)[];
+export type arkhamdb_deck_min_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | arkhamdb_deck_mutation_responseKeySpecifier)[];
+export type arkhamdb_deck_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_stddev_fieldsKeySpecifier = ('id' | 'next_deck_id' | arkhamdb_deck_stddev_fieldsKeySpecifier)[];
+export type arkhamdb_deck_stddev_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_stddev_pop_fieldsKeySpecifier = ('id' | 'next_deck_id' | arkhamdb_deck_stddev_pop_fieldsKeySpecifier)[];
+export type arkhamdb_deck_stddev_pop_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_stddev_samp_fieldsKeySpecifier = ('id' | 'next_deck_id' | arkhamdb_deck_stddev_samp_fieldsKeySpecifier)[];
+export type arkhamdb_deck_stddev_samp_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_sum_fieldsKeySpecifier = ('id' | 'next_deck_id' | arkhamdb_deck_sum_fieldsKeySpecifier)[];
+export type arkhamdb_deck_sum_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_var_pop_fieldsKeySpecifier = ('id' | 'next_deck_id' | arkhamdb_deck_var_pop_fieldsKeySpecifier)[];
+export type arkhamdb_deck_var_pop_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_var_samp_fieldsKeySpecifier = ('id' | 'next_deck_id' | arkhamdb_deck_var_samp_fieldsKeySpecifier)[];
+export type arkhamdb_deck_var_samp_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type arkhamdb_deck_variance_fieldsKeySpecifier = ('id' | 'next_deck_id' | arkhamdb_deck_variance_fieldsKeySpecifier)[];
+export type arkhamdb_deck_variance_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type base_decksKeySpecifier = ('campaign' | 'campaign_id' | 'deck' | 'id' | base_decksKeySpecifier)[];
 export type base_decksFieldPolicy = {
@@ -3929,111 +4293,6 @@ export type cycle_variance_fieldsKeySpecifier = ('position' | cycle_variance_fie
 export type cycle_variance_fieldsFieldPolicy = {
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type deckKeySpecifier = ('archived' | 'created_at' | 'description' | 'id' | 'investigator' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'owner' | 'owner_id' | 'previous_deck' | 'side_slots' | 'slots' | 'tags' | 'updated_at' | deckKeySpecifier)[];
-export type deckFieldPolicy = {
-	archived?: FieldPolicy<any> | FieldReadFunction<any>,
-	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
-	description?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
-	meta?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	owner?: FieldPolicy<any> | FieldReadFunction<any>,
-	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	previous_deck?: FieldPolicy<any> | FieldReadFunction<any>,
-	side_slots?: FieldPolicy<any> | FieldReadFunction<any>,
-	slots?: FieldPolicy<any> | FieldReadFunction<any>,
-	tags?: FieldPolicy<any> | FieldReadFunction<any>,
-	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_aggregateKeySpecifier = ('aggregate' | 'nodes' | deck_aggregateKeySpecifier)[];
-export type deck_aggregateFieldPolicy = {
-	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
-	nodes?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | deck_aggregate_fieldsKeySpecifier)[];
-export type deck_aggregate_fieldsFieldPolicy = {
-	avg?: FieldPolicy<any> | FieldReadFunction<any>,
-	count?: FieldPolicy<any> | FieldReadFunction<any>,
-	max?: FieldPolicy<any> | FieldReadFunction<any>,
-	min?: FieldPolicy<any> | FieldReadFunction<any>,
-	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
-	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
-	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
-	sum?: FieldPolicy<any> | FieldReadFunction<any>,
-	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
-	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
-	variance?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_avg_fieldsKeySpecifier = ('id' | 'next_deck_id' | deck_avg_fieldsKeySpecifier)[];
-export type deck_avg_fieldsFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_max_fieldsKeySpecifier = ('created_at' | 'description' | 'id' | 'investigator' | 'name' | 'next_deck_id' | 'owner_id' | 'updated_at' | deck_max_fieldsKeySpecifier)[];
-export type deck_max_fieldsFieldPolicy = {
-	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
-	description?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_min_fieldsKeySpecifier = ('created_at' | 'description' | 'id' | 'investigator' | 'name' | 'next_deck_id' | 'owner_id' | 'updated_at' | deck_min_fieldsKeySpecifier)[];
-export type deck_min_fieldsFieldPolicy = {
-	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
-	description?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | deck_mutation_responseKeySpecifier)[];
-export type deck_mutation_responseFieldPolicy = {
-	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
-	returning?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_stddev_fieldsKeySpecifier = ('id' | 'next_deck_id' | deck_stddev_fieldsKeySpecifier)[];
-export type deck_stddev_fieldsFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_stddev_pop_fieldsKeySpecifier = ('id' | 'next_deck_id' | deck_stddev_pop_fieldsKeySpecifier)[];
-export type deck_stddev_pop_fieldsFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_stddev_samp_fieldsKeySpecifier = ('id' | 'next_deck_id' | deck_stddev_samp_fieldsKeySpecifier)[];
-export type deck_stddev_samp_fieldsFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_sum_fieldsKeySpecifier = ('id' | 'next_deck_id' | deck_sum_fieldsKeySpecifier)[];
-export type deck_sum_fieldsFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_var_pop_fieldsKeySpecifier = ('id' | 'next_deck_id' | deck_var_pop_fieldsKeySpecifier)[];
-export type deck_var_pop_fieldsFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_var_samp_fieldsKeySpecifier = ('id' | 'next_deck_id' | deck_var_samp_fieldsKeySpecifier)[];
-export type deck_var_samp_fieldsFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type deck_variance_fieldsKeySpecifier = ('id' | 'next_deck_id' | deck_variance_fieldsKeySpecifier)[];
-export type deck_variance_fieldsFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
-};
 export type faction_nameKeySpecifier = ('code' | 'locale' | 'name' | faction_nameKeySpecifier)[];
 export type faction_nameFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5204,15 +5463,25 @@ export type local_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type mutation_rootKeySpecifier = ('conquest_publish_deck' | 'delete_all_card' | 'delete_all_card_by_pk' | 'delete_all_card_text' | 'delete_all_card_text_by_pk' | 'delete_all_card_updated' | 'delete_all_card_updated_by_pk' | 'delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_difficulty' | 'delete_campaign_difficulty_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_card' | 'delete_card_by_pk' | 'delete_card_cycle' | 'delete_card_cycle_by_pk' | 'delete_card_encounter_set' | 'delete_card_encounter_set_by_pk' | 'delete_card_pack' | 'delete_card_pack_by_pk' | 'delete_card_subtype_name' | 'delete_card_subtype_name_by_pk' | 'delete_card_text' | 'delete_card_text_by_pk' | 'delete_card_type_code' | 'delete_card_type_code_by_pk' | 'delete_card_type_name' | 'delete_card_type_name_by_pk' | 'delete_chaos_bag_result' | 'delete_chaos_bag_result_by_pk' | 'delete_chaos_bag_tarot_mode' | 'delete_chaos_bag_tarot_mode_by_pk' | 'delete_conquest_card' | 'delete_conquest_card_by_pk' | 'delete_conquest_card_text' | 'delete_conquest_card_text_by_pk' | 'delete_conquest_comment' | 'delete_conquest_comment_by_pk' | 'delete_conquest_cycle' | 'delete_conquest_cycle_by_pk' | 'delete_conquest_cycle_text' | 'delete_conquest_cycle_text_by_pk' | 'delete_conquest_deck' | 'delete_conquest_deck_by_pk' | 'delete_conquest_deck_copy' | 'delete_conquest_deck_copy_by_pk' | 'delete_conquest_deck_like' | 'delete_conquest_deck_like_by_pk' | 'delete_conquest_faction' | 'delete_conquest_faction_by_pk' | 'delete_conquest_faction_text' | 'delete_conquest_faction_text_by_pk' | 'delete_conquest_loyalty' | 'delete_conquest_loyalty_by_pk' | 'delete_conquest_loyalty_text' | 'delete_conquest_loyalty_text_by_pk' | 'delete_conquest_pack' | 'delete_conquest_pack_by_pk' | 'delete_conquest_pack_text' | 'delete_conquest_pack_text_by_pk' | 'delete_conquest_type' | 'delete_conquest_type_by_pk' | 'delete_conquest_type_text' | 'delete_conquest_type_text_by_pk' | 'delete_conquest_user_role' | 'delete_conquest_user_role_by_pk' | 'delete_conquest_user_settings' | 'delete_conquest_user_settings_by_pk' | 'delete_conquest_users' | 'delete_conquest_users_by_pk' | 'delete_cycle' | 'delete_cycle_by_pk' | 'delete_cycle_name' | 'delete_cycle_name_by_pk' | 'delete_deck' | 'delete_deck_by_pk' | 'delete_faction_name' | 'delete_faction_name_by_pk' | 'delete_faq' | 'delete_faq_by_pk' | 'delete_faq_text' | 'delete_faq_text_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_full_card' | 'delete_full_card_by_pk' | 'delete_full_card_text' | 'delete_full_card_text_by_pk' | 'delete_gender' | 'delete_gender_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_pack' | 'delete_pack_by_pk' | 'delete_pack_name' | 'delete_pack_name_by_pk' | 'delete_rangers_area' | 'delete_rangers_area_by_pk' | 'delete_rangers_area_text' | 'delete_rangers_area_text_by_pk' | 'delete_rangers_aspect' | 'delete_rangers_aspect_by_pk' | 'delete_rangers_aspect_text' | 'delete_rangers_aspect_text_by_pk' | 'delete_rangers_campaign' | 'delete_rangers_campaign_access' | 'delete_rangers_campaign_access_by_pk' | 'delete_rangers_campaign_by_pk' | 'delete_rangers_card' | 'delete_rangers_card_by_pk' | 'delete_rangers_card_text' | 'delete_rangers_card_text_by_pk' | 'delete_rangers_comment' | 'delete_rangers_comment_by_pk' | 'delete_rangers_deck' | 'delete_rangers_deck_by_pk' | 'delete_rangers_deck_copy' | 'delete_rangers_deck_copy_by_pk' | 'delete_rangers_deck_like' | 'delete_rangers_deck_like_by_pk' | 'delete_rangers_deck_like_count' | 'delete_rangers_deck_like_count_by_pk' | 'delete_rangers_faq_entry' | 'delete_rangers_faq_entry_by_pk' | 'delete_rangers_friend_status' | 'delete_rangers_friend_status_by_pk' | 'delete_rangers_friend_status_type' | 'delete_rangers_friend_status_type_by_pk' | 'delete_rangers_latest_deck' | 'delete_rangers_locale' | 'delete_rangers_locale_by_pk' | 'delete_rangers_pack' | 'delete_rangers_pack_by_pk' | 'delete_rangers_pack_text' | 'delete_rangers_pack_text_by_pk' | 'delete_rangers_search_deck' | 'delete_rangers_set' | 'delete_rangers_set_by_pk' | 'delete_rangers_set_text' | 'delete_rangers_set_text_by_pk' | 'delete_rangers_set_type' | 'delete_rangers_set_type_by_pk' | 'delete_rangers_set_type_text' | 'delete_rangers_set_type_text_by_pk' | 'delete_rangers_token' | 'delete_rangers_token_by_pk' | 'delete_rangers_token_text' | 'delete_rangers_token_text_by_pk' | 'delete_rangers_type' | 'delete_rangers_type_by_pk' | 'delete_rangers_type_text' | 'delete_rangers_type_text_by_pk' | 'delete_rangers_user_friends' | 'delete_rangers_user_received_friend_requests' | 'delete_rangers_user_role' | 'delete_rangers_user_role_by_pk' | 'delete_rangers_user_sent_friend_requests' | 'delete_rangers_user_settings' | 'delete_rangers_user_settings_by_pk' | 'delete_rangers_users' | 'delete_rangers_users_by_pk' | 'delete_taboo_set' | 'delete_taboo_set_by_pk' | 'delete_user_campaigns' | 'delete_user_flag' | 'delete_user_flag_by_pk' | 'delete_user_flag_type' | 'delete_user_flag_type_by_pk' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_user_settings' | 'delete_user_settings_by_pk' | 'delete_users' | 'delete_users_by_pk' | 'insert_all_card' | 'insert_all_card_one' | 'insert_all_card_text' | 'insert_all_card_text_one' | 'insert_all_card_updated' | 'insert_all_card_updated_one' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_difficulty' | 'insert_campaign_difficulty_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_card' | 'insert_card_cycle' | 'insert_card_cycle_one' | 'insert_card_encounter_set' | 'insert_card_encounter_set_one' | 'insert_card_one' | 'insert_card_pack' | 'insert_card_pack_one' | 'insert_card_subtype_name' | 'insert_card_subtype_name_one' | 'insert_card_text' | 'insert_card_text_one' | 'insert_card_type_code' | 'insert_card_type_code_one' | 'insert_card_type_name' | 'insert_card_type_name_one' | 'insert_chaos_bag_result' | 'insert_chaos_bag_result_one' | 'insert_chaos_bag_tarot_mode' | 'insert_chaos_bag_tarot_mode_one' | 'insert_conquest_card' | 'insert_conquest_card_one' | 'insert_conquest_card_text' | 'insert_conquest_card_text_one' | 'insert_conquest_comment' | 'insert_conquest_comment_one' | 'insert_conquest_cycle' | 'insert_conquest_cycle_one' | 'insert_conquest_cycle_text' | 'insert_conquest_cycle_text_one' | 'insert_conquest_deck' | 'insert_conquest_deck_copy' | 'insert_conquest_deck_copy_one' | 'insert_conquest_deck_like' | 'insert_conquest_deck_like_one' | 'insert_conquest_deck_one' | 'insert_conquest_faction' | 'insert_conquest_faction_one' | 'insert_conquest_faction_text' | 'insert_conquest_faction_text_one' | 'insert_conquest_loyalty' | 'insert_conquest_loyalty_one' | 'insert_conquest_loyalty_text' | 'insert_conquest_loyalty_text_one' | 'insert_conquest_pack' | 'insert_conquest_pack_one' | 'insert_conquest_pack_text' | 'insert_conquest_pack_text_one' | 'insert_conquest_type' | 'insert_conquest_type_one' | 'insert_conquest_type_text' | 'insert_conquest_type_text_one' | 'insert_conquest_user_role' | 'insert_conquest_user_role_one' | 'insert_conquest_user_settings' | 'insert_conquest_user_settings_one' | 'insert_conquest_users' | 'insert_conquest_users_one' | 'insert_cycle' | 'insert_cycle_name' | 'insert_cycle_name_one' | 'insert_cycle_one' | 'insert_deck' | 'insert_deck_one' | 'insert_faction_name' | 'insert_faction_name_one' | 'insert_faq' | 'insert_faq_one' | 'insert_faq_text' | 'insert_faq_text_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_full_card' | 'insert_full_card_one' | 'insert_full_card_text' | 'insert_full_card_text_one' | 'insert_gender' | 'insert_gender_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_pack' | 'insert_pack_name' | 'insert_pack_name_one' | 'insert_pack_one' | 'insert_rangers_area' | 'insert_rangers_area_one' | 'insert_rangers_area_text' | 'insert_rangers_area_text_one' | 'insert_rangers_aspect' | 'insert_rangers_aspect_one' | 'insert_rangers_aspect_text' | 'insert_rangers_aspect_text_one' | 'insert_rangers_campaign' | 'insert_rangers_campaign_access' | 'insert_rangers_campaign_access_one' | 'insert_rangers_campaign_one' | 'insert_rangers_card' | 'insert_rangers_card_one' | 'insert_rangers_card_text' | 'insert_rangers_card_text_one' | 'insert_rangers_comment' | 'insert_rangers_comment_one' | 'insert_rangers_deck' | 'insert_rangers_deck_copy' | 'insert_rangers_deck_copy_one' | 'insert_rangers_deck_like' | 'insert_rangers_deck_like_count' | 'insert_rangers_deck_like_count_one' | 'insert_rangers_deck_like_one' | 'insert_rangers_deck_one' | 'insert_rangers_faq_entry' | 'insert_rangers_faq_entry_one' | 'insert_rangers_friend_status' | 'insert_rangers_friend_status_one' | 'insert_rangers_friend_status_type' | 'insert_rangers_friend_status_type_one' | 'insert_rangers_latest_deck' | 'insert_rangers_latest_deck_one' | 'insert_rangers_locale' | 'insert_rangers_locale_one' | 'insert_rangers_pack' | 'insert_rangers_pack_one' | 'insert_rangers_pack_text' | 'insert_rangers_pack_text_one' | 'insert_rangers_search_deck' | 'insert_rangers_search_deck_one' | 'insert_rangers_set' | 'insert_rangers_set_one' | 'insert_rangers_set_text' | 'insert_rangers_set_text_one' | 'insert_rangers_set_type' | 'insert_rangers_set_type_one' | 'insert_rangers_set_type_text' | 'insert_rangers_set_type_text_one' | 'insert_rangers_token' | 'insert_rangers_token_one' | 'insert_rangers_token_text' | 'insert_rangers_token_text_one' | 'insert_rangers_type' | 'insert_rangers_type_one' | 'insert_rangers_type_text' | 'insert_rangers_type_text_one' | 'insert_rangers_user_friends' | 'insert_rangers_user_friends_one' | 'insert_rangers_user_received_friend_requests' | 'insert_rangers_user_received_friend_requests_one' | 'insert_rangers_user_role' | 'insert_rangers_user_role_one' | 'insert_rangers_user_sent_friend_requests' | 'insert_rangers_user_sent_friend_requests_one' | 'insert_rangers_user_settings' | 'insert_rangers_user_settings_one' | 'insert_rangers_users' | 'insert_rangers_users_one' | 'insert_taboo_set' | 'insert_taboo_set_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_flag' | 'insert_user_flag_one' | 'insert_user_flag_type' | 'insert_user_flag_type_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_user_settings' | 'insert_user_settings_one' | 'insert_users' | 'insert_users_one' | 'rangers_publish_deck' | 'rangers_remove_campaign_deck' | 'rangers_set_campaign_deck' | 'rangers_upgrade_deck' | 'update_all_card' | 'update_all_card_by_pk' | 'update_all_card_many' | 'update_all_card_text' | 'update_all_card_text_by_pk' | 'update_all_card_text_many' | 'update_all_card_updated' | 'update_all_card_updated_by_pk' | 'update_all_card_updated_many' | 'update_base_decks' | 'update_base_decks_many' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_access_many' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_deck_many' | 'update_campaign_difficulty' | 'update_campaign_difficulty_by_pk' | 'update_campaign_difficulty_many' | 'update_campaign_guide' | 'update_campaign_guide_many' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_campaign_investigator_many' | 'update_campaign_many' | 'update_card' | 'update_card_by_pk' | 'update_card_cycle' | 'update_card_cycle_by_pk' | 'update_card_cycle_many' | 'update_card_encounter_set' | 'update_card_encounter_set_by_pk' | 'update_card_encounter_set_many' | 'update_card_many' | 'update_card_pack' | 'update_card_pack_by_pk' | 'update_card_pack_many' | 'update_card_subtype_name' | 'update_card_subtype_name_by_pk' | 'update_card_subtype_name_many' | 'update_card_text' | 'update_card_text_by_pk' | 'update_card_text_many' | 'update_card_type_code' | 'update_card_type_code_by_pk' | 'update_card_type_code_many' | 'update_card_type_name' | 'update_card_type_name_by_pk' | 'update_card_type_name_many' | 'update_chaos_bag_result' | 'update_chaos_bag_result_by_pk' | 'update_chaos_bag_result_many' | 'update_chaos_bag_tarot_mode' | 'update_chaos_bag_tarot_mode_by_pk' | 'update_chaos_bag_tarot_mode_many' | 'update_conquest_card' | 'update_conquest_card_by_pk' | 'update_conquest_card_many' | 'update_conquest_card_text' | 'update_conquest_card_text_by_pk' | 'update_conquest_card_text_many' | 'update_conquest_comment' | 'update_conquest_comment_by_pk' | 'update_conquest_comment_many' | 'update_conquest_cycle' | 'update_conquest_cycle_by_pk' | 'update_conquest_cycle_many' | 'update_conquest_cycle_text' | 'update_conquest_cycle_text_by_pk' | 'update_conquest_cycle_text_many' | 'update_conquest_deck' | 'update_conquest_deck_by_pk' | 'update_conquest_deck_copy' | 'update_conquest_deck_copy_by_pk' | 'update_conquest_deck_copy_many' | 'update_conquest_deck_like' | 'update_conquest_deck_like_by_pk' | 'update_conquest_deck_like_many' | 'update_conquest_deck_many' | 'update_conquest_faction' | 'update_conquest_faction_by_pk' | 'update_conquest_faction_many' | 'update_conquest_faction_text' | 'update_conquest_faction_text_by_pk' | 'update_conquest_faction_text_many' | 'update_conquest_loyalty' | 'update_conquest_loyalty_by_pk' | 'update_conquest_loyalty_many' | 'update_conquest_loyalty_text' | 'update_conquest_loyalty_text_by_pk' | 'update_conquest_loyalty_text_many' | 'update_conquest_pack' | 'update_conquest_pack_by_pk' | 'update_conquest_pack_many' | 'update_conquest_pack_text' | 'update_conquest_pack_text_by_pk' | 'update_conquest_pack_text_many' | 'update_conquest_type' | 'update_conquest_type_by_pk' | 'update_conquest_type_many' | 'update_conquest_type_text' | 'update_conquest_type_text_by_pk' | 'update_conquest_type_text_many' | 'update_conquest_user_role' | 'update_conquest_user_role_by_pk' | 'update_conquest_user_role_many' | 'update_conquest_user_settings' | 'update_conquest_user_settings_by_pk' | 'update_conquest_user_settings_many' | 'update_conquest_users' | 'update_conquest_users_by_pk' | 'update_conquest_users_many' | 'update_cycle' | 'update_cycle_by_pk' | 'update_cycle_many' | 'update_cycle_name' | 'update_cycle_name_by_pk' | 'update_cycle_name_many' | 'update_deck' | 'update_deck_by_pk' | 'update_deck_many' | 'update_faction_name' | 'update_faction_name_by_pk' | 'update_faction_name_many' | 'update_faq' | 'update_faq_by_pk' | 'update_faq_many' | 'update_faq_text' | 'update_faq_text_by_pk' | 'update_faq_text_many' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_many' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_friend_status_type_many' | 'update_full_card' | 'update_full_card_by_pk' | 'update_full_card_many' | 'update_full_card_text' | 'update_full_card_text_by_pk' | 'update_full_card_text_many' | 'update_gender' | 'update_gender_by_pk' | 'update_gender_many' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_achievement_many' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_guide_input_many' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_investigator_data_many' | 'update_latest_decks' | 'update_latest_decks_many' | 'update_local_decks' | 'update_local_decks_many' | 'update_pack' | 'update_pack_by_pk' | 'update_pack_many' | 'update_pack_name' | 'update_pack_name_by_pk' | 'update_pack_name_many' | 'update_rangers_area' | 'update_rangers_area_by_pk' | 'update_rangers_area_many' | 'update_rangers_area_text' | 'update_rangers_area_text_by_pk' | 'update_rangers_area_text_many' | 'update_rangers_aspect' | 'update_rangers_aspect_by_pk' | 'update_rangers_aspect_many' | 'update_rangers_aspect_text' | 'update_rangers_aspect_text_by_pk' | 'update_rangers_aspect_text_many' | 'update_rangers_campaign' | 'update_rangers_campaign_access' | 'update_rangers_campaign_access_by_pk' | 'update_rangers_campaign_access_many' | 'update_rangers_campaign_by_pk' | 'update_rangers_campaign_many' | 'update_rangers_card' | 'update_rangers_card_by_pk' | 'update_rangers_card_many' | 'update_rangers_card_text' | 'update_rangers_card_text_by_pk' | 'update_rangers_card_text_many' | 'update_rangers_comment' | 'update_rangers_comment_by_pk' | 'update_rangers_comment_many' | 'update_rangers_deck' | 'update_rangers_deck_by_pk' | 'update_rangers_deck_copy' | 'update_rangers_deck_copy_by_pk' | 'update_rangers_deck_copy_many' | 'update_rangers_deck_like' | 'update_rangers_deck_like_by_pk' | 'update_rangers_deck_like_count' | 'update_rangers_deck_like_count_by_pk' | 'update_rangers_deck_like_count_many' | 'update_rangers_deck_like_many' | 'update_rangers_deck_many' | 'update_rangers_faq_entry' | 'update_rangers_faq_entry_by_pk' | 'update_rangers_faq_entry_many' | 'update_rangers_friend_status' | 'update_rangers_friend_status_by_pk' | 'update_rangers_friend_status_many' | 'update_rangers_friend_status_type' | 'update_rangers_friend_status_type_by_pk' | 'update_rangers_friend_status_type_many' | 'update_rangers_latest_deck' | 'update_rangers_latest_deck_many' | 'update_rangers_locale' | 'update_rangers_locale_by_pk' | 'update_rangers_locale_many' | 'update_rangers_pack' | 'update_rangers_pack_by_pk' | 'update_rangers_pack_many' | 'update_rangers_pack_text' | 'update_rangers_pack_text_by_pk' | 'update_rangers_pack_text_many' | 'update_rangers_search_deck' | 'update_rangers_search_deck_many' | 'update_rangers_set' | 'update_rangers_set_by_pk' | 'update_rangers_set_many' | 'update_rangers_set_text' | 'update_rangers_set_text_by_pk' | 'update_rangers_set_text_many' | 'update_rangers_set_type' | 'update_rangers_set_type_by_pk' | 'update_rangers_set_type_many' | 'update_rangers_set_type_text' | 'update_rangers_set_type_text_by_pk' | 'update_rangers_set_type_text_many' | 'update_rangers_token' | 'update_rangers_token_by_pk' | 'update_rangers_token_many' | 'update_rangers_token_text' | 'update_rangers_token_text_by_pk' | 'update_rangers_token_text_many' | 'update_rangers_type' | 'update_rangers_type_by_pk' | 'update_rangers_type_many' | 'update_rangers_type_text' | 'update_rangers_type_text_by_pk' | 'update_rangers_type_text_many' | 'update_rangers_user_friends' | 'update_rangers_user_friends_many' | 'update_rangers_user_received_friend_requests' | 'update_rangers_user_received_friend_requests_many' | 'update_rangers_user_role' | 'update_rangers_user_role_by_pk' | 'update_rangers_user_role_many' | 'update_rangers_user_sent_friend_requests' | 'update_rangers_user_sent_friend_requests_many' | 'update_rangers_user_settings' | 'update_rangers_user_settings_by_pk' | 'update_rangers_user_settings_many' | 'update_rangers_users' | 'update_rangers_users_by_pk' | 'update_rangers_users_many' | 'update_taboo_set' | 'update_taboo_set_by_pk' | 'update_taboo_set_many' | 'update_user_campaigns' | 'update_user_campaigns_many' | 'update_user_flag' | 'update_user_flag_by_pk' | 'update_user_flag_many' | 'update_user_flag_type' | 'update_user_flag_type_by_pk' | 'update_user_flag_type_many' | 'update_user_friends' | 'update_user_friends_many' | 'update_user_received_friend_requests' | 'update_user_received_friend_requests_many' | 'update_user_sent_friend_requests' | 'update_user_sent_friend_requests_many' | 'update_user_settings' | 'update_user_settings_by_pk' | 'update_user_settings_many' | 'update_users' | 'update_users_by_pk' | 'update_users_many' | mutation_rootKeySpecifier)[];
+export type mutation_rootKeySpecifier = ('apiDeleteArkhamDbDeck' | 'conquest_publish_deck' | 'createArkhamDbDeck' | 'createCampaign' | 'deleteCampaign' | 'delete_all_card' | 'delete_all_card_by_pk' | 'delete_all_card_text' | 'delete_all_card_text_by_pk' | 'delete_all_card_updated' | 'delete_all_card_updated_by_pk' | 'delete_all_card_updated_by_version' | 'delete_all_card_updated_by_version_by_pk' | 'delete_arkhamdb_auth' | 'delete_arkhamdb_auth_by_pk' | 'delete_arkhamdb_deck' | 'delete_arkhamdb_deck_by_pk' | 'delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_difficulty' | 'delete_campaign_difficulty_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_card' | 'delete_card_by_pk' | 'delete_card_cycle' | 'delete_card_cycle_by_pk' | 'delete_card_encounter_set' | 'delete_card_encounter_set_by_pk' | 'delete_card_pack' | 'delete_card_pack_by_pk' | 'delete_card_subtype_name' | 'delete_card_subtype_name_by_pk' | 'delete_card_text' | 'delete_card_text_by_pk' | 'delete_card_type_code' | 'delete_card_type_code_by_pk' | 'delete_card_type_name' | 'delete_card_type_name_by_pk' | 'delete_chaos_bag_result' | 'delete_chaos_bag_result_by_pk' | 'delete_chaos_bag_tarot_mode' | 'delete_chaos_bag_tarot_mode_by_pk' | 'delete_conquest_card' | 'delete_conquest_card_by_pk' | 'delete_conquest_card_text' | 'delete_conquest_card_text_by_pk' | 'delete_conquest_comment' | 'delete_conquest_comment_by_pk' | 'delete_conquest_cycle' | 'delete_conquest_cycle_by_pk' | 'delete_conquest_cycle_text' | 'delete_conquest_cycle_text_by_pk' | 'delete_conquest_deck' | 'delete_conquest_deck_by_pk' | 'delete_conquest_deck_copy' | 'delete_conquest_deck_copy_by_pk' | 'delete_conquest_deck_like' | 'delete_conquest_deck_like_by_pk' | 'delete_conquest_faction' | 'delete_conquest_faction_by_pk' | 'delete_conquest_faction_text' | 'delete_conquest_faction_text_by_pk' | 'delete_conquest_loyalty' | 'delete_conquest_loyalty_by_pk' | 'delete_conquest_loyalty_text' | 'delete_conquest_loyalty_text_by_pk' | 'delete_conquest_pack' | 'delete_conquest_pack_by_pk' | 'delete_conquest_pack_text' | 'delete_conquest_pack_text_by_pk' | 'delete_conquest_type' | 'delete_conquest_type_by_pk' | 'delete_conquest_type_text' | 'delete_conquest_type_text_by_pk' | 'delete_conquest_user_role' | 'delete_conquest_user_role_by_pk' | 'delete_conquest_user_settings' | 'delete_conquest_user_settings_by_pk' | 'delete_conquest_users' | 'delete_conquest_users_by_pk' | 'delete_cycle' | 'delete_cycle_by_pk' | 'delete_cycle_name' | 'delete_cycle_name_by_pk' | 'delete_faction_name' | 'delete_faction_name_by_pk' | 'delete_faq' | 'delete_faq_by_pk' | 'delete_faq_text' | 'delete_faq_text_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_full_card' | 'delete_full_card_by_pk' | 'delete_full_card_text' | 'delete_full_card_text_by_pk' | 'delete_gender' | 'delete_gender_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_pack' | 'delete_pack_by_pk' | 'delete_pack_name' | 'delete_pack_name_by_pk' | 'delete_rangers_area' | 'delete_rangers_area_by_pk' | 'delete_rangers_area_text' | 'delete_rangers_area_text_by_pk' | 'delete_rangers_aspect' | 'delete_rangers_aspect_by_pk' | 'delete_rangers_aspect_text' | 'delete_rangers_aspect_text_by_pk' | 'delete_rangers_campaign' | 'delete_rangers_campaign_access' | 'delete_rangers_campaign_access_by_pk' | 'delete_rangers_campaign_by_pk' | 'delete_rangers_card' | 'delete_rangers_card_by_pk' | 'delete_rangers_card_text' | 'delete_rangers_card_text_by_pk' | 'delete_rangers_comment' | 'delete_rangers_comment_by_pk' | 'delete_rangers_deck' | 'delete_rangers_deck_by_pk' | 'delete_rangers_deck_copy' | 'delete_rangers_deck_copy_by_pk' | 'delete_rangers_deck_like' | 'delete_rangers_deck_like_by_pk' | 'delete_rangers_deck_like_count' | 'delete_rangers_deck_like_count_by_pk' | 'delete_rangers_faq_entry' | 'delete_rangers_faq_entry_by_pk' | 'delete_rangers_friend_status' | 'delete_rangers_friend_status_by_pk' | 'delete_rangers_friend_status_type' | 'delete_rangers_friend_status_type_by_pk' | 'delete_rangers_latest_deck' | 'delete_rangers_locale' | 'delete_rangers_locale_by_pk' | 'delete_rangers_pack' | 'delete_rangers_pack_by_pk' | 'delete_rangers_pack_text' | 'delete_rangers_pack_text_by_pk' | 'delete_rangers_search_deck' | 'delete_rangers_set' | 'delete_rangers_set_by_pk' | 'delete_rangers_set_text' | 'delete_rangers_set_text_by_pk' | 'delete_rangers_set_type' | 'delete_rangers_set_type_by_pk' | 'delete_rangers_set_type_text' | 'delete_rangers_set_type_text_by_pk' | 'delete_rangers_token' | 'delete_rangers_token_by_pk' | 'delete_rangers_token_text' | 'delete_rangers_token_text_by_pk' | 'delete_rangers_type' | 'delete_rangers_type_by_pk' | 'delete_rangers_type_text' | 'delete_rangers_type_text_by_pk' | 'delete_rangers_user_friends' | 'delete_rangers_user_received_friend_requests' | 'delete_rangers_user_role' | 'delete_rangers_user_role_by_pk' | 'delete_rangers_user_sent_friend_requests' | 'delete_rangers_user_settings' | 'delete_rangers_user_settings_by_pk' | 'delete_rangers_users' | 'delete_rangers_users_by_pk' | 'delete_taboo_set' | 'delete_taboo_set_by_pk' | 'delete_user_campaigns' | 'delete_user_flag' | 'delete_user_flag_by_pk' | 'delete_user_flag_type' | 'delete_user_flag_type_by_pk' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_user_settings' | 'delete_user_settings_by_pk' | 'delete_users' | 'delete_users_by_pk' | 'editCampaignAccess' | 'insert_all_card' | 'insert_all_card_one' | 'insert_all_card_text' | 'insert_all_card_text_one' | 'insert_all_card_updated' | 'insert_all_card_updated_by_version' | 'insert_all_card_updated_by_version_one' | 'insert_all_card_updated_one' | 'insert_arkhamdb_auth' | 'insert_arkhamdb_auth_one' | 'insert_arkhamdb_deck' | 'insert_arkhamdb_deck_one' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_difficulty' | 'insert_campaign_difficulty_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_card' | 'insert_card_cycle' | 'insert_card_cycle_one' | 'insert_card_encounter_set' | 'insert_card_encounter_set_one' | 'insert_card_one' | 'insert_card_pack' | 'insert_card_pack_one' | 'insert_card_subtype_name' | 'insert_card_subtype_name_one' | 'insert_card_text' | 'insert_card_text_one' | 'insert_card_type_code' | 'insert_card_type_code_one' | 'insert_card_type_name' | 'insert_card_type_name_one' | 'insert_chaos_bag_result' | 'insert_chaos_bag_result_one' | 'insert_chaos_bag_tarot_mode' | 'insert_chaos_bag_tarot_mode_one' | 'insert_conquest_card' | 'insert_conquest_card_one' | 'insert_conquest_card_text' | 'insert_conquest_card_text_one' | 'insert_conquest_comment' | 'insert_conquest_comment_one' | 'insert_conquest_cycle' | 'insert_conquest_cycle_one' | 'insert_conquest_cycle_text' | 'insert_conquest_cycle_text_one' | 'insert_conquest_deck' | 'insert_conquest_deck_copy' | 'insert_conquest_deck_copy_one' | 'insert_conquest_deck_like' | 'insert_conquest_deck_like_one' | 'insert_conquest_deck_one' | 'insert_conquest_faction' | 'insert_conquest_faction_one' | 'insert_conquest_faction_text' | 'insert_conquest_faction_text_one' | 'insert_conquest_loyalty' | 'insert_conquest_loyalty_one' | 'insert_conquest_loyalty_text' | 'insert_conquest_loyalty_text_one' | 'insert_conquest_pack' | 'insert_conquest_pack_one' | 'insert_conquest_pack_text' | 'insert_conquest_pack_text_one' | 'insert_conquest_type' | 'insert_conquest_type_one' | 'insert_conquest_type_text' | 'insert_conquest_type_text_one' | 'insert_conquest_user_role' | 'insert_conquest_user_role_one' | 'insert_conquest_user_settings' | 'insert_conquest_user_settings_one' | 'insert_conquest_users' | 'insert_conquest_users_one' | 'insert_cycle' | 'insert_cycle_name' | 'insert_cycle_name_one' | 'insert_cycle_one' | 'insert_faction_name' | 'insert_faction_name_one' | 'insert_faq' | 'insert_faq_one' | 'insert_faq_text' | 'insert_faq_text_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_full_card' | 'insert_full_card_one' | 'insert_full_card_text' | 'insert_full_card_text_one' | 'insert_gender' | 'insert_gender_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_pack' | 'insert_pack_name' | 'insert_pack_name_one' | 'insert_pack_one' | 'insert_rangers_area' | 'insert_rangers_area_one' | 'insert_rangers_area_text' | 'insert_rangers_area_text_one' | 'insert_rangers_aspect' | 'insert_rangers_aspect_one' | 'insert_rangers_aspect_text' | 'insert_rangers_aspect_text_one' | 'insert_rangers_campaign' | 'insert_rangers_campaign_access' | 'insert_rangers_campaign_access_one' | 'insert_rangers_campaign_one' | 'insert_rangers_card' | 'insert_rangers_card_one' | 'insert_rangers_card_text' | 'insert_rangers_card_text_one' | 'insert_rangers_comment' | 'insert_rangers_comment_one' | 'insert_rangers_deck' | 'insert_rangers_deck_copy' | 'insert_rangers_deck_copy_one' | 'insert_rangers_deck_like' | 'insert_rangers_deck_like_count' | 'insert_rangers_deck_like_count_one' | 'insert_rangers_deck_like_one' | 'insert_rangers_deck_one' | 'insert_rangers_faq_entry' | 'insert_rangers_faq_entry_one' | 'insert_rangers_friend_status' | 'insert_rangers_friend_status_one' | 'insert_rangers_friend_status_type' | 'insert_rangers_friend_status_type_one' | 'insert_rangers_latest_deck' | 'insert_rangers_latest_deck_one' | 'insert_rangers_locale' | 'insert_rangers_locale_one' | 'insert_rangers_pack' | 'insert_rangers_pack_one' | 'insert_rangers_pack_text' | 'insert_rangers_pack_text_one' | 'insert_rangers_search_deck' | 'insert_rangers_search_deck_one' | 'insert_rangers_set' | 'insert_rangers_set_one' | 'insert_rangers_set_text' | 'insert_rangers_set_text_one' | 'insert_rangers_set_type' | 'insert_rangers_set_type_one' | 'insert_rangers_set_type_text' | 'insert_rangers_set_type_text_one' | 'insert_rangers_token' | 'insert_rangers_token_one' | 'insert_rangers_token_text' | 'insert_rangers_token_text_one' | 'insert_rangers_type' | 'insert_rangers_type_one' | 'insert_rangers_type_text' | 'insert_rangers_type_text_one' | 'insert_rangers_user_friends' | 'insert_rangers_user_friends_one' | 'insert_rangers_user_received_friend_requests' | 'insert_rangers_user_received_friend_requests_one' | 'insert_rangers_user_role' | 'insert_rangers_user_role_one' | 'insert_rangers_user_sent_friend_requests' | 'insert_rangers_user_sent_friend_requests_one' | 'insert_rangers_user_settings' | 'insert_rangers_user_settings_one' | 'insert_rangers_users' | 'insert_rangers_users_one' | 'insert_taboo_set' | 'insert_taboo_set_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_flag' | 'insert_user_flag_one' | 'insert_user_flag_type' | 'insert_user_flag_type_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_user_settings' | 'insert_user_settings_one' | 'insert_users' | 'insert_users_one' | 'loginToArkhamDb' | 'logoutFromArkhamDb' | 'migrateLoginToArkhamDb' | 'rangers_publish_deck' | 'rangers_remove_campaign_deck' | 'rangers_set_campaign_deck' | 'rangers_upgrade_deck' | 'refreshArkhamDbDecks' | 'updateFriendRequest' | 'updateHandle' | 'update_all_card' | 'update_all_card_by_pk' | 'update_all_card_many' | 'update_all_card_text' | 'update_all_card_text_by_pk' | 'update_all_card_text_many' | 'update_all_card_updated' | 'update_all_card_updated_by_pk' | 'update_all_card_updated_by_version' | 'update_all_card_updated_by_version_by_pk' | 'update_all_card_updated_by_version_many' | 'update_all_card_updated_many' | 'update_arkhamdb_auth' | 'update_arkhamdb_auth_by_pk' | 'update_arkhamdb_auth_many' | 'update_arkhamdb_deck' | 'update_arkhamdb_deck_by_pk' | 'update_arkhamdb_deck_many' | 'update_base_decks' | 'update_base_decks_many' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_access_many' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_deck_many' | 'update_campaign_difficulty' | 'update_campaign_difficulty_by_pk' | 'update_campaign_difficulty_many' | 'update_campaign_guide' | 'update_campaign_guide_many' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_campaign_investigator_many' | 'update_campaign_many' | 'update_card' | 'update_card_by_pk' | 'update_card_cycle' | 'update_card_cycle_by_pk' | 'update_card_cycle_many' | 'update_card_encounter_set' | 'update_card_encounter_set_by_pk' | 'update_card_encounter_set_many' | 'update_card_many' | 'update_card_pack' | 'update_card_pack_by_pk' | 'update_card_pack_many' | 'update_card_subtype_name' | 'update_card_subtype_name_by_pk' | 'update_card_subtype_name_many' | 'update_card_text' | 'update_card_text_by_pk' | 'update_card_text_many' | 'update_card_type_code' | 'update_card_type_code_by_pk' | 'update_card_type_code_many' | 'update_card_type_name' | 'update_card_type_name_by_pk' | 'update_card_type_name_many' | 'update_chaos_bag_result' | 'update_chaos_bag_result_by_pk' | 'update_chaos_bag_result_many' | 'update_chaos_bag_tarot_mode' | 'update_chaos_bag_tarot_mode_by_pk' | 'update_chaos_bag_tarot_mode_many' | 'update_conquest_card' | 'update_conquest_card_by_pk' | 'update_conquest_card_many' | 'update_conquest_card_text' | 'update_conquest_card_text_by_pk' | 'update_conquest_card_text_many' | 'update_conquest_comment' | 'update_conquest_comment_by_pk' | 'update_conquest_comment_many' | 'update_conquest_cycle' | 'update_conquest_cycle_by_pk' | 'update_conquest_cycle_many' | 'update_conquest_cycle_text' | 'update_conquest_cycle_text_by_pk' | 'update_conquest_cycle_text_many' | 'update_conquest_deck' | 'update_conquest_deck_by_pk' | 'update_conquest_deck_copy' | 'update_conquest_deck_copy_by_pk' | 'update_conquest_deck_copy_many' | 'update_conquest_deck_like' | 'update_conquest_deck_like_by_pk' | 'update_conquest_deck_like_many' | 'update_conquest_deck_many' | 'update_conquest_faction' | 'update_conquest_faction_by_pk' | 'update_conquest_faction_many' | 'update_conquest_faction_text' | 'update_conquest_faction_text_by_pk' | 'update_conquest_faction_text_many' | 'update_conquest_loyalty' | 'update_conquest_loyalty_by_pk' | 'update_conquest_loyalty_many' | 'update_conquest_loyalty_text' | 'update_conquest_loyalty_text_by_pk' | 'update_conquest_loyalty_text_many' | 'update_conquest_pack' | 'update_conquest_pack_by_pk' | 'update_conquest_pack_many' | 'update_conquest_pack_text' | 'update_conquest_pack_text_by_pk' | 'update_conquest_pack_text_many' | 'update_conquest_type' | 'update_conquest_type_by_pk' | 'update_conquest_type_many' | 'update_conquest_type_text' | 'update_conquest_type_text_by_pk' | 'update_conquest_type_text_many' | 'update_conquest_user_role' | 'update_conquest_user_role_by_pk' | 'update_conquest_user_role_many' | 'update_conquest_user_settings' | 'update_conquest_user_settings_by_pk' | 'update_conquest_user_settings_many' | 'update_conquest_users' | 'update_conquest_users_by_pk' | 'update_conquest_users_many' | 'update_cycle' | 'update_cycle_by_pk' | 'update_cycle_many' | 'update_cycle_name' | 'update_cycle_name_by_pk' | 'update_cycle_name_many' | 'update_faction_name' | 'update_faction_name_by_pk' | 'update_faction_name_many' | 'update_faq' | 'update_faq_by_pk' | 'update_faq_many' | 'update_faq_text' | 'update_faq_text_by_pk' | 'update_faq_text_many' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_many' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_friend_status_type_many' | 'update_full_card' | 'update_full_card_by_pk' | 'update_full_card_many' | 'update_full_card_text' | 'update_full_card_text_by_pk' | 'update_full_card_text_many' | 'update_gender' | 'update_gender_by_pk' | 'update_gender_many' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_achievement_many' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_guide_input_many' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_investigator_data_many' | 'update_latest_decks' | 'update_latest_decks_many' | 'update_local_decks' | 'update_local_decks_many' | 'update_pack' | 'update_pack_by_pk' | 'update_pack_many' | 'update_pack_name' | 'update_pack_name_by_pk' | 'update_pack_name_many' | 'update_rangers_area' | 'update_rangers_area_by_pk' | 'update_rangers_area_many' | 'update_rangers_area_text' | 'update_rangers_area_text_by_pk' | 'update_rangers_area_text_many' | 'update_rangers_aspect' | 'update_rangers_aspect_by_pk' | 'update_rangers_aspect_many' | 'update_rangers_aspect_text' | 'update_rangers_aspect_text_by_pk' | 'update_rangers_aspect_text_many' | 'update_rangers_campaign' | 'update_rangers_campaign_access' | 'update_rangers_campaign_access_by_pk' | 'update_rangers_campaign_access_many' | 'update_rangers_campaign_by_pk' | 'update_rangers_campaign_many' | 'update_rangers_card' | 'update_rangers_card_by_pk' | 'update_rangers_card_many' | 'update_rangers_card_text' | 'update_rangers_card_text_by_pk' | 'update_rangers_card_text_many' | 'update_rangers_comment' | 'update_rangers_comment_by_pk' | 'update_rangers_comment_many' | 'update_rangers_deck' | 'update_rangers_deck_by_pk' | 'update_rangers_deck_copy' | 'update_rangers_deck_copy_by_pk' | 'update_rangers_deck_copy_many' | 'update_rangers_deck_like' | 'update_rangers_deck_like_by_pk' | 'update_rangers_deck_like_count' | 'update_rangers_deck_like_count_by_pk' | 'update_rangers_deck_like_count_many' | 'update_rangers_deck_like_many' | 'update_rangers_deck_many' | 'update_rangers_faq_entry' | 'update_rangers_faq_entry_by_pk' | 'update_rangers_faq_entry_many' | 'update_rangers_friend_status' | 'update_rangers_friend_status_by_pk' | 'update_rangers_friend_status_many' | 'update_rangers_friend_status_type' | 'update_rangers_friend_status_type_by_pk' | 'update_rangers_friend_status_type_many' | 'update_rangers_latest_deck' | 'update_rangers_latest_deck_many' | 'update_rangers_locale' | 'update_rangers_locale_by_pk' | 'update_rangers_locale_many' | 'update_rangers_pack' | 'update_rangers_pack_by_pk' | 'update_rangers_pack_many' | 'update_rangers_pack_text' | 'update_rangers_pack_text_by_pk' | 'update_rangers_pack_text_many' | 'update_rangers_search_deck' | 'update_rangers_search_deck_many' | 'update_rangers_set' | 'update_rangers_set_by_pk' | 'update_rangers_set_many' | 'update_rangers_set_text' | 'update_rangers_set_text_by_pk' | 'update_rangers_set_text_many' | 'update_rangers_set_type' | 'update_rangers_set_type_by_pk' | 'update_rangers_set_type_many' | 'update_rangers_set_type_text' | 'update_rangers_set_type_text_by_pk' | 'update_rangers_set_type_text_many' | 'update_rangers_token' | 'update_rangers_token_by_pk' | 'update_rangers_token_many' | 'update_rangers_token_text' | 'update_rangers_token_text_by_pk' | 'update_rangers_token_text_many' | 'update_rangers_type' | 'update_rangers_type_by_pk' | 'update_rangers_type_many' | 'update_rangers_type_text' | 'update_rangers_type_text_by_pk' | 'update_rangers_type_text_many' | 'update_rangers_user_friends' | 'update_rangers_user_friends_many' | 'update_rangers_user_received_friend_requests' | 'update_rangers_user_received_friend_requests_many' | 'update_rangers_user_role' | 'update_rangers_user_role_by_pk' | 'update_rangers_user_role_many' | 'update_rangers_user_sent_friend_requests' | 'update_rangers_user_sent_friend_requests_many' | 'update_rangers_user_settings' | 'update_rangers_user_settings_by_pk' | 'update_rangers_user_settings_many' | 'update_rangers_users' | 'update_rangers_users_by_pk' | 'update_rangers_users_many' | 'update_taboo_set' | 'update_taboo_set_by_pk' | 'update_taboo_set_many' | 'update_user_campaigns' | 'update_user_campaigns_many' | 'update_user_flag' | 'update_user_flag_by_pk' | 'update_user_flag_many' | 'update_user_flag_type' | 'update_user_flag_type_by_pk' | 'update_user_flag_type_many' | 'update_user_friends' | 'update_user_friends_many' | 'update_user_received_friend_requests' | 'update_user_received_friend_requests_many' | 'update_user_sent_friend_requests' | 'update_user_sent_friend_requests_many' | 'update_user_settings' | 'update_user_settings_by_pk' | 'update_user_settings_many' | 'update_users' | 'update_users_by_pk' | 'update_users_many' | 'upgradeArkhamDbDeck' | 'uploadLocalCampaignDeck' | mutation_rootKeySpecifier)[];
 export type mutation_rootFieldPolicy = {
+	apiDeleteArkhamDbDeck?: FieldPolicy<any> | FieldReadFunction<any>,
 	conquest_publish_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	createArkhamDbDeck?: FieldPolicy<any> | FieldReadFunction<any>,
+	createCampaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteCampaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_all_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_all_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_all_card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_all_card_updated?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_all_card_updated_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_all_card_updated_by_version?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_all_card_updated_by_version_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_arkhamdb_auth?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_arkhamdb_auth_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_arkhamdb_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_arkhamdb_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5287,8 +5556,6 @@ export type mutation_rootFieldPolicy = {
 	delete_cycle_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_cycle_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_cycle_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	delete_deck?: FieldPolicy<any> | FieldReadFunction<any>,
-	delete_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_faction_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_faction_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_faq?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5396,12 +5663,19 @@ export type mutation_rootFieldPolicy = {
 	delete_user_settings_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	editCampaignAccess?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_all_card_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_all_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_all_card_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_all_card_updated?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_all_card_updated_by_version?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_all_card_updated_by_version_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_all_card_updated_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_arkhamdb_auth?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_arkhamdb_auth_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_arkhamdb_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_arkhamdb_deck_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_base_decks_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5478,8 +5752,6 @@ export type mutation_rootFieldPolicy = {
 	insert_cycle_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_cycle_name_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_cycle_one?: FieldPolicy<any> | FieldReadFunction<any>,
-	insert_deck?: FieldPolicy<any> | FieldReadFunction<any>,
-	insert_deck_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_faction_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_faction_name_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_faq?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5598,10 +5870,16 @@ export type mutation_rootFieldPolicy = {
 	insert_user_settings_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_users_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	loginToArkhamDb?: FieldPolicy<any> | FieldReadFunction<any>,
+	logoutFromArkhamDb?: FieldPolicy<any> | FieldReadFunction<any>,
+	migrateLoginToArkhamDb?: FieldPolicy<any> | FieldReadFunction<any>,
 	rangers_publish_deck?: FieldPolicy<any> | FieldReadFunction<any>,
 	rangers_remove_campaign_deck?: FieldPolicy<any> | FieldReadFunction<any>,
 	rangers_set_campaign_deck?: FieldPolicy<any> | FieldReadFunction<any>,
 	rangers_upgrade_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	refreshArkhamDbDecks?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateFriendRequest?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateHandle?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card_many?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5610,7 +5888,16 @@ export type mutation_rootFieldPolicy = {
 	update_all_card_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card_updated?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card_updated_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_all_card_updated_by_version?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_all_card_updated_by_version_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_all_card_updated_by_version_many?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card_updated_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_arkhamdb_auth?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_arkhamdb_auth_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_arkhamdb_auth_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_arkhamdb_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_arkhamdb_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_arkhamdb_deck_many?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_base_decks_many?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5723,9 +6010,6 @@ export type mutation_rootFieldPolicy = {
 	update_cycle_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_cycle_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_cycle_name_many?: FieldPolicy<any> | FieldReadFunction<any>,
-	update_deck?: FieldPolicy<any> | FieldReadFunction<any>,
-	update_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	update_deck_many?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_faction_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_faction_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_faction_name_many?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -5891,7 +6175,9 @@ export type mutation_rootFieldPolicy = {
 	update_user_settings_many?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	update_users_many?: FieldPolicy<any> | FieldReadFunction<any>
+	update_users_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	upgradeArkhamDbDeck?: FieldPolicy<any> | FieldReadFunction<any>,
+	uploadLocalCampaignDeck?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type packKeySpecifier = ('cards' | 'cards_aggregate' | 'code' | 'cycle' | 'cycle_code' | 'official' | 'position' | 'real_name' | 'translations' | 'translations_aggregate' | packKeySpecifier)[];
 export type packFieldPolicy = {
@@ -6013,7 +6299,7 @@ export type pack_variance_fieldsKeySpecifier = ('position' | pack_variance_field
 export type pack_variance_fieldsFieldPolicy = {
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type query_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'conquest_card' | 'conquest_card_aggregate' | 'conquest_card_by_pk' | 'conquest_card_localized' | 'conquest_card_localized_aggregate' | 'conquest_card_text' | 'conquest_card_text_aggregate' | 'conquest_card_text_by_pk' | 'conquest_card_updated' | 'conquest_card_updated_aggregate' | 'conquest_comment' | 'conquest_comment_aggregate' | 'conquest_comment_by_pk' | 'conquest_cycle' | 'conquest_cycle_aggregate' | 'conquest_cycle_by_pk' | 'conquest_cycle_text' | 'conquest_cycle_text_aggregate' | 'conquest_cycle_text_by_pk' | 'conquest_deck' | 'conquest_deck_aggregate' | 'conquest_deck_by_pk' | 'conquest_deck_copy' | 'conquest_deck_copy_aggregate' | 'conquest_deck_copy_by_pk' | 'conquest_deck_like' | 'conquest_deck_like_aggregate' | 'conquest_deck_like_by_pk' | 'conquest_faction' | 'conquest_faction_aggregate' | 'conquest_faction_by_pk' | 'conquest_faction_text' | 'conquest_faction_text_aggregate' | 'conquest_faction_text_by_pk' | 'conquest_loyalty' | 'conquest_loyalty_aggregate' | 'conquest_loyalty_by_pk' | 'conquest_loyalty_text' | 'conquest_loyalty_text_aggregate' | 'conquest_loyalty_text_by_pk' | 'conquest_pack' | 'conquest_pack_aggregate' | 'conquest_pack_by_pk' | 'conquest_pack_text' | 'conquest_pack_text_aggregate' | 'conquest_pack_text_by_pk' | 'conquest_type' | 'conquest_type_aggregate' | 'conquest_type_by_pk' | 'conquest_type_text' | 'conquest_type_text_aggregate' | 'conquest_type_text_by_pk' | 'conquest_user_role' | 'conquest_user_role_aggregate' | 'conquest_user_role_by_pk' | 'conquest_user_settings' | 'conquest_user_settings_aggregate' | 'conquest_user_settings_by_pk' | 'conquest_users' | 'conquest_users_aggregate' | 'conquest_users_by_pk' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'deck' | 'deck_aggregate' | 'deck_by_pk' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'rangers_area' | 'rangers_area_aggregate' | 'rangers_area_by_pk' | 'rangers_area_text' | 'rangers_area_text_aggregate' | 'rangers_area_text_by_pk' | 'rangers_aspect' | 'rangers_aspect_aggregate' | 'rangers_aspect_by_pk' | 'rangers_aspect_localized' | 'rangers_aspect_localized_aggregate' | 'rangers_aspect_text' | 'rangers_aspect_text_aggregate' | 'rangers_aspect_text_by_pk' | 'rangers_campaign' | 'rangers_campaign_access' | 'rangers_campaign_access_aggregate' | 'rangers_campaign_access_by_pk' | 'rangers_campaign_aggregate' | 'rangers_campaign_by_pk' | 'rangers_card' | 'rangers_card_aggregate' | 'rangers_card_by_pk' | 'rangers_card_localized' | 'rangers_card_localized_aggregate' | 'rangers_card_search' | 'rangers_card_search_aggregate' | 'rangers_card_text' | 'rangers_card_text_aggregate' | 'rangers_card_text_by_pk' | 'rangers_card_updated' | 'rangers_card_updated_aggregate' | 'rangers_comment' | 'rangers_comment_aggregate' | 'rangers_comment_by_pk' | 'rangers_deck' | 'rangers_deck_aggregate' | 'rangers_deck_by_pk' | 'rangers_deck_copy' | 'rangers_deck_copy_aggregate' | 'rangers_deck_copy_by_pk' | 'rangers_deck_like' | 'rangers_deck_like_aggregate' | 'rangers_deck_like_by_pk' | 'rangers_deck_like_count' | 'rangers_deck_like_count_aggregate' | 'rangers_deck_like_count_by_pk' | 'rangers_deck_rank' | 'rangers_deck_rank_aggregate' | 'rangers_deck_search' | 'rangers_deck_search_aggregate' | 'rangers_faq_entry' | 'rangers_faq_entry_aggregate' | 'rangers_faq_entry_by_pk' | 'rangers_friend_status' | 'rangers_friend_status_aggregate' | 'rangers_friend_status_by_pk' | 'rangers_friend_status_type' | 'rangers_friend_status_type_aggregate' | 'rangers_friend_status_type_by_pk' | 'rangers_latest_deck' | 'rangers_latest_deck_aggregate' | 'rangers_locale' | 'rangers_locale_aggregate' | 'rangers_locale_by_pk' | 'rangers_pack' | 'rangers_pack_aggregate' | 'rangers_pack_by_pk' | 'rangers_pack_text' | 'rangers_pack_text_aggregate' | 'rangers_pack_text_by_pk' | 'rangers_search_deck' | 'rangers_search_deck_aggregate' | 'rangers_set' | 'rangers_set_aggregate' | 'rangers_set_by_pk' | 'rangers_set_localized' | 'rangers_set_localized_aggregate' | 'rangers_set_text' | 'rangers_set_text_aggregate' | 'rangers_set_text_by_pk' | 'rangers_set_type' | 'rangers_set_type_aggregate' | 'rangers_set_type_by_pk' | 'rangers_set_type_localized' | 'rangers_set_type_localized_aggregate' | 'rangers_set_type_text' | 'rangers_set_type_text_aggregate' | 'rangers_set_type_text_by_pk' | 'rangers_token' | 'rangers_token_aggregate' | 'rangers_token_by_pk' | 'rangers_token_text' | 'rangers_token_text_aggregate' | 'rangers_token_text_by_pk' | 'rangers_type' | 'rangers_type_aggregate' | 'rangers_type_by_pk' | 'rangers_type_localized' | 'rangers_type_localized_aggregate' | 'rangers_type_text' | 'rangers_type_text_aggregate' | 'rangers_type_text_by_pk' | 'rangers_user_campaign' | 'rangers_user_campaign_aggregate' | 'rangers_user_friends' | 'rangers_user_friends_aggregate' | 'rangers_user_received_friend_requests' | 'rangers_user_received_friend_requests_aggregate' | 'rangers_user_role' | 'rangers_user_role_aggregate' | 'rangers_user_role_by_pk' | 'rangers_user_sent_friend_requests' | 'rangers_user_sent_friend_requests_aggregate' | 'rangers_user_settings' | 'rangers_user_settings_aggregate' | 'rangers_user_settings_by_pk' | 'rangers_users' | 'rangers_users_aggregate' | 'rangers_users_by_pk' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
+export type query_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'all_card_updated_by_version' | 'all_card_updated_by_version_aggregate' | 'all_card_updated_by_version_by_pk' | 'arkhamdb_auth' | 'arkhamdb_auth_aggregate' | 'arkhamdb_auth_by_pk' | 'arkhamdb_deck' | 'arkhamdb_deck_aggregate' | 'arkhamdb_deck_by_pk' | 'base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'conquest_card' | 'conquest_card_aggregate' | 'conquest_card_by_pk' | 'conquest_card_localized' | 'conquest_card_localized_aggregate' | 'conquest_card_text' | 'conquest_card_text_aggregate' | 'conquest_card_text_by_pk' | 'conquest_card_updated' | 'conquest_card_updated_aggregate' | 'conquest_comment' | 'conquest_comment_aggregate' | 'conquest_comment_by_pk' | 'conquest_cycle' | 'conquest_cycle_aggregate' | 'conquest_cycle_by_pk' | 'conquest_cycle_text' | 'conquest_cycle_text_aggregate' | 'conquest_cycle_text_by_pk' | 'conquest_deck' | 'conquest_deck_aggregate' | 'conquest_deck_by_pk' | 'conquest_deck_copy' | 'conquest_deck_copy_aggregate' | 'conquest_deck_copy_by_pk' | 'conquest_deck_like' | 'conquest_deck_like_aggregate' | 'conquest_deck_like_by_pk' | 'conquest_faction' | 'conquest_faction_aggregate' | 'conquest_faction_by_pk' | 'conquest_faction_text' | 'conquest_faction_text_aggregate' | 'conquest_faction_text_by_pk' | 'conquest_loyalty' | 'conquest_loyalty_aggregate' | 'conquest_loyalty_by_pk' | 'conquest_loyalty_text' | 'conquest_loyalty_text_aggregate' | 'conquest_loyalty_text_by_pk' | 'conquest_pack' | 'conquest_pack_aggregate' | 'conquest_pack_by_pk' | 'conquest_pack_text' | 'conquest_pack_text_aggregate' | 'conquest_pack_text_by_pk' | 'conquest_type' | 'conquest_type_aggregate' | 'conquest_type_by_pk' | 'conquest_type_text' | 'conquest_type_text_aggregate' | 'conquest_type_text_by_pk' | 'conquest_user_role' | 'conquest_user_role_aggregate' | 'conquest_user_role_by_pk' | 'conquest_user_settings' | 'conquest_user_settings_aggregate' | 'conquest_user_settings_by_pk' | 'conquest_users' | 'conquest_users_aggregate' | 'conquest_users_by_pk' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'rangers_area' | 'rangers_area_aggregate' | 'rangers_area_by_pk' | 'rangers_area_text' | 'rangers_area_text_aggregate' | 'rangers_area_text_by_pk' | 'rangers_aspect' | 'rangers_aspect_aggregate' | 'rangers_aspect_by_pk' | 'rangers_aspect_localized' | 'rangers_aspect_localized_aggregate' | 'rangers_aspect_text' | 'rangers_aspect_text_aggregate' | 'rangers_aspect_text_by_pk' | 'rangers_campaign' | 'rangers_campaign_access' | 'rangers_campaign_access_aggregate' | 'rangers_campaign_access_by_pk' | 'rangers_campaign_aggregate' | 'rangers_campaign_by_pk' | 'rangers_card' | 'rangers_card_aggregate' | 'rangers_card_by_pk' | 'rangers_card_localized' | 'rangers_card_localized_aggregate' | 'rangers_card_search' | 'rangers_card_search_aggregate' | 'rangers_card_text' | 'rangers_card_text_aggregate' | 'rangers_card_text_by_pk' | 'rangers_card_updated' | 'rangers_card_updated_aggregate' | 'rangers_comment' | 'rangers_comment_aggregate' | 'rangers_comment_by_pk' | 'rangers_deck' | 'rangers_deck_aggregate' | 'rangers_deck_by_pk' | 'rangers_deck_copy' | 'rangers_deck_copy_aggregate' | 'rangers_deck_copy_by_pk' | 'rangers_deck_like' | 'rangers_deck_like_aggregate' | 'rangers_deck_like_by_pk' | 'rangers_deck_like_count' | 'rangers_deck_like_count_aggregate' | 'rangers_deck_like_count_by_pk' | 'rangers_deck_rank' | 'rangers_deck_rank_aggregate' | 'rangers_deck_search' | 'rangers_deck_search_aggregate' | 'rangers_faq_entry' | 'rangers_faq_entry_aggregate' | 'rangers_faq_entry_by_pk' | 'rangers_friend_status' | 'rangers_friend_status_aggregate' | 'rangers_friend_status_by_pk' | 'rangers_friend_status_type' | 'rangers_friend_status_type_aggregate' | 'rangers_friend_status_type_by_pk' | 'rangers_latest_deck' | 'rangers_latest_deck_aggregate' | 'rangers_locale' | 'rangers_locale_aggregate' | 'rangers_locale_by_pk' | 'rangers_pack' | 'rangers_pack_aggregate' | 'rangers_pack_by_pk' | 'rangers_pack_text' | 'rangers_pack_text_aggregate' | 'rangers_pack_text_by_pk' | 'rangers_search_deck' | 'rangers_search_deck_aggregate' | 'rangers_set' | 'rangers_set_aggregate' | 'rangers_set_by_pk' | 'rangers_set_localized' | 'rangers_set_localized_aggregate' | 'rangers_set_text' | 'rangers_set_text_aggregate' | 'rangers_set_text_by_pk' | 'rangers_set_type' | 'rangers_set_type_aggregate' | 'rangers_set_type_by_pk' | 'rangers_set_type_localized' | 'rangers_set_type_localized_aggregate' | 'rangers_set_type_text' | 'rangers_set_type_text_aggregate' | 'rangers_set_type_text_by_pk' | 'rangers_token' | 'rangers_token_aggregate' | 'rangers_token_by_pk' | 'rangers_token_text' | 'rangers_token_text_aggregate' | 'rangers_token_text_by_pk' | 'rangers_type' | 'rangers_type_aggregate' | 'rangers_type_by_pk' | 'rangers_type_localized' | 'rangers_type_localized_aggregate' | 'rangers_type_text' | 'rangers_type_text_aggregate' | 'rangers_type_text_by_pk' | 'rangers_user_campaign' | 'rangers_user_campaign_aggregate' | 'rangers_user_friends' | 'rangers_user_friends_aggregate' | 'rangers_user_received_friend_requests' | 'rangers_user_received_friend_requests_aggregate' | 'rangers_user_role' | 'rangers_user_role_aggregate' | 'rangers_user_role_by_pk' | 'rangers_user_sent_friend_requests' | 'rangers_user_sent_friend_requests_aggregate' | 'rangers_user_settings' | 'rangers_user_settings_aggregate' | 'rangers_user_settings_by_pk' | 'rangers_users' | 'rangers_users_aggregate' | 'rangers_users_by_pk' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'users' | 'usersSearch' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
 export type query_rootFieldPolicy = {
 	all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6024,6 +6310,15 @@ export type query_rootFieldPolicy = {
 	all_card_updated?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_updated_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_updated_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_card_updated_by_version?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_card_updated_by_version_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_card_updated_by_version_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_auth?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_auth_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_auth_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_deck_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6142,9 +6437,6 @@ export type query_rootFieldPolicy = {
 	cycle_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_name_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	deck?: FieldPolicy<any> | FieldReadFunction<any>,
-	deck_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
-	deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_name_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6329,6 +6621,7 @@ export type query_rootFieldPolicy = {
 	user_settings_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_settings_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	users?: FieldPolicy<any> | FieldReadFunction<any>,
+	usersSearch?: FieldPolicy<any> | FieldReadFunction<any>,
 	users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -6707,7 +7000,7 @@ export type rangers_campaign_variance_fieldsFieldPolicy = {
 	day?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_cardKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locations' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'set_id' | 'set_position' | 'spoiler' | 'text' | 'token_count' | 'token_id' | 'traits' | 'translations' | 'translations_aggregate' | 'type_id' | 'updated_at' | rangers_cardKeySpecifier)[];
+export type rangers_cardKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'crest_challenge' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locations' | 'mountain_challenge' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'set_id' | 'set_position' | 'spoiler' | 'sun_challenge' | 'text' | 'token_count' | 'token_id' | 'traits' | 'translations' | 'translations_aggregate' | 'type_id' | 'updated_at' | rangers_cardKeySpecifier)[];
 export type rangers_cardFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6717,6 +7010,7 @@ export type rangers_cardFieldPolicy = {
 	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6727,6 +7021,7 @@ export type rangers_cardFieldPolicy = {
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	locations?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6738,6 +7033,7 @@ export type rangers_cardFieldPolicy = {
 	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	spoiler?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6784,7 +7080,7 @@ export type rangers_card_avg_fieldsFieldPolicy = {
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localizedKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'locations' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'real_flavor' | 'real_imagesrc' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'spoiler' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localizedKeySpecifier)[];
+export type rangers_card_localizedKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'crest_challenge' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'locations' | 'mountain_challenge' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'real_crest_challenge' | 'real_flavor' | 'real_imagesrc' | 'real_mountain_challenge' | 'real_name' | 'real_objective' | 'real_sun_challenge' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'spoiler' | 'sun_challenge' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localizedKeySpecifier)[];
 export type rangers_card_localizedFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6797,6 +7093,7 @@ export type rangers_card_localizedFieldPolicy = {
 	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6808,6 +7105,7 @@ export type rangers_card_localizedFieldPolicy = {
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	locations?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6818,10 +7116,13 @@ export type rangers_card_localizedFieldPolicy = {
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress_fixed?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6831,6 +7132,7 @@ export type rangers_card_localizedFieldPolicy = {
 	set_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_type_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	spoiler?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6880,7 +7182,7 @@ export type rangers_card_localized_avg_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'real_flavor' | 'real_imagesrc' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_max_fieldsKeySpecifier)[];
+export type rangers_card_localized_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'crest_challenge' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'mountain_challenge' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'real_crest_challenge' | 'real_flavor' | 'real_imagesrc' | 'real_mountain_challenge' | 'real_name' | 'real_objective' | 'real_sun_challenge' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'sun_challenge' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_max_fieldsKeySpecifier)[];
 export type rangers_card_localized_max_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6893,6 +7195,7 @@ export type rangers_card_localized_max_fieldsFieldPolicy = {
 	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6903,6 +7206,7 @@ export type rangers_card_localized_max_fieldsFieldPolicy = {
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6912,10 +7216,13 @@ export type rangers_card_localized_max_fieldsFieldPolicy = {
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6924,6 +7231,7 @@ export type rangers_card_localized_max_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6934,7 +7242,7 @@ export type rangers_card_localized_max_fieldsFieldPolicy = {
 	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_localized_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'real_flavor' | 'real_imagesrc' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_min_fieldsKeySpecifier)[];
+export type rangers_card_localized_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'crest_challenge' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'mountain_challenge' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'real_crest_challenge' | 'real_flavor' | 'real_imagesrc' | 'real_mountain_challenge' | 'real_name' | 'real_objective' | 'real_sun_challenge' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'sun_challenge' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_min_fieldsKeySpecifier)[];
 export type rangers_card_localized_min_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6947,6 +7255,7 @@ export type rangers_card_localized_min_fieldsFieldPolicy = {
 	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6957,6 +7266,7 @@ export type rangers_card_localized_min_fieldsFieldPolicy = {
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6966,10 +7276,13 @@ export type rangers_card_localized_min_fieldsFieldPolicy = {
 	presence?: FieldPolicy<any> | FieldReadFunction<any>,
 	progress?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6978,6 +7291,7 @@ export type rangers_card_localized_min_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7128,7 +7442,7 @@ export type rangers_card_localized_variance_fieldsFieldPolicy = {
 	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_max_fieldsKeySpecifier)[];
+export type rangers_card_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'crest_challenge' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'mountain_challenge' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'sun_challenge' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_max_fieldsKeySpecifier)[];
 export type rangers_card_max_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7138,6 +7452,7 @@ export type rangers_card_max_fieldsFieldPolicy = {
 	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7147,6 +7462,7 @@ export type rangers_card_max_fieldsFieldPolicy = {
 	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7156,6 +7472,7 @@ export type rangers_card_max_fieldsFieldPolicy = {
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7163,7 +7480,7 @@ export type rangers_card_max_fieldsFieldPolicy = {
 	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_min_fieldsKeySpecifier)[];
+export type rangers_card_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'crest_challenge' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'mountain_challenge' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'sun_challenge' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_min_fieldsKeySpecifier)[];
 export type rangers_card_min_fieldsFieldPolicy = {
 	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
 	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7173,6 +7490,7 @@ export type rangers_card_min_fieldsFieldPolicy = {
 	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
 	equip?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7182,6 +7500,7 @@ export type rangers_card_min_fieldsFieldPolicy = {
 	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7191,6 +7510,7 @@ export type rangers_card_min_fieldsFieldPolicy = {
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -7275,14 +7595,17 @@ export type rangers_card_sum_fieldsFieldPolicy = {
 	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_textKeySpecifier = ('flavor' | 'id' | 'imagesrc' | 'locale' | 'name' | 'objective' | 'text' | 'traits' | 'updated_at' | rangers_card_textKeySpecifier)[];
+export type rangers_card_textKeySpecifier = ('crest_challenge' | 'flavor' | 'id' | 'imagesrc' | 'locale' | 'mountain_challenge' | 'name' | 'objective' | 'sun_challenge' | 'text' | 'traits' | 'updated_at' | rangers_card_textKeySpecifier)[];
 export type rangers_card_textFieldPolicy = {
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
@@ -7298,26 +7621,32 @@ export type rangers_card_text_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_text_max_fieldsKeySpecifier = ('flavor' | 'id' | 'imagesrc' | 'locale' | 'name' | 'objective' | 'text' | 'traits' | 'updated_at' | rangers_card_text_max_fieldsKeySpecifier)[];
+export type rangers_card_text_max_fieldsKeySpecifier = ('crest_challenge' | 'flavor' | 'id' | 'imagesrc' | 'locale' | 'mountain_challenge' | 'name' | 'objective' | 'sun_challenge' | 'text' | 'traits' | 'updated_at' | rangers_card_text_max_fieldsKeySpecifier)[];
 export type rangers_card_text_max_fieldsFieldPolicy = {
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type rangers_card_text_min_fieldsKeySpecifier = ('flavor' | 'id' | 'imagesrc' | 'locale' | 'name' | 'objective' | 'text' | 'traits' | 'updated_at' | rangers_card_text_min_fieldsKeySpecifier)[];
+export type rangers_card_text_min_fieldsKeySpecifier = ('crest_challenge' | 'flavor' | 'id' | 'imagesrc' | 'locale' | 'mountain_challenge' | 'name' | 'objective' | 'sun_challenge' | 'text' | 'traits' | 'updated_at' | rangers_card_text_min_fieldsKeySpecifier)[];
 export type rangers_card_text_min_fieldsFieldPolicy = {
+	crest_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	mountain_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	sun_challenge?: FieldPolicy<any> | FieldReadFunction<any>,
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
@@ -9390,7 +9719,7 @@ export type rangers_users_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type subscription_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_stream' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_text_stream' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'all_card_updated_stream' | 'base_decks' | 'base_decks_aggregate' | 'base_decks_stream' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_access_stream' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_deck_stream' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_difficulty_stream' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_guide_stream' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaign_investigator_stream' | 'campaign_stream' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'campaigns_by_cycle_stream' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_cycle_stream' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_encounter_set_stream' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_pack_stream' | 'card_stream' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_subtype_name_stream' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_text_stream' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_code_stream' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'card_type_name_stream' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_result_stream' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'chaos_bag_tarot_mode_stream' | 'conquest_card' | 'conquest_card_aggregate' | 'conquest_card_by_pk' | 'conquest_card_localized' | 'conquest_card_localized_aggregate' | 'conquest_card_localized_stream' | 'conquest_card_stream' | 'conquest_card_text' | 'conquest_card_text_aggregate' | 'conquest_card_text_by_pk' | 'conquest_card_text_stream' | 'conquest_card_updated' | 'conquest_card_updated_aggregate' | 'conquest_card_updated_stream' | 'conquest_comment' | 'conquest_comment_aggregate' | 'conquest_comment_by_pk' | 'conquest_comment_stream' | 'conquest_cycle' | 'conquest_cycle_aggregate' | 'conquest_cycle_by_pk' | 'conquest_cycle_stream' | 'conquest_cycle_text' | 'conquest_cycle_text_aggregate' | 'conquest_cycle_text_by_pk' | 'conquest_cycle_text_stream' | 'conquest_deck' | 'conquest_deck_aggregate' | 'conquest_deck_by_pk' | 'conquest_deck_copy' | 'conquest_deck_copy_aggregate' | 'conquest_deck_copy_by_pk' | 'conquest_deck_copy_stream' | 'conquest_deck_like' | 'conquest_deck_like_aggregate' | 'conquest_deck_like_by_pk' | 'conquest_deck_like_stream' | 'conquest_deck_stream' | 'conquest_faction' | 'conquest_faction_aggregate' | 'conquest_faction_by_pk' | 'conquest_faction_stream' | 'conquest_faction_text' | 'conquest_faction_text_aggregate' | 'conquest_faction_text_by_pk' | 'conquest_faction_text_stream' | 'conquest_loyalty' | 'conquest_loyalty_aggregate' | 'conquest_loyalty_by_pk' | 'conquest_loyalty_stream' | 'conquest_loyalty_text' | 'conquest_loyalty_text_aggregate' | 'conquest_loyalty_text_by_pk' | 'conquest_loyalty_text_stream' | 'conquest_pack' | 'conquest_pack_aggregate' | 'conquest_pack_by_pk' | 'conquest_pack_stream' | 'conquest_pack_text' | 'conquest_pack_text_aggregate' | 'conquest_pack_text_by_pk' | 'conquest_pack_text_stream' | 'conquest_type' | 'conquest_type_aggregate' | 'conquest_type_by_pk' | 'conquest_type_stream' | 'conquest_type_text' | 'conquest_type_text_aggregate' | 'conquest_type_text_by_pk' | 'conquest_type_text_stream' | 'conquest_user_role' | 'conquest_user_role_aggregate' | 'conquest_user_role_by_pk' | 'conquest_user_role_stream' | 'conquest_user_settings' | 'conquest_user_settings_aggregate' | 'conquest_user_settings_by_pk' | 'conquest_user_settings_stream' | 'conquest_users' | 'conquest_users_aggregate' | 'conquest_users_by_pk' | 'conquest_users_stream' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'cycle_name_stream' | 'cycle_stream' | 'deck' | 'deck_aggregate' | 'deck_by_pk' | 'deck_stream' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faction_name_stream' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_stream' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'faq_text_stream' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_stream' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'friend_status_type_stream' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_stream' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'full_card_text_stream' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'gender_stream' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_achievement_stream' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'guide_input_stream' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'investigator_data_stream' | 'latest_decks' | 'latest_decks_aggregate' | 'latest_decks_stream' | 'local_decks' | 'local_decks_aggregate' | 'local_decks_stream' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'pack_name_stream' | 'pack_stream' | 'rangers_area' | 'rangers_area_aggregate' | 'rangers_area_by_pk' | 'rangers_area_stream' | 'rangers_area_text' | 'rangers_area_text_aggregate' | 'rangers_area_text_by_pk' | 'rangers_area_text_stream' | 'rangers_aspect' | 'rangers_aspect_aggregate' | 'rangers_aspect_by_pk' | 'rangers_aspect_localized' | 'rangers_aspect_localized_aggregate' | 'rangers_aspect_localized_stream' | 'rangers_aspect_stream' | 'rangers_aspect_text' | 'rangers_aspect_text_aggregate' | 'rangers_aspect_text_by_pk' | 'rangers_aspect_text_stream' | 'rangers_campaign' | 'rangers_campaign_access' | 'rangers_campaign_access_aggregate' | 'rangers_campaign_access_by_pk' | 'rangers_campaign_access_stream' | 'rangers_campaign_aggregate' | 'rangers_campaign_by_pk' | 'rangers_campaign_stream' | 'rangers_card' | 'rangers_card_aggregate' | 'rangers_card_by_pk' | 'rangers_card_localized' | 'rangers_card_localized_aggregate' | 'rangers_card_localized_stream' | 'rangers_card_search' | 'rangers_card_search_aggregate' | 'rangers_card_stream' | 'rangers_card_text' | 'rangers_card_text_aggregate' | 'rangers_card_text_by_pk' | 'rangers_card_text_stream' | 'rangers_card_updated' | 'rangers_card_updated_aggregate' | 'rangers_card_updated_stream' | 'rangers_comment' | 'rangers_comment_aggregate' | 'rangers_comment_by_pk' | 'rangers_comment_stream' | 'rangers_deck' | 'rangers_deck_aggregate' | 'rangers_deck_by_pk' | 'rangers_deck_copy' | 'rangers_deck_copy_aggregate' | 'rangers_deck_copy_by_pk' | 'rangers_deck_copy_stream' | 'rangers_deck_like' | 'rangers_deck_like_aggregate' | 'rangers_deck_like_by_pk' | 'rangers_deck_like_count' | 'rangers_deck_like_count_aggregate' | 'rangers_deck_like_count_by_pk' | 'rangers_deck_like_count_stream' | 'rangers_deck_like_stream' | 'rangers_deck_rank' | 'rangers_deck_rank_aggregate' | 'rangers_deck_rank_stream' | 'rangers_deck_search' | 'rangers_deck_search_aggregate' | 'rangers_deck_stream' | 'rangers_faq_entry' | 'rangers_faq_entry_aggregate' | 'rangers_faq_entry_by_pk' | 'rangers_faq_entry_stream' | 'rangers_friend_status' | 'rangers_friend_status_aggregate' | 'rangers_friend_status_by_pk' | 'rangers_friend_status_stream' | 'rangers_friend_status_type' | 'rangers_friend_status_type_aggregate' | 'rangers_friend_status_type_by_pk' | 'rangers_friend_status_type_stream' | 'rangers_latest_deck' | 'rangers_latest_deck_aggregate' | 'rangers_latest_deck_stream' | 'rangers_locale' | 'rangers_locale_aggregate' | 'rangers_locale_by_pk' | 'rangers_locale_stream' | 'rangers_pack' | 'rangers_pack_aggregate' | 'rangers_pack_by_pk' | 'rangers_pack_stream' | 'rangers_pack_text' | 'rangers_pack_text_aggregate' | 'rangers_pack_text_by_pk' | 'rangers_pack_text_stream' | 'rangers_search_deck' | 'rangers_search_deck_aggregate' | 'rangers_search_deck_stream' | 'rangers_set' | 'rangers_set_aggregate' | 'rangers_set_by_pk' | 'rangers_set_localized' | 'rangers_set_localized_aggregate' | 'rangers_set_localized_stream' | 'rangers_set_stream' | 'rangers_set_text' | 'rangers_set_text_aggregate' | 'rangers_set_text_by_pk' | 'rangers_set_text_stream' | 'rangers_set_type' | 'rangers_set_type_aggregate' | 'rangers_set_type_by_pk' | 'rangers_set_type_localized' | 'rangers_set_type_localized_aggregate' | 'rangers_set_type_localized_stream' | 'rangers_set_type_stream' | 'rangers_set_type_text' | 'rangers_set_type_text_aggregate' | 'rangers_set_type_text_by_pk' | 'rangers_set_type_text_stream' | 'rangers_token' | 'rangers_token_aggregate' | 'rangers_token_by_pk' | 'rangers_token_stream' | 'rangers_token_text' | 'rangers_token_text_aggregate' | 'rangers_token_text_by_pk' | 'rangers_token_text_stream' | 'rangers_type' | 'rangers_type_aggregate' | 'rangers_type_by_pk' | 'rangers_type_localized' | 'rangers_type_localized_aggregate' | 'rangers_type_localized_stream' | 'rangers_type_stream' | 'rangers_type_text' | 'rangers_type_text_aggregate' | 'rangers_type_text_by_pk' | 'rangers_type_text_stream' | 'rangers_user_campaign' | 'rangers_user_campaign_aggregate' | 'rangers_user_campaign_stream' | 'rangers_user_friends' | 'rangers_user_friends_aggregate' | 'rangers_user_friends_stream' | 'rangers_user_received_friend_requests' | 'rangers_user_received_friend_requests_aggregate' | 'rangers_user_received_friend_requests_stream' | 'rangers_user_role' | 'rangers_user_role_aggregate' | 'rangers_user_role_by_pk' | 'rangers_user_role_stream' | 'rangers_user_sent_friend_requests' | 'rangers_user_sent_friend_requests_aggregate' | 'rangers_user_sent_friend_requests_stream' | 'rangers_user_settings' | 'rangers_user_settings_aggregate' | 'rangers_user_settings_by_pk' | 'rangers_user_settings_stream' | 'rangers_users' | 'rangers_users_aggregate' | 'rangers_users_by_pk' | 'rangers_users_stream' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'taboo_set_stream' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_campaigns_stream' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_stream' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_flag_type_stream' | 'user_friends' | 'user_friends_aggregate' | 'user_friends_stream' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_received_friend_requests_stream' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_sent_friend_requests_stream' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'user_settings_stream' | 'users' | 'users_aggregate' | 'users_by_pk' | 'users_stream' | subscription_rootKeySpecifier)[];
+export type subscription_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_stream' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_text_stream' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'all_card_updated_by_version' | 'all_card_updated_by_version_aggregate' | 'all_card_updated_by_version_by_pk' | 'all_card_updated_by_version_stream' | 'all_card_updated_stream' | 'arkhamdb_auth' | 'arkhamdb_auth_aggregate' | 'arkhamdb_auth_by_pk' | 'arkhamdb_auth_stream' | 'arkhamdb_deck' | 'arkhamdb_deck_aggregate' | 'arkhamdb_deck_by_pk' | 'arkhamdb_deck_stream' | 'base_decks' | 'base_decks_aggregate' | 'base_decks_stream' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_access_stream' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_deck_stream' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_difficulty_stream' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_guide_stream' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaign_investigator_stream' | 'campaign_stream' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'campaigns_by_cycle_stream' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_cycle_stream' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_encounter_set_stream' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_pack_stream' | 'card_stream' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_subtype_name_stream' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_text_stream' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_code_stream' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'card_type_name_stream' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_result_stream' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'chaos_bag_tarot_mode_stream' | 'conquest_card' | 'conquest_card_aggregate' | 'conquest_card_by_pk' | 'conquest_card_localized' | 'conquest_card_localized_aggregate' | 'conquest_card_localized_stream' | 'conquest_card_stream' | 'conquest_card_text' | 'conquest_card_text_aggregate' | 'conquest_card_text_by_pk' | 'conquest_card_text_stream' | 'conquest_card_updated' | 'conquest_card_updated_aggregate' | 'conquest_card_updated_stream' | 'conquest_comment' | 'conquest_comment_aggregate' | 'conquest_comment_by_pk' | 'conquest_comment_stream' | 'conquest_cycle' | 'conquest_cycle_aggregate' | 'conquest_cycle_by_pk' | 'conquest_cycle_stream' | 'conquest_cycle_text' | 'conquest_cycle_text_aggregate' | 'conquest_cycle_text_by_pk' | 'conquest_cycle_text_stream' | 'conquest_deck' | 'conquest_deck_aggregate' | 'conquest_deck_by_pk' | 'conquest_deck_copy' | 'conquest_deck_copy_aggregate' | 'conquest_deck_copy_by_pk' | 'conquest_deck_copy_stream' | 'conquest_deck_like' | 'conquest_deck_like_aggregate' | 'conquest_deck_like_by_pk' | 'conquest_deck_like_stream' | 'conquest_deck_stream' | 'conquest_faction' | 'conquest_faction_aggregate' | 'conquest_faction_by_pk' | 'conquest_faction_stream' | 'conquest_faction_text' | 'conquest_faction_text_aggregate' | 'conquest_faction_text_by_pk' | 'conquest_faction_text_stream' | 'conquest_loyalty' | 'conquest_loyalty_aggregate' | 'conquest_loyalty_by_pk' | 'conquest_loyalty_stream' | 'conquest_loyalty_text' | 'conquest_loyalty_text_aggregate' | 'conquest_loyalty_text_by_pk' | 'conquest_loyalty_text_stream' | 'conquest_pack' | 'conquest_pack_aggregate' | 'conquest_pack_by_pk' | 'conquest_pack_stream' | 'conquest_pack_text' | 'conquest_pack_text_aggregate' | 'conquest_pack_text_by_pk' | 'conquest_pack_text_stream' | 'conquest_type' | 'conquest_type_aggregate' | 'conquest_type_by_pk' | 'conquest_type_stream' | 'conquest_type_text' | 'conquest_type_text_aggregate' | 'conquest_type_text_by_pk' | 'conquest_type_text_stream' | 'conquest_user_role' | 'conquest_user_role_aggregate' | 'conquest_user_role_by_pk' | 'conquest_user_role_stream' | 'conquest_user_settings' | 'conquest_user_settings_aggregate' | 'conquest_user_settings_by_pk' | 'conquest_user_settings_stream' | 'conquest_users' | 'conquest_users_aggregate' | 'conquest_users_by_pk' | 'conquest_users_stream' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'cycle_name_stream' | 'cycle_stream' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faction_name_stream' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_stream' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'faq_text_stream' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_stream' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'friend_status_type_stream' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_stream' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'full_card_text_stream' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'gender_stream' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_achievement_stream' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'guide_input_stream' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'investigator_data_stream' | 'latest_decks' | 'latest_decks_aggregate' | 'latest_decks_stream' | 'local_decks' | 'local_decks_aggregate' | 'local_decks_stream' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'pack_name_stream' | 'pack_stream' | 'rangers_area' | 'rangers_area_aggregate' | 'rangers_area_by_pk' | 'rangers_area_stream' | 'rangers_area_text' | 'rangers_area_text_aggregate' | 'rangers_area_text_by_pk' | 'rangers_area_text_stream' | 'rangers_aspect' | 'rangers_aspect_aggregate' | 'rangers_aspect_by_pk' | 'rangers_aspect_localized' | 'rangers_aspect_localized_aggregate' | 'rangers_aspect_localized_stream' | 'rangers_aspect_stream' | 'rangers_aspect_text' | 'rangers_aspect_text_aggregate' | 'rangers_aspect_text_by_pk' | 'rangers_aspect_text_stream' | 'rangers_campaign' | 'rangers_campaign_access' | 'rangers_campaign_access_aggregate' | 'rangers_campaign_access_by_pk' | 'rangers_campaign_access_stream' | 'rangers_campaign_aggregate' | 'rangers_campaign_by_pk' | 'rangers_campaign_stream' | 'rangers_card' | 'rangers_card_aggregate' | 'rangers_card_by_pk' | 'rangers_card_localized' | 'rangers_card_localized_aggregate' | 'rangers_card_localized_stream' | 'rangers_card_search' | 'rangers_card_search_aggregate' | 'rangers_card_stream' | 'rangers_card_text' | 'rangers_card_text_aggregate' | 'rangers_card_text_by_pk' | 'rangers_card_text_stream' | 'rangers_card_updated' | 'rangers_card_updated_aggregate' | 'rangers_card_updated_stream' | 'rangers_comment' | 'rangers_comment_aggregate' | 'rangers_comment_by_pk' | 'rangers_comment_stream' | 'rangers_deck' | 'rangers_deck_aggregate' | 'rangers_deck_by_pk' | 'rangers_deck_copy' | 'rangers_deck_copy_aggregate' | 'rangers_deck_copy_by_pk' | 'rangers_deck_copy_stream' | 'rangers_deck_like' | 'rangers_deck_like_aggregate' | 'rangers_deck_like_by_pk' | 'rangers_deck_like_count' | 'rangers_deck_like_count_aggregate' | 'rangers_deck_like_count_by_pk' | 'rangers_deck_like_count_stream' | 'rangers_deck_like_stream' | 'rangers_deck_rank' | 'rangers_deck_rank_aggregate' | 'rangers_deck_rank_stream' | 'rangers_deck_search' | 'rangers_deck_search_aggregate' | 'rangers_deck_stream' | 'rangers_faq_entry' | 'rangers_faq_entry_aggregate' | 'rangers_faq_entry_by_pk' | 'rangers_faq_entry_stream' | 'rangers_friend_status' | 'rangers_friend_status_aggregate' | 'rangers_friend_status_by_pk' | 'rangers_friend_status_stream' | 'rangers_friend_status_type' | 'rangers_friend_status_type_aggregate' | 'rangers_friend_status_type_by_pk' | 'rangers_friend_status_type_stream' | 'rangers_latest_deck' | 'rangers_latest_deck_aggregate' | 'rangers_latest_deck_stream' | 'rangers_locale' | 'rangers_locale_aggregate' | 'rangers_locale_by_pk' | 'rangers_locale_stream' | 'rangers_pack' | 'rangers_pack_aggregate' | 'rangers_pack_by_pk' | 'rangers_pack_stream' | 'rangers_pack_text' | 'rangers_pack_text_aggregate' | 'rangers_pack_text_by_pk' | 'rangers_pack_text_stream' | 'rangers_search_deck' | 'rangers_search_deck_aggregate' | 'rangers_search_deck_stream' | 'rangers_set' | 'rangers_set_aggregate' | 'rangers_set_by_pk' | 'rangers_set_localized' | 'rangers_set_localized_aggregate' | 'rangers_set_localized_stream' | 'rangers_set_stream' | 'rangers_set_text' | 'rangers_set_text_aggregate' | 'rangers_set_text_by_pk' | 'rangers_set_text_stream' | 'rangers_set_type' | 'rangers_set_type_aggregate' | 'rangers_set_type_by_pk' | 'rangers_set_type_localized' | 'rangers_set_type_localized_aggregate' | 'rangers_set_type_localized_stream' | 'rangers_set_type_stream' | 'rangers_set_type_text' | 'rangers_set_type_text_aggregate' | 'rangers_set_type_text_by_pk' | 'rangers_set_type_text_stream' | 'rangers_token' | 'rangers_token_aggregate' | 'rangers_token_by_pk' | 'rangers_token_stream' | 'rangers_token_text' | 'rangers_token_text_aggregate' | 'rangers_token_text_by_pk' | 'rangers_token_text_stream' | 'rangers_type' | 'rangers_type_aggregate' | 'rangers_type_by_pk' | 'rangers_type_localized' | 'rangers_type_localized_aggregate' | 'rangers_type_localized_stream' | 'rangers_type_stream' | 'rangers_type_text' | 'rangers_type_text_aggregate' | 'rangers_type_text_by_pk' | 'rangers_type_text_stream' | 'rangers_user_campaign' | 'rangers_user_campaign_aggregate' | 'rangers_user_campaign_stream' | 'rangers_user_friends' | 'rangers_user_friends_aggregate' | 'rangers_user_friends_stream' | 'rangers_user_received_friend_requests' | 'rangers_user_received_friend_requests_aggregate' | 'rangers_user_received_friend_requests_stream' | 'rangers_user_role' | 'rangers_user_role_aggregate' | 'rangers_user_role_by_pk' | 'rangers_user_role_stream' | 'rangers_user_sent_friend_requests' | 'rangers_user_sent_friend_requests_aggregate' | 'rangers_user_sent_friend_requests_stream' | 'rangers_user_settings' | 'rangers_user_settings_aggregate' | 'rangers_user_settings_by_pk' | 'rangers_user_settings_stream' | 'rangers_users' | 'rangers_users_aggregate' | 'rangers_users_by_pk' | 'rangers_users_stream' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'taboo_set_stream' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_campaigns_stream' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_stream' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_flag_type_stream' | 'user_friends' | 'user_friends_aggregate' | 'user_friends_stream' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_received_friend_requests_stream' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_sent_friend_requests_stream' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'user_settings_stream' | 'users' | 'users_aggregate' | 'users_by_pk' | 'users_stream' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
 	all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -9403,7 +9732,19 @@ export type subscription_rootFieldPolicy = {
 	all_card_updated?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_updated_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_updated_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_card_updated_by_version?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_card_updated_by_version_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_card_updated_by_version_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_card_updated_by_version_stream?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_updated_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_auth?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_auth_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_auth_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_auth_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_deck_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhamdb_deck_stream?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_stream?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -9563,10 +9904,6 @@ export type subscription_rootFieldPolicy = {
 	cycle_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_name_stream?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_stream?: FieldPolicy<any> | FieldReadFunction<any>,
-	deck?: FieldPolicy<any> | FieldReadFunction<any>,
-	deck_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
-	deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
-	deck_stream?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_name_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -10197,7 +10534,7 @@ export type user_settings_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type usersKeySpecifier = ('all_decks' | 'all_decks_aggregate' | 'campaigns' | 'campaigns_aggregate' | 'created_at' | 'decks' | 'decks_aggregate' | 'flags' | 'flags_aggregate' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'local_decks' | 'local_decks_aggregate' | 'received_requests' | 'received_requests_aggregate' | 'sent_requests' | 'sent_requests_aggregate' | 'updated_at' | usersKeySpecifier)[];
+export type usersKeySpecifier = ('all_decks' | 'all_decks_aggregate' | 'campaigns' | 'campaigns_aggregate' | 'created_at' | 'decks' | 'decks_aggregate' | 'flags' | 'flags_aggregate' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'local_decks' | 'local_decks_aggregate' | 'normalized_handle' | 'received_requests' | 'received_requests_aggregate' | 'sent_requests' | 'sent_requests_aggregate' | 'updated_at' | usersKeySpecifier)[];
 export type usersFieldPolicy = {
 	all_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -10214,6 +10551,7 @@ export type usersFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	local_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	local_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	normalized_handle?: FieldPolicy<any> | FieldReadFunction<any>,
 	received_requests?: FieldPolicy<any> | FieldReadFunction<any>,
 	received_requests_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	sent_requests?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -10231,18 +10569,20 @@ export type users_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type users_max_fieldsKeySpecifier = ('created_at' | 'handle' | 'id' | 'updated_at' | users_max_fieldsKeySpecifier)[];
+export type users_max_fieldsKeySpecifier = ('created_at' | 'handle' | 'id' | 'normalized_handle' | 'updated_at' | users_max_fieldsKeySpecifier)[];
 export type users_max_fieldsFieldPolicy = {
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	handle?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	normalized_handle?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type users_min_fieldsKeySpecifier = ('created_at' | 'handle' | 'id' | 'updated_at' | users_min_fieldsKeySpecifier)[];
+export type users_min_fieldsKeySpecifier = ('created_at' | 'handle' | 'id' | 'normalized_handle' | 'updated_at' | users_min_fieldsKeySpecifier)[];
 export type users_min_fieldsFieldPolicy = {
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	handle?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	normalized_handle?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type users_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | users_mutation_responseKeySpecifier)[];
@@ -10251,6 +10591,70 @@ export type users_mutation_responseFieldPolicy = {
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type StrictTypedTypePolicies = {
+	CreateCampaignOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CreateCampaignOutputKeySpecifier | (() => undefined | CreateCampaignOutputKeySpecifier),
+		fields?: CreateCampaignOutputFieldPolicy,
+	},
+	CreateDeckOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CreateDeckOutputKeySpecifier | (() => undefined | CreateDeckOutputKeySpecifier),
+		fields?: CreateDeckOutputFieldPolicy,
+	},
+	DeckId?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DeckIdKeySpecifier | (() => undefined | DeckIdKeySpecifier),
+		fields?: DeckIdFieldPolicy,
+	},
+	DeleteCampaignOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DeleteCampaignOutputKeySpecifier | (() => undefined | DeleteCampaignOutputKeySpecifier),
+		fields?: DeleteCampaignOutputFieldPolicy,
+	},
+	DeleteDeckOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DeleteDeckOutputKeySpecifier | (() => undefined | DeleteDeckOutputKeySpecifier),
+		fields?: DeleteDeckOutputFieldPolicy,
+	},
+	EditCampaignAccessOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EditCampaignAccessOutputKeySpecifier | (() => undefined | EditCampaignAccessOutputKeySpecifier),
+		fields?: EditCampaignAccessOutputFieldPolicy,
+	},
+	FriendRequestOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | FriendRequestOutputKeySpecifier | (() => undefined | FriendRequestOutputKeySpecifier),
+		fields?: FriendRequestOutputFieldPolicy,
+	},
+	LoginOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | LoginOutputKeySpecifier | (() => undefined | LoginOutputKeySpecifier),
+		fields?: LoginOutputFieldPolicy,
+	},
+	LogoutOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | LogoutOutputKeySpecifier | (() => undefined | LogoutOutputKeySpecifier),
+		fields?: LogoutOutputFieldPolicy,
+	},
+	MigrateLoginOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MigrateLoginOutputKeySpecifier | (() => undefined | MigrateLoginOutputKeySpecifier),
+		fields?: MigrateLoginOutputFieldPolicy,
+	},
+	RefreshDecksOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RefreshDecksOutputKeySpecifier | (() => undefined | RefreshDecksOutputKeySpecifier),
+		fields?: RefreshDecksOutputFieldPolicy,
+	},
+	UpdateHandleOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UpdateHandleOutputKeySpecifier | (() => undefined | UpdateHandleOutputKeySpecifier),
+		fields?: UpdateHandleOutputFieldPolicy,
+	},
+	UpgradeDeckOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UpgradeDeckOutputKeySpecifier | (() => undefined | UpgradeDeckOutputKeySpecifier),
+		fields?: UpgradeDeckOutputFieldPolicy,
+	},
+	UploadLocalCampaignDeckOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UploadLocalCampaignDeckOutputKeySpecifier | (() => undefined | UploadLocalCampaignDeckOutputKeySpecifier),
+		fields?: UploadLocalCampaignDeckOutputFieldPolicy,
+	},
+	UserSearchResult?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UserSearchResultKeySpecifier | (() => undefined | UserSearchResultKeySpecifier),
+		fields?: UserSearchResultFieldPolicy,
+	},
+	UsersSearchOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UsersSearchOutputKeySpecifier | (() => undefined | UsersSearchOutputKeySpecifier),
+		fields?: UsersSearchOutputFieldPolicy,
+	},
 	all_card?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | all_cardKeySpecifier | (() => undefined | all_cardKeySpecifier),
 		fields?: all_cardFieldPolicy,
@@ -10335,6 +10739,62 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | all_card_updated_avg_fieldsKeySpecifier | (() => undefined | all_card_updated_avg_fieldsKeySpecifier),
 		fields?: all_card_updated_avg_fieldsFieldPolicy,
 	},
+	all_card_updated_by_version?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_versionKeySpecifier | (() => undefined | all_card_updated_by_versionKeySpecifier),
+		fields?: all_card_updated_by_versionFieldPolicy,
+	},
+	all_card_updated_by_version_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_aggregateKeySpecifier | (() => undefined | all_card_updated_by_version_aggregateKeySpecifier),
+		fields?: all_card_updated_by_version_aggregateFieldPolicy,
+	},
+	all_card_updated_by_version_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_aggregate_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_aggregate_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_aggregate_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_avg_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_avg_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_avg_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_max_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_max_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_max_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_min_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_min_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_min_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_mutation_responseKeySpecifier | (() => undefined | all_card_updated_by_version_mutation_responseKeySpecifier),
+		fields?: all_card_updated_by_version_mutation_responseFieldPolicy,
+	},
+	all_card_updated_by_version_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_stddev_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_stddev_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_stddev_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_stddev_pop_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_stddev_pop_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_stddev_pop_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_stddev_samp_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_stddev_samp_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_stddev_samp_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_sum_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_sum_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_sum_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_var_pop_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_var_pop_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_var_pop_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_var_samp_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_var_samp_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_var_samp_fieldsFieldPolicy,
+	},
+	all_card_updated_by_version_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_by_version_variance_fieldsKeySpecifier | (() => undefined | all_card_updated_by_version_variance_fieldsKeySpecifier),
+		fields?: all_card_updated_by_version_variance_fieldsFieldPolicy,
+	},
 	all_card_updated_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | all_card_updated_max_fieldsKeySpecifier | (() => undefined | all_card_updated_max_fieldsKeySpecifier),
 		fields?: all_card_updated_max_fieldsFieldPolicy,
@@ -10386,6 +10846,118 @@ export type StrictTypedTypePolicies = {
 	all_card_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | all_card_variance_fieldsKeySpecifier | (() => undefined | all_card_variance_fieldsKeySpecifier),
 		fields?: all_card_variance_fieldsFieldPolicy,
+	},
+	arkhamdb_auth?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_authKeySpecifier | (() => undefined | arkhamdb_authKeySpecifier),
+		fields?: arkhamdb_authFieldPolicy,
+	},
+	arkhamdb_auth_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_aggregateKeySpecifier | (() => undefined | arkhamdb_auth_aggregateKeySpecifier),
+		fields?: arkhamdb_auth_aggregateFieldPolicy,
+	},
+	arkhamdb_auth_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_aggregate_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_aggregate_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_aggregate_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_avg_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_avg_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_avg_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_max_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_max_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_max_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_min_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_min_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_min_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_mutation_responseKeySpecifier | (() => undefined | arkhamdb_auth_mutation_responseKeySpecifier),
+		fields?: arkhamdb_auth_mutation_responseFieldPolicy,
+	},
+	arkhamdb_auth_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_stddev_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_stddev_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_stddev_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_stddev_pop_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_stddev_pop_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_stddev_pop_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_stddev_samp_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_stddev_samp_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_stddev_samp_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_sum_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_sum_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_sum_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_var_pop_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_var_pop_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_var_pop_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_var_samp_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_var_samp_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_var_samp_fieldsFieldPolicy,
+	},
+	arkhamdb_auth_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_auth_variance_fieldsKeySpecifier | (() => undefined | arkhamdb_auth_variance_fieldsKeySpecifier),
+		fields?: arkhamdb_auth_variance_fieldsFieldPolicy,
+	},
+	arkhamdb_deck?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deckKeySpecifier | (() => undefined | arkhamdb_deckKeySpecifier),
+		fields?: arkhamdb_deckFieldPolicy,
+	},
+	arkhamdb_deck_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_aggregateKeySpecifier | (() => undefined | arkhamdb_deck_aggregateKeySpecifier),
+		fields?: arkhamdb_deck_aggregateFieldPolicy,
+	},
+	arkhamdb_deck_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_aggregate_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_aggregate_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_aggregate_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_avg_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_avg_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_avg_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_max_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_max_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_max_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_min_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_min_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_min_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_mutation_responseKeySpecifier | (() => undefined | arkhamdb_deck_mutation_responseKeySpecifier),
+		fields?: arkhamdb_deck_mutation_responseFieldPolicy,
+	},
+	arkhamdb_deck_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_stddev_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_stddev_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_stddev_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_stddev_pop_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_stddev_pop_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_stddev_pop_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_stddev_samp_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_stddev_samp_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_stddev_samp_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_sum_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_sum_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_sum_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_var_pop_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_var_pop_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_var_pop_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_var_samp_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_var_samp_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_var_samp_fieldsFieldPolicy,
+	},
+	arkhamdb_deck_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | arkhamdb_deck_variance_fieldsKeySpecifier | (() => undefined | arkhamdb_deck_variance_fieldsKeySpecifier),
+		fields?: arkhamdb_deck_variance_fieldsFieldPolicy,
 	},
 	base_decks?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | base_decksKeySpecifier | (() => undefined | base_decksKeySpecifier),
@@ -11998,62 +12570,6 @@ export type StrictTypedTypePolicies = {
 	cycle_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | cycle_variance_fieldsKeySpecifier | (() => undefined | cycle_variance_fieldsKeySpecifier),
 		fields?: cycle_variance_fieldsFieldPolicy,
-	},
-	deck?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deckKeySpecifier | (() => undefined | deckKeySpecifier),
-		fields?: deckFieldPolicy,
-	},
-	deck_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_aggregateKeySpecifier | (() => undefined | deck_aggregateKeySpecifier),
-		fields?: deck_aggregateFieldPolicy,
-	},
-	deck_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_aggregate_fieldsKeySpecifier | (() => undefined | deck_aggregate_fieldsKeySpecifier),
-		fields?: deck_aggregate_fieldsFieldPolicy,
-	},
-	deck_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_avg_fieldsKeySpecifier | (() => undefined | deck_avg_fieldsKeySpecifier),
-		fields?: deck_avg_fieldsFieldPolicy,
-	},
-	deck_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_max_fieldsKeySpecifier | (() => undefined | deck_max_fieldsKeySpecifier),
-		fields?: deck_max_fieldsFieldPolicy,
-	},
-	deck_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_min_fieldsKeySpecifier | (() => undefined | deck_min_fieldsKeySpecifier),
-		fields?: deck_min_fieldsFieldPolicy,
-	},
-	deck_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_mutation_responseKeySpecifier | (() => undefined | deck_mutation_responseKeySpecifier),
-		fields?: deck_mutation_responseFieldPolicy,
-	},
-	deck_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_stddev_fieldsKeySpecifier | (() => undefined | deck_stddev_fieldsKeySpecifier),
-		fields?: deck_stddev_fieldsFieldPolicy,
-	},
-	deck_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_stddev_pop_fieldsKeySpecifier | (() => undefined | deck_stddev_pop_fieldsKeySpecifier),
-		fields?: deck_stddev_pop_fieldsFieldPolicy,
-	},
-	deck_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_stddev_samp_fieldsKeySpecifier | (() => undefined | deck_stddev_samp_fieldsKeySpecifier),
-		fields?: deck_stddev_samp_fieldsFieldPolicy,
-	},
-	deck_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_sum_fieldsKeySpecifier | (() => undefined | deck_sum_fieldsKeySpecifier),
-		fields?: deck_sum_fieldsFieldPolicy,
-	},
-	deck_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_var_pop_fieldsKeySpecifier | (() => undefined | deck_var_pop_fieldsKeySpecifier),
-		fields?: deck_var_pop_fieldsFieldPolicy,
-	},
-	deck_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_var_samp_fieldsKeySpecifier | (() => undefined | deck_var_samp_fieldsKeySpecifier),
-		fields?: deck_var_samp_fieldsFieldPolicy,
-	},
-	deck_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | deck_variance_fieldsKeySpecifier | (() => undefined | deck_variance_fieldsKeySpecifier),
-		fields?: deck_variance_fieldsFieldPolicy,
 	},
 	faction_name?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | faction_nameKeySpecifier | (() => undefined | faction_nameKeySpecifier),
