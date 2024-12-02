@@ -68,7 +68,7 @@ msgid "Add mission"
 msgstr "Ajouter une mission"
 
 msgid "Add note"
-msgstr ""
+msgstr "Ajouter une note"
 
 msgid "Add reward"
 msgstr "Ajouter une récompense"
@@ -197,7 +197,7 @@ msgid "Cards that are removed from your deck will be stored here. They can be sw
 msgstr "Les cartes qui sont retirées de votre deck seront garder ici. Elles peuvent être remises dans votre deck quand vous campez."
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
-msgstr ""
+msgstr "Les cartes avec le trait Expert ne peuvent être choisies si elles ne sont pas dans votre Intérêt, elles sont cachées automatiquement."
 
 msgid "Changes"
 msgstr "Changements"
