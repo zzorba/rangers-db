@@ -17,7 +17,7 @@ msgid "Request not authorized. User must be signed in."
 msgstr "Demande non autorisée. L'utilisateur doit être connecté."
 
 msgid "Minimum search size is 2 characters."
-msgstr ""
+msgstr "La recherche minimale doit être de 2 personnages."
 
 msgid "Sorry, this handle has already been taken."
-msgstr ""
+msgstr "Désolé, cet nom est déjà utilisé."
