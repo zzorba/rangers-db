@@ -100,6 +100,7 @@ async function importMetadata() {
         await upsert({
           id: current.id,
           ...safePick(current, allFields),
+          code: current.id,
         } as any);
       }
 

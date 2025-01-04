@@ -33,6 +33,11 @@ fragment Card on rangers_card {
   deck_limit
   position
   spoiler
+  sun_challenge
+  mountain_challenge
+  crest_challenge
+  subset_id
+  subset_position
 }
 
 fragment CardText on rangers_card_text {

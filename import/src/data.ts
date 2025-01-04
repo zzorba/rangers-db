@@ -18,6 +18,14 @@ export const TABLES: { [key: string]: Table } = {
     fields: [],
     textFields: ['name', 'short_name'],
   },
+  taboo_set: {
+    collection: 'taboo_set',
+    fields: [
+      'date',
+      'is_current'
+    ],
+    textFields: ['name']
+  },
   set_type: {
     collection: 'set_type',
     fields: [],
@@ -30,6 +38,15 @@ export const TABLES: { [key: string]: Table } = {
     foreignKeys: {
       type_id: 'set_type',
     },
+  },
+  subset: {
+    collection: 'subset',
+    fields: ['set_id', 'pack_id', 'size'],
+    textFields: ['name'],
+    foreignKeys: {
+      set_id: 'set',
+      pack_id: 'pack',
+    }
   },
   token: {
     collection: 'token',
@@ -49,7 +66,7 @@ export const TABLES: { [key: string]: Table } = {
   pack: {
     collection: 'pack',
     fields: ['position'],
-    textFields: ['name']
+    textFields: ['name', 'short_name']
   },
   card: {
     collection: 'card',
@@ -80,7 +97,11 @@ export const TABLES: { [key: string]: Table } = {
       'back_card_id',
       'position',
       'deck_limit',
-      'spoiler'
+      'spoiler',
+      'subset_id',
+      'subset_position',
+      'code',
+      'taboo_id',
     ],
     textFields: [
       'name',
@@ -100,6 +121,8 @@ export const TABLES: { [key: string]: Table } = {
       aspect_id: 'aspect',
       area_id: 'area',
       pack_id: 'pack',
+      taboo_id: 'taboo_set',
+      subset_id: 'subset',
     },
   },
 };
