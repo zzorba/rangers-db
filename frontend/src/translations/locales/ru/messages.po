@@ -620,7 +620,7 @@ msgid "Not enough background cards."
 msgstr "Недостаточно карт квалификации."
 
 msgid "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
-msgstr "Слишком много карт. При замене наград следует вернуть обратно карту из вашей изначальной колоды, чтобы сохранить размер колоды в 30 карт."
+msgstr "Слишком мало карт. При замене наград следует вернуть обратно карту из вашей изначальной колоды, чтобы сохранить размер колоды в 30 карт."
 
 msgid "Not enough outside interest cards."
 msgstr "Недостаточно карт хобби."
