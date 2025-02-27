@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 msgid "- {0} Specialty"
 msgstr "- {0} Специализация"
@@ -1035,7 +1035,7 @@ msgid "Too many cards. When making deck changes while camping, you should remove
 msgstr "Слишком много карт. При замене карт на награды следует удалить любую карту (кроме карты с признаком недуг), чтобы сохранить размер колоды в 30 карт."
 
 msgid "Too many FIT personality cards."
-msgstr "Слишком много карт личности с чертой ЫН."
+msgstr "Слишком много карт личности с чертой ВЫН."
 
 msgid "Too many FOC personality cards."
 msgstr "Слишком много карт личности с чертой КОН."
