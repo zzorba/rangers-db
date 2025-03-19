@@ -446,7 +446,7 @@ msgid "Friends"
 msgstr "Друзья"
 
 msgid "General"
-msgstr "Общее"
+msgstr "Общий набор"
 
 msgid "German"
 msgstr "Немецкий"
