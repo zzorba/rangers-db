@@ -238,6 +238,12 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
           <Flex direction={['column-reverse', 'row']} alignItems={['flex-end', 'flex-start']} justifyContent="space-between">
             <Flex direction="column">
               <Heading>{deck?.name || 'Deck'}</Heading>
+              { !!deck.taboo_set_id && (
+                <Flex direction="row" alignItems="center">
+                  <CoreIcon icon="uncommon_wisdom" size={24} color="#000000" />
+                  <Text marginLeft={2}>{t`Elder's Book of Uncommon Wisdom`}</Text>
+                </Flex>
+              )}
               <SimpleGrid columns={2}>
                 { authUser?.uid !== deck.user_id && !!deck.user.handle && (
                   <Box>
@@ -247,7 +253,7 @@ export default function DeckDetail({ deck, cards, onLike }: Props) {
                 { !!deck.published && !!deck.created_at && (
                   <Flex direction="row" alignItems="center">
                     <SlCalender />
-                    <Text  marginLeft={2}>
+                    <Text marginLeft={2}>
                       { i18n?.date(deck.created_at, { dateStyle: 'long' }) }
                     </Text>
                   </Flex>

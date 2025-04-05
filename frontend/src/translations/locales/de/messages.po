@@ -271,6 +271,9 @@ msgstr "Verständnis"
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Enthält zu viele Karten, die nicht zur gewählten Vorgeschichte passen."
 
+msgid "Contains too many cards that do not match your chosen specialty."
+msgstr ""
+
 msgid "Copies"
 msgstr "Kopien"
 

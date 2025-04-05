@@ -271,6 +271,9 @@ msgstr "Connexion"
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Contient trop de cartes qui ne correspondent pas à votre Antécédent."
 
+msgid "Contains too many cards that do not match your chosen specialty."
+msgstr ""
+
 msgid "Copies"
 msgstr "Copies"
 

@@ -271,6 +271,9 @@ msgstr "Legame"
 msgid "Contains too many cards that do not match your chosen background."
 msgstr "Contiene troppe carte che non sono compatibili con l'origine prescelta."
 
+msgid "Contains too many cards that do not match your chosen specialty."
+msgstr ""
+
 msgid "Copies"
 msgstr "Copie"
 
