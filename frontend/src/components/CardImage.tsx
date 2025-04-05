@@ -1,6 +1,7 @@
 import React from 'react';
 import { AspectRatio, Box, Image, Text } from '@chakra-ui/react';
 import { CardFragment } from '../generated/graphql/apollo-schema';
+import CoreIcon from '../icons/CoreIcon';
 const CARD_RATIO = 1.42333333333;
 
 const MAX_WIDTH = {
@@ -41,10 +42,11 @@ const sizes = {
   small: '50px',
 };
 
-export function RoleImage({ name, url, size = 'medium' }: {
+export function RoleImage({ name, url, size = 'medium', includeTaboo }: {
   name: string | undefined | null;
   url: string;
   size?: 'large' | 'medium' | 'small';
+  includeTaboo?: boolean;
 }) {
   const theSize = sizes[size];
   return (
@@ -69,6 +71,11 @@ export function RoleImage({ name, url, size = 'medium' }: {
           top: -28
         }}
       />
+      { !!includeTaboo && (
+        <Box position="absolute" bottom={-1} right={0} zIndex={1}>
+          <CoreIcon icon="uncommon_wisdom" size={18} color="#FFFFFF" />
+        </Box>
+      ) }
     </Box>
   )
 }

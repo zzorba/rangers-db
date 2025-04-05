@@ -175,6 +175,7 @@ fragment Pack on rangers_pack_localized {
 }
 
 fragment Card on rangers_card_localized {
+  id
   code
   name
   real_traits

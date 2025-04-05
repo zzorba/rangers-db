@@ -307,8 +307,8 @@ msgstr "Durchgestrichen"
 msgid "Crossroads Station"
 msgstr "Die Nahtstelle"
 
-msgid "Current location: {0}"
-msgstr "Aktueller Ort: {0}"
+msgid "Current location:"
+msgstr ""
 
 msgid "Current Position"
 msgstr "Aktuelle Position"
@@ -409,6 +409,9 @@ msgstr ""
 msgid "Edit players"
 msgstr "Spieler bearbeiten"
 
+msgid "Elder's Book of Uncommon Wisdom"
+msgstr ""
+
 msgid "Email"
 msgstr "E-Mail"
 
@@ -474,6 +477,9 @@ msgstr "RUH"
 
 msgid "Focus"
 msgstr "Ruhe"
+
+msgid "Follow the Elder's Book of Uncommon Wisdom"
+msgstr ""
 
 msgid "Forgot Password"
 msgstr "Passwort vergessen"
@@ -860,6 +866,9 @@ msgstr "Auf Kommentar antworten"
 msgid "Request friend"
 msgstr "Freundschaftsanfrage senden"
 
+msgid "Restrictions"
+msgstr ""
+
 msgid "Return a copy to the collection"
 msgstr "Lege eine Kopie zur Sammlung zurück"
 
@@ -1040,6 +1049,9 @@ msgstr "Die Konkordanten Ziggurats"
 msgid "The Cypress Citadel"
 msgstr "Die Zypressen-Zitadelle"
 
+msgid "The Elder's Book of Uncommon Wisdom is a list of rebalanced Ranger cards with optional text changes. These changes are designed to maintain a healthy and balanced cardpool, and to increase deck diversity by encouraging players to build decks with underutilized cards instead of common staples."
+msgstr ""
+
 msgid "The Fractured Wall"
 msgstr "Berstwall"
 
@@ -1075,6 +1087,9 @@ msgstr "Klippensturz"
 
 msgid "The Valley"
 msgstr "Das Tal"
+
+msgid "The Verdant Sphere"
+msgstr ""
 
 msgid "There are too many cards with this card's name in your deck."
 msgstr "Es sind zu viele Karten mit diesem Namen in deinem Deck."

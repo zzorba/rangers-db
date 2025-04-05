@@ -12,8 +12,9 @@ import ListHeader from './ListHeader';
 import { useCardSearchControls } from './CardFilter';
 import { useTheme } from '../lib/ThemeContext';
 import CardImage, { CardImagePlaceholder } from './CardImage';
-import { useAllCards, usePackCollection } from '../lib/cards';
+import { useAllCards } from '../lib/cards';
 import { useAuth } from '../lib/AuthContext';
+import { usePackSettings } from '../lib/PackSettingsContext';
 
 type PackCollectionContextType = {
   mode: 'annotate' | 'hide' | 'disabled';
@@ -32,7 +33,7 @@ export const PackCollectionContext = React.createContext<PackCollectionContextTy
 
 export const CURRENT_TABOO_SET = 'set_01';
 export const PackCollectionContextProvider = ({ children, mode = 'hide' }: { children: React.ReactNode; mode?: 'annotate' | 'hide' }) => {
-  const collection = usePackCollection();
+  const collection = usePackSettings();
   const { authUser } = useAuth();
   const [showNonCollection, setShowNonCollection] = useState(false);
   const context: PackCollectionContextType = useMemo(() => {

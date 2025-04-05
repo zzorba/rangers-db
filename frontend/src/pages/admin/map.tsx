@@ -6,7 +6,7 @@ import { t } from '@lingui/macro'
 import { useLocale } from '../../lib/TranslationProvider';
 import { MapLocation } from '../../types/types';
 import { ConnectionRestrictionIcon, LocationIcon, PathIcon } from '../../icons/LocationIcon';
-import { useMapLocations } from '../../lib/hooks';
+import { INCLUDE_LOA, useMapLocations } from '../../lib/hooks';
 
 function LocationRow({ location, cycle }: { location: MapLocation; cycle: string }) {
   const { paths, restrictions } = useLocale();
@@ -72,7 +72,7 @@ export default function MapPage() {
         >
           <option value="demo">{t`Demo`}</option>
           <option value="core">{t`Core`}</option>
-          <option value="loa">{t`Legacy of the Ancestors`}</option>
+          { !!INCLUDE_LOA && <option value="loa">{t`Legacy of the Ancestors`}</option> }
         </Select>
       </FormControl>
       <List>

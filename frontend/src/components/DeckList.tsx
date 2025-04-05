@@ -219,7 +219,7 @@ export function SearchDeckRow({ deck, last }: {
         <Flex direction="row" alignItems="flex-start" justifyContent="flex-start">
           <Flex flex={4} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
             { !!role && !!role.imagesrc && (
-              <RoleImage name={role.name} url={role.imagesrc} size="large" />
+              <RoleImage name={role.name} url={role.imagesrc} size="large" includeTaboo={!!deck.taboo_set_id} />
             ) }
             <SimpleGrid columns={2} width="80px" minWidth="80px">
               <MiniAspect aspect="AWA" value={deck.awa} />

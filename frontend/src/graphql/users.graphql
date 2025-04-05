@@ -28,11 +28,11 @@ mutation setPackCollection($userId: String!, $pack_collection: jsonb!) {
   }
 }
 
-mutation setAdhereTaboos($userId: String!, $adhere_taboos: Boolean!) {
+mutation setAdhereTaboos($userId: String!, $adhereTaboos: Boolean!) {
   update_rangers_user_settings_by_pk(
     pk_columns: { user_id: $userId }
     _set: {
-      adhere_taboos: $adhere_taboos
+      adhere_taboos: $adhereTaboos
     }
   ) {
     user_id

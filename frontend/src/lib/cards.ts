@@ -64,7 +64,11 @@ export function useAllCards(tabooSetId: string | undefined): CardFragment[] | un
     client: anonClient,
     fetchPolicy: 'cache-only',
   });
-  return data?.cards;
+  const matchingTabooCodes = useMemo(() => {
+    const codes = data?.cards.filter(c => c.taboo_id === tabooSetId).map(c => c.code);
+    return new Set(codes);
+  }, [data, tabooSetId]);
+  return useMemo(() => data?.cards.filter(c => c.taboo_id === tabooSetId || (!c.taboo_id && !matchingTabooCodes.has(c.code))), [data?.cards, matchingTabooCodes, tabooSetId]);
 }
 
 export function useCard(code: string | undefined, tabooSetId: string | undefined): CardFragment | undefined {
@@ -77,22 +81,6 @@ export function useCard(code: string | undefined, tabooSetId: string | undefined
   }, [allCards, code, tabooSetId]);
 }
 
-export function usePackCollection(): undefined | {
-  packs: string[];
-  taboo: boolean;
-} {
-  const { authUser } = useAuth();
-  const { data } = useGetPackCollectionQuery({
-    variables: {
-      id: authUser?.uid ?? '',
-    },
-    skip: !authUser,
-  });
-  return useMemo(() => data ? {
-    packs: data.settings?.pack_collection ?? [],
-    taboo: data.settings?.adhere_taboos ?? false,
-  } : undefined, [data])
-}
 
 export function useAllCardsMap(tabooSetId: string | undefined): CardsMap {
   const allCards = useAllCards(tabooSetId);

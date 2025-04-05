@@ -13,6 +13,7 @@ import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
 import { useRoleCardsMap } from '../../lib/cards';
 import { getLocalizationServerSideProps } from '../../lib/Lingui';
+import { PackCollectionContextProvider } from '../../components/CardList';
 
 export default function DecksPage() {
   useRequireAuth();

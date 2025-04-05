@@ -18,12 +18,14 @@ interface Props {
   roles?: string[];
   pageSize?: number;
   emptyMessage: string;
+  tabooSetId?: string;
 }
 
 export default function SearchDecks({
   emptyMessage,
   pageSize = 10,
   userId, awa, spi, foc, fit, background, specialty, roles,
+  tabooSetId,
 }: Props) {
   const [fetchMore, data] = useSearchDecksLazyQuery({
     variables: {},
@@ -59,6 +61,9 @@ export default function SearchDecks({
     if (roles?.length) {
       variables.role = `{${roles.join(',')}}`;
     }
+    if (tabooSetId) {
+      variables.taboo_set_id = `{${tabooSetId}}`;
+    }
     const r = await fetchMore({ variables });
     const decks = r.data?.decks || [];
     if (decks?.length === pageSize) {
@@ -68,7 +73,7 @@ export default function SearchDecks({
     }
     setDecks(decks);
     return decks;
-  }, [fetchMore, setDecks, setTotal, userId, awa, fit, foc, spi, background, specialty, roles]);
+  }, [fetchMore, setDecks, setTotal, tabooSetId, userId, awa, fit, foc, spi, background, specialty, roles]);
 
 
   return (

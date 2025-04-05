@@ -2,7 +2,7 @@ import { Checkbox } from '@chakra-ui/react';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
 type Props =  {
-  children: string;
+  children: React.ReactNode;
   isChecked: boolean;
   isDisabled?: boolean;
   onChange: (checked: boolean) => Promise<void>;

@@ -11,6 +11,8 @@ import { useLocale } from '../../lib/TranslationProvider';
 import SearchDecks from '../../components/SearchDecks';
 import { useRoleCardsMap } from '../../lib/cards';
 import { getLocalizationServerSideProps } from '../../lib/Lingui';
+import DynamicCheckbox from '../../components/DynamicCheckbox';
+import { CURRENT_TABOO_SET } from '../../components/CardList';
 
 function CategorySelect({ category, onChange }: { category: CategoryTranslation; onChange: (selection: string[]) => void }) {
   const options = useMemo(() => {
@@ -116,6 +118,12 @@ export default function Search() {
         { !!backgroundT && <CategorySelect category={backgroundT} onChange={setBackground} /> }
         { !!specialtyT && <CategorySelect category={specialtyT} onChange={setSpecialty} /> }
         <RoleSelect roleCards={roleCards} roles={roles} onChange={setRole} specialty={specialty} />
+        <FormControl>
+          <FormLabel>{t`Restrictions`}</FormLabel>
+          <DynamicCheckbox isChecked={!!tabooSetId} onChange={async (value: boolean) => setTabooSetId(value ? CURRENT_TABOO_SET : undefined)}>
+            {t`Elder's Book of Uncommon Wisdom`}
+          </DynamicCheckbox>
+        </FormControl>
       </form>
       <SearchDecks
         background={background}
@@ -125,6 +133,7 @@ export default function Search() {
         spi={spi}
         foc={foc}
         fit={fit}
+        tabooSetId={tabooSetId}
         userId={userId}
         pageSize={5}
         emptyMessage={t`No matching decks.`}

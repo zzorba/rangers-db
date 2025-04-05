@@ -65,7 +65,7 @@ import { FaInbox } from 'react-icons/fa';
 import { useCardSearchControls } from './CardFilter';
 import DeckChanges from './DeckChanges';
 import { BiSolidBookmarkAlt } from 'react-icons/bi';
-import { usePackCollection, useRoleCardsMap } from '../lib/cards';
+import { useRoleCardsMap } from '../lib/cards';
 
 interface Props {
   deck: DeckDetailFragment;
@@ -1016,7 +1016,6 @@ export function useNewDeckModal(): [() => void, React.ReactNode] {
   const [name, setName] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [stats, setStats] = useState<AspectStats>({ awa: 3, fit: 3, foc: 3, spi: 3 })
-
   const [createDeck] = useCreateDeckMutation();
   const [meta, setMeta] = useState<DeckMeta>({});
   const { tabooSet } = useContext(PackCollectionContext);
@@ -1061,6 +1060,7 @@ export function useNewDeckModal(): [() => void, React.ReactNode] {
         },
         slots: {},
         extraSlots: {},
+        tabooSetId,
       },
     });
     setSubmitting(false);
@@ -1072,7 +1072,7 @@ export function useNewDeckModal(): [() => void, React.ReactNode] {
         Router.push(`/decks/edit/${result.data.deck.id}`);
       }
     }
-  }, [createDeck, onClose, placeholderDeckName, authUser, stats, meta, name]);
+  }, [createDeck, onClose, tabooSetId, placeholderDeckName, authUser, stats, meta, name]);
   const showModal = useCallback(() => {
     onOpen();
   }, [onOpen]);
@@ -1120,6 +1120,7 @@ export function useNewDeckModal(): [() => void, React.ReactNode] {
         meta: starter.meta,
         slots: starter.slots,
         extraSlots: {},
+        tabooSetId: undefined,
       },
     });
     setSubmitting(false);
@@ -1183,8 +1184,8 @@ export function useNewDeckModal(): [() => void, React.ReactNode] {
                     </FormControl>
                   )}
                   <Checkbox isChecked={!!tabooSetId} onChange={e => setTabooSetId(e.target.checked ? CURRENT_TABOO_SET : undefined)}>
-                    <Tooltip label={t`The Uncommon Wisdom rules contain adjustments to some cards to improve the overall balance of the game.  Adhering to the Uncommon Wisdom list is entirely optional.`}>
-                      {t`Uncommon Wisdom `}
+                    <Tooltip label={t`The Elder's Book of Uncommon Wisdom is a list of rebalanced Ranger cards with optional text changes. These changes are designed to maintain a healthy and balanced cardpool, and to increase deck diversity by encouraging players to build decks with underutilized cards instead of common staples.`}>
+                      {t`Follow the Elder's Book of Uncommon Wisdom `}
                     </Tooltip>
                   </Checkbox>
                 </form>

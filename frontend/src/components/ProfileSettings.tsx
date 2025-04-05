@@ -6,10 +6,11 @@ import {
   FormLabel,
   Text,
   Spinner,
+  Tooltip,
 } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { useAuth } from '../lib/AuthContext';
-import { useGetAllPacksQuery, useGetProfileQuery, useSetPackCollectionMutation, useSetPrivateDecksMutation } from '../generated/graphql/apollo-schema';
+import { useGetAllPacksQuery, useGetProfileQuery, useSetAdhereTaboosMutation, useSetPackCollectionMutation, useSetPrivateDecksMutation } from '../generated/graphql/apollo-schema';
 import useFirebaseFunction from '../lib/useFirebaseFunction';
 import LoadingPage from './LoadingPage';
 import DynamicCheckbox from './DynamicCheckbox';
@@ -17,9 +18,12 @@ import FriendRequestsComponent from './FriendRequests';
 import SolidButton from './SolidButton';
 import { useLocale } from '../lib/TranslationProvider';
 import { map, sortBy } from 'lodash';
+import { usePackSettings } from '../lib/PackSettingsContext';
 
 export default function ProfileSettings() {
   const { locale } = useLocale();
+  const packContext = usePackSettings();
+  const refreshPackCollection = packContext?.refresh;
   const [handle, setHandle] = useState('');
   const { data: packs, loading: packsLoading } = useGetAllPacksQuery({
     variables: {
@@ -37,7 +41,8 @@ export default function ProfileSettings() {
         pack_collection: collection,
       },
     });
-  }, [setPackCollection, authUser?.uid]);
+    refreshPackCollection?.()
+  }, [setPackCollection, refreshPackCollection, authUser?.uid]);
 
   const saveCollectionRef = useRef(saveCollectionUpdates);
   useEffect(() => {
@@ -104,7 +109,17 @@ export default function ProfileSettings() {
         privateDecks: !value,
       },
     });
-  }, [authUser, setPrivateDecks]);
+    refreshPackCollection?.();
+  }, [authUser, setPrivateDecks, refreshPackCollection]);
+  const [setAdhereTaboos] = useSetAdhereTaboosMutation();
+  const onTabooChange = useCallback(async(value: boolean) => {
+    await setAdhereTaboos({
+      variables: {
+        userId: authUser?.uid || '',
+        adhereTaboos: value,
+      },
+    });
+  }, [authUser, setAdhereTaboos]);
   const packCollection = useMemo(() => {
     return new Set<string>(currentCollection);
   },[currentCollection]);
@@ -154,12 +169,22 @@ export default function ProfileSettings() {
           </form>
           <FormControl marginTop="1em">
             <FormLabel htmlFor="handle">{t`Settings`}</FormLabel>
-            <DynamicCheckbox
-              isChecked={!data?.settings?.private_decks}
-              onChange={onPrivateDecksChange}
-            >
-              {t`Allow people to view my decks`}
-            </DynamicCheckbox>
+            <Flex direction="column">
+              <DynamicCheckbox
+                isChecked={!data?.settings?.private_decks}
+                onChange={onPrivateDecksChange}
+              >
+                {t`Allow people to view my decks`}
+              </DynamicCheckbox>
+              <DynamicCheckbox
+                isChecked={!!data?.settings?.adhere_taboos}
+                onChange={onTabooChange}
+              >
+                <Tooltip label={t`The Elder's Book of Uncommon Wisdom is a list of rebalanced Ranger cards with optional text changes. These changes are designed to maintain a healthy and balanced cardpool, and to increase deck diversity by encouraging players to build decks with underutilized cards instead of common staples.`}>
+                  {t`Follow the Elder's Book of Uncommon Wisdom `}
+                </Tooltip>
+              </DynamicCheckbox>
+            </Flex>
           </FormControl>
 
           <FormControl marginTop="1em">
