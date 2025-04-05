@@ -2,10 +2,59 @@ import React, { useCallback, useState, useMemo } from 'react';
 import { Box, FormControl, Text, Flex, IconButton, Input, Spinner, List, ListItem } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { SearchIcon } from '@chakra-ui/icons';
-import { map } from 'lodash';
+import { forEach, map, trim } from 'lodash';
 
-import useFirebaseFunction from '../lib/useFirebaseFunction';
 import { BasicUser, FriendAction, FriendLine } from './FriendRequests';
+import { useSearchHandlesLazyQuery } from '../generated/graphql/apollo-schema';
+import { ApolloError } from '@apollo/client';
+
+
+function normalizeHandle(handle: string) {
+  return trim(handle.replace(/[.$[\]#\/]/g, '_').toLowerCase());
+}
+
+function useSearchUsers(): (search: string) => Promise<SearchResults> {
+  const [searchFriends, data] = useSearchHandlesLazyQuery({
+    variables: {
+      normalizedHandle: '',
+      normalizedHandleStart: '',
+    },
+  });
+
+  return useCallback(async(search: string) => {
+    const normalizedSearch = normalizeHandle(search);
+    const results = await searchFriends({
+      variables: {
+        normalizedHandle: `%${normalizedSearch}%`,
+        normalizedHandleStart: `${normalizedSearch}%`,
+      }
+    });
+
+    const users: BasicUser[] = [];
+    forEach(results.data?.startMatch, (user) => {
+      users.push({
+        id: user.id,
+        handle: user.handle || undefined,
+      });
+    });
+    const alreadyFound = new Set(map(users, u => u.id));
+    const fuzzyUsers: BasicUser[] = [];
+    forEach(results.data?.looseMatch, (user) => {
+      if (!alreadyFound.has(user.id)) {
+        fuzzyUsers.push({
+          id: user.id,
+          handle: user.handle || undefined,
+        });
+      }
+    });
+
+    return {
+      users,
+      fuzzyUsers,
+      hasMore: users.length === 20,
+    };
+  }, [searchFriends]);
+}
 
 interface SearchResults {
   users: BasicUser[];
@@ -17,8 +66,8 @@ export default function FriendSearch({ sendFriendRequest }: {
   sendFriendRequest: (userId: string) => Promise<string | undefined>;
   paddingLeft?: number;
 }) {
-  const [searchFriends, searchError] = useFirebaseFunction<{ search: string }, SearchResults>('social-searchUsers');
   const [liveFriendRequests, setLiveFriendRequests] = useState<{[userId: string]: boolean | undefined}>({});
+  const searchFriends = useSearchUsers();
   const sendRequest = useCallback(async (userId: string) => {
     const error = await sendFriendRequest(userId);
     if (error) {
@@ -42,11 +91,21 @@ export default function FriendSearch({ sendFriendRequest }: {
   const [search, setSearch] = useState('');
   const [searching, setSearching] = useState(false);
   const [results, setResults] = useState<SearchResults | undefined>();
+  const [searchError, setSearchError] = useState<string | undefined>(undefined);
   const doSearch = useCallback(async () => {
+    if (search.length < 2) {
+      return;
+    }
     setSearching(true);
-    const r = await searchFriends({ search });
-    if (r.success) {
-      setResults(r.data);
+    try {
+      const data = await searchFriends(search);
+    setResults(data);
+    } catch (e) {
+      if (e instanceof ApolloError) {
+        setSearchError(e.message);
+      } else {
+        setSearchError('Unable to search users');
+      }
     }
     setSearching(false);
   }, [search, setResults, searchFriends]);

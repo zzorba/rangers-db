@@ -60,3 +60,53 @@ query getProfileByHandle($handle: String!) {
     ...UserProfile
   }
 }
+
+mutation updateFriendRequest($userId: String!, $action: String!) {
+  rangers_update_friend_request(
+    args: {
+      target_user_id: $userId,
+      action: $action
+    }
+  ) {
+  	id
+  }
+}
+
+mutation setHandle($handle: String!) {
+  rangers_set_handle(
+    args: {
+      handle: $handle
+    }
+  ) {
+    id
+    handle
+  }
+}
+
+
+query searchHandles(
+  $normalizedHandle: String!,
+  $normalizedHandleStart: String!,
+  $offset: Int
+) {
+  startMatch: rangers_users(
+    where: {
+			normalized_handle: { _ilike: $normalizedHandleStart }
+    }
+    limit: 20
+    offset: $offset
+  ) {
+    id
+    handle
+  }
+  looseMatch: rangers_users(
+    where: {
+			normalized_handle: { _ilike: $normalizedHandle }
+    }
+    limit: 20
+    offset: $offset
+  ) {
+    id
+    handle
+  }
+}

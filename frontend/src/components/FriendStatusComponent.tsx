@@ -2,8 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { find } from 'lodash';
 import { t } from '@lingui/macro';
 
-import { Friend_Status_Type_Enum, UserProfileFragment } from '../generated/graphql/apollo-schema';
-import useFirebaseFunction from '../lib/useFirebaseFunction';
+import { Friend_Status_Type_Enum, UserProfileFragment, useUpdateFriendRequestMutation } from '../generated/graphql/apollo-schema';
 import SubmitButton from './SubmitButton';
 
 interface Props {
@@ -29,11 +28,11 @@ export default function FriendStatusComponent({ profile, userId, authUserId, ref
     }
     return Friend_Status_Type_Enum.None;
   }, [profile, authUserId]);
-  const [updateFriendRequest] = useFirebaseFunction('social-updateFriendRequest');
+  const [updateFriendRequest] = useUpdateFriendRequestMutation();
   const onSubmit = useCallback(async (action: 'request' | 'revoke') => {
-    const response = await updateFriendRequest({ userId, action });
-    if (response.error) {
-      throw new Error(response.error);
+    const response = await updateFriendRequest({ variables: { userId, action } });
+    if (response.errors) {
+      throw new Error(response.errors.toString());
     }
     refreshProfile();
     return undefined;

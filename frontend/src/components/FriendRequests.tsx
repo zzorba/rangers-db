@@ -5,11 +5,11 @@ import { t } from '@lingui/macro';
 import { SlPlus, SlMinus, SlCheck } from 'react-icons/sl';
 
 import ListHeader from './ListHeader';
-import { UserInfoFragment, UserProfileFragment } from '../generated/graphql/apollo-schema';
-import useFirebaseFunction from '../lib/useFirebaseFunction';
+import { UserInfoFragment, UserProfileFragment, useUpdateFriendRequestMutation } from '../generated/graphql/apollo-schema';
 import FriendSearch from './FriendSearch';
 import { useTheme } from '../lib/ThemeContext';
 import { SubmitIconButton } from './SubmitButton';
+import { ApolloError } from '@apollo/client';
 
 interface Props {
   profile?: UserProfileFragment;
@@ -95,14 +95,21 @@ export default function FriendRequestsComponent({
   friendActions,
   paddingLeft,
 }: Props) {
-  const [updateFriendRequest, error] = useFirebaseFunction('social-updateFriendRequest');
+  const [updateFriendRequest] = useUpdateFriendRequestMutation();
   const onSubmit = useCallback(async (userId: string, action: 'request' | 'revoke') => {
-    const r = await updateFriendRequest({ userId, action });
-    if (r.error) {
-      return r.error;
+    try {
+      const r = await updateFriendRequest({ variables: { userId, action } });
+      if (r.errors) {
+        return r.errors.toString();
+      }
+      refreshProfile();
+      return undefined;
+    } catch (e) {
+      if (e instanceof ApolloError) {
+        return e.message;
+      }
+      return 'Unknown error';
     }
-    refreshProfile();
-    return undefined;
   }, [updateFriendRequest, refreshProfile]);
   const sendFriendRequest = useCallback((userId: string) => {
     return onSubmit(userId, 'request');

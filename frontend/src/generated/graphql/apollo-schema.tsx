@@ -21663,6 +21663,8 @@ export type Mutation_Root = {
   rangers_remove_campaign_deck: Array<Rangers_Campaign>;
   /** execute VOLATILE function "rangers.set_campaign_deck" which returns "rangers.campaign" */
   rangers_set_campaign_deck: Array<Rangers_Campaign>;
+  /** execute VOLATILE function "rangers.set_handle" which returns "rangers.users" */
+  rangers_set_handle: Array<Rangers_Users>;
   /** execute VOLATILE function "rangers.update_friend_request" which returns "rangers.users" */
   rangers_update_friend_request: Array<Rangers_Users>;
   /** execute VOLATILE function "rangers.upgrade_deck" which returns "rangers.deck" */
@@ -25091,6 +25093,17 @@ export type Mutation_RootRangers_Set_Campaign_DeckArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Rangers_Campaign_Order_By>>;
   where?: InputMaybe<Rangers_Campaign_Bool_Exp>;
+};
+
+
+/** mutation root */
+export type Mutation_RootRangers_Set_HandleArgs = {
+  args: Rangers_Set_Handle_Args;
+  distinct_on?: InputMaybe<Array<Rangers_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Rangers_Users_Order_By>>;
+  where?: InputMaybe<Rangers_Users_Bool_Exp>;
 };
 
 
@@ -39475,6 +39488,10 @@ export enum Rangers_Set_Constraint {
   SetPkey = 'set_pkey'
 }
 
+export type Rangers_Set_Handle_Args = {
+  handle?: InputMaybe<Scalars['String']['input']>;
+};
+
 /** input type for incrementing numeric columns in table "rangers.set" */
 export type Rangers_Set_Inc_Input = {
   size?: InputMaybe<Scalars['Int']['input']>;
@@ -50977,6 +50994,30 @@ export type GetProfileByHandleQueryVariables = Exact<{
 
 export type GetProfileByHandleQuery = { __typename?: 'query_root', profile: Array<{ __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> }> };
 
+export type UpdateFriendRequestMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  action: Scalars['String']['input'];
+}>;
+
+
+export type UpdateFriendRequestMutation = { __typename?: 'mutation_root', rangers_update_friend_request: Array<{ __typename?: 'rangers_users', id: string }> };
+
+export type SetHandleMutationVariables = Exact<{
+  handle: Scalars['String']['input'];
+}>;
+
+
+export type SetHandleMutation = { __typename?: 'mutation_root', rangers_set_handle: Array<{ __typename?: 'rangers_users', id: string, handle?: string | null }> };
+
+export type SearchHandlesQueryVariables = Exact<{
+  normalizedHandle: Scalars['String']['input'];
+  normalizedHandleStart: Scalars['String']['input'];
+  offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type SearchHandlesQuery = { __typename?: 'query_root', startMatch: Array<{ __typename?: 'rangers_users', id: string, handle?: string | null }>, looseMatch: Array<{ __typename?: 'rangers_users', id: string, handle?: string | null }> };
+
 export type GetPackCollectionQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
@@ -53591,6 +53632,129 @@ export type GetProfileByHandleQueryHookResult = ReturnType<typeof useGetProfileB
 export type GetProfileByHandleLazyQueryHookResult = ReturnType<typeof useGetProfileByHandleLazyQuery>;
 export type GetProfileByHandleSuspenseQueryHookResult = ReturnType<typeof useGetProfileByHandleSuspenseQuery>;
 export type GetProfileByHandleQueryResult = Apollo.QueryResult<GetProfileByHandleQuery, GetProfileByHandleQueryVariables>;
+export const UpdateFriendRequestDocument = gql`
+    mutation updateFriendRequest($userId: String!, $action: String!) {
+  rangers_update_friend_request(args: {target_user_id: $userId, action: $action}) {
+    id
+  }
+}
+    `;
+export type UpdateFriendRequestMutationFn = Apollo.MutationFunction<UpdateFriendRequestMutation, UpdateFriendRequestMutationVariables>;
+
+/**
+ * __useUpdateFriendRequestMutation__
+ *
+ * To run a mutation, you first call `useUpdateFriendRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateFriendRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateFriendRequestMutation, { data, loading, error }] = useUpdateFriendRequestMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      action: // value for 'action'
+ *   },
+ * });
+ */
+export function useUpdateFriendRequestMutation(baseOptions?: Apollo.MutationHookOptions<UpdateFriendRequestMutation, UpdateFriendRequestMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateFriendRequestMutation, UpdateFriendRequestMutationVariables>(UpdateFriendRequestDocument, options);
+      }
+export type UpdateFriendRequestMutationHookResult = ReturnType<typeof useUpdateFriendRequestMutation>;
+export type UpdateFriendRequestMutationResult = Apollo.MutationResult<UpdateFriendRequestMutation>;
+export type UpdateFriendRequestMutationOptions = Apollo.BaseMutationOptions<UpdateFriendRequestMutation, UpdateFriendRequestMutationVariables>;
+export const SetHandleDocument = gql`
+    mutation setHandle($handle: String!) {
+  rangers_set_handle(args: {handle: $handle}) {
+    id
+    handle
+  }
+}
+    `;
+export type SetHandleMutationFn = Apollo.MutationFunction<SetHandleMutation, SetHandleMutationVariables>;
+
+/**
+ * __useSetHandleMutation__
+ *
+ * To run a mutation, you first call `useSetHandleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetHandleMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [setHandleMutation, { data, loading, error }] = useSetHandleMutation({
+ *   variables: {
+ *      handle: // value for 'handle'
+ *   },
+ * });
+ */
+export function useSetHandleMutation(baseOptions?: Apollo.MutationHookOptions<SetHandleMutation, SetHandleMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SetHandleMutation, SetHandleMutationVariables>(SetHandleDocument, options);
+      }
+export type SetHandleMutationHookResult = ReturnType<typeof useSetHandleMutation>;
+export type SetHandleMutationResult = Apollo.MutationResult<SetHandleMutation>;
+export type SetHandleMutationOptions = Apollo.BaseMutationOptions<SetHandleMutation, SetHandleMutationVariables>;
+export const SearchHandlesDocument = gql`
+    query searchHandles($normalizedHandle: String!, $normalizedHandleStart: String!, $offset: Int) {
+  startMatch: rangers_users(
+    where: {normalized_handle: {_ilike: $normalizedHandleStart}}
+    limit: 20
+    offset: $offset
+  ) {
+    id
+    handle
+  }
+  looseMatch: rangers_users(
+    where: {normalized_handle: {_ilike: $normalizedHandle}}
+    limit: 20
+    offset: $offset
+  ) {
+    id
+    handle
+  }
+}
+    `;
+
+/**
+ * __useSearchHandlesQuery__
+ *
+ * To run a query within a React component, call `useSearchHandlesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchHandlesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchHandlesQuery({
+ *   variables: {
+ *      normalizedHandle: // value for 'normalizedHandle'
+ *      normalizedHandleStart: // value for 'normalizedHandleStart'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useSearchHandlesQuery(baseOptions: Apollo.QueryHookOptions<SearchHandlesQuery, SearchHandlesQueryVariables> & ({ variables: SearchHandlesQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SearchHandlesQuery, SearchHandlesQueryVariables>(SearchHandlesDocument, options);
+      }
+export function useSearchHandlesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchHandlesQuery, SearchHandlesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SearchHandlesQuery, SearchHandlesQueryVariables>(SearchHandlesDocument, options);
+        }
+export function useSearchHandlesSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<SearchHandlesQuery, SearchHandlesQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SearchHandlesQuery, SearchHandlesQueryVariables>(SearchHandlesDocument, options);
+        }
+export type SearchHandlesQueryHookResult = ReturnType<typeof useSearchHandlesQuery>;
+export type SearchHandlesLazyQueryHookResult = ReturnType<typeof useSearchHandlesLazyQuery>;
+export type SearchHandlesSuspenseQueryHookResult = ReturnType<typeof useSearchHandlesSuspenseQuery>;
+export type SearchHandlesQueryResult = Apollo.QueryResult<SearchHandlesQuery, SearchHandlesQueryVariables>;
 export const GetPackCollectionDocument = gql`
     query getPackCollection($id: String!) {
   settings: rangers_user_settings_by_pk(user_id: $id) {

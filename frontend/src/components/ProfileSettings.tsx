@@ -10,8 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { useAuth } from '../lib/AuthContext';
-import { useGetAllPacksQuery, useGetProfileQuery, useSetAdhereTaboosMutation, useSetPackCollectionMutation, useSetPrivateDecksMutation } from '../generated/graphql/apollo-schema';
-import useFirebaseFunction from '../lib/useFirebaseFunction';
+import { useGetAllPacksQuery, useGetProfileQuery, useSetAdhereTaboosMutation, useSetHandleMutation, useSetPackCollectionMutation, useSetPrivateDecksMutation } from '../generated/graphql/apollo-schema';
 import LoadingPage from './LoadingPage';
 import DynamicCheckbox from './DynamicCheckbox';
 import FriendRequestsComponent from './FriendRequests';
@@ -19,6 +18,7 @@ import SolidButton from './SolidButton';
 import { useLocale } from '../lib/TranslationProvider';
 import { map, sortBy } from 'lodash';
 import { usePackSettings } from '../lib/PackSettingsContext';
+import { ApolloError } from '@apollo/client';
 
 export default function ProfileSettings() {
   const { locale } = useLocale();
@@ -89,13 +89,18 @@ export default function ProfileSettings() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
-  const [doSetHandle, setHandleError] = useFirebaseFunction<{ handle: string }>('social-updateHandle');
+  const [doSetHandle] = useSetHandleMutation();
+  const [handleErrors, setHandleErrors] = useState<string>();
   const submitHandle = useCallback(async () => {
-    const r = await doSetHandle({ handle });
-    if (r?.success) {
+    try {
+      await doSetHandle({ variables: { handle } });
       refetch({ id: authUser?.uid})
+    } catch (e) {
+      if (e instanceof ApolloError) {
+        setHandleErrors(e.message);
+      }
     }
-  }, [doSetHandle, handle, authUser, refetch]);
+  }, [doSetHandle, handle, authUser, refetch, setHandleErrors]);
   useEffect(() => {
     if (data?.profile?.handle) {
       setHandle(data.profile.handle);
@@ -158,13 +163,13 @@ export default function ProfileSettings() {
                   value={handle}
                   onChange={e => setHandle(e.target.value)}
                   placeholder={t`Choose handle`}
-                  borderColor={setHandleError ? 'red' : undefined}
+                  borderColor={handleErrors ? 'red' : undefined}
                 />
                 { (data?.profile?.handle || '') !== handle && (
                   <SolidButton color="blue" marginLeft={2} onClick={submitHandle}>{t`Save`}</SolidButton>
                 )}
               </Flex>
-              { !!setHandleError && <Text color="red.500">{setHandleError}</Text> }
+              { !!handleErrors && <Text color="red.500">{handleErrors}</Text> }
             </FormControl>
           </form>
           <FormControl marginTop="1em">
