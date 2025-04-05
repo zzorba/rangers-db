@@ -134,7 +134,7 @@ export function getDeckErrors(): DeckErrorTranslations {
     role: t`You must choose a role card.`,
     outside_interest: t`Not enough outside interest cards.`,
     invalid_background: t`Contains too many cards that do not match your chosen background.`,
-    invalid_specialty: t`Contains too many cards that do not match your chosen background.`,
+    invalid_specialty: t`Contains too many cards that do not match your chosen specialty.`,
     invalid_role: t`Your role card does not match your chosen specialty.`,
     invalid_aspect_levels: t`Your deck contains cards with aspect requirements that are not allowed.`,
     invalid_outside_interest: t`Your outside interest card cannot have the Expert trait.`,
