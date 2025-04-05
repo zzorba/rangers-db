@@ -5,7 +5,7 @@
     "update_ranks": "ts-node src/updateDeckRanks.ts"
   },
   "engines": {
-    "node": "16"
+    "node": "20"
   },
   "dependencies": {
     "cors": "^2.8.5",
