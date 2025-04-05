@@ -9,6 +9,7 @@ query getAllCards($locale: String!) {
   cards: rangers_card_localized(
     where: {
       locale: { _eq: $locale }
+      taboo_id: { _is_null: true }
     }
   ) {
     ...Card
@@ -25,6 +26,7 @@ query getRoleCards($locale: String!) {
     where: {
       locale: { _eq: $locale }
       type_id: { _eq: "role" }
+      taboo_id: { _is_null: true }
     }
   ) {
     ...Card
@@ -36,6 +38,7 @@ query getCard($locale: String!, $cid: String!) {
     where: {
       locale: { _eq: $locale }
       id: { _eq: $cid }
+      taboo_id: { _is_null: true }
     }
   ) {
     ...Card
@@ -65,7 +68,6 @@ query getSetNames($locale: String!) {
   sets: rangers_set_type_localized(
     where: {
       locale: { _eq: $locale }
-
     }
     order_by: { id: desc }
   ) {

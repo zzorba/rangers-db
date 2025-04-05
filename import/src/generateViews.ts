@@ -213,6 +213,75 @@ if (updatedClauses.length) {
     ;`
   );
 }
+
+console.log(
+  `
+  CREATE OR REPLACE FUNCTION rangers.card_search(search text DEFAULT NULL::text, locale text DEFAULT 'en'::text, type_in text[] DEFAULT NULL::text[], pack_in text[] DEFAULT NULL::text[], aspect_in text[] DEFAULT NULL::text[], set_in text[] DEFAULT NULL::text[], level_eq integer DEFAULT NULL::integer, level_lt integer DEFAULT NULL::integer, level_gt integer DEFAULT NULL::integer, search_traits boolean DEFAULT NULL::boolean, search_text boolean DEFAULT NULL::boolean, search_flavor boolean DEFAULT NULL::boolean, _limit integer DEFAULT 10, _offset integer DEFAULT 0)
+ RETURNS SETOF rangers.card_localized
+ LANGUAGE plpgsql
+ STABLE
+AS $function$
+#variable_conflict use_variable
+DECLARE
+  the_limit integer;
+BEGIN
+    if _limit < 25 then
+      the_limit = _limit;
+    else
+      the_limit = 25;
+    end if;
+
+    RETURN QUERY SELECT
+      c.*
+    FROM
+      rangers.card_localized c,
+      websearch_to_tsquery(search) query
+    WHERE
+      c.locale = locale
+      AND (
+        type_in is null
+        or c.type_id=ANY(type_in)
+      )
+      AND (
+        pack_in is null
+        or c.pack_id=ANY(pack_in)
+      )
+      and (
+        aspect_in is null
+        or c.aspect_id=ANY(aspect_in)
+      )
+      and (
+        set_in is null
+        or c.set_id=ANY(set_in)
+      )
+      and (
+        level_eq is null
+        or c.level = level_eq
+      )
+      and (
+        level_lt is null
+        or c.level < level_lt
+      )
+      and (
+        level_gt is null
+        or c.level > level_gt
+      )
+      and (
+        search IS NULL OR
+        to_tsvector(name) @@ query OR
+        (search_traits AND to_tsvector(traits) @@ query) OR
+        (search_text AND to_tsvector("text") @@ query) OR
+        (search_text AND to_tsvector(sun_challenge) @@ query) OR
+        (search_text AND to_tsvector(crest_challenge) @@ query) OR
+        (search_text AND to_tsvector(mountain_challenge) @@ query) OR
+        (search_flavor AND to_tsvector(flavor) @@ query)
+      )
+    ORDER BY id
+    LIMIT the_limit
+    OFFSET _offset;
+END;
+$function$
+  `)
 forEach(TABLES, (table, name) => {
   console.log(`REFRESH MATERIALIZED VIEW ${tableName(`${name}_localized`)};`);
 });
