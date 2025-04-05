@@ -11,6 +11,8 @@ import { useLocale } from '../../lib/TranslationProvider';
 import SearchDecks from '../../components/SearchDecks';
 import { useRoleCardsMap } from '../../lib/cards';
 import { getLocalizationServerSideProps } from '../../lib/Lingui';
+import DynamicCheckbox from '../../components/DynamicCheckbox';
+import { CURRENT_TABOO_SET } from '../../components/CardList';
 
 function CategorySelect({ category, onChange }: { category: CategoryTranslation; onChange: (selection: string[]) => void }) {
   const options = useMemo(() => {
@@ -52,14 +54,14 @@ function RoleSelect({ roleCards, onChange, roles, specialty }: {
     return map(
       groupBy(
         flatMap(values(roleCards), (card) => {
-          if (!card || !card.set_id || card.type_id !== 'role' || !card.id || !card.name) {
+          if (!card || !card.set_id || card.type_id !== 'role' || !card.code || !card.name) {
             return [];
           }
-          if (specialtySet && !specialtySet.has(card.set_id) && (!roleSet || !roleSet.has(card.id))) {
+          if (specialtySet && !specialtySet.has(card.set_id) && (!roleSet || !roleSet.has(card.code))) {
             return [];
           }
           return {
-            value: card?.id,
+            value: card?.code,
             label: card.name,
             card: card,
           };
@@ -89,6 +91,7 @@ function RoleSelect({ roleCards, onChange, roles, specialty }: {
 }
 
 export default function Search() {
+  const [tabooSetId, setTabooSetId] = useState<string>();
   const [userId, setUserId] = useState<string>();
   const [foc, setFoc] = useState<number>();
   const [fit, setFit] = useState<number>();
@@ -97,7 +100,7 @@ export default function Search() {
   const [background, setBackground] = useState<string[]>();
   const [specialty, setSpecialty] = useState<string[]>();
   const [roles, setRole] = useState<string[]>();
-  const roleCards = useRoleCardsMap();
+  const roleCards = useRoleCardsMap(undefined);
   const { categories } = useLocale();
   const backgroundT = categories.background;
   const specialtyT = categories.specialty;
@@ -115,9 +118,14 @@ export default function Search() {
         { !!backgroundT && <CategorySelect category={backgroundT} onChange={setBackground} /> }
         { !!specialtyT && <CategorySelect category={specialtyT} onChange={setSpecialty} /> }
         <RoleSelect roleCards={roleCards} roles={roles} onChange={setRole} specialty={specialty} />
+        <FormControl>
+          <FormLabel>{t`Restrictions`}</FormLabel>
+          <DynamicCheckbox isChecked={!!tabooSetId} onChange={async (value: boolean) => setTabooSetId(value ? CURRENT_TABOO_SET : undefined)}>
+            {t`Elder's Book of Uncommon Wisdom`}
+          </DynamicCheckbox>
+        </FormControl>
       </form>
       <SearchDecks
-        roleCards={roleCards}
         background={background}
         specialty={specialty}
         roles={roles}
@@ -125,6 +133,7 @@ export default function Search() {
         spi={spi}
         foc={foc}
         fit={fit}
+        tabooSetId={tabooSetId}
         userId={userId}
         pageSize={5}
         emptyMessage={t`No matching decks.`}

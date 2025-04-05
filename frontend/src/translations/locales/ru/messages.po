@@ -40,6 +40,9 @@ msgstr "{0} из {1}"
 msgid "{background} - {specialty} (Starter)"
 msgstr "{background} - {specialty} (Стартовый)"
 
+msgid "{nonCollectionCardCount, plural, one {Show {nonCollectionCardCount} non-collection} other {Show {nonCollectionCardCount} non-collection}}"
+msgstr ""
+
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 msgstr "{otherErrorCount, plural, one {+ ещё {otherErrorCount} проблема} few {+ ещё {otherErrorCount} проблемы} other {+ ещё {otherErrorCount} проблем}}"
 
@@ -100,11 +103,17 @@ msgstr "Уже есть аккаунт? <0>Войти</0>."
 msgid "Ancestor's Grove"
 msgstr "Роща предков"
 
+msgid "Ancient Ruins"
+msgstr ""
+
 msgid "Approach"
 msgstr "Подход"
 
 msgid "Approach icons"
 msgstr "Символы подхода"
+
+msgid "Arboretum of Memory"
+msgstr ""
 
 msgid "Archeological Outpost"
 msgstr "Застава археологов"
@@ -163,6 +172,9 @@ msgstr "Солнечный бассейн"
 msgid "Branch"
 msgstr "Ветви"
 
+msgid "Branching Artery"
+msgstr ""
+
 msgid "Camp"
 msgstr "Разбить лагерь"
 
@@ -187,6 +199,9 @@ msgstr "Отменить запрос в друзья"
 msgid "Cancel Friendship"
 msgstr "Удалить из друзей"
 
+msgid "Carbonforged Maze"
+msgstr ""
+
 msgid "Card set"
 msgstr "Набор карт"
 
@@ -197,6 +212,12 @@ msgid "Cards that are removed from your deck will be stored here. They can be sw
 msgstr "Карты, удаленные из вашей колоды, будут храниться здесь. Их можно будет вернуть в колоду, когда вы разбиваете лагерь."
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr ""
+
+msgid "Cave System"
+msgstr ""
+
+msgid "Cerulean Curtain"
 msgstr ""
 
 msgid "Changes"
@@ -286,8 +307,8 @@ msgstr "Зачёркнуто"
 msgid "Crossroads Station"
 msgstr "Станция Перекрёсток"
 
-msgid "Current location: {0}"
-msgstr "Текущая локация: {0}"
+msgid "Current location:"
+msgstr ""
 
 msgid "Current Position"
 msgstr "Местоположение"
@@ -313,6 +334,9 @@ msgstr "Поиск колоды"
 msgid "Decklists"
 msgstr "Деклисты"
 
+msgid "Deep Roots"
+msgstr ""
+
 msgid "Delete"
 msgstr "Удалить"
 
@@ -337,6 +361,9 @@ msgstr "Описание"
 msgid "Descriptions support basic markdown and html formatting."
 msgstr "Описания поддерживают базовое форматирование в формате markdown и html."
 
+msgid "Desert of Endless Night"
+msgstr ""
+
 msgid "Discard changes"
 msgstr "Отменить изменения"
 
@@ -351,6 +378,9 @@ msgstr "Редактирование завершено"
 
 msgid "Downpour"
 msgstr "Ливень"
+
+msgid "Drenching Chamber"
+msgstr ""
 
 msgid "Duplicate this deck while preserving the original."
 msgstr "Продублируйте эту колоду, сохранив оригинал."
@@ -378,6 +408,9 @@ msgstr "Редактирование заметки"
 
 msgid "Edit players"
 msgstr "Редактирование игроков"
+
+msgid "Elder's Book of Uncommon Wisdom"
+msgstr ""
 
 msgid "Email"
 msgstr "Почта"
@@ -415,6 +448,9 @@ msgstr "Фильтр по набору карты"
 msgid "Filter by card type"
 msgstr "Фильтр по типу карты"
 
+msgid "Filter by pack"
+msgstr ""
+
 msgid "Filter by Role"
 msgstr "Фильтр по роли"
 
@@ -430,11 +466,20 @@ msgstr "ВЫН"
 msgid "Fitness"
 msgstr "Выносливость"
 
+msgid "Flooded Passage"
+msgstr ""
+
+msgid "Flooded Ruins"
+msgstr ""
+
 msgid "FOC"
 msgstr "КОН"
 
 msgid "Focus"
 msgstr "Концентрация"
+
+msgid "Follow the Elder's Book of Uncommon Wisdom"
+msgstr ""
 
 msgid "Forgot Password"
 msgstr "Забыл пароль"
@@ -444,6 +489,9 @@ msgstr "Запросы в друзья"
 
 msgid "Friends"
 msgstr "Друзья"
+
+msgid "Fungal Forest"
+msgstr ""
 
 msgid "General"
 msgstr "Общее"
@@ -469,6 +517,9 @@ msgstr "Никнейм"
 msgid "Headwaters Station"
 msgstr "База Верховодье"
 
+msgid "Hide"
+msgstr ""
+
 msgid "Hide spoilers"
 msgstr "Скрыть спойлеры"
 
@@ -490,6 +541,9 @@ msgstr ""
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr ""
 
+msgid "Inverted Forest"
+msgstr ""
+
 msgid "Italian"
 msgstr "Итальянский"
 
@@ -507,6 +561,9 @@ msgstr "Язык"
 
 msgid "Leave campaign"
 msgstr "Покинуть кампанию"
+
+msgid "Legacy of the Ancestors"
+msgstr ""
 
 msgid "Light mode"
 msgstr "Светлая тема"
@@ -528,6 +585,9 @@ msgstr "Локация"
 
 msgid "Locations"
 msgstr "Локации"
+
+msgid "Locked Passage"
+msgstr ""
 
 msgid "Login"
 msgstr "Вход"
@@ -570,6 +630,9 @@ msgstr "Мои кампании"
 
 msgid "My Decks"
 msgstr "Мои колоды"
+
+msgid "Mycelial Conclave"
+msgstr ""
 
 msgid "Name"
 msgstr "Название"
@@ -649,6 +712,9 @@ msgstr "Примечание: эта кампания была создана д
 msgid "Notes"
 msgstr "Заметки"
 
+msgid "Oasis of Sunlight"
+msgstr ""
+
 msgid "Old-growth"
 msgstr "Реликтовый лес"
 
@@ -670,6 +736,9 @@ msgstr "Только одна черта может иметь значение 
 msgid "Only one aspect can be set to 3."
 msgstr "Только одна черта может иметь значение 3."
 
+msgid "Orlin's Vault"
+msgstr ""
+
 #. card_set_header
 msgid "Other"
 msgstr "Другие"
@@ -679,6 +748,12 @@ msgstr "Хобби"
 
 msgid "Outside interest cards cannot have the Expert trait."
 msgstr "Карты хобби не могут иметь признак."
+
+msgid "Overgrown Passage"
+msgstr ""
+
+msgid "Packs"
+msgstr ""
 
 msgid "Password"
 msgstr "Пароль"
@@ -791,6 +866,9 @@ msgstr "Ответ на комментарий"
 msgid "Request friend"
 msgstr "Запрос в друзья"
 
+msgid "Restrictions"
+msgstr ""
+
 msgid "Return a copy to the collection"
 msgstr "Верните копию в коллекцию"
 
@@ -820,6 +898,9 @@ msgstr "Сохранить"
 
 msgid "Save changes"
 msgstr "Сохранить изменения"
+
+msgid "Scuttler Network"
+msgstr ""
 
 msgid "Search by name"
 msgstr "Поиск по названию"
@@ -863,6 +944,9 @@ msgstr "Набор"
 msgid "Settings"
 msgstr "Настройки"
 
+msgid "Severed Artery"
+msgstr ""
+
 msgid "Share"
 msgstr "Поделиться"
 
@@ -886,6 +970,9 @@ msgstr "Выйти"
 
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
+
+msgid "Silent Dormitories"
+msgstr ""
 
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Некоторые события кампании могут позволить вам навсегда поменять карты из своей колоды на карты из коллекции."
@@ -929,6 +1016,12 @@ msgstr "Затонувшая застава"
 msgid "Swamp"
 msgstr "Болото"
 
+msgid "Talpid's Squeeze"
+msgstr ""
+
+msgid "Terminal Artery"
+msgstr ""
+
 msgid "Terrain"
 msgstr "Тип местности"
 
@@ -941,11 +1034,23 @@ msgstr "Текст"
 msgid "The Alluvial Ruins"
 msgstr "Россыпь руин"
 
+msgid "The Cage"
+msgstr ""
+
+msgid "The Chimney"
+msgstr ""
+
+msgid "The Cistern"
+msgstr ""
+
 msgid "The Concordant Ziggurats"
 msgstr "Созвучные зиккураты"
 
 msgid "The Cypress Citadel"
 msgstr "Кипарисовая цитадель"
+
+msgid "The Elder's Book of Uncommon Wisdom is a list of rebalanced Ranger cards with optional text changes. These changes are designed to maintain a healthy and balanced cardpool, and to increase deck diversity by encouraging players to build decks with underutilized cards instead of common staples."
+msgstr ""
 
 msgid "The Fractured Wall"
 msgstr "Разрушенная стена"
@@ -971,6 +1076,9 @@ msgstr "Философский сад"
 msgid "The Plummet"
 msgstr "Утёс"
 
+msgid "The Rootway"
+msgstr ""
+
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "В первые дни работы сайт может быть закрыт на техническое обслуживание, и данные могут быть потеряны."
 
@@ -979,6 +1087,9 @@ msgstr "Пропасть"
 
 msgid "The Valley"
 msgstr "Долина"
+
+msgid "The Verdant Sphere"
+msgstr ""
 
 msgid "There are too many cards with this card's name in your deck."
 msgstr "В вашей колоде слишком много карт с именем этой карты."

@@ -344,7 +344,7 @@ export default function parseDeck(
   ];
   const extraCards: CardFragment[] = flatMap(keys(extraSlots), (code) => {
     const card = cards[code];
-    if (extraSlots[code] && card && card.id) {
+    if (extraSlots[code] && card && card.code) {
       return card;
     }
     return [];

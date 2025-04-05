@@ -40,6 +40,9 @@ msgstr "{0} di {1}"
 msgid "{background} - {specialty} (Starter)"
 msgstr "{background} - {specialty} (Iniziale)"
 
+msgid "{nonCollectionCardCount, plural, one {Show {nonCollectionCardCount} non-collection} other {Show {nonCollectionCardCount} non-collection}}"
+msgstr ""
+
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 msgstr "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 
@@ -100,11 +103,17 @@ msgstr "Hai già un account? <0>Accedi</0> ora."
 msgid "Ancestor's Grove"
 msgstr "Boschetto degli Antenati"
 
+msgid "Ancient Ruins"
+msgstr ""
+
 msgid "Approach"
 msgstr ""
 
 msgid "Approach icons"
 msgstr "Icone Approccio"
+
+msgid "Arboretum of Memory"
+msgstr ""
 
 msgid "Archeological Outpost"
 msgstr "Avamposto Archeologico"
@@ -163,6 +172,9 @@ msgstr "Conca del Sole"
 msgid "Branch"
 msgstr "Fronda"
 
+msgid "Branching Artery"
+msgstr ""
+
 msgid "Camp"
 msgstr "Accampati"
 
@@ -187,6 +199,9 @@ msgstr "Annulla Richiesta Amicizia"
 msgid "Cancel Friendship"
 msgstr "Annulla Amicizia"
 
+msgid "Carbonforged Maze"
+msgstr ""
+
 msgid "Card set"
 msgstr "Set Carte"
 
@@ -197,6 +212,12 @@ msgid "Cards that are removed from your deck will be stored here. They can be sw
 msgstr "Le carte rimosse dal mazzo saranno conservate qui. Possono essere aggiunte nuovamente al mazzo quando ti accampi."
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr ""
+
+msgid "Cave System"
+msgstr ""
+
+msgid "Cerulean Curtain"
 msgstr ""
 
 msgid "Changes"
@@ -286,8 +307,8 @@ msgstr "Barrato"
 msgid "Crossroads Station"
 msgstr "Stazione di Callitraversi"
 
-msgid "Current location: {0}"
-msgstr "Posizione Attuale: {0}"
+msgid "Current location:"
+msgstr ""
 
 msgid "Current Position"
 msgstr "Posizione Attuale"
@@ -313,6 +334,9 @@ msgstr "Cerca mazzo"
 msgid "Decklists"
 msgstr "Liste mazzi"
 
+msgid "Deep Roots"
+msgstr ""
+
 msgid "Delete"
 msgstr "Cancella"
 
@@ -337,6 +361,9 @@ msgstr "Descrizione"
 msgid "Descriptions support basic markdown and html formatting."
 msgstr "Le descrizioni supportano il formato HTML e l'uso del markdown base."
 
+msgid "Desert of Endless Night"
+msgstr ""
+
 msgid "Discard changes"
 msgstr "Annulla cambiamenti"
 
@@ -351,6 +378,9 @@ msgstr "Conferma modifiche"
 
 msgid "Downpour"
 msgstr "Acquazzone"
+
+msgid "Drenching Chamber"
+msgstr ""
 
 msgid "Duplicate this deck while preserving the original."
 msgstr "Duplica questo mazzo (senza cancellare l'originale)."
@@ -378,6 +408,9 @@ msgstr ""
 
 msgid "Edit players"
 msgstr "Modifica giocatori"
+
+msgid "Elder's Book of Uncommon Wisdom"
+msgstr ""
 
 msgid "Email"
 msgstr "Email"
@@ -415,6 +448,9 @@ msgstr "Filtra per set carte"
 msgid "Filter by card type"
 msgstr "Filtra per tipo di carta"
 
+msgid "Filter by pack"
+msgstr ""
+
 msgid "Filter by Role"
 msgstr "Filtra per Ruolo"
 
@@ -430,11 +466,20 @@ msgstr "FIS"
 msgid "Fitness"
 msgstr "Fisico"
 
+msgid "Flooded Passage"
+msgstr ""
+
+msgid "Flooded Ruins"
+msgstr ""
+
 msgid "FOC"
 msgstr "CON"
 
 msgid "Focus"
 msgstr "Concentrazione"
+
+msgid "Follow the Elder's Book of Uncommon Wisdom"
+msgstr ""
 
 msgid "Forgot Password"
 msgstr "Password dimenticata"
@@ -444,6 +489,9 @@ msgstr "Richieste amicizia"
 
 msgid "Friends"
 msgstr "Amici"
+
+msgid "Fungal Forest"
+msgstr ""
 
 msgid "General"
 msgstr ""
@@ -469,6 +517,9 @@ msgstr "Soprannome"
 msgid "Headwaters Station"
 msgstr "Stazione delle Sorgenti"
 
+msgid "Hide"
+msgstr ""
+
 msgid "Hide spoilers"
 msgstr "Nascondi spoiler"
 
@@ -490,6 +541,9 @@ msgstr "Se desiderate venga corretto, posso pensarci io. Mandatemi un link alla 
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Se volete aiutare a supportare e mantenere questo sito, potete trovarci su {patreon}."
 
+msgid "Inverted Forest"
+msgstr ""
+
 msgid "Italian"
 msgstr "Italiano"
 
@@ -507,6 +561,9 @@ msgstr "Lingua"
 
 msgid "Leave campaign"
 msgstr "Abbandona campagna"
+
+msgid "Legacy of the Ancestors"
+msgstr ""
 
 msgid "Light mode"
 msgstr "Modalità giorno"
@@ -528,6 +585,9 @@ msgstr "Luogo"
 
 msgid "Locations"
 msgstr "Luoghi"
+
+msgid "Locked Passage"
+msgstr ""
 
 msgid "Login"
 msgstr "Accedi"
@@ -570,6 +630,9 @@ msgstr "Le mie Campagne"
 
 msgid "My Decks"
 msgstr "I miei Mazzi"
+
+msgid "Mycelial Conclave"
+msgstr ""
 
 msgid "Name"
 msgstr "Nome"
@@ -649,6 +712,9 @@ msgstr "Note : cette campagne a été crée avant que ce site n’enregistre ass
 msgid "Notes"
 msgstr ""
 
+msgid "Oasis of Sunlight"
+msgstr ""
+
 msgid "Old-growth"
 msgstr "Germoglio Antico"
 
@@ -670,6 +736,9 @@ msgstr "Solo un aspetto può essere impostato a 1."
 msgid "Only one aspect can be set to 3."
 msgstr "Solo un aspetto può essere impostato a 3."
 
+msgid "Orlin's Vault"
+msgstr ""
+
 #. card_set_header
 msgid "Other"
 msgstr "Altro"
@@ -679,6 +748,12 @@ msgstr "Interesse Personale"
 
 msgid "Outside interest cards cannot have the Expert trait."
 msgstr "Le carte interesse personale non possono possedere il tratto Esperto."
+
+msgid "Overgrown Passage"
+msgstr ""
+
+msgid "Packs"
+msgstr ""
 
 msgid "Password"
 msgstr "Password"
@@ -791,6 +866,9 @@ msgstr "Rispondi al commento"
 msgid "Request friend"
 msgstr "Richiedi amicizia"
 
+msgid "Restrictions"
+msgstr ""
+
 msgid "Return a copy to the collection"
 msgstr "Fai tornare una copia nella Collezione"
 
@@ -820,6 +898,9 @@ msgstr "Salva"
 
 msgid "Save changes"
 msgstr "Salva modifiche"
+
+msgid "Scuttler Network"
+msgstr ""
 
 msgid "Search by name"
 msgstr "Cerca per nome"
@@ -863,6 +944,9 @@ msgstr "Set"
 msgid "Settings"
 msgstr "Impostazioni"
 
+msgid "Severed Artery"
+msgstr ""
+
 msgid "Share"
 msgstr ""
 
@@ -886,6 +970,9 @@ msgstr "Disconnettiti"
 
 msgid "Sign Up"
 msgstr "Registrati"
+
+msgid "Silent Dormitories"
+msgstr ""
 
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Alcuni eventi della campagna potrebbero permetterti di scambiare in modo permanente delle carte dal tuo mazzo con altre dalla tua Collezione."
@@ -929,6 +1016,12 @@ msgstr "Avamposto Sommerso"
 msgid "Swamp"
 msgstr "Palude"
 
+msgid "Talpid's Squeeze"
+msgstr ""
+
+msgid "Terminal Artery"
+msgstr ""
+
 msgid "Terrain"
 msgstr ""
 
@@ -941,11 +1034,23 @@ msgstr ""
 msgid "The Alluvial Ruins"
 msgstr "Rovine Alluvionali"
 
+msgid "The Cage"
+msgstr ""
+
+msgid "The Chimney"
+msgstr ""
+
+msgid "The Cistern"
+msgstr ""
+
 msgid "The Concordant Ziggurats"
 msgstr "Le Ziggurat Risonanti"
 
 msgid "The Cypress Citadel"
 msgstr "La Cittadella di Cipresso"
+
+msgid "The Elder's Book of Uncommon Wisdom is a list of rebalanced Ranger cards with optional text changes. These changes are designed to maintain a healthy and balanced cardpool, and to increase deck diversity by encouraging players to build decks with underutilized cards instead of common staples."
+msgstr ""
 
 msgid "The Fractured Wall"
 msgstr "Il Muro Spezzato"
@@ -971,6 +1076,9 @@ msgstr "Il Giardino del Filosofo"
 msgid "The Plummet"
 msgstr "Il Precipizio"
 
+msgid "The Rootway"
+msgstr ""
+
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "In questa fase iniziale, è possibile che il sito divenga momentaneamente non disponibile causa manutenzione e che i dati possano andare persi."
 
@@ -978,6 +1086,9 @@ msgid "The Tumbledown"
 msgstr "Capitombolo"
 
 msgid "The Valley"
+msgstr ""
+
+msgid "The Verdant Sphere"
 msgstr ""
 
 msgid "There are too many cards with this card's name in your deck."

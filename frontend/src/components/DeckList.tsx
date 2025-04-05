@@ -18,12 +18,13 @@ import useDeleteDialog from './useDeleteDialog';
 import { useTheme } from '../lib/ThemeContext';
 import { useLocale } from '../lib/TranslationProvider';
 import UserLink from './UserLink';
+import { useCard } from '../lib/cards';
 
-export function DeckRow({ deck, roleCards, onDelete }: {
+export function DeckRow({ deck, onDelete }: {
   deck: DeckWithCampaignFragment;
-  roleCards: CardsMap;
   onDelete: (deck: DeckFragment) => void;
 }) {
+  const role = useCard(typeof deck.meta.role === 'string' ? deck.meta.role : undefined, deck.taboo_set_id ?? undefined);
   const { colorMode } = useColorMode();
   const { authUser } = useAuth();
   const doDelete = useCallback(() => {
@@ -31,9 +32,6 @@ export function DeckRow({ deck, roleCards, onDelete }: {
   }, [onDelete, deck]);
   const buttonOrientation = useBreakpointValue<'vertical' | 'horizontal'>(['vertical', 'vertical', 'horizontal']);
   const problem = !!deck.meta.problem && Array.isArray(deck.meta.problem) ? (deck.meta.problem as DeckError[])  : undefined;
-  const role = useMemo(() => {
-    return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
-  }, [deck.meta, roleCards]);
   const { colors } = useTheme();
 
   return (
@@ -65,7 +63,7 @@ export function DeckRow({ deck, roleCards, onDelete }: {
                     </Link>
                   </Flex>
                 )}
-                <DeckDescription fontSize={['xs', 'sm']}deck={deck} roleCards={roleCards} />
+                <DeckDescription fontSize={['xs', 'sm']}deck={deck} roleCard={role} />
                 { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
               </Flex>
             </Flex>
@@ -99,7 +97,7 @@ export function DeckRow({ deck, roleCards, onDelete }: {
               </Link>
             </Flex>
           )}
-          <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCards={roleCards} />
+          <DeckDescription fontSize={['xs', 's', 'm']}deck={deck} roleCard={role} />
           { !!problem && <DeckProblemComponent errors={problem} limit={1} />}
         </Flex>
       </Flex>
@@ -112,12 +110,10 @@ function deleteDeckMessage(d: DeckFragment) {
 }
 
 export default function DeckList({
-  roleCards,
   decks,
   refetch,
 }: {
   decks: DeckWithCampaignFragment[] | undefined;
-  roleCards: CardsMap;
   refetch: () => void;
 }) {
   const [doDelete] = useDeleteDeckMutation();
@@ -148,7 +144,6 @@ export default function DeckList({
           <DeckRow
             key={deck.id}
             deck={deck}
-            roleCards={roleCards}
             onDelete={onDelete}
           />
         )) }
@@ -159,15 +154,12 @@ export default function DeckList({
 }
 
 
-export function SearchDeckRow({ deck, roleCards, last }: {
+export function SearchDeckRow({ deck, last }: {
   deck: SearchDeckFragment;
-  roleCards: CardsMap;
   last?: boolean;
 }) {
   const { i18n } = useLocale();
-  const role = useMemo(() => {
-    return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
-  }, [deck.meta, roleCards]);
+  const role = useCard(typeof deck.meta.role === 'string' ? deck.meta.role : undefined, deck.taboo_set_id ?? undefined);
   const { colors } = useTheme();
   const socialProof = useMemo(() => {
     return (
@@ -227,7 +219,7 @@ export function SearchDeckRow({ deck, roleCards, last }: {
         <Flex direction="row" alignItems="flex-start" justifyContent="flex-start">
           <Flex flex={4} direction="row" alignItems="flex-start" as={NextLink} href={`/decks/view/${deck.id}`}>
             { !!role && !!role.imagesrc && (
-              <RoleImage name={role.name} url={role.imagesrc} size="large" />
+              <RoleImage name={role.name} url={role.imagesrc} size="large" includeTaboo={!!deck.taboo_set_id} />
             ) }
             <SimpleGrid columns={2} width="80px" minWidth="80px">
               <MiniAspect aspect="AWA" value={deck.awa} />
@@ -237,7 +229,7 @@ export function SearchDeckRow({ deck, roleCards, last }: {
             </SimpleGrid>
             <Flex direction="column" marginLeft={2}>
               <Text display={['none', 'block']} fontSize="md">{deck.name}</Text>
-              <DeckDescription fontSize="xs" deck={deck} roleCards={roleCards} />
+              <DeckDescription fontSize="xs" deck={deck} roleCard={role} />
               <UserLink user={deck.user} />
             </Flex>
           </Flex>
@@ -266,10 +258,9 @@ export function SearchDeckRow({ deck, roleCards, last }: {
 
 interface SearchDeckListProps {
   decks: SearchDeckFragment[] | undefined;
-  roleCards: CardsMap;
   emptyMessage: string;
 }
-export function SearchDeckList({ roleCards, decks, emptyMessage }: SearchDeckListProps) {
+export function SearchDeckList({ decks, emptyMessage }: SearchDeckListProps) {
   if (!decks?.length) {
     return <Text>{emptyMessage}</Text>
   }
@@ -279,7 +270,6 @@ export function SearchDeckList({ roleCards, decks, emptyMessage }: SearchDeckLis
         <SearchDeckRow
           key={deck.id}
           deck={deck}
-          roleCards={roleCards}
           last={index === decks.length - 1}
         />
       )) }

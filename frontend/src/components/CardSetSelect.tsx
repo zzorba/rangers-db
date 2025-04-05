@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 import { createFilter, Select, SingleValue } from 'chakra-react-select';
 import { find, flatMap, sortBy } from 'lodash';
@@ -8,6 +8,7 @@ import { useLocale } from '../lib/TranslationProvider';
 import { LocationIcon, PathIcon } from '../icons/LocationIcon';
 import { MapLocationOption } from './MapLocationSelect';
 import { PathOption } from './PathTypeSelect';
+import { CampaignContext } from './Campaign';
 
 interface CardSetGroupOption {
   readonly label: string;
@@ -19,7 +20,8 @@ interface Props {
   setValue: (value: string) => void;
 }
 export default function CardSetSelect({ value, setValue }: Props) {
-  const { locations, generalSets, paths } = useLocale();
+  const { generalSets, paths } = useLocale();
+  const { locations } = useContext(CampaignContext);
   const options: CardSetGroupOption[] = useMemo(() => {
     return [
       {

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last, sumBy, slice, zip, findIndex, extend } from 'lodash';
@@ -21,7 +21,7 @@ import FriendChooser from './FriendChooser';
 import ListHeader from './ListHeader';
 import CoreIcon from '../icons/CoreIcon';
 import { CompactDeckRow } from './Deck';
-import { CardsMap } from '../lib/hooks';
+import { CardsMap, INCLUDE_LOA, useMapLocations } from '../lib/hooks';
 import SubmitButton, { SubmitIconButton } from './SubmitButton';
 import { SlCheck, SlClose, SlMinus, SlPlus } from 'react-icons/sl';
 import { useLocale } from '../lib/TranslationProvider';
@@ -36,16 +36,17 @@ import { FaArrowRight, FaCalendar, FaMoon, FaSort, FaSun, FaTrash, FaUndo, FaWal
 import { GiCampingTent } from 'react-icons/gi';
 import { useTheme } from '../lib/ThemeContext';
 import PathTypeSelect from './PathTypeSelect';
-import { LocationIcon, PathIcon } from '../icons/LocationIcon';
+import { ConnectionRestrictionIcon, LocationIcon, PathIcon } from '../icons/LocationIcon';
 import MapLocationSelect from './MapLocationSelect';
 import CardSetSelect from './CardSetSelect';
-import { CampaignCycle, MapLocation } from '../types/types';
+import { CampaignCycle, MapLocation, MapLocations } from '../types/types';
 import MoonIconWithDate, { MoonIcon } from '../icons/MoonIcon';
 import SolidButton from './SolidButton';
 
 const STARTING_LOCATIONS: { [campaign: string]: string } = {
   demo: 'lone_tree_station',
   core: 'lone_tree_station',
+  loa: 'lone_tree_station',
 };
 
 interface MissionEntry {
@@ -83,6 +84,8 @@ interface HistoryEntry {
   path_terrain?: string;
   camped?: boolean;
 }
+
+export const CampaignContext = React.createContext<{ locations: MapLocations }>({ locations: {} });
 
 export interface ParsedCampaign {
   id: number;
@@ -169,7 +172,7 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
   onDelete?: (campaign: ParsedCampaign) => void;
 }) {
   const roleImageSize = useBreakpointValue<'small' | 'medium'>(['small', 'small', 'medium']);
-  const { locations } = useLocale();
+  const locations = useMapLocations(campaign.cycle_id);
   const currentLocation = useMemo(() => find(locations, loc => loc?.id === campaign.current_location), [campaign.current_location, locations])
   const roles = useMemo(() => {
     return flatMap(campaign.latest_decks, d => {
@@ -201,7 +204,7 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
             <Flex direction="row" alignItems="center">
               <LocationIcon location={currentLocation} size={58} />
               <Flex direction="column" marginLeft={2}>
-                <Text>{currentLocation.name}</Text>
+                <Text style={{ fontVariantCaps: 'small-caps' }}>{currentLocation.name}</Text>
                 <Text>{t`Day ${day}`}</Text>
               </Flex>
             </Flex>
@@ -212,7 +215,7 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
         <Flex direction="row" justifyContent="space-between">
           <SimpleGrid columns={[2, 2, 4]} as={NextLink} href={`/campaigns/${campaign.id}`}>
             { flatMap(roles, card => card.imagesrc ? (
-              <RoleImage key={card.id} name={card.name} url={card.imagesrc} size={roleImageSize} />
+              <RoleImage key={card.code} name={card.name} url={card.imagesrc} size={roleImageSize} />
             ) : [])}
           </SimpleGrid>
           <ButtonGroup>
@@ -274,7 +277,7 @@ export function CampaignList({ campaigns, roleCards, refetch }: { campaigns: Par
   )
 }
 
-function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }: { user: UserInfoFragment; campaign: ParsedCampaign; roleCards: CardsMap; showChooseDeck: () => void; removeDeck: (deck: DeckFragment) => void }) {
+function CampaignUser({ user, campaign, showChooseDeck, removeDeck }: { user: UserInfoFragment; campaign: ParsedCampaign; showChooseDeck: () => void; removeDeck: (deck: DeckFragment) => void }) {
   const { authUser } = useAuth();
   const decks = useMemo(() => map(filter(campaign.latest_decks, d => d.user?.id === user.id), d => d.deck), [campaign.latest_decks, user.id]);
   const [doLeaveCampaign] = useLeaveCampaignMutation();
@@ -296,7 +299,6 @@ function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }:
           <Flex direction="row" key={deck.id}>
             <CompactDeckRow
               deck={deck}
-              roleCards={roleCards}
               href={`/decks/view/${deck.id}`}
               buttons={authUser?.uid === deck.user_id && (
                 <ButtonGroup marginTop={1}>
@@ -345,8 +347,8 @@ function CampaignUser({ user, campaign, roleCards, showChooseDeck, removeDeck }:
 
 function RewardRow({ card, unlocked, onUpdate }: { card: CardFragment; unlocked: boolean; onUpdate: (code: string, unlocked: boolean) => Promise<string | undefined> }) {
   const onSubmit = useCallback(async () => {
-    if (card.id) {
-      return await onUpdate(card.id, !unlocked);
+    if (card.code) {
+      return await onUpdate(card.code, !unlocked);
     }
   }, [unlocked, onUpdate, card]);
   return (
@@ -418,7 +420,7 @@ function RewardsTab({ campaign, cards }: { campaign: ParsedCampaign; cards: Card
   return (
     <List>
       <ListHeader title={t`Available`} />
-      { map(unlockedRewards, c => <RewardRow key={c.id} unlocked card={c} onUpdate={toggleReward} />)}
+      { map(unlockedRewards, c => <RewardRow key={c.code} unlocked card={c} onUpdate={toggleReward} />)}
       <ListHeader title={t`All`} />
       <ListItem padding={2}>
         <form onSubmit={e => {
@@ -439,9 +441,9 @@ function RewardsTab({ campaign, cards }: { campaign: ParsedCampaign; cards: Card
       </ListItem>
       { map(visibleCards, c => (
         <RewardRow
-          key={c.id}
+          key={c.code}
           card={c}
-          unlocked={!!c.id && unlockedCodes.has(c.id)}
+          unlocked={!!c.code && unlockedCodes.has(c.code)}
           onUpdate={toggleReward}
         />
       )) }
@@ -939,7 +941,9 @@ function MissionsTab({ campaign }: { campaign: ParsedCampaign }) {
 }
 
 function RemoveRow({ remove, index, onRemove }: { remove: RemovedEntry; index: number; onRemove: (index: number) => Promise<string | undefined> }) {
-  const { paths, generalSets, locations } = useLocale();
+  const { paths, generalSets } = useLocale();
+
+  const { locations } = useContext(CampaignContext);
   const removeEntry = useCallback(() => {
     return onRemove(index);
   }, [index, onRemove]);
@@ -964,7 +968,7 @@ function RemoveRow({ remove, index, onRemove }: { remove: RemovedEntry; index: n
         { !!location && (
           <Flex direction="row" alignItems="center">
             <LocationIcon location={location} size={48} />
-            <Text marginLeft={2} fontSize="sm">{location.name}</Text>
+            <Text marginLeft={2} fontSize="sm" style={{ fontVariantCaps: 'small-caps' }}>{location.name}</Text>
           </Flex>
         ) }
       </Td>
@@ -1091,7 +1095,8 @@ interface TravelDay {
 }
 
 function TravelDayRow({ entry: { day, startingLocation, travel }, currentDay }: { entry: TravelDay; currentDay: number }) {
-  const { locations, paths } = useLocale();
+  const { paths } = useLocale();
+  const { locations } = useContext(CampaignContext);
   const start = startingLocation ? locations[startingLocation] : undefined;
   const finalLocationId = last(travel)?.location || startingLocation;
   const finalLocation = finalLocationId ? locations[finalLocationId] : undefined;
@@ -1159,7 +1164,7 @@ function TravelDayRow({ entry: { day, startingLocation, travel }, currentDay }: 
 }
 
 function TravelSummary({ historyEntry }: { historyEntry: HistoryEntry }) {
-  const { locations } = useLocale();
+  const { locations } = useContext(CampaignContext);
   const destination = historyEntry.location ? locations[historyEntry.location] : undefined;
   if (historyEntry.camped) {
     return (
@@ -1182,7 +1187,7 @@ function TravelSummary({ historyEntry }: { historyEntry: HistoryEntry }) {
 
 
 function EndDaySummary({ historyEntry, cycleId }: { historyEntry?: HistoryEntry; cycleId: string }) {
-  const { locations } = useLocale();
+  const { locations } = useContext(CampaignContext);
   const destination = locations[historyEntry?.location ?? STARTING_LOCATIONS[cycleId]];
   return (
     <Flex direction="row" alignItems="center">
@@ -1282,7 +1287,7 @@ function useUndoModal(campaign: ParsedCampaign): [() => void, boolean, React.Rea
 
 function useEndDayModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { locations } = useLocale();
+  const { locations } = useContext(CampaignContext);
   const showModal = useCallback(() => {
     onOpen();
   }, [onOpen]);
@@ -1316,7 +1321,9 @@ function useEndDayModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
           { !!currentLocation && (
             <Flex direction="column" alignItems="center">
               <LocationIcon location={currentLocation} size={58} />
-              <Text>{t`Current location: ${currentLocation.name}`}</Text>
+              <Text>{t`Current location:`}
+                <Text style={{ fontVariantCaps: 'small-caps' }}>{currentLocation.name}</Text>
+              </Text>
             </Flex>
           ) }
           <Text marginBottom={2}>
@@ -2024,11 +2031,7 @@ export function useShowChooseDeckModal(campaign: ParsedCampaign, refetchCampaign
               <List>
                 { map(decks, deck => (
                   <ListItem key={deck.id}>
-                    <CompactDeckRow
-                      deck={deck}
-                      roleCards={cards}
-                      onClick={onChooseDeck}
-                    />
+                    <CompactDeckRow deck={deck} onClick={onChooseDeck} />
                   </ListItem>
                 )) }
               </List>
@@ -2071,7 +2074,6 @@ function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampa
             key={user.id}
             user={user}
             campaign={campaign}
-            roleCards={cards}
             showChooseDeck={showChooseDeck}
             removeDeck={removeDeck}
           />
@@ -2089,7 +2091,8 @@ function CampaignRangersSection({ campaign, cards, showEditFriends, refetchCampa
 
 function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { locations, paths } = useLocale();
+  const { paths, restrictions } = useLocale();
+  const { locations } = useContext(CampaignContext);
   const [camp, setCamp] = useState<boolean>(false);
   const [location, setLocation] = useState<string>();
   const [terrain, setTerrain] = useState<string>();
@@ -2156,18 +2159,29 @@ function useTravelModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
       const connection = find(currentLocation.connections, con => con.id === loc.id);
       if (connection) {
         const path = find(paths, p => p?.id === connection.path);
-        if (path) {
-          return (
-            <Flex direction="row" alignItems="center" marginTop={1}>
-              <PathIcon path={path} size={24} />
-              <Text marginLeft={2} fontSize="sm">{path.name}</Text>
-            </Flex>
-          );
-        }
+        const restriction = find(restrictions, r => r?.id === connection.restriction);
+        return (
+          <Flex direction="column">
+            {!!restriction && (
+              <Flex direction="row" alignItems="center" marginTop={1}>
+                <Box marginBottom={2}>
+                  <ConnectionRestrictionIcon restriction={restriction} size={26} />
+                </Box>
+                <Text marginLeft={2} fontSize="sm">{restriction.name}</Text>
+              </Flex>
+            )}
+            {!!path && (
+              <Flex direction="row" alignItems="center" marginTop={1}>
+                <PathIcon path={path} size={24} />
+                <Text marginLeft={2} fontSize="sm">{path.name}</Text>
+              </Flex>
+            )}
+          </Flex>
+        );
       }
     }
     return null;
-  }, [currentLocation, paths]);
+  }, [currentLocation, paths, restrictions]);
   const selectedPath = useMemo(() => terrain ? find(paths, p => p?.id === terrain) : undefined, [paths, terrain]);
   return [
     onOpen,
@@ -2286,8 +2300,18 @@ interface CampaignDetailProps {
   refetchCampaign: () => Promise<void>;
 }
 
-export default function CampaignDetail({ campaign, refetchCampaign, showEditFriends, cards }: CampaignDetailProps) {
-  const { cycles, locations, paths } = useLocale();
+export default function CampaignDetail(props: CampaignDetailProps) {
+  const locations = useMapLocations(props.campaign.cycle_id);
+  const context = useMemo(() => ({ locations }), [locations]);
+  return (
+    <CampaignContext.Provider value={context}>
+      <CampaignDetailContent {...props} />
+    </CampaignContext.Provider>
+  );
+}
+function CampaignDetailContent({ campaign, refetchCampaign, showEditFriends, cards }: CampaignDetailProps) {
+  const { cycles, paths } = useLocale();
+  const { locations } = useContext(CampaignContext);
   const [extendCampaign] = useExtendCampaignMutation();
   const onExtendCampaign = useCallback(async() => {
     extendCampaign({
@@ -2361,7 +2385,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
                 <Flex direction="row" alignItems="center">
                   <LocationIcon location={currentLocation} size={64} />
                   <Flex direction="column" marginLeft={2} justifyContent="center" alignItems="flex-start">
-                    <Text>{currentLocation.name}</Text>
+                    <Text style={{ fontVariantCaps: 'small-caps' }}>{currentLocation.name}</Text>
                   </Flex>
                 </Flex>
               ) }
@@ -2373,7 +2397,7 @@ export default function CampaignDetail({ campaign, refetchCampaign, showEditFrie
                   <Box marginLeft={1} marginRight={3}>
                     <PathIcon path={currentPath} size={48} />
                   </Box>
-                  <Text marginLeft={2}>{currentPath.name}</Text>
+                  <Text marginLeft={2} style={{ fontVariantCaps: 'small-caps' }}>{currentPath.name}</Text>
                 </Flex>
               ) : <Text fontStyle="italic">{t`None`}</Text>}
             </Box>
@@ -2606,6 +2630,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
               >
                 <option value="demo">{t`Demo`}</option>
                 <option value="core">{t`Core`}</option>
+                { !!INCLUDE_LOA && <option value="loa">{t`Legacy of the Ancestors`}</option> }
               </Select>
             </FormControl>
             <FormControl>

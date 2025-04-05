@@ -2,10 +2,9 @@ import React from 'react';
 import { Box } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 
-import CardList from '../../components/CardList';
+import CardList, { PackCollectionContextProvider } from '../../components/CardList';
 import PageHeading from '../../components/PageHeading';
-import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
-import { loadCatalog, getLocalizationServerSideProps } from '../../lib/Lingui';
+import { getLocalizationServerSideProps } from '../../lib/Lingui';
 
 export default function CardsPage() {
   return (
@@ -16,7 +15,9 @@ export default function CardsPage() {
       px={{ base: "1rem", lg: "0" }}
     >
       <PageHeading title={t`Cards`} />
-      <CardList />
+      <PackCollectionContextProvider>
+        <CardList />
+      </PackCollectionContextProvider>
     </Box>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { find, filter, trim, map, sortBy, flatMap, uniq, uniqBy, identity, forEach } from 'lodash';
+import { find, filter, trim, map, sortBy, flatMap, uniq, uniqBy, forEach } from 'lodash';
 import { t } from '@lingui/macro';
 import { Flex, Text, FormControl, FormLabel, Input, SimpleGrid, Stack } from '@chakra-ui/react';
 import { useQueryState, UseQueryStateOptions } from 'next-usequerystate';
@@ -362,6 +362,12 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
       o => ({ value: o, name: o, label: o })
     );
   }, [allCards]);
+  const allPacks = useMemo(() => {
+    return map(
+      sortBy(uniqBy(allCards, c => c.pack_id), c => c.pack_position),
+      c => ({ value: c.pack_id ?? '', name: c.pack_name ?? '', label: c.pack_name ?? '' })
+    );
+  }, [allCards]);
   const allCardSets = useMemo(() => {
     const background = categories.background;
     const specialty = categories.specialty;
@@ -414,6 +420,13 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
     }
     // eslint-disable-next-line
   }, [debouncedSearch]);
+
+  const [packs, setPacks] = useSearchQueryState<string[]>('p', {
+    history: 'replace',
+    parse: parseArray,
+    serialize: serializeArray,
+    disabled: controls === 'local',
+  });
   const [traits, setTraits] = useSearchQueryState<string[]>('k', {
     history: 'replace',
     parse: parseArray,
@@ -479,6 +492,7 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
   const [hasFilters, filterCard] = useMemo(() => {
     const traitSet = traits?.length ? new Set(traits) : undefined;
     const typeSet = types?.length ? new Set(types) : undefined;
+    const packSet = packs?.length ? new Set(packs) : undefined;
     const cardSetsSet = cardSets?.length ? new Set(cardSets) : undefined;
     const aspectSet = (awa || foc || fit || spi) ? new Set([
       ...(awa ? [AWA] : []),
@@ -495,6 +509,7 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
     return [(
       !!trimmedSearch ||
       !!traitSet ||
+      !!packSet ||
       !!typeSet ||
       !!cardSetsSet ||
       !!aspectSet ||
@@ -504,6 +519,9 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
     ),
     (card: CardFragment) => {
       if (traitSet && !find(cleanTraits(card), t => traitSet.has(t))) {
+        return false;
+      }
+      if (packSet && !packSet.has(card.pack_id ?? '')) {
         return false;
       }
       if (typeSet && (!card.type_id || !typeSet.has(card.type_id))) {
@@ -555,7 +573,7 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
       }
       return costFilter(cost, card) && equipFilter(equip, card);
     }];
-  }, [aspects, locale, searchText, traits, cardSets, types, cost, equip, awa, foc, fit, spi, approach]);
+  }, [aspects, locale, searchText, traits, cardSets, types, cost, equip, awa, foc, fit, spi, approach, packs]);
   const allApproaches = useMemo(() => {
     return map(approaches, (name, app) => ({
       value: app,
@@ -631,7 +649,18 @@ export function useCardSearchControls(allCards: CardFragment[] | undefined, cont
               setValue={setEquip}
             />
           </FormControl>
-          <Text fontWeight="600">{t`Aspect requirements`}</Text>
+          <FormControl>
+            <FormLabel>{t`Packs`}</FormLabel>
+            <MultiSelect
+              placeholder={t`Filter by pack`}
+              value={packs}
+              setValue={setPacks}
+              options={allPacks}
+            />
+          </FormControl>
+          <Text fontWeight="600">
+            {t`Aspect requirements`}
+          </Text>
           <SimpleGrid columns={[2, 4]} spacingX={2} spacingY={4}>
             <FormControl>
               <FormLabel>{aspects.AWA?.short_name}</FormLabel>

@@ -5,9 +5,8 @@ import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
 import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
-import { AspectMap, CampaignCycle, DeckCardError, DeckError, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
-import { useLocale } from './TranslationProvider';
-import { useRoleCardsMap } from './cards';
+import { AspectMap, CampaignCycle, ConnectionRestriction, ConnectionRestrictionMap, ConnectionRestrictionType, DeckCardError, DeckError, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
+import { useLingui } from '@lingui/react';
 
 export function useRequireAuth() {
   const { authUser, loading } = useAuth();
@@ -90,8 +89,8 @@ export function useCardsMap(cards?: CardFragment[]): CardsMap {
   return useMemo(() => {
     const r: CardsMap = {};
     forEach(cards, c => {
-      if (c.id) {
-        r[c.id] = c;
+      if (c.code) {
+        r[c.code] = c;
       }
     });
     return r;
@@ -196,6 +195,35 @@ export function getGeneralSets(): MapLocations {
   };
 }
 
+export function getConnectinRestrictions(): ConnectionRestrictionMap {
+  const r: ConnectionRestrictionMap = {};
+  const restrictions: ConnectionRestrictionType[] = [
+    {
+      id: ConnectionRestriction.FLOODED_PASSAGE,
+      name: t`Flooded Passage`,
+      color: '#4c87b2',
+      campaigns: ['loa'],
+    },
+    {
+      id: ConnectionRestriction.LOCKED_PASSAGE,
+      name: t`Locked Passage`,
+      color: '#b8a823',
+      campaigns: ['loa'],
+    },
+    {
+      id: ConnectionRestriction.OVERGROWN_PASSAGE,
+      name: t`Overgrown Passage`,
+      color: '#40905a',
+      campaigns: ['loa'],
+    },
+  ];
+
+  forEach(restrictions, c => {
+    r[c.id] = c;
+  })
+  return r;
+}
+
 export function getPathTypes(): PathTypeMap {
   const r: PathTypeMap = {};
   const paths: PathType[] = [
@@ -203,42 +231,80 @@ export function getPathTypes(): PathTypeMap {
       id: Path.OLD_GROWTH,
       name: t`Old-growth`,
       color: '#924030',
+      campaigns: ['core', 'demo', 'loa'],
     },
     {
       id: Path.MOUNTAIN_PASS,
       name: t`Mountain Pass`,
       color: '#1b211e',
+      campaigns: ['core', 'demo', 'loa'],
     },
     {
       id: Path.WOODS,
       name: t`Woods`,
       color: '#46932b',
+      campaigns: ['core', 'demo', 'loa'],
     },
     {
       id: Path.LAKESHORE,
       name: t`Lakeshore`,
       color: '#3f4f6b',
+      campaigns: ['core', 'demo', 'loa'],
     },
     {
       id: Path.GRASSLAND,
       name: t`Grassland`,
       color: '#d08e10',
+      campaigns: ['core', 'demo', 'loa'],
     },
     {
       id: Path.RAVINE,
       name: t`Ravine`,
       color: '#67666b',
+      campaigns: ['core', 'demo', 'loa'],
     },
     {
       id: Path.SWAMP,
       name: t`Swamp`,
       color: '#7a3d63',
+      campaigns: ['core', 'demo'],
     },
     {
       id: Path.RIVER,
       name: t`River`,
       color: '#5996aa',
+      campaigns: ['core', 'demo', 'loa'],
     },
+    {
+      id: Path.ANCIENT_RUINS,
+      name: t`Ancient Ruins`,
+      color: '#95a094',
+      campaigns: ['loa']
+    },
+    {
+      id: Path.FLOODED_RUINS,
+      name: t`Flooded Ruins`,
+      color: '#73a5be',
+      campaigns: ['loa']
+    },
+    {
+      id: Path.DEEP_ROOTS,
+      name: t`Deep Roots`,
+      color: '#7eae4f',
+      campaigns: ['loa']
+    },
+    {
+      id: Path.FUNGAL_FOREST,
+      name: t`Fungal Forest`,
+      color: '#9a5f87',
+      campaigns: ['loa']
+    },
+    {
+      id: Path.CAVE_SYSTEM,
+      name: t`Cave System`,
+      color: '#c06d25',
+      campaigns: ['loa']
+    }
   ];
   forEach(paths, p => {
     r[p.id] = p;
@@ -246,8 +312,185 @@ export function getPathTypes(): PathTypeMap {
   return r;
 }
 
+const CONNECTIONS: {
+  locA: string;
+  locB: string;
+  path: Path;
+  restriction?: ConnectionRestriction;
+  cycles?: string[];
+}[] = [
+  // LOA connections
+  {
+    locA: 'greenbriar_knoll',
+    locB: 'the_concordant_ziggurats',
+    path: Path.GRASSLAND,
+    cycles: ['loa'],
+  },
+  {
+    locA: 'spire',
+    locB: 'the_chimney',
+    path: Path.NONE,
+  },
+  {
+    locA: 'the_chimney',
+    locB: 'oasis_of_sunlight',
+    path: Path.FLOODED_RUINS,
+  },
+  {
+    locA: 'oasis_of_sunlight',
+    locB: 'scuttler_network',
+    path: Path.CAVE_SYSTEM,
+  },
+  {
+    locA: 'scuttler_network',
+    locB: 'orlins_vault',
+    path: Path.FUNGAL_FOREST,
+  },
+  {
+    locA: 'the_chimney',
+    locB: 'orlins_vault',
+    path: Path.ANCIENT_RUINS,
+  },
+  {
+    locA: 'the_chimney',
+    locB: 'desert_of_endless_night',
+    path: Path.FLOODED_RUINS,
+  },
+  {
+    locA: 'orlins_vault',
+    locB: 'desert_of_endless_night',
+    path: Path.CAVE_SYSTEM,
+  },
+  {
+    locA: 'desert_of_endless_night',
+    locB: 'drenching_chamber',
+    path: Path.CAVE_SYSTEM,
+  },
+  {
+    locA: 'the_chimney',
+    locB: 'drenching_chamber',
+    path: Path.FUNGAL_FOREST,
+  },
+  {
+    locA: 'scuttler_network',
+    locB: 'terminal_artery',
+    path: Path.FLOODED_RUINS,
+    restriction: ConnectionRestriction.FLOODED_PASSAGE,
+  },
+  {
+    locA: 'orlins_vault',
+    locB: 'branching_artery',
+    path: Path.ANCIENT_RUINS,
+    restriction: ConnectionRestriction.LOCKED_PASSAGE,
+  },
+  {
+    locA: 'drenching_chamber',
+    locB: 'severed_artery',
+    path: Path.FLOODED_RUINS,
+    restriction: ConnectionRestriction.FLOODED_PASSAGE,
+  },
+  {
+    locA: 'branching_artery',
+    locB: 'terminal_artery',
+    path: Path.ANCIENT_RUINS,
+  },
+  {
+    locA: 'branching_artery',
+    locB: 'severed_artery',
+    path: Path.ANCIENT_RUINS,
+  },
+  {
+    locA: 'terminal_artery',
+    locB: 'mycelial_conclave',
+    path: Path.FUNGAL_FOREST,
+  },
+  {
+    locA: 'branching_artery',
+    locB: 'mycelial_conclave',
+    path: Path.FUNGAL_FOREST,
+  },
+  {
+    locA: 'branching_artery',
+    locB: 'silent_dormitories',
+    path: Path.DEEP_ROOTS,
+  },
+  {
+    locA: 'severed_artery',
+    locB: 'silent_dormitories',
+    path: Path.ANCIENT_RUINS,
+  },
+  {
+    locA: 'severed_artery',
+    locB: 'cerulean_curtain',
+    path: Path.CAVE_SYSTEM,
+  },
+  {
+    locA: 'terminal_artery',
+    locB: 'carbonforged_maze',
+    path: Path.FLOODED_RUINS,
+    restriction: ConnectionRestriction.LOCKED_PASSAGE,
+  },
+  {
+    locA: 'cerulean_curtain',
+    locB: 'the_cistern',
+    path: Path.FLOODED_RUINS,
+    restriction: ConnectionRestriction.OVERGROWN_PASSAGE,
+  },
+  {
+    locA: 'carbonforged_maze',
+    locB: 'arboretum_of_memory',
+    path: Path.CAVE_SYSTEM,
+  },
 
-const CONNECTIONS: { locA: string; locB: string; path: Path }[] = [
+  {
+    locA: 'carbonforged_maze',
+    locB: 'talpids_squeeze',
+    path: Path.FUNGAL_FOREST,
+  },
+  {
+    locA: 'arboretum_of_memory',
+    locB: 'talpids_squeeze',
+    path: Path.FLOODED_RUINS,
+  },
+
+  {
+    locA: 'the_cistern',
+    locB: 'the_verdant_sphere',
+    path: Path.DEEP_ROOTS,
+  },
+  {
+    locA: 'the_verdant_sphere',
+    locB: 'inverted_forest',
+    path: Path.DEEP_ROOTS,
+  },
+  {
+    locA: 'the_cistern',
+    locB: 'inverted_forest',
+    path: Path.CAVE_SYSTEM,
+  },
+  {
+    locA: 'inverted_forest',
+    locB: 'the_rootway',
+    path: Path.FUNGAL_FOREST,
+  },
+  {
+    locA: 'the_verdant_sphere',
+    locB: 'the_rootway',
+    path: Path.DEEP_ROOTS,
+  },
+  {
+    locA: 'talpids_squeeze',
+    locB: 'the_cage',
+    path: Path.ANCIENT_RUINS,
+    restriction: ConnectionRestriction.OVERGROWN_PASSAGE,
+  },
+  {
+    locA: 'the_rootway',
+    locB: 'the_cage',
+    path: Path.ANCIENT_RUINS,
+    restriction: ConnectionRestriction.LOCKED_PASSAGE,
+  },
+  // CORE locations
   {
     locA: 'atrox_mountain',
     locB: 'northern_outpost',
@@ -312,6 +555,14 @@ const CONNECTIONS: { locA: string; locB: string; path: Path }[] = [
     locA: 'kobos_market',
     locB: 'boulder_field',
     path: Path.GRASSLAND,
+    cycles: ['loa', 'core'],
+  },
+
+  {
+    locA: 'kobos_market',
+    locB: 'boulder_field',
+    path: Path.OLD_GROWTH,
+    cycles: ['demo'],
   },
   {
     locA: 'kobos_market',
@@ -565,6 +816,7 @@ const CONNECTIONS: { locA: string; locB: string; path: Path }[] = [
   },
 ];
 
+export const INCLUDE_LOA = false;
 export function getCampaignCycles(): CampaignCycle[] {
   return [
     {
@@ -575,10 +827,22 @@ export function getCampaignCycles(): CampaignCycle[] {
       id: 'core',
       name: t`Core set`,
     },
+    ...(INCLUDE_LOA ? [
+      {
+        id: 'loa',
+        name: t`Legacy of the Ancestors`
+      },
+    ] : []),
   ];
 }
 
-export function getMapLocations(): MapLocations {
+export function useMapLocations(cycle: string): MapLocations {
+  const { i18n } = useLingui();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return useMemo(() => getMapLocations(cycle), [cycle, i18n]);
+}
+
+export function getMapLocations(cycle: string): MapLocations {
   const r: MapLocations = {};
 
   const paths: Omit<MapLocation, 'connections'>[] = [
@@ -600,7 +864,7 @@ export function getMapLocations(): MapLocations {
       name: t`Lone Tree Station`,
       background: true,
       type: 'location',
-      cycles: ['core', 'demo'],
+      cycles: ['core', 'demo', 'loa'],
     },
     {
       id: 'white_sky',
@@ -624,20 +888,20 @@ export function getMapLocations(): MapLocations {
       id: 'ancestors_grove',
       name: t`Ancestor's Grove`,
       type: 'trail',
-      cycles: ['core', 'demo'],
+      cycles: ['core', 'demo', 'loa'],
     },
     {
       id: 'kobos_market',
       name: t`Kobo's Market`,
       type: 'trail',
-      cycles: ['core', 'demo'],
+      cycles: ['core', 'demo', 'loa'],
     },
     {
       id: 'boulder_field',
       name: t`Boulder Field`,
       type: 'trail',
       background: true,
-      cycles: ['core', 'demo'],
+      cycles: ['core', 'demo', 'loa'],
     },
     {
       id: 'the_fractured_wall',
@@ -664,6 +928,7 @@ export function getMapLocations(): MapLocations {
       name: t`Spire`,
       type: 'location',
       background: true,
+      cycles: ['core', 'loa'],
     },
     {
       id: 'crossroads_station',
@@ -759,6 +1024,7 @@ export function getMapLocations(): MapLocations {
       id: 'the_concordant_ziggurats',
       name: t`The Concordant Ziggurats`,
       type: 'trail',
+      cycles: ['core', 'loa'],
     },
     {
       id: 'meadow',
@@ -775,37 +1041,163 @@ export function getMapLocations(): MapLocations {
       id: 'greenbriar_knoll',
       name: t`Greenbriar Knoll`,
       type: 'trail',
+      cycles: ['core', 'loa'],
     },
     {
       id: 'the_plummet',
       name: t`The Plummet`,
       type: 'trail',
+      cycles: ['core', 'loa'],
     },
     {
       id: 'headwaters_station',
       name: t`Headwaters Station`,
       type: 'trail',
+      cycles: ['core', 'loa'],
       background: true,
+    },
+
+    {
+      id: 'the_chimney',
+      name: t`The Chimney`,
+      type: 'location',
+      cycles: ['loa'],
+    },
+    {
+      id: 'oasis_of_sunlight',
+      name: t`Oasis of Sunlight`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'scuttler_network',
+      name: t`Scuttler Network`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'drenching_chamber',
+      name: t`Drenching Chamber`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'desert_of_endless_night',
+      name: t`Desert of Endless Night`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'orlins_vault',
+      name: t`Orlin's Vault`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'severed_artery',
+      name: t`Severed Artery`,
+      type: 'location',
+      cycles: ['loa'],
+    },
+    {
+      id: 'branching_artery',
+      name: t`Branching Artery`,
+      type: 'location',
+      cycles: ['loa'],
+    },
+    {
+      id: 'terminal_artery',
+      name: t`Terminal Artery`,
+      type: 'location',
+      cycles: ['loa'],
+    },
+    {
+      id: 'silent_dormitories',
+      name: t`Silent Dormitories`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'cerulean_curtain',
+      name: t`Cerulean Curtain`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'mycelial_conclave',
+      name: t`Mycelial Conclave`,
+      type: 'location',
+      cycles: ['loa'],
+    },
+    {
+      id: 'carbonforged_maze',
+      name: t`Carbonforged Maze`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'the_cistern',
+      name: t`The Cistern`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'inverted_forest',
+      name: t`Inverted Forest`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'the_verdant_sphere',
+      name: t`The Verdant Sphere`,
+      type: 'location',
+      cycles: ['loa'],
+    },
+    {
+      id: 'the_rootway',
+      name: t`The Rootway`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'arboretum_of_memory',
+      name: t`Arboretum of Memory`,
+      type: 'location',
+      cycles: ['loa'],
+    },
+    {
+      id: 'talpids_squeeze',
+      name: t`Talpid's Squeeze`,
+      type: 'trail',
+      cycles: ['loa'],
+    },
+    {
+      id: 'the_cage',
+      name: t`The Cage`,
+      type: 'location',
+      cycles: ['loa'],
     },
   ];
   forEach(paths, p => {
     r[p.id] = {
       ...omit(p, ['cycles']),
-      cycles: p.cycles || ['core'],
+      cycles: p.cycles ?? ['core'],
       connections: [],
     };
   });
   forEach(CONNECTIONS, c => {
     const locA = r[c.locA];
     const locB = r[c.locB];
-    if (locA && locB) {
+    if (locA && locB && (!c.cycles || c.cycles?.includes(cycle))) {
       locA.connections?.push({
         id: c.locB,
         path: c.path,
+        restriction: c.restriction,
       });
       locB.connections?.push({
         id: c.locA,
         path: c.path,
+        restriction: undefined,
       });
     }
   });

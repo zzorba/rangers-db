@@ -1,8 +1,8 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { filter, find, trim, forEach, map, partition, sortBy } from 'lodash';
-import { t } from '@lingui/macro';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { filter, trim, forEach, map, partition, sortBy } from 'lodash';
+import { plural, t } from '@lingui/macro';
 import { FaFilter } from 'react-icons/fa';
-import { Box, Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels, IconButton, Collapse, Select, Wrap, WrapItem, Stack } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Flex, Input, List, ListItem, Text, useDisclosure, Tabs, TabList, Tab, TabPanel, TabPanels, IconButton, Collapse, Select, Wrap, WrapItem, useConst } from '@chakra-ui/react';
 
 import { CardFragment } from '../generated/graphql/apollo-schema';
 import Card, { CardRow, RenderCardControl, useCardModal } from './Card';
@@ -13,6 +13,55 @@ import { useCardSearchControls } from './CardFilter';
 import { useTheme } from '../lib/ThemeContext';
 import CardImage, { CardImagePlaceholder } from './CardImage';
 import { useAllCards } from '../lib/cards';
+import { useAuth } from '../lib/AuthContext';
+import { usePackSettings } from '../lib/PackSettingsContext';
+
+type PackCollectionContextType = {
+  mode: 'annotate' | 'hide' | 'disabled';
+  packs: Set<string>;
+  showNonCollection: boolean;
+  toggleShowNonCollection?: () => void;
+  tabooSet?: string;
+}
+export const PackCollectionContext = React.createContext<PackCollectionContextType>({
+  mode: 'disabled',
+  packs: new Set([]),
+  showNonCollection: true,
+  toggleShowNonCollection: undefined,
+  tabooSet: undefined,
+});
+
+export const CURRENT_TABOO_SET = 'set_01';
+export const PackCollectionContextProvider = ({ children, mode = 'hide' }: { children: React.ReactNode; mode?: 'annotate' | 'hide' }) => {
+  const collection = usePackSettings();
+  const { authUser } = useAuth();
+  const [showNonCollection, setShowNonCollection] = useState(false);
+  const context: PackCollectionContextType = useMemo(() => {
+    if (!authUser || !collection) {
+      // logged out or loading mode.
+      return {
+        mode: 'disabled',
+        packs: new Set(),
+        showNonCollection: true,
+      };
+    }
+    return {
+      mode,
+      packs: new Set(collection.packs),
+      tabooSet: collection.taboo ? CURRENT_TABOO_SET : undefined,
+      showNonCollection,
+      toggleShowNonCollection: () => {
+        setShowNonCollection(!showNonCollection);
+      },
+    };
+  }, [mode, authUser, showNonCollection, setShowNonCollection, collection]);
+  return (
+    <PackCollectionContext.Provider value={context}>
+      {children}
+    </PackCollectionContext.Provider>
+  );
+};
+
 
 function CardButtonRow({ card, showModal, children, tab }: {
   card: CardFragment;
@@ -31,10 +80,10 @@ function CardButtonRow({ card, showModal, children, tab }: {
   );
 }
 
-function CardHeader({ title }: { title: string }) {
+function CardHeader({ title, subHeader }: { title: string; subHeader?: boolean }) {
   return (
-    <ListItem padding={2} paddingTop={4} paddingBottom={0} borderBottomWidth={0.5} borderColor="#888888">
-      <Text fontStyle="italic" fontSize="m">{title}</Text>
+    <ListItem padding={2} paddingTop={4} paddingBottom={0} borderBottomWidth={subHeader ? 0 : 0.5} borderColor="#888888">
+      <Text fontStyle="italic" fontSize={subHeader ? 's' : 'm'}>{title}</Text>
     </ListItem>
   );
 }
@@ -42,6 +91,7 @@ function CardHeader({ title }: { title: string }) {
 interface CardItem {
   type: 'card';
   card: CardFragment;
+  inCollection: boolean;
 }
 
 interface HeaderItem {
@@ -54,11 +104,13 @@ type Item = CardItem | HeaderItem;
 type ItemSection = {
   title?: string;
   items: CardItem[];
+  nonCollectionItems: CardItem[];
 }
 
 
 export default function CardList() {
-  const cards = useAllCards();
+  const { tabooSet } = useContext(PackCollectionContext);
+  const cards = useAllCards(tabooSet);
   const [showCard, modal] = useCardModal();
   const [standardCards, rewardCards] = useMemo(() => {
     return partition(cards, c => c.set_id !== 'reward' && c.set_id !== 'malady');
@@ -150,6 +202,7 @@ export function CardListWithFilters({ cards, ...props  }: Omit<SimpleCardListPro
 }
 
 export function SimpleCardList({ tab, context, noSearch, hasFilters, cards, controls, showCard, header = 'set', renderControl, emptyText, filter: filterCard, hasOptions, renderStyle: propRenderStyle }: SimpleCardListProps) {
+  const collection = useContext(PackCollectionContext);
   const { locale } = useLocale();
   const [search, setSearch] = useState('');
   const visibleCards = useMemo(() => {
@@ -170,6 +223,7 @@ export function SimpleCardList({ tab, context, noSearch, hasFilters, cards, cont
 
     let currentSection: ItemSection = {
       items: [],
+      nonCollectionItems: [],
     };
     let currentHeader: string | undefined = undefined;
     forEach(visibleCards, card => {
@@ -183,6 +237,7 @@ export function SimpleCardList({ tab, context, noSearch, hasFilters, cards, cont
             currentSection = {
               title: currentHeader,
               items: [],
+              nonCollectionItems: [],
             }
           }
           break;
@@ -191,11 +246,11 @@ export function SimpleCardList({ tab, context, noSearch, hasFilters, cards, cont
             if (currentSection.items.length || currentSection.title) {
               sections.push(currentSection);
             }
-
             currentHeader = card.aspect_name;
             currentSection = {
               title: currentHeader,
               items: [],
+              nonCollectionItems: [],
             }
           }
           break;
@@ -203,16 +258,27 @@ export function SimpleCardList({ tab, context, noSearch, hasFilters, cards, cont
           break;
       }
 
-      currentSection.items.push({
-        type: 'card',
-        card,
-      });
+      const inCollection = card.pack_id === 'core' || collection.packs.has(card.pack_id ?? '');
+      if (collection.mode === 'hide' && !inCollection) {
+        currentSection.nonCollectionItems.push({
+          type: 'card',
+          card,
+          inCollection: false,
+        });
+        return;
+      } else {
+        currentSection.items.push({
+          type: 'card',
+          card,
+          inCollection: collection.mode === 'disabled' ? true : inCollection,
+        });
+      }
     });
     if (currentSection.items.length || currentSection.title) {
       sections.push(currentSection);
     }
     return sections;
-  }, [visibleCards, header]);
+  }, [visibleCards, header, collection]);
   const emptyState = useMemo(() => {
     if ((trim(search) || hasFilters) && (cards?.length || 0) > 0) {
       return (
@@ -292,16 +358,40 @@ function CardListSection({ section, renderControl, renderStyle, showCard, contex
   context?: 'extra';
   tab?: 'reward' | 'displaced';
 }) {
+  const { mode, showNonCollection, toggleShowNonCollection } = useContext(PackCollectionContext);
+  const nonCollectionCardCount = section.nonCollectionItems.length;
   switch (renderStyle) {
     case 'list':
       return (
         <List>
-          { !!section.title &&  <CardHeader key={section.title} title={section.title} /> }
+          { !!section.title && <CardHeader key={section.title} title={section.title} /> }
           { map(section.items, item => (
-            <CardButtonRow key={item.card.id} card={item.card} showModal={showCard} tab={tab}>
-              { !!renderControl && !!item.card.id && renderControl(item.card, { context, tab })}
+            <CardButtonRow key={item.card.code} card={item.card} showModal={showCard} tab={tab}>
+              { !!renderControl && !!item.card.code && renderControl(item.card, { context, tab })}
             </CardButtonRow>
           )) }
+          { mode === 'hide' && !!section.nonCollectionItems.length && (
+            <>
+              <Flex direction="row" alignItems="center">
+                <Flex flex={1}>
+                  {showNonCollection && <CardHeader key={section.title} title={`Non-collection`} subHeader />}
+                </Flex>
+                <Button
+                  marginTop={2}
+                  marginRight={2}
+                  size="xs"
+                  onClick={toggleShowNonCollection}
+                >{showNonCollection ? t`Hide` :
+                  plural(nonCollectionCardCount, { one: `Show ${nonCollectionCardCount} non-collection`, other: `Show ${nonCollectionCardCount} non-collection` })}
+                </Button>
+              </Flex>
+               { showNonCollection && map(section.nonCollectionItems, item => (
+                <CardButtonRow key={item.card.code} card={item.card} showModal={showCard} tab={tab}>
+                  { !!renderControl && !!item.card.code && renderControl(item.card, { context, tab })}
+                </CardButtonRow>
+              )) }
+            </>
+          )}
         </List>
       );
     case 'cards':
@@ -310,7 +400,7 @@ function CardListSection({ section, renderControl, renderStyle, showCard, contex
           { !!section.title && <CardHeader key={section.title} title={section.title} /> }
           <Wrap>
             { map(section.items, item => (
-              <WrapItem key={item.card.id}>
+              <WrapItem key={item.card.code}>
                 <Box maxWidth={{ base: undefined, md: 300 }}>
                   <Card card={item.card} noImage />
                 </Box>
@@ -325,7 +415,7 @@ function CardListSection({ section, renderControl, renderStyle, showCard, contex
           { !!section.title && <CardHeader key={section.title} title={section.title} /> }
           <Wrap>
             { map(section.items, item => (
-              <WrapItem padding={2} key={item.card.id}>
+              <WrapItem padding={2} key={item.card.code}>
                 {item.card.imagesrc ?
                   <CardImage title={item.card.name ?? ''} url={item.card.imagesrc} size="large" /> : (
                   <CardImagePlaceholder card={item.card} size="large">
@@ -364,7 +454,7 @@ export function SpoilerCardList({
   const { isOpen: showAll, onOpen: onShow, onClose: onHide } = useDisclosure();
   const unlockedCards = useMemo(() => {
     const unlockedSet = new Set(unlocked);
-    return filter(cards, c => !!c.id && unlockedSet.has(c.id));
+    return filter(cards, c => !!c.code && unlockedSet.has(c.code));
   }, [unlocked, cards]);
   const visibleCards = useMemo(() => {
     const lowerSearch = search.toLocaleLowerCase(locale);
@@ -386,7 +476,7 @@ export function SpoilerCardList({
         </>
       ) }
       { map(unlockedCards, c => (
-        <CardButtonRow key={c.id} card={c} showModal={showCard} tab={tab}>
+        <CardButtonRow key={c.code} card={c} showModal={showCard} tab={tab}>
           { renderControl && renderControl(c) }
         </CardButtonRow>
       )) }

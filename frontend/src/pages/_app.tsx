@@ -13,7 +13,8 @@ import Layout from '../components/Layout';
 import { TranslationProvider } from '../lib/TranslationProvider';
 import { useLinguiInit } from '../lib/Lingui';
 import { ThemeContextProvider } from '../lib/ThemeContext';
-import { useRouter } from 'next/router';
+import { PackSettingsContextProvider } from '../lib/PackSettingsContext';
+import { PackCollectionContextProvider } from '../components/CardList';
 
 const I18nProvider: FunctionComponent<I18nProviderProps & { forceRenderOnLocaleChange?: boolean }> = ({
   i18n,
@@ -91,9 +92,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           <AuthUserProvider>
             <GraphqlProvider>
               <TranslationProvider>
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
+                <PackSettingsContextProvider>
+                  <PackCollectionContextProvider>
+                    <Layout>
+                      <Component {...pageProps} />
+                    </Layout>
+                  </PackCollectionContextProvider>
+                </PackSettingsContextProvider>
               </TranslationProvider>
             </GraphqlProvider>
           </AuthUserProvider>

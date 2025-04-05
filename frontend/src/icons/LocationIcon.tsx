@@ -3,7 +3,7 @@ import { AspectRatio, Box } from '@chakra-ui/react';
 import IcomoonReact from 'icomoon-react';
 
 import iconSet from './locations.json';
-import { MapLocation, PathType } from '../types/types';
+import { ConnectionRestriction, ConnectionRestrictionType, MapLocation, PathType } from '../types/types';
 
 
 const MapIcon: React.FC<{
@@ -34,6 +34,26 @@ export function PathIcon({ path, size }: PathIconProps) {
     <AspectRatio width={`${size}px`} ratio={1}>
       <Box borderRadius="50%" backgroundColor="#e4c9a2" width="100%" borderWidth="1px" borderColor="#451c15">
         <MapIcon icon={path.id} color={path.color} size={size - 4} />
+      </Box>
+    </AspectRatio>
+  );
+}
+
+interface ConnectionRestrictionIconProps {
+  restriction: ConnectionRestrictionType;
+  size: number;
+}
+
+export function ConnectionRestrictionIcon({ restriction, size }: ConnectionRestrictionIconProps) {
+  return (
+    <AspectRatio width={`${size}px`} height={`${size}px`} ratio={1}>
+      <Box position="relative">
+        <Box position="absolute" top={0} left={0}>
+          <MapIcon icon="hazard_bg" color="#e4c9a2" size={size} />
+        </Box>
+        <Box position="absolute" top={0} left={0}>
+          <MapIcon icon={restriction.id} color={restriction.color} size={size} />
+        </Box>
       </Box>
     </AspectRatio>
   );

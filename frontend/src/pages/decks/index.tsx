@@ -2,10 +2,10 @@ import React, { useCallback } from 'react';
 import { t } from '@lingui/macro';
 import { Box, Button } from '@chakra-ui/react';
 
-import { useCardsMap, useRequireAuth } from '../../lib/hooks';
+import { useRequireAuth } from '../../lib/hooks';
 import { useNewDeckModal } from '../../components/DeckEdit';
 import DeckList from '../../components/DeckList';
-import { DeckFragment, DeckWithCampaignFragment, useGetMyDecksQuery, useGetMyDecksTotalQuery } from '../../generated/graphql/apollo-schema';
+import { DeckWithCampaignFragment, useGetMyDecksQuery, useGetMyDecksTotalQuery } from '../../generated/graphql/apollo-schema';
 import PageHeading from '../../components/PageHeading';
 import { useAuth } from '../../lib/AuthContext';
 import { useLocale } from '../../lib/TranslationProvider';
@@ -13,6 +13,7 @@ import PaginationWrapper from '../../components/PaginationWrapper';
 import { AuthUser } from '../../lib/useFirebaseAuth';
 import { useRoleCardsMap } from '../../lib/cards';
 import { getLocalizationServerSideProps } from '../../lib/Lingui';
+import { PackCollectionContextProvider } from '../../components/CardList';
 
 export default function DecksPage() {
   useRequireAuth();
@@ -50,8 +51,7 @@ export default function DecksPage() {
     }
     return [];
   }, [fetchMore]);
-  const roleCards = useRoleCardsMap();
-  const [showNewDeck, newDeckModal] = useNewDeckModal(roleCards);
+  const [showNewDeck, newDeckModal] = useNewDeckModal();
   return (
     <>
       <Box
@@ -69,11 +69,7 @@ export default function DecksPage() {
           data={data?.decks}
         >
           { (decks: DeckWithCampaignFragment[], refetch) => (
-            <DeckList
-              decks={decks}
-              roleCards={roleCards}
-              refetch={refetch}
-            />
+            <DeckList decks={decks} refetch={refetch} />
           ) }
         </PaginationWrapper>
       </Box>

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'core';
-  src:  url('fonts/core.eot?mvr1rt');
-  src:  url('fonts/core.eot?mvr1rt#iefix') format('embedded-opentype'),
-    url('fonts/core.ttf?mvr1rt') format('truetype'),
-    url('fonts/core.woff?mvr1rt') format('woff'),
-    url('fonts/core.svg?mvr1rt#core') format('svg');
+  src:  url('fonts/core.eot?hajh3g');
+  src:  url('fonts/core.eot?hajh3g#iefix') format('embedded-opentype'),
+    url('fonts/core.ttf?hajh3g') format('truetype'),
+    url('fonts/core.woff?hajh3g') format('woff'),
+    url('fonts/core.svg?hajh3g#core') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -43,6 +43,9 @@
 .core-harm:before {
   content: "\e905";
 }
+.core-old_growth:before {
+  content: "\e912";
+}
 .core-progress:before {
   content: "\e906";
 }
@@ -57,6 +60,9 @@
 }
 .core-per_ranger:before {
   content: "\e90a";
+}
+.core-aspiration:before {
+  content: "\e913";
 }
 .core-sun:before {
   content: "\e90b";
@@ -78,4 +84,19 @@
 }
 .core-awa_chakra:before {
   content: "\e911";
+}
+.core-locked:before {
+  content: "\e914";
+}
+.core-overgrown:before {
+  content: "\e915";
+}
+.core-flooded:before {
+  content: "\e916";
+}
+.core-presence:before {
+  content: "\e917";
+}
+.core-uncommon_wisdom:before {
+  content: "\e918";
 }

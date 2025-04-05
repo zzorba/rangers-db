@@ -48,8 +48,7 @@ export default function CampaignsList() {
     }
     return [];
   }, [fetchMore]);
-  const { locale } = useLocale();
-  const roleCards = useRoleCardsMap();
+  const roleCards = useRoleCardsMap(undefined);
   const campaigns = useMemo(() => {
     if (!data?.campaigns) {
       return undefined;

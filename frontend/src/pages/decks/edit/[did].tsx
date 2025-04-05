@@ -11,6 +11,7 @@ import DeckEdit  from '../../../components/DeckEdit';
 import { useAuth } from '../../../lib/AuthContext';
 import { useAllCardsMap } from '../../../lib/cards';
 import { getLocalizationServerSideProps } from '../../../lib/Lingui';
+import { PackCollectionContextProvider } from '../../../components/CardList';
 
 export default function EditDeckPage() {
   useRequireAuth();
@@ -23,7 +24,7 @@ export default function EditDeckPage() {
     },
     skip: !isReady || !deckId,
   });
-  const cards = useAllCardsMap();
+  const cards = useAllCardsMap(data?.deck?.taboo_set_id ?? undefined);
   const deck = data?.deck;
   useEffect(() => {
     if (loading) {
@@ -52,7 +53,9 @@ export default function EditDeckPage() {
         py={{ base: "3rem", lg: "4rem" }}
         px={{ base: "1rem", lg: "0" }}
       >
-        { deck ? <DeckEdit deck={deck} cards={cards} /> : <LoadingPage /> }
+        <PackCollectionContextProvider>
+          { deck ? <DeckEdit deck={deck} cards={cards} /> : <LoadingPage /> }
+        </PackCollectionContextProvider>
       </Box>
     </>
   );

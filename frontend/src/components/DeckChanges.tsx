@@ -64,36 +64,36 @@ export default function DeckChangesComponent({ changes, cards, showCard, showCol
     ];
   }, [cards, changes]);
   const addedControl = useCallback((card: CardFragment) => {
-    if (!card.id) {
+    if (!card.code) {
       return null;
     }
     return (
-      <CardCount delta marginLeft={2} count={changes.addedCards[card.id] || 0} />
+      <CardCount delta marginLeft={2} count={changes.addedCards[card.code] || 0} />
     );
   }, [changes.addedCards]);
 
   const removedControl = useCallback((card: CardFragment) => {
-    if (!card.id) {
+    if (!card.code) {
       return null;
     }
     return (
-      <CardCount delta marginLeft={2} count={changes.removedCards[card.id] || 0} />
+      <CardCount delta marginLeft={2} count={changes.removedCards[card.code] || 0} />
     );
   }, [changes.removedCards]);
   const addedCollectionControl = useCallback((card: CardFragment) => {
-    if (!card.id) {
+    if (!card.code) {
       return null;
     }
     return (
-      <CardCount delta marginLeft={2} count={changes.addedCollectionCards[card.id] || 0} />
+      <CardCount delta marginLeft={2} count={changes.addedCollectionCards[card.code] || 0} />
     );
   }, [changes.addedCollectionCards]);
   const returnedCollectionControl = useCallback((card: CardFragment) => {
-    if (!card.id) {
+    if (!card.code) {
       return null;
     }
     return (
-      <CardCount delta marginLeft={2} count={changes.returnedCollectionCards[card.id] || 0} />
+      <CardCount delta marginLeft={2} count={changes.returnedCollectionCards[card.code] || 0} />
     );
   }, [changes.returnedCollectionCards]);
   return (

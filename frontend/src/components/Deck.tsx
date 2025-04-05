@@ -37,6 +37,7 @@ import CoreIcon from '../icons/CoreIcon';
 import { CardItem, Item, ParsedDeck } from '../lib/parseDeck';
 import { useTheme } from '../lib/ThemeContext';
 import CardText from './CardText';
+import { useCard } from '../lib/cards';
 
 
 export function DeckItemComponent({ item, showCard }: { item: Item; showCard: ShowCard }) {
@@ -45,7 +46,7 @@ export function DeckItemComponent({ item, showCard }: { item: Item; showCard: Sh
     case 'header':
       return <ListHeader key={item.title} title={item.title} problem={item.problem} />;
     case 'card':
-      return <DeckCardRow key={item.card.id} item={item} showCard={showCard} />;
+      return <DeckCardRow key={item.card.code} item={item} showCard={showCard} />;
     case 'description':
       return (
         <ListItem padding={2}>
@@ -61,7 +62,7 @@ export function DeckItemComponent({ item, showCard }: { item: Item; showCard: Sh
 function DeckCardRow({ item, showCard }: { item: CardItem; showCard: ShowCard }) {
   const onClick = useCallback(() => showCard(item.card, undefined, item.problem), [item, showCard]);
   return (
-    <ListItem key={item.card.id} >
+    <ListItem key={item.card.code} >
       <Flex direction="row" alignItems="flex-start" justifyContent="flex-start">
         <CardRow card={item.card} problem={item.problem} onClick={onClick}>
           <CardCount count={item.count} marginLeft={2} />
@@ -101,35 +102,31 @@ export function MiniAspect({ value, aspect, extraSmall }: { value: number | null
   );
 }
 
-export function DeckDescription({ deck, roleCards, ...textProps }: {
+export function DeckDescription({ deck, roleCard, ...textProps }: {
   deck: DeckFragment | SearchDeckFragment;
-  roleCards?: CardsMap;
+  roleCard?: CardFragment;
 } & Omit<TextProps, 'text'>) {
   const { categories } = useLocale();
   const background: string | undefined = typeof deck.meta.background === 'string' ? deck.meta.background : undefined;
   const specialty: string | undefined = typeof deck.meta.specialty === 'string' ? deck.meta.specialty : undefined;
-  const role: string | undefined = typeof deck.meta.role === 'string' ? deck.meta.role : undefined;
   const description = useMemo(() => {
     return filter([
       background && categories.background?.options?.[background],
       specialty && categories.specialty?.options?.[specialty],
-      roleCards && role && roleCards[role]?.name,
+      roleCard?.name,
     ], x => !!x).join(' - ');
-  }, [categories, roleCards, background, specialty, role]);
+  }, [categories, roleCard, background, specialty]);
   return <Text {...textProps}>{description}</Text>
 }
 
-export function CompactDeckRow({ deck, roleCards, onClick, children, buttons, href }: {
+export function CompactDeckRow({ deck, onClick, children, buttons, href }: {
   deck: DeckFragment;
-  roleCards: CardsMap;
   onClick?: (deck: DeckFragment) => void;
   children?: React.ReactNode;
   buttons?: React.ReactNode;
   href?: string;
 }) {
-  const role = useMemo(() => {
-    return typeof deck.meta.role === 'string' && roleCards[deck.meta.role];
-  }, [deck.meta, roleCards]);
+  const role = useCard(typeof deck.meta.role === 'string' ? deck.meta.role : undefined, deck.taboo_set_id ?? undefined);
   const handleClick = useCallback(() => {
     onClick?.(deck);
   }, [onClick, deck]);
@@ -154,7 +151,7 @@ export function CompactDeckRow({ deck, roleCards, onClick, children, buttons, hr
             <Text fontSize={['md', 'md', 'lg']}>{deck.name}</Text>
           ) }
           { children }
-          <DeckDescription fontSize={['xs', 's', 'm']} deck={deck} roleCards={roleCards} />
+          <DeckDescription fontSize={['xs', 's', 'm']} deck={deck} roleCard={role} />
           { !!deck.meta.problem && <DeckProblemComponent errors={deck.meta.problem} limit={1} /> }
         </Flex>
         <SimpleGrid columns={2} marginRight={1}>

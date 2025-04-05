@@ -95,6 +95,7 @@ query searchDecks(
   $background: _text,
   $specialty: _text,
   $role: _text,
+  $taboo_set_id: _text,
   $limit: Int,
   $offset: Int
 ) {
@@ -106,6 +107,7 @@ query searchDecks(
     fit_eq: $fit
     background: $background
     specialty: $specialty
+    _taboo_set_id: $taboo_set_id
     role: $role
     _limit: $limit
     _offset: $offset
@@ -256,7 +258,8 @@ mutation createDeck(
   $meta: jsonb!,
   $slots: jsonb!,
   $extraSlots: jsonb!,
-  $description: String
+  $description: String,
+  $tabooSetId: String
 ) {
   deck: insert_rangers_deck_one(
     object: {
@@ -269,6 +272,7 @@ mutation createDeck(
       slots: $slots
       extra_slots: $extraSlots
       description: $description
+      taboo_set_id: $tabooSetId
     }
   ) {
     ...Deck
@@ -326,6 +330,21 @@ mutation saveDeck(
     }
   ) {
     ...Deck
+  }
+}
+
+mutation saveDeckTabooSet(
+  $id: Int!,
+  $tabooSetId: String
+) {
+  update_rangers_deck_by_pk(
+    pk_columns: { id: $id }
+    _set: {
+      taboo_set_id: $tabooSetId
+    }
+  ) {
+    id
+    taboo_set_id
   }
 }
 
