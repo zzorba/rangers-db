@@ -64,7 +64,88 @@ async function readBasicFile<T>(path: string): Promise<any[]> {
   return JSON.parse(rawData);
 }
 
-async function importMetadata() {
+async function processCardLikeData(
+  data: any[],
+  existingData: any[],
+  allFields: string[],
+  textFields: string[] | undefined,
+  upsert: (data: any) => Promise<void>,
+  upsertText: (data: any) => Promise<void>,
+  localeText: { [locale: string]: GetLocaleTextQuery },
+  getLocale: (locale: GetLocaleTextQuery) => any[],
+  file: string,
+  getId: (data: any) => string,
+  additionalFields: { [key: string]: any } = {}
+) {
+  for (let i = 0; i < data.length; i++) {
+    const current = data[i];
+    const id = getId(current);
+    const existing = find(existingData, (e: any) => e.id === id);
+
+    if (!existing || !deepEqual(safePick(existing, allFields), safePick(current, allFields))) {
+      console.log(`\tUpdating ${id} data`);
+      await upsert({
+        id,
+        ...safePick(current, allFields),
+        ...additionalFields,
+      });
+    }
+
+    if (textFields?.length) {
+      const theText = safePick(current, textFields);
+      const translation = find(getLocale(localeText['en']), (t: any) => t.id === id);
+
+      if (!translation || !deepEqual(safePick(translation, textFields), theText)) {
+        console.log(`\tUpdating ${id} text`);
+        await upsertText({
+          id,
+          locale: 'en',
+          ...theText,
+        });
+      }
+
+      for (let k = 0; k < LOCALES.length; k++) {
+        const locale = LOCALES[k];
+        const [allPoEntries] = await getOrCreateCleanPoFile(
+          `${BASE_DIR}/i18n/${locale}/${file.replace('.json', '.po')}`,
+          locale,
+          true
+        );
+        const theTranslation = { ...theText };
+
+        forEach(keys(theText), (field) => {
+          if (theText[field]) {
+            const item = makePoItem(id, field, theText[field]);
+            if (locale === 'pseudo') {
+              theTranslation[field] = pseudoizer.pseudoize(theText[field]);
+            } else {
+              if (allPoEntries[itemMessageId(item)]?.msgstr.length) {
+                theTranslation[field] = allPoEntries[itemMessageId(item)].msgstr[0];
+              }
+            }
+          }
+        });
+
+        const existingTranslation = find(
+          getLocale(localeText[locale]),
+          (t: any) => t.id === id
+        );
+
+        if (!existingTranslation || !deepEqual(safePick(existingTranslation, textFields), theTranslation)) {
+          console.log(`\tUpdating ${id} ${locale}.text`);
+          await upsertText({
+            id,
+            locale: locale,
+            ...theTranslation,
+          });
+        }
+      }
+    }
+  }
+}
+
+
+async function importCards() {
   const response = await client.getMetadata();
   const files = METADATA;
   const englishLocale = await client.getLocaleText({ locale: 'en' });
@@ -258,8 +339,59 @@ async function importMetadata() {
   }
 };
 
+
+async function importTaboos() {
+  const tabooFiles = await readDir(`${BASE_DIR}/taboos/`);
+  const localeText: { [locale: string]: GetLocaleTextQuery } = {};
+  const allLocales = ['en', ...LOCALES];
+  for (let i = 0; i < allLocales.length; i++) {
+    const locale = allLocales[i];
+    localeText[locale] = await client.getLocaleText({ locale });
+  }
+
+  for (let i = 0; i < tabooFiles.length; i++) {
+    const file = tabooFiles[i];
+    if (file.indexOf('.json') === -1) {
+      continue;
+    }
+
+    const taboo_id = file.replace('.json', '');
+    const data = await readBasicFile(`${BASE_DIR}/taboos/${file}`);
+    const existingTaboos = await client.getTaboos(); // Fetch existing taboo data
+    const allFields = concat(CARD_DATA.fields, CARD_DATA.textFields || []);
+
+    console.log(`Processing taboo set: ${file}`);
+    await processCardLikeData(
+      data,
+      existingTaboos.rangers_card,
+      allFields,
+      CARD_DATA.textFields,
+      async (data) => {
+        await client.upsertCard({
+          ...data,
+          taboo_id,
+        });
+      },
+      async (data) => {
+        await client.upsertCardText(data);
+      },
+      localeText,
+      (locale) => {
+        return locale.rangers_card_text
+      },
+      file,
+      (card) => `${card.id}-${taboo_id}`,
+      { taboo_id }
+    );
+  }
+}
+
+
 async function run() {
-  await importMetadata();
+  if (false) {
+    await importCards();
+  }
+  await importTaboos();
   // await updateTimestamps();
 }
 

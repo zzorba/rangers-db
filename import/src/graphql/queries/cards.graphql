@@ -138,15 +138,30 @@ fragment CardAreaText on rangers_area_text {
 }
 
 query getCards {
-  rangers_card {
+  rangers_card(
+    where: { taboo_id: { _is_null: true } }
+  ) {
     ...Card
   }
   rangers_card_text(
-    where: { locale: { _eq: "en" }}
+    where: { locale: { _eq: "en" } }
   ) {
     ...CardText
   }
 }
+query getTaboos {
+  rangers_card(
+    where: { taboo_id: { _is_null: true } }
+  ) {
+    ...Card
+  }
+  rangers_card_text(
+    where: { locale: { _eq: "en" } }
+  ) {
+    ...CardText
+  }
+}
+
 
 query getMetadata {
   rangers_area {
@@ -261,6 +276,7 @@ mutation upsertCard(
   $back_card_id: String
   $imagesrc: String
   $spoiler: Boolean
+  $taboo_id: String
 ) {
 	insert_rangers_card_one(
     object: {
@@ -298,6 +314,7 @@ mutation upsertCard(
       back_card_id: $back_card_id
       imagesrc: $imagesrc
       spoiler: $spoiler
+      taboo_id: $taboo_id
     }
     on_conflict: {
       constraint: card_pkey
@@ -335,7 +352,8 @@ mutation upsertCard(
         imagesrc,
         deck_limit,
         position,
-        spoiler
+        spoiler,
+        taboo_id
       ]
     }
   ) {

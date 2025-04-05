@@ -48,6 +48,8 @@ async function translateMetadata(locale: string) {
       await poFile.save(translationPoFile, console.error);
     }
   }
+
+
   const packs = await readDir(`${BASE_DIR}/packs/`);
   for (let i = 0; i < packs.length; i++) {
     const cardPacks = await readDir(`${BASE_DIR}/packs/${packs[i]}`);
@@ -83,6 +85,37 @@ async function translateMetadata(locale: string) {
         });
         await poFile.save(translationPoFile, console.error);
       }
+    }
+  }
+
+
+  const taboos = await readDir(`${BASE_DIR}/taboos/`);
+  for (let i = 0; i < taboos.length; i++) {
+    const taboo = taboos[i];
+
+    fs.mkdirSync(`${BASE_DIR}/i18n/${locale}/taboos/`, { recursive: true });
+    const data = await readBasicFile(`${BASE_DIR}/taboos/${taboo}`);
+    console.log(`Processing taboo cards: ${taboo}`);
+
+
+    const translationPoFile = `${BASE_DIR}/i18n/${locale}/taboos/${taboo.replace(/json$/, 'po')}`;
+    const [allPoEntries, poFile] = await getOrCreateCleanPoFile(translationPoFile, locale);
+
+    for (let k = 0; k < data.length; k++) {
+      const card = data[k];
+
+      const id = card.id;
+      forEach(CARD_DATA.textFields, field => {
+        if (card[field]) {
+          const item = new PO.Item();
+          item.msgid = card[field];
+          item.msgctxt = `${id}.${field}`;
+          if (!allPoEntries[itemMessageId(item)]) {
+            poFile.items.push(item);
+          }
+        }
+      });
+      await poFile.save(translationPoFile, console.error);
     }
   }
 };
