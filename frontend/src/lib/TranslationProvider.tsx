@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useMemo } from 'react'
 import { useGetSetNamesQuery } from '../generated/graphql/apollo-schema';
-import { AspectMap, CampaignCycle, MapLocations, PathTypeMap } from '../types/types';
+import { AspectMap, CampaignCycle, ConnectionRestrictionMap, MapLocations, PathTypeMap } from '../types/types';
 import { useLingui, } from '@lingui/react';
 import { I18n } from '@lingui/core';
 import { t } from '@lingui/macro';
-import { CategoryTranslations, DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getCampaignCycles, getDeckCardErrors, getDeckErrors, getGeneralSets, getMapLocations, getPathTypes, useCategoryTranslations } from './hooks';
+import { CategoryTranslations, DeckCardErrorTranslations, DeckErrorTranslations, getAspectMap, getCampaignCycles, getConnectinRestrictions, getDeckCardErrors, getDeckErrors, getGeneralSets, getMapLocations, getPathTypes, useCategoryTranslations } from './hooks';
 
 interface TranslationContextType {
   deckErrors: DeckErrorTranslations;
@@ -12,7 +12,8 @@ interface TranslationContextType {
   aspects: AspectMap;
   approaches: { [approach: string]: string };
   paths: PathTypeMap;
-  locations: MapLocations;
+  restrictions: ConnectionRestrictionMap;
+  // locations: MapLocations;
   generalSets: MapLocations;
   categories: CategoryTranslations;
   locale: string;
@@ -24,8 +25,8 @@ const TranslationContext = createContext<TranslationContextType>({
   cardErrors: getDeckCardErrors(),
   aspects: getAspectMap(),
   paths: getPathTypes(),
+  restrictions: getConnectinRestrictions(),
   generalSets: getGeneralSets(),
-  locations: getMapLocations(),
   cycles: getCampaignCycles(),
   approaches: {},
   categories: {},
@@ -47,7 +48,7 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
       cardErrors: getDeckCardErrors(),
       aspects: getAspectMap(),
       paths: getPathTypes(),
-      locations: getMapLocations(),
+      restrictions: getConnectinRestrictions(),
       cycles: getCampaignCycles(),
       generalSets: getGeneralSets(),
       approaches: {

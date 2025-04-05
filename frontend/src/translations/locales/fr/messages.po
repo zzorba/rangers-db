@@ -40,6 +40,9 @@ msgstr "{0} sur {1}"
 msgid "{background} - {specialty} (Starter)"
 msgstr "{background} - {specialty} (Deck de base)"
 
+msgid "{nonCollectionCardCount, plural, one {Show {nonCollectionCardCount} non-collection} other {Show {nonCollectionCardCount} non-collection}}"
+msgstr ""
+
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 msgstr "{otherErrorCount, plural, one {+ {otherErrorCount} autre problème} other {+ {otherErrorCount} autres problèmes}}"
 
@@ -100,11 +103,17 @@ msgstr "Vous avez déjà un compte ? <0>Se connecter</0>"
 msgid "Ancestor's Grove"
 msgstr "Bosquet des Ancêtres"
 
+msgid "Ancient Ruins"
+msgstr ""
+
 msgid "Approach"
 msgstr "Approche"
 
 msgid "Approach icons"
 msgstr "Icônes d'approche"
+
+msgid "Arboretum of Memory"
+msgstr ""
 
 msgid "Archeological Outpost"
 msgstr "Avant-Poste Archéologique"
@@ -163,6 +172,9 @@ msgstr "Vasque du Soleil"
 msgid "Branch"
 msgstr "Branche"
 
+msgid "Branching Artery"
+msgstr ""
+
 msgid "Camp"
 msgstr "Camper"
 
@@ -187,6 +199,9 @@ msgstr "Annuler la demander d'amitié"
 msgid "Cancel Friendship"
 msgstr "Annulé amitié"
 
+msgid "Carbonforged Maze"
+msgstr ""
+
 msgid "Card set"
 msgstr "Set de cartes"
 
@@ -198,6 +213,12 @@ msgstr "Les cartes qui sont retirées de votre deck seront garder ici. Elles peu
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
 msgstr "Les cartes avec le trait Expert ne peuvent être choisies si elles ne sont pas dans votre Intérêt, elles sont cachées automatiquement."
+
+msgid "Cave System"
+msgstr ""
+
+msgid "Cerulean Curtain"
+msgstr ""
 
 msgid "Changes"
 msgstr "Changements"
@@ -313,6 +334,9 @@ msgstr "Recherche dans le deck"
 msgid "Decklists"
 msgstr "Liste des decks"
 
+msgid "Deep Roots"
+msgstr ""
+
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -337,6 +361,9 @@ msgstr "Description"
 msgid "Descriptions support basic markdown and html formatting."
 msgstr "La description supporte le formattage markdown et html de base."
 
+msgid "Desert of Endless Night"
+msgstr ""
+
 msgid "Discard changes"
 msgstr "Annuler les modifications"
 
@@ -351,6 +378,9 @@ msgstr "Terminer l'édition"
 
 msgid "Downpour"
 msgstr "Averse"
+
+msgid "Drenching Chamber"
+msgstr ""
 
 msgid "Duplicate this deck while preserving the original."
 msgstr "Dupliquer ce deck en conservant l'original."
@@ -415,6 +445,9 @@ msgstr "Filtrer par set de cartes"
 msgid "Filter by card type"
 msgstr "Filtrer par type de carte"
 
+msgid "Filter by pack"
+msgstr ""
+
 msgid "Filter by Role"
 msgstr "Filtrer par rôle"
 
@@ -430,6 +463,12 @@ msgstr "PHY"
 msgid "Fitness"
 msgstr "Physique"
 
+msgid "Flooded Passage"
+msgstr ""
+
+msgid "Flooded Ruins"
+msgstr ""
+
 msgid "FOC"
 msgstr "CON"
 
@@ -444,6 +483,9 @@ msgstr "Demandes d'amitié"
 
 msgid "Friends"
 msgstr "Amis"
+
+msgid "Fungal Forest"
+msgstr ""
 
 msgid "General"
 msgstr "Général"
@@ -469,6 +511,9 @@ msgstr "Pseudo"
 msgid "Headwaters Station"
 msgstr "Base de la Source"
 
+msgid "Hide"
+msgstr ""
+
 msgid "Hide spoilers"
 msgstr "Masquer les spoilers"
 
@@ -490,6 +535,9 @@ msgstr "Si vous voulez qu'elle soit corrigée, envoyez-moi le lien vers votre ca
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Si vous voulez supporter le développement et la maintenance du site, vous pouvez nous supporter sur {patreon}"
 
+msgid "Inverted Forest"
+msgstr ""
+
 msgid "Italian"
 msgstr "Italien"
 
@@ -507,6 +555,9 @@ msgstr "Langue"
 
 msgid "Leave campaign"
 msgstr "Quitter la campagne"
+
+msgid "Legacy of the Ancestors"
+msgstr ""
 
 msgid "Light mode"
 msgstr "Mode clair"
@@ -528,6 +579,9 @@ msgstr "Lieu"
 
 msgid "Locations"
 msgstr "Lieux"
+
+msgid "Locked Passage"
+msgstr ""
 
 msgid "Login"
 msgstr "Se connecter"
@@ -570,6 +624,9 @@ msgstr "Mes campagnes"
 
 msgid "My Decks"
 msgstr "Mes decks"
+
+msgid "Mycelial Conclave"
+msgstr ""
 
 msgid "Name"
 msgstr "Nom"
@@ -649,6 +706,9 @@ msgstr "Note: cette campagne a été créée avant que ce site n'enregistre asse
 msgid "Notes"
 msgstr "Notes"
 
+msgid "Oasis of Sunlight"
+msgstr ""
+
 msgid "Old-growth"
 msgstr "Fôret Primaire"
 
@@ -670,6 +730,9 @@ msgstr "Seulement un aspect peut être mis à 1."
 msgid "Only one aspect can be set to 3."
 msgstr "Seulement un aspect peut être mis à 3."
 
+msgid "Orlin's Vault"
+msgstr ""
+
 #. card_set_header
 msgid "Other"
 msgstr "Autre"
@@ -679,6 +742,12 @@ msgstr "Centre d'intérêt"
 
 msgid "Outside interest cards cannot have the Expert trait."
 msgstr "Les cartes Centre d'intérêt ne peuvent pas avoir le trait Expert."
+
+msgid "Overgrown Passage"
+msgstr ""
+
+msgid "Packs"
+msgstr ""
 
 msgid "Password"
 msgstr "Mot de passe"
@@ -821,6 +890,9 @@ msgstr "Enregistrer"
 msgid "Save changes"
 msgstr "Enregistrer les changements"
 
+msgid "Scuttler Network"
+msgstr ""
+
 msgid "Search by name"
 msgstr "Rechercher par nom"
 
@@ -863,6 +935,9 @@ msgstr "Set"
 msgid "Settings"
 msgstr "Paramètres"
 
+msgid "Severed Artery"
+msgstr ""
+
 msgid "Share"
 msgstr "Partager"
 
@@ -886,6 +961,9 @@ msgstr "Se déconnecter"
 
 msgid "Sign Up"
 msgstr "Créer un compte"
+
+msgid "Silent Dormitories"
+msgstr ""
 
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Certains évènements de campagne peuvent vous permettre d'échanger de façon permanente des cartes de votre Deck avec celles de votre collection."
@@ -929,6 +1007,12 @@ msgstr "Avant-Poste Submergé"
 msgid "Swamp"
 msgstr "Marécage"
 
+msgid "Talpid's Squeeze"
+msgstr ""
+
+msgid "Terminal Artery"
+msgstr ""
+
 msgid "Terrain"
 msgstr "Terrain"
 
@@ -940,6 +1024,15 @@ msgstr "Texte"
 
 msgid "The Alluvial Ruins"
 msgstr "Les Ruines Alluviales"
+
+msgid "The Cage"
+msgstr ""
+
+msgid "The Chimney"
+msgstr ""
+
+msgid "The Cistern"
+msgstr ""
 
 msgid "The Concordant Ziggurats"
 msgstr "Les Ziggourats Jumelles"
@@ -970,6 +1063,9 @@ msgstr "Le Jardin du Philosophe"
 
 msgid "The Plummet"
 msgstr "L'Escarpement"
+
+msgid "The Rootway"
+msgstr ""
 
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "Ce site sera probablement interrompu pour maintenance et des données pourraient être perdues au cours de cette période de développement."

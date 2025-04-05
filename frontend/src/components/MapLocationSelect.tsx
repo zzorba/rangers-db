@@ -1,12 +1,12 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 import { createFilter, OptionBase, Select, SingleValue } from 'chakra-react-select';
 import { find, flatMap, sortBy } from 'lodash';
 import { t } from '@lingui/macro';
 
-import { useLocale } from '../lib/TranslationProvider';
 import { LocationIcon } from '../icons/LocationIcon';
 import { MapLocation } from '../types/types';
+import { CampaignContext } from './Campaign';
 
 export interface MapLocationOption extends OptionBase {
   value: string;
@@ -22,7 +22,7 @@ interface Props {
   editable?: boolean;
 }
 export default function MapLocationSelect({ value, setValue, decoration, filter: filterLocation, editable }: Props) {
-  const { locations } = useLocale();
+  const { locations } = useContext(CampaignContext);
   const options: MapLocationOption[] = useMemo(() => {
     return sortBy(
       flatMap(locations, loc => {
@@ -40,7 +40,7 @@ export default function MapLocationSelect({ value, setValue, decoration, filter:
             <Flex direction="row" alignItems="center">
               <LocationIcon location={loc} size={64} />
               <Flex direction="column" marginLeft={2} justifyContent="center" alignItems="flex-start">
-                <Text>{loc.name}</Text>
+                <Text style={{ fontVariantCaps: 'small-caps' }}>{loc.name}</Text>
                 { !!decoration && decoration(loc) }
               </Flex>
             </Flex>

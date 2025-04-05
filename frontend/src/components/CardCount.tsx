@@ -143,16 +143,16 @@ export function CountControls({ card, slots, extraSlots, setSlots, onClose, coun
     }
     onClose?.();
   }, [card, setSlots, onClose]);
-  const currentCount = `${(card.id && slots[card.id]) || 0}`;
+  const currentCount = `${(card.code && slots[card.code]) || 0}`;
   const { getRadioProps } = useRadioGroup({
     name: 'deck-count',
     value: currentCount,
     onChange: onChange,
   });
   const toggleSaved = useCallback(() => {
-    setExtraSlots(card, (card.id && extraSlots[card.id]) ? 0 : 1);
+    setExtraSlots(card, (card.code && extraSlots[card.code]) ? 0 : 1);
   }, [setExtraSlots, extraSlots, card]);
-  const starred = !!(card.id && extraSlots[card.id]);
+  const starred = !!(card.code && extraSlots[card.code]);
 
   return (
     <Flex direction="row">
@@ -179,14 +179,14 @@ export function IncDecCountControls({ card, slots, setSlots, onClose }: {
   setSlots: (card: CardFragment, count: number) => void;
 }) {
   const onInc = useCallback(() => {
-    if (card.id) {
-      setSlots(card, Math.min((slots[card.id] || 0) + 1, card.quantity || 2));
+    if (card.code) {
+      setSlots(card, Math.min((slots[card.code] || 0) + 1, card.quantity || 2));
     }
   }, [card, slots, setSlots]);
-  const count = (card.id && slots[card.id]) || 0;
+  const count = (card.code && slots[card.code]) || 0;
   const onDec = useCallback(() => {
-    if (card.id) {
-      setSlots(card, Math.max((slots[card.id] || 0) - 1, 0));
+    if (card.code) {
+      setSlots(card, Math.max((slots[card.code] || 0) - 1, 0));
     }
   }, [card, slots, setSlots]);
   return (

@@ -1,5 +1,9 @@
-
-
+query getPackCollection($id: String!) {
+  settings: rangers_user_settings_by_pk(user_id: $id) {
+    pack_collection
+    adhere_taboos
+  }
+}
 mutation setPrivateDecks($userId: String!, $privateDecks: Boolean!) {
   update_rangers_user_settings_by_pk(
     pk_columns: { user_id: $userId }
@@ -9,5 +13,29 @@ mutation setPrivateDecks($userId: String!, $privateDecks: Boolean!) {
   ) {
     user_id
     private_decks
+  }
+}
+
+mutation setPackCollection($userId: String!, $pack_collection: jsonb!) {
+  update_rangers_user_settings_by_pk(
+    pk_columns: { user_id: $userId }
+    _set: {
+      pack_collection: $pack_collection
+    }
+  ) {
+    user_id
+    pack_collection
+  }
+}
+
+mutation setAdhereTaboos($userId: String!, $adhere_taboos: Boolean!) {
+  update_rangers_user_settings_by_pk(
+    pk_columns: { user_id: $userId }
+    _set: {
+      adhere_taboos: $adhere_taboos
+    }
+  ) {
+    user_id
+    adhere_taboos
   }
 }

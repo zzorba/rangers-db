@@ -11,6 +11,7 @@ import { useApolloClient } from '@apollo/client';
 import { useAuth } from '../../../../lib/AuthContext';
 import { useAllCards } from '../../../../lib/cards';
 import { getLocalizationServerSideProps } from '../../../../lib/Lingui';
+import { PackCollectionContextProvider } from '../../../../components/CardList';
 
 export default function ViewDeckPage() {
   const { authUser } = useAuth();
@@ -22,7 +23,7 @@ export default function ViewDeckPage() {
     },
     skip: !isReady || !deckId,
   });
-  const cardsData = useAllCards();
+  const cardsData = useAllCards(data?.deck?.taboo_set_id ?? undefined);
   const cards = useCardsMap(cardsData);
   const deck = data?.deck;
   const client = useApolloClient();
@@ -59,7 +60,9 @@ export default function ViewDeckPage() {
         py={{ base: "3rem", lg: "4rem" }}
         px={{ base: "1rem", lg: "0" }}
       >
-        { deck ? <DeckDetail deck={deck} cards={cards} onLike={deck.published && authUser ? onLike : undefined} /> : <LoadingPage /> }
+        <PackCollectionContextProvider mode="annotate">
+          { deck ? <DeckDetail deck={deck} cards={cards} onLike={deck.published && authUser ? onLike : undefined} /> : <LoadingPage /> }
+        </PackCollectionContextProvider>
       </Box>
     </>
   );

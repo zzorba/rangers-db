@@ -52,14 +52,14 @@ function RoleSelect({ roleCards, onChange, roles, specialty }: {
     return map(
       groupBy(
         flatMap(values(roleCards), (card) => {
-          if (!card || !card.set_id || card.type_id !== 'role' || !card.id || !card.name) {
+          if (!card || !card.set_id || card.type_id !== 'role' || !card.code || !card.name) {
             return [];
           }
-          if (specialtySet && !specialtySet.has(card.set_id) && (!roleSet || !roleSet.has(card.id))) {
+          if (specialtySet && !specialtySet.has(card.set_id) && (!roleSet || !roleSet.has(card.code))) {
             return [];
           }
           return {
-            value: card?.id,
+            value: card?.code,
             label: card.name,
             card: card,
           };
@@ -89,6 +89,7 @@ function RoleSelect({ roleCards, onChange, roles, specialty }: {
 }
 
 export default function Search() {
+  const [tabooSetId, setTabooSetId] = useState<string>();
   const [userId, setUserId] = useState<string>();
   const [foc, setFoc] = useState<number>();
   const [fit, setFit] = useState<number>();
@@ -97,7 +98,7 @@ export default function Search() {
   const [background, setBackground] = useState<string[]>();
   const [specialty, setSpecialty] = useState<string[]>();
   const [roles, setRole] = useState<string[]>();
-  const roleCards = useRoleCardsMap();
+  const roleCards = useRoleCardsMap(undefined);
   const { categories } = useLocale();
   const backgroundT = categories.background;
   const specialtyT = categories.specialty;
@@ -117,7 +118,6 @@ export default function Search() {
         <RoleSelect roleCards={roleCards} roles={roles} onChange={setRole} specialty={specialty} />
       </form>
       <SearchDecks
-        roleCards={roleCards}
         background={background}
         specialty={specialty}
         roles={roles}

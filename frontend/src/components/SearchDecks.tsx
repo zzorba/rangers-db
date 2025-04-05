@@ -8,7 +8,6 @@ import { SearchDeckList } from './DeckList';
 import PaginationWrapper from './PaginationWrapper';
 
 interface Props {
-  roleCards: CardsMap;
   userId?: string;
   awa?: number;
   fit?: number;
@@ -22,7 +21,6 @@ interface Props {
 }
 
 export default function SearchDecks({
-  roleCards,
   emptyMessage,
   pageSize = 10,
   userId, awa, spi, foc, fit, background, specialty, roles,
@@ -83,7 +81,6 @@ export default function SearchDecks({
       { (decks: SearchDeckFragment[]) => (
         <SearchDeckList
           decks={decks}
-          roleCards={roleCards}
           emptyMessage={emptyMessage}
         />
       ) }

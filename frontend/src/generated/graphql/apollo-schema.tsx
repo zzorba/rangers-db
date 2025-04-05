@@ -50416,7 +50416,7 @@ export type GetMyCampaignsQueryVariables = Exact<{
 }>;
 
 
-export type GetMyCampaignsQuery = { __typename?: 'query_root', campaigns: Array<{ __typename?: 'rangers_user_campaign', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, notes: any, day: number, extended_calendar?: boolean | null, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null }> };
+export type GetMyCampaignsQuery = { __typename?: 'query_root', campaigns: Array<{ __typename?: 'rangers_user_campaign', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, notes: any, day: number, extended_calendar?: boolean | null, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null }> };
 
 export type GetMyCampaignsTotalQueryVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -50430,7 +50430,7 @@ export type GetCampaignQueryVariables = Exact<{
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, notes: any, day: number, extended_calendar?: boolean | null, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, notes: any, day: number, extended_calendar?: boolean | null, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
 
 export type CreateCampaignMutationVariables = Exact<{
   name: Scalars['String']['input'];
@@ -50439,7 +50439,7 @@ export type CreateCampaignMutationVariables = Exact<{
 }>;
 
 
-export type CreateCampaignMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, notes: any, day: number, extended_calendar?: boolean | null, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
+export type CreateCampaignMutation = { __typename?: 'mutation_root', campaign?: { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, notes: any, day: number, extended_calendar?: boolean | null, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null };
 
 export type SetCampaignTitleMutationVariables = Exact<{
   name: Scalars['String']['input'];
@@ -50624,19 +50624,26 @@ export type DeleteCampaignMutation = { __typename?: 'mutation_root', delete_rang
 
 export type AspectFragment = { __typename?: 'rangers_aspect_localized', id?: string | null, name?: string | null, short_name?: string | null };
 
+export type GetAllPacksQueryVariables = Exact<{
+  locale: Scalars['String']['input'];
+}>;
+
+
+export type GetAllPacksQuery = { __typename?: 'query_root', packs: Array<{ __typename?: 'rangers_pack_localized', id?: string | null, name?: string | null, updated_at?: any | null, locale?: string | null, position?: number | null }> };
+
 export type GetAllCardsQueryVariables = Exact<{
   locale: Scalars['String']['input'];
 }>;
 
 
-export type GetAllCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null }>, all_updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
+export type GetAllCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', code?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null, pack_id?: string | null, pack_name?: string | null, pack_short_name?: string | null, pack_position?: number | null, subset_id?: string | null, subset_name?: string | null, subset_position?: number | null, subset_size?: number | null, taboo_id?: string | null, taboo_name?: string | null, taboo_date?: any | null, taboo_is_current?: boolean | null }>, all_updated_at: Array<{ __typename?: 'rangers_card_updated', updated_at?: any | null }> };
 
 export type GetRoleCardsQueryVariables = Exact<{
   locale: Scalars['String']['input'];
 }>;
 
 
-export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null }> };
+export type GetRoleCardsQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', code?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null, pack_id?: string | null, pack_name?: string | null, pack_short_name?: string | null, pack_position?: number | null, subset_id?: string | null, subset_name?: string | null, subset_position?: number | null, subset_size?: number | null, taboo_id?: string | null, taboo_name?: string | null, taboo_date?: any | null, taboo_is_current?: boolean | null }> };
 
 export type GetCardQueryVariables = Exact<{
   locale: Scalars['String']['input'];
@@ -50644,7 +50651,7 @@ export type GetCardQueryVariables = Exact<{
 }>;
 
 
-export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null }> };
+export type GetCardQuery = { __typename?: 'query_root', cards: Array<{ __typename?: 'rangers_card_localized', code?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null, pack_id?: string | null, pack_name?: string | null, pack_short_name?: string | null, pack_position?: number | null, subset_id?: string | null, subset_name?: string | null, subset_position?: number | null, subset_size?: number | null, taboo_id?: string | null, taboo_name?: string | null, taboo_date?: any | null, taboo_is_current?: boolean | null }> };
 
 export type GetCardsUpdatedAtQueryVariables = Exact<{
   locale: Scalars['String']['input'];
@@ -50699,7 +50706,7 @@ export type GetMyCampaignDecksQueryVariables = Exact<{
 }>;
 
 
-export type GetMyCampaignDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null }> };
+export type GetMyCampaignDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null }> };
 
 export type GetMyCampaignDecksTotalQueryVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -50722,7 +50729,7 @@ export type SearchDecksQueryVariables = Exact<{
 }>;
 
 
-export type SearchDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, comment_count?: number | null, copy_count?: number | null, like_count?: number | null, liked_by_user?: boolean | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
+export type SearchDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, comment_count?: number | null, copy_count?: number | null, like_count?: number | null, liked_by_user?: boolean | null, taboo_set_id?: string | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
 export type GetMyDecksQueryVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -50731,7 +50738,7 @@ export type GetMyDecksQueryVariables = Exact<{
 }>;
 
 
-export type GetMyDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', comment_count: number, copy_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null }> };
+export type GetMyDecksQuery = { __typename?: 'query_root', decks: Array<{ __typename?: 'rangers_deck', comment_count: number, copy_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null }> };
 
 export type GetMyDecksTotalQueryVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -50745,7 +50752,7 @@ export type GetDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
+export type GetDeckQuery = { __typename?: 'query_root', deck?: { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
 
 export type GetDeckCommentsQueryVariables = Exact<{
   deckId: Scalars['Int']['input'];
@@ -50795,7 +50802,7 @@ export type CreateDeckMutationVariables = Exact<{
 }>;
 
 
-export type CreateDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
+export type CreateDeckMutation = { __typename?: 'mutation_root', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
 
 export type CloneDeckMutationVariables = Exact<{
   originalDeckId: Scalars['Int']['input'];
@@ -50826,7 +50833,7 @@ export type SaveDeckMutationVariables = Exact<{
 }>;
 
 
-export type SaveDeckMutation = { __typename?: 'mutation_root', update_rangers_deck_by_pk?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
+export type SaveDeckMutation = { __typename?: 'mutation_root', update_rangers_deck_by_pk?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null };
 
 export type SaveDeckDescriptionMutationVariables = Exact<{
   id: Scalars['Int']['input'];
@@ -50853,21 +50860,23 @@ export type UnlikeDeckMutation = { __typename?: 'mutation_root', update_rangers_
 
 export type UserInfoFragment = { __typename?: 'rangers_users', id: string, handle?: string | null };
 
-export type CampaignFragment = { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, notes: any, day: number, extended_calendar?: boolean | null, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
+export type CampaignFragment = { __typename?: 'rangers_campaign', id: number, user_id: string, name: string, notes: any, day: number, extended_calendar?: boolean | null, cycle_id: string, current_location?: string | null, current_path_terrain?: string | null, missions: any, events: any, rewards: any, removed: any, history: any, calendar: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null } | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
-export type SearchDeckFragment = { __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, comment_count?: number | null, copy_count?: number | null, like_count?: number | null, liked_by_user?: boolean | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null };
+export type SearchDeckFragment = { __typename?: 'rangers_search_deck', id?: number | null, user_id?: string | null, slots?: any | null, side_slots?: any | null, version?: number | null, name?: string | null, description?: string | null, awa?: number | null, spi?: number | null, fit?: number | null, foc?: number | null, created_at?: any | null, updated_at?: any | null, meta?: any | null, comment_count?: number | null, copy_count?: number | null, like_count?: number | null, liked_by_user?: boolean | null, taboo_set_id?: string | null, user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null };
 
-export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
+export type DeckFragment = { __typename?: 'rangers_deck', id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
-export type DeckWithCampaignFragment = { __typename?: 'rangers_deck', comment_count: number, copy_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
+export type DeckWithCampaignFragment = { __typename?: 'rangers_deck', comment_count: number, copy_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string } | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null }, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
 export type BasicDeckCommentFragment = { __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
-export type DeckDetailFragment = { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
+export type DeckDetailFragment = { __typename?: 'rangers_deck', copy_count: number, comment_count: number, like_count?: number | null, liked_by_user?: boolean | null, id: number, user_id: string, slots: any, side_slots: any, extra_slots: any, version: number, name: string, description?: string | null, awa: number, spi: number, fit: number, foc: number, created_at?: any | null, updated_at?: any | null, meta: any, taboo_set_id?: string | null, published?: boolean | null, original_deck?: { __typename?: 'rangers_deck_copy', deck: { __typename?: 'rangers_deck', id: number, name: string, user: { __typename?: 'rangers_users', id: string, handle?: string | null } } } | null, campaign?: { __typename?: 'rangers_campaign', id: number, name: string, rewards: any, latest_decks: Array<{ __typename?: 'rangers_latest_deck', deck?: { __typename?: 'rangers_deck', id: number, slots: any } | null }> } | null, user: { __typename?: 'rangers_users', handle?: string | null, id: string }, comments: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, previous_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null, next_deck?: { __typename?: 'rangers_deck', id: number, meta: any, slots: any, side_slots: any, version: number } | null };
 
 export type DeckCommentFragment = { __typename?: 'rangers_comment', deck_id?: number | null, id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, responses: Array<{ __typename?: 'rangers_comment', id: any, text?: string | null, created_at: any, updated_at: any, response_count: number, comment_id?: any | null, user: { __typename?: 'rangers_users', id: string, handle?: string | null } }>, user: { __typename?: 'rangers_users', id: string, handle?: string | null } };
 
-export type CardFragment = { __typename?: 'rangers_card_localized', id?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null };
+export type PackFragment = { __typename?: 'rangers_pack_localized', id?: string | null, name?: string | null, updated_at?: any | null, locale?: string | null, position?: number | null };
+
+export type CardFragment = { __typename?: 'rangers_card_localized', code?: string | null, name?: string | null, real_traits?: string | null, traits?: string | null, equip?: number | null, presence?: number | null, token_id?: string | null, token_name?: string | null, token_plurals?: string | null, token_count?: number | null, harm?: number | null, approach_conflict?: number | null, approach_reason?: number | null, approach_exploration?: number | null, approach_connection?: number | null, text?: string | null, set_id?: string | null, set_name?: string | null, set_type_id?: string | null, set_size?: number | null, set_type_name?: string | null, set_position?: number | null, quantity?: number | null, level?: number | null, flavor?: string | null, type_id?: string | null, type_name?: string | null, cost?: number | null, aspect_id?: string | null, aspect_name?: string | null, aspect_short_name?: string | null, progress?: number | null, imagesrc?: string | null, position?: number | null, deck_limit?: number | null, spoiler?: boolean | null, sun_challenge?: string | null, mountain_challenge?: string | null, crest_challenge?: string | null, pack_id?: string | null, pack_name?: string | null, pack_short_name?: string | null, pack_position?: number | null, subset_id?: string | null, subset_name?: string | null, subset_position?: number | null, subset_size?: number | null, taboo_id?: string | null, taboo_name?: string | null, taboo_date?: any | null, taboo_is_current?: boolean | null };
 
 export type UserProfileFragment = { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> };
 
@@ -50885,7 +50894,7 @@ export type GetProfileQueryVariables = Exact<{
 }>;
 
 
-export type GetProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null, settings?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean } | null };
+export type GetProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null, settings?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean, pack_collection?: any | null, adhere_taboos?: boolean | null } | null };
 
 export type GetProfileByHandleQueryVariables = Exact<{
   handle: Scalars['String']['input'];
@@ -50894,6 +50903,13 @@ export type GetProfileByHandleQueryVariables = Exact<{
 
 export type GetProfileByHandleQuery = { __typename?: 'query_root', profile: Array<{ __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> }> };
 
+export type GetPackCollectionQueryVariables = Exact<{
+  id: Scalars['String']['input'];
+}>;
+
+
+export type GetPackCollectionQuery = { __typename?: 'query_root', settings?: { __typename?: 'rangers_user_settings', pack_collection?: any | null, adhere_taboos?: boolean | null } | null };
+
 export type SetPrivateDecksMutationVariables = Exact<{
   userId: Scalars['String']['input'];
   privateDecks: Scalars['Boolean']['input'];
@@ -50901,6 +50917,22 @@ export type SetPrivateDecksMutationVariables = Exact<{
 
 
 export type SetPrivateDecksMutation = { __typename?: 'mutation_root', update_rangers_user_settings_by_pk?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean } | null };
+
+export type SetPackCollectionMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  pack_collection: Scalars['jsonb']['input'];
+}>;
+
+
+export type SetPackCollectionMutation = { __typename?: 'mutation_root', update_rangers_user_settings_by_pk?: { __typename?: 'rangers_user_settings', user_id: string, pack_collection?: any | null } | null };
+
+export type SetAdhereTaboosMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  adhere_taboos: Scalars['Boolean']['input'];
+}>;
+
+
+export type SetAdhereTaboosMutation = { __typename?: 'mutation_root', update_rangers_user_settings_by_pk?: { __typename?: 'rangers_user_settings', user_id: string, adhere_taboos?: boolean | null } | null };
 
 export const AspectFragmentDoc = gql`
     fragment Aspect on rangers_aspect_localized {
@@ -50945,6 +50977,7 @@ export const DeckFragmentDoc = gql`
   user {
     ...UserInfo
   }
+  taboo_set_id
   published
   previous_deck {
     id
@@ -51018,6 +51051,7 @@ export const SearchDeckFragmentDoc = gql`
   copy_count
   like_count
   liked_by_user
+  taboo_set_id
 }
     ${UserInfoFragmentDoc}`;
 export const DeckWithCampaignFragmentDoc = gql`
@@ -51092,9 +51126,18 @@ export const DeckCommentFragmentDoc = gql`
   }
 }
     ${BasicDeckCommentFragmentDoc}`;
+export const PackFragmentDoc = gql`
+    fragment Pack on rangers_pack_localized {
+  id
+  name
+  updated_at
+  locale
+  position
+}
+    `;
 export const CardFragmentDoc = gql`
     fragment Card on rangers_card_localized {
-  id
+  code
   name
   real_traits
   traits
@@ -51133,6 +51176,18 @@ export const CardFragmentDoc = gql`
   sun_challenge
   mountain_challenge
   crest_challenge
+  pack_id
+  pack_name
+  pack_short_name
+  pack_position
+  subset_id
+  subset_name
+  subset_position
+  subset_size
+  taboo_id
+  taboo_name
+  taboo_date
+  taboo_is_current
 }
     `;
 export const UserProfileFragmentDoc = gql`
@@ -52187,6 +52242,49 @@ export function useDeleteCampaignMutation(baseOptions?: Apollo.MutationHookOptio
 export type DeleteCampaignMutationHookResult = ReturnType<typeof useDeleteCampaignMutation>;
 export type DeleteCampaignMutationResult = Apollo.MutationResult<DeleteCampaignMutation>;
 export type DeleteCampaignMutationOptions = Apollo.BaseMutationOptions<DeleteCampaignMutation, DeleteCampaignMutationVariables>;
+export const GetAllPacksDocument = gql`
+    query getAllPacks($locale: String!) {
+  packs: rangers_pack_localized(
+    where: {locale: {_eq: $locale}}
+    order_by: {position: asc}
+  ) {
+    ...Pack
+  }
+}
+    ${PackFragmentDoc}`;
+
+/**
+ * __useGetAllPacksQuery__
+ *
+ * To run a query within a React component, call `useGetAllPacksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllPacksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllPacksQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetAllPacksQuery(baseOptions: Apollo.QueryHookOptions<GetAllPacksQuery, GetAllPacksQueryVariables> & ({ variables: GetAllPacksQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllPacksQuery, GetAllPacksQueryVariables>(GetAllPacksDocument, options);
+      }
+export function useGetAllPacksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllPacksQuery, GetAllPacksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllPacksQuery, GetAllPacksQueryVariables>(GetAllPacksDocument, options);
+        }
+export function useGetAllPacksSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetAllPacksQuery, GetAllPacksQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAllPacksQuery, GetAllPacksQueryVariables>(GetAllPacksDocument, options);
+        }
+export type GetAllPacksQueryHookResult = ReturnType<typeof useGetAllPacksQuery>;
+export type GetAllPacksLazyQueryHookResult = ReturnType<typeof useGetAllPacksLazyQuery>;
+export type GetAllPacksSuspenseQueryHookResult = ReturnType<typeof useGetAllPacksSuspenseQuery>;
+export type GetAllPacksQueryResult = Apollo.QueryResult<GetAllPacksQuery, GetAllPacksQueryVariables>;
 export const GetAllCardsDocument = gql`
     query getAllCards($locale: String!) {
   cards: rangers_card_localized(
@@ -53303,6 +53401,8 @@ export const GetProfileDocument = gql`
   settings: rangers_user_settings_by_pk(user_id: $id) {
     user_id
     private_decks
+    pack_collection
+    adhere_taboos
   }
 }
     ${UserProfileFragmentDoc}`;
@@ -53379,6 +53479,47 @@ export type GetProfileByHandleQueryHookResult = ReturnType<typeof useGetProfileB
 export type GetProfileByHandleLazyQueryHookResult = ReturnType<typeof useGetProfileByHandleLazyQuery>;
 export type GetProfileByHandleSuspenseQueryHookResult = ReturnType<typeof useGetProfileByHandleSuspenseQuery>;
 export type GetProfileByHandleQueryResult = Apollo.QueryResult<GetProfileByHandleQuery, GetProfileByHandleQueryVariables>;
+export const GetPackCollectionDocument = gql`
+    query getPackCollection($id: String!) {
+  settings: rangers_user_settings_by_pk(user_id: $id) {
+    pack_collection
+    adhere_taboos
+  }
+}
+    `;
+
+/**
+ * __useGetPackCollectionQuery__
+ *
+ * To run a query within a React component, call `useGetPackCollectionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPackCollectionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPackCollectionQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetPackCollectionQuery(baseOptions: Apollo.QueryHookOptions<GetPackCollectionQuery, GetPackCollectionQueryVariables> & ({ variables: GetPackCollectionQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPackCollectionQuery, GetPackCollectionQueryVariables>(GetPackCollectionDocument, options);
+      }
+export function useGetPackCollectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPackCollectionQuery, GetPackCollectionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPackCollectionQuery, GetPackCollectionQueryVariables>(GetPackCollectionDocument, options);
+        }
+export function useGetPackCollectionSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetPackCollectionQuery, GetPackCollectionQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPackCollectionQuery, GetPackCollectionQueryVariables>(GetPackCollectionDocument, options);
+        }
+export type GetPackCollectionQueryHookResult = ReturnType<typeof useGetPackCollectionQuery>;
+export type GetPackCollectionLazyQueryHookResult = ReturnType<typeof useGetPackCollectionLazyQuery>;
+export type GetPackCollectionSuspenseQueryHookResult = ReturnType<typeof useGetPackCollectionSuspenseQuery>;
+export type GetPackCollectionQueryResult = Apollo.QueryResult<GetPackCollectionQuery, GetPackCollectionQueryVariables>;
 export const SetPrivateDecksDocument = gql`
     mutation setPrivateDecks($userId: String!, $privateDecks: Boolean!) {
   update_rangers_user_settings_by_pk(
@@ -53417,6 +53558,82 @@ export function useSetPrivateDecksMutation(baseOptions?: Apollo.MutationHookOpti
 export type SetPrivateDecksMutationHookResult = ReturnType<typeof useSetPrivateDecksMutation>;
 export type SetPrivateDecksMutationResult = Apollo.MutationResult<SetPrivateDecksMutation>;
 export type SetPrivateDecksMutationOptions = Apollo.BaseMutationOptions<SetPrivateDecksMutation, SetPrivateDecksMutationVariables>;
+export const SetPackCollectionDocument = gql`
+    mutation setPackCollection($userId: String!, $pack_collection: jsonb!) {
+  update_rangers_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {pack_collection: $pack_collection}
+  ) {
+    user_id
+    pack_collection
+  }
+}
+    `;
+export type SetPackCollectionMutationFn = Apollo.MutationFunction<SetPackCollectionMutation, SetPackCollectionMutationVariables>;
+
+/**
+ * __useSetPackCollectionMutation__
+ *
+ * To run a mutation, you first call `useSetPackCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetPackCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [setPackCollectionMutation, { data, loading, error }] = useSetPackCollectionMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      pack_collection: // value for 'pack_collection'
+ *   },
+ * });
+ */
+export function useSetPackCollectionMutation(baseOptions?: Apollo.MutationHookOptions<SetPackCollectionMutation, SetPackCollectionMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SetPackCollectionMutation, SetPackCollectionMutationVariables>(SetPackCollectionDocument, options);
+      }
+export type SetPackCollectionMutationHookResult = ReturnType<typeof useSetPackCollectionMutation>;
+export type SetPackCollectionMutationResult = Apollo.MutationResult<SetPackCollectionMutation>;
+export type SetPackCollectionMutationOptions = Apollo.BaseMutationOptions<SetPackCollectionMutation, SetPackCollectionMutationVariables>;
+export const SetAdhereTaboosDocument = gql`
+    mutation setAdhereTaboos($userId: String!, $adhere_taboos: Boolean!) {
+  update_rangers_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {adhere_taboos: $adhere_taboos}
+  ) {
+    user_id
+    adhere_taboos
+  }
+}
+    `;
+export type SetAdhereTaboosMutationFn = Apollo.MutationFunction<SetAdhereTaboosMutation, SetAdhereTaboosMutationVariables>;
+
+/**
+ * __useSetAdhereTaboosMutation__
+ *
+ * To run a mutation, you first call `useSetAdhereTaboosMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetAdhereTaboosMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [setAdhereTaboosMutation, { data, loading, error }] = useSetAdhereTaboosMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      adhere_taboos: // value for 'adhere_taboos'
+ *   },
+ * });
+ */
+export function useSetAdhereTaboosMutation(baseOptions?: Apollo.MutationHookOptions<SetAdhereTaboosMutation, SetAdhereTaboosMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SetAdhereTaboosMutation, SetAdhereTaboosMutationVariables>(SetAdhereTaboosDocument, options);
+      }
+export type SetAdhereTaboosMutationHookResult = ReturnType<typeof useSetAdhereTaboosMutation>;
+export type SetAdhereTaboosMutationResult = Apollo.MutationResult<SetAdhereTaboosMutation>;
+export type SetAdhereTaboosMutationOptions = Apollo.BaseMutationOptions<SetAdhereTaboosMutation, SetAdhereTaboosMutationVariables>;
 
       export interface PossibleTypesResultData {
         possibleTypes: {

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   Box,
   Heading,
@@ -32,6 +32,7 @@ import {
   useColorModeValue,
   Textarea,
   Tooltip,
+  Checkbox,
 } from '@chakra-ui/react';
 import Router from 'next/router';
 import NextLink from 'next/link';
@@ -45,7 +46,7 @@ import AspectCounter from './AspectCounter';
 import { AspectStats, AWA, DeckError, DeckMeta, FIT, FOC, Slots, SPI } from '../types/types';
 import { CardsMap, CategoryTranslation } from '../lib/hooks';
 import { CardRow, RenderCardControl, ShowCard, useCardModal } from './Card';
-import { SimpleCardList, SpoilerCardList, CardListWithFilters } from './CardList';
+import { SimpleCardList, SpoilerCardList, CardListWithFilters, PackCollectionContext, CURRENT_TABOO_SET } from './CardList';
 import { CountControls, IncDecCountControls } from './CardCount';
 import DeckProblemComponent from './DeckProblemComponent';
 import EditableTextInput from './EditableTextInput';
@@ -64,6 +65,7 @@ import { FaInbox } from 'react-icons/fa';
 import { useCardSearchControls } from './CardFilter';
 import DeckChanges from './DeckChanges';
 import { BiSolidBookmarkAlt } from 'react-icons/bi';
+import { usePackCollection, useRoleCardsMap } from '../lib/cards';
 
 interface Props {
   deck: DeckDetailFragment;
@@ -79,7 +81,7 @@ function RoleRadioChooser({ specialty, cards, role, onChange }: { specialty: str
     <RadioGroup defaultValue={role} onChange={onChange}>
       <Stack>
         { map(possibleRoles, (roleCard, idx) => (
-          <Radio key={roleCard.id} value={roleCard.id || ''}>
+          <Radio key={roleCard.code} value={roleCard.code || ''}>
             <CardRow
               card={roleCard}
               includeText
@@ -129,12 +131,12 @@ const StarterDeckComponents = {
   ),
 };
 
-function StarterDeckSelect({ deck, onChange, roleCards }: {
-  roleCards: CardsMap;
+function StarterDeckSelect({ deck, onChange }: {
   deck: StarterDeck | undefined;
   onChange: (starterDeck: StarterDeck | undefined) => void;
 }) {
   const { categories } = useLocale();
+  const roleCards = useRoleCardsMap(undefined);
   const deckToOption = useCallback((deck: StarterDeck) => {
     const role = roleCards[deck.meta.role];
     const background = categories.background?.options[deck.meta.background];
@@ -318,7 +320,7 @@ function useChooseRoleModal(
           <RoleRadioChooser
             specialty={parsedDeck.specialty}
             cards={cards}
-            role={parsedDeck.role?.id || undefined}
+            role={parsedDeck.role?.code || undefined}
             onChange={onChange}
           />
         </ModalBody>
@@ -431,7 +433,7 @@ function BaseDeckbuildingTabs({
           }
         }
       }
-      if (c.id && extraSlots[c.id]) {
+      if (c.code && extraSlots[c.code]) {
         ec.push(c);
       }
       if (c.set_id === 'personality') {
@@ -576,19 +578,19 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
           }
         }
       }
-      if (c.id && extraSlots[c.id]) {
+      if (c.code && extraSlots[c.code]) {
         ec.push(c);
       }
       if (c.set_id === 'reward') {
         rc.push(c);
         return;
       }
-      if (c.id && (sideSlots[c.id] || 0) + (slots[c.id] || 0) < 2) {
+      if (c.code && (sideSlots[c.code] || 0) + (slots[c.code] || 0) < 2) {
         // Include any card you can take based on aspect level that you don't
         // already have a full set of in your deck.
         ac.push(c);
       }
-      if (c.id && (sideSlots[c.id] || 0) > 0) {
+      if (c.code && (sideSlots[c.code] || 0) > 0) {
         sc.push(c);
         return;
       }
@@ -681,7 +683,7 @@ function UpgradeDeckbuildingTabs({ showCard, showCollectionCard, showDisplacedCa
 function useSlots(originalSlots: Slots) : [Slots, (card: CardFragment, count: number) => void] {
   const [slots, setSlots] = useState<Slots>(originalSlots);
   const updateSlots = useCallback((card: CardFragment, count: number) => {
-    const code = card.id;
+    const code = card.code;
     if (!code) {
       return;
     }
@@ -708,9 +710,9 @@ export default function DeckEdit({ deck, cards }: Props) {
   const updateUpgradeSlots = useCallback((card: CardFragment, count: number) => {
     if (card.set_id === 'reward' || card.set_id === 'malady') {
       updateSlots(card, count);
-    } else if (card.id) {
-      const diff = count - (slots[card.id] || 0);
-      updateSideSlots(card, Math.max((sideSlots[card.id] || 0) - diff, 0));
+    } else if (card.code) {
+      const diff = count - (slots[card.code] || 0);
+      updateSideSlots(card, Math.max((sideSlots[card.code] || 0) - diff, 0));
       updateSlots(card, count);
     }
   }, [slots, sideSlots, updateSlots, updateSideSlots]);
@@ -733,8 +735,8 @@ export default function DeckEdit({ deck, cards }: Props) {
         />
       );
     }
-    const theMax = (isUpgrade && card.id && tab !== 'reward') ?
-      (max ?? ((slots[card.id] || 0) + (sideSlots[card.id] || 0))) : undefined;
+    const theMax = (isUpgrade && card.code && tab !== 'reward') ?
+      (max ?? ((slots[card.code] || 0) + (sideSlots[card.code] || 0))) : undefined;
     return (
       <CountControls
         card={card}
@@ -765,13 +767,13 @@ export default function DeckEdit({ deck, cards }: Props) {
     (card: CardFragment, { onClose, context }: { onClose?: () => void; context?: 'modal' | 'extra' } = {}) => {
       return (
         <Flex direction="column" alignItems="flex-end">
-          { !!card.id && (sideSlots[card.id] || 0) > 0 && (
+          { !!card.code && (sideSlots[card.code] || 0) > 0 && (
             <Button
               marginBottom={2}
               leftIcon={<FaInbox />}
               onClick={() => {
-              if (card.id) {
-                const newCount = Math.max((sideSlots[card.id] || 0) - 1, 0);
+              if (card.code) {
+                const newCount = Math.max((sideSlots[card.code] || 0) - 1, 0);
                 updateSideSlots(card, newCount);
                 if (newCount === 0 && onClose) {
                   onClose();
@@ -1008,7 +1010,7 @@ export default function DeckEdit({ deck, cards }: Props) {
 
 
 const SHOW_ASPECTS = false;
-export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNode] {
+export function useNewDeckModal(): [() => void, React.ReactNode] {
   const { categories } = useLocale();
   const { authUser } = useAuth();
   const [name, setName] = useState('');
@@ -1017,6 +1019,8 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
 
   const [createDeck] = useCreateDeckMutation();
   const [meta, setMeta] = useState<DeckMeta>({});
+  const { tabooSet } = useContext(PackCollectionContext);
+  const [tabooSetId, setTabooSetId] = useState<string | undefined>(tabooSet);
   const [aspectEditor, aspectError] = useAspectEditor(stats, setStats);
   const placeholderDeckName = useMemo(() => {
     const background = meta.background && categories.background?.options[meta.background];
@@ -1128,6 +1132,7 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
       }
     }
   }, [starter, createDeck, categories, authUser, name, onClose]);
+  const roleCards = useRoleCardsMap(tabooSetId);
   return [
     showModal,
     <Modal key="modal" isOpen={isOpen} onClose={onClose}>
@@ -1177,6 +1182,11 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
                       />
                     </FormControl>
                   )}
+                  <Checkbox isChecked={!!tabooSetId} onChange={e => setTabooSetId(e.target.checked ? CURRENT_TABOO_SET : undefined)}>
+                    <Tooltip label={t`The Uncommon Wisdom rules contain adjustments to some cards to improve the overall balance of the game.  Adhering to the Uncommon Wisdom list is entirely optional.`}>
+                      {t`Uncommon Wisdom `}
+                    </Tooltip>
+                  </Checkbox>
                 </form>
               </TabPanel>
               <TabPanel>
@@ -1195,11 +1205,7 @@ export function useNewDeckModal(roleCards: CardsMap): [() => void, React.ReactNo
                   </FormControl>
                   <FormControl marginBottom={4}>
                     <FormLabel>{t`Starter deck`}</FormLabel>
-                    <StarterDeckSelect
-                      deck={starter}
-                      onChange={setStarter}
-                      roleCards={roleCards}
-                    />
+                    <StarterDeckSelect deck={starter} onChange={setStarter} />
                   </FormControl>
                 </form>
               </TabPanel>

@@ -13,6 +13,7 @@ import {
   ModalFooter,
   AspectRatio,
   useColorMode,
+  Tooltip,
 } from '@chakra-ui/react';
 import { map, range } from 'lodash';
 import { t } from '@lingui/macro';
@@ -72,8 +73,13 @@ function FooterInfo({ card }: { card: CardFragment }) {
         <AspectLevel card={card} />
         <Box padding={1} paddingLeft={2} paddingRight={2} backgroundColor="#888888" flexDirection="column">
           <Text fontSize="s" color="#EEEEEE" fontWeight={400}>
-            { card.set_name } - {t`${card.set_position} of ${card.set_size}`}
+            { card.set_name } - {t`${card.subset_position ?? card.set_position} of ${card.subset_size ?? card.set_size}`}
           </Text>
+        </Box>
+        <Box padding={1}>
+          <Tooltip label={card.pack_name} placement="top">
+            <Text fontSize="s" fontWeight="900">{card.pack_short_name ?? 'COR'}</Text>
+          </Tooltip>
         </Box>
       </Flex>
     </Flex>
@@ -207,11 +213,23 @@ function CardPresenceAndIcons({ card, mini }: { card: CardFragment; mini?: boole
   return (
     <Flex direction="row" flex={1} alignItems="flex-start" justifyContent="flex-end" backgroundClip="blue">
       { (card.presence !== undefined && card.presence !== null) && (
-        <Box padding={mini ? 0.5 : 1} paddingLeft={mini ? 2 : 3} paddingRight={mini ? 2 : 3} maxW={10} maxH={10} marginRight={1} marginLeft={3} backgroundColor="#622c52">
-          <Text color="#FFFFFF" fontSize={mini ? 'm' : 'xl'} fontWeight={900}>
-            {card.presence}
-          </Text>
+        <Box marginRight={1} marginLeft={3} backgroundColor="#622c52">
+          <AspectRatio ratio={1} width={mini ? 6 : 10}>
+            <Box position="relative">
+              <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" zIndex={0}>
+                <CoreIcon icon="presence" size={mini ? 20 : 34} color='#4e2342' />
+              </Box>
+              <Text position="relative" backgroundColor="transparent" color="#FFFFFF" fontSize={mini ? 'm' : '2xl'} fontWeight={900}>
+                { card.presence }
+              </Text>
+            </Box>
+          </AspectRatio>
         </Box>
+        // <Box padding={mini ? 0.5 : 1} paddingLeft={mini ? 2 : 3} paddingRight={mini ? 2 : 3} maxW={10} maxH={10} marginRight={1} marginLeft={3} backgroundColor="#622c52">
+        //   <Text color="#FFFFFF" fontSize={mini ? 'm' : 'xl'} fontWeight={900}>
+        //     {card.presence}
+        //   </Text>
+        // </Box>
       ) }
       <ApproachIcons card={card} mini={mini} />
     </Flex>
@@ -319,11 +337,11 @@ function CardBody({ card, padding, problem, detail, noImage }: Props & { padding
                 aspectId={card.aspect_id}
               />
             )}
-            { !!card.mountain_challenge && (
-              <ChallengeText challenge="mountain" text={card.mountain_challenge} />
-            )}
             { !!card.sun_challenge  && (
               <ChallengeText challenge="sun" text={card.sun_challenge} />
+            )}
+            { !!card.mountain_challenge && (
+              <ChallengeText challenge="mountain" text={card.mountain_challenge} />
             )}
             { !!card.crest_challenge && (
               <ChallengeText challenge="crest" text={card.crest_challenge} />
@@ -340,10 +358,23 @@ function CardBody({ card, padding, problem, detail, noImage }: Props & { padding
             />
           ) }
           { ((card.type_id === 'being') || !!card.harm) && (
-            <Box padding={1} paddingLeft={3} paddingRight={3} marginLeft={2} marginBottom={2} backgroundColor="#ad1b23">
-              <Text color="#FFFFFF" fontSize="xl" fontWeight={900} >
-                { card.harm ?? '/' }
-              </Text>
+            <Box
+              position="relative"
+              marginLeft={2}
+              marginRight={2}
+              marginBottom={2}
+              backgroundColor="#ad1b23"
+            >
+              <AspectRatio ratio={1} width={10}>
+                <Box position="relative">
+                  <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" zIndex={0}>
+                    <CoreIcon icon="harm" size={38} color='#8a161c' />
+                  </Box>
+                  <Text position="relative" backgroundColor="transparent" color="#FFFFFF" fontSize="2xl" fontWeight={900}>
+                    { card.harm ?? '/' }
+                  </Text>
+                </Box>
+              </AspectRatio>
             </Box>
           ) }
         </Flex>
@@ -429,8 +460,8 @@ export function useCardModal({
     onOpen();
   }, [onOpen, setCard, setProblem, setTab]);
 
-  const count = (card?.id && slots?.[card.id]) || 0;
-  const starred = !!(card?.id && extraSlots?.[card.id]);
+  const count = (card?.code && slots?.[card.code]) || 0;
+  const starred = !!(card?.code && extraSlots?.[card.code]);
   return [
     showModal,
     <Modal key={key} scrollBehavior="inside" isCentered isOpen={isOpen} onClose={onClose}>

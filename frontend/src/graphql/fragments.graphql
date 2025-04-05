@@ -56,6 +56,7 @@ fragment SearchDeck on rangers_search_deck {
   copy_count
   like_count
   liked_by_user
+  taboo_set_id
 }
 
 fragment Deck on rangers_deck {
@@ -77,6 +78,7 @@ fragment Deck on rangers_deck {
   user {
     ...UserInfo
   }
+  taboo_set_id
   published
   previous_deck {
     id
@@ -164,8 +166,16 @@ fragment DeckComment on rangers_comment {
   }
 }
 
-fragment Card on rangers_card_localized {
+fragment Pack on rangers_pack_localized {
   id
+  name
+  updated_at
+  locale
+  position
+}
+
+fragment Card on rangers_card_localized {
+  code
   name
   real_traits
   traits
@@ -204,4 +214,16 @@ fragment Card on rangers_card_localized {
   sun_challenge
   mountain_challenge
   crest_challenge
+  pack_id
+  pack_name
+  pack_short_name
+  pack_position
+  subset_id
+  subset_name
+  subset_position
+  subset_size
+  taboo_id
+  taboo_name
+  taboo_date
+  taboo_is_current
 }

@@ -5,6 +5,19 @@ fragment Aspect on rangers_aspect_localized {
   short_name
 }
 
+query getAllPacks($locale: String!) {
+  packs: rangers_pack_localized(
+    where: {
+      locale: { _eq: $locale }
+    }
+    order_by: {
+      position: asc
+    }
+  ) {
+    ...Pack
+  }
+}
+
 query getAllCards($locale: String!) {
   cards: rangers_card_localized(
     where: {

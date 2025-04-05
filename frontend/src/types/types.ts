@@ -18,6 +18,7 @@ export type AspectType = typeof AWA | typeof FIT | typeof FOC | typeof SPI;
 export interface MapLocationConnection {
   id: string;
   path: Path;
+  restriction: ConnectionRestriction | undefined;
 }
 
 export interface CampaignCycle {
@@ -39,6 +40,7 @@ export interface MapLocations {
 }
 
 export enum Path {
+  NONE = 'none',
   WOODS = 'woods',
   MOUNTAIN_PASS = 'mountain_pass',
   OLD_GROWTH = 'old_growth',
@@ -47,18 +49,39 @@ export enum Path {
   RAVINE = 'ravine',
   SWAMP = 'swamp',
   RIVER = 'river',
+  ANCIENT_RUINS = 'ancient_ruins',
+  FLOODED_RUINS = 'flooded_ruins',
+  DEEP_ROOTS = 'deep_roots',
+  FUNGAL_FOREST = 'fungal_forest',
+  CAVE_SYSTEM = 'cave_system',
 }
+export enum ConnectionRestriction {
+  FLOODED_PASSAGE = 'flooded_passage',
+  LOCKED_PASSAGE = 'locked_passage',
+  OVERGROWN_PASSAGE = 'overgrown_passage',
+}
+
 export interface PathType {
   id: Path;
   name: string;
   color: string;
+  campaigns: string[];
 }
 
 export interface PathTypeMap {
   [code: string]: PathType | undefined;
 }
 
+export interface ConnectionRestrictionType {
+  id: ConnectionRestriction;
+  name: string;
+  color: string;
+  campaigns: string[];
+}
 
+export interface ConnectionRestrictionMap {
+  [code: string]: ConnectionRestrictionType | undefined;
+}
 
 export interface DeckMeta {
   background?: string;

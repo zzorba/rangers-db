@@ -5,17 +5,19 @@ import { t } from '@lingui/macro'
 
 import { useLocale } from '../../lib/TranslationProvider';
 import { MapLocation } from '../../types/types';
-import { LocationIcon, PathIcon } from '../../icons/LocationIcon';
+import { ConnectionRestrictionIcon, LocationIcon, PathIcon } from '../../icons/LocationIcon';
+import { useMapLocations } from '../../lib/hooks';
 
 function LocationRow({ location, cycle }: { location: MapLocation; cycle: string }) {
-  const { locations, paths } = useLocale();
+  const { paths, restrictions } = useLocale();
+  const locations = useMapLocations(cycle);
 
   return (
     <ListItem key={location?.id}>
       <Flex direction="column">
         <Flex direction="row" alignItems="center">
           <LocationIcon location={location} size={48} />
-          <Text marginLeft={2}>{location.name}</Text>
+          <Text marginLeft={2} style={{ fontVariantCaps: 'small-caps' }}>{location.name}</Text>
         </Flex>
         <Flex direction="column" marginLeft={2} paddingLeft={2} borderLeftWidth="1px">
           { map(location.connections, connection => {
@@ -27,10 +29,12 @@ function LocationRow({ location, cycle }: { location: MapLocation; cycle: string
               return null;
             }
             const path = paths[connection.path];
+            const restriction = connection.restriction && restrictions[connection.restriction];
             return (
               <Flex key={connection.id} direction="row" alignItems="center" padding={2}>
                 <LocationIcon location={loc} size={32} />
-                <Text marginLeft={2} marginRight={2}>{loc.name}</Text>
+                <Text marginLeft={2} marginRight={2} style={{ fontVariantCaps: 'small-caps' }}>{loc.name}</Text>
+                { !!restriction && <ConnectionRestrictionIcon restriction={restriction} size={32} />}
                 { !!path && <PathIcon path={path} size={32} /> }
               </Flex>
             );
@@ -42,8 +46,8 @@ function LocationRow({ location, cycle }: { location: MapLocation; cycle: string
 }
 
 export default function MapPage() {
-  const { locations } = useLocale();
   const [cycle, setCycle] = useState('core');
+  const locations = useMapLocations(cycle);
   const selectedLocations = useMemo(() => {
     return filter(locations, loc => {
       if (loc?.cycles && !find(loc.cycles, c => c === cycle)) {
@@ -68,6 +72,7 @@ export default function MapPage() {
         >
           <option value="demo">{t`Demo`}</option>
           <option value="core">{t`Core`}</option>
+          <option value="loa">{t`Legacy of the Ancestors`}</option>
         </Select>
       </FormControl>
       <List>

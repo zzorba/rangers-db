@@ -21,7 +21,7 @@ export default function CampaignPage() {
     },
     skip: !isReady || !campaignId,
   });
-  const cards = useAllCardsMap();
+  const cards = useAllCardsMap(undefined);
   const campaign = useMemo(() => data?.campaign ? new CampaignWrapper(data.campaign) : undefined, [data]);
   const handleRefresh = useCallback(async() => {
     await refetch({ campaignId });

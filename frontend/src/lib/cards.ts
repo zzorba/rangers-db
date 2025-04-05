@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo } from 'react';
 
-import { CardFragment, useGetAllCardsQuery, useGetCardsUpdatedAtQuery } from '../generated/graphql/apollo-schema';
+import { CardFragment, useGetAllCardsQuery, useGetCardsUpdatedAtQuery, useGetPackCollectionQuery } from '../generated/graphql/apollo-schema';
 import { useLocale } from '../lib/TranslationProvider';
 import { filter } from 'lodash';
 import { CardsMap, useCardsMap } from './hooks';
 import { useGraphql } from './GraphqlContext';
+import { useAuth } from './AuthContext';
 
 
 export function useCardNeedUpdate(): [boolean, () => void] {
@@ -53,7 +54,7 @@ export function useCardNeedUpdate(): [boolean, () => void] {
   ];
 }
 
-export function useAllCards(): CardFragment[] | undefined {
+export function useAllCards(tabooSetId: string | undefined): CardFragment[] | undefined {
   const { locale } = useLocale();
   const { anonClient } = useGraphql();
   const { data } = useGetAllCardsQuery({
@@ -66,22 +67,44 @@ export function useAllCards(): CardFragment[] | undefined {
   return data?.cards;
 }
 
-export function useAllCardsMap(): CardsMap {
-  const allCards = useAllCards();
+export function useCard(code: string | undefined, tabooSetId: string | undefined): CardFragment | undefined {
+  const allCards = useAllCards(tabooSetId);
+  return useMemo(() => {
+    if (allCards && code) {
+      return allCards.find(card => card.code === code && (card.taboo_id ?? undefined) === tabooSetId);
+    }
+    return undefined;
+  }, [allCards, code, tabooSetId]);
+}
+
+export function usePackCollection(): undefined | {
+  packs: string[];
+  taboo: boolean;
+} {
+  const { authUser } = useAuth();
+  const { data } = useGetPackCollectionQuery({
+    variables: {
+      id: authUser?.uid ?? '',
+    },
+    skip: !authUser,
+  });
+  return useMemo(() => data ? {
+    packs: data.settings?.pack_collection ?? [],
+    taboo: data.settings?.adhere_taboos ?? false,
+  } : undefined, [data])
+}
+
+export function useAllCardsMap(tabooSetId: string | undefined): CardsMap {
+  const allCards = useAllCards(tabooSetId);
   return useCardsMap(allCards);
 }
 
-export function useCards(): CardFragment[] | undefined {
-  const allCards = useAllCards();
-  return useMemo(() => allCards ? filter(allCards, card => !card.spoiler) : undefined, [allCards]);
-}
-
-export function useRoleCards(): CardFragment[] | undefined {
-  const allCards = useAllCards();
+function useRoleCards(tabooSetId: string | undefined): CardFragment[] | undefined {
+  const allCards = useAllCards(tabooSetId);
   return useMemo(() => allCards ? filter(allCards, card => card.type_id === 'role') : undefined, [allCards]);
 }
 
-export function useRoleCardsMap(): CardsMap {
-  const roleCards = useRoleCards();
+export function useRoleCardsMap(tabooSetId: string | undefined): CardsMap {
+  const roleCards = useRoleCards(tabooSetId);
   return useCardsMap(roleCards);
 }

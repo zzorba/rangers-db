@@ -40,6 +40,9 @@ msgstr ""
 msgid "{background} - {specialty} (Starter)"
 msgstr ""
 
+msgid "{nonCollectionCardCount, plural, one {Show {nonCollectionCardCount} non-collection} other {Show {nonCollectionCardCount} non-collection}}"
+msgstr ""
+
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 msgstr ""
 
@@ -100,10 +103,16 @@ msgstr ""
 msgid "Ancestor's Grove"
 msgstr ""
 
+msgid "Ancient Ruins"
+msgstr ""
+
 msgid "Approach"
 msgstr ""
 
 msgid "Approach icons"
+msgstr ""
+
+msgid "Arboretum of Memory"
 msgstr ""
 
 msgid "Archeological Outpost"
@@ -163,6 +172,9 @@ msgstr ""
 msgid "Branch"
 msgstr ""
 
+msgid "Branching Artery"
+msgstr ""
+
 msgid "Camp"
 msgstr ""
 
@@ -187,6 +199,9 @@ msgstr ""
 msgid "Cancel Friendship"
 msgstr ""
 
+msgid "Carbonforged Maze"
+msgstr ""
+
 msgid "Card set"
 msgstr ""
 
@@ -197,6 +212,12 @@ msgid "Cards that are removed from your deck will be stored here. They can be sw
 msgstr ""
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr ""
+
+msgid "Cave System"
+msgstr ""
+
+msgid "Cerulean Curtain"
 msgstr ""
 
 msgid "Changes"
@@ -313,6 +334,9 @@ msgstr ""
 msgid "Decklists"
 msgstr ""
 
+msgid "Deep Roots"
+msgstr ""
+
 msgid "Delete"
 msgstr ""
 
@@ -337,6 +361,9 @@ msgstr ""
 msgid "Descriptions support basic markdown and html formatting."
 msgstr ""
 
+msgid "Desert of Endless Night"
+msgstr ""
+
 msgid "Discard changes"
 msgstr ""
 
@@ -350,6 +377,9 @@ msgid "Done editing"
 msgstr ""
 
 msgid "Downpour"
+msgstr ""
+
+msgid "Drenching Chamber"
 msgstr ""
 
 msgid "Duplicate this deck while preserving the original."
@@ -415,6 +445,9 @@ msgstr ""
 msgid "Filter by card type"
 msgstr ""
 
+msgid "Filter by pack"
+msgstr ""
+
 msgid "Filter by Role"
 msgstr ""
 
@@ -430,6 +463,12 @@ msgstr ""
 msgid "Fitness"
 msgstr ""
 
+msgid "Flooded Passage"
+msgstr ""
+
+msgid "Flooded Ruins"
+msgstr ""
+
 msgid "FOC"
 msgstr ""
 
@@ -443,6 +482,9 @@ msgid "Friend Requests"
 msgstr ""
 
 msgid "Friends"
+msgstr ""
+
+msgid "Fungal Forest"
 msgstr ""
 
 msgid "General"
@@ -469,6 +511,9 @@ msgstr ""
 msgid "Headwaters Station"
 msgstr ""
 
+msgid "Hide"
+msgstr ""
+
 msgid "Hide spoilers"
 msgstr ""
 
@@ -490,6 +535,9 @@ msgstr ""
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr ""
 
+msgid "Inverted Forest"
+msgstr ""
+
 msgid "Italian"
 msgstr ""
 
@@ -506,6 +554,9 @@ msgid "Language"
 msgstr ""
 
 msgid "Leave campaign"
+msgstr ""
+
+msgid "Legacy of the Ancestors"
 msgstr ""
 
 msgid "Light mode"
@@ -527,6 +578,9 @@ msgid "Location"
 msgstr ""
 
 msgid "Locations"
+msgstr ""
+
+msgid "Locked Passage"
 msgstr ""
 
 msgid "Login"
@@ -569,6 +623,9 @@ msgid "My Campaigns"
 msgstr ""
 
 msgid "My Decks"
+msgstr ""
+
+msgid "Mycelial Conclave"
 msgstr ""
 
 msgid "Name"
@@ -649,6 +706,9 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
+msgid "Oasis of Sunlight"
+msgstr ""
+
 msgid "Old-growth"
 msgstr ""
 
@@ -670,6 +730,9 @@ msgstr ""
 msgid "Only one aspect can be set to 3."
 msgstr ""
 
+msgid "Orlin's Vault"
+msgstr ""
+
 #. card_set_header
 msgid "Other"
 msgstr ""
@@ -678,6 +741,12 @@ msgid "Outside Interest"
 msgstr ""
 
 msgid "Outside interest cards cannot have the Expert trait."
+msgstr ""
+
+msgid "Overgrown Passage"
+msgstr ""
+
+msgid "Packs"
 msgstr ""
 
 msgid "Password"
@@ -821,6 +890,9 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
+msgid "Scuttler Network"
+msgstr ""
+
 msgid "Search by name"
 msgstr ""
 
@@ -863,6 +935,9 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+msgid "Severed Artery"
+msgstr ""
+
 msgid "Share"
 msgstr ""
 
@@ -885,6 +960,9 @@ msgid "Sign Out"
 msgstr ""
 
 msgid "Sign Up"
+msgstr ""
+
+msgid "Silent Dormitories"
 msgstr ""
 
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
@@ -929,6 +1007,12 @@ msgstr ""
 msgid "Swamp"
 msgstr ""
 
+msgid "Talpid's Squeeze"
+msgstr ""
+
+msgid "Terminal Artery"
+msgstr ""
+
 msgid "Terrain"
 msgstr ""
 
@@ -939,6 +1023,15 @@ msgid "Text"
 msgstr ""
 
 msgid "The Alluvial Ruins"
+msgstr ""
+
+msgid "The Cage"
+msgstr ""
+
+msgid "The Chimney"
+msgstr ""
+
+msgid "The Cistern"
 msgstr ""
 
 msgid "The Concordant Ziggurats"
@@ -969,6 +1062,9 @@ msgid "The Philosopher's Garden"
 msgstr ""
 
 msgid "The Plummet"
+msgstr ""
+
+msgid "The Rootway"
 msgstr ""
 
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
