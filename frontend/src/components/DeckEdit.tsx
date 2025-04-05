@@ -792,6 +792,7 @@ export default function DeckEdit({ deck, cards }: Props) {
   const [showCollectionCard, collectionCardModal] = useCardModal({ slots, extraSlots, renderControl: renderCollectionControl, key: 'collectionModal' });
   const [showDisplacedCard, displacedCardModal] = useCardModal({ slots, extraSlots, renderControl: renderDisplacedControl, key: 'displacedModal' });
 
+  const [tabooSetId, setTabooSetId] = useState(deck.taboo_set_id ?? undefined);
   const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
   const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
   const { categories } = useLocale();
@@ -849,8 +850,9 @@ export default function DeckEdit({ deck, cards }: Props) {
     const extraSlotChange = !!find(union(keys(deck.extra_slots), (keys(extraSlots))), (key) => {
       return (!!deck.extra_slots[key] !== !!extraSlots[key]) || deck.extra_slots[key] !== extraSlots[key];
     });
-    return statChange || metaChange || slotChange || sideSlotChange || extraSlotChange || name !== deck.name;
-  }, [deck, stats, meta, slots, extraSlots, sideSlots, name]);
+    const tabooSetChange = tabooSetId !== (deck.taboo_set_id ?? undefined)
+    return tabooSetChange || statChange || metaChange || slotChange || sideSlotChange || extraSlotChange || name !== deck.name;
+  }, [deck, stats, meta, slots, extraSlots, sideSlots, name, tabooSetId]);
   const [saveDeck] = useSaveDeckMutation();
   const [saveError, setSaveError] = useState<string | undefined>();
   const saveChanges = useCallback(async() => {
@@ -877,6 +879,7 @@ export default function DeckEdit({ deck, cards }: Props) {
         foc: stats.foc,
         fit: stats.fit,
         spi: stats.spi,
+        tabooSetId,
       },
     });
     if (!r.errors) {
@@ -884,7 +887,7 @@ export default function DeckEdit({ deck, cards }: Props) {
       return;
     }
     setSaveError(r.errors[0].message);
-  }, [saveDeck, stats, meta, slots, sideSlots, extraSlots, name, deck, parsedDeck.problem, parsedDeck.roleProblems, aspectError]);
+  }, [saveDeck, tabooSetId, stats, meta, slots, sideSlots, extraSlots, name, deck, parsedDeck.problem, parsedDeck.roleProblems, aspectError]);
   const { colors } = useTheme();
   return (
     <>
@@ -930,6 +933,12 @@ export default function DeckEdit({ deck, cards }: Props) {
             disabled={!!deck.previous_deck}
             hideLabels
           />
+
+          <Checkbox isChecked={!!tabooSetId} onChange={e => setTabooSetId(e.target.checked ? CURRENT_TABOO_SET : undefined)}>
+            <Tooltip label={t`The Elder's Book of Uncommon Wisdom is a list of rebalanced Ranger cards with optional text changes. These changes are designed to maintain a healthy and balanced cardpool, and to increase deck diversity by encouraging players to build decks with underutilized cards instead of common staples.`}>
+              {t`Follow the Elder's Book of Uncommon Wisdom `}
+            </Tooltip>
+          </Checkbox>
           <FormControl>
             <FormLabel>{t`Role`}</FormLabel>
             <DeckProblemComponent limit={1} errors={parsedDeck.roleProblems} />

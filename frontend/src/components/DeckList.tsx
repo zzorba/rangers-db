@@ -45,7 +45,7 @@ export function DeckRow({ deck, onDelete }: {
             as={NextLink}
             href={`/decks/view/${deck.id}`}
           >
-            { !!role && !!role.imagesrc && <RoleImage size="large" name={role.name} url={role.imagesrc} /> }
+            { !!role && !!role.imagesrc && <RoleImage size="large" name={role.name} url={role.imagesrc} includeTaboo={!!deck.taboo_set_id} /> }
             <SimpleGrid columns={2} marginRight={2} width="80px" minWidth="80px">
               <MiniAspect aspect="AWA" value={deck.awa} />
               <MiniAspect aspect="SPI" value={deck.spi} />

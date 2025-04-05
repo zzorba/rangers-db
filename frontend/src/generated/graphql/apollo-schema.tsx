@@ -50895,6 +50895,7 @@ export type SaveDeckMutationVariables = Exact<{
   slots: Scalars['jsonb']['input'];
   sideSlots: Scalars['jsonb']['input'];
   extraSlots: Scalars['jsonb']['input'];
+  tabooSetId?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
@@ -53266,10 +53267,10 @@ export type DeleteDeckMutationHookResult = ReturnType<typeof useDeleteDeckMutati
 export type DeleteDeckMutationResult = Apollo.MutationResult<DeleteDeckMutation>;
 export type DeleteDeckMutationOptions = Apollo.BaseMutationOptions<DeleteDeckMutation, DeleteDeckMutationVariables>;
 export const SaveDeckDocument = gql`
-    mutation saveDeck($id: Int!, $name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!, $sideSlots: jsonb!, $extraSlots: jsonb!) {
+    mutation saveDeck($id: Int!, $name: String!, $foc: Int!, $fit: Int!, $awa: Int!, $spi: Int!, $meta: jsonb!, $slots: jsonb!, $sideSlots: jsonb!, $extraSlots: jsonb!, $tabooSetId: String) {
   update_rangers_deck_by_pk(
     pk_columns: {id: $id}
-    _set: {name: $name, foc: $foc, fit: $fit, awa: $awa, spi: $spi, meta: $meta, slots: $slots, side_slots: $sideSlots, extra_slots: $extraSlots}
+    _set: {name: $name, foc: $foc, fit: $fit, awa: $awa, spi: $spi, meta: $meta, slots: $slots, side_slots: $sideSlots, extra_slots: $extraSlots, taboo_set_id: $tabooSetId}
   ) {
     ...Deck
   }
@@ -53300,6 +53301,7 @@ export type SaveDeckMutationFn = Apollo.MutationFunction<SaveDeckMutation, SaveD
  *      slots: // value for 'slots'
  *      sideSlots: // value for 'sideSlots'
  *      extraSlots: // value for 'extraSlots'
+ *      tabooSetId: // value for 'tabooSetId'
  *   },
  * });
  */

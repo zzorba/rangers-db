@@ -314,6 +314,7 @@ mutation saveDeck(
   $slots: jsonb!,
   $sideSlots: jsonb!,
   $extraSlots: jsonb!,
+  $tabooSetId: String
 ) {
   update_rangers_deck_by_pk(
     pk_columns: { id: $id }
@@ -327,6 +328,7 @@ mutation saveDeck(
       slots: $slots
       side_slots: $sideSlots,
       extra_slots: $extraSlots,
+      taboo_set_id: $tabooSetId,
     }
   ) {
     ...Deck
