@@ -311,7 +311,7 @@ msgid "Crossroads Station"
 msgstr "Станция Перекрёсток"
 
 msgid "Current location:"
-msgstr ""
+msgstr "Текущая локация:"
 
 msgid "Current Position"
 msgstr "Местоположение"
