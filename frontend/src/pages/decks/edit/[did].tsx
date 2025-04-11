@@ -24,7 +24,6 @@ export default function EditDeckPage() {
     },
     skip: !isReady || !deckId,
   });
-  const cards = useAllCardsMap(data?.deck?.taboo_set_id ?? undefined);
   const deck = data?.deck;
   useEffect(() => {
     if (loading) {
@@ -54,7 +53,7 @@ export default function EditDeckPage() {
         px={{ base: "1rem", lg: "0" }}
       >
         <PackCollectionContextProvider>
-          { deck ? <DeckEdit deck={deck} cards={cards} /> : <LoadingPage /> }
+          { deck ? <DeckEdit deck={deck} /> : <LoadingPage /> }
         </PackCollectionContextProvider>
       </Box>
     </>

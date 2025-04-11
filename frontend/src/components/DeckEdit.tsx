@@ -65,11 +65,10 @@ import { FaInbox } from 'react-icons/fa';
 import { useCardSearchControls } from './CardFilter';
 import DeckChanges from './DeckChanges';
 import { BiSolidBookmarkAlt } from 'react-icons/bi';
-import { useRoleCardsMap } from '../lib/cards';
+import { useAllCardsMap, useRoleCardsMap } from '../lib/cards';
 
 interface Props {
   deck: DeckDetailFragment;
-  cards: CardsMap;
 }
 
 function RoleRadioChooser({ specialty, cards, role, onChange }: { specialty: string | undefined; cards: CardsMap; role: string | undefined; onChange: (role: string) => void }) {
@@ -699,7 +698,10 @@ function useSlots(originalSlots: Slots) : [Slots, (card: CardFragment, count: nu
   return [slots, updateSlots];
 }
 
-export default function DeckEdit({ deck, cards }: Props) {
+export default function DeckEdit({ deck }: Props) {
+  const [tabooSetId, setTabooSetId] = useState(deck.taboo_set_id ?? undefined);
+  const cards = useAllCardsMap(tabooSetId);
+
   const [stats, setStats] = useState<AspectStats>(pick(deck, ['awa', 'fit', 'foc', 'spi']));
   const [slots, updateSlots] = useSlots(deck.slots ?? {});
   const [sideSlots, updateSideSlots] = useSlots(deck.side_slots ?? {});
@@ -792,7 +794,6 @@ export default function DeckEdit({ deck, cards }: Props) {
   const [showCollectionCard, collectionCardModal] = useCardModal({ slots, extraSlots, renderControl: renderCollectionControl, key: 'collectionModal' });
   const [showDisplacedCard, displacedCardModal] = useCardModal({ slots, extraSlots, renderControl: renderDisplacedControl, key: 'displacedModal' });
 
-  const [tabooSetId, setTabooSetId] = useState(deck.taboo_set_id ?? undefined);
   const background: string | undefined = typeof meta.background === 'string' ? meta.background : undefined;
   const specialty: string | undefined = typeof meta.specialty === 'string' ? meta.specialty : undefined;
   const { categories } = useLocale();
@@ -804,7 +805,7 @@ export default function DeckEdit({ deck, cards }: Props) {
     extraSlots,
     cards,
     categories,
-    deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots', 'side_slots']) : undefined
+    deck.previous_deck ? pick(deck.previous_deck, ['meta', 'slots', 'side_slots']) : undefined,
   ), [stats, deck.previous_deck, categories, meta, slots, sideSlots, extraSlots, cards]);
   const setRole = useCallback((role: string) => {
     setMeta({
