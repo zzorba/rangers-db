@@ -242,6 +242,7 @@ query getTranslations($locale: String!) {
 
 mutation upsertCard(
   $id: String!,
+  $code: String!,
   $name: String,
   $traits: String,
   $equip: Int,
@@ -281,6 +282,7 @@ mutation upsertCard(
 	insert_rangers_card_one(
     object: {
       id: $id
+      code: $code
       name: $name
       traits: $traits
       equip: $equip
@@ -353,7 +355,8 @@ mutation upsertCard(
         deck_limit,
         position,
         spoiler,
-        taboo_id
+        taboo_id,
+        code
       ]
     }
   ) {
