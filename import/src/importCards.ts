@@ -20,8 +20,8 @@ const readFile = promisify(fs.readFile);
 const accessFile = promisify(fs.access);
 
 
-const BASE_IMAGE_DIR = `${process.env.BASE_IMAGE_DIR || ''}/card/`;
-const BASE_IMAGE_URL = `${process.env.BASE_IMAGE_URL || ''}/card/`;
+const BASE_IMAGE_DIR = `${process.env.BASE_IMAGE_DIR || ''}`;
+const BASE_IMAGE_URL = `${process.env.BASE_IMAGE_URL || ''}`;
 function cleanNulls(obj: {[key: string]: any }): any {
   const r: { [key: string]: any } = {};
   forEach(obj, (value, key) => {
@@ -77,18 +77,31 @@ async function processCardLikeData(
   getId: (data: any) => string,
   additionalFields: { [key: string]: any } = {}
 ) {
+
   for (let i = 0; i < data.length; i++) {
     const current = data[i];
+    const code = current.id;
     const id = getId(current);
+
+    const path = `${file.replace('.json', '')}/${code}.jpg`;
+    try {
+      await accessFile(`${BASE_IMAGE_DIR}/taboo/${path}`, fs.constants.F_OK);
+      current.imagesrc = `${BASE_IMAGE_URL}/taboo/${path}`;
+    } catch (e) {
+      console.log(`Could not find image for ${current.id} at ${path}`);
+    }
+
     const existing = find(existingData, (e: any) => e.id === id);
 
     if (!existing || !deepEqual(safePick(existing, allFields), safePick(current, allFields))) {
       console.log(`\tUpdating ${id} data`);
       await upsert({
-        id,
         ...safePick(current, allFields),
         ...additionalFields,
+        code,
+        id,
       });
+
     }
 
     if (textFields?.length) {
@@ -258,8 +271,8 @@ async function importCards() {
         card.pack_id = pack_id;
         try {
           const path = `${pack_id}/${card.id}.jpg`;
-          await accessFile(`${BASE_IMAGE_DIR}${path}`, fs.constants.F_OK);
-          card.imagesrc = `${BASE_IMAGE_URL}${path}`;
+          await accessFile(`${BASE_IMAGE_DIR}/card/${path}`, fs.constants.F_OK);
+          card.imagesrc = `${BASE_IMAGE_URL}/card/${path}`;
         } catch (e) {
           console.log(`Could not find image for ${card.id}`);
         }
@@ -296,8 +309,8 @@ async function importCards() {
             let localeImageSrc: string | undefined = undefined;
             try {
               const path = `${pack_id}_${locale}/${card.id}.jpg`;
-              await accessFile(`${BASE_IMAGE_DIR}${path}`, fs.constants.F_OK);
-              localeImageSrc = `${BASE_IMAGE_URL}${path}`;
+              await accessFile(`${BASE_IMAGE_DIR}/card/${path}`, fs.constants.F_OK);
+              localeImageSrc = `${BASE_IMAGE_URL}/card/${path}`;
             } catch (e) {
               false && console.log(`Could not find image for ${card.id}`);
             }

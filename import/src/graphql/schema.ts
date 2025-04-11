@@ -50470,6 +50470,7 @@ export type GetTranslationsQuery = { __typename?: 'query_root', rangers_card_tex
 
 export type UpsertCardMutationVariables = Exact<{
   id: Scalars['String'];
+  code: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   traits?: Maybe<Scalars['String']>;
   equip?: Maybe<Scalars['Int']>;
@@ -50905,10 +50906,10 @@ export const GetTranslationsDocument = gql`
 }
     ${CardTextFragmentDoc}`;
 export const UpsertCardDocument = gql`
-    mutation upsertCard($id: String!, $name: String, $traits: String, $equip: Int, $presence: Int, $token_id: String, $token_count: Int, $harm: Int, $approach_conflict: Int, $approach_reason: Int, $approach_exploration: Int, $approach_connection: Int, $text: String, $set_id: String, $set_position: Int, $quantity: Int, $level: Int, $type_id: String, $cost: Int, $aspect_id: String, $progress: Int, $deck_limit: Int, $position: Int, $area_id: String, $guide_entry: String, $progress_fixed: Boolean, $locations: jsonb, $pack_id: String, $illustrator: String, $flavor: String, $objective: String, $back_card_id: String, $imagesrc: String, $spoiler: Boolean, $taboo_id: String) {
+    mutation upsertCard($id: String!, $code: String!, $name: String, $traits: String, $equip: Int, $presence: Int, $token_id: String, $token_count: Int, $harm: Int, $approach_conflict: Int, $approach_reason: Int, $approach_exploration: Int, $approach_connection: Int, $text: String, $set_id: String, $set_position: Int, $quantity: Int, $level: Int, $type_id: String, $cost: Int, $aspect_id: String, $progress: Int, $deck_limit: Int, $position: Int, $area_id: String, $guide_entry: String, $progress_fixed: Boolean, $locations: jsonb, $pack_id: String, $illustrator: String, $flavor: String, $objective: String, $back_card_id: String, $imagesrc: String, $spoiler: Boolean, $taboo_id: String) {
   insert_rangers_card_one(
-    object: {id: $id, name: $name, traits: $traits, equip: $equip, presence: $presence, token_id: $token_id, token_count: $token_count, harm: $harm, approach_conflict: $approach_conflict, approach_reason: $approach_reason, approach_exploration: $approach_exploration, approach_connection: $approach_connection, text: $text, set_id: $set_id, set_position: $set_position, quantity: $quantity, level: $level, type_id: $type_id, cost: $cost, aspect_id: $aspect_id, progress: $progress, deck_limit: $deck_limit, position: $position, area_id: $area_id, guide_entry: $guide_entry, progress_fixed: $progress_fixed, locations: $locations, pack_id: $pack_id, illustrator: $illustrator, flavor: $flavor, objective: $objective, back_card_id: $back_card_id, imagesrc: $imagesrc, spoiler: $spoiler, taboo_id: $taboo_id}
-    on_conflict: {constraint: card_pkey, update_columns: [id, name, traits, equip, presence, token_id, token_count, harm, approach_conflict, approach_reason, approach_exploration, approach_connection, text, set_id, set_position, quantity, level, type_id, cost, aspect_id, progress, area_id, guide_entry, progress_fixed, locations, pack_id, illustrator, flavor, objective, back_card_id, imagesrc, deck_limit, position, spoiler, taboo_id]}
+    object: {id: $id, code: $code, name: $name, traits: $traits, equip: $equip, presence: $presence, token_id: $token_id, token_count: $token_count, harm: $harm, approach_conflict: $approach_conflict, approach_reason: $approach_reason, approach_exploration: $approach_exploration, approach_connection: $approach_connection, text: $text, set_id: $set_id, set_position: $set_position, quantity: $quantity, level: $level, type_id: $type_id, cost: $cost, aspect_id: $aspect_id, progress: $progress, deck_limit: $deck_limit, position: $position, area_id: $area_id, guide_entry: $guide_entry, progress_fixed: $progress_fixed, locations: $locations, pack_id: $pack_id, illustrator: $illustrator, flavor: $flavor, objective: $objective, back_card_id: $back_card_id, imagesrc: $imagesrc, spoiler: $spoiler, taboo_id: $taboo_id}
+    on_conflict: {constraint: card_pkey, update_columns: [id, name, traits, equip, presence, token_id, token_count, harm, approach_conflict, approach_reason, approach_exploration, approach_connection, text, set_id, set_position, quantity, level, type_id, cost, aspect_id, progress, area_id, guide_entry, progress_fixed, locations, pack_id, illustrator, flavor, objective, back_card_id, imagesrc, deck_limit, position, spoiler, taboo_id, code]}
   ) {
     id
   }
