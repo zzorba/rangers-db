@@ -208,7 +208,7 @@ export function SimpleCardList({ tab, context, noSearch, hasFilters, cards, cont
   const visibleCards = useMemo(() => {
     const filtered = filterCard ? filter(cards, c => filterCard(c)) : cards;
     if (!trim(search)) {
-      return sortBy(filtered, c => c.position);
+      return sortBy(filtered, c => (c.pack_position ?? 0) * 1000 + (c.position ?? 0));
     }
     const lowerSearch = search.toLocaleLowerCase(locale);
     return sortBy(filter(filtered, c =>
