@@ -816,7 +816,7 @@ const CONNECTIONS: {
   },
 ];
 
-export const INCLUDE_LOA = false;
+export const INCLUDE_LOA = true;
 export function getCampaignCycles(): CampaignCycle[] {
   return [
     {
