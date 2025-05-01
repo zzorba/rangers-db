@@ -174,11 +174,12 @@ async function importCards() {
       getData,
       getLocale,
       upsert,
-      upsertText
+      upsertText,
+      collection,
     } = files[i];
     const allFields = concat(fields, textFields || []);
     const existing = getData(response);
-    console.log(`Processing ${file}`);
+    console.log(`Processing ${collection} - ${file}`);
     const data = await readBasicFile(`${BASE_DIR}/${file}`);
     const translations = getLocale(englishLocale);
 
@@ -191,11 +192,15 @@ async function importCards() {
           safePick(current, allFields)
         )) {
         console.log(`\tUpdating ${current.id} data`);
-        await upsert({
+        current.code = id;
+        const data = {
           id: current.id,
           ...safePick(current, allFields),
-          code: current.id,
-        } as any);
+        };
+        if (fields.includes('code')) {
+          data.code = current.id;
+        }
+        await upsert(data as any);
       }
 
       if (textFields?.length) {
@@ -285,6 +290,7 @@ async function importCards() {
           await client.upsertCard({
             id: card.id,
             ...omitBlank(card, allFields),
+            code: id,
           } as any);
         }
         if (CARD_DATA.textFields) {
@@ -401,9 +407,7 @@ async function importTaboos() {
 
 
 async function run() {
-  if (false) {
-    await importCards();
-  }
+  await importCards();
   await importTaboos();
   // await updateTimestamps();
 }

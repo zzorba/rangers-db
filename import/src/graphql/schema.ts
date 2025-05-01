@@ -4697,7 +4697,7 @@ export type Campaign_Access_Bool_Exp = {
 export enum Campaign_Access_Constraint {
   /** unique or primary key constraint on columns "id" */
   CampaignAccessPkey = 'campaign_access_pkey',
-  /** unique or primary key constraint on columns "campaign_id", "user_id" */
+  /** unique or primary key constraint on columns "user_id", "campaign_id" */
   CampaignAccessUserIdCampaignIdKey = 'campaign_access_user_id_campaign_id_key'
 }
 
@@ -5256,9 +5256,9 @@ export type Campaign_Deck_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign_deck" */
 export enum Campaign_Deck_Constraint {
-  /** unique or primary key constraint on columns "campaign_id", "arkhamdb_id" */
+  /** unique or primary key constraint on columns "arkhamdb_id", "campaign_id" */
   DeckArkhamdbIdCampaignIdKey = 'deck_arkhamdb_id_campaign_id_key',
-  /** unique or primary key constraint on columns "campaign_id", "local_uuid" */
+  /** unique or primary key constraint on columns "local_uuid", "campaign_id" */
   DeckLocalUuidCampaignIdKey = 'deck_local_uuid_campaign_id_key',
   /** unique or primary key constraint on columns "id" */
   DeckPkey = 'deck_pkey'
@@ -16735,7 +16735,7 @@ export type Friend_Status_Bool_Exp = {
 
 /** unique or primary key constraints on table "friend_status" */
 export enum Friend_Status_Constraint {
-  /** unique or primary key constraint on columns "user_id_a", "user_id_b" */
+  /** unique or primary key constraint on columns "user_id_b", "user_id_a" */
   FriendStatusPkey = 'friend_status_pkey'
 }
 
@@ -18819,7 +18819,7 @@ export type Guide_Achievement_Bool_Exp = {
 
 /** unique or primary key constraints on table "guide_achievement" */
 export enum Guide_Achievement_Constraint {
-  /** unique or primary key constraint on columns "campaign_id", "id" */
+  /** unique or primary key constraint on columns "id", "campaign_id" */
   GuideAchievementPkey = 'guide_achievement_pkey'
 }
 
@@ -19217,7 +19217,7 @@ export type Guide_Input_Bool_Exp = {
 
 /** unique or primary key constraints on table "guide_input" */
 export enum Guide_Input_Constraint {
-  /** unique or primary key constraint on columns "campaign_id", "id" */
+  /** unique or primary key constraint on columns "id", "campaign_id" */
   GuideInputPkey = 'guide_input_pkey'
 }
 
@@ -21661,6 +21661,8 @@ export type Mutation_Root = {
   rangers_remove_campaign_deck: Array<Rangers_Campaign>;
   /** execute VOLATILE function "rangers.set_campaign_deck" which returns "rangers.campaign" */
   rangers_set_campaign_deck: Array<Rangers_Campaign>;
+  /** execute VOLATILE function "rangers.set_handle" which returns "rangers.users" */
+  rangers_set_handle: Array<Rangers_Users>;
   /** execute VOLATILE function "rangers.update_friend_request" which returns "rangers.users" */
   rangers_update_friend_request: Array<Rangers_Users>;
   /** execute VOLATILE function "rangers.upgrade_deck" which returns "rangers.deck" */
@@ -25089,6 +25091,17 @@ export type Mutation_RootRangers_Set_Campaign_DeckArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Rangers_Campaign_Order_By>>;
   where?: InputMaybe<Rangers_Campaign_Bool_Exp>;
+};
+
+
+/** mutation root */
+export type Mutation_RootRangers_Set_HandleArgs = {
+  args: Rangers_Set_Handle_Args;
+  distinct_on?: InputMaybe<Array<Rangers_Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Users_Order_By>>;
+  where?: InputMaybe<Rangers_Users_Bool_Exp>;
 };
 
 
@@ -28578,6 +28591,10 @@ export type Query_Root = {
   rangers_pack_text_aggregate: Rangers_Pack_Text_Aggregate;
   /** fetch data from the table: "rangers.pack_text" using primary key columns */
   rangers_pack_text_by_pk?: Maybe<Rangers_Pack_Text>;
+  /** execute function "rangers.search_all_decks" which returns "rangers.search_deck" */
+  rangers_search_all_decks: Array<Rangers_Search_Deck>;
+  /** execute function "rangers.search_all_decks" and query aggregates on result of table type "rangers.search_deck" */
+  rangers_search_all_decks_aggregate: Rangers_Search_Deck_Aggregate;
   /** fetch data from the table: "rangers.search_deck" */
   rangers_search_deck: Array<Rangers_Search_Deck>;
   /** fetch aggregated fields from the table: "rangers.search_deck" */
@@ -30766,6 +30783,26 @@ export type Query_RootRangers_Pack_Text_By_PkArgs = {
 };
 
 
+export type Query_RootRangers_Search_All_DecksArgs = {
+  args?: InputMaybe<Rangers_Search_All_Decks_Args>;
+  distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Search_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Search_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootRangers_Search_All_Decks_AggregateArgs = {
+  args?: InputMaybe<Rangers_Search_All_Decks_Args>;
+  distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Search_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Search_Deck_Bool_Exp>;
+};
+
+
 export type Query_RootRangers_Search_DeckArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -32417,7 +32454,7 @@ export type Rangers_Campaign_Access_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.campaign_access" */
 export enum Rangers_Campaign_Access_Constraint {
-  /** unique or primary key constraint on columns "campaign_id", "user_id" */
+  /** unique or primary key constraint on columns "user_id", "campaign_id" */
   CampaignAccessPkey = 'campaign_access_pkey'
 }
 
@@ -35275,7 +35312,7 @@ export type Rangers_Comment_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.comment" */
 export enum Rangers_Comment_Constraint {
-  /** unique or primary key constraint on columns "deck_id", "id" */
+  /** unique or primary key constraint on columns "id", "deck_id" */
   CommentIdDeckIdKey = 'comment_id_deck_id_key',
   /** unique or primary key constraint on columns "id" */
   CommentPkey = 'comment_pkey'
@@ -36895,6 +36932,7 @@ export type Rangers_Deck_Rank_Variance_Fields = {
 export type Rangers_Deck_Search_Args = {
   _limit?: InputMaybe<Scalars['Int']>;
   _offset?: InputMaybe<Scalars['Int']>;
+  _taboo_set_id?: InputMaybe<Scalars['_text']>;
   awa_eq?: InputMaybe<Scalars['Int']>;
   background?: InputMaybe<Scalars['_text']>;
   fit_eq?: InputMaybe<Scalars['Int']>;
@@ -37429,7 +37467,7 @@ export type Rangers_Friend_Status_Bool_Exp = {
 
 /** unique or primary key constraints on table "rangers.friend_status" */
 export enum Rangers_Friend_Status_Constraint {
-  /** unique or primary key constraint on columns "user_id_a", "user_id_b" */
+  /** unique or primary key constraint on columns "user_id_b", "user_id_a" */
   FriendStatusPkey = 'friend_status_pkey'
 }
 
@@ -38758,6 +38796,20 @@ export type Rangers_Remove_Campaign_Deck_Args = {
   old_campaign_id?: InputMaybe<Scalars['Int']>;
 };
 
+export type Rangers_Search_All_Decks_Args = {
+  _limit?: InputMaybe<Scalars['Int']>;
+  _offset?: InputMaybe<Scalars['Int']>;
+  _taboo_set_id?: InputMaybe<Scalars['_text']>;
+  awa_eq?: InputMaybe<Scalars['Int']>;
+  background?: InputMaybe<Scalars['_text']>;
+  fit_eq?: InputMaybe<Scalars['Int']>;
+  foc_eq?: InputMaybe<Scalars['Int']>;
+  role?: InputMaybe<Scalars['_text']>;
+  specialty?: InputMaybe<Scalars['_text']>;
+  spi_eq?: InputMaybe<Scalars['Int']>;
+  user_id_eq?: InputMaybe<Scalars['String']>;
+};
+
 /** columns and relationships of "rangers.search_deck" */
 export type Rangers_Search_Deck = {
   __typename?: 'rangers_search_deck';
@@ -39433,6 +39485,10 @@ export enum Rangers_Set_Constraint {
   /** unique or primary key constraint on columns "id" */
   SetPkey = 'set_pkey'
 }
+
+export type Rangers_Set_Handle_Args = {
+  handle?: InputMaybe<Scalars['String']>;
+};
 
 /** input type for incrementing numeric columns in table "rangers.set" */
 export type Rangers_Set_Inc_Input = {
@@ -44485,6 +44541,10 @@ export type Subscription_Root = {
   rangers_pack_text_by_pk?: Maybe<Rangers_Pack_Text>;
   /** fetch data from the table in a streaming manner: "rangers.pack_text" */
   rangers_pack_text_stream: Array<Rangers_Pack_Text>;
+  /** execute function "rangers.search_all_decks" which returns "rangers.search_deck" */
+  rangers_search_all_decks: Array<Rangers_Search_Deck>;
+  /** execute function "rangers.search_all_decks" and query aggregates on result of table type "rangers.search_deck" */
+  rangers_search_all_decks_aggregate: Rangers_Search_Deck_Aggregate;
   /** fetch data from the table: "rangers.search_deck" */
   rangers_search_deck: Array<Rangers_Search_Deck>;
   /** fetch aggregated fields from the table: "rangers.search_deck" */
@@ -47346,6 +47406,26 @@ export type Subscription_RootRangers_Pack_Text_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Rangers_Pack_Text_Stream_Cursor_Input>>;
   where?: InputMaybe<Rangers_Pack_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Search_All_DecksArgs = {
+  args?: InputMaybe<Rangers_Search_All_Decks_Args>;
+  distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Search_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Search_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootRangers_Search_All_Decks_AggregateArgs = {
+  args?: InputMaybe<Rangers_Search_All_Decks_Args>;
+  distinct_on?: InputMaybe<Array<Rangers_Search_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Rangers_Search_Deck_Order_By>>;
+  where?: InputMaybe<Rangers_Search_Deck_Bool_Exp>;
 };
 
 
@@ -50413,7 +50493,11 @@ export type CardTextFragment = { __typename?: 'rangers_card_text', id: string, l
 
 export type CardSetFragment = { __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined };
 
+export type CardSubsetFragment = { __typename?: 'rangers_subset', id: string, name: string, size: number, pack_id: string, set_id: string };
+
 export type CardSetTextFragment = { __typename?: 'rangers_set_text', id: string, locale: string, name: string };
+
+export type CardSubsetTextFragment = { __typename?: 'rangers_subset_text', id: string, locale: string, name: string };
 
 export type CardSetTypeFragment = { __typename?: 'rangers_set_type', id: string, name: string };
 
@@ -50452,7 +50536,7 @@ export type GetTaboosQuery = { __typename?: 'query_root', rangers_card: Array<{ 
 export type GetMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMetadataQuery = { __typename?: 'query_root', rangers_area: Array<{ __typename?: 'rangers_area', id: string, name: string }>, rangers_aspect: Array<{ __typename?: 'rangers_aspect', id: string, name: string, short_name?: string | null | undefined }>, rangers_pack: Array<{ __typename?: 'rangers_pack', id: string, name: string, position?: number | null | undefined }>, rangers_set: Array<{ __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined }>, rangers_set_type: Array<{ __typename?: 'rangers_set_type', id: string, name: string }>, rangers_token: Array<{ __typename?: 'rangers_token', id: string, name: string, plurals?: string | null | undefined }>, rangers_type: Array<{ __typename?: 'rangers_type', id: string, name: string }> };
+export type GetMetadataQuery = { __typename?: 'query_root', rangers_area: Array<{ __typename?: 'rangers_area', id: string, name: string }>, rangers_aspect: Array<{ __typename?: 'rangers_aspect', id: string, name: string, short_name?: string | null | undefined }>, rangers_pack: Array<{ __typename?: 'rangers_pack', id: string, name: string, position?: number | null | undefined }>, rangers_set: Array<{ __typename?: 'rangers_set', id: string, name: string, size?: number | null | undefined, type_id?: string | null | undefined }>, rangers_set_type: Array<{ __typename?: 'rangers_set_type', id: string, name: string }>, rangers_subset: Array<{ __typename?: 'rangers_subset', id: string, name: string, size: number, pack_id: string, set_id: string }>, rangers_token: Array<{ __typename?: 'rangers_token', id: string, name: string, plurals?: string | null | undefined }>, rangers_type: Array<{ __typename?: 'rangers_type', id: string, name: string }> };
 
 export type GetTranslationDataQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -50505,6 +50589,11 @@ export type UpsertCardMutationVariables = Exact<{
   imagesrc?: Maybe<Scalars['String']>;
   spoiler?: Maybe<Scalars['Boolean']>;
   taboo_id?: Maybe<Scalars['String']>;
+  subset_position?: Maybe<Scalars['Int']>;
+  subset_id?: Maybe<Scalars['String']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
+  sun_challenge?: Maybe<Scalars['String']>;
+  crest_challenge?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -50528,6 +50617,26 @@ export type UpsertCardSetTextMutationVariables = Exact<{
 
 
 export type UpsertCardSetTextMutation = { __typename?: 'mutation_root', insert_rangers_set_text_one?: { __typename?: 'rangers_set_text', id: string, locale: string, name: string } | null | undefined };
+
+export type UpsertCardSubsetMutationVariables = Exact<{
+  id: Scalars['String'];
+  name: Scalars['String'];
+  size?: Maybe<Scalars['Int']>;
+  set_id: Scalars['String'];
+  pack_id?: Maybe<Scalars['String']>;
+}>;
+
+
+export type UpsertCardSubsetMutation = { __typename?: 'mutation_root', insert_rangers_subset_one?: { __typename?: 'rangers_subset', id: string, name: string, size: number, pack_id: string, set_id: string } | null | undefined };
+
+export type UpsertCardSubsetTextMutationVariables = Exact<{
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+}>;
+
+
+export type UpsertCardSubsetTextMutation = { __typename?: 'mutation_root', insert_rangers_subset_text_one?: { __typename?: 'rangers_subset_text', id: string, locale: string, name: string } | null | undefined };
 
 export type UpsertCardAreaMutationVariables = Exact<{
   id: Scalars['String'];
@@ -50568,7 +50677,7 @@ export type GetLocaleTextQueryVariables = Exact<{
 }>;
 
 
-export type GetLocaleTextQuery = { __typename?: 'query_root', rangers_area_text: Array<{ __typename?: 'rangers_area_text', id: string, locale: string, name: string }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined, imagesrc?: string | null | undefined }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }> };
+export type GetLocaleTextQuery = { __typename?: 'query_root', rangers_area_text: Array<{ __typename?: 'rangers_area_text', id: string, locale: string, name: string }>, rangers_card_text: Array<{ __typename?: 'rangers_card_text', id: string, locale: string, name?: string | null | undefined, traits?: string | null | undefined, text?: string | null | undefined, flavor?: string | null | undefined, objective?: string | null | undefined, imagesrc?: string | null | undefined }>, rangers_pack_text: Array<{ __typename?: 'rangers_pack_text', id: string, locale: string, name: string }>, rangers_set_text: Array<{ __typename?: 'rangers_set_text', id: string, locale: string, name: string }>, rangers_subset_text: Array<{ __typename?: 'rangers_subset_text', id: string, locale: string, name: string }>, rangers_set_type_text: Array<{ __typename?: 'rangers_set_type_text', id: string, locale: string, name: string }>, rangers_token_text: Array<{ __typename?: 'rangers_token_text', id: string, locale: string, name: string, plurals: string }>, rangers_type_text: Array<{ __typename?: 'rangers_type_text', id: string, locale: string, name: string }>, rangers_aspect_text: Array<{ __typename?: 'rangers_aspect_text', id: string, locale: string, name: string, short_name: string }> };
 
 export type UpsertCardTextMutationVariables = Exact<{
   id: Scalars['String'];
@@ -50579,6 +50688,9 @@ export type UpsertCardTextMutationVariables = Exact<{
   flavor?: Maybe<Scalars['String']>;
   objective?: Maybe<Scalars['String']>;
   imagesrc?: Maybe<Scalars['String']>;
+  mountain_challenge?: Maybe<Scalars['String']>;
+  sun_challenge?: Maybe<Scalars['String']>;
+  crest_challenge?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -50588,19 +50700,21 @@ export type UpsertCardPackMutationVariables = Exact<{
   id: Scalars['String'];
   name: Scalars['String'];
   position: Scalars['Int'];
+  short_name?: Maybe<Scalars['String']>;
 }>;
 
 
-export type UpsertCardPackMutation = { __typename?: 'mutation_root', insert_rangers_pack_one?: { __typename?: 'rangers_pack', id: string, name: string, position?: number | null | undefined } | null | undefined };
+export type UpsertCardPackMutation = { __typename?: 'mutation_root', insert_rangers_pack_one?: { __typename?: 'rangers_pack', id: string, name: string, position?: number | null | undefined, short_name?: string | null | undefined } | null | undefined };
 
 export type UpsertCardPackTextMutationVariables = Exact<{
   id: Scalars['String'];
   locale: Scalars['String'];
   name?: Maybe<Scalars['String']>;
+  short_name?: Maybe<Scalars['String']>;
 }>;
 
 
-export type UpsertCardPackTextMutation = { __typename?: 'mutation_root', insert_rangers_pack_text_one?: { __typename?: 'rangers_pack_text', id: string, locale: string, name: string } | null | undefined };
+export type UpsertCardPackTextMutation = { __typename?: 'mutation_root', insert_rangers_pack_text_one?: { __typename?: 'rangers_pack_text', id: string, locale: string, name: string, short_name?: string | null | undefined } | null | undefined };
 
 export type UpsertAspectMutationVariables = Exact<{
   id: Scalars['String'];
@@ -50720,8 +50834,24 @@ export const CardSetFragmentDoc = gql`
   type_id
 }
     `;
+export const CardSubsetFragmentDoc = gql`
+    fragment CardSubset on rangers_subset {
+  id
+  name
+  size
+  pack_id
+  set_id
+}
+    `;
 export const CardSetTextFragmentDoc = gql`
     fragment CardSetText on rangers_set_text {
+  id
+  locale
+  name
+}
+    `;
+export const CardSubsetTextFragmentDoc = gql`
+    fragment CardSubsetText on rangers_subset_text {
   id
   locale
   name
@@ -50849,6 +50979,9 @@ export const GetMetadataDocument = gql`
   rangers_set_type {
     ...CardSetType
   }
+  rangers_subset {
+    ...CardSubset
+  }
   rangers_token {
     ...CardToken
   }
@@ -50861,6 +50994,7 @@ ${CardAspectFragmentDoc}
 ${CardPackFragmentDoc}
 ${CardSetFragmentDoc}
 ${CardSetTypeFragmentDoc}
+${CardSubsetFragmentDoc}
 ${CardTokenFragmentDoc}
 ${CardTypeFragmentDoc}`;
 export const GetTranslationDataDocument = gql`
@@ -50906,10 +51040,10 @@ export const GetTranslationsDocument = gql`
 }
     ${CardTextFragmentDoc}`;
 export const UpsertCardDocument = gql`
-    mutation upsertCard($id: String!, $code: String!, $name: String, $traits: String, $equip: Int, $presence: Int, $token_id: String, $token_count: Int, $harm: Int, $approach_conflict: Int, $approach_reason: Int, $approach_exploration: Int, $approach_connection: Int, $text: String, $set_id: String, $set_position: Int, $quantity: Int, $level: Int, $type_id: String, $cost: Int, $aspect_id: String, $progress: Int, $deck_limit: Int, $position: Int, $area_id: String, $guide_entry: String, $progress_fixed: Boolean, $locations: jsonb, $pack_id: String, $illustrator: String, $flavor: String, $objective: String, $back_card_id: String, $imagesrc: String, $spoiler: Boolean, $taboo_id: String) {
+    mutation upsertCard($id: String!, $code: String!, $name: String, $traits: String, $equip: Int, $presence: Int, $token_id: String, $token_count: Int, $harm: Int, $approach_conflict: Int, $approach_reason: Int, $approach_exploration: Int, $approach_connection: Int, $text: String, $set_id: String, $set_position: Int, $quantity: Int, $level: Int, $type_id: String, $cost: Int, $aspect_id: String, $progress: Int, $deck_limit: Int, $position: Int, $area_id: String, $guide_entry: String, $progress_fixed: Boolean, $locations: jsonb, $pack_id: String, $illustrator: String, $flavor: String, $objective: String, $back_card_id: String, $imagesrc: String, $spoiler: Boolean, $taboo_id: String, $subset_position: Int, $subset_id: String, $mountain_challenge: String, $sun_challenge: String, $crest_challenge: String) {
   insert_rangers_card_one(
-    object: {id: $id, code: $code, name: $name, traits: $traits, equip: $equip, presence: $presence, token_id: $token_id, token_count: $token_count, harm: $harm, approach_conflict: $approach_conflict, approach_reason: $approach_reason, approach_exploration: $approach_exploration, approach_connection: $approach_connection, text: $text, set_id: $set_id, set_position: $set_position, quantity: $quantity, level: $level, type_id: $type_id, cost: $cost, aspect_id: $aspect_id, progress: $progress, deck_limit: $deck_limit, position: $position, area_id: $area_id, guide_entry: $guide_entry, progress_fixed: $progress_fixed, locations: $locations, pack_id: $pack_id, illustrator: $illustrator, flavor: $flavor, objective: $objective, back_card_id: $back_card_id, imagesrc: $imagesrc, spoiler: $spoiler, taboo_id: $taboo_id}
-    on_conflict: {constraint: card_pkey, update_columns: [id, name, traits, equip, presence, token_id, token_count, harm, approach_conflict, approach_reason, approach_exploration, approach_connection, text, set_id, set_position, quantity, level, type_id, cost, aspect_id, progress, area_id, guide_entry, progress_fixed, locations, pack_id, illustrator, flavor, objective, back_card_id, imagesrc, deck_limit, position, spoiler, taboo_id, code]}
+    object: {id: $id, code: $code, name: $name, traits: $traits, equip: $equip, presence: $presence, token_id: $token_id, token_count: $token_count, harm: $harm, approach_conflict: $approach_conflict, approach_reason: $approach_reason, approach_exploration: $approach_exploration, approach_connection: $approach_connection, text: $text, set_id: $set_id, set_position: $set_position, quantity: $quantity, level: $level, type_id: $type_id, cost: $cost, aspect_id: $aspect_id, progress: $progress, deck_limit: $deck_limit, position: $position, area_id: $area_id, guide_entry: $guide_entry, progress_fixed: $progress_fixed, locations: $locations, pack_id: $pack_id, illustrator: $illustrator, flavor: $flavor, objective: $objective, back_card_id: $back_card_id, imagesrc: $imagesrc, spoiler: $spoiler, taboo_id: $taboo_id, subset_position: $subset_position, subset_id: $subset_id, mountain_challenge: $mountain_challenge, sun_challenge: $sun_challenge, crest_challenge: $crest_challenge}
+    on_conflict: {constraint: card_pkey, update_columns: [id, name, traits, equip, presence, token_id, token_count, harm, approach_conflict, approach_reason, approach_exploration, approach_connection, text, set_id, set_position, quantity, level, type_id, cost, aspect_id, progress, area_id, guide_entry, progress_fixed, locations, pack_id, illustrator, flavor, objective, back_card_id, imagesrc, deck_limit, position, spoiler, taboo_id, code, subset_position, subset_id, mountain_challenge, sun_challenge, crest_challenge]}
   ) {
     id
   }
@@ -50935,6 +51069,26 @@ export const UpsertCardSetTextDocument = gql`
   }
 }
     ${CardSetTextFragmentDoc}`;
+export const UpsertCardSubsetDocument = gql`
+    mutation upsertCardSubset($id: String!, $name: String!, $size: Int, $set_id: String!, $pack_id: String) {
+  insert_rangers_subset_one(
+    object: {id: $id, name: $name, size: $size, set_id: $set_id, pack_id: $pack_id}
+    on_conflict: {constraint: subset_pkey, update_columns: [id, name, size, set_id, pack_id]}
+  ) {
+    ...CardSubset
+  }
+}
+    ${CardSubsetFragmentDoc}`;
+export const UpsertCardSubsetTextDocument = gql`
+    mutation upsertCardSubsetText($id: String!, $locale: String!, $name: String!) {
+  insert_rangers_subset_text_one(
+    object: {id: $id, locale: $locale, name: $name}
+    on_conflict: {constraint: subset_text_pkey, update_columns: [id, name]}
+  ) {
+    ...CardSubsetText
+  }
+}
+    ${CardSubsetTextFragmentDoc}`;
 export const UpsertCardAreaDocument = gql`
     mutation upsertCardArea($id: String!, $name: String!) {
   insert_rangers_area_one(
@@ -50989,6 +51143,9 @@ export const GetLocaleTextDocument = gql`
   rangers_set_text(where: {locale: {_eq: $locale}}) {
     ...CardSetText
   }
+  rangers_subset_text(where: {locale: {_eq: $locale}}) {
+    ...CardSubsetText
+  }
   rangers_set_type_text(where: {locale: {_eq: $locale}}) {
     ...CardSetTypeText
   }
@@ -51006,15 +51163,16 @@ export const GetLocaleTextDocument = gql`
 ${CardTextFragmentDoc}
 ${CardPackTextFragmentDoc}
 ${CardSetTextFragmentDoc}
+${CardSubsetTextFragmentDoc}
 ${CardSetTypeTextFragmentDoc}
 ${CardTokenTextFragmentDoc}
 ${CardTypeTextFragmentDoc}
 ${CardAspectTextFragmentDoc}`;
 export const UpsertCardTextDocument = gql`
-    mutation upsertCardText($id: String!, $locale: String!, $name: String, $traits: String, $text: String, $flavor: String, $objective: String, $imagesrc: String) {
+    mutation upsertCardText($id: String!, $locale: String!, $name: String, $traits: String, $text: String, $flavor: String, $objective: String, $imagesrc: String, $mountain_challenge: String, $sun_challenge: String, $crest_challenge: String) {
   insert_rangers_card_text_one(
-    object: {id: $id, locale: $locale, name: $name, text: $text, traits: $traits, flavor: $flavor, objective: $objective, imagesrc: $imagesrc}
-    on_conflict: {constraint: card_text_pkey, update_columns: [id, locale, name, text, traits, flavor, objective, imagesrc]}
+    object: {id: $id, locale: $locale, name: $name, text: $text, traits: $traits, flavor: $flavor, objective: $objective, imagesrc: $imagesrc, mountain_challenge: $mountain_challenge, sun_challenge: $sun_challenge, crest_challenge: $crest_challenge}
+    on_conflict: {constraint: card_text_pkey, update_columns: [id, locale, name, text, traits, flavor, objective, imagesrc, mountain_challenge, sun_challenge, crest_challenge]}
   ) {
     id
     locale
@@ -51022,26 +51180,28 @@ export const UpsertCardTextDocument = gql`
 }
     `;
 export const UpsertCardPackDocument = gql`
-    mutation upsertCardPack($id: String!, $name: String!, $position: Int!) {
+    mutation upsertCardPack($id: String!, $name: String!, $position: Int!, $short_name: String) {
   insert_rangers_pack_one(
-    object: {id: $id, name: $name, position: $position}
-    on_conflict: {constraint: pack_pkey, update_columns: [id, name, position]}
+    object: {id: $id, name: $name, position: $position, short_name: $short_name}
+    on_conflict: {constraint: pack_pkey, update_columns: [id, name, position, short_name]}
   ) {
     id
     name
     position
+    short_name
   }
 }
     `;
 export const UpsertCardPackTextDocument = gql`
-    mutation upsertCardPackText($id: String!, $locale: String!, $name: String) {
+    mutation upsertCardPackText($id: String!, $locale: String!, $name: String, $short_name: String) {
   insert_rangers_pack_text_one(
-    object: {id: $id, locale: $locale, name: $name}
-    on_conflict: {constraint: pack_text_pkey, update_columns: [id, locale, name]}
+    object: {id: $id, locale: $locale, name: $name, short_name: $short_name}
+    on_conflict: {constraint: pack_text_pkey, update_columns: [id, locale, name, short_name]}
   ) {
     id
     locale
     name
+    short_name
   }
 }
     `;
@@ -51147,6 +51307,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     upsertCardSetText(variables: UpsertCardSetTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSetTextMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSetTextMutation>(UpsertCardSetTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSetText');
+    },
+    upsertCardSubset(variables: UpsertCardSubsetMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSubsetMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSubsetMutation>(UpsertCardSubsetDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSubset');
+    },
+    upsertCardSubsetText(variables: UpsertCardSubsetTextMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardSubsetTextMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardSubsetTextMutation>(UpsertCardSubsetTextDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardSubsetText');
     },
     upsertCardArea(variables: UpsertCardAreaMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertCardAreaMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<UpsertCardAreaMutation>(UpsertCardAreaDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertCardArea');

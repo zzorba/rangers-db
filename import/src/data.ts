@@ -171,6 +171,14 @@ export const METADATA = [
     upsertText: client.upsertCardSetText,
   },
   {
+    file: 'subsets.json',
+    ...TABLES.subset,
+    getData: (data: GetMetadataQuery) => data.rangers_subset,
+    getLocale: (data: GetLocaleTextQuery) => data.rangers_subset_text,
+    upsert: client.upsertCardSubset,
+    upsertText: client.upsertCardSubsetText,
+  },
+  {
     file: 'tokens.json',
     ...TABLES.token,
     getData: (data: GetMetadataQuery) => data.rangers_token,

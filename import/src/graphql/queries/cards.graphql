@@ -58,7 +58,21 @@ fragment CardSet on rangers_set {
   type_id
 }
 
+fragment CardSubset on rangers_subset {
+  id
+  name
+  size
+  pack_id
+  set_id
+}
+
 fragment CardSetText on rangers_set_text {
+  id
+  locale
+  name
+}
+
+fragment CardSubsetText on rangers_subset_text {
   id
   locale
   name
@@ -179,6 +193,9 @@ query getMetadata {
   rangers_set_type {
     ...CardSetType
   }
+  rangers_subset {
+    ...CardSubset
+  }
   rangers_token {
     ...CardToken
   }
@@ -277,7 +294,12 @@ mutation upsertCard(
   $back_card_id: String
   $imagesrc: String
   $spoiler: Boolean
-  $taboo_id: String
+  $taboo_id: String,
+  $subset_position: Int,
+  $subset_id: String,
+  $mountain_challenge: String,
+  $sun_challenge: String,
+  $crest_challenge: String,
 ) {
 	insert_rangers_card_one(
     object: {
@@ -317,6 +339,11 @@ mutation upsertCard(
       imagesrc: $imagesrc
       spoiler: $spoiler
       taboo_id: $taboo_id
+      subset_position: $subset_position
+      subset_id: $subset_id
+      mountain_challenge: $mountain_challenge
+      sun_challenge: $sun_challenge
+      crest_challenge: $crest_challenge
     }
     on_conflict: {
       constraint: card_pkey
@@ -356,7 +383,12 @@ mutation upsertCard(
         position,
         spoiler,
         taboo_id,
-        code
+        code,
+        subset_position,
+        subset_id,
+        mountain_challenge,
+        sun_challenge,
+        crest_challenge,
       ]
     }
   ) {
@@ -411,6 +443,60 @@ mutation upsertCardSetText(
     }
   ) {
     ...CardSetText
+  }
+}
+
+
+mutation upsertCardSubset(
+  $id: String!,
+  $name: String!,
+  $size: Int,
+  $set_id: String!,
+  $pack_id: String,
+) {
+  insert_rangers_subset_one(
+    object: {
+      id: $id
+      name: $name
+      size: $size
+      set_id: $set_id
+      pack_id: $pack_id
+    }
+    on_conflict: {
+      constraint: subset_pkey
+      update_columns: [
+        id,
+        name,
+        size,
+        set_id,
+        pack_id
+      ]
+    }
+  ) {
+    ...CardSubset
+  }
+}
+
+mutation upsertCardSubsetText(
+  $id: String!,
+  $locale: String!,
+  $name: String!,
+) {
+  insert_rangers_subset_text_one(
+    object: {
+      id: $id
+      locale: $locale
+      name: $name
+    }
+    on_conflict: {
+      constraint: subset_text_pkey
+      update_columns: [
+        id,
+        name
+      ]
+    }
+  ) {
+    ...CardSubsetText
   }
 }
 
@@ -528,6 +614,11 @@ query getLocaleText(
   ) {
     ...CardSetText
   }
+  rangers_subset_text(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...CardSubsetText
+  }
   rangers_set_type_text(
     where: { locale: { _eq: $locale }}
   ) {
@@ -558,7 +649,10 @@ mutation upsertCardText(
   $text: String,
   $flavor: String,
   $objective: String,
-  $imagesrc: String
+  $imagesrc: String,
+  $mountain_challenge: String,
+  $sun_challenge: String,
+  $crest_challenge: String,
 ) {
 	insert_rangers_card_text_one(
     object: {
@@ -570,6 +664,9 @@ mutation upsertCardText(
       flavor: $flavor
       objective: $objective
       imagesrc: $imagesrc
+      mountain_challenge: $mountain_challenge
+      sun_challenge: $sun_challenge
+      crest_challenge: $crest_challenge
     }
     on_conflict: {
       constraint: card_text_pkey
@@ -581,7 +678,10 @@ mutation upsertCardText(
         traits,
         flavor,
         objective,
-        imagesrc
+        imagesrc,
+        mountain_challenge,
+        sun_challenge,
+        crest_challenge,
       ]
     }
   ) {
@@ -595,12 +695,14 @@ mutation upsertCardPack(
   $id: String!,
   $name: String!,
   $position: Int!
+  $short_name: String
 ) {
 	insert_rangers_pack_one(
     object: {
       id: $id
       name: $name
       position: $position
+      short_name: $short_name
     }
     on_conflict: {
       constraint: pack_pkey
@@ -608,38 +710,44 @@ mutation upsertCardPack(
         id,
         name,
         position
+        short_name
       ]
     }
   ) {
     id
     name
     position
+    short_name
   }
 }
 
 mutation upsertCardPackText(
   $id: String!,
   $locale: String!,
-  $name: String
+  $name: String,
+  $short_name: String
 ) {
 	insert_rangers_pack_text_one(
     object: {
       id: $id
       locale: $locale
       name: $name
+      short_name: $short_name
     }
     on_conflict: {
       constraint: pack_text_pkey
       update_columns: [
         id,
         locale,
-        name
+        name,
+        short_name,
       ]
     }
   ) {
     id
     locale
     name
+    short_name
   }
 }
 
