@@ -2580,7 +2580,7 @@ export function useEditCampaignAccessModal(
 }
 
 export interface CampaignChoiceOption extends OptionBase {
-  value: number;
+  value: number | undefined;
   label: React.ReactNode;
   name: string;
 }
