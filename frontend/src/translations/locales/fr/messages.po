@@ -28,6 +28,9 @@ msgstr "(édité)"
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} Trauma)} other {({2} Traumas)}}"
 
+msgid "{0} - Day {1}"
+msgstr ""
+
 msgid "{0} (Copy)"
 msgstr "{0} (Copie)"
 
@@ -782,6 +785,9 @@ msgstr "Publier"
 msgid "Previous"
 msgstr "Précédent"
 
+msgid "Previous campaign"
+msgstr ""
+
 msgid "Previous deck"
 msgstr "Deck précédent"
 
@@ -1165,6 +1171,12 @@ msgstr "Suivez les cartes supprimé définitivement du deck de chemin ici."
 
 msgid "Traits"
 msgstr "Traits"
+
+msgid "Transfer campaign..."
+msgstr ""
+
+msgid "Transfer existing campaign"
+msgstr ""
 
 msgid "Travel"
 msgstr "Voyager"

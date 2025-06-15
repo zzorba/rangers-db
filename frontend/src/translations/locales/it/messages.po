@@ -28,6 +28,9 @@ msgstr "(modificato)"
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 
+msgid "{0} - Day {1}"
+msgstr ""
+
 msgid "{0} (Copy)"
 msgstr "{0} (Copia)"
 
@@ -782,6 +785,9 @@ msgstr "Inserisci"
 msgid "Previous"
 msgstr "Precedente"
 
+msgid "Previous campaign"
+msgstr ""
+
 msgid "Previous deck"
 msgstr "Mazzo precedente"
 
@@ -1165,6 +1171,12 @@ msgstr "Tieni traccia qui delle carte che sono state rimosse permanentemente dal
 
 msgid "Traits"
 msgstr "Tratti"
+
+msgid "Transfer campaign..."
+msgstr ""
+
+msgid "Transfer existing campaign"
+msgstr ""
 
 msgid "Travel"
 msgstr "Viaggia"

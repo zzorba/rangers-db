@@ -816,7 +816,6 @@ const CONNECTIONS: {
   },
 ];
 
-export const INCLUDE_LOA = true;
 export function getCampaignCycles(): CampaignCycle[] {
   return [
     {
@@ -827,12 +826,10 @@ export function getCampaignCycles(): CampaignCycle[] {
       id: 'core',
       name: t`Core set`,
     },
-    ...(INCLUDE_LOA ? [
-      {
-        id: 'loa',
-        name: t`Legacy of the Ancestors`
-      },
-    ] : []),
+    {
+      id: 'loa',
+      name: t`Legacy of the Ancestors`
+    },
   ];
 }
 

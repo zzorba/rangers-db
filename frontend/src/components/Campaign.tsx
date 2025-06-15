@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createFilter, Select as ChakraSelect, SingleValue, OptionBase } from 'chakra-react-select';
 import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last, sumBy, slice, zip, findIndex, extend } from 'lodash';
@@ -15,13 +16,14 @@ import {
   useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation,
   useSetCampaignTitleMutation, useCampaignUndoTravelMutation,
   useUpdateCampaignNotesMutation, useAddCampaignNoteMutation, useExtendCampaignMutation,
+  useTransferCampaignMutation,
 } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import FriendChooser from './FriendChooser';
 import ListHeader from './ListHeader';
 import CoreIcon from '../icons/CoreIcon';
 import { CompactDeckRow } from './Deck';
-import { CardsMap, INCLUDE_LOA, useMapLocations } from '../lib/hooks';
+import { CardsMap, useMapLocations } from '../lib/hooks';
 import SubmitButton, { SubmitIconButton } from './SubmitButton';
 import { SlCheck, SlClose, SlMinus, SlPlus } from 'react-icons/sl';
 import { useLocale } from '../lib/TranslationProvider';
@@ -42,6 +44,8 @@ import CardSetSelect from './CardSetSelect';
 import { CampaignCycle, MapLocation, MapLocations } from '../types/types';
 import MoonIconWithDate, { MoonIcon } from '../icons/MoonIcon';
 import SolidButton from './SolidButton';
+import { useCycleCampaigns } from '../pages/campaigns';
+import { useRoleCardsMap } from '../lib/cards';
 
 const STARTING_LOCATIONS: { [campaign: string]: string } = {
   demo: 'lone_tree_station',
@@ -107,6 +111,12 @@ export interface ParsedCampaign {
   latest_decks: LatestDeck[];
   current_location: string | undefined;
   current_path_terrain: string | undefined;
+  previous_campaign?: {
+    id: number;
+  }
+  next_campaign?: {
+    id: number;
+  }
 }
 
 export class CampaignWrapper implements ParsedCampaign {
@@ -129,6 +139,13 @@ export class CampaignWrapper implements ParsedCampaign {
   latest_decks: LatestDeck[];
   current_location: string | undefined;
   current_path_terrain: string | undefined;
+
+  previous_campaign?: {
+    id: number;
+  }
+  next_campaign?: {
+    id: number;
+  }
 
   constructor(campaign: CampaignFragment) {
     this.id = campaign.id;
@@ -163,14 +180,23 @@ export class CampaignWrapper implements ParsedCampaign {
       }
       return [];
     });
+    this.previous_campaign = campaign.previous_campaign ? {
+      id: campaign.previous_campaign.id,
+    } : undefined;
+    this.next_campaign = campaign.next_campaign_id ? {
+      id: campaign.next_campaign_id,
+    } : undefined;
   }
 }
 
-function CampaignRow({ campaign, roleCards, onDelete }: {
+function CampaignRow({ campaign, roleCards, onDelete, noTable }: {
   campaign: ParsedCampaign;
   roleCards: CardsMap;
   onDelete?: (campaign: ParsedCampaign) => void;
+  noTable?: boolean;
 }) {
+  const { cycles } = useLocale();
+  const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign]);
   const roleImageSize = useBreakpointValue<'small' | 'medium'>(['small', 'small', 'medium']);
   const locations = useMapLocations(campaign.cycle_id);
   const currentLocation = useMemo(() => find(locations, loc => loc?.id === campaign.current_location), [campaign.current_location, locations])
@@ -185,43 +211,58 @@ function CampaignRow({ campaign, roleCards, onDelete }: {
   }, [campaign.latest_decks, roleCards]);
   const onDeleteClick = useCallback(() => onDelete?.(campaign), [onDelete, campaign]);
   const day = campaign.day;
+  const row1 = (
+    <SimpleGrid columns={[1,1,2]} spacingY="2" as={noTable ? undefined : NextLink} href={noTable ? '' : `/campaigns/${campaign.id}`}>
+      <Flex direction="column">
+        <Text fontSize="lg" fontWeight="600" marginBottom={2}>
+          {campaign.name}
+        </Text>
+        <Flex direction="row">
+          <CoreIcon icon="ranger" size="22" />
+          <Text marginLeft={2}>
+            {filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}
+          </Text>
+        </Flex>
+        { !!cycle && <CycleChiclet cycle={cycle} /> }
+      </Flex>
+      { !!currentLocation && (
+        <Flex direction="row" alignItems="center">
+          <LocationIcon location={currentLocation} size={58} />
+          <Flex direction="column" marginLeft={2}>
+            <Text style={{ fontVariantCaps: 'small-caps' }}>{currentLocation.name}</Text>
+            <Text>{t`Day ${day}`}</Text>
+          </Flex>
+        </Flex>
+      ) }
+    </SimpleGrid>
+  );
+  const row2 = (
+    <Flex direction="row" justifyContent="space-between">
+      <SimpleGrid columns={[2, 2, 4]} as={noTable ? undefined : NextLink} href={noTable ? '' : `/campaigns/${campaign.id}`}>
+        { flatMap(roles, card => card.imagesrc ? (
+          <RoleImage key={card.code} name={card.name} url={card.imagesrc} size={roleImageSize} />
+        ) : [])}
+      </SimpleGrid>
+      <ButtonGroup>
+        { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<FaTrash />} color="red.500" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
+      </ButtonGroup>
+    </Flex>
+  );
+  if (noTable) {
+    return (
+      <Flex direction="column" alignItems="flex-start">
+        { row1 }
+        { row2 }
+      </Flex>
+    );
+  }
   return (
     <Tr>
       <Td>
-        <SimpleGrid columns={[1,1,2]} spacingY="2" as={NextLink} href={`/campaigns/${campaign.id}`}>
-          <Flex direction="column">
-            <Text fontSize="lg" fontWeight="600" marginBottom={2}>
-              {campaign.name}
-            </Text>
-            <Flex direction="row">
-              <CoreIcon icon="ranger" size="22" />
-              <Text marginLeft={2}>
-                {filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}
-              </Text>
-            </Flex>
-          </Flex>
-          { !!currentLocation && (
-            <Flex direction="row" alignItems="center">
-              <LocationIcon location={currentLocation} size={58} />
-              <Flex direction="column" marginLeft={2}>
-                <Text style={{ fontVariantCaps: 'small-caps' }}>{currentLocation.name}</Text>
-                <Text>{t`Day ${day}`}</Text>
-              </Flex>
-            </Flex>
-          ) }
-        </SimpleGrid>
+        {row1}
       </Td>
       <Td>
-        <Flex direction="row" justifyContent="space-between">
-          <SimpleGrid columns={[2, 2, 4]} as={NextLink} href={`/campaigns/${campaign.id}`}>
-            { flatMap(roles, card => card.imagesrc ? (
-              <RoleImage key={card.code} name={card.name} url={card.imagesrc} size={roleImageSize} />
-            ) : [])}
-          </SimpleGrid>
-          <ButtonGroup>
-            { !!onDelete ? <IconButton aria-label={t`Delete`} icon={<FaTrash />} color="red.500" variant="ghost" onClick={onDeleteClick} /> : <IconButton aria-label={t`Delete`} disabled color="transparent" variant="ghost" /> }
-          </ButtonGroup>
-        </Flex>
+        {row2}
       </Td>
     </Tr>
   );
@@ -2309,6 +2350,7 @@ export default function CampaignDetail(props: CampaignDetailProps) {
     </CampaignContext.Provider>
   );
 }
+
 function CampaignDetailContent({ campaign, refetchCampaign, showEditFriends, cards }: CampaignDetailProps) {
   const { cycles, paths } = useLocale();
   const { locations } = useContext(CampaignContext);
@@ -2349,16 +2391,30 @@ function CampaignDetailContent({ campaign, refetchCampaign, showEditFriends, car
         />}
         subHeader={!!cycle ? <CycleChiclet cycle={cycle} /> : undefined}
       >
-        <ButtonGroup orientation={buttonOrientation}>
-          <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
-          <Button leftIcon={<FaMoon />} onClick={onEndDay}>{t`End the day`}</Button>
-          { !!undoEnabled && <Button variant="ghost" leftIcon={<FaUndo />} onClick={onUndo}>{t`Undo`}</Button> }
-          { (campaign.day === 30 && !campaign.extended_calendar) && (
-          <SolidButton color="blue" onClick={onExtendCampaign}>
-            {t`Extend campaign`}
-          </SolidButton>
-        )}
-        </ButtonGroup>
+        <Flex direction="column" alignItems="flex-end">
+          <ButtonGroup orientation={buttonOrientation}>
+            <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
+            <Button leftIcon={<FaMoon />} onClick={onEndDay}>{t`End the day`}</Button>
+            { !!undoEnabled && <Button variant="ghost" leftIcon={<FaUndo />} onClick={onUndo}>{t`Undo`}</Button> }
+            { (campaign.day === 30 && !campaign.extended_calendar) && (
+              <SolidButton color="blue" onClick={onExtendCampaign}>
+                {t`Extend campaign`}
+              </SolidButton>
+            )}
+          </ButtonGroup>
+          <ButtonGroup marginTop={2}>
+            { !!campaign.previous_campaign && (
+              <Button as={NextLink} href={`/campaigns/${campaign.previous_campaign.id}`} variant="ghost">
+                {t`Previous campaign`}
+              </Button>
+            )}
+            { !!campaign.next_campaign && (
+              <Button as={NextLink} href={`/campaigns/${campaign.next_campaign.id}`} variant="ghost">
+                {t`Previous campaign`}
+              </Button>
+            )}
+          </ButtonGroup>
+        </Flex>
       </PageHeading>
       <Timeline campaign={campaign} />
       <SimpleGrid columns={[1,1,1,2]} spacingY="2em" spacingX="1em">
@@ -2523,6 +2579,124 @@ export function useEditCampaignAccessModal(
   ];
 }
 
+export interface CampaignChoiceOption extends OptionBase {
+  value: number;
+  label: React.ReactNode;
+  name: string;
+}
+function CampaignChooser({ cycles, choice, setChoice }: {
+  cycles: CampaignCycle[];
+  choice: number | undefined;
+  setChoice: (campaign: number | undefined) => void;
+}) {
+  const cycleIds = useMemo(() => map(cycles, c => c.id), [cycles]);
+  const otherCampaigns = useCycleCampaigns(cycleIds);
+  const options = useMemo(() => {
+    return [
+      {
+        value: undefined,
+        label: <Text>{t`None`}</Text>,
+        name: t`None`,
+      },
+      ...
+        map(otherCampaigns, (campaign) => ({
+        value: campaign.id,
+        label: (
+          <Text>{t`${campaign.name} - Day ${campaign.day}`}</Text>
+        ),
+        name: campaign.name,
+      })),
+    ];
+  }, [otherCampaigns]);
+
+  const onChange = useCallback((value: CampaignChoiceOption | null) => {
+    setChoice(value ? value.value : undefined);
+  }, [setChoice]);
+
+  const selectedOption = useMemo(() => {
+    const campaign = find(otherCampaigns, c => c.id === choice);
+    if (!campaign) {
+      return undefined;
+    }
+    return {
+      value: campaign.id,
+      label: <Text>{campaign.name}</Text>,
+      name: campaign.name,
+    };
+  }, [otherCampaigns, choice]);
+
+  return (
+    <ChakraSelect<CampaignChoiceOption>
+      value={selectedOption}
+      onChange={onChange}
+      options={options}
+      size="lg"
+      useBasicStyles
+      placeholder={t`Transfer campaign...`}
+      chakraStyles={{
+        control: (provided, state) => ({
+          ...provided,
+          minHeight: '84px',
+        }),
+      }}
+    />
+  );
+}
+
+function useCreateOrTransferCampaign(): (
+  cycle: string,
+  args: {
+    type: 'new';
+    name: string;
+  } | {
+    type: 'transfer';
+    campaignId: number;
+  }
+) => Promise<CampaignWrapper | undefined> {
+  const [createCampaign] = useCreateCampaignMutation();
+  const [transferCampaign] = useTransferCampaignMutation();
+
+  return useCallback(async (
+    cycle: string,
+    args: {
+      type: 'new';
+      name: string;
+    } | {
+      type: 'transfer';
+      campaignId: number;
+    }) => {
+      switch (args.type) {
+        case 'new': {
+          const result = await createCampaign({
+            variables: {
+              cycleId: cycle,
+              name: args.name,
+              currentLocation: STARTING_LOCATIONS[cycle],
+            },
+          });
+          if (result.errors?.length) {
+            throw new Error(result.errors[0].message);
+          }
+          return result.data?.campaign ? new CampaignWrapper(result.data.campaign) : undefined;
+        }
+        case 'transfer': {
+          const result = await transferCampaign({
+            variables: {
+              cycleId: cycle,
+              campaignId: args.campaignId,
+              currentLocation: STARTING_LOCATIONS[cycle],
+            },
+          });
+          if (result.errors?.length) {
+            throw new Error(result.errors[0].message);
+          }
+          return result.data?.campaign.length ? new CampaignWrapper(result.data.campaign[0]) : undefined;
+        }
+      }
+
+    }, [createCampaign, transferCampaign])
+}
+
 export function useNewCampaignModal(): [() => void, React.ReactNode] {
   const { authUser } = useAuth();
   const [name, setName] = useState('');
@@ -2541,7 +2715,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     };
   }, [refetch, authUser]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [createCampaign] = useCreateCampaignMutation();
+  const createCampaign = useCreateOrTransferCampaign();
   const [addFriendToCampaign] = useAddFriendToCampaignMutation();
   const [error, setError] = useState<string | undefined>();
   const [selectedFriends, setSelectedFriends] = useState<string[]>([]);
@@ -2552,6 +2726,8 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     ]));
     return undefined;
   }, [selectedFriends, setSelectedFriends]);
+  const { cycles } = useLocale();
+  const [transferCampaignId, setTransferCampaignId] = useState<number | undefined>(undefined);
   const onRemove = useCallback(async(id: string) => {
     setSelectedFriends(filter(selectedFriends, f => f !== id));
     return undefined;
@@ -2562,41 +2738,48 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
       return;
     }
     setError(undefined);
-    const result = await createCampaign({
-      variables: {
-        name,
-        cycleId: cycle,
-        currentLocation: STARTING_LOCATIONS[cycle],
-      },
-    });
-    if (result.errors?.length) {
-      setError(result.errors[0].message);
-      return undefined;
-    }
-    if (!result.data?.campaign) {
-      setError(t`Unable to create campaign at this time.`);
-      return undefined;
-    }
-    const campaignId = result.data.campaign.id;
-    for (let i = 0; i < selectedFriends.length; i++) {
-      const userId = selectedFriends[i];
-      const fResult = await addFriendToCampaign({
-        variables: {
-          userId,
-          campaignId,
-        },
-      });
-      if (fResult.errors?.length) {
-        setError(fResult.errors[0].message);
+    try {
+      const result = cycle === 'loa' && transferCampaignId !== undefined ?
+        await createCampaign(cycle, { type: 'transfer', campaignId: transferCampaignId }) :
+        await createCampaign(cycle, { type: 'new', name });
+      if (!result) {
+        setError(t`Unable to create campaign at this time.`);
+        return undefined;
       }
+
+      const campaignId = result.id;
+      for (let i = 0; i < selectedFriends.length; i++) {
+        const userId = selectedFriends[i];
+        const fResult = await addFriendToCampaign({
+          variables: {
+            userId,
+            campaignId,
+          },
+        });
+        if (fResult.errors?.length) {
+          setError(fResult.errors[0].message);
+        }
+
+        setName('');
+        setTransferCampaignId(undefined);
+        setCycle('core');
+        setSelectedFriends([]);
+      }
+      Router.push(`/campaigns/${campaignId}`);
+      onClose();
+      return undefined;
+    } catch (e) {
+      setError((e as Error).message);
+      return undefined;
     }
-    Router.push(`/campaigns/${campaignId}`);
-    onClose();
-    return undefined;
-  }, [createCampaign, addFriendToCampaign, onClose, cycle, selectedFriends, authUser, name]);
+  }, [
+    createCampaign, addFriendToCampaign, onClose,
+    transferCampaignId, cycle, selectedFriends, authUser, name,
+  ]);
   const showModal = useCallback(() => {
     onOpen();
   }, [onOpen]);
+  const transferCampaigns = useMemo(() => cycles.filter(c => c.id === 'core'), [cycles]);
   return [
     showModal,
     <Modal key="campaign" isOpen={isOpen} onClose={onClose}>
@@ -2614,14 +2797,6 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
             onCreateCampaign();
           }}>
             <FormControl marginBottom={4} isRequired>
-              <FormLabel>{t`Name`}</FormLabel>
-              <Input
-                type="name"
-                value={name}
-                onChange={e => setName(e.target.value)}
-              />
-            </FormControl>
-            <FormControl marginBottom={4} isRequired>
               <FormLabel>{t`Campaign`}</FormLabel>
               <Select
                 onChange={(event) => setCycle(event.target.value)}
@@ -2630,9 +2805,25 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
               >
                 <option value="demo">{t`Demo`}</option>
                 <option value="core">{t`Core`}</option>
-                { !!INCLUDE_LOA && <option value="loa">{t`Legacy of the Ancestors`}</option> }
+                <option value="loa">{t`Legacy of the Ancestors`}</option>
               </Select>
             </FormControl>
+            { cycle === 'loa' && (
+              <FormControl marginBottom={4}>
+                <FormLabel>{t`Transfer existing campaign`}</FormLabel>
+                <CampaignChooser cycles={transferCampaigns} choice={transferCampaignId} setChoice={setTransferCampaignId} />
+              </FormControl>
+            )}
+            { (cycle !== 'loa' || !transferCampaignId) && (
+              <FormControl marginBottom={4} isRequired>
+                <FormLabel>{t`Name`}</FormLabel>
+                <Input
+                  type="name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                />
+              </FormControl>
+            ) }
             <FormControl>
               <FormLabel>{t`Players`}</FormLabel>
               <FriendChooser
@@ -2649,7 +2840,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
           <Flex direction="row" flex={1} justifyContent="flex-end">
             <SubmitButton
               color="blue"
-              disabled={!name}
+              disabled={!((cycle === 'loa' && transferCampaignId) || name)}
               onSubmit={onCreateCampaign}
             >
               {t`Create`}

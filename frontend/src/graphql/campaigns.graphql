@@ -1,15 +1,40 @@
 # import Campaign from 'fragments.graphql'
 
 query getMyCampaigns(
-  $userId: String!
+  $userId: String!,
   $limit: Int!,
   $offset: Int!
 ) {
   campaigns: rangers_user_campaign(
-    where: { user_id: { _eq: $userId }}
+    where: {
+      user_id: { _eq: $userId }
+      campaign: {
+        next_campaign_id: { _is_null: true }
+      }
+    }
     order_by: { updated_at: desc }
     limit: $limit
     offset: $offset
+  ) {
+    campaign {
+      ...Campaign
+    }
+  }
+}
+
+query getMyTransferableCampaigns(
+  $userId: String!,
+  $cycles: [String!]!,
+) {
+  campaigns: rangers_user_campaign(
+    where: {
+      user_id: { _eq: $userId }
+      campaign: {
+        cycle_id: { _in: $cycles }
+        next_campaign_id: { _is_null: true }
+      }
+    }
+    order_by: { updated_at: desc }
   ) {
     campaign {
       ...Campaign
@@ -46,6 +71,22 @@ mutation createCampaign(
     object: {
       name: $name
       cycle_id: $cycleId
+      current_location: $currentLocation
+    }
+  ) {
+    ...Campaign
+  }
+}
+
+mutation transferCampaign(
+  $campaignId: Int!,
+  $cycleId: String!,
+  $currentLocation: String!,
+) {
+  campaign: rangers_transfer_campaign(
+    args: {
+      existing_campaign_id: $campaignId
+      cycle_code: $cycleId
       current_location: $currentLocation
     }
   ) {
@@ -436,7 +477,9 @@ mutation leaveCampaign(
 mutation deleteCampaign(
   $campaignId: Int!
 ) {
-  delete_rangers_campaign_by_pk(id: $campaignId) {
+  rangers_remove_campaign(
+    args: { campaign_id: $campaignId }
+  ) {
     id
   }
 }
