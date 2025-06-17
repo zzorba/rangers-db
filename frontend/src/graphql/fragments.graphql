@@ -32,6 +32,10 @@ fragment Campaign on rangers_campaign {
       ...UserInfo
     }
   }
+  next_campaign_id
+  previous_campaign {
+    id
+  }
 }
 
 fragment SearchDeck on rangers_search_deck {

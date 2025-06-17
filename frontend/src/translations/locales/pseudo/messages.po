@@ -28,6 +28,9 @@ msgstr ""
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr ""
 
+msgid "{0} - Day {1}"
+msgstr ""
+
 msgid "{0} (Copy)"
 msgstr ""
 
@@ -782,6 +785,9 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
+msgid "Previous campaign"
+msgstr ""
+
 msgid "Previous deck"
 msgstr ""
 
@@ -1164,6 +1170,12 @@ msgid "Track cards that are removed permanently from the path deck here."
 msgstr ""
 
 msgid "Traits"
+msgstr ""
+
+msgid "Transfer campaign..."
+msgstr ""
+
+msgid "Transfer existing campaign"
 msgstr ""
 
 msgid "Travel"

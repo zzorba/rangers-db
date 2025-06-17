@@ -28,6 +28,9 @@ msgstr "(изменено)"
 msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} Недуг)} other {({2} Недуга)}}"
 
+msgid "{0} - Day {1}"
+msgstr ""
+
 msgid "{0} (Copy)"
 msgstr "{0} (Копия)"
 
@@ -782,6 +785,9 @@ msgstr ""
 msgid "Previous"
 msgstr "Назад"
 
+msgid "Previous campaign"
+msgstr ""
+
 msgid "Previous deck"
 msgstr "Предыдущая колода"
 
@@ -1165,6 +1171,12 @@ msgstr "Отслеживайте здесь карты, которые навс�
 
 msgid "Traits"
 msgstr "Признаки"
+
+msgid "Transfer campaign..."
+msgstr ""
+
+msgid "Transfer existing campaign"
+msgstr ""
 
 msgid "Travel"
 msgstr "Путешествие"
