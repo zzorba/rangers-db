@@ -2007,6 +2007,7 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
             start: weather.start + 30,
             end: weather.end + 30,
             name: weather.name,
+            underground: weather.underground,
           };
         }) : []),
     ];
@@ -2051,7 +2052,7 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
             })}
           </Flex>
           <Flex direction="row" marginTop="4px">
-            { map(weatherLabels, ({ start, end, name }) => {
+            { map(weatherLabels, ({ start, end, name, underground }) => {
               const current = campaign.day >= start && campaign.day <= end;
               return (
                 <Flex
@@ -2069,9 +2070,19 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
                     borderBottomWidth="1px" height="16px" width="100%"
                     borderColor={current ? 'gray.600' : 'gray.300'}
                   />
-                  <Text textAlign="center" fontSize="2xs" fontWeight={current ? '600' : '400'}>
-                    {name}
-                  </Text>
+                  <Flex direction="column" alignItems="center">
+                    <Text textAlign="center" fontSize="2xs" fontWeight={current ? '600' : '400'}>
+                      {name}
+                    </Text>
+                    { !!underground && (
+                      <>
+                        <Divider marginTop="0.75" marginBottom="0.75" />
+                        <Text textAlign="center" fontSize="2xs" fontStyle="italic" color="gray.500">
+                          {underground}
+                        </Text>
+                      </>
+                    )}
+                  </Flex>
                 </Flex>
               );
             })}
