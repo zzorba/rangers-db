@@ -433,6 +433,9 @@ msgstr "Ended the day at {0}."
 msgid "English"
 msgstr "English"
 
+msgid "Enveloping Silence"
+msgstr "Enveloping Silence"
+
 msgid "Equip"
 msgstr "Equip"
 
@@ -505,6 +508,9 @@ msgstr "General"
 msgid "German"
 msgstr "German"
 
+msgid "Glitterain"
+msgstr "Glitterain"
+
 msgid "Golden Shore"
 msgstr "Golden Shore"
 
@@ -528,6 +534,12 @@ msgstr "Hide"
 
 msgid "Hide spoilers"
 msgstr "Hide spoilers"
+
+msgid "Howing Wind"
+msgstr "Howing Wind"
+
+msgid "Howling Wind"
+msgstr "Howling Wind"
 
 msgid "Howling Winds"
 msgstr "Howling Winds"
@@ -962,6 +974,9 @@ msgstr "Share"
 msgid "Shareable Deck"
 msgstr "Shareable Deck"
 
+msgid "Shimmering Runoff"
+msgstr "Shimmering Runoff"
+
 msgid "Show all"
 msgstr "Show all"
 
@@ -1042,6 +1057,9 @@ msgstr "Text"
 
 msgid "The Alluvial Ruins"
 msgstr "The Alluvial Ruins"
+
+msgid "The Arcology"
+msgstr "The Arcology"
 
 msgid "The Cage"
 msgstr "The Cage"

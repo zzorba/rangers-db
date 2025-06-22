@@ -433,6 +433,9 @@ msgstr "Jour termnié à {0}."
 msgid "English"
 msgstr "Anglais"
 
+msgid "Enveloping Silence"
+msgstr ""
+
 msgid "Equip"
 msgstr "Équiper"
 
@@ -505,6 +508,9 @@ msgstr "Général"
 msgid "German"
 msgstr "Allemand"
 
+msgid "Glitterain"
+msgstr ""
+
 msgid "Golden Shore"
 msgstr "Rivage Doré"
 
@@ -528,6 +534,12 @@ msgstr ""
 
 msgid "Hide spoilers"
 msgstr "Masquer les spoilers"
+
+msgid "Howing Wind"
+msgstr ""
+
+msgid "Howling Wind"
+msgstr ""
 
 msgid "Howling Winds"
 msgstr "Vents Hurlants"
@@ -962,6 +974,9 @@ msgstr "Partager"
 msgid "Shareable Deck"
 msgstr "Deck partageable"
 
+msgid "Shimmering Runoff"
+msgstr ""
+
 msgid "Show all"
 msgstr "Voir tout"
 
@@ -1042,6 +1057,9 @@ msgstr "Texte"
 
 msgid "The Alluvial Ruins"
 msgstr "Les Ruines Alluviales"
+
+msgid "The Arcology"
+msgstr ""
 
 msgid "The Cage"
 msgstr ""

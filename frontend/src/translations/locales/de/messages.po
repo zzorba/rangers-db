@@ -433,6 +433,9 @@ msgstr "Tag bei {0} beendet."
 msgid "English"
 msgstr "Englisch"
 
+msgid "Enveloping Silence"
+msgstr ""
+
 msgid "Equip"
 msgstr "Last"
 
@@ -505,6 +508,9 @@ msgstr "Standard"
 msgid "German"
 msgstr "Deutsch"
 
+msgid "Glitterain"
+msgstr ""
+
 msgid "Golden Shore"
 msgstr "Die Goldküste"
 
@@ -528,6 +534,12 @@ msgstr ""
 
 msgid "Hide spoilers"
 msgstr "Spoiler verstecken"
+
+msgid "Howing Wind"
+msgstr ""
+
+msgid "Howling Wind"
+msgstr ""
 
 msgid "Howling Winds"
 msgstr "Sturmböen"
@@ -962,6 +974,9 @@ msgstr "Teilen"
 msgid "Shareable Deck"
 msgstr "Teilbares Deck"
 
+msgid "Shimmering Runoff"
+msgstr ""
+
 msgid "Show all"
 msgstr "Alle anzeigen"
 
@@ -1042,6 +1057,9 @@ msgstr "Text"
 
 msgid "The Alluvial Ruins"
 msgstr "Schwemmland-Ruinen"
+
+msgid "The Arcology"
+msgstr ""
 
 msgid "The Cage"
 msgstr ""
