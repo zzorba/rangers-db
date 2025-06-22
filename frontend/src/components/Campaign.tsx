@@ -1,8 +1,17 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { createFilter, Select as ChakraSelect, SingleValue, OptionBase } from 'chakra-react-select';
-import { Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead, Th, Tbody, AspectRatio, Checkbox, useColorMode, useColorModeValue, Tooltip, useBreakpointValue } from '@chakra-ui/react';
+import { Select as ChakraSelect, OptionBase } from 'chakra-react-select';
+import {
+  Stack, Button, Box, Select, Tabs, TabList, Tab, TabPanels, TabPanel, Text,
+  Tr, Td, Flex, FormControl, FormLabel, Heading, Input, List, ListItem, Modal,
+  ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay,
+  useDisclosure, IconButton, ButtonGroup, SimpleGrid, TableContainer, Table, Thead,
+  Th, Tbody, AspectRatio, Checkbox, useColorModeValue, useBreakpointValue, Divider,
+} from '@chakra-ui/react';
 import { t } from '@lingui/macro';
-import { head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy, range, trim, last, sumBy, slice, zip, findIndex, extend } from 'lodash';
+import {
+  head, forEach, uniq, filter, map, find, flatMap, difference, values, sortBy,
+  range, trim, last, slice, findIndex,
+} from 'lodash';
 import NextLink from 'next/link';
 import Router from 'next/router';
 
@@ -45,7 +54,6 @@ import { CampaignCycle, MapLocation, MapLocations } from '../types/types';
 import MoonIconWithDate, { MoonIcon } from '../icons/MoonIcon';
 import SolidButton from './SolidButton';
 import { useCycleCampaigns } from '../pages/campaigns';
-import { useRoleCardsMap } from '../lib/cards';
 
 const STARTING_LOCATIONS: { [campaign: string]: string } = {
   demo: 'lone_tree_station',
@@ -581,6 +589,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
     setEntries(currentDay.guides);
   }, [campaign.id, entries, setCalendar, campaign.calendar, day]);
   const editable = day >= campaign.day;
+  const fixedEntries = FIXED_GUIDE_ENTRIES[campaign.cycle_id] ?? {};
   return [
     onShow,
     <Modal key="mission" isOpen={isOpen} onClose={onClose}>
@@ -597,7 +606,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
             { !editable &&  (
               <Text>{t`This day is in the past. It is currently day ${campaign.day}.`}</Text>
             ) }
-            { (editable || entries.length > 0 || FIXED_GUIDE_ENTRIES[day]?.length) && (
+            { (editable || entries.length > 0 || fixedEntries[day]?.length) && (
               <Flex direction="row">
                 <CoreIcon icon="guide" size={22} />
                 <Text verticalAlign="center" marginLeft={1}>
@@ -606,7 +615,7 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
               </Flex>
             ) }
             <List>
-              { map(FIXED_GUIDE_ENTRIES[day] || [], (e, idx) => (
+              { map(fixedEntries[day] ?? [], (e, idx) => (
                 <EditableGuideNumber
                   key={idx}
                   index={idx}
@@ -1391,7 +1400,7 @@ function useEndDayModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
 
 function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const weatherLabels = useWeather();
+  const weatherLabels = useWeather(campaign.cycle_id);
   const hasOldData = useMemo(() => {
     const firstEntry = head(campaign.history);
     return !!firstEntry && !firstEntry.path_terrain && firstEntry.location === 'lone_tree_station';
@@ -1476,7 +1485,15 @@ function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode
                         </Box>
                         <Text fontSize="m">{t`Day ${day}`}</Text>
                       </Flex>
-                      { !!weather && <Text fontSize="sm" fontStyle="italic">{weather.name}</Text> }
+                      <Flex direction="column" alignItems="center">
+                        { !!weather && <Text fontSize="sm" fontStyle="italic">{weather.name}</Text> }
+                        { !!weather?.underground && (
+                          <>
+                            <Divider />
+                            <Text fontSize="sm" fontStyle="italic" color="gray.500">{weather.underground}</Text>
+                          </>
+                        )}
+                      </Flex>
                     </Flex>
                   </ListItem>
                   <TravelDayRow
@@ -1838,9 +1855,74 @@ interface Weather {
   start: number;
   end: number;
   name: string;
+  underground?: string;
 }
-function useWeather(): Weather[] {
+function useWeather(cycle_id: string): Weather[] {
   return useMemo(() => {
+    if (cycle_id === 'loa') {
+      return [
+        {
+          start: 1,
+          end: 3,
+          name: t`Downpour`,
+          underground: t`Enveloping Silence`,
+        },
+        {
+          start: 4,
+          end: 6,
+          name: t`A Perfect Day`,
+          underground: t`Glitterain`,
+        },
+        {
+          start: 7,
+          end: 8,
+          name: t`Howing Wind`,
+          underground: t`Shimmering Runoff`
+        },
+        {
+          start: 9,
+          end: 12,
+          name: t`Downpour`,
+          underground: t`Enveloping Silence`,
+        },
+        {
+          start: 13,
+          end: 15,
+          name: t`A Perfect Day`,
+          underground: t`Glitterain`,
+        },
+        {
+          start: 16,
+          end: 18,
+          name: t`Downpour`,
+          underground: t`Enveloping Silence`,
+        },
+        {
+          start: 19,
+          end: 21,
+          name: t`A Perfect Day`,
+          underground: t`Glitterain`,
+        },
+        {
+          start: 22,
+          end: 23,
+          name: t`Howling Wind`,
+          underground: t`Shimmering Runoff`,
+        },
+        {
+          start: 24,
+          end: 27,
+          name: t`Downpour`,
+          underground: t`Enveloping Silence`,
+        },
+        {
+          start: 28,
+          end: 30,
+          name: t`A Perfect Day`,
+          underground: t`Glitterain`,
+        },
+      ];
+    }
     return [
       {
         start: 1,
@@ -1898,16 +1980,24 @@ function useWeather(): Weather[] {
         name: t`A Perfect Day`,
       }
     ]
-  }, []);
+  }, [cycle_id]);
 }
-const FIXED_GUIDE_ENTRIES: { [day: string]: string[] | undefined } = {
-  '1': ['1'],
-  '3': ['94.1'],
-  '4': ['1.04'],
+const FIXED_GUIDE_ENTRIES: {
+  [cycle_id: string]: { [day: string]: string[] | undefined }
+} = {
+  'core': {
+    '1': ['1'],
+    '3': ['94.1'],
+    '4': ['1.04'],
+  },
+  'loa': {
+    '1': ['1'],
+    '4': ['199.2'],
+  },
 };
 
 function Timeline({ campaign }: { campaign: ParsedCampaign }) {
-  const singleWeatherLabels = useWeather();
+  const singleWeatherLabels = useWeather(campaign.cycle_id);
   const weatherLabels = useMemo(() => {
     return [
       ...singleWeatherLabels,
@@ -1923,10 +2013,8 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
   }, [campaign.extended_calendar, singleWeatherLabels]);
   const [showDayModal, editDayModal] = useEditDayModal(campaign);
   const entriesByDay = useMemo(() => {
-    const r: { [key: string]: string[] | undefined } = {};
-    r['1'] = ['1'];
-    r['3'] = ['94.1'];
-    r['4'] = ['1.04'];
+    const fixedEntries = FIXED_GUIDE_ENTRIES[campaign.cycle_id] ?? {};
+    const r: { [key: string]: string[] | undefined } = { ...fixedEntries };
     forEach(campaign.calendar, ({ day, guides }) => {
       if (!r[day]) {
         r[day] = [];
@@ -1936,7 +2024,7 @@ function Timeline({ campaign }: { campaign: ParsedCampaign }) {
       });
     });
     return r;
-  }, [campaign.calendar]);
+  }, [campaign.cycle_id, campaign.calendar]);
 
   return (
     <>
