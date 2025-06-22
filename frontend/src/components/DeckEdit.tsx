@@ -253,6 +253,10 @@ function useAspectEditor(stats: AspectStats, setStats: (stats: AspectStats) => v
   const aspectError = useMemo(() => {
     const attrs = [stats.awa, stats.fit, stats.foc, stats.spi];
     const total = sumBy(attrs, x => x ?? 0);
+    const num1s = sumBy(attrs, x => x === 1 ? 1 : 0);
+    if (num1s < 1) {
+      return t`One aspect must be level 1.`;
+    }
     if (total !== 8) {
       return t`Aspect levels must sum to 8.`;
     }

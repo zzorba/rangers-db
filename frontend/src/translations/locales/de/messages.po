@@ -739,6 +739,9 @@ msgstr ""
 msgid "Old-growth"
 msgstr "Ur-Wald"
 
+msgid "One aspect must be level 1."
+msgstr ""
+
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Eine der gewählten Vorgeschichte-Karten zählt als Hobby."
 

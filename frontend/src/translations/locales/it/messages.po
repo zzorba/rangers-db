@@ -739,6 +739,9 @@ msgstr ""
 msgid "Old-growth"
 msgstr "Germoglio Antico"
 
+msgid "One aspect must be level 1."
+msgstr ""
+
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Una delle carte origine scelte è considerata un interesse personale."
 
