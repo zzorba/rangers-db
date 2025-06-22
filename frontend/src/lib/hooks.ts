@@ -192,6 +192,14 @@ export function getGeneralSets(): MapLocations {
       cycles: ['core', 'demo'],
       connections: [],
     },
+    the_arcology: {
+      id: 'the_arcology',
+      name: t`The Arcology`,
+      type: 'trail',
+      background: false,
+      cycles: ['loa'],
+      connections: [],
+    },
   };
 }
 

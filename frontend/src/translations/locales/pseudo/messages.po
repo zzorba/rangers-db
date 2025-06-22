@@ -433,6 +433,9 @@ msgstr ""
 msgid "English"
 msgstr ""
 
+msgid "Enveloping Silence"
+msgstr ""
+
 msgid "Equip"
 msgstr ""
 
@@ -505,6 +508,9 @@ msgstr ""
 msgid "German"
 msgstr ""
 
+msgid "Glitterain"
+msgstr ""
+
 msgid "Golden Shore"
 msgstr ""
 
@@ -527,6 +533,12 @@ msgid "Hide"
 msgstr ""
 
 msgid "Hide spoilers"
+msgstr ""
+
+msgid "Howing Wind"
+msgstr ""
+
+msgid "Howling Wind"
 msgstr ""
 
 msgid "Howling Winds"
@@ -962,6 +974,9 @@ msgstr ""
 msgid "Shareable Deck"
 msgstr ""
 
+msgid "Shimmering Runoff"
+msgstr ""
+
 msgid "Show all"
 msgstr ""
 
@@ -1041,6 +1056,9 @@ msgid "Text"
 msgstr ""
 
 msgid "The Alluvial Ruins"
+msgstr ""
+
+msgid "The Arcology"
 msgstr ""
 
 msgid "The Cage"
