@@ -136,6 +136,9 @@ msgstr "Êtes vous sûr de vouloir supprimer votre campagne : {0} ? Cette action
 msgid "Aspect"
 msgstr "Aspect"
 
+msgid "Aspect levels must sum to 8."
+msgstr ""
+
 msgid "Aspect requirements"
 msgstr "Aspects requis"
 
@@ -736,23 +739,11 @@ msgstr ""
 msgid "Old-growth"
 msgstr "Fôret Primaire"
 
-msgid "One aspect must be set to 1."
-msgstr "Un aspect doit être mis à 1."
-
-msgid "One aspect must be set to 3."
-msgstr "Un aspect doit être mis à 3."
-
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Un de vos Antécédent est compté comme Centre d'intérêt."
 
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "Une de vos Spécialisation est comptée comme Centre d'intérêt."
-
-msgid "Only one aspect can be set to 1."
-msgstr "Seulement un aspect peut être mis à 1."
-
-msgid "Only one aspect can be set to 3."
-msgstr "Seulement un aspect peut être mis à 3."
 
 msgid "Orlin's Vault"
 msgstr ""
@@ -1204,9 +1195,6 @@ msgstr "Voyager & Camper"
 
 msgid "Traveled to {0}."
 msgstr "Voyagé vers {0}."
-
-msgid "Two aspects must be set to 2."
-msgstr "Deux aspects doivent être mis à 2."
 
 msgid "Types"
 msgstr "Types"

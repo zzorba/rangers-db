@@ -252,22 +252,9 @@ function useAspectEditor(stats: AspectStats, setStats: (stats: AspectStats) => v
 
   const aspectError = useMemo(() => {
     const attrs = [stats.awa, stats.fit, stats.foc, stats.spi];
-    const numOnes = sumBy(attrs, x => x === 1 ? 1 : 0);
-    if (numOnes !== 1) {
-      if (numOnes < 1) {
-        return t`One aspect must be set to 1.`
-      }
-      return t`Only one aspect can be set to 1.`;
-    }
-    const numThrees = sumBy(attrs, x => x === 3 ? 1 : 0);
-    if (numThrees !== 1) {
-      if (numThrees < 1) {
-        return t`One aspect must be set to 3.`
-      }
-      return t`Only one aspect can be set to 3.`;
-    }
-    if (sumBy(attrs, x => x === 2 ? 1 : 0) !== 2) {
-      return t`Two aspects must be set to 2.`
+    const total = sumBy(attrs, x => x ?? 0);
+    if (total !== 8) {
+      return t`Aspect levels must sum to 8.`;
     }
     return undefined;
   }, [stats]);

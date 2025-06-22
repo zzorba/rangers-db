@@ -136,6 +136,9 @@ msgstr "Vuoi davvero cancellare la tua campagna: {0}? Questa azione è permanent
 msgid "Aspect"
 msgstr ""
 
+msgid "Aspect levels must sum to 8."
+msgstr ""
+
 msgid "Aspect requirements"
 msgstr "Requisiti d'aspetto"
 
@@ -736,23 +739,11 @@ msgstr ""
 msgid "Old-growth"
 msgstr "Germoglio Antico"
 
-msgid "One aspect must be set to 1."
-msgstr "Uno degli aspetti deve essere impostato a 1."
-
-msgid "One aspect must be set to 3."
-msgstr "Uno degli aspetti deve essere impostato a 3."
-
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Una delle carte origine scelte è considerata un interesse personale."
 
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "Una delle carte specialità scelte è considerata un interesse personale."
-
-msgid "Only one aspect can be set to 1."
-msgstr "Solo un aspetto può essere impostato a 1."
-
-msgid "Only one aspect can be set to 3."
-msgstr "Solo un aspetto può essere impostato a 3."
 
 msgid "Orlin's Vault"
 msgstr ""
@@ -1204,9 +1195,6 @@ msgstr "Viaggia e accampati"
 
 msgid "Traveled to {0}."
 msgstr ""
-
-msgid "Two aspects must be set to 2."
-msgstr "Due aspetti devono essere impostati a 2."
 
 msgid "Types"
 msgstr "Tipi"

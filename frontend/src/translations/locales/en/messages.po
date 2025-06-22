@@ -136,6 +136,9 @@ msgstr "Are you sure you want to delete your campaign: {0}? This action cannot b
 msgid "Aspect"
 msgstr "Aspect"
 
+msgid "Aspect levels must sum to 8."
+msgstr "Aspect levels must sum to 8."
+
 msgid "Aspect requirements"
 msgstr "Aspect requirements"
 
@@ -736,23 +739,11 @@ msgstr "Oasis of Sunlight"
 msgid "Old-growth"
 msgstr "Old-growth"
 
-msgid "One aspect must be set to 1."
-msgstr "One aspect must be set to 1."
-
-msgid "One aspect must be set to 3."
-msgstr "One aspect must be set to 3."
-
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "One of the chosen background cards is counting towards outside interest."
 
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "One of the chosen specialty cards is counting towards outside interest."
-
-msgid "Only one aspect can be set to 1."
-msgstr "Only one aspect can be set to 1."
-
-msgid "Only one aspect can be set to 3."
-msgstr "Only one aspect can be set to 3."
 
 msgid "Orlin's Vault"
 msgstr "Orlin's Vault"
@@ -1204,9 +1195,6 @@ msgstr "Travel & Camp"
 
 msgid "Traveled to {0}."
 msgstr "Traveled to {0}."
-
-msgid "Two aspects must be set to 2."
-msgstr "Two aspects must be set to 2."
 
 msgid "Types"
 msgstr "Types"

@@ -136,6 +136,9 @@ msgstr "Willst du deine Kampagne {0} wirklich löschen? Das lässt sich nicht r�
 msgid "Aspect"
 msgstr "Aspekt"
 
+msgid "Aspect levels must sum to 8."
+msgstr ""
+
 msgid "Aspect requirements"
 msgstr "Aspekt-Voraussetzungen"
 
@@ -736,23 +739,11 @@ msgstr ""
 msgid "Old-growth"
 msgstr "Ur-Wald"
 
-msgid "One aspect must be set to 1."
-msgstr "Ein Aspekt muss auf 1 gesetzt werden."
-
-msgid "One aspect must be set to 3."
-msgstr "Ein Aspekt muss auf 3 gesetzt werden."
-
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Eine der gewählten Vorgeschichte-Karten zählt als Hobby."
 
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "Eine der gewählten Expertise-Karten zählt als Hobby."
-
-msgid "Only one aspect can be set to 1."
-msgstr "Nur ein Aspekt kann auf 1 gesetzt werden."
-
-msgid "Only one aspect can be set to 3."
-msgstr "Nur ein Aspekt kann auf 3 gesetzt werden."
 
 msgid "Orlin's Vault"
 msgstr ""
@@ -1204,9 +1195,6 @@ msgstr "Reisen & Nachtlager aufschlagen"
 
 msgid "Traveled to {0}."
 msgstr "Gereist zu {0}."
-
-msgid "Two aspects must be set to 2."
-msgstr "Zwei Aspekte müssen auf 2 gesetzt werden."
 
 msgid "Types"
 msgstr "Typen"

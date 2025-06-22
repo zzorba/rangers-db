@@ -136,6 +136,9 @@ msgstr "Вы уверены, что хотите удалить свою кам�
 msgid "Aspect"
 msgstr "Черта"
 
+msgid "Aspect levels must sum to 8."
+msgstr ""
+
 msgid "Aspect requirements"
 msgstr "Требования черт"
 
@@ -736,23 +739,11 @@ msgstr ""
 msgid "Old-growth"
 msgstr "Реликтовый лес"
 
-msgid "One aspect must be set to 1."
-msgstr "Одна из черт должна иметь значение 1."
-
-msgid "One aspect must be set to 3."
-msgstr "Одна из черт должна иметь значение 3."
-
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Одна из выбранных карт квалификации идет в счёт карт хобби."
 
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "Одна из выбранных карт специализации идет в счёт карт хобби."
-
-msgid "Only one aspect can be set to 1."
-msgstr "Только одна черта может иметь значение 1."
-
-msgid "Only one aspect can be set to 3."
-msgstr "Только одна черта может иметь значение 3."
 
 msgid "Orlin's Vault"
 msgstr ""
@@ -1204,9 +1195,6 @@ msgstr "Путешествовать и разбить лагерь"
 
 msgid "Traveled to {0}."
 msgstr "Путешествие в {0}."
-
-msgid "Two aspects must be set to 2."
-msgstr "Две черты должны иметь значение 2."
 
 msgid "Types"
 msgstr "Типы"

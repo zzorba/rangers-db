@@ -136,6 +136,9 @@ msgstr ""
 msgid "Aspect"
 msgstr ""
 
+msgid "Aspect levels must sum to 8."
+msgstr ""
+
 msgid "Aspect requirements"
 msgstr ""
 
@@ -736,22 +739,10 @@ msgstr ""
 msgid "Old-growth"
 msgstr ""
 
-msgid "One aspect must be set to 1."
-msgstr ""
-
-msgid "One aspect must be set to 3."
-msgstr ""
-
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr ""
 
 msgid "One of the chosen specialty cards is counting towards outside interest."
-msgstr ""
-
-msgid "Only one aspect can be set to 1."
-msgstr ""
-
-msgid "Only one aspect can be set to 3."
 msgstr ""
 
 msgid "Orlin's Vault"
@@ -1203,9 +1194,6 @@ msgid "Travel & Camp"
 msgstr ""
 
 msgid "Traveled to {0}."
-msgstr ""
-
-msgid "Two aspects must be set to 2."
 msgstr ""
 
 msgid "Types"
