@@ -14,7 +14,7 @@ export default function AspectCounter({ aspect, onChange, count }: { aspect: Asp
     [SPI]: t`SPI`,
   };
   const onInc = useCallback(() => {
-    if (count < 3) {
+    if (count < 4) {
       onChange?.(count + 1);
     }
   }, [count, onChange]);

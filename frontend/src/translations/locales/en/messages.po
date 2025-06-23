@@ -739,8 +739,8 @@ msgstr "Oasis of Sunlight"
 msgid "Old-growth"
 msgstr "Old-growth"
 
-msgid "One aspect must be level 1."
-msgstr "One aspect must be level 1."
+msgid "One aspect must be set to 1."
+msgstr "One aspect must be set to 1."
 
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "One of the chosen background cards is counting towards outside interest."

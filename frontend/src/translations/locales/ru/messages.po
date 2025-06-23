@@ -739,7 +739,7 @@ msgstr ""
 msgid "Old-growth"
 msgstr "Реликтовый лес"
 
-msgid "One aspect must be level 1."
+msgid "One aspect must be set to 1."
 msgstr ""
 
 msgid "One of the chosen background cards is counting towards outside interest."
