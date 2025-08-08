@@ -34,7 +34,7 @@ export default function AspectCounter({ aspect, onChange, count }: { aspect: Asp
               <CoreIcon icon={`${aspect.toLowerCase()}_chakra`} size={50} color="#FFFFFF33" />
             </AspectRatio>
           </Flex>
-          <Box onClick={onInc} cursor={incEnabled ? 'pointer' : undefined} paddingLeft={6} paddingRight={6} paddingTop={1}>
+          <Box onClick={onInc} cursor={incEnabled ? 'pointer' : undefined} paddingLeft={6} paddingRight={6} paddingTop={1} zIndex={1}>
             <ChevronUpIcon color={incEnabled ? 'white' : 'transparent'} />
           </Box>
           <Text textAlign="center" fontSize="3xl" fontWeight={900} color="white" lineHeight={0.95}>{count}</Text>
