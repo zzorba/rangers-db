@@ -1,7 +1,7 @@
 import client from './graphql/client';
 import { GetLocaleTextQuery, GetMetadataQuery } from './graphql/schema';
 
-export const LOCALES = ['de', 'it', 'fr', 'ru', 'pseudo'];
+export const LOCALES = ['de', 'it', 'fr', 'es', 'ru', 'pseudo'];
 
 export interface Table {
   collection: string;

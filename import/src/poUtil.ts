@@ -15,6 +15,10 @@ const SETTINGS_FOR_LANGUAGE: any = {
     'Language': 'fr',
     'Plural-Forms': 'nplurals=2; plural=(n > 1);',
   },
+  es: {
+    'Language': 'es',
+    'Plural-Forms': 'nplurals=2; plural=(n != 1);',
+  },
   it: {
     'Language': 'it',
     'Plural-Forms': 'nplurals=2; plural=(n != 1);',
