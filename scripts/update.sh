@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LANGS=("en" "de" "fr" "it");
+LANGS=("en" "de" "fr" "es" "it");
 
 
 for CODE in "${LANGS[@]}"

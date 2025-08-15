@@ -1,0 +1,1290 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-08-15 14:45-0400\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: es\n"
+
+msgid "- {0} Specialty"
+msgstr ""
+
+msgid "- Flavor text can be denoted using <f>this is flavor</f> tags, to get card style formatting."
+msgstr ""
+
+msgid "- You can use the following game specific icons by enclosing them in square brackets:"
+msgstr ""
+
+msgid "(edited)"
+msgstr ""
+
+msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
+msgstr ""
+
+msgid "{0} - Day {1}"
+msgstr ""
+
+msgid "{0} (Copy)"
+msgstr ""
+
+msgid "{0} / 30 Cards"
+msgstr ""
+
+msgid "{0} of {1}"
+msgstr ""
+
+msgid "{background} - {specialty} (Starter)"
+msgstr ""
+
+msgid "{nonCollectionCardCount, plural, one {Show {nonCollectionCardCount} non-collection} other {Show {nonCollectionCardCount} non-collection}}"
+msgstr ""
+
+msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
+msgstr ""
+
+msgid "30 Cards"
+msgstr ""
+
+msgid "A Perfect Day"
+msgstr ""
+
+msgid "Accept"
+msgstr ""
+
+msgid "Account Settings"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Add additional deck"
+msgstr ""
+
+msgid "Add mission"
+msgstr ""
+
+msgid "Add note"
+msgstr ""
+
+msgid "Add reward"
+msgstr ""
+
+msgid "Add to campaign"
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid "Added from collection"
+msgstr ""
+
+msgid "Advanced controls"
+msgstr ""
+
+msgid "After selecting a new collection card and removing one from your deck, you can ‘return’ a card to the collection using the <0>displaced cards</0> tab."
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Allow people to view my decks"
+msgstr ""
+
+msgid "Already have an account? <0>Login</0> now."
+msgstr ""
+
+msgid "Ancestor's Grove"
+msgstr ""
+
+msgid "Ancient Ruins"
+msgstr ""
+
+msgid "Approach"
+msgstr ""
+
+msgid "Approach icons"
+msgstr ""
+
+msgid "Arboretum of Memory"
+msgstr ""
+
+msgid "Archeological Outpost"
+msgstr ""
+
+msgid "Are you sure you want to delete the \"{0}\" deck?"
+msgstr ""
+
+msgid "Are you sure you want to delete the latest day ({0}) of this deck?"
+msgstr ""
+
+msgid "Are you sure you want to delete this deck?"
+msgstr ""
+
+msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
+msgstr ""
+
+msgid "Aspect"
+msgstr ""
+
+msgid "Aspect levels must sum to 8."
+msgstr ""
+
+msgid "Aspect requirements"
+msgstr ""
+
+msgid "Aspects"
+msgstr ""
+
+msgid "Atrox Mountain"
+msgstr ""
+
+msgid "Available"
+msgstr ""
+
+msgid "Average"
+msgstr ""
+
+msgid "AWA"
+msgstr ""
+
+msgid "Awareness"
+msgstr ""
+
+msgid "Background"
+msgstr ""
+
+msgid "Background: {backgroundName}"
+msgstr ""
+
+msgid "Biological Outpost"
+msgstr ""
+
+msgid "Boulder Field"
+msgstr ""
+
+msgid "Bowl of the Sun"
+msgstr ""
+
+msgid "Branch"
+msgstr ""
+
+msgid "Branching Artery"
+msgstr ""
+
+msgid "Camp"
+msgstr ""
+
+msgid "Campaign"
+msgstr ""
+
+msgid "Campaigns"
+msgstr ""
+
+msgid "Camped while travelling to {0}."
+msgstr ""
+
+msgid "Camping will end day {currentDay} and allow any earned rewards to be swapped into decks."
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Cancel Friend Request"
+msgstr ""
+
+msgid "Cancel Friendship"
+msgstr ""
+
+msgid "Carbonforged Maze"
+msgstr ""
+
+msgid "Card set"
+msgstr ""
+
+msgid "Cards"
+msgstr ""
+
+msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
+msgstr ""
+
+msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
+msgstr ""
+
+msgid "Cave System"
+msgstr ""
+
+msgid "Cerulean Curtain"
+msgstr ""
+
+msgid "Changes"
+msgstr ""
+
+msgid "Choose {0}"
+msgstr ""
+
+msgid "Choose deck"
+msgstr ""
+
+msgid "Choose handle"
+msgstr ""
+
+msgid "Choose role"
+msgstr ""
+
+msgid "Choose starter deck"
+msgstr ""
+
+msgid "Choosing to camp will make a copy of your deck to let you track deck changes as you play through a campaign."
+msgstr ""
+
+msgid "Chosen aspects are invalid."
+msgstr ""
+
+msgid "Collection"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Comments"
+msgstr ""
+
+msgid "Completed"
+msgstr ""
+
+msgid "Confirm Friend"
+msgstr ""
+
+msgid "Conflict"
+msgstr ""
+
+msgid "Connecting Location"
+msgstr ""
+
+msgid "Connection"
+msgstr ""
+
+msgid "Contains too many cards that do not match your chosen background."
+msgstr ""
+
+msgid "Contains too many cards that do not match your chosen specialty."
+msgstr ""
+
+msgid "Copies"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Copy deck"
+msgstr ""
+
+msgid "Copy of {deckLink} by {authorLink}"
+msgstr ""
+
+msgid "Copy this deck to make your own changes."
+msgstr ""
+
+msgid "Core"
+msgstr ""
+
+msgid "Core set"
+msgstr ""
+
+msgid "Cost"
+msgstr ""
+
+msgid "Could not find user {handle}"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Crossed-out"
+msgstr ""
+
+msgid "Crossroads Station"
+msgstr ""
+
+msgid "Current location:"
+msgstr ""
+
+msgid "Current Position"
+msgstr ""
+
+msgid "Custom deck"
+msgstr ""
+
+msgid "Dark mode"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "Day {day}"
+msgstr ""
+
+msgid "Deck"
+msgstr ""
+
+msgid "Deck search"
+msgstr ""
+
+msgid "Decklists"
+msgstr ""
+
+msgid "Deep Roots"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete campaign?"
+msgstr ""
+
+msgid "Delete deck?"
+msgstr ""
+
+msgid "Deleting this published deck will remove it from search."
+msgstr ""
+
+msgid "Demo"
+msgstr ""
+
+msgid "Departing {0}"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Descriptions support basic markdown and html formatting."
+msgstr ""
+
+msgid "Desert of Endless Night"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Displaced cards"
+msgstr ""
+
+msgid "Don't have an account?"
+msgstr ""
+
+msgid "Done editing"
+msgstr ""
+
+msgid "Downpour"
+msgstr ""
+
+msgid "Drenching Chamber"
+msgstr ""
+
+msgid "Duplicate this deck while preserving the original."
+msgstr ""
+
+msgid "E-mail Address"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit comment"
+msgstr ""
+
+msgid "Edit description"
+msgstr ""
+
+msgid "Edit mission"
+msgstr ""
+
+msgid "Edit notable event"
+msgstr ""
+
+msgid "Edit note"
+msgstr ""
+
+msgid "Edit players"
+msgstr ""
+
+msgid "Elder's Book of Uncommon Wisdom"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "En route to {0}"
+msgstr ""
+
+msgid "End the day"
+msgstr ""
+
+msgid "Ended the day at {0}."
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Enveloping Silence"
+msgstr ""
+
+msgid "Equip"
+msgstr ""
+
+msgid "Exploration"
+msgstr ""
+
+msgid "Extend campaign"
+msgstr ""
+
+msgid "Filter by {0}"
+msgstr ""
+
+msgid "Filter by approach icons"
+msgstr ""
+
+msgid "Filter by card set"
+msgstr ""
+
+msgid "Filter by card type"
+msgstr ""
+
+msgid "Filter by pack"
+msgstr ""
+
+msgid "Filter by Role"
+msgstr ""
+
+msgid "Filter by trait"
+msgstr ""
+
+msgid "Find new friends"
+msgstr ""
+
+msgid "FIT"
+msgstr ""
+
+msgid "Fitness"
+msgstr ""
+
+msgid "Flooded Passage"
+msgstr ""
+
+msgid "Flooded Ruins"
+msgstr ""
+
+msgid "FOC"
+msgstr ""
+
+msgid "Focus"
+msgstr ""
+
+msgid "Follow the Elder's Book of Uncommon Wisdom"
+msgstr ""
+
+msgid "Forgot Password"
+msgstr ""
+
+msgid "Friend Requests"
+msgstr ""
+
+msgid "Friends"
+msgstr ""
+
+msgid "Fungal Forest"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Glitterain"
+msgstr ""
+
+msgid "Golden Shore"
+msgstr ""
+
+msgid "Grassland"
+msgstr ""
+
+msgid "Greenbriar Knoll"
+msgstr ""
+
+msgid "Guide entries"
+msgstr ""
+
+msgid "Handle"
+msgstr ""
+
+msgid "Headwaters Station"
+msgstr ""
+
+msgid "Hide"
+msgstr ""
+
+msgid "Hide spoilers"
+msgstr ""
+
+msgid "Howing Wind"
+msgstr ""
+
+msgid "Howling Wind"
+msgstr ""
+
+msgid "Howling Winds"
+msgstr ""
+
+msgid "Icons"
+msgstr ""
+
+msgid "If you intend to Camp while travelling to a new location, please use the Travel button instead."
+msgstr ""
+
+msgid "If you made a mistake when travelling or ending the day, you can undo your recent edits here. Decks will not be changed."
+msgstr ""
+
+msgid "If you would like it to be corrected, send me a link to your campaign and what the correct journey was to arkhamcards@gmail.com, and I will get it fixed for you."
+msgstr ""
+
+msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgstr ""
+
+msgid "Inverted Forest"
+msgstr ""
+
+msgid "Italian"
+msgstr ""
+
+msgid "Journey"
+msgstr ""
+
+msgid "Kobo's Market"
+msgstr ""
+
+msgid "Lakeshore"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Leave campaign"
+msgstr ""
+
+msgid "Legacy of the Ancestors"
+msgstr ""
+
+msgid "Light mode"
+msgstr ""
+
+msgid "Like"
+msgstr ""
+
+msgid "Like deck"
+msgstr ""
+
+msgid "Likes"
+msgstr ""
+
+msgid "Load more"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Locations"
+msgstr ""
+
+msgid "Locked Passage"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Lone Tree Station"
+msgstr ""
+
+msgid "Maladies"
+msgstr ""
+
+msgid "Markdown"
+msgstr ""
+
+msgid "Marsh of Rebirth"
+msgstr ""
+
+msgid "Meadow"
+msgstr ""
+
+msgid "Member since {joinDate}"
+msgstr ""
+
+msgid "Michael's Bog"
+msgstr ""
+
+msgid "Missions"
+msgstr ""
+
+msgid "Mound of the Navigator"
+msgstr ""
+
+msgid "Mount Nim"
+msgstr ""
+
+msgid "Mountain Pass"
+msgstr ""
+
+msgid "My Campaigns"
+msgstr ""
+
+msgid "My Decks"
+msgstr ""
+
+msgid "Mycelial Conclave"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Name and day are required."
+msgstr ""
+
+msgid "Name your character"
+msgstr ""
+
+msgid "New campaign"
+msgstr ""
+
+msgid "New cards are available"
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Next deck"
+msgstr ""
+
+msgid "No matching cards"
+msgstr ""
+
+msgid "No matching cards found."
+msgstr ""
+
+msgid "No matching decks."
+msgstr ""
+
+msgid "No published decks."
+msgstr ""
+
+msgid "No results"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Northern Outpost"
+msgstr ""
+
+msgid "Not enough background cards."
+msgstr ""
+
+msgid "Not enough cards. When reward cards are removed while camping, you must add back cards from your original deck to maintain a 30 card deck."
+msgstr ""
+
+msgid "Not enough outside interest cards."
+msgstr ""
+
+msgid "Not enough personality cards."
+msgstr ""
+
+msgid "Not enough specialty cards."
+msgstr ""
+
+msgid "Not set"
+msgstr ""
+
+msgid "Notable Events"
+msgstr ""
+
+msgid "Note: cards from your chosen specialty/background are not shown here, but your outside interest is allowed to be from your chosen class if you use the other tabs to select it."
+msgstr ""
+
+msgid "Note: These cards might contain campaign spoilers."
+msgstr ""
+
+msgid "Note: this campaign was created before the website recorded enough information to show the travel history correclty."
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Oasis of Sunlight"
+msgstr ""
+
+msgid "Old-growth"
+msgstr ""
+
+msgid "One aspect must be set to 1."
+msgstr ""
+
+msgid "One of the chosen background cards is counting towards outside interest."
+msgstr ""
+
+msgid "One of the chosen specialty cards is counting towards outside interest."
+msgstr ""
+
+msgid "Orlin's Vault"
+msgstr ""
+
+#. card_set_header
+msgid "Other"
+msgstr ""
+
+msgid "Outside Interest"
+msgstr ""
+
+msgid "Outside interest cards cannot have the Expert trait."
+msgstr ""
+
+msgid "Overgrown Passage"
+msgstr ""
+
+msgid "Packs"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Path Terrain"
+msgstr ""
+
+msgid "Pending Requests"
+msgstr ""
+
+msgid "Personality"
+msgstr ""
+
+msgid "Players"
+msgstr ""
+
+msgid "Please address all deckbuilding errors before publishing."
+msgstr ""
+
+msgid "Post"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Previous campaign"
+msgstr ""
+
+msgid "Previous deck"
+msgstr ""
+
+msgid "Print"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Progress"
+msgstr ""
+
+msgid "Progress {progressNumber}"
+msgstr ""
+
+msgid "Publish"
+msgstr ""
+
+msgid "Published decks"
+msgstr ""
+
+msgid "Ranger"
+msgstr ""
+
+msgid "Rangers"
+msgstr ""
+
+msgid "Rangers will continue playing day {currentDay} with their current decks."
+msgstr ""
+
+msgid "RangersDB"
+msgstr ""
+
+msgid "RangersDB is still under construction, and as a result many features might be added or removed during these early days."
+msgstr ""
+
+msgid "Ravine"
+msgstr ""
+
+msgid "Reason"
+msgstr ""
+
+msgid "Record event"
+msgstr ""
+
+msgid "Record guide entry"
+msgstr ""
+
+msgid "Recorded journey"
+msgstr ""
+
+msgid "Register"
+msgstr ""
+
+msgid "Register now"
+msgstr ""
+
+msgid "Reject"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Remove card"
+msgstr ""
+
+msgid "Remove deck"
+msgstr ""
+
+msgid "Remove reward"
+msgstr ""
+
+msgid "Removed"
+msgstr ""
+
+msgid "Removed Cards"
+msgstr ""
+
+msgid "Reply comment"
+msgstr ""
+
+msgid "Reply to comment"
+msgstr ""
+
+msgid "Request friend"
+msgstr ""
+
+msgid "Restrictions"
+msgstr ""
+
+msgid "Return a copy to the collection"
+msgstr ""
+
+msgid "Returned to collection"
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
+
+msgid "Rewards"
+msgstr ""
+
+msgid "Rewards and Maladies"
+msgstr ""
+
+msgid "Rings of the Moon"
+msgstr ""
+
+msgid "River"
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save changes"
+msgstr ""
+
+msgid "Scuttler Network"
+msgstr ""
+
+msgid "Search by name"
+msgstr ""
+
+msgid "Search card text"
+msgstr ""
+
+msgid "See comments"
+msgstr ""
+
+msgid "Select 1 card from any background or specialty as your outside interest."
+msgstr ""
+
+msgid "Select 4 different personality cards, 1 from each aspect."
+msgstr ""
+
+msgid "Select 5 different cards from your chosen background."
+msgstr ""
+
+msgid "Select 5 different cards from your chosen specialty."
+msgstr ""
+
+msgid "Select campaign"
+msgstr ""
+
+msgid "Select card set..."
+msgstr ""
+
+msgid "Select location..."
+msgstr ""
+
+msgid "Select path terrain..."
+msgstr ""
+
+msgid "Send Friend Request"
+msgstr ""
+
+msgid "Set"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Severed Artery"
+msgstr ""
+
+msgid "Share"
+msgstr ""
+
+msgid "Shareable Deck"
+msgstr ""
+
+msgid "Shimmering Runoff"
+msgstr ""
+
+msgid "Show all"
+msgstr ""
+
+msgid "Show all locations"
+msgstr ""
+
+msgid "Side deck"
+msgstr ""
+
+msgid "Sign In"
+msgstr ""
+
+msgid "Sign Out"
+msgstr ""
+
+msgid "Sign Up"
+msgstr ""
+
+msgid "Silent Dormitories"
+msgstr ""
+
+msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
+msgstr ""
+
+msgid "Sort"
+msgstr ""
+
+msgid "Specialty"
+msgstr ""
+
+msgid "Specialty: {specialtyName}"
+msgstr ""
+
+msgid "SPI"
+msgstr ""
+
+msgid "Spire"
+msgstr ""
+
+msgid "Spirit"
+msgstr ""
+
+msgid "Start campaign"
+msgstr ""
+
+msgid "Starter deck"
+msgstr ""
+
+msgid "Stayed at {0}"
+msgstr ""
+
+msgid "Stoneweaver Bridge"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Sunken Outpost"
+msgstr ""
+
+msgid "Swamp"
+msgstr ""
+
+msgid "Talpid's Squeeze"
+msgstr ""
+
+msgid "Terminal Artery"
+msgstr ""
+
+msgid "Terrain"
+msgstr ""
+
+msgid "Terravore"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "The Alluvial Ruins"
+msgstr ""
+
+msgid "The Arcology"
+msgstr ""
+
+msgid "The Cage"
+msgstr ""
+
+msgid "The Chimney"
+msgstr ""
+
+msgid "The Cistern"
+msgstr ""
+
+msgid "The Concordant Ziggurats"
+msgstr ""
+
+msgid "The Cypress Citadel"
+msgstr ""
+
+msgid "The Elder's Book of Uncommon Wisdom is a list of rebalanced Ranger cards with optional text changes. These changes are designed to maintain a healthy and balanced cardpool, and to increase deck diversity by encouraging players to build decks with underutilized cards instead of common staples."
+msgstr ""
+
+msgid "The Fractured Wall"
+msgstr ""
+
+msgid "The Frowning Gate"
+msgstr ""
+
+msgid "The Furrow"
+msgstr ""
+
+msgid "The Greenbridge"
+msgstr ""
+
+msgid "The High Basin"
+msgstr ""
+
+msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
+msgstr ""
+
+msgid "The Philosopher's Garden"
+msgstr ""
+
+msgid "The Plummet"
+msgstr ""
+
+msgid "The Rootway"
+msgstr ""
+
+msgid "The site is likely to go down for maintenance and data might be lost during these early days."
+msgstr ""
+
+msgid "The Tumbledown"
+msgstr ""
+
+msgid "The Valley"
+msgstr ""
+
+msgid "The Verdant Sphere"
+msgstr ""
+
+msgid "There are too many cards with this card's name in your deck."
+msgstr ""
+
+msgid "There are too many outside interest cards in the deck."
+msgstr ""
+
+msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
+msgstr ""
+
+msgid "This card's aspect requirement is not satisfied by your chosen aspects."
+msgstr ""
+
+msgid "This comment was edited on {updatedTime}."
+msgstr ""
+
+msgid "This day is in the past. It is currently day {0}."
+msgstr ""
+
+msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
+msgstr ""
+
+msgid "This role card does not match your chosen specialty."
+msgstr ""
+
+msgid "This site is a digital companion for the excellent <0>Earthborne Rangers</0> adventure card game."
+msgstr ""
+
+msgid "This will end day {0}."
+msgstr ""
+
+msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
+msgstr ""
+
+msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
+msgstr ""
+
+msgid "Toggle Navigation"
+msgstr ""
+
+msgid "Too many AWA personality cards."
+msgstr ""
+
+msgid "Too many cards of the chosen background."
+msgstr ""
+
+msgid "Too many cards of the chosen specialty."
+msgstr ""
+
+msgid "Too many cards with the same name."
+msgstr ""
+
+msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
+msgstr ""
+
+msgid "Too many FIT personality cards."
+msgstr ""
+
+msgid "Too many FOC personality cards."
+msgstr ""
+
+msgid "Too many SPI personality cards."
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Track cards that are removed permanently from the path deck here."
+msgstr ""
+
+msgid "Traits"
+msgstr ""
+
+msgid "Transfer campaign..."
+msgstr ""
+
+msgid "Transfer existing campaign"
+msgstr ""
+
+msgid "Travel"
+msgstr ""
+
+msgid "Travel & Camp"
+msgstr ""
+
+msgid "Traveled to {0}."
+msgstr ""
+
+msgid "Types"
+msgstr ""
+
+msgid "Unable to create campaign at this time."
+msgstr ""
+
+msgid "Undo"
+msgstr ""
+
+msgid "Undo travel"
+msgstr ""
+
+msgid "Undo travel changes"
+msgstr ""
+
+msgid "Unlike"
+msgstr ""
+
+msgid "Update now"
+msgstr ""
+
+msgid "View as Cards"
+msgstr ""
+
+msgid "View as Checklist"
+msgstr ""
+
+msgid "View as Images"
+msgstr ""
+
+msgid "Watcher's Rock"
+msgstr ""
+
+msgid "Welcome to RangersDB"
+msgstr ""
+
+msgid "What happened?"
+msgstr ""
+
+msgid "When adding a card from the collection, remember to return a deck card."
+msgstr ""
+
+msgid "When starting a campaign, you must include two of each card in your deck."
+msgstr ""
+
+msgid "White Sky"
+msgstr ""
+
+msgid "Woods"
+msgstr ""
+
+msgid "You"
+msgstr ""
+
+msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
+msgstr ""
+
+msgid "You can view <0>player cards</0>, <1>build decks</1>, and use the digital <2>campaign tracker</2>."
+msgstr ""
+
+msgid "You don't seem to have any decks."
+msgstr ""
+
+msgid "You must choose a background."
+msgstr ""
+
+msgid "You must choose a location and path terrain to travel."
+msgstr ""
+
+msgid "You must choose a role card."
+msgstr ""
+
+msgid "You must choose a role."
+msgstr ""
+
+msgid "You must choose a specialty."
+msgstr ""
+
+msgid "You must correct deck errors before upgrading."
+msgstr ""
+
+msgid "You must correct errors berfore switching to campaign mode."
+msgstr ""
+
+msgid "You must include two of each card in your starting deck."
+msgstr ""
+
+msgid "Your deck contains cards with aspect requirements that are not allowed."
+msgstr ""
+
+msgid "Your outside interest card cannot have the Expert trait."
+msgstr ""
+
+msgid "Your role card does not match your chosen specialty."
+msgstr ""
