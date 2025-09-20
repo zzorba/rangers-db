@@ -742,11 +742,17 @@ msgstr "Old-growth"
 msgid "One aspect must be set to 1."
 msgstr "One aspect must be set to 1."
 
+msgid "One aspect must be set to 3 or 4."
+msgstr "One aspect must be set to 3 or 4."
+
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "One of the chosen background cards is counting towards outside interest."
 
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "One of the chosen specialty cards is counting towards outside interest."
+
+msgid "Only one aspect can be set to 3 or 4."
+msgstr "Only one aspect can be set to 3 or 4."
 
 msgid "Orlin's Vault"
 msgstr "Orlin's Vault"

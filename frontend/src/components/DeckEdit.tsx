@@ -254,8 +254,15 @@ function useAspectEditor(stats: AspectStats, setStats: (stats: AspectStats) => v
     const attrs = [stats.awa, stats.fit, stats.foc, stats.spi];
     const total = sumBy(attrs, x => x ?? 0);
     const num1s = sumBy(attrs, x => x === 1 ? 1 : 0);
+    const numHighs = sumBy(attrs, x => (x ?? 0) >= 3 ? 1 : 0);
     if (num1s < 1) {
       return t`One aspect must be set to 1.`;
+    }
+    if (numHighs < 1) {
+      return t`One aspect must be set to 3 or 4.`;
+    }
+    if (numHighs > 1) {
+      return t`Only one aspect can be set to 3 or 4.`;
     }
     if (total !== 8) {
       return t`Aspect levels must sum to 8.`;

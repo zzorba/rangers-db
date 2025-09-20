@@ -742,11 +742,17 @@ msgstr "Germoglio Antico"
 msgid "One aspect must be set to 1."
 msgstr ""
 
+msgid "One aspect must be set to 3 or 4."
+msgstr ""
+
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Una delle carte origine scelte è considerata un interesse personale."
 
 msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "Una delle carte specialità scelte è considerata un interesse personale."
+
+msgid "Only one aspect can be set to 3 or 4."
+msgstr ""
 
 msgid "Orlin's Vault"
 msgstr ""
