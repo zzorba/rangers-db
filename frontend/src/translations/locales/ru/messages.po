@@ -29,7 +29,7 @@ msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} Недуг)} other {({2} Недуга)}}"
 
 msgid "{0} - Day {1}"
-msgstr ""
+msgstr "{0} - День {1}"
 
 msgid "{0} (Copy)"
 msgstr "{0} (Копия)"
@@ -44,7 +44,7 @@ msgid "{background} - {specialty} (Starter)"
 msgstr "{background} - {specialty} (Стартовый)"
 
 msgid "{nonCollectionCardCount, plural, one {Show {nonCollectionCardCount} non-collection} other {Show {nonCollectionCardCount} non-collection}}"
-msgstr ""
+msgstr "{nonCollectionCardCount, plural, one {Показать {nonCollectionCardCount} не из коллекции} other {Показать {nonCollectionCardCount} не из коллекции}}"
 
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 msgstr "{otherErrorCount, plural, one {+ ещё {otherErrorCount} проблема} few {+ ещё {otherErrorCount} проблемы} other {+ ещё {otherErrorCount} проблем}}"
@@ -107,7 +107,7 @@ msgid "Ancestor's Grove"
 msgstr "Роща предков"
 
 msgid "Ancient Ruins"
-msgstr ""
+msgstr "Древние руины"
 
 msgid "Approach"
 msgstr "Подход"
@@ -116,7 +116,7 @@ msgid "Approach icons"
 msgstr "Символы подхода"
 
 msgid "Arboretum of Memory"
-msgstr ""
+msgstr "Дендрарий памяти"
 
 msgid "Archeological Outpost"
 msgstr "Застава археологов"
@@ -137,7 +137,7 @@ msgid "Aspect"
 msgstr "Черта"
 
 msgid "Aspect levels must sum to 8."
-msgstr ""
+msgstr "Значения черт в сумме должны давать 8."
 
 msgid "Aspect requirements"
 msgstr "Требования черт"
@@ -179,7 +179,7 @@ msgid "Branch"
 msgstr "Ветви"
 
 msgid "Branching Artery"
-msgstr ""
+msgstr "Ветви Артерии"
 
 msgid "Camp"
 msgstr "Разбить лагерь"
@@ -206,7 +206,7 @@ msgid "Cancel Friendship"
 msgstr "Удалить из друзей"
 
 msgid "Carbonforged Maze"
-msgstr ""
+msgstr "Карбоновый лабиринт"
 
 msgid "Card set"
 msgstr "Набор карт"
@@ -218,13 +218,13 @@ msgid "Cards that are removed from your deck will be stored here. They can be sw
 msgstr "Карты, удаленные из вашей колоды, будут храниться здесь. Их можно будет вернуть в колоду, когда вы разбиваете лагерь."
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
-msgstr ""
+msgstr "Карты с признаком Эксперт не могут быть выбраны в качестве хобби и скрыты автоматически."
 
 msgid "Cave System"
-msgstr ""
+msgstr "Пещеры"
 
 msgid "Cerulean Curtain"
-msgstr ""
+msgstr "Лазурная завеса"
 
 msgid "Changes"
 msgstr "Изменения"
@@ -278,7 +278,7 @@ msgid "Contains too many cards that do not match your chosen background."
 msgstr "Содержит слишком много карт, которые не соответствую выбранной квалификации."
 
 msgid "Contains too many cards that do not match your chosen specialty."
-msgstr ""
+msgstr "Содержит слишком много карт, которые не соответствую выбранной специализации."
 
 msgid "Copies"
 msgstr "Копии"
@@ -344,7 +344,7 @@ msgid "Decklists"
 msgstr "Деклисты"
 
 msgid "Deep Roots"
-msgstr ""
+msgstr "Глубинные корни"
 
 msgid "Delete"
 msgstr "Удалить"
@@ -371,7 +371,7 @@ msgid "Descriptions support basic markdown and html formatting."
 msgstr "Описания поддерживают базовое форматирование в формате markdown и html."
 
 msgid "Desert of Endless Night"
-msgstr ""
+msgstr "Вечно полночная пустыня"
 
 msgid "Discard changes"
 msgstr "Отменить изменения"
@@ -389,7 +389,7 @@ msgid "Downpour"
 msgstr "Ливень"
 
 msgid "Drenching Chamber"
-msgstr ""
+msgstr "Сливной коллектор"
 
 msgid "Duplicate this deck while preserving the original."
 msgstr "Продублируйте эту колоду, сохранив оригинал."
@@ -437,7 +437,7 @@ msgid "English"
 msgstr "Английский"
 
 msgid "Enveloping Silence"
-msgstr ""
+msgstr "Обволакивающая тишина"
 
 msgid "Equip"
 msgstr "Экипировка"
@@ -446,7 +446,7 @@ msgid "Exploration"
 msgstr "Разведка"
 
 msgid "Extend campaign"
-msgstr ""
+msgstr "Продлить кампанию"
 
 msgid "Filter by {0}"
 msgstr "Фильтр по {0}"
@@ -461,7 +461,7 @@ msgid "Filter by card type"
 msgstr "Фильтр по типу карты"
 
 msgid "Filter by pack"
-msgstr ""
+msgstr "Фильтр по набору"
 
 msgid "Filter by Role"
 msgstr "Фильтр по роли"
@@ -479,10 +479,10 @@ msgid "Fitness"
 msgstr "Выносливость"
 
 msgid "Flooded Passage"
-msgstr ""
+msgstr "Затопленный проход"
 
 msgid "Flooded Ruins"
-msgstr ""
+msgstr "Затопленные руины"
 
 msgid "FOC"
 msgstr "КОН"
@@ -503,7 +503,7 @@ msgid "Friends"
 msgstr "Друзья"
 
 msgid "Fungal Forest"
-msgstr ""
+msgstr "Грибной лес"
 
 msgid "General"
 msgstr "Общий набор"
@@ -512,7 +512,7 @@ msgid "German"
 msgstr "Немецкий"
 
 msgid "Glitterain"
-msgstr ""
+msgstr "Светобрызги"
 
 msgid "Golden Shore"
 msgstr "Золотой берег"
@@ -533,7 +533,7 @@ msgid "Headwaters Station"
 msgstr "База Верховодье"
 
 msgid "Hide"
-msgstr ""
+msgstr "Скрыть"
 
 msgid "Hide spoilers"
 msgstr "Скрыть спойлеры"
@@ -563,7 +563,7 @@ msgid "If you‘d like to support the development and maintenance of this site, 
 msgstr ""
 
 msgid "Inverted Forest"
-msgstr ""
+msgstr "Опрокинутый лес"
 
 msgid "Italian"
 msgstr "Итальянский"
@@ -584,7 +584,7 @@ msgid "Leave campaign"
 msgstr "Покинуть кампанию"
 
 msgid "Legacy of the Ancestors"
-msgstr ""
+msgstr "Наследие предков"
 
 msgid "Light mode"
 msgstr "Светлая тема"
@@ -608,7 +608,7 @@ msgid "Locations"
 msgstr "Локации"
 
 msgid "Locked Passage"
-msgstr ""
+msgstr "Закрытый проход"
 
 msgid "Login"
 msgstr "Вход"
@@ -653,7 +653,7 @@ msgid "My Decks"
 msgstr "Мои колоды"
 
 msgid "Mycelial Conclave"
-msgstr ""
+msgstr "Грибное вече"
 
 msgid "Name"
 msgstr "Название"
@@ -734,16 +734,16 @@ msgid "Notes"
 msgstr "Заметки"
 
 msgid "Oasis of Sunlight"
-msgstr ""
+msgstr "Солнечная прогалина"
 
 msgid "Old-growth"
 msgstr "Реликтовый лес"
 
 msgid "One aspect must be set to 1."
-msgstr ""
+msgstr "Одна черта должна быть с значением 1."
 
 msgid "One aspect must be set to 3 or 4."
-msgstr ""
+msgstr "Одна черта должна быть с значением 3 или 4."
 
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Одна из выбранных карт квалификации идет в счёт карт хобби."
@@ -752,10 +752,10 @@ msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "Одна из выбранных карт специализации идет в счёт карт хобби."
 
 msgid "Only one aspect can be set to 3 or 4."
-msgstr ""
+msgstr "Только одна черта может быть с значением 3 или 4."
 
 msgid "Orlin's Vault"
-msgstr ""
+msgstr "Хранилище Орлина"
 
 #. card_set_header
 msgid "Other"
@@ -768,10 +768,10 @@ msgid "Outside interest cards cannot have the Expert trait."
 msgstr "Карты хобби не могут иметь признак."
 
 msgid "Overgrown Passage"
-msgstr ""
+msgstr "Заросший лозами проход"
 
 msgid "Packs"
-msgstr ""
+msgstr "Наборы"
 
 msgid "Password"
 msgstr "Пароль"
@@ -798,7 +798,7 @@ msgid "Previous"
 msgstr "Назад"
 
 msgid "Previous campaign"
-msgstr ""
+msgstr "Предыдущая кампания"
 
 msgid "Previous deck"
 msgstr "Предыдущая колода"
@@ -888,7 +888,7 @@ msgid "Request friend"
 msgstr "Запрос в друзья"
 
 msgid "Restrictions"
-msgstr ""
+msgstr "Заблокированный путь"
 
 msgid "Return a copy to the collection"
 msgstr "Верните копию в коллекцию"
@@ -921,7 +921,7 @@ msgid "Save changes"
 msgstr "Сохранить изменения"
 
 msgid "Scuttler Network"
-msgstr ""
+msgstr "Лазы сколопенраков"
 
 msgid "Search by name"
 msgstr "Поиск по названию"
@@ -966,7 +966,7 @@ msgid "Settings"
 msgstr "Настройки"
 
 msgid "Severed Artery"
-msgstr ""
+msgstr "Обрыв Артерии"
 
 msgid "Share"
 msgstr "Поделиться"
@@ -975,7 +975,7 @@ msgid "Shareable Deck"
 msgstr "Поделиться колодой"
 
 msgid "Shimmering Runoff"
-msgstr ""
+msgstr "Мерцающий поток"
 
 msgid "Show all"
 msgstr "Показать все"
@@ -996,7 +996,7 @@ msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
 msgid "Silent Dormitories"
-msgstr ""
+msgstr "Тихие спальные корпуса"
 
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Некоторые события кампании могут позволить вам навсегда поменять карты из своей колоды на карты из коллекции."
@@ -1041,10 +1041,10 @@ msgid "Swamp"
 msgstr "Болото"
 
 msgid "Talpid's Squeeze"
-msgstr ""
+msgstr "Кротовый лаз"
 
 msgid "Terminal Artery"
-msgstr ""
+msgstr "Терминал Артерии"
 
 msgid "Terrain"
 msgstr "Тип местности"
@@ -1059,16 +1059,16 @@ msgid "The Alluvial Ruins"
 msgstr "Россыпь руин"
 
 msgid "The Arcology"
-msgstr ""
+msgstr "Аркология"
 
 msgid "The Cage"
-msgstr ""
+msgstr "Клетка"
 
 msgid "The Chimney"
-msgstr ""
+msgstr "Воздуховод"
 
 msgid "The Cistern"
-msgstr ""
+msgstr "Водохранилище"
 
 msgid "The Concordant Ziggurats"
 msgstr "Созвучные зиккураты"
@@ -1104,7 +1104,7 @@ msgid "The Plummet"
 msgstr "Утёс"
 
 msgid "The Rootway"
-msgstr ""
+msgstr "Корневой путь"
 
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "В первые дни работы сайт может быть закрыт на техническое обслуживание, и данные могут быть потеряны."
@@ -1116,7 +1116,7 @@ msgid "The Valley"
 msgstr "Долина"
 
 msgid "The Verdant Sphere"
-msgstr ""
+msgstr "Плодоносная сфера"
 
 msgid "There are too many cards with this card's name in your deck."
 msgstr "В вашей колоде слишком много карт с именем этой карты."
@@ -1191,10 +1191,10 @@ msgid "Traits"
 msgstr "Признаки"
 
 msgid "Transfer campaign..."
-msgstr ""
+msgstr "Перенести кампанию"
 
 msgid "Transfer existing campaign"
-msgstr ""
+msgstr "Перенести существующую кампанию"
 
 msgid "Travel"
 msgstr "Путешествие"
