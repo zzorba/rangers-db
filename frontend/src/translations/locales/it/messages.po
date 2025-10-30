@@ -103,6 +103,9 @@ msgstr "Consenti a tutti di vedere i miei mazzi"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Hai già un account? <0>Accedi</0> ora."
 
+msgid "An error occurred during login."
+msgstr ""
+
 msgid "An error occurred during registration."
 msgstr ""
 
@@ -454,6 +457,9 @@ msgstr ""
 msgid "Failed to create account. Please try again."
 msgstr ""
 
+msgid "Failed to sign in. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr "Filtra per {0}"
 
@@ -568,7 +574,13 @@ msgstr "Se desiderate venga corretto, posso pensarci io. Mandatemi un link alla 
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Se volete aiutare a supportare e mantenere questo sito, potete trovarci su {patreon}."
 
+msgid "Incorrect password. Please try again."
+msgstr ""
+
 msgid "Invalid email address format."
+msgstr ""
+
+msgid "Invalid email or password. Please try again."
 msgstr ""
 
 msgid "Inverted Forest"
@@ -687,6 +699,9 @@ msgstr "Successivo"
 
 msgid "Next deck"
 msgstr "Mazzo successivo"
+
+msgid "No account found with this email address."
+msgstr ""
 
 msgid "No matching cards"
 msgstr "Nessuna carta corrispondente"
@@ -1136,6 +1151,9 @@ msgstr "Nel tuo mazzo ci sono troppe carte con questo nome."
 msgid "There are too many outside interest cards in the deck."
 msgstr "Ci sono troppe carte interesse personale in questo mazzo."
 
+msgid "This account has been disabled."
+msgstr ""
+
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr "Questa campagna non è accessibile. Stai usando l'account giusto?"
 
@@ -1186,6 +1204,9 @@ msgstr "Troppe carte con lo stesso nome."
 
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Troppe carte. Quando modifichi il mazzo dopo esserti accampato, ricorda che devi rimuovere delle carte dal mazzo per fare in modo che resti di 30 carte."
+
+msgid "Too many failed login attempts. Please try again later."
+msgstr ""
 
 msgid "Too many FIT personality cards."
 msgstr "Troppe carte personalità FIS."

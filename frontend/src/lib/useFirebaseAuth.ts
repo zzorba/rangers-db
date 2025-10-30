@@ -71,7 +71,26 @@ export default function useFirebaseAuth(): FirebaseAuth {
     return () => unsubscribe();
   }, []);
   const signInWithEmailAndPasswordCallback = useCallback(async(email: string, password: string) => {
-    await signInWithEmailAndPassword(firebaseAuth, email, password);
+    try {
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (error: any) {
+      // Handle Firebase auth errors and provide user-friendly messages
+      if (error.code === 'auth/user-not-found') {
+        throw new Error(t`No account found with this email address.`);
+      } else if (error.code === 'auth/wrong-password') {
+        throw new Error(t`Incorrect password. Please try again.`);
+      } else if (error.code === 'auth/invalid-email') {
+        throw new Error(t`Invalid email address format.`);
+      } else if (error.code === 'auth/user-disabled') {
+        throw new Error(t`This account has been disabled.`);
+      } else if (error.code === 'auth/too-many-requests') {
+        throw new Error(t`Too many failed login attempts. Please try again later.`);
+      } else if (error.code === 'auth/invalid-credential') {
+        throw new Error(t`Invalid email or password. Please try again.`);
+      } else {
+        throw new Error(t`Failed to sign in. Please try again.`);
+      }
+    }
   }, []);
   const createUserWithEmailAndPasswordCallback = useCallback(async(email: string, password: string) => {
     try {

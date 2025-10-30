@@ -7,6 +7,9 @@ import {
   FormControl,
   FormLabel,
   Link,
+  Alert,
+  AlertIcon,
+  AlertDescription,
 } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import NextLink from 'next/link';
@@ -16,22 +19,26 @@ import { useAuth } from '../lib/AuthContext';
 export default function Login({ redirect }: { redirect: string | undefined }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { signInWithEmailAndPassword } = useAuth();
-  const onSubmit = useCallback((e: FormEvent) => {
+  const onSubmit = useCallback(async (e: FormEvent) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-    } catch (error) {
-      console.log(error);
-    }
-    try {
-      signInWithEmailAndPassword(email, password);
-    } catch (error) {
-      window.alert((error as Error).message);
+      setError('');
+      await signInWithEmailAndPassword(email, password);
+    } catch (error: any) {
+      setError(error.message || t`An error occurred during login.`);
     }
   }, [email, password, signInWithEmailAndPassword]);
   return (
     <Flex direction="column" m="2">
       <form onSubmit={onSubmit}>
+        {error && (
+          <Alert status="error" mb="4">
+            <AlertIcon />
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
         <FormControl isRequired>
           <FormLabel htmlFor="email">{t`Email`}</FormLabel>
           <Input

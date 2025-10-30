@@ -103,6 +103,9 @@ msgstr "Allow people to view my decks"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Already have an account? <0>Login</0> now."
 
+msgid "An error occurred during login."
+msgstr "An error occurred during login."
+
 msgid "An error occurred during registration."
 msgstr "An error occurred during registration."
 
@@ -454,6 +457,9 @@ msgstr "Extend campaign"
 msgid "Failed to create account. Please try again."
 msgstr "Failed to create account. Please try again."
 
+msgid "Failed to sign in. Please try again."
+msgstr "Failed to sign in. Please try again."
+
 msgid "Filter by {0}"
 msgstr "Filter by {0}"
 
@@ -568,8 +574,14 @@ msgstr "If you would like it to be corrected, send me a link to your campaign an
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 
+msgid "Incorrect password. Please try again."
+msgstr "Incorrect password. Please try again."
+
 msgid "Invalid email address format."
 msgstr "Invalid email address format."
+
+msgid "Invalid email or password. Please try again."
+msgstr "Invalid email or password. Please try again."
 
 msgid "Inverted Forest"
 msgstr "Inverted Forest"
@@ -687,6 +699,9 @@ msgstr "Next"
 
 msgid "Next deck"
 msgstr "Next deck"
+
+msgid "No account found with this email address."
+msgstr "No account found with this email address."
 
 msgid "No matching cards"
 msgstr "No matching cards"
@@ -1136,6 +1151,9 @@ msgstr "There are too many cards with this card's name in your deck."
 msgid "There are too many outside interest cards in the deck."
 msgstr "There are too many outside interest cards in the deck."
 
+msgid "This account has been disabled."
+msgstr "This account has been disabled."
+
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr "This campaign is not accessible. Are you sure you are signed into the correct account?"
 
@@ -1186,6 +1204,9 @@ msgstr "Too many cards with the same name."
 
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
+
+msgid "Too many failed login attempts. Please try again later."
+msgstr "Too many failed login attempts. Please try again later."
 
 msgid "Too many FIT personality cards."
 msgstr "Too many FIT personality cards."

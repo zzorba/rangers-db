@@ -103,6 +103,9 @@ msgstr "Permitir que la gente vea mis mazos"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "¿Ya tienes una cuenta? Inicia sesión ahora."
 
+msgid "An error occurred during login."
+msgstr ""
+
 msgid "An error occurred during registration."
 msgstr ""
 
@@ -454,6 +457,9 @@ msgstr "Extender la campaña"
 msgid "Failed to create account. Please try again."
 msgstr ""
 
+msgid "Failed to sign in. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr "Filtrar por {0}"
 
@@ -568,7 +574,13 @@ msgstr "Si deseas corregirlo, envíame un enlace a tu campaña y cuál fue el re
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Si desea apoyar el desarrollo y mantenimiento de este sitio, considere apoyarnos en {patreon}."
 
+msgid "Incorrect password. Please try again."
+msgstr ""
+
 msgid "Invalid email address format."
+msgstr ""
+
+msgid "Invalid email or password. Please try again."
 msgstr ""
 
 msgid "Inverted Forest"
@@ -687,6 +699,9 @@ msgstr "Siguiente"
 
 msgid "Next deck"
 msgstr "Siguiente mazo"
+
+msgid "No account found with this email address."
+msgstr ""
 
 msgid "No matching cards"
 msgstr "No hay cartas coincidentes"
@@ -1136,6 +1151,9 @@ msgstr "Hay demasiadas cartas con el nombre de esta carta en tu mazo."
 msgid "There are too many outside interest cards in the deck."
 msgstr "Hay demasiadas cartas de otros intereses en el mazo."
 
+msgid "This account has been disabled."
+msgstr ""
+
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr "No se puede acceder a esta campaña. ¿Estás seguro de haber iniciado sesión con la cuenta correcta?"
 
@@ -1186,6 +1204,9 @@ msgstr "Demasiadas cartas con el mismo nombre."
 
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Demasiadas cartas. Al cambiar de mazo mientras acampas, deberías quitar cartas para dejar espacio a las recompensas y mantener un mazo de 30 cartas."
+
+msgid "Too many failed login attempts. Please try again later."
+msgstr ""
 
 msgid "Too many FIT personality cards."
 msgstr "Demasiadas cartas de APT."

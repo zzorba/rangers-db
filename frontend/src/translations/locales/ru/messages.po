@@ -103,6 +103,9 @@ msgstr "Разрешить людям просмотр моих колод"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Уже есть аккаунт? <0>Войти</0>."
 
+msgid "An error occurred during login."
+msgstr ""
+
 msgid "An error occurred during registration."
 msgstr ""
 
@@ -454,6 +457,9 @@ msgstr "Продлить кампанию"
 msgid "Failed to create account. Please try again."
 msgstr ""
 
+msgid "Failed to sign in. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr "Фильтр по {0}"
 
@@ -568,7 +574,13 @@ msgstr ""
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr ""
 
+msgid "Incorrect password. Please try again."
+msgstr ""
+
 msgid "Invalid email address format."
+msgstr ""
+
+msgid "Invalid email or password. Please try again."
 msgstr ""
 
 msgid "Inverted Forest"
@@ -687,6 +699,9 @@ msgstr "Далее"
 
 msgid "Next deck"
 msgstr "Следующая колода"
+
+msgid "No account found with this email address."
+msgstr ""
 
 msgid "No matching cards"
 msgstr "Нет подходящих карт"
@@ -1136,6 +1151,9 @@ msgstr "В вашей колоде слишком много карт с име�
 msgid "There are too many outside interest cards in the deck."
 msgstr "Слишком много карт хобби в вашей колоде."
 
+msgid "This account has been disabled."
+msgstr ""
+
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr "Эта кампания недоступна. Вы уверены, что вошли в нужную учетную запись?"
 
@@ -1186,6 +1204,9 @@ msgstr "Слишком много карт с одинаковым назван�
 
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Слишком много карт. При замене карт на награды следует удалить любую карту (кроме карты с признаком недуг), чтобы сохранить размер колоды в 30 карт."
+
+msgid "Too many failed login attempts. Please try again later."
+msgstr ""
 
 msgid "Too many FIT personality cards."
 msgstr "Слишком много карт личности с чертой ВЫН."

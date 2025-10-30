@@ -103,6 +103,9 @@ msgstr "Anderen erlauben meine Decks anzusehen"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 
+msgid "An error occurred during login."
+msgstr ""
+
 msgid "An error occurred during registration."
 msgstr ""
 
@@ -454,6 +457,9 @@ msgstr ""
 msgid "Failed to create account. Please try again."
 msgstr ""
 
+msgid "Failed to sign in. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr "Nach {0} filtern"
 
@@ -568,7 +574,13 @@ msgstr "Wenn du das gerne korrigieren möchtest, schicke mir einen Link zu deine
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Du kannst die Entwicklung und den Unterhalt dieser Webseite auf {patreon} unterstützen."
 
+msgid "Incorrect password. Please try again."
+msgstr ""
+
 msgid "Invalid email address format."
+msgstr ""
+
+msgid "Invalid email or password. Please try again."
 msgstr ""
 
 msgid "Inverted Forest"
@@ -687,6 +699,9 @@ msgstr "Nächste Seite"
 
 msgid "Next deck"
 msgstr "Nächstes Deck"
+
+msgid "No account found with this email address."
+msgstr ""
 
 msgid "No matching cards"
 msgstr "Keine passenden Karten"
@@ -1136,6 +1151,9 @@ msgstr "Es sind zu viele Karten mit diesem Namen in deinem Deck."
 msgid "There are too many outside interest cards in the deck."
 msgstr "Es sind zu viele Hobby-Karten in deinem Deck."
 
+msgid "This account has been disabled."
+msgstr ""
+
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr "Keinen Zugriff auf diese Kampagne. Bist du sicher, dass du dich mit dem richtigen Account angemeldet hast?"
 
@@ -1186,6 +1204,9 @@ msgstr "Zu viele Karten des gleichen Namens."
 
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Zu viele Karten. Wenn du dein Nachtlager aufschlägst und Änderungen an deinem Deck machst, solltest du Karten enfernen um Platz für Belohnungen zu schaffen und ein 30 Karten Deck zu bewahren."
+
+msgid "Too many failed login attempts. Please try again later."
+msgstr ""
 
 msgid "Too many FIT personality cards."
 msgstr "Zu viele FIT-Eigenarten-Karten."

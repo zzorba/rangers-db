@@ -103,6 +103,9 @@ msgstr "Permettre aux autres de voir mon deck"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Vous avez déjà un compte ? <0>Se connecter</0>"
 
+msgid "An error occurred during login."
+msgstr ""
+
 msgid "An error occurred during registration."
 msgstr ""
 
@@ -454,6 +457,9 @@ msgstr ""
 msgid "Failed to create account. Please try again."
 msgstr ""
 
+msgid "Failed to sign in. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr "Filtrer par {0}"
 
@@ -568,7 +574,13 @@ msgstr "Si vous voulez qu'elle soit corrigée, envoyez-moi le lien vers votre ca
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Si vous voulez supporter le développement et la maintenance du site, vous pouvez nous supporter sur {patreon}"
 
+msgid "Incorrect password. Please try again."
+msgstr ""
+
 msgid "Invalid email address format."
+msgstr ""
+
+msgid "Invalid email or password. Please try again."
 msgstr ""
 
 msgid "Inverted Forest"
@@ -687,6 +699,9 @@ msgstr "Suivant"
 
 msgid "Next deck"
 msgstr "Deck suivant"
+
+msgid "No account found with this email address."
+msgstr ""
 
 msgid "No matching cards"
 msgstr "Aucune carte correspondante"
@@ -1136,6 +1151,9 @@ msgstr "Il y a trop de cartes avec ce nom dans votre deck."
 msgid "There are too many outside interest cards in the deck."
 msgstr "Il y a trop de cartes Centre d'intérêt dans le deck."
 
+msgid "This account has been disabled."
+msgstr ""
+
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr "Cette campagne n'est pas accessible. Êtes-vous sûr d'être connecté avec le bon compte ?"
 
@@ -1186,6 +1204,9 @@ msgstr "Trop de cartes avec le même nom."
 
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
 msgstr "Trop de cartes. Quand vous mettez à jour votre deck, vous devez retirer autant de cartes que vous en mettez pour maintenir 30 cartes dans votre deck."
+
+msgid "Too many failed login attempts. Please try again later."
+msgstr ""
 
 msgid "Too many FIT personality cards."
 msgstr "Trop de cartes Personnalités de type PHY."

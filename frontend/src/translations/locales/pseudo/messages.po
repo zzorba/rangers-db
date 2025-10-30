@@ -103,6 +103,9 @@ msgstr ""
 msgid "Already have an account? <0>Login</0> now."
 msgstr ""
 
+msgid "An error occurred during login."
+msgstr ""
+
 msgid "An error occurred during registration."
 msgstr ""
 
@@ -454,6 +457,9 @@ msgstr ""
 msgid "Failed to create account. Please try again."
 msgstr ""
 
+msgid "Failed to sign in. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr ""
 
@@ -568,7 +574,13 @@ msgstr ""
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr ""
 
+msgid "Incorrect password. Please try again."
+msgstr ""
+
 msgid "Invalid email address format."
+msgstr ""
+
+msgid "Invalid email or password. Please try again."
 msgstr ""
 
 msgid "Inverted Forest"
@@ -686,6 +698,9 @@ msgid "Next"
 msgstr ""
 
 msgid "Next deck"
+msgstr ""
+
+msgid "No account found with this email address."
 msgstr ""
 
 msgid "No matching cards"
@@ -1136,6 +1151,9 @@ msgstr ""
 msgid "There are too many outside interest cards in the deck."
 msgstr ""
 
+msgid "This account has been disabled."
+msgstr ""
+
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr ""
 
@@ -1185,6 +1203,9 @@ msgid "Too many cards with the same name."
 msgstr ""
 
 msgid "Too many cards. When making deck changes while camping, you should remove cards to make room for rewards to maintain a 30 card deck."
+msgstr ""
+
+msgid "Too many failed login attempts. Please try again later."
 msgstr ""
 
 msgid "Too many FIT personality cards."
