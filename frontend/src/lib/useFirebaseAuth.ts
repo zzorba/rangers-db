@@ -6,6 +6,7 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from 'firebase/auth';
+import { t } from '@lingui/macro';
 import { firebaseAuth } from './initFirebase';
 
 export interface AuthUser {
@@ -73,7 +74,20 @@ export default function useFirebaseAuth(): FirebaseAuth {
     await signInWithEmailAndPassword(firebaseAuth, email, password);
   }, []);
   const createUserWithEmailAndPasswordCallback = useCallback(async(email: string, password: string) => {
-    await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    try {
+      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (error: any) {
+      // Handle Firebase auth errors and provide user-friendly messages
+      if (error.code === 'auth/email-already-in-use') {
+        throw new Error(t`This email address is already registered. Please try logging in instead.`);
+      } else if (error.code === 'auth/invalid-email') {
+        throw new Error(t`Invalid email address format.`);
+      } else if (error.code === 'auth/weak-password') {
+        throw new Error(t`Password is too weak. Please use a stronger password.`);
+      } else {
+        throw new Error(t`Failed to create account. Please try again.`);
+      }
+    }
   }, []);
   const signOutCallback = useCallback(async () => {
     await signOut(firebaseAuth);

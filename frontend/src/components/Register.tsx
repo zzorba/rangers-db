@@ -7,6 +7,9 @@ import {
   FormLabel,
   Button,
   Link,
+  Alert,
+  AlertIcon,
+  AlertDescription,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { Trans, t } from '@lingui/macro';
@@ -16,9 +19,15 @@ import { useAuth } from '../lib/AuthContext';
 function Register({ redirect }: { redirect: string | undefined }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { createUserWithEmailAndPassword } = useAuth();
-  const register = () => {
-    createUserWithEmailAndPassword(email, password);
+  const register = async () => {
+    try {
+      setError('');
+      await createUserWithEmailAndPassword(email, password);
+    } catch (err: any) {
+      setError(err.message || t`An error occurred during registration.`);
+    }
   };
   return (
     <Flex direction="column" m="2">
@@ -28,6 +37,12 @@ function Register({ redirect }: { redirect: string | undefined }) {
           register();
         }}
       >
+        {error && (
+          <Alert status="error" mb="4">
+            <AlertIcon />
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
         <FormControl isRequired>
           <FormLabel>{t`Email`}</FormLabel>
           <Input

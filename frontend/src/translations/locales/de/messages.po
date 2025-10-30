@@ -103,6 +103,9 @@ msgstr "Anderen erlauben meine Decks anzusehen"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 
+msgid "An error occurred during registration."
+msgstr ""
+
 msgid "Ancestor's Grove"
 msgstr "Wurzeln der Ältesten"
 
@@ -448,6 +451,9 @@ msgstr "Tatendrang"
 msgid "Extend campaign"
 msgstr ""
 
+msgid "Failed to create account. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr "Nach {0} filtern"
 
@@ -561,6 +567,9 @@ msgstr "Wenn du das gerne korrigieren möchtest, schicke mir einen Link zu deine
 
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Du kannst die Entwicklung und den Unterhalt dieser Webseite auf {patreon} unterstützen."
+
+msgid "Invalid email address format."
+msgstr ""
 
 msgid "Inverted Forest"
 msgstr ""
@@ -775,6 +784,9 @@ msgstr ""
 
 msgid "Password"
 msgstr "Passwort"
+
+msgid "Password is too weak. Please use a stronger password."
+msgstr ""
 
 msgid "Path Terrain"
 msgstr "Terrain-Typ"
@@ -1135,6 +1147,9 @@ msgstr "Dieser Kommentar wurde am {updatedTime} bearbeitet."
 
 msgid "This day is in the past. It is currently day {0}."
 msgstr "Dieser Tag liegt in der Vergangenheit. Es ist jetzt Tag {0}."
+
+msgid "This email address is already registered. Please try logging in instead."
+msgstr ""
 
 msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
 msgstr "Diese Option sollte gewählt werden, wenn ein Ranger zu müde oder zu verletzt ist oder wenn es von der Kampagne oder einer Mission verlangt wird."

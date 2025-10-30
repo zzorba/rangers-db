@@ -103,6 +103,9 @@ msgstr ""
 msgid "Already have an account? <0>Login</0> now."
 msgstr ""
 
+msgid "An error occurred during registration."
+msgstr ""
+
 msgid "Ancestor's Grove"
 msgstr ""
 
@@ -448,6 +451,9 @@ msgstr ""
 msgid "Extend campaign"
 msgstr ""
 
+msgid "Failed to create account. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr ""
 
@@ -560,6 +566,9 @@ msgid "If you would like it to be corrected, send me a link to your campaign and
 msgstr ""
 
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgstr ""
+
+msgid "Invalid email address format."
 msgstr ""
 
 msgid "Inverted Forest"
@@ -774,6 +783,9 @@ msgid "Packs"
 msgstr ""
 
 msgid "Password"
+msgstr ""
+
+msgid "Password is too weak. Please use a stronger password."
 msgstr ""
 
 msgid "Path Terrain"
@@ -1134,6 +1146,9 @@ msgid "This comment was edited on {updatedTime}."
 msgstr ""
 
 msgid "This day is in the past. It is currently day {0}."
+msgstr ""
+
+msgid "This email address is already registered. Please try logging in instead."
 msgstr ""
 
 msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."

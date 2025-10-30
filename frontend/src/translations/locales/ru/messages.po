@@ -103,6 +103,9 @@ msgstr "Разрешить людям просмотр моих колод"
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Уже есть аккаунт? <0>Войти</0>."
 
+msgid "An error occurred during registration."
+msgstr ""
+
 msgid "Ancestor's Grove"
 msgstr "Роща предков"
 
@@ -448,6 +451,9 @@ msgstr "Разведка"
 msgid "Extend campaign"
 msgstr "Продлить кампанию"
 
+msgid "Failed to create account. Please try again."
+msgstr ""
+
 msgid "Filter by {0}"
 msgstr "Фильтр по {0}"
 
@@ -560,6 +566,9 @@ msgid "If you would like it to be corrected, send me a link to your campaign and
 msgstr ""
 
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
+msgstr ""
+
+msgid "Invalid email address format."
 msgstr ""
 
 msgid "Inverted Forest"
@@ -775,6 +784,9 @@ msgstr "Наборы"
 
 msgid "Password"
 msgstr "Пароль"
+
+msgid "Password is too weak. Please use a stronger password."
+msgstr ""
 
 msgid "Path Terrain"
 msgstr "Тип местности"
@@ -1135,6 +1147,9 @@ msgstr "Этот комментарий был отредактирован в {
 
 msgid "This day is in the past. It is currently day {0}."
 msgstr "Этот день уже в прошлом. В настоящее время это день {0}."
+
+msgid "This email address is already registered. Please try logging in instead."
+msgstr ""
 
 msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
 msgstr "Эту опцию следует использовать, если рейнджер слишком устал, слишком ранен, а также по указанию руководства кампании или задания."
