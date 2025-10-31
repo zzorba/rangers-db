@@ -107,6 +107,7 @@ export interface ParsedCampaign {
   cycle_id: string;
   extended_calendar: boolean;
 
+  expansions: string[];
   access: UserInfoFragment[];
 
   missions: MissionEntry[];
@@ -147,6 +148,7 @@ export class CampaignWrapper implements ParsedCampaign {
   latest_decks: LatestDeck[];
   current_location: string | undefined;
   current_path_terrain: string | undefined;
+  expansions: string[];
 
   previous_campaign?: {
     id: number;
@@ -172,6 +174,7 @@ export class CampaignWrapper implements ParsedCampaign {
     this.removed = Array.isArray(campaign.removed) ? (campaign.removed as RemovedEntry[]) : [];
     this.current_location = campaign.current_location || undefined;
     this.current_path_terrain = campaign.current_path_terrain || undefined;
+    this.expansions = Array.isArray(campaign.expansions) ? (campaign.expansions as string[]) : [];
 
     this.access = flatMap(campaign.access, a => {
       if (a.user) {
@@ -206,7 +209,7 @@ function CampaignRow({ campaign, roleCards, onDelete, noTable }: {
   const { cycles } = useLocale();
   const cycle = useMemo(() => find(cycles, c => c.id === campaign.cycle_id), [cycles, campaign]);
   const roleImageSize = useBreakpointValue<'small' | 'medium'>(['small', 'small', 'medium']);
-  const locations = useMapLocations(campaign.cycle_id);
+  const locations = useMapLocations(campaign.cycle_id, campaign.expansions);
   const currentLocation = useMemo(() => find(locations, loc => loc?.id === campaign.current_location), [campaign.current_location, locations])
   const roles = useMemo(() => {
     return flatMap(campaign.latest_decks, d => {
@@ -2441,7 +2444,7 @@ interface CampaignDetailProps {
 }
 
 export default function CampaignDetail(props: CampaignDetailProps) {
-  const locations = useMapLocations(props.campaign.cycle_id);
+  const locations = useMapLocations(props.campaign.cycle_id, props.campaign.expansions);
   const context = useMemo(() => ({ locations }), [locations]);
   return (
     <CampaignContext.Provider value={context}>

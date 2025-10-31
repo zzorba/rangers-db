@@ -187,6 +187,9 @@ msgstr "Branch"
 msgid "Branching Artery"
 msgstr "Branching Artery"
 
+msgid "Brookside"
+msgstr "Brookside"
+
 msgid "Camp"
 msgstr "Camp"
 
@@ -1025,6 +1028,9 @@ msgstr "Sign Up"
 msgid "Silent Dormitories"
 msgstr "Silent Dormitories"
 
+msgid "Silverfin Docks"
+msgstr "Silverfin Docks"
+
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 
@@ -1042,6 +1048,9 @@ msgstr "SPI"
 
 msgid "Spire"
 msgstr "Spire"
+
+msgid "Spire's Crossing"
+msgstr "Spire's Crossing"
 
 msgid "Spirit"
 msgstr "Spirit"

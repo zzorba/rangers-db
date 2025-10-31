@@ -26,6 +26,11 @@ export interface CampaignCycle {
   name: string;
 }
 
+export interface ExpansionMapCondition {
+  expansion: string;
+  action: 'add' | 'remove';
+}
+
 export interface MapLocation {
   id: string;
   name: string;
@@ -33,6 +38,7 @@ export interface MapLocation {
   type: 'location' | 'trail' | 'general';
   cycles?: string[];
   connections: MapLocationConnection[];
+  expansionConditions?: ExpansionMapCondition[];
 }
 
 export interface MapLocations {
@@ -54,6 +60,7 @@ export enum Path {
   DEEP_ROOTS = 'deep_roots',
   FUNGAL_FOREST = 'fungal_forest',
   CAVE_SYSTEM = 'cave_system',
+  THOROUGHFARE = 'thoroughfare',
 }
 export enum ConnectionRestriction {
   FLOODED_PASSAGE = 'flooded_passage',

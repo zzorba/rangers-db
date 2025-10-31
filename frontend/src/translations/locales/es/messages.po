@@ -187,6 +187,9 @@ msgstr "Ramal"
 msgid "Branching Artery"
 msgstr "Arteria de bifurcación"
 
+msgid "Brookside"
+msgstr ""
+
 msgid "Camp"
 msgstr "Acampar"
 
@@ -1025,6 +1028,9 @@ msgstr "Registrarse"
 msgid "Silent Dormitories"
 msgstr "Estancias silenciosas"
 
+msgid "Silverfin Docks"
+msgstr ""
+
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Algunos eventos de campaña pueden permitirte intercambiar permanentemente cartas de tu mazo con aquellas de la colección."
 
@@ -1042,6 +1048,9 @@ msgstr "VIT"
 
 msgid "Spire"
 msgstr "Aguja"
+
+msgid "Spire's Crossing"
+msgstr ""
 
 msgid "Spirit"
 msgstr "Vitalidad"

@@ -5,7 +5,7 @@ import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
 import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
-import { AspectMap, CampaignCycle, ConnectionRestriction, ConnectionRestrictionMap, ConnectionRestrictionType, DeckCardError, DeckError, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
+import { AspectMap, CampaignCycle, ConnectionRestriction, ConnectionRestrictionMap, ConnectionRestrictionType, DeckCardError, DeckError, ExpansionMapCondition, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
 import { useLingui } from '@lingui/react';
 
 export function useRequireAuth() {
@@ -320,13 +320,16 @@ export function getPathTypes(): PathTypeMap {
   return r;
 }
 
-const CONNECTIONS: {
+type ConnectionType = {
   locA: string;
   locB: string;
   path: Path;
   restriction?: ConnectionRestriction;
   cycles?: string[];
-}[] = [
+  expansionConditions?: ExpansionMapCondition[];
+};
+
+const CONNECTIONS: ConnectionType[] = [
   // LOA connections
   {
     locA: 'greenbriar_knoll',
@@ -656,16 +659,34 @@ const CONNECTIONS: {
     locA: 'kobos_market',
     locB: 'spire',
     path: Path.LAKESHORE,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'remove',
+      },
+    ],
   },
   {
     locA: 'white_sky',
     locB: 'spire',
     path: Path.RIVER,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'remove',
+      },
+    ],
   },
   {
     locA: 'the_philosophers_garden',
     locB: 'spire',
     path: Path.OLD_GROWTH,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'remove',
+      },
+    ],
   },
   {
     locA: 'the_philosophers_garden',
@@ -711,6 +732,12 @@ const CONNECTIONS: {
     locA: 'crossroads_station',
     locB: 'spire',
     path: Path.GRASSLAND,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'remove',
+      },
+    ],
   },
   {
     locA: 'terravore',
@@ -736,6 +763,12 @@ const CONNECTIONS: {
     locA: 'stoneweaver_bridge',
     locB: 'spire',
     path: Path.RIVER,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'remove',
+      },
+    ],
   },
   {
     locA: 'stoneweaver_bridge',
@@ -746,6 +779,12 @@ const CONNECTIONS: {
     locA: 'spire',
     locB: 'greenbriar_knoll',
     path: Path.WOODS,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'remove',
+      },
+    ],
   },
   {
     locA: 'biologists_outpost',
@@ -822,6 +861,138 @@ const CONNECTIONS: {
     locB: 'the_alluvial_ruins',
     path: Path.RIVER,
   },
+  {
+    locA: 'kobos_market',
+    locB: 'spire_crossing',
+    path: Path.LAKESHORE,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'white_sky',
+    locB: 'spire_crossing',
+    path: Path.RIVER,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'the_philosophers_garden',
+    locB: 'brookside',
+    path: Path.OLD_GROWTH,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'crossroads_station',
+    locB: 'brookside',
+    path: Path.GRASSLAND,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'greenbriar_knoll',
+    locB: 'silverfin_docks',
+    path: Path.WOODS,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'stoneweaver_bridge',
+    locB: 'silverfin_docks',
+    path: Path.RIVER,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'spire_crossing',
+    locB: 'spire',
+    path: Path.THOROUGHFARE,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'spire_crossing',
+    locB: 'silverfin_docks',
+    path: Path.RIVER,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'spire_crossing',
+    locB: 'brookside',
+    path: Path.THOROUGHFARE,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'spire',
+    locB: 'brookside',
+    path: Path.THOROUGHFARE,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'silverfin_docks',
+    locB: 'brookside',
+    path: Path.THOROUGHFARE,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'spire',
+    locB: 'silverfin_docks',
+    path: Path.THOROUGHFARE,
+    expansionConditions: [
+      {
+        expansion: 'sib',
+        action: 'add',
+      }
+    ]
+  },
 ];
 
 export function getCampaignCycles(): CampaignCycle[] {
@@ -841,16 +1012,38 @@ export function getCampaignCycles(): CampaignCycle[] {
   ];
 }
 
-export function useMapLocations(cycle: string): MapLocations {
-  const { i18n } = useLingui();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useMemo(() => getMapLocations(cycle), [cycle, i18n]);
+function shouldSkip(expansionConditions: ExpansionMapCondition[], selectedExpansions: Set<string>): boolean {
+  let skip = false;
+  forEach(expansionConditions, condition => {
+    switch (condition.action) {
+      case 'add': {
+        if (!selectedExpansions.has(condition.expansion)) {
+          skip = true;
+        }
+        break;
+      }
+      case 'remove': {
+        if (selectedExpansions.has(condition.expansion)) {
+          skip = true;
+        }
+        break;
+      }
+    }
+  });
+  return skip;
 }
 
-export function getMapLocations(cycle: string): MapLocations {
-  const r: MapLocations = {};
+export function useMapLocations(cycle: string, expansions: string[]): MapLocations {
+  const { i18n } = useLingui();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return useMemo(() => getMapLocations(cycle, expansions), [cycle, expansions, i18n]);
+}
 
-  const paths: Omit<MapLocation, 'connections'>[] = [
+export function getMapLocations(cycle: string, expansions: string[]): MapLocations {
+  const r: MapLocations = {};
+  const selectedExpansions = new Set(expansions);
+
+  const locations: Omit<MapLocation, 'connections'>[] = [
     {
       id: 'atrox_mountain',
       name: t`Atrox Mountain`,
@@ -1182,11 +1375,47 @@ export function getMapLocations(cycle: string): MapLocations {
       type: 'location',
       cycles: ['loa'],
     },
+    {
+      id: 'spires_crossing',
+      name: t`Spire's Crossing`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'sib',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'brookside',
+      name: t`Brookside`,
+      type: 'location',
+      expansionConditions: [
+        { 
+          expansion: 'sib',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'silverfin_docks',
+      name: t`Silverfin Docks`,
+      type: 'location',
+      expansionConditions: [
+        { 
+          expansion: 'sib',
+          action: 'add',
+        }
+      ]
+    }
   ];
-  forEach(paths, p => {
-    r[p.id] = {
-      ...omit(p, ['cycles']),
-      cycles: p.cycles ?? ['core'],
+  forEach(locations, loc => {
+    if (loc.expansionConditions && shouldSkip(loc.expansionConditions, selectedExpansions)) {
+      return;
+    }
+    r[loc.id] = {
+      ...omit(loc, ['cycles']),
+      cycles: loc.cycles ?? ['core'],
       connections: [],
     };
   });
@@ -1194,6 +1423,9 @@ export function getMapLocations(cycle: string): MapLocations {
     const locA = r[c.locA];
     const locB = r[c.locB];
     if (locA && locB && (!c.cycles || c.cycles?.includes(cycle))) {
+      if (c.expansionConditions && shouldSkip(c.expansionConditions, selectedExpansions)) {
+        return;
+      }
       locA.connections?.push({
         id: c.locB,
         path: c.path,

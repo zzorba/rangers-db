@@ -3,7 +3,7 @@ import { AspectRatio, Box } from '@chakra-ui/react';
 import IcomoonReact from 'icomoon-react';
 
 import iconSet from './locations.json';
-import { ConnectionRestriction, ConnectionRestrictionType, MapLocation, PathType } from '../types/types';
+import { ConnectionRestrictionType, MapLocation, PathType } from '../types/types';
 
 
 const MapIcon: React.FC<{

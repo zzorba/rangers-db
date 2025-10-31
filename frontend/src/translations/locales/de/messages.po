@@ -187,6 +187,9 @@ msgstr "Die Ästelei"
 msgid "Branching Artery"
 msgstr ""
 
+msgid "Brookside"
+msgstr ""
+
 msgid "Camp"
 msgstr "Nachtlager"
 
@@ -1025,6 +1028,9 @@ msgstr "Registrieren"
 msgid "Silent Dormitories"
 msgstr ""
 
+msgid "Silverfin Docks"
+msgstr ""
+
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Manche Ereignisse in der Kampagne erlauben es dir, Karten aus deinem Deck mit Karten aus der Sammlung permanent zu tauschen."
 
@@ -1042,6 +1048,9 @@ msgstr "SOV"
 
 msgid "Spire"
 msgstr "Wolkenlanze"
+
+msgid "Spire's Crossing"
+msgstr ""
 
 msgid "Spirit"
 msgstr "Souveränität"

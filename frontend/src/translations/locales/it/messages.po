@@ -187,6 +187,9 @@ msgstr "Fronda"
 msgid "Branching Artery"
 msgstr ""
 
+msgid "Brookside"
+msgstr ""
+
 msgid "Camp"
 msgstr "Accampati"
 
@@ -1025,6 +1028,9 @@ msgstr "Registrati"
 msgid "Silent Dormitories"
 msgstr ""
 
+msgid "Silverfin Docks"
+msgstr ""
+
 msgid "Some campaign events may allow you to permanently swap cards from your deck with those from the collection."
 msgstr "Alcuni eventi della campagna potrebbero permetterti di scambiare in modo permanente delle carte dal tuo mazzo con altre dalla tua Collezione."
 
@@ -1042,6 +1048,9 @@ msgstr "SPI"
 
 msgid "Spire"
 msgstr "Guglia"
+
+msgid "Spire's Crossing"
+msgstr ""
 
 msgid "Spirit"
 msgstr "Spirito"

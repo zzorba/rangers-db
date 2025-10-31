@@ -8,9 +8,9 @@ import { MapLocation } from '../../types/types';
 import { ConnectionRestrictionIcon, LocationIcon, PathIcon } from '../../icons/LocationIcon';
 import { useMapLocations } from '../../lib/hooks';
 
-function LocationRow({ location, cycle }: { location: MapLocation; cycle: string }) {
+function LocationRow({ location, cycle, expansions }: { location: MapLocation; cycle: string; expansions: string[] }) {
   const { paths, restrictions } = useLocale();
-  const locations = useMapLocations(cycle);
+  const locations = useMapLocations(cycle, expansions);
 
   return (
     <ListItem key={location?.id}>
@@ -47,7 +47,8 @@ function LocationRow({ location, cycle }: { location: MapLocation; cycle: string
 
 export default function MapPage() {
   const [cycle, setCycle] = useState('core');
-  const locations = useMapLocations(cycle);
+  const [expansions, setExpansions] = useState<string[]>([]);
+  const locations = useMapLocations(cycle, expansions);
   const selectedLocations = useMemo(() => {
     return filter(locations, loc => {
       if (loc?.cycles && !find(loc.cycles, c => c === cycle)) {
@@ -77,7 +78,7 @@ export default function MapPage() {
       </FormControl>
       <List>
         { map(selectedLocations, loc => !!loc && (
-          <LocationRow key={loc.id} location={loc} cycle={cycle} />
+          <LocationRow key={loc.id} location={loc} cycle={cycle} expansions={expansions} />
         ))}
       </List>
     </Box>
