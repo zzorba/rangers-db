@@ -1405,7 +1405,7 @@ function useEndDayModal(campaign: ParsedCampaign): [() => void, React.ReactNode]
 
 function useJourneyModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const weatherLabels = useWeather(campaign.cycle_id);
+  const { weather: weatherLabels } = useWeather(campaign.cycle_id, campaign.extended_calendar);
   const hasOldData = useMemo(() => {
     const firstEntry = head(campaign.history);
     return !!firstEntry && !firstEntry.path_terrain && firstEntry.location === 'lone_tree_station';
@@ -1867,191 +1867,202 @@ export interface Weather {
   underground?: string;
   underground_id?: string;
 }
-function useWeather(cycle_id: string): Weather[] {
+function useWeather(cycle_id: string, extendedCampaign: boolean): {
+  weather: Weather[];
+  maxDay: number;
+ } {
   return useMemo(() => {
     if (cycle_id === 'loa') {
-      return [
+      return {
+        weather: [
+          {
+            start: 1,
+            end: 3,
+            name: t`Downpour`,
+            underground: t`Enveloping Silence`,
+            valley_id: 'downpour',
+            underground_id: 'enveloping_silence',
+          },
+          {
+            start: 4,
+            end: 6,
+            name: t`A Perfect Day`,
+            underground: t`Glitterain`,
+            valley_id: 'a_perfect_day',
+            underground_id: 'glitterain',
+          },
+          {
+            start: 7,
+            end: 8,
+            name: t`Howing Wind`,
+            underground: t`Shimmering Runoff`,
+            valley_id: 'howling_wind',
+            underground_id: 'shimmering_runoff',
+          },
+          {
+            start: 9,
+            end: 12,
+            name: t`Downpour`,
+            underground: t`Enveloping Silence`,
+            valley_id: 'downpour',
+            underground_id: 'enveloping_silence',
+          },
+          {
+            start: 13,
+            end: 15,
+            name: t`A Perfect Day`,
+            underground: t`Glitterain`,
+            valley_id: 'a_perfect_day',
+            underground_id: 'glitterain',
+          },
+          {
+            start: 16,
+            end: 18,
+            name: t`Downpour`,
+            underground: t`Enveloping Silence`,
+            valley_id: 'downpour',
+            underground_id: 'enveloping_silence',
+          },
+          {
+            start: 19,
+            end: 21,
+            name: t`A Perfect Day`,
+            underground: t`Glitterain`,
+            valley_id: 'a_perfect_day',
+            underground_id: 'glitterain',
+          },
+          {
+            start: 22,
+            end: 23,
+            name: t`Howling Wind`,
+            underground: t`Shimmering Runoff`,
+            valley_id: 'howling_wind',
+            underground_id: 'shimmering_runoff',
+          },
+          {
+            start: 24,
+            end: 27,
+            name: t`Downpour`,
+            underground: t`Enveloping Silence`,
+            valley_id: 'downpour',
+            underground_id: 'enveloping_silence',
+          },
+          {
+            start: 28,
+            end: 30,
+            name: t`A Perfect Day`,
+            underground: t`Glitterain`,
+            valley_id: 'a_perfect_day',
+            underground_id: 'glitterain',
+          },
+        ],
+        maxDay: 30,
+      };
+    }
+    return {
+      weather: [
         {
           start: 1,
           end: 3,
-          name: t`Downpour`,
-          underground: t`Enveloping Silence`,
-          valley_id: 'downpour',
-          underground_id: 'enveloping_silence',
+          name: t`A Perfect Day`,
+          valley_id: 'a_perfect_day',
         },
         {
           start: 4,
-          end: 6,
+          end: 7,
+          name: t`Downpour`,
+          valley_id: 'downpour',
+        },
+        {
+          start: 8,
+          end: 9,
           name: t`A Perfect Day`,
-          underground: t`Glitterain`,
           valley_id: 'a_perfect_day',
-          underground_id: 'glitterain',
         },
         {
-          start: 7,
-          end: 8,
-          name: t`Howing Wind`,
-          underground: t`Shimmering Runoff`,
-          valley_id: 'howling_wind',
-          underground_id: 'shimmering_runoff',
-        },
-        {
-          start: 9,
+          start: 10,
           end: 12,
           name: t`Downpour`,
-          underground: t`Enveloping Silence`,
           valley_id: 'downpour',
-          underground_id: 'enveloping_silence',
         },
         {
           start: 13,
-          end: 15,
-          name: t`A Perfect Day`,
-          underground: t`Glitterain`,
-          valley_id: 'a_perfect_day',
-          underground_id: 'glitterain',
-        },
-        {
-          start: 16,
-          end: 18,
-          name: t`Downpour`,
-          underground: t`Enveloping Silence`,
-          valley_id: 'downpour',
-          underground_id: 'enveloping_silence',
-        },
-        {
-          start: 19,
-          end: 21,
-          name: t`A Perfect Day`,
-          underground: t`Glitterain`,
-          valley_id: 'a_perfect_day',
-          underground_id: 'glitterain',
-        },
-        {
-          start: 22,
-          end: 23,
-          name: t`Howling Wind`,
-          underground: t`Shimmering Runoff`,
+          end: 14,
+          name: t`Howling Winds`,
           valley_id: 'howling_wind',
-          underground_id: 'shimmering_runoff',
         },
         {
-          start: 24,
-          end: 27,
+          start: 15,
+          end: 17,
           name: t`Downpour`,
-          underground: t`Enveloping Silence`,
           valley_id: 'downpour',
-          underground_id: 'enveloping_silence',
         },
         {
-          start: 28,
+          start: 18,
+          end: 20,
+          name: t`Howling Winds`,
+          valley_id: 'howling_wind',
+        },
+        {
+          start: 21,
+          end: 22,
+          name: t`A Perfect Day`,
+          valley_id: 'a_perfect_day',
+        },
+        {
+          start: 23,
+          end: 25,
+          name: t`Downpour`,
+          valley_id: 'downpour',
+        },
+        {
+          start: 26,
+          end: 28,
+          name: t`Howling Winds`,
+          valley_id: 'howling_wind',
+        },
+        {
+          start: 29,
           end: 30,
           name: t`A Perfect Day`,
-          underground: t`Glitterain`,
           valley_id: 'a_perfect_day',
-          underground_id: 'glitterain',
         },
-      ];
-    }
-    return [
-      {
-        start: 1,
-        end: 3,
-        name: t`A Perfect Day`,
-        valley_id: 'a_perfect_day',
-      },
-      {
-        start: 4,
-        end: 7,
-        name: t`Downpour`,
-        valley_id: 'downpour',
-      },
-      {
-        start: 8,
-        end: 9,
-        name: t`A Perfect Day`,
-        valley_id: 'a_perfect_day',
-      },
-      {
-        start: 10,
-        end: 12,
-        name: t`Downpour`,
-        valley_id: 'downpour',
-      },
-      {
-        start: 13,
-        end: 14,
-        name: t`Howling Winds`,
-        valley_id: 'howling_wind',
-      },
-      {
-        start: 15,
-        end: 17,
-        name: t`Downpour`,
-        valley_id: 'downpour',
-      },
-      {
-        start: 18,
-        end: 20,
-        name: t`Howling Winds`,
-        valley_id: 'howling_wind',
-      },
-      {
-        start: 21,
-        end: 22,
-        name: t`A Perfect Day`,
-        valley_id: 'a_perfect_day',
-      },
-      {
-        start: 23,
-        end: 25,
-        name: t`Downpour`,
-        valley_id: 'downpour',
-      },
-      {
-        start: 26,
-        end: 28,
-        name: t`Howling Winds`,
-        valley_id: 'howling_wind',
-      },
-      {
-        start: 29,
-        end: 30,
-        name: t`A Perfect Day`,
-        valley_id: 'a_perfect_day',
-      },
-      {
-        start: 31,
-        end: 33,
-        name: t`Downpour`,
-        valley_id: 'downpour',
-      },
-      {
-        start: 34,
-        end: 35,
-        name: t`A Perfect Day`,
-        valley_id: 'a_perfect_day',
-      },
-      {
-        start: 36,
-        end: 39,
-        name: t`Howling Winds`,
-        valley_id: 'howling_wind',
-      },
-      {
-        start: 40,
-        end: 42,
-        name: t`Downpour`,
-        valley_id: 'downpour',
-      },
-      {
-        start: 43,
-        end: 45,
-        name: t`A Perfect Day`,
-        valley_id: 'a_perfect_day',
-      },
-    ]
-  }, [cycle_id]);
+        ...(extendedCampaign ? [
+          {
+            start: 31,
+            end: 33,
+            name: t`Downpour`,
+            valley_id: 'downpour',
+          },
+          {
+            start: 34,
+            end: 35,
+            name: t`A Perfect Day`,
+            valley_id: 'a_perfect_day',
+          },
+          {
+            start: 36,
+            end: 39,
+            name: t`Howling Winds`,
+            valley_id: 'howling_wind',
+          },
+          {
+            start: 40,
+            end: 42,
+            name: t`Downpour`,
+            valley_id: 'downpour',
+          },
+          {
+            start: 43,
+            end: 45,
+            name: t`A Perfect Day`,
+            valley_id: 'a_perfect_day',
+          },
+        ] : []),
+      ],
+      maxDay: extendedCampaign ? 45 : 30,
+    };
+  }, [cycle_id, extendedCampaign]);
 }
 
 const FIXED_GUIDE_ENTRIES: {
@@ -2095,7 +2106,7 @@ export interface TimelineDay {
 /**
  * Processes campaign timeline data into structured day objects
  */
-export function getTimelineDays(campaign: ParsedCampaign, weatherLabels: Weather[]): TimelineDay[] {
+export function getTimelineDays(campaign: ParsedCampaign, weatherLabels: Weather[], maxDay: number): TimelineDay[] {
   const fixedEntries = FIXED_GUIDE_ENTRIES[campaign.cycle_id] ?? {};
   const entriesByDay: { [key: string]: string[] | undefined } = { ...fixedEntries };
 
@@ -2109,10 +2120,10 @@ export function getTimelineDays(campaign: ParsedCampaign, weatherLabels: Weather
     });
   });
 
-  const maxDay = campaign.extended_calendar ? 60 : 30;
+  const theMaxDay = campaign.extended_calendar ? 60 : maxDay;
   const result: TimelineDay[] = [];
 
-  for (let day = 1; day <= maxDay; day++) {
+  for (let day = 1; day <= theMaxDay; day++) {
     const weather = weatherLabels.find(w => day >= w.start && day <= w.end);
     result.push({
       day,
@@ -2133,9 +2144,10 @@ export function getTimelineDays(campaign: ParsedCampaign, weatherLabels: Weather
 export function findNextDay(
   campaign: ParsedCampaign,
   weatherLabels: Weather[],
+  maxDay: number,
   predicate: (day: TimelineDay) => boolean
 ): TimelineDay | undefined {
-  const days = getTimelineDays(campaign, weatherLabels);
+  const days = getTimelineDays(campaign, weatherLabels, maxDay);
   return days.find(day => day.isFuture && predicate(day));
 }
 
@@ -2143,41 +2155,41 @@ export function findNextDay(
  * Hook to get timeline days for a campaign
  */
 export function useTimelineDays(campaign: ParsedCampaign): TimelineDay[] {
-  const singleWeatherLabels = useWeather(campaign.cycle_id);
+  const { weather: singleWeatherLabels, maxDay } = useWeather(campaign.cycle_id, campaign.extended_calendar);
   const weatherLabels = useMemo(() => {
     return [
       ...singleWeatherLabels,
       ...(campaign.extended_calendar ?
         singleWeatherLabels.map(weather => ({
-          start: weather.start + 30,
-          end: weather.end + 30,
+          start: weather.start + maxDay,
+          end: weather.end + maxDay,
           name: weather.name,
           valley_id: weather.valley_id,
           underground: weather.underground,
           underground_id: weather.underground_id,
         })) : []),
     ];
-  }, [campaign.extended_calendar, singleWeatherLabels]);
+  }, [campaign.extended_calendar, singleWeatherLabels, maxDay]);
 
-  return useMemo(() => getTimelineDays(campaign, weatherLabels), [campaign, weatherLabels]);
+  return useMemo(() => getTimelineDays(campaign, weatherLabels, maxDay), [campaign, weatherLabels, maxDay]);
 }
 
 function Timeline({ campaign }: { campaign: ParsedCampaign }) {
-  const singleWeatherLabels = useWeather(campaign.cycle_id);
+  const { weather: singleWeatherLabels, maxDay } = useWeather(campaign.cycle_id, campaign.extended_calendar);
   const weatherLabels = useMemo(() => {
     return [
       ...singleWeatherLabels,
       ...(campaign.extended_calendar ?
         singleWeatherLabels.map(weather => {
           return {
-            start: weather.start + 30,
-            end: weather.end + 30,
+            start: weather.start + maxDay,
+            end: weather.end + maxDay,
             name: weather.name,
             underground: weather.underground,
           };
         }) : []),
     ];
-  }, [campaign.extended_calendar, singleWeatherLabels]);
+  }, [campaign.extended_calendar, singleWeatherLabels, maxDay]);
   const [showDayModal, editDayModal] = useEditDayModal(campaign);
   const entriesByDay = useMemo(() => {
     const fixedEntries = FIXED_GUIDE_ENTRIES[campaign.cycle_id] ?? {};
