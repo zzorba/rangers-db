@@ -26,6 +26,12 @@ export interface CampaignCycle {
   name: string;
 }
 
+export interface CampaignExpansion {
+  id: string;
+  name: string;
+  cycles: string[];
+}
+
 export interface ExpansionMapCondition {
   expansion: string;
   action: 'add' | 'remove';

@@ -307,9 +307,6 @@ msgstr "Copia questo mazzo per modificarlo."
 msgid "Core"
 msgstr "Base"
 
-msgid "Core set"
-msgstr "Set Base"
-
 msgid "Cost"
 msgstr "Costo"
 
@@ -639,6 +636,9 @@ msgstr "Accedi"
 
 msgid "Lone Tree Station"
 msgstr "Stazione Ermotronco"
+
+msgid "Lure of the Valley (Core)"
+msgstr ""
 
 msgid "Maladies"
 msgstr "Malanni"
@@ -995,6 +995,9 @@ msgstr "Set"
 msgid "Settings"
 msgstr "Impostazioni"
 
+msgid "Setup recommended expansion events?"
+msgstr ""
+
 msgid "Severed Artery"
 msgstr ""
 
@@ -1049,7 +1052,10 @@ msgstr "SPI"
 msgid "Spire"
 msgstr "Guglia"
 
-msgid "Spire's Crossing"
+msgid "Spire Crossing"
+msgstr ""
+
+msgid "Spire In Bloom"
 msgstr ""
 
 msgid "Spirit"
@@ -1193,6 +1199,9 @@ msgstr "Questo terminerà la giornata {0}."
 msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 msgstr ""
 
+msgid "Thoroughfare"
+msgstr ""
+
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "Per evitare spoiler per gli altri giocatori, non è possibile pubblicare mazzi coi quali ci si è accampati."
 
@@ -1270,6 +1279,9 @@ msgstr "Togli il mi piace"
 
 msgid "Update now"
 msgstr "Aggiorna ora"
+
+msgid "Valley Expansions"
+msgstr ""
 
 msgid "View as Cards"
 msgstr ""

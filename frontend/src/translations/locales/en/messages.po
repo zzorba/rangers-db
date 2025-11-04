@@ -307,9 +307,6 @@ msgstr "Copy this deck to make your own changes."
 msgid "Core"
 msgstr "Core"
 
-msgid "Core set"
-msgstr "Core set"
-
 msgid "Cost"
 msgstr "Cost"
 
@@ -639,6 +636,9 @@ msgstr "Login"
 
 msgid "Lone Tree Station"
 msgstr "Lone Tree Station"
+
+msgid "Lure of the Valley (Core)"
+msgstr "Lure of the Valley (Core)"
 
 msgid "Maladies"
 msgstr "Maladies"
@@ -995,6 +995,9 @@ msgstr "Set"
 msgid "Settings"
 msgstr "Settings"
 
+msgid "Setup recommended expansion events?"
+msgstr "Setup recommended expansion events?"
+
 msgid "Severed Artery"
 msgstr "Severed Artery"
 
@@ -1049,8 +1052,11 @@ msgstr "SPI"
 msgid "Spire"
 msgstr "Spire"
 
-msgid "Spire's Crossing"
-msgstr "Spire's Crossing"
+msgid "Spire Crossing"
+msgstr "Spire Crossing"
+
+msgid "Spire In Bloom"
+msgstr "Spire In Bloom"
 
 msgid "Spirit"
 msgstr "Spirit"
@@ -1193,6 +1199,9 @@ msgstr "This will end day {0}."
 msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 msgstr "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 
+msgid "Thoroughfare"
+msgstr "Thoroughfare"
+
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "To avoid spoilers for other players, you cannot publish decks that have camped."
 
@@ -1270,6 +1279,9 @@ msgstr "Unlike"
 
 msgid "Update now"
 msgstr "Update now"
+
+msgid "Valley Expansions"
+msgstr "Valley Expansions"
 
 msgid "View as Cards"
 msgstr "View as Cards"

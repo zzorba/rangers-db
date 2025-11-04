@@ -307,9 +307,6 @@ msgstr ""
 msgid "Core"
 msgstr ""
 
-msgid "Core set"
-msgstr ""
-
 msgid "Cost"
 msgstr ""
 
@@ -638,6 +635,9 @@ msgid "Login"
 msgstr ""
 
 msgid "Lone Tree Station"
+msgstr ""
+
+msgid "Lure of the Valley (Core)"
 msgstr ""
 
 msgid "Maladies"
@@ -995,6 +995,9 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+msgid "Setup recommended expansion events?"
+msgstr ""
+
 msgid "Severed Artery"
 msgstr ""
 
@@ -1049,7 +1052,10 @@ msgstr ""
 msgid "Spire"
 msgstr ""
 
-msgid "Spire's Crossing"
+msgid "Spire Crossing"
+msgstr ""
+
+msgid "Spire In Bloom"
 msgstr ""
 
 msgid "Spirit"
@@ -1193,6 +1199,9 @@ msgstr ""
 msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 msgstr ""
 
+msgid "Thoroughfare"
+msgstr ""
+
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr ""
 
@@ -1269,6 +1278,9 @@ msgid "Unlike"
 msgstr ""
 
 msgid "Update now"
+msgstr ""
+
+msgid "Valley Expansions"
 msgstr ""
 
 msgid "View as Cards"

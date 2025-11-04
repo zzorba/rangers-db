@@ -307,9 +307,6 @@ msgstr "Copia este mazo para realizar tus propios cambios."
 msgid "Core"
 msgstr "Caja básica"
 
-msgid "Core set"
-msgstr "Caja básica"
-
 msgid "Cost"
 msgstr "Coste"
 
@@ -639,6 +636,9 @@ msgstr "Loguear"
 
 msgid "Lone Tree Station"
 msgstr "Estación Árbol Solitario"
+
+msgid "Lure of the Valley (Core)"
+msgstr ""
 
 msgid "Maladies"
 msgstr "Enfermedades"
@@ -995,6 +995,9 @@ msgstr "Conjunto"
 msgid "Settings"
 msgstr "Ajustes"
 
+msgid "Setup recommended expansion events?"
+msgstr ""
+
 msgid "Severed Artery"
 msgstr "Arteria cortada"
 
@@ -1049,7 +1052,10 @@ msgstr "VIT"
 msgid "Spire"
 msgstr "Aguja"
 
-msgid "Spire's Crossing"
+msgid "Spire Crossing"
+msgstr ""
+
+msgid "Spire In Bloom"
 msgstr ""
 
 msgid "Spirit"
@@ -1193,6 +1199,9 @@ msgstr "Esto terminará el día {0}."
 msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 msgstr "Esto cambiará los controles del mazo para permitir los cambios que están permitidos mientras se juega una campaña."
 
+msgid "Thoroughfare"
+msgstr ""
+
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "Para evitar spoilers para otros jugadores, no puedes publicar mazos que hayan acampado."
 
@@ -1270,6 +1279,9 @@ msgstr "Ya no me gusta"
 
 msgid "Update now"
 msgstr "Actualizar ahora"
+
+msgid "Valley Expansions"
+msgstr ""
 
 msgid "View as Cards"
 msgstr "Ver como carta"

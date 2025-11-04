@@ -307,9 +307,6 @@ msgstr "Kopiere dieses Deck um Änderungen daran vorzunehmen."
 msgid "Core"
 msgstr "Grundspiel"
 
-msgid "Core set"
-msgstr "Grundspiel-Set"
-
 msgid "Cost"
 msgstr "Kosten"
 
@@ -639,6 +636,9 @@ msgstr "Anmeldung"
 
 msgid "Lone Tree Station"
 msgstr "Flurbaum-Basis"
+
+msgid "Lure of the Valley (Core)"
+msgstr ""
 
 msgid "Maladies"
 msgstr "Schwächungen"
@@ -995,6 +995,9 @@ msgstr "Set"
 msgid "Settings"
 msgstr "Einstellungen"
 
+msgid "Setup recommended expansion events?"
+msgstr ""
+
 msgid "Severed Artery"
 msgstr ""
 
@@ -1049,7 +1052,10 @@ msgstr "SOV"
 msgid "Spire"
 msgstr "Wolkenlanze"
 
-msgid "Spire's Crossing"
+msgid "Spire Crossing"
+msgstr ""
+
+msgid "Spire In Bloom"
 msgstr ""
 
 msgid "Spirit"
@@ -1193,6 +1199,9 @@ msgstr "Tag {0} wird beendet."
 msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 msgstr "Wechselt die Steuerung um Änderungen am Deck, die während einer Kampagne möglich sind, zu erlauben."
 
+msgid "Thoroughfare"
+msgstr ""
+
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "Um Spoiler für andere Spieler zu vermeiden kannst du keine Decks veröffentlichen, mit denen du dein Nachtlager aufgeschlagen hast."
 
@@ -1270,6 +1279,9 @@ msgstr "Gefällt mir nicht"
 
 msgid "Update now"
 msgstr "Jetzt bearbeiten"
+
+msgid "Valley Expansions"
+msgstr ""
 
 msgid "View as Cards"
 msgstr "Ansicht: Karten"

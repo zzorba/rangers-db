@@ -5,7 +5,7 @@ import { t } from '@lingui/macro';
 
 import { useAuth } from './AuthContext';
 import { CardFragment, SetTypeFragment, useLikeDeckMutation, useUnlikeDeckMutation } from '../generated/graphql/apollo-schema';
-import { AspectMap, CampaignCycle, ConnectionRestriction, ConnectionRestrictionMap, ConnectionRestrictionType, DeckCardError, DeckError, ExpansionMapCondition, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
+import { AspectMap, CampaignCycle, CampaignExpansion, ConnectionRestriction, ConnectionRestrictionMap, ConnectionRestrictionType, DeckCardError, DeckError, ExpansionMapCondition, MapLocation, MapLocationConnection, MapLocations, Path, PathType, PathTypeMap } from '../types/types';
 import { useLingui } from '@lingui/react';
 
 export function useRequireAuth() {
@@ -312,6 +312,18 @@ export function getPathTypes(): PathTypeMap {
       name: t`Cave System`,
       color: '#c06d25',
       campaigns: ['loa']
+    },
+    {
+      id: Path.RIVER,
+      name: t`River`,
+      color: '#5996aa',
+      campaigns: ['core', 'demo', 'loa'],
+    },
+    {
+      id: Path.THOROUGHFARE,
+      name: t`Thoroughfare`,
+      color: '#49674b',
+      campaigns: ['core'],
     }
   ];
   forEach(paths, p => {
@@ -1003,13 +1015,32 @@ export function getCampaignCycles(): CampaignCycle[] {
     },
     {
       id: 'core',
-      name: t`Core set`,
+      name: t`Lure of the Valley (Core)`,
     },
     {
       id: 'loa',
       name: t`Legacy of the Ancestors`
     },
   ];
+}
+
+export function getCampaignExpansions(cycle?: string): CampaignExpansion[] {
+  if (!cycle) {
+    return [];
+  }
+  return [
+    {
+      id: 'sib',
+      name: t`Spire In Bloom`,
+      cycles: ['core'],
+    },
+  ].filter(expansion => expansion.cycles.includes(cycle));
+}
+
+export function useCampaignExpansions(cycle?: string): CampaignExpansion[] {
+  const { i18n } = useLingui();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return useMemo(() => getCampaignExpansions(cycle), [cycle, i18n]);
 }
 
 function shouldSkip(expansionConditions: ExpansionMapCondition[], selectedExpansions: Set<string>): boolean {
@@ -1376,8 +1407,8 @@ export function getMapLocations(cycle: string, expansions: string[]): MapLocatio
       cycles: ['loa'],
     },
     {
-      id: 'spires_crossing',
-      name: t`Spire's Crossing`,
+      id: 'spire_crossing',
+      name: t`Spire Crossing`,
       type: 'location',
       expansionConditions: [
         {
@@ -1391,7 +1422,7 @@ export function getMapLocations(cycle: string, expansions: string[]): MapLocatio
       name: t`Brookside`,
       type: 'location',
       expansionConditions: [
-        { 
+        {
           expansion: 'sib',
           action: 'add',
         }
@@ -1402,7 +1433,7 @@ export function getMapLocations(cycle: string, expansions: string[]): MapLocatio
       name: t`Silverfin Docks`,
       type: 'location',
       expansionConditions: [
-        { 
+        {
           expansion: 'sib',
           action: 'add',
         }

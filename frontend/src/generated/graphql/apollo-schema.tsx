@@ -181,6 +181,23 @@ export type RefreshDecksOutput = {
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
+export type String_Array_Comparison_Exp = {
+  /** is the array contained in the given array value */
+  _contained_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** does the array contain the given value */
+  _contains?: InputMaybe<Array<Scalars['String']['input']>>;
+  _eq?: InputMaybe<Array<Scalars['String']['input']>>;
+  _gt?: InputMaybe<Array<Scalars['String']['input']>>;
+  _gte?: InputMaybe<Array<Scalars['String']['input']>>;
+  _in?: InputMaybe<Array<Array<Scalars['String']['input']>>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Array<Scalars['String']['input']>>;
+  _lte?: InputMaybe<Array<Scalars['String']['input']>>;
+  _neq?: InputMaybe<Array<Scalars['String']['input']>>;
+  _nin?: InputMaybe<Array<Array<Scalars['String']['input']>>>;
+};
+
+/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['String']['input']>;
   _gt?: InputMaybe<Scalars['String']['input']>;
@@ -21043,6 +21060,26 @@ export type Mutation_Root = {
   delete_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
   /** delete data from the table: "local_decks" */
   delete_local_decks?: Maybe<Local_Decks_Mutation_Response>;
+  /** delete data from the table: "oauth_access_tokens" */
+  delete_oauth_access_tokens?: Maybe<Oauth_Access_Tokens_Mutation_Response>;
+  /** delete single row from the table: "oauth_access_tokens" */
+  delete_oauth_access_tokens_by_pk?: Maybe<Oauth_Access_Tokens>;
+  /** delete data from the table: "oauth_authorization_codes" */
+  delete_oauth_authorization_codes?: Maybe<Oauth_Authorization_Codes_Mutation_Response>;
+  /** delete single row from the table: "oauth_authorization_codes" */
+  delete_oauth_authorization_codes_by_pk?: Maybe<Oauth_Authorization_Codes>;
+  /** delete data from the table: "oauth_clients" */
+  delete_oauth_clients?: Maybe<Oauth_Clients_Mutation_Response>;
+  /** delete single row from the table: "oauth_clients" */
+  delete_oauth_clients_by_pk?: Maybe<Oauth_Clients>;
+  /** delete data from the table: "oauth_refresh_tokens" */
+  delete_oauth_refresh_tokens?: Maybe<Oauth_Refresh_Tokens_Mutation_Response>;
+  /** delete single row from the table: "oauth_refresh_tokens" */
+  delete_oauth_refresh_tokens_by_pk?: Maybe<Oauth_Refresh_Tokens>;
+  /** delete data from the table: "oauth_scopes" */
+  delete_oauth_scopes?: Maybe<Oauth_Scopes_Mutation_Response>;
+  /** delete single row from the table: "oauth_scopes" */
+  delete_oauth_scopes_by_pk?: Maybe<Oauth_Scopes>;
   /** delete data from the table: "pack" */
   delete_pack?: Maybe<Pack_Mutation_Response>;
   /** delete single row from the table: "pack" */
@@ -21454,6 +21491,26 @@ export type Mutation_Root = {
   insert_local_decks?: Maybe<Local_Decks_Mutation_Response>;
   /** insert a single row into the table: "local_decks" */
   insert_local_decks_one?: Maybe<Local_Decks>;
+  /** insert data into the table: "oauth_access_tokens" */
+  insert_oauth_access_tokens?: Maybe<Oauth_Access_Tokens_Mutation_Response>;
+  /** insert a single row into the table: "oauth_access_tokens" */
+  insert_oauth_access_tokens_one?: Maybe<Oauth_Access_Tokens>;
+  /** insert data into the table: "oauth_authorization_codes" */
+  insert_oauth_authorization_codes?: Maybe<Oauth_Authorization_Codes_Mutation_Response>;
+  /** insert a single row into the table: "oauth_authorization_codes" */
+  insert_oauth_authorization_codes_one?: Maybe<Oauth_Authorization_Codes>;
+  /** insert data into the table: "oauth_clients" */
+  insert_oauth_clients?: Maybe<Oauth_Clients_Mutation_Response>;
+  /** insert a single row into the table: "oauth_clients" */
+  insert_oauth_clients_one?: Maybe<Oauth_Clients>;
+  /** insert data into the table: "oauth_refresh_tokens" */
+  insert_oauth_refresh_tokens?: Maybe<Oauth_Refresh_Tokens_Mutation_Response>;
+  /** insert a single row into the table: "oauth_refresh_tokens" */
+  insert_oauth_refresh_tokens_one?: Maybe<Oauth_Refresh_Tokens>;
+  /** insert data into the table: "oauth_scopes" */
+  insert_oauth_scopes?: Maybe<Oauth_Scopes_Mutation_Response>;
+  /** insert a single row into the table: "oauth_scopes" */
+  insert_oauth_scopes_one?: Maybe<Oauth_Scopes>;
   /** insert data into the table: "pack" */
   insert_pack?: Maybe<Pack_Mutation_Response>;
   /** insert data into the table: "pack_name" */
@@ -22010,6 +22067,36 @@ export type Mutation_Root = {
   update_local_decks?: Maybe<Local_Decks_Mutation_Response>;
   /** update multiples rows of table: "local_decks" */
   update_local_decks_many?: Maybe<Array<Maybe<Local_Decks_Mutation_Response>>>;
+  /** update data of the table: "oauth_access_tokens" */
+  update_oauth_access_tokens?: Maybe<Oauth_Access_Tokens_Mutation_Response>;
+  /** update single row of the table: "oauth_access_tokens" */
+  update_oauth_access_tokens_by_pk?: Maybe<Oauth_Access_Tokens>;
+  /** update multiples rows of table: "oauth_access_tokens" */
+  update_oauth_access_tokens_many?: Maybe<Array<Maybe<Oauth_Access_Tokens_Mutation_Response>>>;
+  /** update data of the table: "oauth_authorization_codes" */
+  update_oauth_authorization_codes?: Maybe<Oauth_Authorization_Codes_Mutation_Response>;
+  /** update single row of the table: "oauth_authorization_codes" */
+  update_oauth_authorization_codes_by_pk?: Maybe<Oauth_Authorization_Codes>;
+  /** update multiples rows of table: "oauth_authorization_codes" */
+  update_oauth_authorization_codes_many?: Maybe<Array<Maybe<Oauth_Authorization_Codes_Mutation_Response>>>;
+  /** update data of the table: "oauth_clients" */
+  update_oauth_clients?: Maybe<Oauth_Clients_Mutation_Response>;
+  /** update single row of the table: "oauth_clients" */
+  update_oauth_clients_by_pk?: Maybe<Oauth_Clients>;
+  /** update multiples rows of table: "oauth_clients" */
+  update_oauth_clients_many?: Maybe<Array<Maybe<Oauth_Clients_Mutation_Response>>>;
+  /** update data of the table: "oauth_refresh_tokens" */
+  update_oauth_refresh_tokens?: Maybe<Oauth_Refresh_Tokens_Mutation_Response>;
+  /** update single row of the table: "oauth_refresh_tokens" */
+  update_oauth_refresh_tokens_by_pk?: Maybe<Oauth_Refresh_Tokens>;
+  /** update multiples rows of table: "oauth_refresh_tokens" */
+  update_oauth_refresh_tokens_many?: Maybe<Array<Maybe<Oauth_Refresh_Tokens_Mutation_Response>>>;
+  /** update data of the table: "oauth_scopes" */
+  update_oauth_scopes?: Maybe<Oauth_Scopes_Mutation_Response>;
+  /** update single row of the table: "oauth_scopes" */
+  update_oauth_scopes_by_pk?: Maybe<Oauth_Scopes>;
+  /** update multiples rows of table: "oauth_scopes" */
+  update_oauth_scopes_many?: Maybe<Array<Maybe<Oauth_Scopes_Mutation_Response>>>;
   /** update data of the table: "pack" */
   update_pack?: Maybe<Pack_Mutation_Response>;
   /** update single row of the table: "pack" */
@@ -23013,6 +23100,66 @@ export type Mutation_RootDelete_Latest_DecksArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Local_DecksArgs = {
   where: Local_Decks_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_Access_TokensArgs = {
+  where: Oauth_Access_Tokens_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_Access_Tokens_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_Authorization_CodesArgs = {
+  where: Oauth_Authorization_Codes_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_Authorization_Codes_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_ClientsArgs = {
+  where: Oauth_Clients_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_Clients_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_Refresh_TokensArgs = {
+  where: Oauth_Refresh_Tokens_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_Refresh_Tokens_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_ScopesArgs = {
+  where: Oauth_Scopes_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Oauth_Scopes_By_PkArgs = {
+  id: Scalars['String']['input'];
 };
 
 
@@ -24370,6 +24517,76 @@ export type Mutation_RootInsert_Local_DecksArgs = {
 /** mutation root */
 export type Mutation_RootInsert_Local_Decks_OneArgs = {
   object: Local_Decks_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_Access_TokensArgs = {
+  objects: Array<Oauth_Access_Tokens_Insert_Input>;
+  on_conflict?: InputMaybe<Oauth_Access_Tokens_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_Access_Tokens_OneArgs = {
+  object: Oauth_Access_Tokens_Insert_Input;
+  on_conflict?: InputMaybe<Oauth_Access_Tokens_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_Authorization_CodesArgs = {
+  objects: Array<Oauth_Authorization_Codes_Insert_Input>;
+  on_conflict?: InputMaybe<Oauth_Authorization_Codes_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_Authorization_Codes_OneArgs = {
+  object: Oauth_Authorization_Codes_Insert_Input;
+  on_conflict?: InputMaybe<Oauth_Authorization_Codes_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_ClientsArgs = {
+  objects: Array<Oauth_Clients_Insert_Input>;
+  on_conflict?: InputMaybe<Oauth_Clients_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_Clients_OneArgs = {
+  object: Oauth_Clients_Insert_Input;
+  on_conflict?: InputMaybe<Oauth_Clients_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_Refresh_TokensArgs = {
+  objects: Array<Oauth_Refresh_Tokens_Insert_Input>;
+  on_conflict?: InputMaybe<Oauth_Refresh_Tokens_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_Refresh_Tokens_OneArgs = {
+  object: Oauth_Refresh_Tokens_Insert_Input;
+  on_conflict?: InputMaybe<Oauth_Refresh_Tokens_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_ScopesArgs = {
+  objects: Array<Oauth_Scopes_Insert_Input>;
+  on_conflict?: InputMaybe<Oauth_Scopes_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Oauth_Scopes_OneArgs = {
+  object: Oauth_Scopes_Insert_Input;
+  on_conflict?: InputMaybe<Oauth_Scopes_On_Conflict>;
 };
 
 
@@ -26450,6 +26667,106 @@ export type Mutation_RootUpdate_Local_Decks_ManyArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Oauth_Access_TokensArgs = {
+  _set?: InputMaybe<Oauth_Access_Tokens_Set_Input>;
+  where: Oauth_Access_Tokens_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Access_Tokens_By_PkArgs = {
+  _set?: InputMaybe<Oauth_Access_Tokens_Set_Input>;
+  pk_columns: Oauth_Access_Tokens_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Access_Tokens_ManyArgs = {
+  updates: Array<Oauth_Access_Tokens_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Authorization_CodesArgs = {
+  _set?: InputMaybe<Oauth_Authorization_Codes_Set_Input>;
+  where: Oauth_Authorization_Codes_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Authorization_Codes_By_PkArgs = {
+  _set?: InputMaybe<Oauth_Authorization_Codes_Set_Input>;
+  pk_columns: Oauth_Authorization_Codes_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Authorization_Codes_ManyArgs = {
+  updates: Array<Oauth_Authorization_Codes_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_ClientsArgs = {
+  _set?: InputMaybe<Oauth_Clients_Set_Input>;
+  where: Oauth_Clients_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Clients_By_PkArgs = {
+  _set?: InputMaybe<Oauth_Clients_Set_Input>;
+  pk_columns: Oauth_Clients_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Clients_ManyArgs = {
+  updates: Array<Oauth_Clients_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Refresh_TokensArgs = {
+  _set?: InputMaybe<Oauth_Refresh_Tokens_Set_Input>;
+  where: Oauth_Refresh_Tokens_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Refresh_Tokens_By_PkArgs = {
+  _set?: InputMaybe<Oauth_Refresh_Tokens_Set_Input>;
+  pk_columns: Oauth_Refresh_Tokens_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Refresh_Tokens_ManyArgs = {
+  updates: Array<Oauth_Refresh_Tokens_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_ScopesArgs = {
+  _set?: InputMaybe<Oauth_Scopes_Set_Input>;
+  where: Oauth_Scopes_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Scopes_By_PkArgs = {
+  _set?: InputMaybe<Oauth_Scopes_Set_Input>;
+  pk_columns: Oauth_Scopes_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Oauth_Scopes_ManyArgs = {
+  updates: Array<Oauth_Scopes_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_PackArgs = {
   _inc?: InputMaybe<Pack_Inc_Input>;
   _set?: InputMaybe<Pack_Set_Input>;
@@ -27481,6 +27798,1026 @@ export type Mutation_RootUploadLocalCampaignDeckArgs = {
   args: UploadLocalCampaignDeckInput;
 };
 
+/** columns and relationships of "oauth_access_tokens" */
+export type Oauth_Access_Tokens = {
+  __typename?: 'oauth_access_tokens';
+  client_id: Scalars['String']['output'];
+  created_at: Scalars['timestamptz']['output'];
+  expires_at: Scalars['timestamptz']['output'];
+  id: Scalars['uuid']['output'];
+  revoked: Scalars['Boolean']['output'];
+  scope: Scalars['String']['output'];
+  token: Scalars['String']['output'];
+  user_id: Scalars['String']['output'];
+};
+
+/** aggregated selection of "oauth_access_tokens" */
+export type Oauth_Access_Tokens_Aggregate = {
+  __typename?: 'oauth_access_tokens_aggregate';
+  aggregate?: Maybe<Oauth_Access_Tokens_Aggregate_Fields>;
+  nodes: Array<Oauth_Access_Tokens>;
+};
+
+/** aggregate fields of "oauth_access_tokens" */
+export type Oauth_Access_Tokens_Aggregate_Fields = {
+  __typename?: 'oauth_access_tokens_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<Oauth_Access_Tokens_Max_Fields>;
+  min?: Maybe<Oauth_Access_Tokens_Min_Fields>;
+};
+
+
+/** aggregate fields of "oauth_access_tokens" */
+export type Oauth_Access_Tokens_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Oauth_Access_Tokens_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Boolean expression to filter rows from the table "oauth_access_tokens". All fields are combined with a logical 'AND'. */
+export type Oauth_Access_Tokens_Bool_Exp = {
+  _and?: InputMaybe<Array<Oauth_Access_Tokens_Bool_Exp>>;
+  _not?: InputMaybe<Oauth_Access_Tokens_Bool_Exp>;
+  _or?: InputMaybe<Array<Oauth_Access_Tokens_Bool_Exp>>;
+  client_id?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  expires_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  revoked?: InputMaybe<Boolean_Comparison_Exp>;
+  scope?: InputMaybe<String_Comparison_Exp>;
+  token?: InputMaybe<String_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "oauth_access_tokens" */
+export enum Oauth_Access_Tokens_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  OauthAccessTokensPkey = 'oauth_access_tokens_pkey',
+  /** unique or primary key constraint on columns "token" */
+  OauthAccessTokensTokenKey = 'oauth_access_tokens_token_key'
+}
+
+/** input type for inserting data into table "oauth_access_tokens" */
+export type Oauth_Access_Tokens_Insert_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  revoked?: InputMaybe<Scalars['Boolean']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate max on columns */
+export type Oauth_Access_Tokens_Max_Fields = {
+  __typename?: 'oauth_access_tokens_max_fields';
+  client_id?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  expires_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  token?: Maybe<Scalars['String']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** aggregate min on columns */
+export type Oauth_Access_Tokens_Min_Fields = {
+  __typename?: 'oauth_access_tokens_min_fields';
+  client_id?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  expires_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  token?: Maybe<Scalars['String']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** response of any mutation on the table "oauth_access_tokens" */
+export type Oauth_Access_Tokens_Mutation_Response = {
+  __typename?: 'oauth_access_tokens_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Oauth_Access_Tokens>;
+};
+
+/** on_conflict condition type for table "oauth_access_tokens" */
+export type Oauth_Access_Tokens_On_Conflict = {
+  constraint: Oauth_Access_Tokens_Constraint;
+  update_columns?: Array<Oauth_Access_Tokens_Update_Column>;
+  where?: InputMaybe<Oauth_Access_Tokens_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "oauth_access_tokens". */
+export type Oauth_Access_Tokens_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  expires_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  revoked?: InputMaybe<Order_By>;
+  scope?: InputMaybe<Order_By>;
+  token?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: oauth_access_tokens */
+export type Oauth_Access_Tokens_Pk_Columns_Input = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "oauth_access_tokens" */
+export enum Oauth_Access_Tokens_Select_Column {
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  ExpiresAt = 'expires_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Revoked = 'revoked',
+  /** column name */
+  Scope = 'scope',
+  /** column name */
+  Token = 'token',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "oauth_access_tokens" */
+export type Oauth_Access_Tokens_Set_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  revoked?: InputMaybe<Scalars['Boolean']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Streaming cursor of the table "oauth_access_tokens" */
+export type Oauth_Access_Tokens_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Oauth_Access_Tokens_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Oauth_Access_Tokens_Stream_Cursor_Value_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  revoked?: InputMaybe<Scalars['Boolean']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** update columns of table "oauth_access_tokens" */
+export enum Oauth_Access_Tokens_Update_Column {
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  ExpiresAt = 'expires_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Revoked = 'revoked',
+  /** column name */
+  Scope = 'scope',
+  /** column name */
+  Token = 'token',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Oauth_Access_Tokens_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Oauth_Access_Tokens_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Oauth_Access_Tokens_Bool_Exp;
+};
+
+/** columns and relationships of "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes = {
+  __typename?: 'oauth_authorization_codes';
+  client_id: Scalars['String']['output'];
+  code: Scalars['String']['output'];
+  code_challenge?: Maybe<Scalars['String']['output']>;
+  code_challenge_method?: Maybe<Scalars['String']['output']>;
+  created_at: Scalars['timestamptz']['output'];
+  expires_at: Scalars['timestamptz']['output'];
+  id: Scalars['uuid']['output'];
+  redirect_uri: Scalars['String']['output'];
+  scope: Scalars['String']['output'];
+  used: Scalars['Boolean']['output'];
+  user_id: Scalars['String']['output'];
+};
+
+/** aggregated selection of "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes_Aggregate = {
+  __typename?: 'oauth_authorization_codes_aggregate';
+  aggregate?: Maybe<Oauth_Authorization_Codes_Aggregate_Fields>;
+  nodes: Array<Oauth_Authorization_Codes>;
+};
+
+/** aggregate fields of "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes_Aggregate_Fields = {
+  __typename?: 'oauth_authorization_codes_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<Oauth_Authorization_Codes_Max_Fields>;
+  min?: Maybe<Oauth_Authorization_Codes_Min_Fields>;
+};
+
+
+/** aggregate fields of "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Oauth_Authorization_Codes_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Boolean expression to filter rows from the table "oauth_authorization_codes". All fields are combined with a logical 'AND'. */
+export type Oauth_Authorization_Codes_Bool_Exp = {
+  _and?: InputMaybe<Array<Oauth_Authorization_Codes_Bool_Exp>>;
+  _not?: InputMaybe<Oauth_Authorization_Codes_Bool_Exp>;
+  _or?: InputMaybe<Array<Oauth_Authorization_Codes_Bool_Exp>>;
+  client_id?: InputMaybe<String_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  code_challenge?: InputMaybe<String_Comparison_Exp>;
+  code_challenge_method?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  expires_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  redirect_uri?: InputMaybe<String_Comparison_Exp>;
+  scope?: InputMaybe<String_Comparison_Exp>;
+  used?: InputMaybe<Boolean_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "oauth_authorization_codes" */
+export enum Oauth_Authorization_Codes_Constraint {
+  /** unique or primary key constraint on columns "code" */
+  OauthAuthorizationCodesCodeKey = 'oauth_authorization_codes_code_key',
+  /** unique or primary key constraint on columns "id" */
+  OauthAuthorizationCodesPkey = 'oauth_authorization_codes_pkey'
+}
+
+/** input type for inserting data into table "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes_Insert_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  code_challenge?: InputMaybe<Scalars['String']['input']>;
+  code_challenge_method?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  redirect_uri?: InputMaybe<Scalars['String']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  used?: InputMaybe<Scalars['Boolean']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate max on columns */
+export type Oauth_Authorization_Codes_Max_Fields = {
+  __typename?: 'oauth_authorization_codes_max_fields';
+  client_id?: Maybe<Scalars['String']['output']>;
+  code?: Maybe<Scalars['String']['output']>;
+  code_challenge?: Maybe<Scalars['String']['output']>;
+  code_challenge_method?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  expires_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  redirect_uri?: Maybe<Scalars['String']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** aggregate min on columns */
+export type Oauth_Authorization_Codes_Min_Fields = {
+  __typename?: 'oauth_authorization_codes_min_fields';
+  client_id?: Maybe<Scalars['String']['output']>;
+  code?: Maybe<Scalars['String']['output']>;
+  code_challenge?: Maybe<Scalars['String']['output']>;
+  code_challenge_method?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  expires_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  redirect_uri?: Maybe<Scalars['String']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** response of any mutation on the table "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes_Mutation_Response = {
+  __typename?: 'oauth_authorization_codes_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Oauth_Authorization_Codes>;
+};
+
+/** on_conflict condition type for table "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes_On_Conflict = {
+  constraint: Oauth_Authorization_Codes_Constraint;
+  update_columns?: Array<Oauth_Authorization_Codes_Update_Column>;
+  where?: InputMaybe<Oauth_Authorization_Codes_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "oauth_authorization_codes". */
+export type Oauth_Authorization_Codes_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  code_challenge?: InputMaybe<Order_By>;
+  code_challenge_method?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  expires_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  redirect_uri?: InputMaybe<Order_By>;
+  scope?: InputMaybe<Order_By>;
+  used?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: oauth_authorization_codes */
+export type Oauth_Authorization_Codes_Pk_Columns_Input = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "oauth_authorization_codes" */
+export enum Oauth_Authorization_Codes_Select_Column {
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CodeChallenge = 'code_challenge',
+  /** column name */
+  CodeChallengeMethod = 'code_challenge_method',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  ExpiresAt = 'expires_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  RedirectUri = 'redirect_uri',
+  /** column name */
+  Scope = 'scope',
+  /** column name */
+  Used = 'used',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes_Set_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  code_challenge?: InputMaybe<Scalars['String']['input']>;
+  code_challenge_method?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  redirect_uri?: InputMaybe<Scalars['String']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  used?: InputMaybe<Scalars['Boolean']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Streaming cursor of the table "oauth_authorization_codes" */
+export type Oauth_Authorization_Codes_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Oauth_Authorization_Codes_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Oauth_Authorization_Codes_Stream_Cursor_Value_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  code_challenge?: InputMaybe<Scalars['String']['input']>;
+  code_challenge_method?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  redirect_uri?: InputMaybe<Scalars['String']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  used?: InputMaybe<Scalars['Boolean']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** update columns of table "oauth_authorization_codes" */
+export enum Oauth_Authorization_Codes_Update_Column {
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CodeChallenge = 'code_challenge',
+  /** column name */
+  CodeChallengeMethod = 'code_challenge_method',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  ExpiresAt = 'expires_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  RedirectUri = 'redirect_uri',
+  /** column name */
+  Scope = 'scope',
+  /** column name */
+  Used = 'used',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Oauth_Authorization_Codes_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Oauth_Authorization_Codes_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Oauth_Authorization_Codes_Bool_Exp;
+};
+
+/** columns and relationships of "oauth_clients" */
+export type Oauth_Clients = {
+  __typename?: 'oauth_clients';
+  client_id: Scalars['String']['output'];
+  client_name: Scalars['String']['output'];
+  client_secret: Scalars['String']['output'];
+  created_at: Scalars['timestamptz']['output'];
+  id: Scalars['uuid']['output'];
+  owner_id: Scalars['String']['output'];
+  redirect_uris: Array<Scalars['String']['output']>;
+  updated_at: Scalars['timestamptz']['output'];
+};
+
+/** aggregated selection of "oauth_clients" */
+export type Oauth_Clients_Aggregate = {
+  __typename?: 'oauth_clients_aggregate';
+  aggregate?: Maybe<Oauth_Clients_Aggregate_Fields>;
+  nodes: Array<Oauth_Clients>;
+};
+
+/** aggregate fields of "oauth_clients" */
+export type Oauth_Clients_Aggregate_Fields = {
+  __typename?: 'oauth_clients_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<Oauth_Clients_Max_Fields>;
+  min?: Maybe<Oauth_Clients_Min_Fields>;
+};
+
+
+/** aggregate fields of "oauth_clients" */
+export type Oauth_Clients_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Oauth_Clients_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Boolean expression to filter rows from the table "oauth_clients". All fields are combined with a logical 'AND'. */
+export type Oauth_Clients_Bool_Exp = {
+  _and?: InputMaybe<Array<Oauth_Clients_Bool_Exp>>;
+  _not?: InputMaybe<Oauth_Clients_Bool_Exp>;
+  _or?: InputMaybe<Array<Oauth_Clients_Bool_Exp>>;
+  client_id?: InputMaybe<String_Comparison_Exp>;
+  client_name?: InputMaybe<String_Comparison_Exp>;
+  client_secret?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  owner_id?: InputMaybe<String_Comparison_Exp>;
+  redirect_uris?: InputMaybe<String_Array_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "oauth_clients" */
+export enum Oauth_Clients_Constraint {
+  /** unique or primary key constraint on columns "client_id" */
+  OauthClientsClientIdKey = 'oauth_clients_client_id_key',
+  /** unique or primary key constraint on columns "id" */
+  OauthClientsPkey = 'oauth_clients_pkey'
+}
+
+/** input type for inserting data into table "oauth_clients" */
+export type Oauth_Clients_Insert_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  client_name?: InputMaybe<Scalars['String']['input']>;
+  client_secret?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  redirect_uris?: InputMaybe<Array<Scalars['String']['input']>>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate max on columns */
+export type Oauth_Clients_Max_Fields = {
+  __typename?: 'oauth_clients_max_fields';
+  client_id?: Maybe<Scalars['String']['output']>;
+  client_name?: Maybe<Scalars['String']['output']>;
+  client_secret?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  owner_id?: Maybe<Scalars['String']['output']>;
+  redirect_uris?: Maybe<Array<Scalars['String']['output']>>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** aggregate min on columns */
+export type Oauth_Clients_Min_Fields = {
+  __typename?: 'oauth_clients_min_fields';
+  client_id?: Maybe<Scalars['String']['output']>;
+  client_name?: Maybe<Scalars['String']['output']>;
+  client_secret?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  owner_id?: Maybe<Scalars['String']['output']>;
+  redirect_uris?: Maybe<Array<Scalars['String']['output']>>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** response of any mutation on the table "oauth_clients" */
+export type Oauth_Clients_Mutation_Response = {
+  __typename?: 'oauth_clients_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Oauth_Clients>;
+};
+
+/** on_conflict condition type for table "oauth_clients" */
+export type Oauth_Clients_On_Conflict = {
+  constraint: Oauth_Clients_Constraint;
+  update_columns?: Array<Oauth_Clients_Update_Column>;
+  where?: InputMaybe<Oauth_Clients_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "oauth_clients". */
+export type Oauth_Clients_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  client_name?: InputMaybe<Order_By>;
+  client_secret?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  owner_id?: InputMaybe<Order_By>;
+  redirect_uris?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: oauth_clients */
+export type Oauth_Clients_Pk_Columns_Input = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "oauth_clients" */
+export enum Oauth_Clients_Select_Column {
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  ClientName = 'client_name',
+  /** column name */
+  ClientSecret = 'client_secret',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  RedirectUris = 'redirect_uris',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "oauth_clients" */
+export type Oauth_Clients_Set_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  client_name?: InputMaybe<Scalars['String']['input']>;
+  client_secret?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  redirect_uris?: InputMaybe<Array<Scalars['String']['input']>>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** Streaming cursor of the table "oauth_clients" */
+export type Oauth_Clients_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Oauth_Clients_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Oauth_Clients_Stream_Cursor_Value_Input = {
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  client_name?: InputMaybe<Scalars['String']['input']>;
+  client_secret?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  redirect_uris?: InputMaybe<Array<Scalars['String']['input']>>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** update columns of table "oauth_clients" */
+export enum Oauth_Clients_Update_Column {
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  ClientName = 'client_name',
+  /** column name */
+  ClientSecret = 'client_secret',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  RedirectUris = 'redirect_uris',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Oauth_Clients_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Oauth_Clients_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Oauth_Clients_Bool_Exp;
+};
+
+/** columns and relationships of "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens = {
+  __typename?: 'oauth_refresh_tokens';
+  access_token_id?: Maybe<Scalars['uuid']['output']>;
+  client_id: Scalars['String']['output'];
+  created_at: Scalars['timestamptz']['output'];
+  expires_at: Scalars['timestamptz']['output'];
+  id: Scalars['uuid']['output'];
+  revoked: Scalars['Boolean']['output'];
+  scope: Scalars['String']['output'];
+  token: Scalars['String']['output'];
+  user_id: Scalars['String']['output'];
+};
+
+/** aggregated selection of "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens_Aggregate = {
+  __typename?: 'oauth_refresh_tokens_aggregate';
+  aggregate?: Maybe<Oauth_Refresh_Tokens_Aggregate_Fields>;
+  nodes: Array<Oauth_Refresh_Tokens>;
+};
+
+/** aggregate fields of "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens_Aggregate_Fields = {
+  __typename?: 'oauth_refresh_tokens_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<Oauth_Refresh_Tokens_Max_Fields>;
+  min?: Maybe<Oauth_Refresh_Tokens_Min_Fields>;
+};
+
+
+/** aggregate fields of "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Oauth_Refresh_Tokens_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Boolean expression to filter rows from the table "oauth_refresh_tokens". All fields are combined with a logical 'AND'. */
+export type Oauth_Refresh_Tokens_Bool_Exp = {
+  _and?: InputMaybe<Array<Oauth_Refresh_Tokens_Bool_Exp>>;
+  _not?: InputMaybe<Oauth_Refresh_Tokens_Bool_Exp>;
+  _or?: InputMaybe<Array<Oauth_Refresh_Tokens_Bool_Exp>>;
+  access_token_id?: InputMaybe<Uuid_Comparison_Exp>;
+  client_id?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  expires_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  revoked?: InputMaybe<Boolean_Comparison_Exp>;
+  scope?: InputMaybe<String_Comparison_Exp>;
+  token?: InputMaybe<String_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "oauth_refresh_tokens" */
+export enum Oauth_Refresh_Tokens_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  OauthRefreshTokensPkey = 'oauth_refresh_tokens_pkey',
+  /** unique or primary key constraint on columns "token" */
+  OauthRefreshTokensTokenKey = 'oauth_refresh_tokens_token_key'
+}
+
+/** input type for inserting data into table "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens_Insert_Input = {
+  access_token_id?: InputMaybe<Scalars['uuid']['input']>;
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  revoked?: InputMaybe<Scalars['Boolean']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate max on columns */
+export type Oauth_Refresh_Tokens_Max_Fields = {
+  __typename?: 'oauth_refresh_tokens_max_fields';
+  access_token_id?: Maybe<Scalars['uuid']['output']>;
+  client_id?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  expires_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  token?: Maybe<Scalars['String']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** aggregate min on columns */
+export type Oauth_Refresh_Tokens_Min_Fields = {
+  __typename?: 'oauth_refresh_tokens_min_fields';
+  access_token_id?: Maybe<Scalars['uuid']['output']>;
+  client_id?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  expires_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  token?: Maybe<Scalars['String']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** response of any mutation on the table "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens_Mutation_Response = {
+  __typename?: 'oauth_refresh_tokens_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Oauth_Refresh_Tokens>;
+};
+
+/** on_conflict condition type for table "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens_On_Conflict = {
+  constraint: Oauth_Refresh_Tokens_Constraint;
+  update_columns?: Array<Oauth_Refresh_Tokens_Update_Column>;
+  where?: InputMaybe<Oauth_Refresh_Tokens_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "oauth_refresh_tokens". */
+export type Oauth_Refresh_Tokens_Order_By = {
+  access_token_id?: InputMaybe<Order_By>;
+  client_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  expires_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  revoked?: InputMaybe<Order_By>;
+  scope?: InputMaybe<Order_By>;
+  token?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: oauth_refresh_tokens */
+export type Oauth_Refresh_Tokens_Pk_Columns_Input = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "oauth_refresh_tokens" */
+export enum Oauth_Refresh_Tokens_Select_Column {
+  /** column name */
+  AccessTokenId = 'access_token_id',
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  ExpiresAt = 'expires_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Revoked = 'revoked',
+  /** column name */
+  Scope = 'scope',
+  /** column name */
+  Token = 'token',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens_Set_Input = {
+  access_token_id?: InputMaybe<Scalars['uuid']['input']>;
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  revoked?: InputMaybe<Scalars['Boolean']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Streaming cursor of the table "oauth_refresh_tokens" */
+export type Oauth_Refresh_Tokens_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Oauth_Refresh_Tokens_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Oauth_Refresh_Tokens_Stream_Cursor_Value_Input = {
+  access_token_id?: InputMaybe<Scalars['uuid']['input']>;
+  client_id?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  expires_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  revoked?: InputMaybe<Scalars['Boolean']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** update columns of table "oauth_refresh_tokens" */
+export enum Oauth_Refresh_Tokens_Update_Column {
+  /** column name */
+  AccessTokenId = 'access_token_id',
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  ExpiresAt = 'expires_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Revoked = 'revoked',
+  /** column name */
+  Scope = 'scope',
+  /** column name */
+  Token = 'token',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Oauth_Refresh_Tokens_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Oauth_Refresh_Tokens_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Oauth_Refresh_Tokens_Bool_Exp;
+};
+
+/** columns and relationships of "oauth_scopes" */
+export type Oauth_Scopes = {
+  __typename?: 'oauth_scopes';
+  created_at: Scalars['timestamptz']['output'];
+  description: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+};
+
+/** aggregated selection of "oauth_scopes" */
+export type Oauth_Scopes_Aggregate = {
+  __typename?: 'oauth_scopes_aggregate';
+  aggregate?: Maybe<Oauth_Scopes_Aggregate_Fields>;
+  nodes: Array<Oauth_Scopes>;
+};
+
+/** aggregate fields of "oauth_scopes" */
+export type Oauth_Scopes_Aggregate_Fields = {
+  __typename?: 'oauth_scopes_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<Oauth_Scopes_Max_Fields>;
+  min?: Maybe<Oauth_Scopes_Min_Fields>;
+};
+
+
+/** aggregate fields of "oauth_scopes" */
+export type Oauth_Scopes_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Oauth_Scopes_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Boolean expression to filter rows from the table "oauth_scopes". All fields are combined with a logical 'AND'. */
+export type Oauth_Scopes_Bool_Exp = {
+  _and?: InputMaybe<Array<Oauth_Scopes_Bool_Exp>>;
+  _not?: InputMaybe<Oauth_Scopes_Bool_Exp>;
+  _or?: InputMaybe<Array<Oauth_Scopes_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "oauth_scopes" */
+export enum Oauth_Scopes_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  OauthScopesPkey = 'oauth_scopes_pkey'
+}
+
+/** input type for inserting data into table "oauth_scopes" */
+export type Oauth_Scopes_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate max on columns */
+export type Oauth_Scopes_Max_Fields = {
+  __typename?: 'oauth_scopes_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+};
+
+/** aggregate min on columns */
+export type Oauth_Scopes_Min_Fields = {
+  __typename?: 'oauth_scopes_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+};
+
+/** response of any mutation on the table "oauth_scopes" */
+export type Oauth_Scopes_Mutation_Response = {
+  __typename?: 'oauth_scopes_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Oauth_Scopes>;
+};
+
+/** on_conflict condition type for table "oauth_scopes" */
+export type Oauth_Scopes_On_Conflict = {
+  constraint: Oauth_Scopes_Constraint;
+  update_columns?: Array<Oauth_Scopes_Update_Column>;
+  where?: InputMaybe<Oauth_Scopes_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "oauth_scopes". */
+export type Oauth_Scopes_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: oauth_scopes */
+export type Oauth_Scopes_Pk_Columns_Input = {
+  id: Scalars['String']['input'];
+};
+
+/** select columns of table "oauth_scopes" */
+export enum Oauth_Scopes_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id'
+}
+
+/** input type for updating data in table "oauth_scopes" */
+export type Oauth_Scopes_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Streaming cursor of the table "oauth_scopes" */
+export type Oauth_Scopes_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Oauth_Scopes_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Oauth_Scopes_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** update columns of table "oauth_scopes" */
+export enum Oauth_Scopes_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id'
+}
+
+export type Oauth_Scopes_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Oauth_Scopes_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Oauth_Scopes_Bool_Exp;
+};
+
 /** column ordering options */
 export enum Order_By {
   /** in ascending order, nulls last */
@@ -28475,6 +29812,36 @@ export type Query_Root = {
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
+  /** fetch data from the table: "oauth_access_tokens" */
+  oauth_access_tokens: Array<Oauth_Access_Tokens>;
+  /** fetch aggregated fields from the table: "oauth_access_tokens" */
+  oauth_access_tokens_aggregate: Oauth_Access_Tokens_Aggregate;
+  /** fetch data from the table: "oauth_access_tokens" using primary key columns */
+  oauth_access_tokens_by_pk?: Maybe<Oauth_Access_Tokens>;
+  /** fetch data from the table: "oauth_authorization_codes" */
+  oauth_authorization_codes: Array<Oauth_Authorization_Codes>;
+  /** fetch aggregated fields from the table: "oauth_authorization_codes" */
+  oauth_authorization_codes_aggregate: Oauth_Authorization_Codes_Aggregate;
+  /** fetch data from the table: "oauth_authorization_codes" using primary key columns */
+  oauth_authorization_codes_by_pk?: Maybe<Oauth_Authorization_Codes>;
+  /** fetch data from the table: "oauth_clients" */
+  oauth_clients: Array<Oauth_Clients>;
+  /** fetch aggregated fields from the table: "oauth_clients" */
+  oauth_clients_aggregate: Oauth_Clients_Aggregate;
+  /** fetch data from the table: "oauth_clients" using primary key columns */
+  oauth_clients_by_pk?: Maybe<Oauth_Clients>;
+  /** fetch data from the table: "oauth_refresh_tokens" */
+  oauth_refresh_tokens: Array<Oauth_Refresh_Tokens>;
+  /** fetch aggregated fields from the table: "oauth_refresh_tokens" */
+  oauth_refresh_tokens_aggregate: Oauth_Refresh_Tokens_Aggregate;
+  /** fetch data from the table: "oauth_refresh_tokens" using primary key columns */
+  oauth_refresh_tokens_by_pk?: Maybe<Oauth_Refresh_Tokens>;
+  /** fetch data from the table: "oauth_scopes" */
+  oauth_scopes: Array<Oauth_Scopes>;
+  /** fetch aggregated fields from the table: "oauth_scopes" */
+  oauth_scopes_aggregate: Oauth_Scopes_Aggregate;
+  /** fetch data from the table: "oauth_scopes" using primary key columns */
+  oauth_scopes_by_pk?: Maybe<Oauth_Scopes>;
   /** fetch data from the table: "pack" */
   pack: Array<Pack>;
   /** fetch aggregated fields from the table: "pack" */
@@ -30183,6 +31550,121 @@ export type Query_RootLocal_Decks_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
   where?: InputMaybe<Local_Decks_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Access_TokensArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Access_Tokens_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Access_Tokens_Order_By>>;
+  where?: InputMaybe<Oauth_Access_Tokens_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Access_Tokens_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Access_Tokens_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Access_Tokens_Order_By>>;
+  where?: InputMaybe<Oauth_Access_Tokens_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Access_Tokens_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Query_RootOauth_Authorization_CodesArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Authorization_Codes_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Authorization_Codes_Order_By>>;
+  where?: InputMaybe<Oauth_Authorization_Codes_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Authorization_Codes_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Authorization_Codes_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Authorization_Codes_Order_By>>;
+  where?: InputMaybe<Oauth_Authorization_Codes_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Authorization_Codes_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Query_RootOauth_ClientsArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Clients_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Clients_Order_By>>;
+  where?: InputMaybe<Oauth_Clients_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Clients_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Clients_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Clients_Order_By>>;
+  where?: InputMaybe<Oauth_Clients_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Clients_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Query_RootOauth_Refresh_TokensArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Refresh_Tokens_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Refresh_Tokens_Order_By>>;
+  where?: InputMaybe<Oauth_Refresh_Tokens_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Refresh_Tokens_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Refresh_Tokens_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Refresh_Tokens_Order_By>>;
+  where?: InputMaybe<Oauth_Refresh_Tokens_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Refresh_Tokens_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Query_RootOauth_ScopesArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Scopes_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Scopes_Order_By>>;
+  where?: InputMaybe<Oauth_Scopes_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Scopes_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Scopes_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Scopes_Order_By>>;
+  where?: InputMaybe<Oauth_Scopes_Bool_Exp>;
+};
+
+
+export type Query_RootOauth_Scopes_By_PkArgs = {
+  id: Scalars['String']['input'];
 };
 
 
@@ -44428,6 +45910,46 @@ export type Subscription_Root = {
   local_decks_aggregate: Local_Decks_Aggregate;
   /** fetch data from the table in a streaming manner: "local_decks" */
   local_decks_stream: Array<Local_Decks>;
+  /** fetch data from the table: "oauth_access_tokens" */
+  oauth_access_tokens: Array<Oauth_Access_Tokens>;
+  /** fetch aggregated fields from the table: "oauth_access_tokens" */
+  oauth_access_tokens_aggregate: Oauth_Access_Tokens_Aggregate;
+  /** fetch data from the table: "oauth_access_tokens" using primary key columns */
+  oauth_access_tokens_by_pk?: Maybe<Oauth_Access_Tokens>;
+  /** fetch data from the table in a streaming manner: "oauth_access_tokens" */
+  oauth_access_tokens_stream: Array<Oauth_Access_Tokens>;
+  /** fetch data from the table: "oauth_authorization_codes" */
+  oauth_authorization_codes: Array<Oauth_Authorization_Codes>;
+  /** fetch aggregated fields from the table: "oauth_authorization_codes" */
+  oauth_authorization_codes_aggregate: Oauth_Authorization_Codes_Aggregate;
+  /** fetch data from the table: "oauth_authorization_codes" using primary key columns */
+  oauth_authorization_codes_by_pk?: Maybe<Oauth_Authorization_Codes>;
+  /** fetch data from the table in a streaming manner: "oauth_authorization_codes" */
+  oauth_authorization_codes_stream: Array<Oauth_Authorization_Codes>;
+  /** fetch data from the table: "oauth_clients" */
+  oauth_clients: Array<Oauth_Clients>;
+  /** fetch aggregated fields from the table: "oauth_clients" */
+  oauth_clients_aggregate: Oauth_Clients_Aggregate;
+  /** fetch data from the table: "oauth_clients" using primary key columns */
+  oauth_clients_by_pk?: Maybe<Oauth_Clients>;
+  /** fetch data from the table in a streaming manner: "oauth_clients" */
+  oauth_clients_stream: Array<Oauth_Clients>;
+  /** fetch data from the table: "oauth_refresh_tokens" */
+  oauth_refresh_tokens: Array<Oauth_Refresh_Tokens>;
+  /** fetch aggregated fields from the table: "oauth_refresh_tokens" */
+  oauth_refresh_tokens_aggregate: Oauth_Refresh_Tokens_Aggregate;
+  /** fetch data from the table: "oauth_refresh_tokens" using primary key columns */
+  oauth_refresh_tokens_by_pk?: Maybe<Oauth_Refresh_Tokens>;
+  /** fetch data from the table in a streaming manner: "oauth_refresh_tokens" */
+  oauth_refresh_tokens_stream: Array<Oauth_Refresh_Tokens>;
+  /** fetch data from the table: "oauth_scopes" */
+  oauth_scopes: Array<Oauth_Scopes>;
+  /** fetch aggregated fields from the table: "oauth_scopes" */
+  oauth_scopes_aggregate: Oauth_Scopes_Aggregate;
+  /** fetch data from the table: "oauth_scopes" using primary key columns */
+  oauth_scopes_by_pk?: Maybe<Oauth_Scopes>;
+  /** fetch data from the table in a streaming manner: "oauth_scopes" */
+  oauth_scopes_stream: Array<Oauth_Scopes>;
   /** fetch data from the table: "pack" */
   pack: Array<Pack>;
   /** fetch aggregated fields from the table: "pack" */
@@ -46677,6 +48199,156 @@ export type Subscription_RootLocal_Decks_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Local_Decks_Stream_Cursor_Input>>;
   where?: InputMaybe<Local_Decks_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Access_TokensArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Access_Tokens_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Access_Tokens_Order_By>>;
+  where?: InputMaybe<Oauth_Access_Tokens_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Access_Tokens_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Access_Tokens_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Access_Tokens_Order_By>>;
+  where?: InputMaybe<Oauth_Access_Tokens_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Access_Tokens_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Subscription_RootOauth_Access_Tokens_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Oauth_Access_Tokens_Stream_Cursor_Input>>;
+  where?: InputMaybe<Oauth_Access_Tokens_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Authorization_CodesArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Authorization_Codes_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Authorization_Codes_Order_By>>;
+  where?: InputMaybe<Oauth_Authorization_Codes_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Authorization_Codes_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Authorization_Codes_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Authorization_Codes_Order_By>>;
+  where?: InputMaybe<Oauth_Authorization_Codes_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Authorization_Codes_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Subscription_RootOauth_Authorization_Codes_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Oauth_Authorization_Codes_Stream_Cursor_Input>>;
+  where?: InputMaybe<Oauth_Authorization_Codes_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_ClientsArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Clients_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Clients_Order_By>>;
+  where?: InputMaybe<Oauth_Clients_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Clients_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Clients_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Clients_Order_By>>;
+  where?: InputMaybe<Oauth_Clients_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Clients_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Subscription_RootOauth_Clients_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Oauth_Clients_Stream_Cursor_Input>>;
+  where?: InputMaybe<Oauth_Clients_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Refresh_TokensArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Refresh_Tokens_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Refresh_Tokens_Order_By>>;
+  where?: InputMaybe<Oauth_Refresh_Tokens_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Refresh_Tokens_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Refresh_Tokens_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Refresh_Tokens_Order_By>>;
+  where?: InputMaybe<Oauth_Refresh_Tokens_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Refresh_Tokens_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Subscription_RootOauth_Refresh_Tokens_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Oauth_Refresh_Tokens_Stream_Cursor_Input>>;
+  where?: InputMaybe<Oauth_Refresh_Tokens_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_ScopesArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Scopes_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Scopes_Order_By>>;
+  where?: InputMaybe<Oauth_Scopes_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Scopes_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Oauth_Scopes_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Oauth_Scopes_Order_By>>;
+  where?: InputMaybe<Oauth_Scopes_Bool_Exp>;
+};
+
+
+export type Subscription_RootOauth_Scopes_By_PkArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type Subscription_RootOauth_Scopes_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Oauth_Scopes_Stream_Cursor_Input>>;
+  where?: InputMaybe<Oauth_Scopes_Bool_Exp>;
 };
 
 
@@ -50621,6 +52293,8 @@ export type CreateCampaignMutationVariables = Exact<{
   name: Scalars['String']['input'];
   cycleId: Scalars['String']['input'];
   currentLocation: Scalars['String']['input'];
+  expansions: Scalars['jsonb']['input'];
+  calendar: Scalars['jsonb']['input'];
 }>;
 
 
@@ -50658,6 +52332,14 @@ export type RemoveFriendFromCampaignMutationVariables = Exact<{
 
 
 export type RemoveFriendFromCampaignMutation = { __typename?: 'mutation_root', delete_rangers_campaign_access_by_pk?: { __typename?: 'rangers_campaign_access', campaign: { __typename?: 'rangers_campaign', id: number, access: Array<{ __typename?: 'rangers_user_campaign', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } } | null };
+
+export type UpdateCampaignExpansionsMutationVariables = Exact<{
+  campaignId: Scalars['Int']['input'];
+  expansions: Scalars['jsonb']['input'];
+}>;
+
+
+export type UpdateCampaignExpansionsMutation = { __typename?: 'mutation_root', update_rangers_campaign_by_pk?: { __typename?: 'rangers_campaign', id: number, expansions?: any | null } | null };
 
 export type UpdateCampaignRewardsMutationVariables = Exact<{
   campaignId: Scalars['Int']['input'];
@@ -51636,9 +53318,9 @@ export type GetCampaignLazyQueryHookResult = ReturnType<typeof useGetCampaignLaz
 export type GetCampaignSuspenseQueryHookResult = ReturnType<typeof useGetCampaignSuspenseQuery>;
 export type GetCampaignQueryResult = Apollo.QueryResult<GetCampaignQuery, GetCampaignQueryVariables>;
 export const CreateCampaignDocument = gql`
-    mutation createCampaign($name: String!, $cycleId: String!, $currentLocation: String!) {
+    mutation createCampaign($name: String!, $cycleId: String!, $currentLocation: String!, $expansions: jsonb!, $calendar: jsonb!) {
   campaign: insert_rangers_campaign_one(
-    object: {name: $name, cycle_id: $cycleId, current_location: $currentLocation}
+    object: {name: $name, cycle_id: $cycleId, current_location: $currentLocation, expansions: $expansions, calendar: $calendar}
   ) {
     ...Campaign
   }
@@ -51662,6 +53344,8 @@ export type CreateCampaignMutationFn = Apollo.MutationFunction<CreateCampaignMut
  *      name: // value for 'name'
  *      cycleId: // value for 'cycleId'
  *      currentLocation: // value for 'currentLocation'
+ *      expansions: // value for 'expansions'
+ *      calendar: // value for 'calendar'
  *   },
  * });
  */
@@ -51832,6 +53516,44 @@ export function useRemoveFriendFromCampaignMutation(baseOptions?: Apollo.Mutatio
 export type RemoveFriendFromCampaignMutationHookResult = ReturnType<typeof useRemoveFriendFromCampaignMutation>;
 export type RemoveFriendFromCampaignMutationResult = Apollo.MutationResult<RemoveFriendFromCampaignMutation>;
 export type RemoveFriendFromCampaignMutationOptions = Apollo.BaseMutationOptions<RemoveFriendFromCampaignMutation, RemoveFriendFromCampaignMutationVariables>;
+export const UpdateCampaignExpansionsDocument = gql`
+    mutation updateCampaignExpansions($campaignId: Int!, $expansions: jsonb!) {
+  update_rangers_campaign_by_pk(
+    pk_columns: {id: $campaignId}
+    _set: {expansions: $expansions}
+  ) {
+    id
+    expansions
+  }
+}
+    `;
+export type UpdateCampaignExpansionsMutationFn = Apollo.MutationFunction<UpdateCampaignExpansionsMutation, UpdateCampaignExpansionsMutationVariables>;
+
+/**
+ * __useUpdateCampaignExpansionsMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignExpansionsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignExpansionsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignExpansionsMutation, { data, loading, error }] = useUpdateCampaignExpansionsMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      expansions: // value for 'expansions'
+ *   },
+ * });
+ */
+export function useUpdateCampaignExpansionsMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignExpansionsMutation, UpdateCampaignExpansionsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCampaignExpansionsMutation, UpdateCampaignExpansionsMutationVariables>(UpdateCampaignExpansionsDocument, options);
+      }
+export type UpdateCampaignExpansionsMutationHookResult = ReturnType<typeof useUpdateCampaignExpansionsMutation>;
+export type UpdateCampaignExpansionsMutationResult = Apollo.MutationResult<UpdateCampaignExpansionsMutation>;
+export type UpdateCampaignExpansionsMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignExpansionsMutation, UpdateCampaignExpansionsMutationVariables>;
 export const UpdateCampaignRewardsDocument = gql`
     mutation updateCampaignRewards($campaignId: Int!, $rewards: jsonb!) {
   update_rangers_campaign_by_pk(

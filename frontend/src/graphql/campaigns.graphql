@@ -66,12 +66,16 @@ mutation createCampaign(
   $name: String!,
   $cycleId: String!,
   $currentLocation: String!,
+  $expansions: jsonb!,
+  $calendar: jsonb!
 ) {
   campaign: insert_rangers_campaign_one(
     object: {
       name: $name
       cycle_id: $cycleId
       current_location: $currentLocation
+      expansions: $expansions
+      calendar: $calendar
     }
   ) {
     ...Campaign
@@ -81,7 +85,7 @@ mutation createCampaign(
 mutation transferCampaign(
   $campaignId: Int!,
   $cycleId: String!,
-  $currentLocation: String!,
+  $currentLocation: String!
 ) {
   campaign: rangers_transfer_campaign(
     args: {
@@ -146,6 +150,23 @@ mutation removeFriendFromCampaign(
         }
       }
     }
+  }
+}
+
+mutation updateCampaignExpansions(
+  $campaignId: Int!,
+  $expansions: jsonb!
+) {
+  update_rangers_campaign_by_pk(
+    pk_columns: {
+      id: $campaignId
+    }
+    _set: {
+      expansions: $expansions
+    }
+  ) {
+    id
+    expansions
   }
 }
 

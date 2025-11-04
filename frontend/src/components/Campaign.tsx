@@ -25,16 +25,16 @@ import {
   useUpdateCampaignEventsMutation, useUpdateCampaignRemovedMutation, useUpdateCampaignRewardsMutation,
   useSetCampaignTitleMutation, useCampaignUndoTravelMutation,
   useUpdateCampaignNotesMutation, useAddCampaignNoteMutation, useExtendCampaignMutation,
-  useTransferCampaignMutation,
+  useTransferCampaignMutation, useUpdateCampaignExpansionsMutation,
 } from '../generated/graphql/apollo-schema';
 import { useAuth } from '../lib/AuthContext';
 import FriendChooser from './FriendChooser';
 import ListHeader from './ListHeader';
 import CoreIcon from '../icons/CoreIcon';
 import { CompactDeckRow } from './Deck';
-import { CardsMap, useMapLocations } from '../lib/hooks';
+import { CardsMap, useMapLocations, useCampaignExpansions } from '../lib/hooks';
 import SubmitButton, { SubmitIconButton } from './SubmitButton';
-import { SlCheck, SlClose, SlMinus, SlPlus } from 'react-icons/sl';
+import { SlCheck, SlClose, SlMinus, SlPlus, SlSettings } from 'react-icons/sl';
 import { useLocale } from '../lib/TranslationProvider';
 import { CardRow } from './Card';
 import EditableTextInput from './EditableTextInput';
@@ -234,7 +234,9 @@ function CampaignRow({ campaign, roleCards, onDelete, noTable }: {
             {filter(map(campaign.access, a => a.handle || ''), x => !!x).join(', ')}
           </Text>
         </Flex>
+        <Flex direction="row">
         { !!cycle && <CycleChiclet cycle={cycle} /> }
+      </Flex>
       </Flex>
       { !!currentLocation && (
         <Flex direction="row" alignItems="center">
@@ -1854,11 +1856,16 @@ function DayButton({ day, currentDay, onClick }: { day: number; currentDay: numb
     />
   );
 }
-interface Weather {
+
+
+export interface Weather {
   start: number;
   end: number;
   name: string;
+  valley_id: string;
+
   underground?: string;
+  underground_id?: string;
 }
 function useWeather(cycle_id: string): Weather[] {
   return useMemo(() => {
@@ -1869,60 +1876,80 @@ function useWeather(cycle_id: string): Weather[] {
           end: 3,
           name: t`Downpour`,
           underground: t`Enveloping Silence`,
+          valley_id: 'downpour',
+          underground_id: 'enveloping_silence',
         },
         {
           start: 4,
           end: 6,
           name: t`A Perfect Day`,
           underground: t`Glitterain`,
+          valley_id: 'a_perfect_day',
+          underground_id: 'glitterain',
         },
         {
           start: 7,
           end: 8,
           name: t`Howing Wind`,
-          underground: t`Shimmering Runoff`
+          underground: t`Shimmering Runoff`,
+          valley_id: 'howling_wind',
+          underground_id: 'shimmering_runoff',
         },
         {
           start: 9,
           end: 12,
           name: t`Downpour`,
           underground: t`Enveloping Silence`,
+          valley_id: 'downpour',
+          underground_id: 'enveloping_silence',
         },
         {
           start: 13,
           end: 15,
           name: t`A Perfect Day`,
           underground: t`Glitterain`,
+          valley_id: 'a_perfect_day',
+          underground_id: 'glitterain',
         },
         {
           start: 16,
           end: 18,
           name: t`Downpour`,
           underground: t`Enveloping Silence`,
+          valley_id: 'downpour',
+          underground_id: 'enveloping_silence',
         },
         {
           start: 19,
           end: 21,
           name: t`A Perfect Day`,
           underground: t`Glitterain`,
+          valley_id: 'a_perfect_day',
+          underground_id: 'glitterain',
         },
         {
           start: 22,
           end: 23,
           name: t`Howling Wind`,
           underground: t`Shimmering Runoff`,
+          valley_id: 'howling_wind',
+          underground_id: 'shimmering_runoff',
         },
         {
           start: 24,
           end: 27,
           name: t`Downpour`,
           underground: t`Enveloping Silence`,
+          valley_id: 'downpour',
+          underground_id: 'enveloping_silence',
         },
         {
           start: 28,
           end: 30,
           name: t`A Perfect Day`,
           underground: t`Glitterain`,
+          valley_id: 'a_perfect_day',
+          underground_id: 'glitterain',
         },
       ];
     }
@@ -1931,60 +1958,102 @@ function useWeather(cycle_id: string): Weather[] {
         start: 1,
         end: 3,
         name: t`A Perfect Day`,
+        valley_id: 'a_perfect_day',
       },
       {
         start: 4,
         end: 7,
         name: t`Downpour`,
+        valley_id: 'downpour',
       },
       {
         start: 8,
         end: 9,
         name: t`A Perfect Day`,
+        valley_id: 'a_perfect_day',
       },
       {
         start: 10,
         end: 12,
         name: t`Downpour`,
+        valley_id: 'downpour',
       },
       {
         start: 13,
         end: 14,
         name: t`Howling Winds`,
+        valley_id: 'howling_wind',
       },
       {
         start: 15,
         end: 17,
         name: t`Downpour`,
+        valley_id: 'downpour',
       },
       {
         start: 18,
         end: 20,
         name: t`Howling Winds`,
+        valley_id: 'howling_wind',
       },
       {
         start: 21,
         end: 22,
         name: t`A Perfect Day`,
+        valley_id: 'a_perfect_day',
       },
       {
         start: 23,
         end: 25,
         name: t`Downpour`,
+        valley_id: 'downpour',
       },
       {
         start: 26,
         end: 28,
         name: t`Howling Winds`,
+        valley_id: 'howling_wind',
       },
       {
         start: 29,
         end: 30,
         name: t`A Perfect Day`,
-      }
+        valley_id: 'a_perfect_day',
+      },
+      {
+        start: 31,
+        end: 33,
+        name: t`Downpour`,
+        valley_id: 'downpour',
+      },
+      {
+        start: 34,
+        end: 35,
+        name: t`A Perfect Day`,
+        valley_id: 'a_perfect_day',
+      },
+      {
+        start: 36,
+        end: 39,
+        name: t`Howling Winds`,
+        valley_id: 'howling_wind',
+      },
+      {
+        start: 40,
+        end: 42,
+        name: t`Downpour`,
+        valley_id: 'downpour',
+      },
+      {
+        start: 43,
+        end: 45,
+        name: t`A Perfect Day`,
+        valley_id: 'a_perfect_day',
+      },
     ]
   }, [cycle_id]);
 }
+
 const FIXED_GUIDE_ENTRIES: {
   [cycle_id: string]: { [day: string]: string[] | undefined }
 } = {
@@ -1998,6 +2067,100 @@ const FIXED_GUIDE_ENTRIES: {
     '4': ['199.2'],
   },
 };
+
+export const EXPANSION_GUIDE_ENTRIES: {
+  [cycle_id: string]: {
+    starting: CalendarEntry[];
+  }
+} = {
+  'sib': {
+    starting: [
+      {
+        day: 8,
+        guides: ['216.1'],
+      }
+    ],
+  },
+};
+
+export interface TimelineDay {
+  day: number;
+  isPast: boolean;
+  isCurrent: boolean;
+  isFuture: boolean;
+  weather: Weather | undefined;
+  guideEntries: string[];
+}
+
+/**
+ * Processes campaign timeline data into structured day objects
+ */
+export function getTimelineDays(campaign: ParsedCampaign, weatherLabels: Weather[]): TimelineDay[] {
+  const fixedEntries = FIXED_GUIDE_ENTRIES[campaign.cycle_id] ?? {};
+  const entriesByDay: { [key: string]: string[] | undefined } = { ...fixedEntries };
+
+  // Merge in user calendar entries
+  forEach(campaign.calendar, ({ day, guides }) => {
+    if (!entriesByDay[day]) {
+      entriesByDay[day] = [];
+    }
+    forEach(guides, g => {
+      entriesByDay[day]?.push(g);
+    });
+  });
+
+  const maxDay = campaign.extended_calendar ? 60 : 30;
+  const result: TimelineDay[] = [];
+
+  for (let day = 1; day <= maxDay; day++) {
+    const weather = weatherLabels.find(w => day >= w.start && day <= w.end);
+    result.push({
+      day,
+      isPast: day < campaign.day,
+      isCurrent: day === campaign.day,
+      isFuture: day > campaign.day,
+      weather,
+      guideEntries: entriesByDay[day] ?? [],
+    });
+  }
+
+  return result;
+}
+
+/**
+ * Find the first future day that matches a predicate
+ */
+export function findNextDay(
+  campaign: ParsedCampaign,
+  weatherLabels: Weather[],
+  predicate: (day: TimelineDay) => boolean
+): TimelineDay | undefined {
+  const days = getTimelineDays(campaign, weatherLabels);
+  return days.find(day => day.isFuture && predicate(day));
+}
+
+/**
+ * Hook to get timeline days for a campaign
+ */
+export function useTimelineDays(campaign: ParsedCampaign): TimelineDay[] {
+  const singleWeatherLabels = useWeather(campaign.cycle_id);
+  const weatherLabels = useMemo(() => {
+    return [
+      ...singleWeatherLabels,
+      ...(campaign.extended_calendar ?
+        singleWeatherLabels.map(weather => ({
+          start: weather.start + 30,
+          end: weather.end + 30,
+          name: weather.name,
+          valley_id: weather.valley_id,
+          underground: weather.underground,
+          underground_id: weather.underground_id,
+        })) : []),
+    ];
+  }, [campaign.extended_calendar, singleWeatherLabels]);
+
+  return useMemo(() => getTimelineDays(campaign, weatherLabels), [campaign, weatherLabels]);
+}
 
 function Timeline({ campaign }: { campaign: ParsedCampaign }) {
   const singleWeatherLabels = useWeather(campaign.cycle_id);
@@ -2470,6 +2633,8 @@ function CampaignDetailContent({ campaign, refetchCampaign, showEditFriends, car
   const [onTravel, travelModal] = useTravelModal(campaign);
   const [onUndo, undoEnabled, undoModal] = useUndoModal(campaign);
   const [onEndDay, endDayModal] = useEndDayModal(campaign);
+  const [showEditExpansions, editExpansionsModal] = useEditCampaignExpansionsModal(campaign, refetchCampaign);
+  const availableExpansions = useCampaignExpansions(campaign.cycle_id);
   const currentLocation = campaign.current_location ? locations[campaign.current_location] : undefined;
   const currentPath = campaign.current_path_terrain ? paths[campaign.current_path_terrain] : undefined;
   const onTitleChange = useCallback(async (title: string) => {
@@ -2498,7 +2663,7 @@ function CampaignDetailContent({ campaign, refetchCampaign, showEditFriends, car
             <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
             <Button leftIcon={<FaMoon />} onClick={onEndDay}>{t`End the day`}</Button>
             { !!undoEnabled && <Button variant="ghost" leftIcon={<FaUndo />} onClick={onUndo}>{t`Undo`}</Button> }
-            { (campaign.day === 30 && !campaign.extended_calendar) && (
+            { (campaign.day >= 30 && !campaign.extended_calendar) && (
               <SolidButton color="blue" onClick={onExtendCampaign}>
                 {t`Extend campaign`}
               </SolidButton>
@@ -2516,6 +2681,11 @@ function CampaignDetailContent({ campaign, refetchCampaign, showEditFriends, car
               </Button>
             )}
           </ButtonGroup>
+          { availableExpansions.length > 0 && (
+            <Box>
+              <Button variant="ghost" leftIcon={<SlSettings />} onClick={showEditExpansions}>{t`Valley Expansions`}</Button>
+            </Box>
+          )}
         </Flex>
       </PageHeading>
       <Timeline campaign={campaign} />
@@ -2601,6 +2771,7 @@ function CampaignDetailContent({ campaign, refetchCampaign, showEditFriends, car
       { historyModal }
       { endDayModal }
       { undoModal }
+      { editExpansionsModal }
     </>
   );
 }
@@ -2681,6 +2852,77 @@ export function useEditCampaignAccessModal(
   ];
 }
 
+export function useEditCampaignExpansionsModal(
+  campaign: ParsedCampaign | undefined | null,
+  refetchCampaign: () => Promise<void>
+): [() => void, React.ReactNode] {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedExpansions, setSelectedExpansions] = useState<string[]>(campaign?.expansions || []);
+  const availableExpansions = useCampaignExpansions(campaign?.cycle_id);
+  const [updateExpansions] = useUpdateCampaignExpansionsMutation();
+
+  useEffect(() => {
+    setSelectedExpansions(campaign?.expansions || []);
+  }, [campaign?.expansions]);
+
+  const hasChanges = useMemo(() => {
+    const original = campaign?.expansions || [];
+    return !!(difference(original, selectedExpansions).length || difference(selectedExpansions, original).length);
+  }, [selectedExpansions, campaign?.expansions]);
+
+  const onSubmit = useCallback(async() => {
+    if (!campaign?.id) return;
+    const result = await updateExpansions({
+      variables: {
+        campaignId: campaign.id,
+        expansions: selectedExpansions,
+      },
+    });
+    if (!result.errors?.length) {
+      await refetchCampaign();
+      onClose();
+    }
+    return result.errors?.length ? result.errors[0].message : undefined;
+  }, [selectedExpansions, updateExpansions, campaign?.id, refetchCampaign, onClose]);
+
+  return [
+    onOpen,
+    <Modal key="expansions" isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <Box paddingRight={8}>
+            <Heading>{t`Valley Expansions`}</Heading>
+          </Box>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Stack spacing={2}>
+            {availableExpansions.map(expansion => (
+              <Checkbox
+                key={expansion.id}
+                isChecked={selectedExpansions.includes(expansion.id)}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setSelectedExpansions([...selectedExpansions, expansion.id]);
+                  } else {
+                    setSelectedExpansions(selectedExpansions.filter(id => id !== expansion.id));
+                  }
+                }}
+              >
+                {expansion.name}
+              </Checkbox>
+            ))}
+          </Stack>
+        </ModalBody>
+        <ModalFooter>
+          {!!hasChanges && <SubmitButton color="blue" onSubmit={onSubmit}>{t`Save`}</SubmitButton> }
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  ];
+}
+
 export interface CampaignChoiceOption extends OptionBase {
   value: number | undefined;
   label: React.ReactNode;
@@ -2745,28 +2987,27 @@ function CampaignChooser({ cycles, choice, setChoice }: {
   );
 }
 
-function useCreateOrTransferCampaign(): (
-  cycle: string,
-  args: {
+type CreateCampaignOptions = {
     type: 'new';
     name: string;
+    expansions: string[];
+    setupExpansionEvents: boolean;
   } | {
     type: 'transfer';
     campaignId: number;
-  }
+  };
+
+function useCreateOrTransferCampaign(): (
+  cycle: string,
+  args: CreateCampaignOptions
 ) => Promise<CampaignWrapper | undefined> {
   const [createCampaign] = useCreateCampaignMutation();
   const [transferCampaign] = useTransferCampaignMutation();
 
   return useCallback(async (
     cycle: string,
-    args: {
-      type: 'new';
-      name: string;
-    } | {
-      type: 'transfer';
-      campaignId: number;
-    }) => {
+    args: CreateCampaignOptions
+  ) => {
       switch (args.type) {
         case 'new': {
           const result = await createCampaign({
@@ -2774,6 +3015,8 @@ function useCreateOrTransferCampaign(): (
               cycleId: cycle,
               name: args.name,
               currentLocation: STARTING_LOCATIONS[cycle],
+              expansions: args.expansions,
+              calendar: args.setupExpansionEvents ? args.expansions.flatMap(exp => EXPANSION_GUIDE_ENTRIES[exp]?.starting) : [],
             },
           });
           if (result.errors?.length) {
@@ -2818,6 +3061,8 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
   }, [refetch, authUser]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const createCampaign = useCreateOrTransferCampaign();
+  const [selectedExpansions, setSelectedExpansions] = useState<string[]>([]);
+  const [setupExpansionEvents, setSetupExpansionEvents] = useState<boolean>(true);
   const [addFriendToCampaign] = useAddFriendToCampaignMutation();
   const [error, setError] = useState<string | undefined>();
   const [selectedFriends, setSelectedFriends] = useState<string[]>([]);
@@ -2835,6 +3080,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     return undefined;
   }, [selectedFriends, setSelectedFriends]);
   const [cycle, setCycle] = useState<string>('core');
+  const availableExpansions = useCampaignExpansions(cycle);
   const onCreateCampaign = useCallback(async() => {
     if (!authUser) {
       return;
@@ -2843,7 +3089,7 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     try {
       const result = cycle === 'loa' && transferCampaignId !== undefined ?
         await createCampaign(cycle, { type: 'transfer', campaignId: transferCampaignId }) :
-        await createCampaign(cycle, { type: 'new', name });
+        await createCampaign(cycle, { type: 'new', name, expansions: selectedExpansions, setupExpansionEvents });
       if (!result) {
         setError(t`Unable to create campaign at this time.`);
         return undefined;
@@ -2866,6 +3112,8 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
         setTransferCampaignId(undefined);
         setCycle('core');
         setSelectedFriends([]);
+        setSelectedExpansions([]);
+        setSetupExpansionEvents(true);
       }
       Router.push(`/campaigns/${campaignId}`);
       onClose();
@@ -2876,7 +3124,8 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
     }
   }, [
     createCampaign, addFriendToCampaign, onClose,
-    transferCampaignId, cycle, selectedFriends, authUser, name,
+    transferCampaignId, cycle, selectedFriends, authUser, name, selectedExpansions,
+    setupExpansionEvents,
   ]);
   const showModal = useCallback(() => {
     onOpen();
@@ -2924,6 +3173,37 @@ export function useNewCampaignModal(): [() => void, React.ReactNode] {
                   value={name}
                   onChange={e => setName(e.target.value)}
                 />
+              </FormControl>
+            ) }
+            { availableExpansions.length > 0 && (
+              <FormControl marginBottom={4}>
+                <FormLabel>{t`Valley Expansions`}</FormLabel>
+                <Stack spacing={2}>
+                  {availableExpansions.map(expansion => (
+                    <Checkbox
+                      key={expansion.id}
+                      isChecked={selectedExpansions.includes(expansion.id)}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSelectedExpansions([...selectedExpansions, expansion.id]);
+                        } else {
+                          setSelectedExpansions(selectedExpansions.filter(id => id !== expansion.id));
+                        }
+                      }}
+                    >
+                      {expansion.name}
+                    </Checkbox>
+                  ))}
+                  <Box marginLeft={6} marginTop={2}>
+                    <Checkbox
+                      disabled={selectedExpansions.length === 0}
+                      isChecked={selectedExpansions.length > 0 && setupExpansionEvents}
+                      onChange={(e) => setSetupExpansionEvents(e.target.checked)}
+                    >
+                      {t`Setup recommended expansion events?`}
+                    </Checkbox>
+                  </Box>
+                </Stack>
               </FormControl>
             ) }
             <FormControl>

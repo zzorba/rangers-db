@@ -307,9 +307,6 @@ msgstr "Copier ce deck pour faire vos propres changements."
 msgid "Core"
 msgstr "Base"
 
-msgid "Core set"
-msgstr "Set de base"
-
 msgid "Cost"
 msgstr "Coût"
 
@@ -639,6 +636,9 @@ msgstr "Se connecter"
 
 msgid "Lone Tree Station"
 msgstr "Base de l'Arbre Solitaire"
+
+msgid "Lure of the Valley (Core)"
+msgstr ""
 
 msgid "Maladies"
 msgstr "Trauma"
@@ -995,6 +995,9 @@ msgstr "Set"
 msgid "Settings"
 msgstr "Paramètres"
 
+msgid "Setup recommended expansion events?"
+msgstr ""
+
 msgid "Severed Artery"
 msgstr ""
 
@@ -1049,7 +1052,10 @@ msgstr "ESP"
 msgid "Spire"
 msgstr "Flèche"
 
-msgid "Spire's Crossing"
+msgid "Spire Crossing"
+msgstr ""
+
+msgid "Spire In Bloom"
 msgstr ""
 
 msgid "Spirit"
@@ -1193,6 +1199,9 @@ msgstr "Cela mettra fin au jour {0}."
 msgid "This will switch the deck controls to allow changes that are allowed while playing a campaign."
 msgstr "Ceci changera la façon de gérer le Deck pour y permettre des changements en cours de Campagne."
 
+msgid "Thoroughfare"
+msgstr ""
+
 msgid "To avoid spoilers for other players, you cannot publish decks that have camped."
 msgstr "Pour éviter les spoilers aux autres joueurs, vous ne pouvez pas publier des decks qui ont campé."
 
@@ -1270,6 +1279,9 @@ msgstr "Ne plus aimer"
 
 msgid "Update now"
 msgstr "Mettre à jour"
+
+msgid "Valley Expansions"
+msgstr ""
 
 msgid "View as Cards"
 msgstr "Affichage en cartes"
