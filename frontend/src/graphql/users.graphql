@@ -16,6 +16,18 @@ mutation setPrivateDecks($userId: String!, $privateDecks: Boolean!) {
   }
 }
 
+mutation setPublicCampaigns($userId: String!, $publicCampaigns: Boolean!) {
+  update_rangers_user_settings_by_pk(
+    pk_columns: { user_id: $userId }
+    _set: {
+      public_campaigns: $publicCampaigns
+    }
+  ) {
+    user_id
+    public_campaigns
+  }
+}
+
 mutation setPackCollection($userId: String!, $pack_collection: jsonb!) {
   update_rangers_user_settings_by_pk(
     pk_columns: { user_id: $userId }

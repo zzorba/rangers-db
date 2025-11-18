@@ -97,6 +97,9 @@ msgstr "Nachdem du eine neue Karte aus der Sammlung gewählt und eine Karte aus 
 msgid "All"
 msgstr "Alle"
 
+msgid "Allow people to view my campaigns"
+msgstr ""
+
 msgid "Allow people to view my decks"
 msgstr "Anderen erlauben meine Decks anzusehen"
 

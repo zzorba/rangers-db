@@ -348,6 +348,7 @@ export type All_Card = {
   quantity: Scalars['Int']['output'];
   real_back_flavor?: Maybe<Scalars['String']['output']>;
   real_back_name?: Maybe<Scalars['String']['output']>;
+  real_back_subname?: Maybe<Scalars['String']['output']>;
   real_back_text?: Maybe<Scalars['String']['output']>;
   real_back_traits?: Maybe<Scalars['String']['output']>;
   real_customization_change?: Maybe<Scalars['String']['output']>;
@@ -368,6 +369,8 @@ export type All_Card = {
   shroud?: Maybe<Scalars['Int']['output']>;
   side_deck_options?: Maybe<Scalars['jsonb']['output']>;
   side_deck_requirements?: Maybe<Scalars['jsonb']['output']>;
+  simple_deck_requirements?: Maybe<Scalars['jsonb']['output']>;
+  simple_side_deck_requirements?: Maybe<Scalars['jsonb']['output']>;
   skill_agility?: Maybe<Scalars['Int']['output']>;
   skill_combat?: Maybe<Scalars['Int']['output']>;
   skill_intellect?: Maybe<Scalars['Int']['output']>;
@@ -469,6 +472,18 @@ export type All_CardSide_Deck_OptionsArgs = {
 
 /** columns and relationships of "all_card" */
 export type All_CardSide_Deck_RequirementsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardSimple_Deck_RequirementsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardSimple_Side_Deck_RequirementsArgs = {
   path?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -578,6 +593,8 @@ export type All_Card_Append_Input = {
   restrictions?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_options?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   tags?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
@@ -714,6 +731,7 @@ export type All_Card_Bool_Exp = {
   quantity?: InputMaybe<Int_Comparison_Exp>;
   real_back_flavor?: InputMaybe<String_Comparison_Exp>;
   real_back_name?: InputMaybe<String_Comparison_Exp>;
+  real_back_subname?: InputMaybe<String_Comparison_Exp>;
   real_back_text?: InputMaybe<String_Comparison_Exp>;
   real_back_traits?: InputMaybe<String_Comparison_Exp>;
   real_customization_change?: InputMaybe<String_Comparison_Exp>;
@@ -734,6 +752,8 @@ export type All_Card_Bool_Exp = {
   shroud?: InputMaybe<Int_Comparison_Exp>;
   side_deck_options?: InputMaybe<Jsonb_Comparison_Exp>;
   side_deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
+  simple_deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
+  simple_side_deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
   skill_agility?: InputMaybe<Int_Comparison_Exp>;
   skill_combat?: InputMaybe<Int_Comparison_Exp>;
   skill_intellect?: InputMaybe<Int_Comparison_Exp>;
@@ -774,6 +794,8 @@ export type All_Card_Delete_At_Path_Input = {
   restrictions?: InputMaybe<Array<Scalars['String']['input']>>;
   side_deck_options?: InputMaybe<Array<Scalars['String']['input']>>;
   side_deck_requirements?: InputMaybe<Array<Scalars['String']['input']>>;
+  simple_deck_requirements?: InputMaybe<Array<Scalars['String']['input']>>;
+  simple_side_deck_requirements?: InputMaybe<Array<Scalars['String']['input']>>;
   tags?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
@@ -785,6 +807,8 @@ export type All_Card_Delete_Elem_Input = {
   restrictions?: InputMaybe<Scalars['Int']['input']>;
   side_deck_options?: InputMaybe<Scalars['Int']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['Int']['input']>;
+  simple_deck_requirements?: InputMaybe<Scalars['Int']['input']>;
+  simple_side_deck_requirements?: InputMaybe<Scalars['Int']['input']>;
   tags?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -796,6 +820,8 @@ export type All_Card_Delete_Key_Input = {
   restrictions?: InputMaybe<Scalars['String']['input']>;
   side_deck_options?: InputMaybe<Scalars['String']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['String']['input']>;
+  simple_deck_requirements?: InputMaybe<Scalars['String']['input']>;
+  simple_side_deck_requirements?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -888,6 +914,7 @@ export type All_Card_Insert_Input = {
   quantity?: InputMaybe<Scalars['Int']['input']>;
   real_back_flavor?: InputMaybe<Scalars['String']['input']>;
   real_back_name?: InputMaybe<Scalars['String']['input']>;
+  real_back_subname?: InputMaybe<Scalars['String']['input']>;
   real_back_text?: InputMaybe<Scalars['String']['input']>;
   real_back_traits?: InputMaybe<Scalars['String']['input']>;
   real_customization_change?: InputMaybe<Scalars['String']['input']>;
@@ -908,6 +935,8 @@ export type All_Card_Insert_Input = {
   shroud?: InputMaybe<Scalars['Int']['input']>;
   side_deck_options?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   skill_agility?: InputMaybe<Scalars['Int']['input']>;
   skill_combat?: InputMaybe<Scalars['Int']['input']>;
   skill_intellect?: InputMaybe<Scalars['Int']['input']>;
@@ -967,6 +996,7 @@ export type All_Card_Max_Fields = {
   quantity?: Maybe<Scalars['Int']['output']>;
   real_back_flavor?: Maybe<Scalars['String']['output']>;
   real_back_name?: Maybe<Scalars['String']['output']>;
+  real_back_subname?: Maybe<Scalars['String']['output']>;
   real_back_text?: Maybe<Scalars['String']['output']>;
   real_back_traits?: Maybe<Scalars['String']['output']>;
   real_customization_change?: Maybe<Scalars['String']['output']>;
@@ -1035,6 +1065,7 @@ export type All_Card_Max_Order_By = {
   quantity?: InputMaybe<Order_By>;
   real_back_flavor?: InputMaybe<Order_By>;
   real_back_name?: InputMaybe<Order_By>;
+  real_back_subname?: InputMaybe<Order_By>;
   real_back_text?: InputMaybe<Order_By>;
   real_back_traits?: InputMaybe<Order_By>;
   real_customization_change?: InputMaybe<Order_By>;
@@ -1104,6 +1135,7 @@ export type All_Card_Min_Fields = {
   quantity?: Maybe<Scalars['Int']['output']>;
   real_back_flavor?: Maybe<Scalars['String']['output']>;
   real_back_name?: Maybe<Scalars['String']['output']>;
+  real_back_subname?: Maybe<Scalars['String']['output']>;
   real_back_text?: Maybe<Scalars['String']['output']>;
   real_back_traits?: Maybe<Scalars['String']['output']>;
   real_customization_change?: Maybe<Scalars['String']['output']>;
@@ -1172,6 +1204,7 @@ export type All_Card_Min_Order_By = {
   quantity?: InputMaybe<Order_By>;
   real_back_flavor?: InputMaybe<Order_By>;
   real_back_name?: InputMaybe<Order_By>;
+  real_back_subname?: InputMaybe<Order_By>;
   real_back_text?: InputMaybe<Order_By>;
   real_back_traits?: InputMaybe<Order_By>;
   real_customization_change?: InputMaybe<Order_By>;
@@ -1286,6 +1319,7 @@ export type All_Card_Order_By = {
   quantity?: InputMaybe<Order_By>;
   real_back_flavor?: InputMaybe<Order_By>;
   real_back_name?: InputMaybe<Order_By>;
+  real_back_subname?: InputMaybe<Order_By>;
   real_back_text?: InputMaybe<Order_By>;
   real_back_traits?: InputMaybe<Order_By>;
   real_customization_change?: InputMaybe<Order_By>;
@@ -1306,6 +1340,8 @@ export type All_Card_Order_By = {
   shroud?: InputMaybe<Order_By>;
   side_deck_options?: InputMaybe<Order_By>;
   side_deck_requirements?: InputMaybe<Order_By>;
+  simple_deck_requirements?: InputMaybe<Order_By>;
+  simple_side_deck_requirements?: InputMaybe<Order_By>;
   skill_agility?: InputMaybe<Order_By>;
   skill_combat?: InputMaybe<Order_By>;
   skill_intellect?: InputMaybe<Order_By>;
@@ -1342,6 +1378,8 @@ export type All_Card_Prepend_Input = {
   restrictions?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_options?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   tags?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
@@ -1452,6 +1490,8 @@ export enum All_Card_Select_Column {
   /** column name */
   RealBackName = 'real_back_name',
   /** column name */
+  RealBackSubname = 'real_back_subname',
+  /** column name */
   RealBackText = 'real_back_text',
   /** column name */
   RealBackTraits = 'real_back_traits',
@@ -1491,6 +1531,10 @@ export enum All_Card_Select_Column {
   SideDeckOptions = 'side_deck_options',
   /** column name */
   SideDeckRequirements = 'side_deck_requirements',
+  /** column name */
+  SimpleDeckRequirements = 'simple_deck_requirements',
+  /** column name */
+  SimpleSideDeckRequirements = 'simple_side_deck_requirements',
   /** column name */
   SkillAgility = 'skill_agility',
   /** column name */
@@ -1659,6 +1703,7 @@ export type All_Card_Set_Input = {
   quantity?: InputMaybe<Scalars['Int']['input']>;
   real_back_flavor?: InputMaybe<Scalars['String']['input']>;
   real_back_name?: InputMaybe<Scalars['String']['input']>;
+  real_back_subname?: InputMaybe<Scalars['String']['input']>;
   real_back_text?: InputMaybe<Scalars['String']['input']>;
   real_back_traits?: InputMaybe<Scalars['String']['input']>;
   real_customization_change?: InputMaybe<Scalars['String']['input']>;
@@ -1679,6 +1724,8 @@ export type All_Card_Set_Input = {
   shroud?: InputMaybe<Scalars['Int']['input']>;
   side_deck_options?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   skill_agility?: InputMaybe<Scalars['Int']['input']>;
   skill_combat?: InputMaybe<Scalars['Int']['input']>;
   skill_intellect?: InputMaybe<Scalars['Int']['input']>;
@@ -1950,6 +1997,7 @@ export type All_Card_Stream_Cursor_Value_Input = {
   quantity?: InputMaybe<Scalars['Int']['input']>;
   real_back_flavor?: InputMaybe<Scalars['String']['input']>;
   real_back_name?: InputMaybe<Scalars['String']['input']>;
+  real_back_subname?: InputMaybe<Scalars['String']['input']>;
   real_back_text?: InputMaybe<Scalars['String']['input']>;
   real_back_traits?: InputMaybe<Scalars['String']['input']>;
   real_customization_change?: InputMaybe<Scalars['String']['input']>;
@@ -1970,6 +2018,8 @@ export type All_Card_Stream_Cursor_Value_Input = {
   shroud?: InputMaybe<Scalars['Int']['input']>;
   side_deck_options?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  simple_side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   skill_agility?: InputMaybe<Scalars['Int']['input']>;
   skill_combat?: InputMaybe<Scalars['Int']['input']>;
   skill_intellect?: InputMaybe<Scalars['Int']['input']>;
@@ -2058,6 +2108,7 @@ export type All_Card_Text = {
   __typename?: 'all_card_text';
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_name?: Maybe<Scalars['String']['output']>;
+  back_subname?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   backimageurl?: Maybe<Scalars['String']['output']>;
@@ -2133,6 +2184,7 @@ export type All_Card_Text_Bool_Exp = {
   _or?: InputMaybe<Array<All_Card_Text_Bool_Exp>>;
   back_flavor?: InputMaybe<String_Comparison_Exp>;
   back_name?: InputMaybe<String_Comparison_Exp>;
+  back_subname?: InputMaybe<String_Comparison_Exp>;
   back_text?: InputMaybe<String_Comparison_Exp>;
   back_traits?: InputMaybe<String_Comparison_Exp>;
   backimageurl?: InputMaybe<String_Comparison_Exp>;
@@ -2164,6 +2216,7 @@ export enum All_Card_Text_Constraint {
 export type All_Card_Text_Insert_Input = {
   back_flavor?: InputMaybe<Scalars['String']['input']>;
   back_name?: InputMaybe<Scalars['String']['input']>;
+  back_subname?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
   backimageurl?: InputMaybe<Scalars['String']['input']>;
@@ -2190,6 +2243,7 @@ export type All_Card_Text_Max_Fields = {
   __typename?: 'all_card_text_max_fields';
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_name?: Maybe<Scalars['String']['output']>;
+  back_subname?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   backimageurl?: Maybe<Scalars['String']['output']>;
@@ -2215,6 +2269,7 @@ export type All_Card_Text_Max_Fields = {
 export type All_Card_Text_Max_Order_By = {
   back_flavor?: InputMaybe<Order_By>;
   back_name?: InputMaybe<Order_By>;
+  back_subname?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
   backimageurl?: InputMaybe<Order_By>;
@@ -2241,6 +2296,7 @@ export type All_Card_Text_Min_Fields = {
   __typename?: 'all_card_text_min_fields';
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_name?: Maybe<Scalars['String']['output']>;
+  back_subname?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   backimageurl?: Maybe<Scalars['String']['output']>;
@@ -2266,6 +2322,7 @@ export type All_Card_Text_Min_Fields = {
 export type All_Card_Text_Min_Order_By = {
   back_flavor?: InputMaybe<Order_By>;
   back_name?: InputMaybe<Order_By>;
+  back_subname?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
   backimageurl?: InputMaybe<Order_By>;
@@ -2307,6 +2364,7 @@ export type All_Card_Text_On_Conflict = {
 export type All_Card_Text_Order_By = {
   back_flavor?: InputMaybe<Order_By>;
   back_name?: InputMaybe<Order_By>;
+  back_subname?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
   backimageurl?: InputMaybe<Order_By>;
@@ -2340,6 +2398,8 @@ export enum All_Card_Text_Select_Column {
   BackFlavor = 'back_flavor',
   /** column name */
   BackName = 'back_name',
+  /** column name */
+  BackSubname = 'back_subname',
   /** column name */
   BackText = 'back_text',
   /** column name */
@@ -2384,6 +2444,7 @@ export enum All_Card_Text_Select_Column {
 export type All_Card_Text_Set_Input = {
   back_flavor?: InputMaybe<Scalars['String']['input']>;
   back_name?: InputMaybe<Scalars['String']['input']>;
+  back_subname?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
   backimageurl?: InputMaybe<Scalars['String']['input']>;
@@ -2417,6 +2478,7 @@ export type All_Card_Text_Stream_Cursor_Input = {
 export type All_Card_Text_Stream_Cursor_Value_Input = {
   back_flavor?: InputMaybe<Scalars['String']['input']>;
   back_name?: InputMaybe<Scalars['String']['input']>;
+  back_subname?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
   backimageurl?: InputMaybe<Scalars['String']['input']>;
@@ -2444,6 +2506,8 @@ export enum All_Card_Text_Update_Column {
   BackFlavor = 'back_flavor',
   /** column name */
   BackName = 'back_name',
+  /** column name */
+  BackSubname = 'back_subname',
   /** column name */
   BackText = 'back_text',
   /** column name */
@@ -2598,6 +2662,8 @@ export enum All_Card_Update_Column {
   /** column name */
   RealBackName = 'real_back_name',
   /** column name */
+  RealBackSubname = 'real_back_subname',
+  /** column name */
   RealBackText = 'real_back_text',
   /** column name */
   RealBackTraits = 'real_back_traits',
@@ -2637,6 +2703,10 @@ export enum All_Card_Update_Column {
   SideDeckOptions = 'side_deck_options',
   /** column name */
   SideDeckRequirements = 'side_deck_requirements',
+  /** column name */
+  SimpleDeckRequirements = 'simple_deck_requirements',
+  /** column name */
+  SimpleSideDeckRequirements = 'simple_side_deck_requirements',
   /** column name */
   SkillAgility = 'skill_agility',
   /** column name */
@@ -44942,6 +45012,7 @@ export type Rangers_User_Settings = {
   adhere_taboos?: Maybe<Scalars['Boolean']['output']>;
   pack_collection?: Maybe<Scalars['jsonb']['output']>;
   private_decks: Scalars['Boolean']['output'];
+  public_campaigns?: Maybe<Scalars['Boolean']['output']>;
   user_id: Scalars['String']['output'];
 };
 
@@ -44986,6 +45057,7 @@ export type Rangers_User_Settings_Bool_Exp = {
   adhere_taboos?: InputMaybe<Boolean_Comparison_Exp>;
   pack_collection?: InputMaybe<Jsonb_Comparison_Exp>;
   private_decks?: InputMaybe<Boolean_Comparison_Exp>;
+  public_campaigns?: InputMaybe<Boolean_Comparison_Exp>;
   user_id?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -45015,6 +45087,7 @@ export type Rangers_User_Settings_Insert_Input = {
   adhere_taboos?: InputMaybe<Scalars['Boolean']['input']>;
   pack_collection?: InputMaybe<Scalars['jsonb']['input']>;
   private_decks?: InputMaybe<Scalars['Boolean']['input']>;
+  public_campaigns?: InputMaybe<Scalars['Boolean']['input']>;
   user_id?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -45058,6 +45131,7 @@ export type Rangers_User_Settings_Order_By = {
   adhere_taboos?: InputMaybe<Order_By>;
   pack_collection?: InputMaybe<Order_By>;
   private_decks?: InputMaybe<Order_By>;
+  public_campaigns?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
@@ -45080,6 +45154,8 @@ export enum Rangers_User_Settings_Select_Column {
   /** column name */
   PrivateDecks = 'private_decks',
   /** column name */
+  PublicCampaigns = 'public_campaigns',
+  /** column name */
   UserId = 'user_id'
 }
 
@@ -45088,6 +45164,7 @@ export type Rangers_User_Settings_Set_Input = {
   adhere_taboos?: InputMaybe<Scalars['Boolean']['input']>;
   pack_collection?: InputMaybe<Scalars['jsonb']['input']>;
   private_decks?: InputMaybe<Scalars['Boolean']['input']>;
+  public_campaigns?: InputMaybe<Scalars['Boolean']['input']>;
   user_id?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -45104,6 +45181,7 @@ export type Rangers_User_Settings_Stream_Cursor_Value_Input = {
   adhere_taboos?: InputMaybe<Scalars['Boolean']['input']>;
   pack_collection?: InputMaybe<Scalars['jsonb']['input']>;
   private_decks?: InputMaybe<Scalars['Boolean']['input']>;
+  public_campaigns?: InputMaybe<Scalars['Boolean']['input']>;
   user_id?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -45115,6 +45193,8 @@ export enum Rangers_User_Settings_Update_Column {
   PackCollection = 'pack_collection',
   /** column name */
   PrivateDecks = 'private_decks',
+  /** column name */
+  PublicCampaigns = 'public_campaigns',
   /** column name */
   UserId = 'user_id'
 }
@@ -52781,7 +52861,7 @@ export type GetProfileQueryVariables = Exact<{
 }>;
 
 
-export type GetProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null, settings?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean, pack_collection?: any | null, adhere_taboos?: boolean | null } | null };
+export type GetProfileQuery = { __typename?: 'query_root', profile?: { __typename?: 'rangers_users', id: string, handle?: string | null, created_at: any, friends: Array<{ __typename?: 'rangers_user_friends', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'rangers_user_sent_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'rangers_user_received_friend_requests', user?: { __typename?: 'rangers_users', id: string, handle?: string | null } | null }> } | null, settings?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean, public_campaigns?: boolean | null, pack_collection?: any | null, adhere_taboos?: boolean | null } | null };
 
 export type GetProfileByHandleQueryVariables = Exact<{
   handle: Scalars['String']['input'];
@@ -52828,6 +52908,14 @@ export type SetPrivateDecksMutationVariables = Exact<{
 
 
 export type SetPrivateDecksMutation = { __typename?: 'mutation_root', update_rangers_user_settings_by_pk?: { __typename?: 'rangers_user_settings', user_id: string, private_decks: boolean } | null };
+
+export type SetPublicCampaignsMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  publicCampaigns: Scalars['Boolean']['input'];
+}>;
+
+
+export type SetPublicCampaignsMutation = { __typename?: 'mutation_root', update_rangers_user_settings_by_pk?: { __typename?: 'rangers_user_settings', user_id: string, public_campaigns?: boolean | null } | null };
 
 export type SetPackCollectionMutationVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -55478,6 +55566,7 @@ export const GetProfileDocument = gql`
   settings: rangers_user_settings_by_pk(user_id: $id) {
     user_id
     private_decks
+    public_campaigns
     pack_collection
     adhere_taboos
   }
@@ -55758,6 +55847,44 @@ export function useSetPrivateDecksMutation(baseOptions?: Apollo.MutationHookOpti
 export type SetPrivateDecksMutationHookResult = ReturnType<typeof useSetPrivateDecksMutation>;
 export type SetPrivateDecksMutationResult = Apollo.MutationResult<SetPrivateDecksMutation>;
 export type SetPrivateDecksMutationOptions = Apollo.BaseMutationOptions<SetPrivateDecksMutation, SetPrivateDecksMutationVariables>;
+export const SetPublicCampaignsDocument = gql`
+    mutation setPublicCampaigns($userId: String!, $publicCampaigns: Boolean!) {
+  update_rangers_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {public_campaigns: $publicCampaigns}
+  ) {
+    user_id
+    public_campaigns
+  }
+}
+    `;
+export type SetPublicCampaignsMutationFn = Apollo.MutationFunction<SetPublicCampaignsMutation, SetPublicCampaignsMutationVariables>;
+
+/**
+ * __useSetPublicCampaignsMutation__
+ *
+ * To run a mutation, you first call `useSetPublicCampaignsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetPublicCampaignsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [setPublicCampaignsMutation, { data, loading, error }] = useSetPublicCampaignsMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      publicCampaigns: // value for 'publicCampaigns'
+ *   },
+ * });
+ */
+export function useSetPublicCampaignsMutation(baseOptions?: Apollo.MutationHookOptions<SetPublicCampaignsMutation, SetPublicCampaignsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SetPublicCampaignsMutation, SetPublicCampaignsMutationVariables>(SetPublicCampaignsDocument, options);
+      }
+export type SetPublicCampaignsMutationHookResult = ReturnType<typeof useSetPublicCampaignsMutation>;
+export type SetPublicCampaignsMutationResult = Apollo.MutationResult<SetPublicCampaignsMutation>;
+export type SetPublicCampaignsMutationOptions = Apollo.BaseMutationOptions<SetPublicCampaignsMutation, SetPublicCampaignsMutationVariables>;
 export const SetPackCollectionDocument = gql`
     mutation setPackCollection($userId: String!, $pack_collection: jsonb!) {
   update_rangers_user_settings_by_pk(

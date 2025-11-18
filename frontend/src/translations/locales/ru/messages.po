@@ -97,6 +97,9 @@ msgstr "Выбрав новую карту коллекции и удалив о
 msgid "All"
 msgstr "Все"
 
+msgid "Allow people to view my campaigns"
+msgstr ""
+
 msgid "Allow people to view my decks"
 msgstr "Разрешить людям просмотр моих колод"
 
