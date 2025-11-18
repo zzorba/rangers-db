@@ -194,7 +194,7 @@ export default function ProfileSettings() {
                 {t`Allow people to view my decks`}
               </DynamicCheckbox>
               <DynamicCheckbox
-                isChecked={!data?.settings?.public_campaigns}
+                isChecked={!!data?.settings?.public_campaigns}
                 onChange={onPublicCampaignsChange}
               >
                 {t`Allow people to view my campaigns`}
