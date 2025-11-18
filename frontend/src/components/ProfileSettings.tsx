@@ -122,7 +122,7 @@ export default function ProfileSettings() {
     await setPublicCampaigns({
       variables: {
         userId: authUser?.uid || '',
-        publicCampaigns: !value,
+        publicCampaigns: value,
       },
     });
     refreshPackCollection?.();
