@@ -97,6 +97,9 @@ msgstr "Después de seleccionar una nueva carta de colección y quitar una de tu
 msgid "All"
 msgstr "Todo"
 
+msgid "Allow people to view my campaigns"
+msgstr ""
+
 msgid "Allow people to view my decks"
 msgstr "Permitir que la gente vea mis mazos"
 

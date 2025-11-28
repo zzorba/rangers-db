@@ -97,6 +97,9 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+msgid "Allow people to view my campaigns"
+msgstr ""
+
 msgid "Allow people to view my decks"
 msgstr ""
 

@@ -45,6 +45,7 @@ query getProfile($id: String!) {
   settings: rangers_user_settings_by_pk(user_id: $id) {
     user_id
     private_decks
+    public_campaigns
     pack_collection
     adhere_taboos
   }

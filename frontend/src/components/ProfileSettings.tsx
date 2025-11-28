@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { t } from '@lingui/macro';
 import { useAuth } from '../lib/AuthContext';
-import { useGetAllPacksQuery, useGetProfileQuery, useSetAdhereTaboosMutation, useSetHandleMutation, useSetPackCollectionMutation, useSetPrivateDecksMutation } from '../generated/graphql/apollo-schema';
+import { useGetAllPacksQuery, useGetProfileQuery, useSetAdhereTaboosMutation, useSetHandleMutation, useSetPackCollectionMutation, useSetPrivateDecksMutation, useSetPublicCampaignsMutation } from '../generated/graphql/apollo-schema';
 import LoadingPage from './LoadingPage';
 import DynamicCheckbox from './DynamicCheckbox';
 import FriendRequestsComponent from './FriendRequests';
@@ -116,6 +116,18 @@ export default function ProfileSettings() {
     });
     refreshPackCollection?.();
   }, [authUser, setPrivateDecks, refreshPackCollection]);
+
+  const [setPublicCampaigns] = useSetPublicCampaignsMutation();
+  const onPublicCampaignsChange = useCallback(async(value: boolean) => {
+    await setPublicCampaigns({
+      variables: {
+        userId: authUser?.uid || '',
+        publicCampaigns: value,
+      },
+    });
+    refreshPackCollection?.();
+  }, [authUser, setPublicCampaigns, refreshPackCollection]);
+
   const [setAdhereTaboos] = useSetAdhereTaboosMutation();
   const onTabooChange = useCallback(async(value: boolean) => {
     await setAdhereTaboos({
@@ -180,6 +192,12 @@ export default function ProfileSettings() {
                 onChange={onPrivateDecksChange}
               >
                 {t`Allow people to view my decks`}
+              </DynamicCheckbox>
+              <DynamicCheckbox
+                isChecked={!!data?.settings?.public_campaigns}
+                onChange={onPublicCampaignsChange}
+              >
+                {t`Allow people to view my campaigns`}
               </DynamicCheckbox>
               <DynamicCheckbox
                 isChecked={!!data?.settings?.adhere_taboos}

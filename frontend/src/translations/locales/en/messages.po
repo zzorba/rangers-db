@@ -97,6 +97,9 @@ msgstr "After selecting a new collection card and removing one from your deck, y
 msgid "All"
 msgstr "All"
 
+msgid "Allow people to view my campaigns"
+msgstr "Allow people to view my campaigns"
+
 msgid "Allow people to view my decks"
 msgstr "Allow people to view my decks"
 
