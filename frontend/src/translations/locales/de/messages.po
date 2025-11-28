@@ -98,10 +98,10 @@ msgid "All"
 msgstr "Alle"
 
 msgid "Allow people to view my campaigns"
-msgstr ""
+msgstr "Erlaube anderen, meine Kampagnen anzusehen"
 
 msgid "Allow people to view my decks"
-msgstr "Anderen erlauben meine Decks anzusehen"
+msgstr "Erlaube anderen, meine Decks anzusehen"
 
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
@@ -230,7 +230,7 @@ msgid "Cards that are removed from your deck will be stored here. They can be sw
 msgstr "Karten die aus deinem Deck entfernt wurden werden hier abgelegt. Sie können zurück in dein Deck genommen werden wenn du dein Nachtlager aufschlägst."
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
-msgstr "Karten mit dem Merkmal "Experte" können nicht als Hobby gewählt werden und werden automatisch ausgeblendet."
+msgstr "Karten mit dem Merkmal \"Experte\" können nicht als Hobby gewählt werden und werden automatisch ausgeblendet."
 
 msgid "Cave System"
 msgstr ""
@@ -458,7 +458,7 @@ msgid "Extend campaign"
 msgstr "Kampagne verlängern"
 
 msgid "Failed to create account. Please try again."
-msgstr "Fehler beim Erstellen des Kontos. Bitte versuche es erneut."
+msgstr "Fehler beim Erstellen des Accounts. Bitte versuche es erneut."
 
 msgid "Failed to sign in. Please try again."
 msgstr "Anmeldung fehlgeschlagen. Bitte versuche es erneut."
@@ -773,7 +773,7 @@ msgid "One aspect must be set to 1."
 msgstr "Ein Aspekt muss auf 1 gesetzt werden."
 
 msgid "One aspect must be set to 3 or 4."
-msgstr "Ein Aspekt muss auf 3 oder 4 gesetzt werden.
+msgstr "Ein Aspekt muss auf 3 oder 4 gesetzt werden."
 
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Eine der gewählten Vorgeschichte-Karten zählt als Hobby."
