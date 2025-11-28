@@ -29,7 +29,7 @@ msgid "{0, plural, one {({1} Malady)} other {({2} Maladies)}}"
 msgstr "{0, plural, one {({1} Schwächung)} other {({2} Schwächungen)}}"
 
 msgid "{0} - Day {1}"
-msgstr ""
+msgstr "{0} - Tag {1}"
 
 msgid "{0} (Copy)"
 msgstr "{0} (Kopie)"
@@ -44,7 +44,7 @@ msgid "{background} - {specialty} (Starter)"
 msgstr "{background} - {specialty} (Starter)"
 
 msgid "{nonCollectionCardCount, plural, one {Show {nonCollectionCardCount} non-collection} other {Show {nonCollectionCardCount} non-collection}}"
-msgstr ""
+msgstr "{nonCollectionCardCount, plural, one {Zeige {nonCollectionCardCount} außerhalb der Sammlung} other {Zeige {nonCollectionCardCount} außerhalb der Sammlung}}"
 
 msgid "{otherErrorCount, plural, one {+ {otherErrorCount} more problem} other {+ {otherErrorCount} more problems}}"
 msgstr "{otherErrorCount, plural, one {+ {otherErrorCount} weiteres Problem} other {+ {otherErrorCount} weitere Probleme}}"
@@ -74,7 +74,7 @@ msgid "Add mission"
 msgstr "Mission hinzufügen"
 
 msgid "Add note"
-msgstr ""
+msgstr "Notiz hinzufügen"
 
 msgid "Add reward"
 msgstr "Belohnung hinzufügen"
@@ -98,19 +98,19 @@ msgid "All"
 msgstr "Alle"
 
 msgid "Allow people to view my campaigns"
-msgstr ""
+msgstr "Erlaube anderen, meine Kampagnen anzusehen"
 
 msgid "Allow people to view my decks"
-msgstr "Anderen erlauben meine Decks anzusehen"
+msgstr "Erlaube anderen, meine Decks anzusehen"
 
 msgid "Already have an account? <0>Login</0> now."
 msgstr "Hast du schon einen Account? <0>Logge</0> dich jetzt ein."
 
 msgid "An error occurred during login."
-msgstr ""
+msgstr "Bei der Anmeldung ist ein Fehler aufgetreten"
 
 msgid "An error occurred during registration."
-msgstr ""
+msgstr "Bei der Registrierung ist ein Fehler aufgetreten"
 
 msgid "Ancestor's Grove"
 msgstr "Wurzeln der Ältesten"
@@ -146,7 +146,7 @@ msgid "Aspect"
 msgstr "Aspekt"
 
 msgid "Aspect levels must sum to 8."
-msgstr ""
+msgstr "Die Summe der Aspektwerte muss 8 betragen."
 
 msgid "Aspect requirements"
 msgstr "Aspekt-Voraussetzungen"
@@ -230,7 +230,7 @@ msgid "Cards that are removed from your deck will be stored here. They can be sw
 msgstr "Karten die aus deinem Deck entfernt wurden werden hier abgelegt. Sie können zurück in dein Deck genommen werden wenn du dein Nachtlager aufschlägst."
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
-msgstr ""
+msgstr "Karten mit dem Merkmal \"Experte\" können nicht als Hobby gewählt werden und werden automatisch ausgeblendet."
 
 msgid "Cave System"
 msgstr ""
@@ -290,7 +290,7 @@ msgid "Contains too many cards that do not match your chosen background."
 msgstr "Enthält zu viele Karten, die nicht zur gewählten Vorgeschichte passen."
 
 msgid "Contains too many cards that do not match your chosen specialty."
-msgstr ""
+msgstr "Enthält zu viele Karten, die nicht zu deiner gewählten Expertise passen."
 
 msgid "Copies"
 msgstr "Kopien"
@@ -326,7 +326,7 @@ msgid "Crossroads Station"
 msgstr "Die Nahtstelle"
 
 msgid "Current location:"
-msgstr ""
+msgstr "Aktueller Ort:"
 
 msgid "Current Position"
 msgstr "Aktuelle Position"
@@ -335,7 +335,7 @@ msgid "Custom deck"
 msgstr "Eigenes Deck"
 
 msgid "Dark mode"
-msgstr "Dark Mode"
+msgstr "Dunkler Modus"
 
 msgid "Day"
 msgstr "Tag"
@@ -422,7 +422,7 @@ msgid "Edit notable event"
 msgstr "Besonderes Ereignis bearbeiten"
 
 msgid "Edit note"
-msgstr ""
+msgstr "Notiz bearbeiten"
 
 msgid "Edit players"
 msgstr "Spieler bearbeiten"
@@ -455,13 +455,13 @@ msgid "Exploration"
 msgstr "Tatendrang"
 
 msgid "Extend campaign"
-msgstr ""
+msgstr "Kampagne verlängern"
 
 msgid "Failed to create account. Please try again."
-msgstr ""
+msgstr "Fehler beim Erstellen des Accounts. Bitte versuche es erneut."
 
 msgid "Failed to sign in. Please try again."
-msgstr ""
+msgstr "Anmeldung fehlgeschlagen. Bitte versuche es erneut."
 
 msgid "Filter by {0}"
 msgstr "Nach {0} filtern"
@@ -476,7 +476,7 @@ msgid "Filter by card type"
 msgstr "Nach Kartentyp filtern"
 
 msgid "Filter by pack"
-msgstr ""
+msgstr "Nach Erweiterung filtern"
 
 msgid "Filter by Role"
 msgstr "Nach Berufung filtern"
@@ -506,7 +506,7 @@ msgid "Focus"
 msgstr "Ruhe"
 
 msgid "Follow the Elder's Book of Uncommon Wisdom"
-msgstr ""
+msgstr "Elder's Book of Uncommon Wisdom (nur englische Version)"
 
 msgid "Forgot Password"
 msgstr "Passwort vergessen"
@@ -548,7 +548,7 @@ msgid "Headwaters Station"
 msgstr "Oberlauf-Station"
 
 msgid "Hide"
-msgstr ""
+msgstr "Verstecken"
 
 msgid "Hide spoilers"
 msgstr "Spoiler verstecken"
@@ -578,13 +578,13 @@ msgid "If you‘d like to support the development and maintenance of this site, 
 msgstr "Du kannst die Entwicklung und den Unterhalt dieser Webseite auf {patreon} unterstützen."
 
 msgid "Incorrect password. Please try again."
-msgstr ""
+msgstr "Falsches Passwort. Bitte versuche es erneut."
 
 msgid "Invalid email address format."
-msgstr ""
+msgstr "Ungültige E-Mail-Adresse"
 
 msgid "Invalid email or password. Please try again."
-msgstr ""
+msgstr "Ungültige E-Mail oder Passwort. Bitte versuche es erneut."
 
 msgid "Inverted Forest"
 msgstr ""
@@ -608,10 +608,10 @@ msgid "Leave campaign"
 msgstr "Kampagne verlassen"
 
 msgid "Legacy of the Ancestors"
-msgstr ""
+msgstr "Das Vermächtnis der Ahnen"
 
 msgid "Light mode"
-msgstr "Light Mode"
+msgstr "Heller Modus"
 
 msgid "Like"
 msgstr "Gefällt mir"
@@ -641,7 +641,7 @@ msgid "Lone Tree Station"
 msgstr "Flurbaum-Basis"
 
 msgid "Lure of the Valley (Core)"
-msgstr ""
+msgstr "Der Ruf des Tals (Grundspiel)"
 
 msgid "Maladies"
 msgstr "Schwächungen"
@@ -707,7 +707,7 @@ msgid "Next deck"
 msgstr "Nächstes Deck"
 
 msgid "No account found with this email address."
-msgstr ""
+msgstr "Keinen Account mit dieser E-Mail-Adresse gefunden."
 
 msgid "No matching cards"
 msgstr "Keine passenden Karten"
@@ -770,10 +770,10 @@ msgid "Old-growth"
 msgstr "Ur-Wald"
 
 msgid "One aspect must be set to 1."
-msgstr ""
+msgstr "Ein Aspekt muss auf 1 gesetzt werden."
 
 msgid "One aspect must be set to 3 or 4."
-msgstr ""
+msgstr "Ein Aspekt muss auf 3 oder 4 gesetzt werden."
 
 msgid "One of the chosen background cards is counting towards outside interest."
 msgstr "Eine der gewählten Vorgeschichte-Karten zählt als Hobby."
@@ -782,7 +782,7 @@ msgid "One of the chosen specialty cards is counting towards outside interest."
 msgstr "Eine der gewählten Expertise-Karten zählt als Hobby."
 
 msgid "Only one aspect can be set to 3 or 4."
-msgstr ""
+msgstr "Nur ein Aspekt kann auf 3 oder 4 gesetzt werden."
 
 msgid "Orlin's Vault"
 msgstr ""
@@ -801,13 +801,13 @@ msgid "Overgrown Passage"
 msgstr ""
 
 msgid "Packs"
-msgstr ""
+msgstr "Erweiterungen"
 
 msgid "Password"
 msgstr "Passwort"
 
 msgid "Password is too weak. Please use a stronger password."
-msgstr ""
+msgstr "Passwort ist zu schwach. Bitte verwende ein stärkeres Passwort."
 
 msgid "Path Terrain"
 msgstr "Terrain-Typ"
@@ -831,7 +831,7 @@ msgid "Previous"
 msgstr "Vorherige Seite"
 
 msgid "Previous campaign"
-msgstr ""
+msgstr "Vorherige Kampagne"
 
 msgid "Previous deck"
 msgstr "Vorheriges Deck"
@@ -921,7 +921,7 @@ msgid "Request friend"
 msgstr "Freundschaftsanfrage senden"
 
 msgid "Restrictions"
-msgstr ""
+msgstr "Einschränkungen"
 
 msgid "Return a copy to the collection"
 msgstr "Lege eine Kopie zur Sammlung zurück"
@@ -1122,7 +1122,7 @@ msgid "The Cypress Citadel"
 msgstr "Die Zypressen-Zitadelle"
 
 msgid "The Elder's Book of Uncommon Wisdom is a list of rebalanced Ranger cards with optional text changes. These changes are designed to maintain a healthy and balanced cardpool, and to increase deck diversity by encouraging players to build decks with underutilized cards instead of common staples."
-msgstr ""
+msgstr "\"The Elder's Book of Uncommon Wisdom\" ist eine Liste überarbeiteter Ranger-Karten mit optionalen Textanpassungen. Diese Änderungen sollen einen gesunden und ausgewogenen Kartenpool erhalten und die Vielfalt der Decks erhöhen, indem sie Spieler dazu anregen, Decks mit bislang wenig genutzten Karten zu bauen – anstelle immer wieder auf die gleichen Standardkarten zurückzugreifen."
 
 msgid "The Fractured Wall"
 msgstr "Berstwall"
@@ -1170,7 +1170,7 @@ msgid "There are too many outside interest cards in the deck."
 msgstr "Es sind zu viele Hobby-Karten in deinem Deck."
 
 msgid "This account has been disabled."
-msgstr ""
+msgstr "Dieser Account wurde deaktiviert"
 
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
 msgstr "Keinen Zugriff auf diese Kampagne. Bist du sicher, dass du dich mit dem richtigen Account angemeldet hast?"
@@ -1185,7 +1185,7 @@ msgid "This day is in the past. It is currently day {0}."
 msgstr "Dieser Tag liegt in der Vergangenheit. Es ist jetzt Tag {0}."
 
 msgid "This email address is already registered. Please try logging in instead."
-msgstr ""
+msgstr "Diese E-Mail-Adresse ist bereits registriert. Bitte melde dich stattdessen an."
 
 msgid "This option should be used if a ranger is too fatigued, too injured, or if instructed by the campaign guide or a mission."
 msgstr "Diese Option sollte gewählt werden, wenn ein Ranger zu müde oder zu verletzt ist oder wenn es von der Kampagne oder einer Mission verlangt wird."
@@ -1194,7 +1194,7 @@ msgid "This role card does not match your chosen specialty."
 msgstr "Diese Berufungs-Karte passt nicht zu deiner gewählten Expertise."
 
 msgid "This site is a digital companion for the excellent <0>Earthborne Rangers</0> adventure card game."
-msgstr "Diese Seite ist dein digitaler Begleiter für das wundervolle <0>Earthborne Rangers</0> Abenteuer Kartenspiel."
+msgstr "Diese Seite ist der digitaler Begleiter für das wundervolle <0>Earthborne Rangers</0> Abenteuer-Kartenspiel."
 
 msgid "This will end day {0}."
 msgstr "Tag {0} wird beendet."
@@ -1227,7 +1227,7 @@ msgid "Too many cards. When making deck changes while camping, you should remove
 msgstr "Zu viele Karten. Wenn du dein Nachtlager aufschlägst und Änderungen an deinem Deck machst, solltest du Karten enfernen um Platz für Belohnungen zu schaffen und ein 30 Karten Deck zu bewahren."
 
 msgid "Too many failed login attempts. Please try again later."
-msgstr ""
+msgstr "Zu viele fehlgeschlagene Anmeldeversuche. Bitte versuche es später erneut."
 
 msgid "Too many FIT personality cards."
 msgstr "Zu viele FIT-Eigenarten-Karten."
@@ -1248,10 +1248,10 @@ msgid "Traits"
 msgstr "Merkmale"
 
 msgid "Transfer campaign..."
-msgstr ""
+msgstr "Kampagne übertrage..."
 
 msgid "Transfer existing campaign"
-msgstr ""
+msgstr "Bestehende Kampagne übertragen"
 
 msgid "Travel"
 msgstr "Reisen"
@@ -1284,7 +1284,7 @@ msgid "Update now"
 msgstr "Jetzt bearbeiten"
 
 msgid "Valley Expansions"
-msgstr ""
+msgstr "Tal-Erweiterungen"
 
 msgid "View as Cards"
 msgstr "Ansicht: Karten"
