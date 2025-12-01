@@ -116,7 +116,7 @@ msgid "Ancestor's Grove"
 msgstr "Wurzeln der Ältesten"
 
 msgid "Ancient Ruins"
-msgstr ""
+msgstr "Uralte Ruinen"
 
 msgid "Approach"
 msgstr "Herangehensweise"
@@ -125,7 +125,7 @@ msgid "Approach icons"
 msgstr "Herangehensweise-Symbole"
 
 msgid "Arboretum of Memory"
-msgstr ""
+msgstr "Hain der Erinnerung"
 
 msgid "Archeological Outpost"
 msgstr "Archäologischer Vorposten"
@@ -188,7 +188,7 @@ msgid "Branch"
 msgstr "Die Ästelei"
 
 msgid "Branching Artery"
-msgstr ""
+msgstr "Arterien-Verzweigung"
 
 msgid "Brookside"
 msgstr ""
@@ -218,7 +218,7 @@ msgid "Cancel Friendship"
 msgstr "Freundschaft beenden"
 
 msgid "Carbonforged Maze"
-msgstr ""
+msgstr "Karbongeschmiedeter Irrgarten"
 
 msgid "Card set"
 msgstr "Karten-Set"
@@ -233,10 +233,10 @@ msgid "Cards with the Expert trait cannot be chosen as an outside interest and a
 msgstr "Karten mit dem Merkmal \"Experte\" können nicht als Hobby gewählt werden und werden automatisch ausgeblendet."
 
 msgid "Cave System"
-msgstr ""
+msgstr "Höhlensystem"
 
 msgid "Cerulean Curtain"
-msgstr ""
+msgstr "Der Himmelblaue Vorhang"
 
 msgid "Changes"
 msgstr "Änderungen"
@@ -353,7 +353,7 @@ msgid "Decklists"
 msgstr "Decks"
 
 msgid "Deep Roots"
-msgstr ""
+msgstr "Tiefe Wurzeln"
 
 msgid "Delete"
 msgstr "Löschen"
@@ -380,7 +380,7 @@ msgid "Descriptions support basic markdown and html formatting."
 msgstr "Beschreibungen unterstützen einfache Markdown- und HTML-Formatierung."
 
 msgid "Desert of Endless Night"
-msgstr ""
+msgstr "Dünen der Endlosen Nacht"
 
 msgid "Discard changes"
 msgstr "Änderungen verwerfen"
@@ -398,7 +398,7 @@ msgid "Downpour"
 msgstr "Platzregen"
 
 msgid "Drenching Chamber"
-msgstr ""
+msgstr "Schwemmkammer"
 
 msgid "Duplicate this deck while preserving the original."
 msgstr "Klone dieses Deck, das Original bleibt erhalten."
@@ -428,7 +428,7 @@ msgid "Edit players"
 msgstr "Spieler bearbeiten"
 
 msgid "Elder's Book of Uncommon Wisdom"
-msgstr ""
+msgstr "Elder's Book of Uncommon Wisdom (englisch)"
 
 msgid "Email"
 msgstr "E-Mail"
@@ -446,7 +446,7 @@ msgid "English"
 msgstr "Englisch"
 
 msgid "Enveloping Silence"
-msgstr ""
+msgstr "Schreiende Stille"
 
 msgid "Equip"
 msgstr "Last"
@@ -494,10 +494,10 @@ msgid "Fitness"
 msgstr "Fitness"
 
 msgid "Flooded Passage"
-msgstr ""
+msgstr "Überflutete Passage"
 
 msgid "Flooded Ruins"
-msgstr ""
+msgstr "Überschwemmte Ruinen"
 
 msgid "FOC"
 msgstr "RUH"
@@ -518,7 +518,7 @@ msgid "Friends"
 msgstr "Freunde"
 
 msgid "Fungal Forest"
-msgstr ""
+msgstr "Pilzwald"
 
 msgid "General"
 msgstr "Standard"
@@ -527,7 +527,7 @@ msgid "German"
 msgstr "Deutsch"
 
 msgid "Glitterain"
-msgstr ""
+msgstr "Glitzernder Niesel"
 
 msgid "Golden Shore"
 msgstr "Die Goldküste"
@@ -554,10 +554,10 @@ msgid "Hide spoilers"
 msgstr "Spoiler verstecken"
 
 msgid "Howing Wind"
-msgstr ""
+msgstr "Sturmböen"
 
 msgid "Howling Wind"
-msgstr ""
+msgstr "Sturmböen"
 
 msgid "Howling Winds"
 msgstr "Sturmböen"
@@ -587,7 +587,7 @@ msgid "Invalid email or password. Please try again."
 msgstr "Ungültige E-Mail oder Passwort. Bitte versuche es erneut."
 
 msgid "Inverted Forest"
-msgstr ""
+msgstr "Der Kopfstehende Wald"
 
 msgid "Italian"
 msgstr "Italienisch"
@@ -632,7 +632,7 @@ msgid "Locations"
 msgstr "Orte"
 
 msgid "Locked Passage"
-msgstr ""
+msgstr "Verschlossene Passage"
 
 msgid "Login"
 msgstr "Anmeldung"
@@ -680,7 +680,7 @@ msgid "My Decks"
 msgstr "Meine Decks"
 
 msgid "Mycelial Conclave"
-msgstr ""
+msgstr "Myzelien-Konzil"
 
 msgid "Name"
 msgstr "Name"
@@ -764,7 +764,7 @@ msgid "Notes"
 msgstr "Notizen"
 
 msgid "Oasis of Sunlight"
-msgstr ""
+msgstr "Oase des Lichts"
 
 msgid "Old-growth"
 msgstr "Ur-Wald"
@@ -785,7 +785,7 @@ msgid "Only one aspect can be set to 3 or 4."
 msgstr "Nur ein Aspekt kann auf 3 oder 4 gesetzt werden."
 
 msgid "Orlin's Vault"
-msgstr ""
+msgstr "Orlins Gewölbe"
 
 #. card_set_header
 msgid "Other"
@@ -798,7 +798,7 @@ msgid "Outside interest cards cannot have the Expert trait."
 msgstr "Hobby-Karten können nicht das Experte-Merkmal haben."
 
 msgid "Overgrown Passage"
-msgstr ""
+msgstr "Überwuchterte Passage"
 
 msgid "Packs"
 msgstr "Erweiterungen"
@@ -954,7 +954,7 @@ msgid "Save changes"
 msgstr "Änderungen speichern"
 
 msgid "Scuttler Network"
-msgstr ""
+msgstr "Krabblertunnel-Netz"
 
 msgid "Search by name"
 msgstr "Nach Name suchen"
@@ -999,10 +999,10 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 msgid "Setup recommended expansion events?"
-msgstr ""
+msgstr "Empfohlene Erweiterungs-Ereignisse für den Aufbau"
 
 msgid "Severed Artery"
-msgstr ""
+msgstr "Durchtrennte Arterie"
 
 msgid "Share"
 msgstr "Teilen"
@@ -1011,7 +1011,7 @@ msgid "Shareable Deck"
 msgstr "Teilbares Deck"
 
 msgid "Shimmering Runoff"
-msgstr ""
+msgstr "Schimmernder Niederschlag"
 
 msgid "Show all"
 msgstr "Alle anzeigen"
@@ -1032,7 +1032,7 @@ msgid "Sign Up"
 msgstr "Registrieren"
 
 msgid "Silent Dormitories"
-msgstr ""
+msgstr "Verlassene Unterkünfte"
 
 msgid "Silverfin Docks"
 msgstr ""
@@ -1086,10 +1086,10 @@ msgid "Swamp"
 msgstr "Sumpf"
 
 msgid "Talpid's Squeeze"
-msgstr ""
+msgstr "Sternmulls Enge"
 
 msgid "Terminal Artery"
-msgstr ""
+msgstr "Arterien-Endstelle"
 
 msgid "Terrain"
 msgstr "Terrain"
@@ -1104,16 +1104,16 @@ msgid "The Alluvial Ruins"
 msgstr "Schwemmland-Ruinen"
 
 msgid "The Arcology"
-msgstr ""
+msgstr "Die Arkologie"
 
 msgid "The Cage"
-msgstr ""
+msgstr "Der Käfig"
 
 msgid "The Chimney"
-msgstr ""
+msgstr "Der Schlot"
 
 msgid "The Cistern"
-msgstr ""
+msgstr "Die Zisterne"
 
 msgid "The Concordant Ziggurats"
 msgstr "Die Konkordanten Ziggurats"
@@ -1149,7 +1149,7 @@ msgid "The Plummet"
 msgstr "Der Sturz"
 
 msgid "The Rootway"
-msgstr ""
+msgstr "Die Wurzelstraße"
 
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "Die Webseite wird wegen Wartungen in der nächsten Zeit voraussichtlich hin und wieder offline gehen. Daten können dabei <0>verloren gehen</0>."
@@ -1161,7 +1161,7 @@ msgid "The Valley"
 msgstr "Das Tal"
 
 msgid "The Verdant Sphere"
-msgstr ""
+msgstr "Die Grünsphäre"
 
 msgid "There are too many cards with this card's name in your deck."
 msgstr "Es sind zu viele Karten mit diesem Namen in deinem Deck."
