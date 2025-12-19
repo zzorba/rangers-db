@@ -200,6 +200,14 @@ export function getGeneralSets(): MapLocations {
       cycles: ['loa'],
       connections: [],
     },
+    artery: {
+      id: 'branching_artery',  // Usa direttamente l'id dell'icona esistente
+      name: t`Artery`,
+      type: 'location',
+      background: false,
+      cycles: ['loa'],
+      connections: [],
+    },
   };
 }
 
