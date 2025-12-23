@@ -1103,7 +1103,7 @@ msgstr "Texte"
 msgid "The Alluvial Ruins"
 msgstr "Les Ruines Alluviales"
 
-msgid "The Arcology"
+msgid "Arcology"
 msgstr ""
 
 msgid "The Cage"
@@ -1154,7 +1154,7 @@ msgstr ""
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "Ce site sera probablement interrompu pour maintenance et des données pourraient être perdues au cours de cette période de développement."
 
-msgid "The Tumbledown"
+msgid "Tumbledown"
 msgstr "Culbute"
 
 msgid "The Valley"

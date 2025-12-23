@@ -1093,7 +1093,7 @@
         {
           "order": 246,
           "id": 21,
-          "name": "the_tumbledown",
+          "name": "tumbledown",
           "prevSize": 32,
           "code": 59708,
           "tempChar": ""
@@ -3845,7 +3845,7 @@
           "isMulticolor2": false,
           "grid": 16,
           "tags": [
-            "the_tumbledown"
+            "tumbledown"
           ]
         },
         {

@@ -56,7 +56,7 @@ import SolidButton from './SolidButton';
 import { useCycleCampaigns } from '../pages/campaigns';
 import MissionSelect from './MissionSelect';
 import { getMissionName } from '../lib/missions';
-import { PATH_CARDS, PathCardDefinition, getPathCardName } from '../lib/pathCards';
+import { PATH_CARDS, PathCardDefinition, getPathCardName, canShowPathCard } from '../lib/pathCards';
 
 const STARTING_LOCATIONS: { [campaign: string]: string } = {
   demo: 'lone_tree_station',
@@ -1090,7 +1090,6 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
   
   // Crea le opzioni per il dropdown con icone dei set
   const pathCardOptions: PathCardOption[] = useMemo(() => {
-  console.log('PATH_CARDS:', PATH_CARDS);  // Aggiungi questa riga
     return PATH_CARDS.map(card => {
       const cardName = getPathCardName(card.code, locale);
       
@@ -1108,6 +1107,11 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
         }
       }
       
+      // Trova il nome della destinazione (se presente)
+      const destinationName = card.destination 
+        ? (locations[card.destination]?.name || generalSets[card.destination]?.name || card.destination)
+        : undefined;
+      
       return {
         value: card.code,
         card: card,
@@ -1119,7 +1123,7 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
               <Text fontSize="md">{cardName}</Text>
               <Text fontSize="xs" color="gray.500">
                 {card.action === 'moved' ? t`Moved` : t`Removed`}
-                {card.destination && ` → ${card.destination}`}
+                {card.destination && ` → ${destinationName}`}
               </Text>
             </Flex>
           </Flex>
@@ -1129,15 +1133,29 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
   }, [locale, locations, generalSets, paths]);
   
   // Filtra le opzioni in base all'input (mostra solo se l'utente ha digitato almeno 2 caratteri)
+// Estrai i nomi delle carte già aggiunte per verificare i prerequisiti
+  const addedCardNames = useMemo(() => {
+    return campaign.removed.map(r => r.name);
+  }, [campaign.removed]);
+
+  // Trova i codici delle carte già aggiunte (cercando per nome)
+  const addedCardCodes = useMemo(() => {
+    return PATH_CARDS
+      .filter(card => addedCardNames.some(name => name.includes(getPathCardName(card.code, locale))))
+      .map(card => card.code);
+  }, [addedCardNames, locale]);
+
+  // Filtra le opzioni in base all'input e ai prerequisiti
   const filteredOptions = useMemo(() => {
     if (inputValue.length < 2) {
       return [];
     }
     const searchLower = inputValue.toLowerCase();
     return pathCardOptions.filter(opt => 
-      opt.searchString.includes(searchLower)
+      opt.searchString.includes(searchLower) && 
+      canShowPathCard(opt.card, addedCardCodes)
     );
-  }, [pathCardOptions, inputValue]);
+  }, [pathCardOptions, inputValue, addedCardCodes]);
   
   const onSubmitEntry = useCallback(async() => {
     if (!selectedCard) {

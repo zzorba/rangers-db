@@ -1,5 +1,3 @@
-// frontend/src/lib/missions.ts
-
 export interface MissionDefinition {
   code: string;
   cycles: string[];  // ['core'], ['loa'], or ['core', 'loa'] for shared
@@ -896,19 +894,16 @@ export const MISSIONS: MissionDefinition[] = [
   },
 ];
 
-// Helper function per trovare una missione dal code
 export function getMissionByCode(code: string): MissionDefinition | undefined {
   return MISSIONS.find(m => m.code === code);
 }
 
-// Helper function per ottenere il nome tradotto
 export function getMissionName(code: string, locale: string): string {
   const mission = getMissionByCode(code);
   if (!mission) return code;
   return mission.name[locale] || mission.name['en'] || code;
 }
 
-// Helper function per filtrare le missioni per ciclo
 export function getMissionsByCycle(cycle: string): MissionDefinition[] {
   return MISSIONS.filter(m => m.cycles.includes(cycle));
 }
