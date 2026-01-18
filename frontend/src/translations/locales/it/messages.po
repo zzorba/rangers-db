@@ -70,6 +70,12 @@ msgstr "Aggiungi"
 msgid "Add additional deck"
 msgstr ""
 
+msgid "Add as Moved"
+msgstr ""
+
+msgid "Add as Removed"
+msgstr ""
+
 msgid "Add mission"
 msgstr "Aggiungi Missione"
 
@@ -112,6 +118,9 @@ msgstr ""
 msgid "An error occurred during registration."
 msgstr ""
 
+msgid "An error occurred while loading the campaign."
+msgstr ""
+
 msgid "Ancestor's Grove"
 msgstr "Boschetto degli Antenati"
 
@@ -130,6 +139,9 @@ msgstr ""
 msgid "Archeological Outpost"
 msgstr "Avamposto Archeologico"
 
+msgid "Arcology"
+msgstr ""
+
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "Vuoi davvero cancellare il mazzo \"{0}\"?"
 
@@ -141,6 +153,9 @@ msgstr "Vuoi davvero cancellare questo mazzo?"
 
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Vuoi davvero cancellare la tua campagna: {0}? Questa azione è permanente."
+
+msgid "Artery"
+msgstr ""
 
 msgid "Aspect"
 msgstr ""
@@ -159,6 +174,9 @@ msgstr "Monte Atrox"
 
 msgid "Available"
 msgstr "Disponibili"
+
+msgid "Available Rewards"
+msgstr ""
 
 msgid "Average"
 msgstr ""
@@ -228,6 +246,9 @@ msgstr "Carte"
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Le carte rimosse dal mazzo saranno conservate qui. Possono essere aggiunte nuovamente al mazzo quando ti accampi."
+
+msgid "Cards that have been permanently removed from the path deck."
+msgstr ""
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
 msgstr ""
@@ -405,6 +426,9 @@ msgstr "Duplica questo mazzo (senza cancellare l'originale)."
 
 msgid "E-mail Address"
 msgstr "Indirizzo e-mail"
+
+msgid "e.g., Spire, Lone Tree Station..."
+msgstr ""
 
 msgid "Edit"
 msgstr "Modifica"
@@ -661,6 +685,12 @@ msgstr "Membro da {joinDate}"
 msgid "Michael's Bog"
 msgstr "Palude di Michael"
 
+msgid "Mission"
+msgstr ""
+
+msgid "Mission and day are required."
+msgstr ""
+
 msgid "Missions"
 msgstr "Missioni"
 
@@ -673,6 +703,9 @@ msgstr "Monte Nim"
 msgid "Mountain Pass"
 msgstr "Passo Montano"
 
+msgid "Moved"
+msgstr ""
+
 msgid "My Campaigns"
 msgstr "Le mie Campagne"
 
@@ -684,9 +717,6 @@ msgstr ""
 
 msgid "Name"
 msgstr "Nome"
-
-msgid "Name and day are required."
-msgstr "È richiesto un nome e una giornata."
 
 msgid "Name your character"
 msgstr "Dai un nome al tuo personaggio"
@@ -703,10 +733,19 @@ msgstr "Nuovo mazzo"
 msgid "Next"
 msgstr "Successivo"
 
+msgid "Next campaign"
+msgstr ""
+
 msgid "Next deck"
 msgstr "Mazzo successivo"
 
 msgid "No account found with this email address."
+msgstr ""
+
+msgid "No cards found"
+msgstr ""
+
+msgid "No cards removed yet."
 msgstr ""
 
 msgid "No matching cards"
@@ -718,11 +757,26 @@ msgstr "Nessuna carta corrispondente trovata."
 msgid "No matching decks."
 msgstr "Nessun mazzo corrispondente."
 
+msgid "No missions found"
+msgstr ""
+
+msgid "No missions recorded yet."
+msgstr ""
+
+msgid "No notable events recorded yet."
+msgstr ""
+
+msgid "No notes recorded yet."
+msgstr ""
+
 msgid "No published decks."
 msgstr "Nessun mazzo pubblicato."
 
 msgid "No results"
 msgstr "Nessun risultato"
+
+msgid "No rewards unlocked yet."
+msgstr ""
 
 msgid "None"
 msgstr "Nessuno"
@@ -896,9 +950,6 @@ msgstr "Rifiuta"
 msgid "Remove"
 msgstr "Rimuovi"
 
-msgid "Remove card"
-msgstr "Rimuovi carta"
-
 msgid "Remove deck"
 msgstr "Rimuovi mazzo"
 
@@ -956,6 +1007,9 @@ msgstr "Salva modifiche"
 msgid "Scuttler Network"
 msgstr ""
 
+msgid "Search and select a card"
+msgstr ""
+
 msgid "Search by name"
 msgstr "Cerca per nome"
 
@@ -976,6 +1030,9 @@ msgstr "Scegli 5 carte diverse dell'origine prescelta."
 
 msgid "Select 5 different cards from your chosen specialty."
 msgstr "Scegli 5 carte diverse della specialità prescelta."
+
+msgid "Select a mission"
+msgstr ""
 
 msgid "Select campaign"
 msgstr "Scegli una campagna"
@@ -1079,6 +1136,9 @@ msgstr "Ponte Tessiroccia"
 msgid "Submit"
 msgstr "Invia"
 
+msgid "Subtitle (optional)"
+msgstr ""
+
 msgid "Sunken Outpost"
 msgstr "Avamposto Sommerso"
 
@@ -1102,9 +1162,6 @@ msgstr ""
 
 msgid "The Alluvial Ruins"
 msgstr "Rovine Alluvionali"
-
-msgid "Arcology"
-msgstr ""
 
 msgid "The Cage"
 msgstr ""
@@ -1154,9 +1211,6 @@ msgstr ""
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "In questa fase iniziale, è possibile che il sito divenga momentaneamente non disponibile causa manutenzione e che i dati possano andare persi."
 
-msgid "Tumbledown"
-msgstr "Capitombolo"
-
 msgid "The Valley"
 msgstr ""
 
@@ -1170,6 +1224,9 @@ msgid "There are too many outside interest cards in the deck."
 msgstr "Ci sono troppe carte interesse personale in questo mazzo."
 
 msgid "This account has been disabled."
+msgstr ""
+
+msgid "This campaign is not accessible or does not exist."
 msgstr ""
 
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
@@ -1241,8 +1298,8 @@ msgstr "Troppe carte personalità SPI."
 msgid "Total"
 msgstr ""
 
-msgid "Track cards that are removed permanently from the path deck here."
-msgstr "Tieni traccia qui delle carte che sono state rimosse permanentemente dal mazzo percorso."
+msgid "Track cards that are removed or moved permanently from the path deck here."
+msgstr ""
 
 msgid "Traits"
 msgstr "Tratti"
@@ -1260,6 +1317,12 @@ msgid "Travel & Camp"
 msgstr "Viaggia e accampati"
 
 msgid "Traveled to {0}."
+msgstr ""
+
+msgid "Tumbledown"
+msgstr "Capitombolo"
+
+msgid "Type at least 2 characters to search..."
 msgstr ""
 
 msgid "Types"
@@ -1318,6 +1381,9 @@ msgstr "Foresta"
 
 msgid "You"
 msgstr "Tu"
+
+msgid "You are viewing this campaign in read-only mode."
+msgstr ""
 
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr "Puoi aggiungere questo mazzo a una campagna per tenere traccia delle Ricompense che avete sbloccato come gruppo."
