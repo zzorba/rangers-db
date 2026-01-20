@@ -70,12 +70,6 @@ msgstr ""
 msgid "Add additional deck"
 msgstr ""
 
-msgid "Add as Moved"
-msgstr ""
-
-msgid "Add as Removed"
-msgstr ""
-
 msgid "Add mission"
 msgstr ""
 
@@ -118,9 +112,6 @@ msgstr ""
 msgid "An error occurred during registration."
 msgstr ""
 
-msgid "An error occurred while loading the campaign."
-msgstr ""
-
 msgid "Ancestor's Grove"
 msgstr ""
 
@@ -139,9 +130,6 @@ msgstr ""
 msgid "Archeological Outpost"
 msgstr ""
 
-msgid "Arcology"
-msgstr ""
-
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr ""
 
@@ -152,9 +140,6 @@ msgid "Are you sure you want to delete this deck?"
 msgstr ""
 
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
-msgstr ""
-
-msgid "Artery"
 msgstr ""
 
 msgid "Aspect"
@@ -173,9 +158,6 @@ msgid "Atrox Mountain"
 msgstr ""
 
 msgid "Available"
-msgstr ""
-
-msgid "Available Rewards"
 msgstr ""
 
 msgid "Average"
@@ -245,9 +227,6 @@ msgid "Cards"
 msgstr ""
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
-msgstr ""
-
-msgid "Cards that have been permanently removed from the path deck."
 msgstr ""
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
@@ -425,9 +404,6 @@ msgid "Duplicate this deck while preserving the original."
 msgstr ""
 
 msgid "E-mail Address"
-msgstr ""
-
-msgid "e.g., Spire, Lone Tree Station..."
 msgstr ""
 
 msgid "Edit"
@@ -685,12 +661,6 @@ msgstr ""
 msgid "Michael's Bog"
 msgstr ""
 
-msgid "Mission"
-msgstr ""
-
-msgid "Mission and day are required."
-msgstr ""
-
 msgid "Missions"
 msgstr ""
 
@@ -703,9 +673,6 @@ msgstr ""
 msgid "Mountain Pass"
 msgstr ""
 
-msgid "Moved"
-msgstr ""
-
 msgid "My Campaigns"
 msgstr ""
 
@@ -716,6 +683,9 @@ msgid "Mycelial Conclave"
 msgstr ""
 
 msgid "Name"
+msgstr ""
+
+msgid "Name and day are required."
 msgstr ""
 
 msgid "Name your character"
@@ -733,19 +703,10 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-msgid "Next campaign"
-msgstr ""
-
 msgid "Next deck"
 msgstr ""
 
 msgid "No account found with this email address."
-msgstr ""
-
-msgid "No cards found"
-msgstr ""
-
-msgid "No cards removed yet."
 msgstr ""
 
 msgid "No matching cards"
@@ -757,25 +718,10 @@ msgstr ""
 msgid "No matching decks."
 msgstr ""
 
-msgid "No missions found"
-msgstr ""
-
-msgid "No missions recorded yet."
-msgstr ""
-
-msgid "No notable events recorded yet."
-msgstr ""
-
-msgid "No notes recorded yet."
-msgstr ""
-
 msgid "No published decks."
 msgstr ""
 
 msgid "No results"
-msgstr ""
-
-msgid "No rewards unlocked yet."
 msgstr ""
 
 msgid "None"
@@ -950,6 +896,9 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
+msgid "Remove card"
+msgstr ""
+
 msgid "Remove deck"
 msgstr ""
 
@@ -1007,9 +956,6 @@ msgstr ""
 msgid "Scuttler Network"
 msgstr ""
 
-msgid "Search and select a card"
-msgstr ""
-
 msgid "Search by name"
 msgstr ""
 
@@ -1029,9 +975,6 @@ msgid "Select 5 different cards from your chosen background."
 msgstr ""
 
 msgid "Select 5 different cards from your chosen specialty."
-msgstr ""
-
-msgid "Select a mission"
 msgstr ""
 
 msgid "Select campaign"
@@ -1136,9 +1079,6 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-msgid "Subtitle (optional)"
-msgstr ""
-
 msgid "Sunken Outpost"
 msgstr ""
 
@@ -1161,6 +1101,9 @@ msgid "Text"
 msgstr ""
 
 msgid "The Alluvial Ruins"
+msgstr ""
+
+msgid "Arcology"
 msgstr ""
 
 msgid "The Cage"
@@ -1211,6 +1154,9 @@ msgstr ""
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr ""
 
+msgid "Tumbledown"
+msgstr ""
+
 msgid "The Valley"
 msgstr ""
 
@@ -1224,9 +1170,6 @@ msgid "There are too many outside interest cards in the deck."
 msgstr ""
 
 msgid "This account has been disabled."
-msgstr ""
-
-msgid "This campaign is not accessible or does not exist."
 msgstr ""
 
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
@@ -1298,7 +1241,7 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-msgid "Track cards that are removed or moved permanently from the path deck here."
+msgid "Track cards that are removed permanently from the path deck here."
 msgstr ""
 
 msgid "Traits"
@@ -1317,12 +1260,6 @@ msgid "Travel & Camp"
 msgstr ""
 
 msgid "Traveled to {0}."
-msgstr ""
-
-msgid "Tumbledown"
-msgstr ""
-
-msgid "Type at least 2 characters to search..."
 msgstr ""
 
 msgid "Types"
@@ -1380,9 +1317,6 @@ msgid "Woods"
 msgstr ""
 
 msgid "You"
-msgstr ""
-
-msgid "You are viewing this campaign in read-only mode."
 msgstr ""
 
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."

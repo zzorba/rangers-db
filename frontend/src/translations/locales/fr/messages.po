@@ -70,12 +70,6 @@ msgstr "Ajouter"
 msgid "Add additional deck"
 msgstr "Ajouter un deck"
 
-msgid "Add as Moved"
-msgstr ""
-
-msgid "Add as Removed"
-msgstr ""
-
 msgid "Add mission"
 msgstr "Ajouter une mission"
 
@@ -118,9 +112,6 @@ msgstr ""
 msgid "An error occurred during registration."
 msgstr ""
 
-msgid "An error occurred while loading the campaign."
-msgstr ""
-
 msgid "Ancestor's Grove"
 msgstr "Bosquet des Ancêtres"
 
@@ -139,9 +130,6 @@ msgstr ""
 msgid "Archeological Outpost"
 msgstr "Avant-Poste Archéologique"
 
-msgid "Arcology"
-msgstr ""
-
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "Êtes vous sûr de vouloir supprimer ce deck \"{0}\" ?"
 
@@ -153,9 +141,6 @@ msgstr "Êtes vous sûr de vouloir supprimer ce deck ?"
 
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Êtes vous sûr de vouloir supprimer votre campagne : {0} ? Cette action ne peut être annulée."
-
-msgid "Artery"
-msgstr ""
 
 msgid "Aspect"
 msgstr "Aspect"
@@ -174,9 +159,6 @@ msgstr "Montagne des Atrox"
 
 msgid "Available"
 msgstr "Disponible"
-
-msgid "Available Rewards"
-msgstr ""
 
 msgid "Average"
 msgstr "Moyenne"
@@ -246,9 +228,6 @@ msgstr "Cartes"
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Les cartes qui sont retirées de votre deck seront garder ici. Elles peuvent être remises dans votre deck quand vous campez."
-
-msgid "Cards that have been permanently removed from the path deck."
-msgstr ""
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
 msgstr "Les cartes avec le trait Expert ne peuvent être choisies si elles ne sont pas dans votre Intérêt, elles sont cachées automatiquement."
@@ -426,9 +405,6 @@ msgstr "Dupliquer ce deck en conservant l'original."
 
 msgid "E-mail Address"
 msgstr "Addresse électronique"
-
-msgid "e.g., Spire, Lone Tree Station..."
-msgstr ""
 
 msgid "Edit"
 msgstr "Modifier"
@@ -685,12 +661,6 @@ msgstr "Membre depuis le {joinDate}"
 msgid "Michael's Bog"
 msgstr "Marais de Michael"
 
-msgid "Mission"
-msgstr ""
-
-msgid "Mission and day are required."
-msgstr ""
-
 msgid "Missions"
 msgstr "Missions"
 
@@ -703,9 +673,6 @@ msgstr "Mont Nim"
 msgid "Mountain Pass"
 msgstr "Col"
 
-msgid "Moved"
-msgstr ""
-
 msgid "My Campaigns"
 msgstr "Mes campagnes"
 
@@ -717,6 +684,9 @@ msgstr ""
 
 msgid "Name"
 msgstr "Nom"
+
+msgid "Name and day are required."
+msgstr "Le nom et le jour sont requis."
 
 msgid "Name your character"
 msgstr "Nommer votre personnage"
@@ -733,19 +703,10 @@ msgstr "Nouveau deck"
 msgid "Next"
 msgstr "Suivant"
 
-msgid "Next campaign"
-msgstr ""
-
 msgid "Next deck"
 msgstr "Deck suivant"
 
 msgid "No account found with this email address."
-msgstr ""
-
-msgid "No cards found"
-msgstr ""
-
-msgid "No cards removed yet."
 msgstr ""
 
 msgid "No matching cards"
@@ -757,26 +718,11 @@ msgstr "Aucune carte trouvée."
 msgid "No matching decks."
 msgstr "Aucun deck trouvé."
 
-msgid "No missions found"
-msgstr ""
-
-msgid "No missions recorded yet."
-msgstr ""
-
-msgid "No notable events recorded yet."
-msgstr ""
-
-msgid "No notes recorded yet."
-msgstr ""
-
 msgid "No published decks."
 msgstr "Aucun deck publié."
 
 msgid "No results"
 msgstr "Pas de résultat"
-
-msgid "No rewards unlocked yet."
-msgstr ""
 
 msgid "None"
 msgstr "Aucun"
@@ -950,6 +896,9 @@ msgstr "Refuser"
 msgid "Remove"
 msgstr "Supprimer"
 
+msgid "Remove card"
+msgstr "Supprimer la carte"
+
 msgid "Remove deck"
 msgstr "Supprimer le deck"
 
@@ -1007,9 +956,6 @@ msgstr "Enregistrer les changements"
 msgid "Scuttler Network"
 msgstr ""
 
-msgid "Search and select a card"
-msgstr ""
-
 msgid "Search by name"
 msgstr "Rechercher par nom"
 
@@ -1030,9 +976,6 @@ msgstr "Sélectionner 5 cartes différentes de l'Antécédent choisi."
 
 msgid "Select 5 different cards from your chosen specialty."
 msgstr "Sélectionner 5 cartes différentes de la Spécialisation choisie."
-
-msgid "Select a mission"
-msgstr ""
 
 msgid "Select campaign"
 msgstr "Sélectionner la campagne"
@@ -1136,9 +1079,6 @@ msgstr "Pont de pierre tissée"
 msgid "Submit"
 msgstr "Soumettre"
 
-msgid "Subtitle (optional)"
-msgstr ""
-
 msgid "Sunken Outpost"
 msgstr "Avant-Poste Submergé"
 
@@ -1162,6 +1102,9 @@ msgstr "Texte"
 
 msgid "The Alluvial Ruins"
 msgstr "Les Ruines Alluviales"
+
+msgid "Arcology"
+msgstr ""
 
 msgid "The Cage"
 msgstr ""
@@ -1211,6 +1154,9 @@ msgstr ""
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "Ce site sera probablement interrompu pour maintenance et des données pourraient être perdues au cours de cette période de développement."
 
+msgid "Tumbledown"
+msgstr "Culbute"
+
 msgid "The Valley"
 msgstr "La Vallée"
 
@@ -1224,9 +1170,6 @@ msgid "There are too many outside interest cards in the deck."
 msgstr "Il y a trop de cartes Centre d'intérêt dans le deck."
 
 msgid "This account has been disabled."
-msgstr ""
-
-msgid "This campaign is not accessible or does not exist."
 msgstr ""
 
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
@@ -1298,8 +1241,8 @@ msgstr "Trop de cartes Personnalités de type ESP."
 msgid "Total"
 msgstr "Total"
 
-msgid "Track cards that are removed or moved permanently from the path deck here."
-msgstr ""
+msgid "Track cards that are removed permanently from the path deck here."
+msgstr "Suivez les cartes supprimé définitivement du deck de chemin ici."
 
 msgid "Traits"
 msgstr "Traits"
@@ -1318,12 +1261,6 @@ msgstr "Voyager & Camper"
 
 msgid "Traveled to {0}."
 msgstr "Voyagé vers {0}."
-
-msgid "Tumbledown"
-msgstr "Culbute"
-
-msgid "Type at least 2 characters to search..."
-msgstr ""
 
 msgid "Types"
 msgstr "Types"
@@ -1381,9 +1318,6 @@ msgstr "Fôret"
 
 msgid "You"
 msgstr "Vous"
-
-msgid "You are viewing this campaign in read-only mode."
-msgstr ""
 
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr "Vous pouvez ajouter ce deck à une campagne pour faire le suivi des récompenses que votre groupe a débloqué."

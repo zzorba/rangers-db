@@ -70,12 +70,6 @@ msgstr "Añadir"
 msgid "Add additional deck"
 msgstr "Añadir mazo adicional"
 
-msgid "Add as Moved"
-msgstr ""
-
-msgid "Add as Removed"
-msgstr ""
-
 msgid "Add mission"
 msgstr "Añadir misión"
 
@@ -118,9 +112,6 @@ msgstr ""
 msgid "An error occurred during registration."
 msgstr ""
 
-msgid "An error occurred while loading the campaign."
-msgstr ""
-
 msgid "Ancestor's Grove"
 msgstr "Arboleda de Los Caídos"
 
@@ -139,9 +130,6 @@ msgstr "Arboreto de la Memoria"
 msgid "Archeological Outpost"
 msgstr "Puesto arcológico"
 
-msgid "Arcology"
-msgstr "La Arcología"
-
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "¿Estás seguro de que quieres eliminar el mazo \\ \"{0} \"?"
 
@@ -153,9 +141,6 @@ msgstr "¿Estás seguro de que quieres eliminar este mazo?"
 
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "¿Seguro que quieres eliminar tu campaña: {0}? Esta acción no se puede deshacer."
-
-msgid "Artery"
-msgstr ""
 
 msgid "Aspect"
 msgstr "Aspecto"
@@ -174,9 +159,6 @@ msgstr "Montaña Atrox"
 
 msgid "Available"
 msgstr "Disponible"
-
-msgid "Available Rewards"
-msgstr ""
 
 msgid "Average"
 msgstr "Promedio"
@@ -246,9 +228,6 @@ msgstr "Cartas"
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Las cartas que retires de tu mazo se guardarán aquí. Puedes volver a colocarlas en tu mazo al acampar."
-
-msgid "Cards that have been permanently removed from the path deck."
-msgstr ""
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
 msgstr "Las cartas con el rasgo Experto no se pueden elegir como interés externo y se ocultan automáticamente."
@@ -426,9 +405,6 @@ msgstr "Duplica este mazo conservando el original."
 
 msgid "E-mail Address"
 msgstr "Dirección de email"
-
-msgid "e.g., Spire, Lone Tree Station..."
-msgstr ""
 
 msgid "Edit"
 msgstr "Editar"
@@ -685,12 +661,6 @@ msgstr "Miembro desde {joinDate}"
 msgid "Michael's Bog"
 msgstr "Lodazal de Michael"
 
-msgid "Mission"
-msgstr ""
-
-msgid "Mission and day are required."
-msgstr ""
-
 msgid "Missions"
 msgstr "Misiones"
 
@@ -703,9 +673,6 @@ msgstr "Monte Nim"
 msgid "Mountain Pass"
 msgstr "Montaña"
 
-msgid "Moved"
-msgstr ""
-
 msgid "My Campaigns"
 msgstr "Mi campaña"
 
@@ -717,6 +684,9 @@ msgstr "Cónclave fúngico"
 
 msgid "Name"
 msgstr "Nombre"
+
+msgid "Name and day are required."
+msgstr "Se requiere Nombre y Día."
 
 msgid "Name your character"
 msgstr "Ponle nombre a tu personaje"
@@ -733,19 +703,10 @@ msgstr "Nuevo mazo"
 msgid "Next"
 msgstr "Siguiente"
 
-msgid "Next campaign"
-msgstr ""
-
 msgid "Next deck"
 msgstr "Siguiente mazo"
 
 msgid "No account found with this email address."
-msgstr ""
-
-msgid "No cards found"
-msgstr ""
-
-msgid "No cards removed yet."
 msgstr ""
 
 msgid "No matching cards"
@@ -757,26 +718,11 @@ msgstr "No se encontraron cartas coincidentes."
 msgid "No matching decks."
 msgstr "No se encontraron mazos coincidentes."
 
-msgid "No missions found"
-msgstr ""
-
-msgid "No missions recorded yet."
-msgstr ""
-
-msgid "No notable events recorded yet."
-msgstr ""
-
-msgid "No notes recorded yet."
-msgstr ""
-
 msgid "No published decks."
 msgstr "No hay mazos publicados"
 
 msgid "No results"
 msgstr "Sin resultados"
-
-msgid "No rewards unlocked yet."
-msgstr ""
 
 msgid "None"
 msgstr "Nada"
@@ -950,6 +896,9 @@ msgstr "Rechazar"
 msgid "Remove"
 msgstr "Eliminar"
 
+msgid "Remove card"
+msgstr "Eliminar Cartas"
+
 msgid "Remove deck"
 msgstr "Eliminar Mazo"
 
@@ -1007,9 +956,6 @@ msgstr "Guardar cambios"
 msgid "Scuttler Network"
 msgstr "Conjunto de pasadizos"
 
-msgid "Search and select a card"
-msgstr ""
-
 msgid "Search by name"
 msgstr "Buscar por Nombre"
 
@@ -1030,9 +976,6 @@ msgstr "Selecciona 5 cartas diferentes de tu origen elegido."
 
 msgid "Select 5 different cards from your chosen specialty."
 msgstr "Selecciona 5 cartas diferentes de tu especialidad elegida."
-
-msgid "Select a mission"
-msgstr ""
 
 msgid "Select campaign"
 msgstr "Seleccionar Campaña"
@@ -1136,9 +1079,6 @@ msgstr "Puente Tejepiedra"
 msgid "Submit"
 msgstr "Entregar"
 
-msgid "Subtitle (optional)"
-msgstr ""
-
 msgid "Sunken Outpost"
 msgstr "Puesto Hundido"
 
@@ -1162,6 +1102,9 @@ msgstr "Texto"
 
 msgid "The Alluvial Ruins"
 msgstr "Ruinas Aluviales"
+
+msgid "Arcology"
+msgstr "La Arcología"
 
 msgid "The Cage"
 msgstr "La Caja"
@@ -1211,6 +1154,9 @@ msgstr "Senda de las raíces"
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "Es probable que el sitio deje de funcionar por mantenimiento y que se pierdan datos durante estos primeros días."
 
+msgid "Tumbledown"
+msgstr "Batacazo"
+
 msgid "The Valley"
 msgstr "El Valle"
 
@@ -1224,9 +1170,6 @@ msgid "There are too many outside interest cards in the deck."
 msgstr "Hay demasiadas cartas de otros intereses en el mazo."
 
 msgid "This account has been disabled."
-msgstr ""
-
-msgid "This campaign is not accessible or does not exist."
 msgstr ""
 
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
@@ -1298,8 +1241,8 @@ msgstr "Demasiadas cartas de VIT."
 msgid "Total"
 msgstr "Total"
 
-msgid "Track cards that are removed or moved permanently from the path deck here."
-msgstr ""
+msgid "Track cards that are removed permanently from the path deck here."
+msgstr "Realiza un seguimiento de las cartas que se eliminan permanentemente del mazo de caminos aquí."
 
 msgid "Traits"
 msgstr "Rasgos"
@@ -1318,12 +1261,6 @@ msgstr "Viajar & Acampar"
 
 msgid "Traveled to {0}."
 msgstr "Viaje a {0}."
-
-msgid "Tumbledown"
-msgstr "Batacazo"
-
-msgid "Type at least 2 characters to search..."
-msgstr ""
 
 msgid "Types"
 msgstr "Tipos"
@@ -1381,9 +1318,6 @@ msgstr "Bosque"
 
 msgid "You"
 msgstr "Tú"
-
-msgid "You are viewing this campaign in read-only mode."
-msgstr ""
 
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr "Puedes agregar este mazo a una campaña para realizar un seguimiento de las recompensas que has desbloqueado como grupo."

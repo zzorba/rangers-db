@@ -70,12 +70,6 @@ msgstr "Добавить"
 msgid "Add additional deck"
 msgstr "Добавить дополнительную колоду"
 
-msgid "Add as Moved"
-msgstr ""
-
-msgid "Add as Removed"
-msgstr ""
-
 msgid "Add mission"
 msgstr "Добавить миссию"
 
@@ -118,9 +112,6 @@ msgstr ""
 msgid "An error occurred during registration."
 msgstr ""
 
-msgid "An error occurred while loading the campaign."
-msgstr ""
-
 msgid "Ancestor's Grove"
 msgstr "Роща предков"
 
@@ -139,9 +130,6 @@ msgstr "Дендрарий памяти"
 msgid "Archeological Outpost"
 msgstr "Застава археологов"
 
-msgid "Arcology"
-msgstr "Аркология"
-
 msgid "Are you sure you want to delete the \"{0}\" deck?"
 msgstr "Вы уверены, что хотите удалить колоду \"{0}\"?"
 
@@ -153,9 +141,6 @@ msgstr "Вы уверены, что хотите удалить эту коло�
 
 msgid "Are you sure you want to delete your campaign: {0}? This action cannot be undone."
 msgstr "Вы уверены, что хотите удалить свою кампанию: {0}? Это действие нельзя отменить."
-
-msgid "Artery"
-msgstr ""
 
 msgid "Aspect"
 msgstr "Черта"
@@ -174,9 +159,6 @@ msgstr "Гора Атрокс"
 
 msgid "Available"
 msgstr "Доступные"
-
-msgid "Available Rewards"
-msgstr ""
 
 msgid "Average"
 msgstr "Среднее значение"
@@ -246,9 +228,6 @@ msgstr "Карты"
 
 msgid "Cards that are removed from your deck will be stored here. They can be swapped back into your deck when you camp."
 msgstr "Карты, удаленные из вашей колоды, будут храниться здесь. Их можно будет вернуть в колоду, когда вы разбиваете лагерь."
-
-msgid "Cards that have been permanently removed from the path deck."
-msgstr ""
 
 msgid "Cards with the Expert trait cannot be chosen as an outside interest and are hidden automatically."
 msgstr "Карты с признаком Эксперт не могут быть выбраны в качестве хобби и скрыты автоматически."
@@ -426,9 +405,6 @@ msgstr "Продублируйте эту колоду, сохранив ори�
 
 msgid "E-mail Address"
 msgstr "Электронная почта"
-
-msgid "e.g., Spire, Lone Tree Station..."
-msgstr ""
 
 msgid "Edit"
 msgstr "Редактировать"
@@ -685,12 +661,6 @@ msgstr "Участник с {joinDate}"
 msgid "Michael's Bog"
 msgstr "Гать Майкла"
 
-msgid "Mission"
-msgstr ""
-
-msgid "Mission and day are required."
-msgstr ""
-
 msgid "Missions"
 msgstr "Миссии"
 
@@ -703,9 +673,6 @@ msgstr "Гора Ним"
 msgid "Mountain Pass"
 msgstr "Горный перевал"
 
-msgid "Moved"
-msgstr ""
-
 msgid "My Campaigns"
 msgstr "Мои кампании"
 
@@ -717,6 +684,9 @@ msgstr "Грибное вече"
 
 msgid "Name"
 msgstr "Название"
+
+msgid "Name and day are required."
+msgstr "Название и день обязательны."
 
 msgid "Name your character"
 msgstr "Имя вашего персонажа"
@@ -733,19 +703,10 @@ msgstr "Новая колода"
 msgid "Next"
 msgstr "Далее"
 
-msgid "Next campaign"
-msgstr ""
-
 msgid "Next deck"
 msgstr "Следующая колода"
 
 msgid "No account found with this email address."
-msgstr ""
-
-msgid "No cards found"
-msgstr ""
-
-msgid "No cards removed yet."
 msgstr ""
 
 msgid "No matching cards"
@@ -757,26 +718,11 @@ msgstr "Не найдено ни одной подходящей карты."
 msgid "No matching decks."
 msgstr "Нет подходящих колод."
 
-msgid "No missions found"
-msgstr ""
-
-msgid "No missions recorded yet."
-msgstr ""
-
-msgid "No notable events recorded yet."
-msgstr ""
-
-msgid "No notes recorded yet."
-msgstr ""
-
 msgid "No published decks."
 msgstr "Нет опубликованных колод."
 
 msgid "No results"
 msgstr "Нет результатов"
-
-msgid "No rewards unlocked yet."
-msgstr ""
 
 msgid "None"
 msgstr "Отсутствует"
@@ -950,6 +896,9 @@ msgstr "Отклонить"
 msgid "Remove"
 msgstr "Удалить"
 
+msgid "Remove card"
+msgstr "Удалить карту"
+
 msgid "Remove deck"
 msgstr "Удалить колоду"
 
@@ -1007,9 +956,6 @@ msgstr "Сохранить изменения"
 msgid "Scuttler Network"
 msgstr "Лазы сколопенраков"
 
-msgid "Search and select a card"
-msgstr ""
-
 msgid "Search by name"
 msgstr "Поиск по названию"
 
@@ -1030,9 +976,6 @@ msgstr "Выберите 5 уникальных карт из карт ваше�
 
 msgid "Select 5 different cards from your chosen specialty."
 msgstr "Выберите 5 уникальных карт из карт вашей специализации."
-
-msgid "Select a mission"
-msgstr ""
 
 msgid "Select campaign"
 msgstr "Выберите кампанию"
@@ -1136,9 +1079,6 @@ msgstr "Кружевной мост"
 msgid "Submit"
 msgstr "Подтвердить"
 
-msgid "Subtitle (optional)"
-msgstr ""
-
 msgid "Sunken Outpost"
 msgstr "Затонувшая застава"
 
@@ -1162,6 +1102,9 @@ msgstr "Текст"
 
 msgid "The Alluvial Ruins"
 msgstr "Россыпь руин"
+
+msgid "Arcology"
+msgstr "Аркология"
 
 msgid "The Cage"
 msgstr "Клетка"
@@ -1211,6 +1154,9 @@ msgstr "Корневой путь"
 msgid "The site is likely to go down for maintenance and data might be lost during these early days."
 msgstr "В первые дни работы сайт может быть закрыт на техническое обслуживание, и данные могут быть потеряны."
 
+msgid "Tumbledown"
+msgstr "Пропасть"
+
 msgid "The Valley"
 msgstr "Долина"
 
@@ -1224,9 +1170,6 @@ msgid "There are too many outside interest cards in the deck."
 msgstr "Слишком много карт хобби в вашей колоде."
 
 msgid "This account has been disabled."
-msgstr ""
-
-msgid "This campaign is not accessible or does not exist."
 msgstr ""
 
 msgid "This campaign is not accessible. Are you sure you are signed into the correct account?"
@@ -1298,8 +1241,8 @@ msgstr "Слишком много карт личности с чертой ДУ
 msgid "Total"
 msgstr "Всего"
 
-msgid "Track cards that are removed or moved permanently from the path deck here."
-msgstr ""
+msgid "Track cards that are removed permanently from the path deck here."
+msgstr "Отслеживайте здесь карты, которые навсегда убираются из колоды пути."
 
 msgid "Traits"
 msgstr "Признаки"
@@ -1318,12 +1261,6 @@ msgstr "Путешествовать и разбить лагерь"
 
 msgid "Traveled to {0}."
 msgstr "Путешествие в {0}."
-
-msgid "Tumbledown"
-msgstr "Пропасть"
-
-msgid "Type at least 2 characters to search..."
-msgstr ""
 
 msgid "Types"
 msgstr "Типы"
@@ -1381,9 +1318,6 @@ msgstr "Лес"
 
 msgid "You"
 msgstr "Вы"
-
-msgid "You are viewing this campaign in read-only mode."
-msgstr ""
 
 msgid "You can add this deck to a campaign to track rewards you have unlocked as a group."
 msgstr "Вы можете добавить эту колоду в кампанию, чтобы отслеживать награды, которые вы разблокировали всей группой."
