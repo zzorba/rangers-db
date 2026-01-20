@@ -192,18 +192,10 @@ export function getGeneralSets(): MapLocations {
       cycles: ['core', 'demo'],
       connections: [],
     },
-    arcology: {
-      id: 'arcology',
-      name: t`Arcology`,
+    the_arcology: {
+      id: 'the_arcology',
+      name: t`The Arcology`,
       type: 'trail',
-      background: false,
-      cycles: ['loa'],
-      connections: [],
-    },
-    artery: {
-      id: 'branching_artery',  // Usa direttamente l'id dell'icona esistente
-      name: t`Artery`,
-      type: 'location',
       background: false,
       cycles: ['loa'],
       connections: [],
@@ -671,7 +663,7 @@ const CONNECTIONS: ConnectionType[] = [
     path: Path.RAVINE,
   },
   {
-    locA: 'tumbledown',
+    locA: 'the_tumbledown',
     locB: 'watchers_rock',
     path: Path.MOUNTAIN_PASS,
   },
@@ -872,12 +864,12 @@ const CONNECTIONS: ConnectionType[] = [
     path: Path.RAVINE,
   },
   {
-    locA: 'tumbledown',
+    locA: 'the_tumbledown',
     locB: 'bowl_of_the_sun',
     path: Path.MOUNTAIN_PASS,
   },
   {
-    locA: 'tumbledown',
+    locA: 'the_tumbledown',
     locB: 'the_alluvial_ruins',
     path: Path.RIVER,
   },
@@ -1237,8 +1229,8 @@ export function getMapLocations(cycle: string, expansions: string[]): MapLocatio
       type: 'trail',
     },
     {
-      id: 'tumbledown',
-      name: t`Tumbledown`,
+      id: 'the_tumbledown',
+      name: t`The Tumbledown`,
       type: 'location',
     },
     {
