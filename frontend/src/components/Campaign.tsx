@@ -54,6 +54,8 @@ import { CampaignCycle, MapLocation, MapLocations } from '../types/types';
 import MoonIconWithDate, { MoonIcon } from '../icons/MoonIcon';
 import SolidButton from './SolidButton';
 import { useCycleCampaigns } from '../pages/campaigns';
+import { getMissionsByCycle, getMissionName } from '../lib/missions';
+import { PATH_CARDS, PathCardDefinition, getPathCardName, canShowPathCard } from '../lib/pathCards';
 
 const STARTING_LOCATIONS: { [campaign: string]: string } = {
   demo: 'lone_tree_station',
@@ -669,17 +671,37 @@ function useEditDayModal(campaign: ParsedCampaign): [(day: number) => void, Reac
   ];
 }
 
+interface MissionOption extends OptionBase {
+  value: string;
+  label: string;
+}
+
 function useAddMissionModal(campaign: ParsedCampaign): [() => void, React.ReactNode] {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addMission] = useAddCampaignMissionMutation();
-  const [name, setName] = useState('');
+  const [selectedMission, setSelectedMission] = useState<MissionOption | null>(null);
+  const [customName, setCustomName] = useState('');
   const [day, setDay] = useState(campaign.day);
+  const { locale } = useLocale();
+  const [inputValue, setInputValue] = useState('');
+
+  // Get missions for this campaign's cycle
+  const missionOptions = useMemo(() => {
+    const missions = getMissionsByCycle(campaign.cycle_id);
+    return missions.map(m => ({
+      value: m.code,
+      label: getMissionName(m.code, locale),
+    }));
+  }, [campaign.cycle_id, locale]);
+
+  const missionName = selectedMission?.label || customName;
+
   const onSubmit = useCallback(async() => {
-    if (!name || !day) {
-      return t`Name and day are required.`
+    if (!missionName || !day) {
+      return t`Name and day are required.`;
     }
     const mission: MissionEntry = {
-      name,
+      name: missionName,
       day,
     };
     const result = await addMission({
@@ -691,13 +713,19 @@ function useAddMissionModal(campaign: ParsedCampaign): [() => void, React.ReactN
     if (result.errors?.length) {
       return result.errors[0].message;
     }
+    setSelectedMission(null);
+    setCustomName('');
     onClose();
     return undefined;
-  }, [campaign.id, addMission, name, day, onClose]);
+  }, [campaign.id, addMission, missionName, day, onClose]);
+
   const onShow = useCallback(() => {
     setDay(campaign.day);
+    setSelectedMission(null);
+    setCustomName('');
     onOpen();
-  }, [campaign.day, setDay, onOpen])
+  }, [campaign.day, setDay, onOpen]);
+
   return [
     onShow,
     <Modal key="mission" isOpen={isOpen} onClose={onClose}>
@@ -716,7 +744,7 @@ function useAddMissionModal(campaign: ParsedCampaign): [() => void, React.ReactN
             e.preventDefault();
             onSubmit();
           }}>
-            <FormControl>
+            <FormControl marginBottom={4}>
               <FormLabel>{t`Day`}</FormLabel>
               <Input
                 value={day}
@@ -724,17 +752,38 @@ function useAddMissionModal(campaign: ParsedCampaign): [() => void, React.ReactN
                 onChange={e => setDay(parseInt(e.target.value))}
               />
             </FormControl>
+            <FormControl marginBottom={4}>
+              <FormLabel>{t`Browse missions`}</FormLabel>
+              <ChakraSelect<MissionOption>
+              placeholder={t`Type to search...`}
+              options={missionOptions}
+              value={selectedMission}
+              onChange={(option) => setSelectedMission(option)}
+              onInputChange={(value) => setInputValue(value)}
+              isClearable
+              filterOption={(option, input) => {
+                if (input.length < 2) return false;
+                return option.label.toLowerCase().includes(input.toLowerCase());
+              }}
+              noOptionsMessage={() => 
+                inputValue.length < 2 
+                  ? t`Type at least 2 characters...` 
+                  : t`No missions found`
+              }
+            />
+            </FormControl>
             <FormControl>
-              <FormLabel>{t`Name`}</FormLabel>
+              <FormLabel>{t`Or enter manually`}</FormLabel>
               <Input
-                value={name}
-                onChange={e => setName(e.target.value)}
+                value={customName}
+                placeholder={t`e.g., Journey, Lure...`}
+                onChange={e => setCustomName(e.target.value)}
               />
             </FormControl>
           </form>
         </ModalBody>
         <ModalFooter>
-          {!!name && !!day && <SubmitButton color="blue" onSubmit={onSubmit}>{t`Add`}</SubmitButton> }
+          {!!missionName && !!day && <SubmitButton color="blue" onSubmit={onSubmit}>{t`Add`}</SubmitButton>}
         </ModalFooter>
       </ModalContent>
     </Modal>
@@ -753,15 +802,36 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [current, setCurrent] = useState<{ mission: MissionEntry; index: number } | undefined>();
 
-  const [name, setName] = useState('');
+  const [selectedMission, setSelectedMission] = useState<MissionOption | null>(null);
+  const [customName, setCustomName] = useState('');
   const [day, setDay] = useState('');
   const [progress, setProgress] = useState<boolean[]>([false, false, false]);
   const [completed, setCompleted] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState('');
+  const { locale } = useLocale();
+
+  // Get missions for this campaign's cycle
+  const missionOptions = useMemo(() => {
+    const missions = getMissionsByCycle(campaign.cycle_id);
+    return missions.map(m => ({
+      value: m.code,
+      label: getMissionName(m.code, locale),
+    }));
+  }, [campaign.cycle_id, locale]);
 
   const showModal = useCallback(async(mission: MissionEntry, index: number) => {
     setCurrent({ mission, index });
-    setName(mission.name);
+    setCustomName(mission.name);
     setDay(`${mission.day}`);
+    
+    // Cerca se la missione corrisponde a una delle opzioni del dropdown
+    const matchingOption = missionOptions.find(opt => opt.label === mission.name);
+    if (matchingOption) {
+      setSelectedMission(matchingOption);
+    } else {
+      setSelectedMission(null);
+    }
+    
     if (mission.checks) {
       setProgress(mission.checks);
     } else {
@@ -769,7 +839,10 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
     }
     setCompleted(mission.completed || false);
     onOpen();
-  }, [setName, setDay, setProgress, setCompleted, setCurrent, onOpen]);
+  }, [setCustomName, setDay, setProgress, setCompleted, setCurrent, onOpen, missionOptions]);
+
+  // Il nome finale è: dropdown ha priorità, altrimenti customName
+  const missionName = selectedMission?.label || customName;
 
   const hasChanges = useMemo(() => {
     if (!current) {
@@ -778,12 +851,12 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
     const currentChecks = current.mission.checks ?? progressToChecks(current?.mission.progress);
     const checksChanged = findIndex(range(0, 3), (index) => currentChecks[index] !== progress[index]) !== -1;
     return (
-      trim(current.mission.name) !== trim(name) ||
+      trim(current.mission.name) !== trim(missionName) ||
       current.mission.day !== parseInt(trim(day)) ||
       checksChanged ||
       (current.mission.completed || false) !== completed
     );
-  }, [current, name, day, progress, completed]);
+  }, [current, missionName, day, progress, completed]);
 
   const [setMissions] = useSetCampaignMissionsMutation();
   const onDelete = useCallback(async() => {
@@ -807,11 +880,11 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
     if (!current) {
       return;
     }
-    if (!name || !parseInt(day)) {
+    if (!missionName || !parseInt(day)) {
       return t`Name and day are required.`
     }
     const mission: MissionEntry = {
-      name,
+      name: missionName,
       day: parseInt(day),
       completed,
       checks: progress,
@@ -827,7 +900,8 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
     }
     onClose();
     return undefined;
-  }, [setMissions, campaign.id, campaign.missions, current, name, day, completed, progress, onClose]);
+  }, [setMissions, campaign.id, campaign.missions, current, missionName, day, completed, progress, onClose]);
+
   return [
     showModal,
     <Modal key="access" isOpen={isOpen} onClose={onClose}>
@@ -852,11 +926,40 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
                 onChange={e => setDay(e.target.value)}
               />
             </FormControl>
+            <FormControl marginBottom={4}>
+              <FormLabel>{t`Browse missions`}</FormLabel>
+              <ChakraSelect<MissionOption>
+                placeholder={t`Type to search...`}
+                options={missionOptions}
+                value={selectedMission}
+                onChange={(option) => {
+                  setSelectedMission(option);
+                  if (option) {
+                    setCustomName(option.label);
+                  }
+                }}
+                onInputChange={(value) => setInputValue(value)}
+                isClearable
+                filterOption={(option, input) => {
+                  if (input.length < 2) return false;
+                  return option.label.toLowerCase().includes(input.toLowerCase());
+                }}
+                noOptionsMessage={() => 
+                  inputValue.length < 2 
+                    ? t`Type at least 2 characters...` 
+                    : t`No missions found`
+                }
+              />
+            </FormControl>
             <FormControl marginBottom={2}>
-              <FormLabel>{t`Name`}</FormLabel>
+              <FormLabel>{t`Or enter manually`}</FormLabel>
               <Input
-                value={name}
-                onChange={e => setName(e.target.value)}
+                value={customName}
+                placeholder={t`e.g., Journey, Lure...`}
+                onChange={e => {
+                  setCustomName(e.target.value);
+                  setSelectedMission(null); // Resetta dropdown se scrive manualmente
+                }}
               />
             </FormControl>
             <FormControl>
@@ -899,7 +1002,6 @@ function useEditMissionModal(campaign: ParsedCampaign): [(mission: MissionEntry,
     </Modal>
   ];
 }
-
 
 function ProgressChit({ filled, marginRight }: { filled?: boolean; marginRight?: number | string }) {
   const fillColor = useColorModeValue('gray.600', 'gray.100');
@@ -1045,21 +1147,102 @@ function RemoveRow({ remove, index, onRemove }: { remove: RemovedEntry; index: n
 }
 
 function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [cardSet, setCardSet] = useState<string>();
-  const [name, setName] = useState<string>();
+  const { locale } = useLocale();
+  const { generalSets, paths } = useLocale();
+  const { locations } = useContext(CampaignContext);
+  
   const [submitEntry] = useAddCampaignRemovedMutation();
   const [updateRemoved] = useUpdateCampaignRemovedMutation();
+  
+  const [selectedCard, setSelectedCard] = useState<PathCardDefinition | undefined>();
+  const [inputValue, setInputValue] = useState('');
+  
+  // Per inserimento manuale
+  const [customName, setCustomName] = useState('');
+  const [cardSet, setCardSet] = useState<string | undefined>();
+  
+  // Crea le opzioni per il dropdown con icone dei set
+  const pathCardOptions: PathCardOption[] = useMemo(() => {
+    return PATH_CARDS.map(card => {
+      const cardName = getPathCardName(card.code, locale);
+      
+      // Determina quale icona usare in base al set_type
+      let icon: React.ReactNode = null;
+      if (card.set_type === 'path') {
+        const path = paths[card.set_id];
+        if (path) {
+          icon = <PathIcon path={path} size={42} />;
+        }
+      } else {
+        const location = locations[card.set_id] || generalSets[card.set_id];
+        if (location) {
+          icon = <LocationIcon location={location} size={48} />;
+        }
+      }
+      
+      // Trova il nome della destinazione (se presente)
+      const destinationName = card.destination 
+        ? (locations[card.destination]?.name || generalSets[card.destination]?.name || card.destination)
+        : undefined;
+      
+      return {
+        value: card.code,
+        card: card,
+        searchString: cardName.toLowerCase(),
+        label: (
+          <Flex direction="row" alignItems="center">
+            {icon}
+            <Flex direction="column" marginLeft={2}>
+              <Text fontSize="md">{cardName}</Text>
+              <Text fontSize="xs" color="gray.500">
+                {card.action === 'moved' ? t`Moved` : t`Removed`}
+                {card.destination && ` → ${destinationName}`}
+              </Text>
+            </Flex>
+          </Flex>
+        ),
+      };
+    });
+  }, [locale, locations, generalSets, paths]);
+  
+  // Estrai i nomi delle carte già aggiunte per verificare i prerequisiti
+  const addedCardNames = useMemo(() => {
+    return campaign.removed.map(r => r.name);
+  }, [campaign.removed]);
+
+  // Trova i codici delle carte già aggiunte (cercando per nome)
+  const addedCardCodes = useMemo(() => {
+    return PATH_CARDS
+      .filter(card => addedCardNames.some(name => name.includes(getPathCardName(card.code, locale))))
+      .map(card => card.code);
+  }, [addedCardNames, locale]);
+
+  // Filtra le opzioni in base all'input e ai prerequisiti
+  const filteredOptions = useMemo(() => {
+    if (inputValue.length < 2) {
+      return [];
+    }
+    const searchLower = inputValue.toLowerCase();
+    return pathCardOptions.filter(opt => 
+      opt.searchString.includes(searchLower) && 
+      canShowPathCard(opt.card, addedCardCodes)
+    );
+  }, [pathCardOptions, inputValue, addedCardCodes]);
+  
   const onSubmitEntry = useCallback(async() => {
-    if (!name) {
+    // Dropdown ha priorità
+    const name = selectedCard ? getPathCardName(selectedCard.code, locale) : customName;
+    const setId = selectedCard?.set_id || cardSet;
+    
+    if (!name || !setId) {
       return;
     }
-
+    
     const entry: RemovedEntry = {
-      set_id: cardSet || undefined,
+      set_id: setId,
       name,
     };
-
+    
     const r = await submitEntry({
       variables: {
         campaignId: campaign.id,
@@ -1069,12 +1252,13 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
     if (r.errors?.length) {
       return r.errors[0].message;
     }
-    setName('');
-    setCardSet('');
-    onClose();
+    setSelectedCard(undefined);
+    setInputValue('');
+    setCustomName('');
+    setCardSet(undefined);
     return undefined;
-  }, [onClose, submitEntry, setName, setCardSet, name, cardSet, campaign.id]);
-
+  }, [selectedCard, locale, customName, cardSet, submitEntry, campaign.id]);
+  
   const onRemove = useCallback(async(index: number) => {
     const r = await updateRemoved({
       variables: {
@@ -1087,42 +1271,111 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
     }
     return undefined;
   }, [campaign.removed, campaign.id, updateRemoved]);
+  
+  const handleSelectChange = useCallback((option: PathCardOption | null) => {
+    if (option) {
+      setSelectedCard(option.card);
+      // Resetta i campi manuali quando si seleziona dal dropdown
+      setCustomName('');
+      setCardSet(undefined);
+    } else {
+      setSelectedCard(undefined);
+    }
+  }, []);
+  
+  const handleInputChange = useCallback((newValue: string) => {
+    setInputValue(newValue);
+  }, []);
+  
+  // Valore selezionato per il Select
+  const selectedValue = useMemo(() => {
+    if (!selectedCard) return null;
+    return pathCardOptions.find(opt => opt.value === selectedCard.code) || null;
+  }, [selectedCard, pathCardOptions]);
+
+  // Verifica se c'è un valore valido da salvare
+  // - Se selectedCard → ok
+  // - Se customName && cardSet → ok
+  // - Se customName && !cardSet → NON ok (deve selezionare il set)
+  const hasValidEntry = !!(selectedCard || (trim(customName) && cardSet));
+  const hasCustomNameWithoutSet = !!(trim(customName) && !cardSet && !selectedCard);
+  
   return (
     <>
       <Text marginBottom={2}>
-        { t`Track cards that are removed permanently from the path deck here.` }
+        {t`Track cards that are removed or moved permanently from the path deck here.`}
       </Text>
-      <Box marginBottom={2}>
-        { isOpen ? (
-          <>
-            <form onSubmit={e => {
-              e.preventDefault();
-              onSubmitEntry();
-            }}>
-              <FormControl marginTop={4} isRequired>
-                <FormLabel>{t`Name`}</FormLabel>
-                <Input
-                  type="name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                />
-              </FormControl>
-              <FormControl marginTop={4}>
-                <FormLabel>{t`Set`}</FormLabel>
-                <CardSetSelect value={cardSet} setValue={setCardSet} />
-              </FormControl>
-              <ButtonGroup marginTop={2}>
-                <SubmitButton color="blue" disabled={!trim(name)} onSubmit={onSubmitEntry}>
-                  { t`Save` }
-                </SubmitButton>
-                <Button onClick={onClose}>{t`Cancel`}</Button>
-              </ButtonGroup>
-            </form>
-          </>
-        ) : (
-          <Button leftIcon={<SlPlus />} onClick={onOpen}>{t`Remove card`}</Button>
-        ) }
+      <Box marginBottom={4}>
+        <FormControl>
+          <FormLabel>{t`Search and select a card`}</FormLabel>
+          <ChakraSelect<PathCardOption>
+            value={selectedValue}
+            onChange={handleSelectChange}
+            onInputChange={handleInputChange}
+            inputValue={inputValue}
+            options={filteredOptions}
+            placeholder={t`Type at least 2 characters to search...`}
+            noOptionsMessage={() => 
+              inputValue.length < 2 
+                ? t`Type at least 2 characters to search...`
+                : t`No cards found`
+            }
+            isClearable
+            useBasicStyles
+            chakraStyles={{
+              container: (provided) => ({
+                ...provided,
+                width: '100%',
+              }),
+              control: (provided) => ({
+                ...provided,
+                minHeight: '60px',
+              }),
+            }}
+          />
+        </FormControl>
+        
+        {/* Campi per inserimento manuale */}
+        <FormControl marginTop={4}>
+          <FormLabel>{t`Or enter manually`}</FormLabel>
+          <Input
+            type="text"
+            value={customName}
+            placeholder={t`Enter card name...`}
+            onChange={e => setCustomName(e.target.value)}
+            isDisabled={!!selectedCard}
+          />
+        </FormControl>
+        <FormControl marginTop={4}>
+          <FormLabel>
+            {t`Set`}
+            {hasCustomNameWithoutSet && (
+              <Text as="span" color="red.400" fontSize="sm" marginLeft={2}>
+                {t`(required for manual entry)`}
+              </Text>
+            )}
+          </FormLabel>
+          <CardSetSelect 
+            value={selectedCard?.set_id || cardSet} 
+            setValue={setCardSet}
+          />
+        </FormControl>
+        
+        {(selectedCard || hasValidEntry) && (
+          <ButtonGroup marginTop={2}>
+            <SubmitButton color="blue" disabled={!hasValidEntry} onSubmit={onSubmitEntry}>
+              {selectedCard?.action === 'moved' ? t`Add as Moved` : t`Add as Removed`}
+            </SubmitButton>
+            <Button onClick={() => {
+              setSelectedCard(undefined);
+              setCustomName('');
+              setCardSet(undefined);
+              setInputValue('');
+            }}>{t`Cancel`}</Button>
+          </ButtonGroup>
+        )}
       </Box>
+      
       <TableContainer marginBottom={2}>
         <Table variant="simple">
           <Thead>
@@ -1133,7 +1386,7 @@ function RemovedTab({ campaign }: { campaign: ParsedCampaign }) {
             </Tr>
           </Thead>
           <Tbody>
-            { map(campaign.removed, (remove, idx) => (
+            {map(campaign.removed, (remove, idx) => (
               <RemoveRow key={idx} remove={remove} index={idx} onRemove={onRemove} />
             ))}
           </Tbody>
