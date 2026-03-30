@@ -67,6 +67,7 @@ export enum Path {
   FUNGAL_FOREST = 'fungal_forest',
   CAVE_SYSTEM = 'cave_system',
   THOROUGHFARE = 'thoroughfare',
+  NIMBUS = 'nimbus',
 }
 export enum ConnectionRestriction {
   FLOODED_PASSAGE = 'flooded_passage',

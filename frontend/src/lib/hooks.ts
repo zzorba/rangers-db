@@ -324,6 +324,12 @@ export function getPathTypes(): PathTypeMap {
       name: t`Thoroughfare`,
       color: '#49674b',
       campaigns: ['core'],
+    },
+    {
+      id: Path.NIMBUS,
+      name: t`Nimbus`,
+      color: '#9a90ba',
+      campaigns: ['core'],
     }
   ];
   forEach(paths, p => {
@@ -1005,6 +1011,97 @@ const CONNECTIONS: ConnectionType[] = [
       }
     ]
   },
+
+
+
+  {
+    locA: 'northern_outpost',
+    locB: 'terra_lodge',
+    path: Path.OLD_GROWTH,
+    expansionConditions: [
+      {
+        expansion: 'sos',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'the_otherwoods',
+    locB: 'terra_lodge',
+    path: Path.OLD_GROWTH,
+    expansionConditions: [
+      {
+        expansion: 'sos',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'crystal_basin',
+    locB: 'the_otherwoods',
+    path: Path.WOODS,
+    expansionConditions: [
+      {
+        expansion: 'sos',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'crystal_basin',
+    locB: 'atrox_mountains',
+    path: Path.RAVINE,
+    expansionConditions: [
+      {
+        expansion: 'sos',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'crystal_basin',
+    locB: 'sentinal_peak',
+    path: Path.MOUNTAIN_PASS,
+    expansionConditions: [
+      {
+        expansion: 'sos',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'terra_lodge',
+    locB: 'sentinal_peak',
+    path: Path.MOUNTAIN_PASS,
+    expansionConditions: [
+      {
+        expansion: 'sos',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'nimbus_facility',
+    locB: 'arbor_mists',
+    path: Path.NIMBUS,
+    expansionConditions: [
+      {
+        expansion: 'sos',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'arbor_mists',
+    locB: 'the_undergrove',
+    path: Path.NIMBUS,
+    expansionConditions: [
+      {
+        expansion: 'sos',
+        action: 'add',
+      }
+    ]
+  }
 ];
 
 export function getCampaignCycles(): CampaignCycle[] {
@@ -1032,6 +1129,11 @@ export function getCampaignExpansions(cycle?: string): CampaignExpansion[] {
     {
       id: 'sib',
       name: t`Spire In Bloom`,
+      cycles: ['core'],
+    },
+    {
+      id: 'sos',
+      name: t`Shadow of the Storm`,
       cycles: ['core'],
     },
   ].filter(expansion => expansion.cycles.includes(cycle));
@@ -1435,6 +1537,83 @@ export function getMapLocations(cycle: string, expansions: string[]): MapLocatio
       expansionConditions: [
         {
           expansion: 'sib',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'terra_lodge',
+      name: t`Terra Lodge`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'sos',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'the_otherwoods',
+      name: t`The Otherwoods`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'sos',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'crystal_basin',
+      name: t`Crystal Basin`,
+      type: 'trail',
+      expansionConditions: [
+        {
+          expansion: 'sos',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'sentinel_peak',
+      name: t`Sentinel Peak`,
+      type: 'trail',
+      expansionConditions: [
+        {
+          expansion: 'sos',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'nimbus_facility',
+      name: t`Nimbus Facility`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'sos',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'arbor_mists',
+      name: t`Arbor Mists`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'sos',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'the_undergrove',
+      name: t`The Undergrove`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'sos',
           action: 'add',
         }
       ]

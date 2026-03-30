@@ -124,6 +124,9 @@ msgstr "Estrategia"
 msgid "Approach icons"
 msgstr "Icono de Estrategia"
 
+msgid "Arbor Mists"
+msgstr ""
+
 msgid "Arboretum of Memory"
 msgstr "Arboreto de la Memoria"
 
@@ -324,6 +327,9 @@ msgstr "Tachado"
 
 msgid "Crossroads Station"
 msgstr "Estación Nudo"
+
+msgid "Crystal Basin"
+msgstr ""
 
 msgid "Current location:"
 msgstr "Localización activa"
@@ -706,6 +712,12 @@ msgstr "Siguiente"
 msgid "Next deck"
 msgstr "Siguiente mazo"
 
+msgid "Nimbus"
+msgstr ""
+
+msgid "Nimbus Facility"
+msgstr ""
+
 msgid "No account found with this email address."
 msgstr ""
 
@@ -992,6 +1004,9 @@ msgstr "Seleccionar Caminos..."
 msgid "Send Friend Request"
 msgstr "Enviar solicitud de amistad"
 
+msgid "Sentinel Peak"
+msgstr ""
+
 msgid "Set"
 msgstr "Conjunto"
 
@@ -1003,6 +1018,9 @@ msgstr ""
 
 msgid "Severed Artery"
 msgstr "Arteria cortada"
+
+msgid "Shadow of the Storm"
+msgstr ""
 
 msgid "Share"
 msgstr "Compartir"
@@ -1091,6 +1109,9 @@ msgstr "Estrecho del tálpido"
 msgid "Terminal Artery"
 msgstr "Arteria terminal"
 
+msgid "Terra Lodge"
+msgstr ""
+
 msgid "Terrain"
 msgstr "Terreno"
 
@@ -1142,6 +1163,9 @@ msgstr "La Cuenca Alta"
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr "La información presentada en este sitio sobre Earthborne Rangers, tanto literal como gráfica, está protegida por derechos de autor de Earthborne Games. Este sitio web no está producido, respaldado, apoyado ni afiliado con Earthborne Games."
 
+msgid "The Otherwoods"
+msgstr ""
+
 msgid "The Philosopher's Garden"
 msgstr "El jardín del filósofo"
 
@@ -1156,6 +1180,9 @@ msgstr "Es probable que el sitio deje de funcionar por mantenimiento y que se pi
 
 msgid "The Tumbledown"
 msgstr "Batacazo"
+
+msgid "The Undergrove"
+msgstr ""
 
 msgid "The Valley"
 msgstr "El Valle"

@@ -124,6 +124,9 @@ msgstr "Подход"
 msgid "Approach icons"
 msgstr "Символы подхода"
 
+msgid "Arbor Mists"
+msgstr ""
+
 msgid "Arboretum of Memory"
 msgstr "Дендрарий памяти"
 
@@ -324,6 +327,9 @@ msgstr "Зачёркнуто"
 
 msgid "Crossroads Station"
 msgstr "Станция Перекрёсток"
+
+msgid "Crystal Basin"
+msgstr ""
 
 msgid "Current location:"
 msgstr "Текущая локация:"
@@ -706,6 +712,12 @@ msgstr "Далее"
 msgid "Next deck"
 msgstr "Следующая колода"
 
+msgid "Nimbus"
+msgstr ""
+
+msgid "Nimbus Facility"
+msgstr ""
+
 msgid "No account found with this email address."
 msgstr ""
 
@@ -992,6 +1004,9 @@ msgstr "Выберите тип местности"
 msgid "Send Friend Request"
 msgstr "Отправить запрос в друзья"
 
+msgid "Sentinel Peak"
+msgstr ""
+
 msgid "Set"
 msgstr "Набор"
 
@@ -1003,6 +1018,9 @@ msgstr ""
 
 msgid "Severed Artery"
 msgstr "Обрыв Артерии"
+
+msgid "Shadow of the Storm"
+msgstr ""
 
 msgid "Share"
 msgstr "Поделиться"
@@ -1091,6 +1109,9 @@ msgstr "Кротовый лаз"
 msgid "Terminal Artery"
 msgstr "Терминал Артерии"
 
+msgid "Terra Lodge"
+msgstr ""
+
 msgid "Terrain"
 msgstr "Тип местности"
 
@@ -1142,6 +1163,9 @@ msgstr "Горный водоём"
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr "Все права на представленную на этом сайте информацию о Earthborne рейнджеры — как текстовую, так и графическую — принадлежат компании Earthborne Games. Создатели этого сайта не аффилированы и никоим образом не поддерживаются Earthborne Games."
 
+msgid "The Otherwoods"
+msgstr ""
+
 msgid "The Philosopher's Garden"
 msgstr "Философский сад"
 
@@ -1156,6 +1180,9 @@ msgstr "В первые дни работы сайт может быть зак�
 
 msgid "The Tumbledown"
 msgstr "Пропасть"
+
+msgid "The Undergrove"
+msgstr ""
 
 msgid "The Valley"
 msgstr "Долина"

@@ -2092,6 +2092,14 @@ export const EXPANSION_GUIDE_ENTRIES: {
       }
     ],
   },
+  'sos': {
+    starting: [
+      {
+        day: 24,
+        guides: ['246.1'],
+      }
+    ],
+  },
 };
 
 export interface TimelineDay {

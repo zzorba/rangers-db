@@ -124,6 +124,9 @@ msgstr "Approach"
 msgid "Approach icons"
 msgstr "Approach icons"
 
+msgid "Arbor Mists"
+msgstr "Arbor Mists"
+
 msgid "Arboretum of Memory"
 msgstr "Arboretum of Memory"
 
@@ -324,6 +327,9 @@ msgstr "Crossed-out"
 
 msgid "Crossroads Station"
 msgstr "Crossroads Station"
+
+msgid "Crystal Basin"
+msgstr "Crystal Basin"
 
 msgid "Current location:"
 msgstr "Current location:"
@@ -706,6 +712,12 @@ msgstr "Next"
 msgid "Next deck"
 msgstr "Next deck"
 
+msgid "Nimbus"
+msgstr "Nimbus"
+
+msgid "Nimbus Facility"
+msgstr "Nimbus Facility"
+
 msgid "No account found with this email address."
 msgstr "No account found with this email address."
 
@@ -992,6 +1004,9 @@ msgstr "Select path terrain..."
 msgid "Send Friend Request"
 msgstr "Send Friend Request"
 
+msgid "Sentinel Peak"
+msgstr "Sentinel Peak"
+
 msgid "Set"
 msgstr "Set"
 
@@ -1003,6 +1018,9 @@ msgstr "Setup recommended expansion events?"
 
 msgid "Severed Artery"
 msgstr "Severed Artery"
+
+msgid "Shadow of the Storm"
+msgstr "Shadow of the Storm"
 
 msgid "Share"
 msgstr "Share"
@@ -1091,6 +1109,9 @@ msgstr "Talpid's Squeeze"
 msgid "Terminal Artery"
 msgstr "Terminal Artery"
 
+msgid "Terra Lodge"
+msgstr "Terra Lodge"
+
 msgid "Terrain"
 msgstr "Terrain"
 
@@ -1142,6 +1163,9 @@ msgstr "The High Basin"
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 
+msgid "The Otherwoods"
+msgstr "The Otherwoods"
+
 msgid "The Philosopher's Garden"
 msgstr "The Philosopher's Garden"
 
@@ -1156,6 +1180,9 @@ msgstr "The site is likely to go down for maintenance and data might be lost dur
 
 msgid "The Tumbledown"
 msgstr "The Tumbledown"
+
+msgid "The Undergrove"
+msgstr "The Undergrove"
 
 msgid "The Valley"
 msgstr "The Valley"

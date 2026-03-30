@@ -124,6 +124,9 @@ msgstr "Herangehensweise"
 msgid "Approach icons"
 msgstr "Herangehensweise-Symbole"
 
+msgid "Arbor Mists"
+msgstr ""
+
 msgid "Arboretum of Memory"
 msgstr "Hain der Erinnerung"
 
@@ -324,6 +327,9 @@ msgstr "Durchgestrichen"
 
 msgid "Crossroads Station"
 msgstr "Die Nahtstelle"
+
+msgid "Crystal Basin"
+msgstr ""
 
 msgid "Current location:"
 msgstr "Aktueller Ort:"
@@ -706,6 +712,12 @@ msgstr "Nächste Seite"
 msgid "Next deck"
 msgstr "Nächstes Deck"
 
+msgid "Nimbus"
+msgstr ""
+
+msgid "Nimbus Facility"
+msgstr ""
+
 msgid "No account found with this email address."
 msgstr "Keinen Account mit dieser E-Mail-Adresse gefunden."
 
@@ -992,6 +1004,9 @@ msgstr "Terrain-Typ auswählen..."
 msgid "Send Friend Request"
 msgstr "Freundschaftsanfrage senden"
 
+msgid "Sentinel Peak"
+msgstr ""
+
 msgid "Set"
 msgstr "Set"
 
@@ -1003,6 +1018,9 @@ msgstr "Empfohlene Erweiterungs-Ereignisse für den Aufbau"
 
 msgid "Severed Artery"
 msgstr "Durchtrennte Arterie"
+
+msgid "Shadow of the Storm"
+msgstr ""
 
 msgid "Share"
 msgstr "Teilen"
@@ -1091,6 +1109,9 @@ msgstr "Sternmulls Enge"
 msgid "Terminal Artery"
 msgstr "Arterien-Endstelle"
 
+msgid "Terra Lodge"
+msgstr ""
+
 msgid "Terrain"
 msgstr "Terrain"
 
@@ -1142,6 +1163,9 @@ msgstr "Der Hohe Spiegel"
 msgid "The information presented on this site about Earthborne Rangers, both literal and graphical, is copyrighted by Earthborne Games. This website is not produced, endorsed, supported, or affiliated with Earthborne Games."
 msgstr "Die auf dieser Webseite dargestellten Informationen über Earthborne Rangers - schriftlich wie graphisch - unterliegen den Urheberrechten von Earthborne Games und Frosted Games. Diese Webseite gehört nicht zu Earthborne Games oder Frosted Games, und wird nicht von ihnen erstellt, unterstützt oder befürwortet."
 
+msgid "The Otherwoods"
+msgstr ""
+
 msgid "The Philosopher's Garden"
 msgstr "Garten des Philosophen"
 
@@ -1156,6 +1180,9 @@ msgstr "Die Webseite wird wegen Wartungen in der nächsten Zeit voraussichtlich 
 
 msgid "The Tumbledown"
 msgstr "Klippensturz"
+
+msgid "The Undergrove"
+msgstr ""
 
 msgid "The Valley"
 msgstr "Das Tal"
