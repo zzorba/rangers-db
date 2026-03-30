@@ -328,7 +328,7 @@ export function getPathTypes(): PathTypeMap {
     {
       id: Path.NIMBUS,
       name: t`Nimbus`,
-      color: '#9a90ba',
+      color: '#a5a4c4',
       campaigns: ['core'],
     }
   ];
