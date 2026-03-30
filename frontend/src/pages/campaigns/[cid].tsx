@@ -1,18 +1,22 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useEffect } from 'react';
 import Head from 'next/head'
+import { useRouter } from 'next/router';
 import { t } from '@lingui/macro';
 import { Box, Text } from '@chakra-ui/react'
-import { filter, flatMap } from 'lodash';
+import { filter, flatMap, find } from 'lodash';
 
 import { useGetCampaignQuery, useAddFriendToCampaignMutation, useRemoveFriendFromCampaignMutation } from '../../generated/graphql/apollo-schema';
-import { useRequireAuth, useRouterPathParam } from '../../lib/hooks';
+import { useRouterPathParam } from '../../lib/hooks';
+import { useAuth } from '../../lib/AuthContext';
 import LoadingPage from '../../components/LoadingPage';
 import Campaign, { CampaignWrapper, useEditCampaignAccessModal } from '../../components/Campaign';
 import { useAllCardsMap } from '../../lib/cards';
 import { getLocalizationServerSideProps } from '../../lib/Lingui';
 
 export default function CampaignPage() {
-  useRequireAuth();
+  const router = useRouter();
+  const { authUser, loading: authLoading } = useAuth();
+  
   const [campaignId, isReady] = useRouterPathParam('cid', parseInt, '/campaigns')
   const { data, loading, refetch } = useGetCampaignQuery({
     ssr: false,
@@ -23,6 +27,33 @@ export default function CampaignPage() {
   });
   const cards = useAllCardsMap(undefined);
   const campaign = useMemo(() => data?.campaign ? new CampaignWrapper(data.campaign) : undefined, [data]);
+  
+  // Verifica se l'utente ha accesso alla campagna
+  const hasAccess = useMemo(() => {
+    if (!authUser || !campaign) return false;
+    return !!find(campaign.access, user => user.id === authUser.uid);
+  }, [authUser, campaign]);
+
+  // Redirect alla pagina view-only se non ha accesso
+  useEffect(() => {
+    // Aspetta che auth e campaign siano caricati
+    if (authLoading || loading || !isReady) return;
+    
+    // Se non c'è campaignId, non fare nulla
+    if (!campaignId) return;
+
+    // Se la campagna non esiste, redirect a view-only (che mostrerà errore)
+    if (data && !data.campaign) {
+      router.replace(`/campaigns/view/${campaignId}`);
+      return;
+    }
+
+    // Se l'utente non è loggato O non ha accesso → redirect a view-only
+    if (campaign && (!authUser || !hasAccess)) {
+      router.replace(`/campaigns/view/${campaignId}`);
+    }
+  }, [authLoading, loading, isReady, authUser, hasAccess, campaign, campaignId, router, data]);
+
   const handleRefresh = useCallback(async() => {
     await refetch({ campaignId });
   }, [refetch, campaignId]);
@@ -70,27 +101,19 @@ export default function CampaignPage() {
     }
     return undefined;
   }, [campaign, campaignId, addFriend, removeFriend]);
+  
   const [showEditFriends, editFriendsModal] = useEditCampaignAccessModal(campaign, updateAccess);
-  if (data && !data.campaign) {
-    return (
-      <>
-        <Head>
-          <title>{t`Campaign`} - {t`RangersDB`}</title>
-        </Head>
-        <Box
-          maxW="64rem"
-          marginX="auto"
-          py={{ base: "3rem", lg: "4rem" }}
-          px={{ base: "1rem", lg: "0" }}
-        >
-          <Text>{t`This campaign is not accessible. Are you sure you are signed into the correct account?`}</Text>
-        </Box>
-      </>
-    );
-  }
-  if (loading) {
+
+  // Loading state (include auth loading)
+  if (loading || authLoading || !isReady) {
     return <LoadingPage />;
   }
+
+  // Se sta per fare redirect, mostra loading
+  if (!authUser || !hasAccess) {
+    return <LoadingPage />;
+  }
+
   return (
     <>
       <Head>
