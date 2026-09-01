@@ -68,6 +68,7 @@ export enum Path {
   CAVE_SYSTEM = 'cave_system',
   THOROUGHFARE = 'thoroughfare',
   NIMBUS = 'nimbus',
+  TERRAVORE = 'terravore'
 }
 export enum ConnectionRestriction {
   FLOODED_PASSAGE = 'flooded_passage',
@@ -78,6 +79,7 @@ export enum ConnectionRestriction {
 export interface PathType {
   id: Path;
   name: string;
+  icon?: string;
   color: string;
   campaigns: string[];
 }

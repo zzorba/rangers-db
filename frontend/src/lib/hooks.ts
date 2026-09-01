@@ -330,6 +330,13 @@ export function getPathTypes(): PathTypeMap {
       name: t`Nimbus`,
       color: '#a5a4c4',
       campaigns: ['core'],
+    },
+    {
+      id: Path.TERRAVORE,
+      icon: 'terravore_path',
+      name: t`Terravore`,
+      color: '#897F33',
+      campaigns: ['core'],
     }
   ];
   forEach(paths, p => {
@@ -1112,6 +1119,72 @@ const CONNECTIONS: ConnectionType[] = [
         action: 'add',
       }
     ]
+  },
+  {
+    locA: 'terravore',
+    locB: 'the_gastric_mill',
+    path: Path.TERRAVORE,
+    expansionConditions: [
+      {
+        expansion: 'itm',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'the_gastric_mill',
+    locB: 'intestinal_corridors',
+    path: Path.TERRAVORE,
+    expansionConditions: [
+      {
+        expansion: 'itm',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'ileocecal_junction',
+    locB: 'intestinal_corridors',
+    path: Path.TERRAVORE,
+    expansionConditions: [
+      {
+        expansion: 'itm',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'ileocecal_junction',
+    locB: 'the_cesspit',
+    path: Path.TERRAVORE,
+    expansionConditions: [
+      {
+        expansion: 'itm',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'the_gastric_mill',
+    locB: 'the_cesspit',
+    path: Path.TERRAVORE,
+    expansionConditions: [
+      {
+        expansion: 'itm',
+        action: 'add',
+      }
+    ]
+  },
+  {
+    locA: 'the_greenbridge',
+    locB: 'the_cesspit',
+    path: Path.SWAMP,
+    expansionConditions: [
+      {
+        expansion: 'itm',
+        action: 'add',
+      }
+    ]
   }
 ];
 
@@ -1145,6 +1218,11 @@ export function getCampaignExpansions(cycle?: string): CampaignExpansion[] {
     {
       id: 'sos',
       name: t`Shadow of the Storm`,
+      cycles: ['core'],
+    },
+    {
+      id: 'itm',
+      name: t`Into the Maw`,
       cycles: ['core'],
     },
   ].filter(expansion => expansion.cycles.includes(cycle));
@@ -1625,6 +1703,61 @@ export function getMapLocations(cycle: string, expansions: string[]): MapLocatio
       expansionConditions: [
         {
           expansion: 'sos',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'intestinal_corridors',
+      name: t`Intestinal Corridors`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'itm',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'the_gastric_mill',
+      name: t`The Gastric Mill`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'itm',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'abyssal_liver',
+      name: t`Abyssal Liver`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'itm',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'ileocecal_junction',
+      name: t`Ileocecal Junction`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'itm',
+          action: 'add',
+        }
+      ]
+    },
+    {
+      id: 'the_cesspit',
+      name: t`The Cesspit`,
+      type: 'location',
+      expansionConditions: [
+        {
+          expansion: 'itm',
           action: 'add',
         }
       ]
