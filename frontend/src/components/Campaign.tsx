@@ -2360,6 +2360,14 @@ export const EXPANSION_GUIDE_ENTRIES: {
       }
     ],
   },
+  'itm': {
+    starting: [
+      {
+        day: 30,
+        guides: ['266.1'],
+      }
+    ],
+  },
 };
 
 export interface TimelineDay {
