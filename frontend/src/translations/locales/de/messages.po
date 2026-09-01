@@ -58,6 +58,9 @@ msgstr "30 Karten"
 msgid "A Perfect Day"
 msgstr "Ein herrlicher Tag"
 
+msgid "Abyssal Liver"
+msgstr ""
+
 msgid "Accept"
 msgstr "Annehmen"
 
@@ -610,8 +613,17 @@ msgstr "Wenn du das gerne korrigieren möchtest, schicke mir einen Link zu deine
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "Du kannst die Entwicklung und den Unterhalt dieser Webseite auf {patreon} unterstützen."
 
+msgid "Ileocecal Junction"
+msgstr ""
+
 msgid "Incorrect password. Please try again."
 msgstr "Falsches Passwort. Bitte versuche es erneut."
+
+msgid "Intestinal Corridors"
+msgstr ""
+
+msgid "Into the Maw"
+msgstr ""
 
 msgid "Invalid email address format."
 msgstr "Ungültige E-Mail-Adresse"
@@ -1187,6 +1199,9 @@ msgstr "Die Arkologie"
 msgid "The Cage"
 msgstr "Der Käfig"
 
+msgid "The Cesspit"
+msgstr ""
+
 msgid "The Chimney"
 msgstr "Der Schlot"
 
@@ -1210,6 +1225,9 @@ msgstr "Das Finstertor"
 
 msgid "The Furrow"
 msgstr "Die Furche"
+
+msgid "The Gastric Mill"
+msgstr ""
 
 msgid "The Greenbridge"
 msgstr "Die Grünbrücke"

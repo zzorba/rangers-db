@@ -58,6 +58,9 @@ msgstr "30 Cards"
 msgid "A Perfect Day"
 msgstr "A Perfect Day"
 
+msgid "Abyssal Liver"
+msgstr "Abyssal Liver"
+
 msgid "Accept"
 msgstr "Accept"
 
@@ -610,8 +613,17 @@ msgstr "If you would like it to be corrected, send me a link to your campaign an
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 
+msgid "Ileocecal Junction"
+msgstr "Ileocecal Junction"
+
 msgid "Incorrect password. Please try again."
 msgstr "Incorrect password. Please try again."
+
+msgid "Intestinal Corridors"
+msgstr "Intestinal Corridors"
+
+msgid "Into the Maw"
+msgstr "Into the Maw"
 
 msgid "Invalid email address format."
 msgstr "Invalid email address format."
@@ -1187,6 +1199,9 @@ msgstr "The Arcology"
 msgid "The Cage"
 msgstr "The Cage"
 
+msgid "The Cesspit"
+msgstr "The Cesspit"
+
 msgid "The Chimney"
 msgstr "The Chimney"
 
@@ -1210,6 +1225,9 @@ msgstr "The Frowning Gate"
 
 msgid "The Furrow"
 msgstr "The Furrow"
+
+msgid "The Gastric Mill"
+msgstr "The Gastric Mill"
 
 msgid "The Greenbridge"
 msgstr "The Greenbridge"

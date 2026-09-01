@@ -58,6 +58,9 @@ msgstr "30 карт"
 msgid "A Perfect Day"
 msgstr "Ясный день"
 
+msgid "Abyssal Liver"
+msgstr ""
+
 msgid "Accept"
 msgstr "Принять"
 
@@ -610,7 +613,16 @@ msgstr ""
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr ""
 
+msgid "Ileocecal Junction"
+msgstr ""
+
 msgid "Incorrect password. Please try again."
+msgstr ""
+
+msgid "Intestinal Corridors"
+msgstr ""
+
+msgid "Into the Maw"
 msgstr ""
 
 msgid "Invalid email address format."
@@ -1187,6 +1199,9 @@ msgstr "Аркология"
 msgid "The Cage"
 msgstr "Клетка"
 
+msgid "The Cesspit"
+msgstr ""
+
 msgid "The Chimney"
 msgstr "Воздуховод"
 
@@ -1210,6 +1225,9 @@ msgstr "Хмурые ворота"
 
 msgid "The Furrow"
 msgstr "Борозда"
+
+msgid "The Gastric Mill"
+msgstr ""
 
 msgid "The Greenbridge"
 msgstr "Зелёный мост"

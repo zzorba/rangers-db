@@ -58,6 +58,9 @@ msgstr ""
 msgid "A Perfect Day"
 msgstr ""
 
+msgid "Abyssal Liver"
+msgstr ""
+
 msgid "Accept"
 msgstr ""
 
@@ -610,7 +613,16 @@ msgstr ""
 msgid "If you‘d like to support the development and maintenance of this site, consider supporting us on {patreon}."
 msgstr ""
 
+msgid "Ileocecal Junction"
+msgstr ""
+
 msgid "Incorrect password. Please try again."
+msgstr ""
+
+msgid "Intestinal Corridors"
+msgstr ""
+
+msgid "Into the Maw"
 msgstr ""
 
 msgid "Invalid email address format."
@@ -1187,6 +1199,9 @@ msgstr ""
 msgid "The Cage"
 msgstr ""
 
+msgid "The Cesspit"
+msgstr ""
+
 msgid "The Chimney"
 msgstr ""
 
@@ -1209,6 +1224,9 @@ msgid "The Frowning Gate"
 msgstr ""
 
 msgid "The Furrow"
+msgstr ""
+
+msgid "The Gastric Mill"
 msgstr ""
 
 msgid "The Greenbridge"
