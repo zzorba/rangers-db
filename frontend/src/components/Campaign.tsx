@@ -2951,7 +2951,7 @@ function CampaignDetailContent({ campaign, refetchCampaign, showEditFriends, car
             <Button leftIcon={<FaWalking />} onClick={onTravel}>{t`Travel`}</Button>
             <Button leftIcon={<FaMoon />} onClick={onEndDay}>{t`End the day`}</Button>
             { !!undoEnabled && <Button variant="ghost" leftIcon={<FaUndo />} onClick={onUndo}>{t`Undo`}</Button> }
-            { (campaign.day >= 30 && !campaign.extended_calendar) && (
+            { !campaign.extended_calendar && (
               <SolidButton color="blue" onClick={onExtendCampaign}>
                 {t`Extend campaign`}
               </SolidButton>
